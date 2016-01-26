@@ -49,7 +49,7 @@ struct HelpStruct
     
         "In Level 4, the experiments you are doing progressively transform your environment on the long term.\n\n" +
     
-        "Your goal is to reach the score of 10."
+        "Your goal is to reach the score of 10. "
     
     func help() -> [String] {
         return [help0, help1, help2, help3, help4]
