@@ -12,7 +12,7 @@ import SpriteKit
 class GameViewController: UIViewController, UIPopoverPresentationControllerDelegate {
     
     let gameStruct = GameStruct()
-
+    
     override func viewDidLoad()
     {
         super.viewDidLoad()
@@ -51,20 +51,28 @@ class GameViewController: UIViewController, UIPopoverPresentationControllerDeleg
         return true
     }
     
+    @IBAction func levelButton(sender: UIButton) {
+        let skView = view as! SKView
+        if let scene  = skView.scene as? GameScene {
+            let homeScene = HomeScene()
+            homeScene.cancelScene = scene
+            skView.presentScene(homeScene, transition: gameStruct.transitionOut)
+        }
+    }
+    
     static let segueIdentifier = "ShowHelp"
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let identifier = segue.identifier {
             switch identifier {
             case GameViewController.segueIdentifier:
-                if let tvc = segue.destinationViewController as? HelpViewController {
-                    if let ppc = tvc.popoverPresentationController {
+                if let hvc = segue.destinationViewController as? HelpViewController {
+                    if let ppc = hvc.popoverPresentationController {
                         ppc.delegate = self
                     }
-                    //tvc.text = HelpStruct().help0
                     let skView = view as! SKView
                     if let scene  = skView.scene as? GameScene {
-                        tvc.level = scene.level.number
+                        hvc.level = scene.level.number
                     }
                 }
             default:
@@ -77,4 +85,5 @@ class GameViewController: UIViewController, UIPopoverPresentationControllerDeleg
         return UIModalPresentationStyle.None
         
     }
+    
 }

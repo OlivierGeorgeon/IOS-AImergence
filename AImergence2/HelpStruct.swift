@@ -41,7 +41,7 @@ struct HelpStruct
 
         "Persistent experiments allow you to \"observe\" the current state of the environment without changing it.\n\n" +
         
-        "Then find experiments that generate enjoyable experiences in some particular states of the environment.\n\n" +
+        "Then, find experiments that generate enjoyable experiences in some particular persistent states of the environment.\n\n" +
         
         "Finally, find experiments that allow you to change the state of the environment at your advantage.\n\n"
     

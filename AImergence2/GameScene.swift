@@ -69,6 +69,8 @@ class GameScene: SKScene {
         name = "gameScene"
         
         backgroundColor = gameStruct.backgroundColor
+        
+        /*
         let homeNode = gameStruct.createHomeNode()
         let homeLabel = SKLabelNode(text: "Level \(level.number)")
         homeLabel.fontName = gameStruct.bodyFont.fontName
@@ -79,6 +81,7 @@ class GameScene: SKScene {
         homeLabel.zPosition = 1
         homeNode.addChild(homeLabel)
         self.addChild(homeNode)
+        */
         
         self.addChild(scoreBackground)
         scoreBackground.addChild(scoreLabel)
@@ -105,9 +108,6 @@ class GameScene: SKScene {
             colorNodes.append(colorNode)
         }
         
-        helpNode = gameStruct.createHelpNode()
-        self.addChild(helpNode!)
-
         for i in 0...(level.experiments.count - 1) {
             let experimentNode = ExperimentNode(experiment: level.experiments[i], experimentStruct: gameStruct.experiment)
             experimentNode.position = gameStruct.experimentPositions[i]
@@ -127,6 +127,10 @@ class GameScene: SKScene {
             size = gameStruct.landscapeSceneSize
         }
         self.size = size
+        
+        if let labelButton = view.viewWithTag(1) as? UIButton {
+            labelButton.setTitle("Level \(level.number)", forState: .Normal)
+        }
 
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: "tap:")
         view.addGestureRecognizer(tapGestureRecognizer);
@@ -142,11 +146,11 @@ class GameScene: SKScene {
                 play(experimentNode)
             }
         }
-        if homeNode!.containsPoint(positionInScene) {
+        /*if homeNode!.containsPoint(positionInScene) {
             let homeScene = HomeScene()
             homeScene.cancelScene = self
             self.view?.presentScene(homeScene, transition: gameStruct.transitionOut)
-        }
+        }*/
     }
     
     func longPress(recognizer: UILongPressGestureRecognizer)

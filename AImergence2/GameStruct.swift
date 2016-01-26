@@ -47,7 +47,7 @@ struct GameStruct
     
     func createScoreBackground() -> SKShapeNode {
         let scoreBackground = SKShapeNode(rect: CGRect(x: -30, y: -30, width: 60, height: 60), cornerRadius: 20)
-        scoreBackground.position = CGPoint(x: 60, y: 600)
+        scoreBackground.position = CGPoint(x: 70, y: 580)
         scoreBackground.lineWidth = 0
         scoreBackground.name = "scoreBackground"
         scoreBackground.fillColor = UIColor.grayColor()
@@ -61,15 +61,6 @@ struct GameStruct
         homeNode.lineWidth = 0
         homeNode.name = "home"
         return homeNode
-    }
-    
-    func createHelpNode() -> SKShapeNode {
-        let helpNode = SKShapeNode(rect: CGRect(x: -100, y: -15, width: 200, height: 30), cornerRadius: 0)
-        helpNode.position = CGPoint(x: 290, y: 655)
-        //helpNode.fillColor = UIColor.whiteColor()
-        helpNode.lineWidth = 0
-        helpNode.name = "home"
-        return helpNode
     }
     
     func createShapePopup() -> SKShapeNode {
