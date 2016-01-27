@@ -19,7 +19,6 @@ class GameScene: SKScene {
     var clock:Int = 0
     var scoreLabel:SKLabelNode
     var scoreBackground:SKShapeNode
-    var homeNode:SKNode?
     
     var shapePopupNode:SKNode?
     var shapeNodes = Array<SKShapeNode>()
@@ -27,9 +26,8 @@ class GameScene: SKScene {
     var colorPopupNode:SKNode?
     var colorNodes = Array<SKShapeNode>()
     
-    var helpNode:SKNode?
-
     var editNode: ReshapableNode?
+    
     var score:Int = 0 {
         didSet {
             scoreLabel.text = "\(score)"
@@ -47,7 +45,6 @@ class GameScene: SKScene {
         self.gameStruct = sceneStruct
         scoreLabel = sceneStruct.createScoreLabel()
         scoreBackground = sceneStruct.createScoreBackground()
-        homeNode = sceneStruct.createHomeNode()
         super.init(size: sceneStruct.portraitSceneSize)
         layoutScene()
     }
@@ -69,19 +66,6 @@ class GameScene: SKScene {
         name = "gameScene"
         
         backgroundColor = gameStruct.backgroundColor
-        
-        /*
-        let homeNode = gameStruct.createHomeNode()
-        let homeLabel = SKLabelNode(text: "Level \(level.number)")
-        homeLabel.fontName = gameStruct.bodyFont.fontName
-        homeLabel.fontSize = gameStruct.bodyFont.pointSize
-        homeLabel.fontColor = UIColor(red:0.0, green:122.0/255.0, blue:1.0, alpha:1.0) //UIColor.blueColor()
-        homeLabel.verticalAlignmentMode = .Baseline
-        homeLabel.position = CGPoint(x: -50, y: -10)
-        homeLabel.zPosition = 1
-        homeNode.addChild(homeLabel)
-        self.addChild(homeNode)
-        */
         
         self.addChild(scoreBackground)
         scoreBackground.addChild(scoreLabel)
@@ -146,11 +130,6 @@ class GameScene: SKScene {
                 play(experimentNode)
             }
         }
-        /*if homeNode!.containsPoint(positionInScene) {
-            let homeScene = HomeScene()
-            homeScene.cancelScene = self
-            self.view?.presentScene(homeScene, transition: gameStruct.transitionOut)
-        }*/
     }
     
     func longPress(recognizer: UILongPressGestureRecognizer)
