@@ -14,8 +14,7 @@ struct HelpStruct
         "When you make experiments, you generate small white circles that move up the screen called \"experiences\". " +
         "Each experience has a numerical \"valence\" displayed on the right.\n\n" +
         
-        "You don't know what the experiments and experiences mean. " +
-        "However, experiences that have a positive valence are considered enjoyable, and those that have a negative valence are considered unpleasant.\n\n" +
+        "Experiences that have a positive valence are considered enjoyable, and those that have a negative valence are considered unpleasant.\n\n" +
         
         "Your score (top left) is the sum of the valences of your last ten experiences. " +
         "In Level 0, your goal is to reach 10. " +
@@ -37,11 +36,11 @@ struct HelpStruct
         "The score will display in green when you reach the maximum possible score of Level 2. This will unlock Level 3."
 
     
-    let help3 = "Begin with finding \"persistent\" experiments: experiments that indefinitely generate the same experience in a given \"state\" of your environment.\n\n" +
+    let help3 = "Begin with finding \"persistent\" experiments: experiments that always generate the same experiences in a given \"state\" of the environment.\n\n" +
 
-        "Persistent experiments allow you to \"observe\" the current state of the environment without changing it.\n\n" +
+        "Persistent experiments allow you to \"observe\" the state of the environment without changing it.\n\n" +
         
-        "Then, find experiments that generate enjoyable experiences in some particular persistent states of the environment.\n\n" +
+        "Then, find experiments that generate enjoyable experiences in some particular states of the environment.\n\n" +
         
         "Finally, find experiments that allow you to change the state of the environment at your advantage.\n\n"
     

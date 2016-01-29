@@ -23,6 +23,14 @@ class GameViewController: UIViewController, UIPopoverPresentationControllerDeleg
         skView.showsNodeCount = true
         skView.ignoresSiblingOrder = true
         skView.presentScene(gameScene)
+        
+        /*
+        let tapGestureRecognizer = UITapGestureRecognizer(target: skView.scene, action: "tap:")
+        skView.addGestureRecognizer(tapGestureRecognizer);
+        let longPressGestureRecognizer = UILongPressGestureRecognizer(target: skView.scene, action: "longPress:")
+        skView.addGestureRecognizer(longPressGestureRecognizer);
+*/
+
     }
 
     override func shouldAutorotate() -> Bool {

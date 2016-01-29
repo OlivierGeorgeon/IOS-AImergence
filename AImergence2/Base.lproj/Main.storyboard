@@ -19,7 +19,8 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BJ8-tY-cJW">
-                                <rect key="frame" x="548" y="20" width="32" height="30"/>
+                                <rect key="frame" x="544" y="20" width="36" height="33"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <state key="normal" title="Help"/>
                                 <connections>
                                     <segue destination="1A5-gt-hTc" kind="popoverPresentation" identifier="ShowHelp" popoverAnchorView="BJ8-tY-cJW" id="xBa-19-yJQ">
@@ -28,7 +29,8 @@
                                 </connections>
                             </button>
                             <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7U6-td-9dq">
-                                <rect key="frame" x="20" y="20" width="49" height="30"/>
+                                <rect key="frame" x="20" y="20" width="55" height="33"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <state key="normal" title="Level 0"/>
                                 <connections>
                                     <action selector="levelButton:" destination="BV1-FR-VrT" eventType="touchUpInside" id="ZY2-ZH-ftl"/>

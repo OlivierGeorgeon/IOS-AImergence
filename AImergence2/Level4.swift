@@ -13,7 +13,7 @@ class Level4 : Level3 {
     
     override var number:Int { return 4 }
 
-    var env = [1, 7, 3, 2, 9, 3, 5, 6, 7, 8, 0]
+    var env = [1, 7, 3, 2, 9, 8, 5, 6, 7, 8, 0]
     var p = 0
     
     convenience init() {

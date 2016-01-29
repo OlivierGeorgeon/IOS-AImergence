@@ -115,11 +115,15 @@ class GameScene: SKScene {
         if let labelButton = view.viewWithTag(1) as? UIButton {
             labelButton.setTitle("Level \(level.number)", forState: .Normal)
         }
-
+        
+        for recognizer in view.gestureRecognizers ?? [] {
+            view.removeGestureRecognizer(recognizer)
+        }
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: "tap:")
         view.addGestureRecognizer(tapGestureRecognizer);
         let longPressGestureRecognizer = UILongPressGestureRecognizer(target: self, action: "longPress:")
         view.addGestureRecognizer(longPressGestureRecognizer);
+
     }
     
     func tap(recognizer: UITapGestureRecognizer)
