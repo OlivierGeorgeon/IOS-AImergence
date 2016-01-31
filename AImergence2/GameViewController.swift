@@ -64,7 +64,7 @@ class GameViewController: UIViewController, UIPopoverPresentationControllerDeleg
         if let scene  = skView.scene as? GameScene {
             let homeScene = HomeScene()
             homeScene.cancelScene = scene
-            skView.presentScene(homeScene, transition: gameStruct.transitionOut)
+            skView.presentScene(homeScene, transition: gameStruct.transitionDown)
         }
     }
     

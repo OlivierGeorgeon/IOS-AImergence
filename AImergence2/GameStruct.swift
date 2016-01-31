@@ -19,7 +19,9 @@ struct GameStruct
     let fontSize            = CGFloat(30)
     let titleFont           = UIFont.preferredFontForTextStyle(UIFontTextStyleTitle1)
     let bodyFont            = UIFont.preferredFontForTextStyle(UIFontTextStyleCallout)
-    let transitionOut       = SKTransition.revealWithDirection(SKTransitionDirection.Down, duration: 0.5)
+    let transitionDown       = SKTransition.revealWithDirection(SKTransitionDirection.Down, duration: 0.5)
+    let transitionLeft       = SKTransition.revealWithDirection(SKTransitionDirection.Left, duration: 0.5)
+    let transitionRight       = SKTransition.revealWithDirection(SKTransitionDirection.Right, duration: 0.5)
     
     var experimentPositions = [CGPoint(x: 100, y: 100), CGPoint(x: 275, y: 100), CGPoint(x: 180, y: 100)]
 
@@ -31,7 +33,7 @@ struct GameStruct
     let actionScale         = SKAction.scaleTo(1, duration: 0.2)
     let actionMoveTrace     = SKAction.moveBy(CGVector(dx:0, dy:50), duration: 0.3)
     
-    let colorNodeRect       = CGRect(x: -30, y:-20, width: 60, height: 40)
+    let colorNodeRect       = CGRect(x: -30, y:-30, width: 60, height: 60)
     
     func moveByVect(point: CGPoint) -> CGVector {
         return CGVector(dx: 187 - point.x, dy: 190 - point.y)
@@ -65,8 +67,8 @@ struct GameStruct
     }
 
     func createColorPopup() -> SKShapeNode {
-        let popupBackground = SKShapeNode(rect: CGRect(x: -50, y: -200, width: 100, height: 400), cornerRadius: 10)
-        popupBackground.position = CGPoint(x: 100, y: 400)
+        let popupBackground = SKShapeNode(rect: CGRect(x: -50, y: -230, width: 100, height: 460), cornerRadius: 10)
+        popupBackground.position = CGPoint(x: 85, y: 400)
         popupBackground.lineWidth = 0
         popupBackground.fillColor = UIColor.whiteColor()
         popupBackground.zPosition = 10

@@ -87,7 +87,7 @@ class GameScene: SKScene {
             colorNode.fillColor = ExperienceNode.colors[i]
             colorNode.strokeColor = UIColor.grayColor()
             colorNode.lineWidth = 1
-            colorNode.position = CGPoint(x:0, y: i * 50 - 100)
+            colorNode.position = CGPoint(x:0, y: i * 80 - 160)
             colorPopupNode?.addChild(colorNode)
             colorNodes.append(colorNode)
         }
@@ -119,10 +119,16 @@ class GameScene: SKScene {
         for recognizer in view.gestureRecognizers ?? [] {
             view.removeGestureRecognizer(recognizer)
         }
+        let swipeLeft = UISwipeGestureRecognizer(target:self, action: "swipeLeft:")
+        swipeLeft.direction = .Left
+        view.addGestureRecognizer(swipeLeft)
+        let swipeRight = UISwipeGestureRecognizer(target:self, action: "swipeRight:")
+        swipeRight.direction = .Right
+        view.addGestureRecognizer(swipeRight)
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: "tap:")
-        view.addGestureRecognizer(tapGestureRecognizer);
+        view.addGestureRecognizer(tapGestureRecognizer)
         let longPressGestureRecognizer = UILongPressGestureRecognizer(target: self, action: "longPress:")
-        view.addGestureRecognizer(longPressGestureRecognizer);
+        view.addGestureRecognizer(longPressGestureRecognizer)
 
     }
     
@@ -187,6 +193,16 @@ class GameScene: SKScene {
         default:
             break
         }
+    }
+    
+    func swipeLeft(gesture:UISwipeGestureRecognizer) {
+        let nextGameScene = HomeStruct.createGameScene(level.number + 1)
+        view!.presentScene(nextGameScene, transition: gameStruct.transitionLeft)
+    }
+    
+    func swipeRight(gesture:UISwipeGestureRecognizer) {
+        let nextGameScene = HomeStruct.createGameScene(level.number - 1)
+        view!.presentScene(nextGameScene, transition: gameStruct.transitionRight)
     }
     
     func play(experimentNode: ExperimentNode) {

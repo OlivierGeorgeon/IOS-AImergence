@@ -9,7 +9,7 @@
 struct HelpStruct
 {
     let help0 = "The big white circles at the bottom represent \"experiments\". " +
-        "Press one of them to \"make an experiment\".\n\n" +
+        "Tap one of them to \"make an experiment\".\n\n" +
         
         "When you make experiments, you generate small white circles that move up the screen called \"experiences\". " +
         "Each experience has a numerical \"valence\" displayed on the right.\n\n" +
