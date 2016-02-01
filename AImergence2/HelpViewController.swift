@@ -8,6 +8,11 @@
 
 import UIKit
 
+protocol HelpViewDelegate
+{
+    func close()
+}
+
 class HelpViewController: UIViewController {
     
     let helpStruct = HelpStruct()
@@ -18,6 +23,8 @@ class HelpViewController: UIViewController {
             textView?.text = helpStruct.help()[level]
         }
     }
+    
+    var delegate: HelpViewDelegate?
     
     @IBOutlet weak var labelView: UILabel! {
         didSet {
@@ -32,7 +39,7 @@ class HelpViewController: UIViewController {
     }
     
     @IBAction func closeButton(sender: UIButton) {
-        view.hidden = true
+        delegate?.close()
     }
     
     @IBAction func previousButton(sender: UIButton) {

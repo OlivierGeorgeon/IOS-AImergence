@@ -9,9 +9,17 @@
 import UIKit
 import SpriteKit
 
-class GameViewController: UIViewController, UIPopoverPresentationControllerDelegate {
+class GameViewController: UIViewController, HelpViewDelegate {
     
     let gameStruct = GameStruct()
+    
+    var helpViewControler:HelpViewController?
+    
+    var level = 0 {
+        didSet {
+            helpViewControler?.level = level
+        }
+    }
     
     override func viewDidLoad()
     {
@@ -23,6 +31,13 @@ class GameViewController: UIViewController, UIPopoverPresentationControllerDeleg
         skView.showsNodeCount = true
         skView.ignoresSiblingOrder = true
         skView.presentScene(gameScene)
+        
+        let swipeLeft = UISwipeGestureRecognizer(target:self, action: "swipeLeft:")
+        swipeLeft.direction = .Left
+        view.addGestureRecognizer(swipeLeft)
+        let swipeRight = UISwipeGestureRecognizer(target:self, action: "swipeRight:")
+        swipeRight.direction = .Right
+        view.addGestureRecognizer(swipeRight)
     }
 
     override func shouldAutorotate() -> Bool {
@@ -67,31 +82,36 @@ class GameViewController: UIViewController, UIPopoverPresentationControllerDeleg
     
     @IBOutlet weak var container: UIView!
     
-    static let segueIdentifier = "ShowHelp"
+    
+    func swipeLeft(gesture:UISwipeGestureRecognizer) {
+        if level < 4 {level++ }
+        else {level = 0}
+        let nextGameScene = GameStruct.createGameScene(level)
+        let skView = view as! SKView
+        skView.presentScene(nextGameScene, transition: gameStruct.transitionLeft)
+    }
+    
+    func swipeRight(gesture:UISwipeGestureRecognizer) {
+        if level > 0 {level--}
+        else {level = 4}
+        let nextGameScene = GameStruct.createGameScene(level)
+        let skView = view as! SKView
+        skView.presentScene(nextGameScene, transition: gameStruct.transitionRight)
+    }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let identifier = segue.identifier {
             switch identifier {
-            case GameViewController.segueIdentifier:
-                if let hvc = segue.destinationViewController as? HelpViewController {
-                    if let ppc = hvc.popoverPresentationController {
-                        ppc.delegate = self
-                    }
-                    let skView = view as! SKView
-                    if let scene  = skView.scene as? GameScene {
-                        hvc.level = scene.level.number
-                    }
-                }
+            case "ShowHelp":
+                helpViewControler = segue.destinationViewController as? HelpViewController
+                helpViewControler!.delegate = self
             default:
                 break
             }
         }
     }
     
-    /*
-    func adaptivePresentationStyleForPresentationController(controller: UIPresentationController) -> UIModalPresentationStyle {
-        return UIModalPresentationStyle.None
-        
+    func close() {
+        container.hidden = true
     }
-    */
 }

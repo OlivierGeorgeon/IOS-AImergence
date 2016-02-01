@@ -117,14 +117,10 @@ class GameScene: SKScene {
         }
         
         for recognizer in view.gestureRecognizers ?? [] {
-            view.removeGestureRecognizer(recognizer)
+            if recognizer is UITapGestureRecognizer || recognizer is UILongPressGestureRecognizer {
+                view.removeGestureRecognizer(recognizer)
+            }
         }
-        let swipeLeft = UISwipeGestureRecognizer(target:self, action: "swipeLeft:")
-        swipeLeft.direction = .Left
-        view.addGestureRecognizer(swipeLeft)
-        let swipeRight = UISwipeGestureRecognizer(target:self, action: "swipeRight:")
-        swipeRight.direction = .Right
-        view.addGestureRecognizer(swipeRight)
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: "tap:")
         view.addGestureRecognizer(tapGestureRecognizer)
         let longPressGestureRecognizer = UILongPressGestureRecognizer(target: self, action: "longPress:")
@@ -193,16 +189,6 @@ class GameScene: SKScene {
         default:
             break
         }
-    }
-    
-    func swipeLeft(gesture:UISwipeGestureRecognizer) {
-        let nextGameScene = GameStruct.createGameScene(level.number + 1)
-        view!.presentScene(nextGameScene, transition: gameStruct.transitionLeft)
-    }
-    
-    func swipeRight(gesture:UISwipeGestureRecognizer) {
-        let nextGameScene = GameStruct.createGameScene(level.number - 1)
-        view!.presentScene(nextGameScene, transition: gameStruct.transitionRight)
     }
     
     func play(experimentNode: ExperimentNode) {
