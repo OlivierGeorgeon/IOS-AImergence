@@ -23,14 +23,6 @@ class GameViewController: UIViewController, UIPopoverPresentationControllerDeleg
         skView.showsNodeCount = true
         skView.ignoresSiblingOrder = true
         skView.presentScene(gameScene)
-        
-        /*
-        let tapGestureRecognizer = UITapGestureRecognizer(target: skView.scene, action: "tap:")
-        skView.addGestureRecognizer(tapGestureRecognizer);
-        let longPressGestureRecognizer = UILongPressGestureRecognizer(target: skView.scene, action: "longPress:")
-        skView.addGestureRecognizer(longPressGestureRecognizer);
-*/
-
     }
 
     override func shouldAutorotate() -> Bool {
@@ -68,6 +60,29 @@ class GameViewController: UIViewController, UIPopoverPresentationControllerDeleg
         }
     }
     
+    @IBAction func hepButton(sender: UIButton) {
+        if container != nil {
+            container.hidden =  !container.hidden
+        }
+    }
+    
+    @IBOutlet weak var container: UIView!
+    
+    @IBAction func testButton(sender: UIButton) {
+        let helpView = UIView(frame: CGRect(x: 40,y: 50,width: 300,height: 400))
+        helpView.backgroundColor = UIColor.clearColor()
+        view.addSubview(helpView)
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let helpViewControler = storyboard.instantiateViewControllerWithIdentifier("HelpViewController") as! HelpViewController
+        
+        addChildViewController(helpViewControler)
+        helpViewControler.view.frame = helpView.bounds
+        helpView.addSubview(helpViewControler.view)
+        helpViewControler.didMoveToParentViewController(self)
+        
+    }
+    
     static let segueIdentifier = "ShowHelp"
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -89,9 +104,10 @@ class GameViewController: UIViewController, UIPopoverPresentationControllerDeleg
         }
     }
     
+    /*
     func adaptivePresentationStyleForPresentationController(controller: UIPresentationController) -> UIModalPresentationStyle {
         return UIModalPresentationStyle.None
         
     }
-    
+    */
 }

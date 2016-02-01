@@ -196,12 +196,12 @@ class GameScene: SKScene {
     }
     
     func swipeLeft(gesture:UISwipeGestureRecognizer) {
-        let nextGameScene = HomeStruct.createGameScene(level.number + 1)
+        let nextGameScene = GameStruct.createGameScene(level.number + 1)
         view!.presentScene(nextGameScene, transition: gameStruct.transitionLeft)
     }
     
     func swipeRight(gesture:UISwipeGestureRecognizer) {
-        let nextGameScene = HomeStruct.createGameScene(level.number - 1)
+        let nextGameScene = GameStruct.createGameScene(level.number - 1)
         view!.presentScene(nextGameScene, transition: gameStruct.transitionRight)
     }
     

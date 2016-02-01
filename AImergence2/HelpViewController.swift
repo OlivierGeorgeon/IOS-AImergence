@@ -12,6 +12,13 @@ class HelpViewController: UIViewController {
     
     let helpStruct = HelpStruct()
 
+    var level:Int = 0 {
+        didSet {
+            labelView?.text = "Level \(level)"
+            textView?.text = helpStruct.help()[level]
+        }
+    }
+    
     @IBOutlet weak var labelView: UILabel! {
         didSet {
             labelView.text = "Level \(level)"
@@ -20,36 +27,20 @@ class HelpViewController: UIViewController {
     
     @IBOutlet weak var textView: UITextView! {
         didSet {
-            //textView.text = text
             textView.text = helpStruct.help()[level]
         }
     }
     
-    var level:Int = 0 {
-        didSet {
-            labelView?.text = "Level \(level)"
-            textView?.text = helpStruct.help()[level]
-        }
-    }
-    
-    @IBAction func nextButton(sender: UIButton) {
-        if level < helpStruct.help().count - 1 {level++ }
+    @IBAction func closeButton(sender: UIButton) {
+        view.hidden = true
     }
     
     @IBAction func previousButton(sender: UIButton) {
         if level > 0 {level--}
     }
 
-    override var preferredContentSize: CGSize {
-        get {
-            if textView != nil && presentingViewController != nil {
-                return super.preferredContentSize
-                //return textView.sizeThatFits(presentingViewController!.view.bounds.size)
-            } else {
-                return super.preferredContentSize
-            }
-        }
-        set { super.preferredContentSize = newValue}
+    @IBAction func nextButton(sender: UIButton) {
+        if level < helpStruct.help().count - 1 {level++ }
     }
     
 }

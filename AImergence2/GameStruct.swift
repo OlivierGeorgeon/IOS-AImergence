@@ -20,8 +20,8 @@ struct GameStruct
     let titleFont           = UIFont.preferredFontForTextStyle(UIFontTextStyleTitle1)
     let bodyFont            = UIFont.preferredFontForTextStyle(UIFontTextStyleCallout)
     let transitionDown       = SKTransition.revealWithDirection(SKTransitionDirection.Down, duration: 0.5)
-    let transitionLeft       = SKTransition.revealWithDirection(SKTransitionDirection.Left, duration: 0.5)
-    let transitionRight       = SKTransition.revealWithDirection(SKTransitionDirection.Right, duration: 0.5)
+    let transitionLeft       = SKTransition.pushWithDirection(SKTransitionDirection.Left, duration: 0.5)
+    let transitionRight       = SKTransition.pushWithDirection(SKTransitionDirection.Right, duration: 0.5)
     
     var experimentPositions = [CGPoint(x: 100, y: 100), CGPoint(x: 275, y: 100), CGPoint(x: 180, y: 100)]
 
@@ -76,5 +76,32 @@ struct GameStruct
         return popupBackground
     }
 
-    
+    static func createGameScene(levelNumber: Int) -> GameScene {
+        let level:Level0
+        var gameStruct = GameStruct()
+        switch levelNumber {
+        case 0:
+            level = Level0()
+        case 1:
+            level = Level1()
+        case 2:
+            level = Level2()
+        case 3:
+            let experimentStruct = ExperimentStruct(rect:CGRect(x: -50, y: -50, width: 100, height: 100))
+            let experienceStruct = ExperienceStruct(initialScale:CGFloat(100)/40)
+            gameStruct = GameStruct(experiment:experimentStruct, experience:experienceStruct,
+                experimentPositions: [CGPoint(x: 80, y: 100), CGPoint(x: 295, y: 100), CGPoint(x: 187, y: 100)])
+            level = Level3()
+        case 4,-1:
+            let experimentStruct = ExperimentStruct(rect:CGRect(x: -50, y: -50, width: 100, height: 100))
+            let experienceStruct = ExperienceStruct(initialScale:CGFloat(100)/40)
+            gameStruct = GameStruct(experiment:experimentStruct, experience:experienceStruct,
+                experimentPositions: [CGPoint(x: 80, y: 100), CGPoint(x: 295, y: 100), CGPoint(x: 187, y: 100)])
+            level = Level4()
+        default:
+            level = Level0()
+        }
+        return GameScene(level: level, gameStruct: gameStruct)
+    }
+
 }

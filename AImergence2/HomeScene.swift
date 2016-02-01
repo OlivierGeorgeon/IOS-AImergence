@@ -75,7 +75,7 @@ class HomeScene: SKScene {
             for levelNode in buttonNodes {
                 if levelNode.containsPoint(positionInScene){
                     if let ln = levelNode.userData?["level"] as! Int? {
-                        let gameScene = HomeStruct.createGameScene(ln)
+                        let gameScene = GameStruct.createGameScene(ln)
                         self.view?.presentScene(gameScene, transition: homeStruct.transitionOut)
                     } else {
                         self.view?.presentScene(cancelScene!, transition: homeStruct.transitionOut)
