@@ -52,6 +52,7 @@ class GameViewController: UIViewController, UIPopoverPresentationControllerDeleg
     }
     
     @IBAction func levelButton(sender: UIButton) {
+        container.hidden = true
         let skView = view as! SKView
         if let scene  = skView.scene as? GameScene {
             let homeScene = HomeScene()
@@ -61,27 +62,10 @@ class GameViewController: UIViewController, UIPopoverPresentationControllerDeleg
     }
     
     @IBAction func hepButton(sender: UIButton) {
-        if container != nil {
-            container.hidden =  !container.hidden
-        }
+        container.hidden = !container.hidden
     }
     
     @IBOutlet weak var container: UIView!
-    
-    @IBAction func testButton(sender: UIButton) {
-        let helpView = UIView(frame: CGRect(x: 40,y: 50,width: 300,height: 400))
-        helpView.backgroundColor = UIColor.clearColor()
-        view.addSubview(helpView)
-        
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let helpViewControler = storyboard.instantiateViewControllerWithIdentifier("HelpViewController") as! HelpViewController
-        
-        addChildViewController(helpViewControler)
-        helpViewControler.view.frame = helpView.bounds
-        helpView.addSubview(helpViewControler.view)
-        helpViewControler.didMoveToParentViewController(self)
-        
-    }
     
     static let segueIdentifier = "ShowHelp"
     
