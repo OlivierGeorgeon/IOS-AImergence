@@ -17,6 +17,7 @@ class GameViewController: UIViewController, HelpViewDelegate {
     
     var level = 0 {
         didSet {
+            levelButtonOutlet.setTitle(NSLocalizedString("Level", comment: "") + " \(level)", forState: .Normal)
             helpViewControler?.level = level
         }
     }
@@ -75,6 +76,8 @@ class GameViewController: UIViewController, HelpViewDelegate {
             skView.presentScene(homeScene, transition: gameStruct.transitionDown)
         }
     }
+    
+    @IBOutlet weak var levelButtonOutlet: UIButton!
     
     @IBAction func hepButton(sender: UIButton) {
         container.hidden = !container.hidden

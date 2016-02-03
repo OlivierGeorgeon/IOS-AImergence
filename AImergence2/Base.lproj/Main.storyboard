@@ -35,11 +35,11 @@
                                 </connections>
                             </button>
                             <containerView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" verticalHuggingPriority="249" horizontalCompressionResistancePriority="749" verticalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="1qa-vJ-nr5">
-                                <rect key="frame" x="210" y="53" width="350" height="440"/>
+                                <rect key="frame" x="210" y="53" width="350" height="420"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="lessThanOrEqual" constant="400" id="cxQ-zC-4bQ"/>
                                     <constraint firstAttribute="width" priority="100" constant="350" id="lbd-ef-7dt"/>
-                                    <constraint firstAttribute="height" priority="100" constant="440" id="wPC-Mf-Qp3"/>
+                                    <constraint firstAttribute="height" priority="100" constant="420" id="wPC-Mf-Qp3"/>
                                 </constraints>
                                 <connections>
                                     <segue destination="1A5-gt-hTc" kind="embed" identifier="ShowHelp" id="pvW-My-5iz"/>
@@ -64,6 +64,7 @@
                     </view>
                     <connections>
                         <outlet property="container" destination="1qa-vJ-nr5" id="8UO-Bl-eRo"/>
+                        <outlet property="levelButtonOutlet" destination="7U6-td-9dq" id="P8N-6p-6y5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
@@ -80,11 +81,11 @@
                         <viewControllerLayoutGuide type="bottom" id="1Ra-ka-8GZ"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Rck-lh-pCm">
-                        <rect key="frame" x="0.0" y="0.0" width="350" height="440"/>
+                        <rect key="frame" x="0.0" y="0.0" width="350" height="420"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mdg-Na-z8E" customClass="HelpView" customModule="AImergence2" customModuleProvider="target">
-                                <rect key="frame" x="-4" y="0.0" width="358" height="440"/>
+                                <rect key="frame" x="-4" y="0.0" width="358" height="420"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" Level 0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LU5-OA-XkX">
                                         <rect key="frame" x="20" y="20" width="53" height="18"/>
@@ -93,21 +94,21 @@
                                         <color key="highlightedColor" red="0.40000000596046448" green="0.80000001192092896" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     </label>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="waE-OD-fCN">
-                                        <rect key="frame" x="20" y="46" width="318" height="356"/>
+                                        <rect key="frame" x="20" y="46" width="318" height="336"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s0F-Ij-QNG">
-                                        <rect key="frame" x="20" y="410" width="59" height="30"/>
+                                        <rect key="frame" x="20" y="390" width="59" height="30"/>
                                         <state key="normal" title="Previous"/>
                                         <connections>
                                             <action selector="previousButton:" destination="1A5-gt-hTc" eventType="touchUpInside" id="uEL-ll-DBg"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BeF-yu-6un">
-                                        <rect key="frame" x="306" y="410" width="32" height="30"/>
+                                        <rect key="frame" x="306" y="390" width="32" height="30"/>
                                         <state key="normal" title="Next"/>
                                         <connections>
                                             <action selector="nextButton:" destination="1A5-gt-hTc" eventType="touchUpInside" id="LM4-M3-OPF"/>

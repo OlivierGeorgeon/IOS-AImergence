@@ -15,12 +15,10 @@ protocol HelpViewDelegate
 
 class HelpViewController: UIViewController {
     
-    let helpStruct = HelpStruct()
-
     var level:Int = 0 {
         didSet {
-            labelView?.text = "Level \(level)"
-            textView?.text = helpStruct.help()[level]
+            labelView?.text = NSLocalizedString("Level", comment: "") + " \(level)"
+            textView?.text = HelpStruct.text[level]
         }
     }
     
@@ -34,7 +32,7 @@ class HelpViewController: UIViewController {
     
     @IBOutlet weak var textView: UITextView! {
         didSet {
-            textView.text = helpStruct.help()[level]
+            textView.text = HelpStruct.text[level]
         }
     }
     
@@ -47,7 +45,7 @@ class HelpViewController: UIViewController {
     }
 
     @IBAction func nextButton(sender: UIButton) {
-        if level < helpStruct.help().count - 1 {level++ }
+        if level < HelpStruct.text.count - 1 {level++ }
     }
     
 }

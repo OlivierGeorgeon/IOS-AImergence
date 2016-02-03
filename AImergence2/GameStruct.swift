@@ -15,10 +15,12 @@ struct GameStruct
     
     let portraitSceneSize   = CGSize(width: 375, height: 667)
     let landscapeSceneSize  = CGSize(width: 1188, height: 667)
+    
     let backgroundColor     = SKColor.lightGrayColor()
     let fontSize            = CGFloat(30)
     let titleFont           = UIFont.preferredFontForTextStyle(UIFontTextStyleTitle1)
     let bodyFont            = UIFont.preferredFontForTextStyle(UIFontTextStyleCallout)
+    
     let transitionDown       = SKTransition.revealWithDirection(SKTransitionDirection.Down, duration: 0.5)
     let transitionLeft       = SKTransition.pushWithDirection(SKTransitionDirection.Left, duration: 0.5)
     let transitionRight       = SKTransition.pushWithDirection(SKTransitionDirection.Right, duration: 0.5)
@@ -27,9 +29,7 @@ struct GameStruct
 
     let experienceInterval  = CGPoint(x: 0, y: 50)
     let experiencePosition  = CGPoint(x: 187, y: 145)
-    
-    let valencePosition     = CGPoint(x: 50, y: -10)
-    
+        
     let actionScale         = SKAction.scaleTo(1, duration: 0.2)
     let actionMoveTrace     = SKAction.moveBy(CGVector(dx:0, dy:50), duration: 0.3)
     
