@@ -1,0 +1,52 @@
+/* 
+  Help.strings
+  AImergence
+
+  Created by Olivier Georgeon on 03/02/16.
+  Copyright © 2016 Olivier Georgeon. All rights reserved.
+*/
+
+/* Help for Level 0 */
+
+"help00" = "les deux cercles blancs en bas de l'écran représentent des \"experimentations\".";
+"help01" = "Tap them to \"perform experiments\".\n\n";
+"help02" = "When you make experiments, you generate small white circles that move up the screen called \"experiences\".";
+"help03" = "Each experience has a numerical \"valence\" displayed on the right.\n\n";
+"help04" = "Your score (top left) is the sum of the valences of your last ten experiences.";
+"help05" = "In Level 0, your goal is to reach 10. When you do, the score displays in green and you unlock level 1.";
+
+/* Help for Level 1 */
+
+"help10" = "You can long-press an experiment to change its shape.";
+"help11" = "This will also change the shape of the experiences that result from this experiment.\n\n";
+"help12" = "You can long-press an experience to change its color.";
+"help13" = "This will also change the color of all the experiences that are the same as the one you changed.\n\n";
+"help14" = "Generate a sequence of enjoyable experiences.";
+"help15" = "Your goal is again to reach 10.";
+
+/* Help for Level 2 */
+
+"help20" = "In the world of Level 2, you cannot avoid experiencing some unpleasant experiences.\n\n";
+"help21" = "Just try to generate a sequence of experiences that includes as few unpleasant experiences as possible.\n\n";
+"help22" = "The score will display in green when you reach the maximum possible score of Level 2. This will unlock Level 3.";
+"help23" = "";
+"help24" = "";
+"help25" = "";
+
+/* Help for Level 3 */
+
+"help30" = "Begin with finding \"persistent\" experiments: experiments that always generate the same experiences in a given \"state\" of the environment.\n\n";
+"help31" = "Persistent experiments allow you to \"observe\" the state of the environment without changing it.\n\n";
+"help32" = "Then, find experiments that generate enjoyable experiences in some particular states of the environment.\n\n";
+"help33" = "Finally, find experiments that allow you to change the state of the environment at your advantage.\n\n";
+"help34" = "";
+"help35" = "";
+
+/* Help for Level 4 */
+
+"help40" = "Experiments are similar to those in Level 3. Only their valence are different.\n\n";
+"help41" = "In Level 4, the experiments you are doing progressively transform your environment on the long term.\n\n";
+"help42" = "Your goal is to reach the score of 10.";
+"help43" = "";
+"help44" = "";
+"help45" = "";
