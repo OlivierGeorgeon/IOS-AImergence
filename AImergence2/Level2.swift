@@ -20,12 +20,12 @@ class Level2 : Level1 {
         let experiments = [experiment0, experiment1]
         
         let experience00 = Experience(experiment: experiment0, resultNumber: 0, valence:-1)
-        let experience01 = Experience(experiment: experiment0, resultNumber: 1, valence:2)
+        let experience01 = Experience(experiment: experiment0, resultNumber: 1, valence:3)
         let experience10 = Experience(experiment: experiment1, resultNumber: 0, valence:-1)
-        let experience11 = Experience(experiment: experiment1, resultNumber: 1, valence:2)
+        let experience11 = Experience(experiment: experiment1, resultNumber: 1, valence:3)
         let experiences:[[Experience]] = [[experience00, experience01], [experience10, experience11]]
         
-        self.init(winScore: 5, historicalDepth: 10, experiments: experiments, experiences: experiences)
+        self.init(winScore: 10, historicalDepth: 10, experiments: experiments, experiences: experiences)
     }
     
     override func play(experiment: Experiment) -> (Experience, Int) {

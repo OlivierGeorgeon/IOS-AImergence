@@ -8,9 +8,16 @@
 
 import SpriteKit
 
+protocol HomeSceneDelegate
+{
+    func updateLevel(level: Int)
+}
+
 class HomeScene: SKScene {
     
     let homeStruct = HomeStruct()
+    
+    var userDelegate:HomeSceneDelegate?
     
     var buttonNodes = [SKNode]()
     
@@ -75,6 +82,7 @@ class HomeScene: SKScene {
             for levelNode in buttonNodes {
                 if levelNode.containsPoint(positionInScene){
                     if let ln = levelNode.userData?["level"] as! Int? {
+                        userDelegate?.updateLevel(ln)
                         let gameScene = GameStruct.createGameScene(ln)
                         self.view?.presentScene(gameScene, transition: homeStruct.transitionOut)
                     } else {

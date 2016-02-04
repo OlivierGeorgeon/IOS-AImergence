@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol HelpViewDelegate
+protocol HelpViewControllerDelegate
 {
     func close()
 }
@@ -22,11 +22,11 @@ class HelpViewController: UIViewController {
         }
     }
     
-    var delegate: HelpViewDelegate?
+    var delegate: HelpViewControllerDelegate?
     
     @IBOutlet weak var labelView: UILabel! {
         didSet {
-            labelView.text = "Level \(level)"
+            labelView.text = NSLocalizedString("Level", comment: "") + " \(level)"
         }
     }
     
@@ -48,4 +48,9 @@ class HelpViewController: UIViewController {
         if level < HelpStruct.text.count - 1 {level++ }
     }
     
+    override func didRotateFromInterfaceOrientation(fromInterfaceOrientation: UIInterfaceOrientation) {
+        // seems to fix a bug that the textview wont display entirely
+        textView.text = ""
+        textView.text = HelpStruct.text[level]
+    }
 }

@@ -9,7 +9,7 @@
 import UIKit
 import SpriteKit
 
-class GameViewController: UIViewController, HelpViewDelegate {
+class GameViewController: UIViewController, HelpViewControllerDelegate, HomeSceneDelegate {
     
     let gameStruct = GameStruct()
     
@@ -73,6 +73,7 @@ class GameViewController: UIViewController, HelpViewDelegate {
         if let scene  = skView.scene as? GameScene {
             let homeScene = HomeScene()
             homeScene.cancelScene = scene
+            homeScene.userDelegate = self
             skView.presentScene(homeScene, transition: gameStruct.transitionDown)
         }
     }
@@ -116,5 +117,9 @@ class GameViewController: UIViewController, HelpViewDelegate {
     
     func close() {
         container.hidden = true
+    }
+    
+    func updateLevel(levelNumber: Int) {
+        self.level = levelNumber
     }
 }

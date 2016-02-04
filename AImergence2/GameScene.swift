@@ -12,7 +12,7 @@ class GameScene: SKScene {
     
     let gameStruct:GameStruct
     let level:Level0
-
+    
     var experimentNodes = Set<ExperimentNode>()
     var experienceNodes = Set<ExperienceNode>()
 
@@ -111,12 +111,6 @@ class GameScene: SKScene {
             size = gameStruct.landscapeSceneSize
         }
         self.size = size
-        
-        /*
-        if let labelButton = view.viewWithTag(1) as? UIButton {
-            labelButton.setTitle("Level \(level.number)", forState: .Normal)
-        }
-        */
         
         for recognizer in view.gestureRecognizers ?? [] {
             if recognizer is UITapGestureRecognizer || recognizer is UILongPressGestureRecognizer {
