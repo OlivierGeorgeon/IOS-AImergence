@@ -17,36 +17,45 @@
 
 /* Help for Level 1 */
 
-"help10" = "Presser longuement une experimentation pour changer sa forme. ";
-"help11" = "Cela changera aussi la forme des experiences produites par cette expérimentation.\n\n";
-"help12" = "Presser longuement une experience pour changer sa couleur. ";
-"help13" = "Cela changera aussi la couleur des autres expériences produites par la même expérimentation et donnant le même résultat.\n\n";
-"help14" = "Essayez de générez une séquence d'expérience positives. ";
+"help10" = "Les expérimentations ne produisent pas toujours les mêmes expériences.\n\n";
+"help11" = "Les expériences qui ont une valeur positive sont consédérées \"plaisantes\", ";
+"help12" = "et celles qui ont une valeur négative \"déplaisantes\".\n\n";
+"help13" = "Essayez de générez une séquence d'expériences plaisantes. ";
+"help14" = "";
 "help15" = "";
 
 /* Help for Level 2 */
 
-"help20" = "Les expériences qui ont une valeur positive sont consédérées \"plaisantes\", ";
-"help21" = "et celles qui ont une valeur négative \"déplaisantes\".\n\n";
-"help22" = "Dans le monde du niveau 2, vous ne pouvez pas toujours éviter les expériences déplaisantes.\n\n";
-"help23" = "Essayez juste de générer une séquence qui contienne aussi peu d'expériences déplaisantes que possible";
-"help24" = "";
+"help20" = "Vous pouvez repérer les expérimentations par leur forme et les expériences par leur couleur.\n\n";
+"help21" = "Presser longuement une experimentation pour changer sa forme. ";
+"help22" = "Cela changera aussi la forme des experiences produites par cette expérimentation.\n\n";
+"help23" = "Presser longuement une experience pour changer sa couleur. ";
+"help24" = "Cela changera aussi la couleur des autres expériences produites par la même expérimentation et donnant le même résultat.\n\n";
 "help25" = "";
 
 /* Help for Level 3 */
 
-"help30" = "Commencez par chercher des expérimentations \"persistentes\" qui produisent toujours les mêmes expériences quand vous les répétez plusieurs fois de suite.\n\n";
-"help31" = "Les expériementations persistantes vous permettent \"d'observer l'état de l'environnement\" sans le modifier.\n\n";
-"help32" = "Ensuite, cherchez des expérimentations qui produisent des expériences plaisantes dans certains états de l'environnement.\n\n";
-"help33" = "Enfin, cherchez des expérimentations qui vous permettent de changer l'état de l'environnement.\n\n";
+"help30" = "Dans le monde du niveau 3, vous ne pouvez pas toujours éviter les expériences déplaisantes.\n\n";
+"help31" = "Essayez juste de générer une séquence qui contienne aussi peu d'expériences déplaisantes que possible";
+"help32" = "";
+"help33" = "";
 "help34" = "";
 "help35" = "";
 
 /* Help for Level 4 */
 
-"help40" = "Au niveau 4, les expérimentations sont similaires à celles du niveau 3, ";
-"help41" = "sauf qu'elles changent l'environnement sur le long terme.\n\n";
-"help42" = "Leurs valeurs sont également différentes.";
-"help43" = "";
+"help40" = "Commencez par chercher des expérimentations \"persistentes\" qui produisent toujours les mêmes expériences quand vous les répétez plusieurs fois de suite.\n\n";
+"help41" = "Les expériementations persistantes vous permettent \"d'observer l'état de l'environnement\" sans le modifier.\n\n";
+"help42" = "Ensuite, cherchez des expérimentations qui produisent des expériences plaisantes dans certains états de l'environnement.\n\n";
+"help43" = "Enfin, cherchez des expérimentations qui vous permettent de changer l'état de l'environnement.\n\n";
 "help44" = "";
 "help45" = "";
+
+/* Help for Level 5 */
+
+"help50" = "Au niveau 5, les expérimentations sont similaires à celles du niveau 3, ";
+"help51" = "sauf qu'elles changent l'environnement sur le long terme.\n\n";
+"help52" = "Leurs valeurs sont également différentes.";
+"help53" = "";
+"help54" = "";
+"help55" = "";

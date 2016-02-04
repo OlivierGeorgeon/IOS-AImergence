@@ -6,8 +6,6 @@
 //  Copyright (c) 2016 Olivier Georgeon. All rights reserved.
 //
 
-import Foundation
-
 func ==(lhs: Experiment, rhs: Experiment) -> Bool {
     return lhs.hashValue == rhs.hashValue
 }

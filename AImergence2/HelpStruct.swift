@@ -14,7 +14,7 @@ struct HelpStruct
 
     // Debug: use "fr" or "base" in the line below to force language to French or to default
     static let bundlePath:NSString = NSBundle.mainBundle().pathForResource("Help", ofType: "strings", inDirectory: nil, forLocalization: "fr")!
-    static let bundle:NSBundle = NSBundle(path: bundlePath.stringByDeletingLastPathComponent)!
+    static let bundle = NSBundle(path: bundlePath.stringByDeletingLastPathComponent)!
 
     static let text:[String] =
     [
@@ -52,5 +52,12 @@ struct HelpStruct
         NSLocalizedString("help43", tableName: "Help", bundle: bundle, comment: "") +
         NSLocalizedString("help44", tableName: "Help", bundle: bundle, comment: "") +
         NSLocalizedString("help45", tableName: "Help", bundle: bundle, comment: "")
+        ,
+        NSLocalizedString("help50", tableName: "Help", bundle: bundle, comment: "") +
+        NSLocalizedString("help51", tableName: "Help", bundle: bundle, comment: "") +
+        NSLocalizedString("help52", tableName: "Help", bundle: bundle, comment: "") +
+        NSLocalizedString("help53", tableName: "Help", bundle: bundle, comment: "") +
+        NSLocalizedString("help54", tableName: "Help", bundle: bundle, comment: "") +
+        NSLocalizedString("help55", tableName: "Help", bundle: bundle, comment: "")
     ]
 }

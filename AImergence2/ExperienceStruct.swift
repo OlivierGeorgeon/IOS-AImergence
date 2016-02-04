@@ -15,5 +15,5 @@ struct ExperienceStruct
     let rect = CGRect(x: -20, y: -20, width: 40, height: 40)
     var initialScale = CGFloat(120)/40
     
-    let valencePosition = CGPoint(x: 50, y: -10)    
+    let valencePosition = CGPoint(x: 50, y: -10)
 }

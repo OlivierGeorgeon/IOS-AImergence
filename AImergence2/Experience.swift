@@ -6,8 +6,6 @@
 //  Copyright (c) 2016 Olivier Georgeon. All rights reserved.
 //
 
-import Foundation
-
 func ==(lhs: Experience, rhs: Experience) -> Bool {
     return lhs.hashValue == rhs.hashValue
 }
@@ -28,5 +26,12 @@ class Experience : Hashable
         self.experiment = experiment
         self.resultNumber = resultNumber
         self.valence = valence
+    }
+
+    init(experiment: Experiment, resultNumber: Int, valence: Int, colorIndex: Int){
+        self.experiment = experiment
+        self.resultNumber = resultNumber
+        self.valence = valence
+        self.colorIndex = colorIndex
     }
 }

@@ -89,7 +89,7 @@ class GameViewController: UIViewController, HelpViewControllerDelegate, HomeScen
     
     
     func swipeLeft(gesture:UISwipeGestureRecognizer) {
-        if level < 4 {level++ }
+        if level < 5 {level++ }
         else {level = 0}
         let nextGameScene = GameStruct.createGameScene(level)
         let skView = view as! SKView
@@ -98,7 +98,7 @@ class GameViewController: UIViewController, HelpViewControllerDelegate, HomeScen
     
     func swipeRight(gesture:UISwipeGestureRecognizer) {
         if level > 0 {level--}
-        else {level = 4}
+        else {level = 5}
         let nextGameScene = GameStruct.createGameScene(level)
         let skView = view as! SKView
         skView.presentScene(nextGameScene, transition: gameStruct.transitionRight)

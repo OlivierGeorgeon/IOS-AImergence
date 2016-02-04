@@ -21,13 +21,12 @@ struct GameStruct
     let titleFont           = UIFont.preferredFontForTextStyle(UIFontTextStyleTitle1)
     let bodyFont            = UIFont.preferredFontForTextStyle(UIFontTextStyleCallout)
     
-    let transitionDown       = SKTransition.revealWithDirection(SKTransitionDirection.Down, duration: 0.5)
-    let transitionLeft       = SKTransition.pushWithDirection(SKTransitionDirection.Left, duration: 0.5)
-    let transitionRight       = SKTransition.pushWithDirection(SKTransitionDirection.Right, duration: 0.5)
+    let transitionDown      = SKTransition.revealWithDirection(SKTransitionDirection.Down, duration: 0.5)
+    let transitionLeft      = SKTransition.pushWithDirection(SKTransitionDirection.Left, duration: 0.5)
+    let transitionRight     = SKTransition.pushWithDirection(SKTransitionDirection.Right, duration: 0.5)
     
     var experimentPositions = [CGPoint(x: 100, y: 100), CGPoint(x: 275, y: 100), CGPoint(x: 180, y: 100)]
-
-    let experienceInterval  = CGPoint(x: 0, y: 50)
+ 
     let experiencePosition  = CGPoint(x: 187, y: 145)
         
     let actionScale         = SKAction.scaleTo(1, duration: 0.2)
@@ -83,21 +82,31 @@ struct GameStruct
         case 0:
             level = Level0()
         case 1:
+            let experimentStruct = ExperimentStruct(rect:CGRect(x: -60, y: -60, width: 120, height: 120))
+            let experienceStruct = ExperienceStruct(initialScale:CGFloat(120)/40)
+            gameStruct = GameStruct(experiment:experimentStruct, experience:experienceStruct,
+                experimentPositions: [CGPoint(x: 100, y: 100), CGPoint(x: 275, y: 100), CGPoint(x: 180, y: 100)])
             level = Level1()
         case 2:
-            level = Level2()
-        case 3:
             let experimentStruct = ExperimentStruct(rect:CGRect(x: -50, y: -50, width: 100, height: 100))
             let experienceStruct = ExperienceStruct(initialScale:CGFloat(100)/40)
             gameStruct = GameStruct(experiment:experimentStruct, experience:experienceStruct,
                 experimentPositions: [CGPoint(x: 80, y: 100), CGPoint(x: 295, y: 100), CGPoint(x: 187, y: 100)])
+            level = Level2()
+        case 3:
             level = Level3()
-        case 4,-1:
+        case 4:
             let experimentStruct = ExperimentStruct(rect:CGRect(x: -50, y: -50, width: 100, height: 100))
             let experienceStruct = ExperienceStruct(initialScale:CGFloat(100)/40)
             gameStruct = GameStruct(experiment:experimentStruct, experience:experienceStruct,
                 experimentPositions: [CGPoint(x: 80, y: 100), CGPoint(x: 295, y: 100), CGPoint(x: 187, y: 100)])
             level = Level4()
+        case 5,-1:
+            let experimentStruct = ExperimentStruct(rect:CGRect(x: -50, y: -50, width: 100, height: 100))
+            let experienceStruct = ExperienceStruct(initialScale:CGFloat(100)/40)
+            gameStruct = GameStruct(experiment:experimentStruct, experience:experienceStruct,
+                experimentPositions: [CGPoint(x: 80, y: 100), CGPoint(x: 295, y: 100), CGPoint(x: 187, y: 100)])
+            level = Level5()
         default:
             level = Level0()
         }
