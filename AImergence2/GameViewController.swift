@@ -15,6 +15,7 @@ class GameViewController: UIViewController, HelpViewControllerDelegate, HomeScen
     
     var helpViewControler:HelpViewController?
     
+    
     var level = 0 {
         didSet {
             levelButtonOutlet.setTitle(NSLocalizedString("Level", comment: "") + " \(level)", forState: .Normal)
@@ -25,7 +26,7 @@ class GameViewController: UIViewController, HelpViewControllerDelegate, HomeScen
     override func viewDidLoad()
     {
         super.viewDidLoad()
-
+        
         let gameScene = GameScene(level: Level0(), gameStruct: gameStruct)
         let skView = view as! SKView
         skView.showsFPS = true

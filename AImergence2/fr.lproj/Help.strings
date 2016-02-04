@@ -9,33 +9,33 @@
 /* Help for Level 0 */
 
 "help00" = "Les deux cercles blancs en bas de l'écran représentent des \"experimentations\". ";
-"help01" = "Pressez-les pour \"faire une experimentations\".\n\n";
-"help02" = "Quand vous faites une expérimentation, vous générez des petits cercles blancs qui montent, appelés \"expériences\". ";
-"help03" = "Chaque expérience a une \"valeur\" numérique qui s'affiche à droite.\n\n";
+"help01" = "Pressez-les pour \"faire des experimentations\".\n\n";
+"help02" = "Les expérimentations produsent des petits cercles blancs qui montent, appelés \"expériences\". ";
+"help03" = "Chaque expérience a une \"valeur\" numérique qui s'affiche à sa droite.\n\n";
 "help04" = "Votre score (en haut à gauche) est la somme des valeurs des dix dernières expériences. ";
-"help05" = "Assayez d'atteindre 10. Votre score s'affichera en vert et vous pourrez passer au niveau 1.";
+"help05" = "Assayez d'atteindre 10 avant de passer au niveau suivant.";
 
 /* Help for Level 1 */
 
-"help10" = "Presser longuement une experimentation pour changer sa forlme. ";
+"help10" = "Presser longuement une experimentation pour changer sa forme. ";
 "help11" = "Cela changera aussi la forme des experiences produites par cette expérimentation.\n\n";
 "help12" = "Presser longuement une experience pour changer sa couleur. ";
-"help13" = "Cela changera aussi la couleur de toutes les expériences produites par la même expérimentation et donnant le même résultat.\n\n";
-"help14" = "Générez une séquence d'expérience positives. ";
+"help13" = "Cela changera aussi la couleur des autres expériences produites par la même expérimentation et donnant le même résultat.\n\n";
+"help14" = "Essayez de générez une séquence d'expérience positives. ";
 "help15" = "";
 
 /* Help for Level 2 */
 
-"help20" = "Les expériences qui ont une valeur positive sont consédérées \"plaisantse\". ";
-"help21" = "Celles qui ont une valeur négative sont considérées \"déplaisantes\".\n\n";
+"help20" = "Les expériences qui ont une valeur positive sont consédérées \"plaisantes\", ";
+"help21" = "et celles qui ont une valeur négative \"déplaisantes\".\n\n";
 "help22" = "Dans le monde du niveau 2, vous ne pouvez pas toujours éviter les expériences déplaisantes.\n\n";
-"help23" = "Essayez juste de générer une séquence qui contiènne aussi peu d'expériences déplaisantes que possible";
+"help23" = "Essayez juste de générer une séquence qui contienne aussi peu d'expériences déplaisantes que possible";
 "help24" = "";
 "help25" = "";
 
 /* Help for Level 3 */
 
-"help30" = "Commencez par chercher des expérimentations \"persistentes\" : c'est à dire qui produisent toujours la même expérience quand vous les répétez plusieurs fois de suite.\n\n";
+"help30" = "Commencez par chercher des expérimentations \"persistentes\" qui produisent toujours les mêmes expériences quand vous les répétez plusieurs fois de suite.\n\n";
 "help31" = "Les expériementations persistantes vous permettent \"d'observer l'état de l'environnement\" sans le modifier.\n\n";
 "help32" = "Ensuite, cherchez des expérimentations qui produisent des expériences plaisantes dans certains états de l'environnement.\n\n";
 "help33" = "Enfin, cherchez des expérimentations qui vous permettent de changer l'état de l'environnement.\n\n";

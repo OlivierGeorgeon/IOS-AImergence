@@ -13,7 +13,7 @@ class Level3 : Level0 {
     
     override var number:Int { return 3 }
 
-    var phenomenon:Bool = arc4random_uniform(2) == 0
+    var phenomenon:Bool = (arc4random_uniform(2) == 0)
     
     convenience init() {
         let experiment0 = Experiment(number: 0)
@@ -41,7 +41,7 @@ class Level3 : Level0 {
             if phenomenon { result = 1 }
         case 1: // eat
             if phenomenon { result = 1 }
-            phenomenon = arc4random_uniform(2) == 0
+            phenomenon = (arc4random_uniform(2) == 0)
         case 2: //swap
             phenomenon = !phenomenon
             if phenomenon { result = 1 }

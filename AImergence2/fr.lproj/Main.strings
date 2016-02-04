@@ -5,7 +5,7 @@
 "7U6-td-9dq.normalTitle" = "Niveau 0";
 
 /* Class = "UIButton"; normalTitle = "Help"; ObjectID = "BJ8-tY-cJW"; */
-"BJ8-tY-cJW.normalTitle" = "Aide";
+"BJ8-tY-cJW.normalTitle" = "Instructions";
 
 /* Class = "UIButton"; normalTitle = "Next"; ObjectID = "BeF-yu-6un"; */
 "BeF-yu-6un.normalTitle" = "Suivant";
