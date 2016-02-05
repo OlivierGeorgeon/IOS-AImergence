@@ -10,14 +10,15 @@ func ==(lhs: Experiment, rhs: Experiment) -> Bool {
     return lhs.hashValue == rhs.hashValue
 }
 
-class Experiment : Hashable
+class Experiment: Hashable
 {
-    var number:Int
-    var hashValue: Int {return number}
+    let number: Int
     
+    var hashValue: Int {return number}
     var shapeIndex = 0
     
-    init(number: Int){
+    init(number: Int, shapeIndex: Int = 0){
         self.number = number
+        self.shapeIndex = shapeIndex
     }    
 }

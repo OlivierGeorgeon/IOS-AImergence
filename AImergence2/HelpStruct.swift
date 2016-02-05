@@ -59,5 +59,12 @@ struct HelpStruct
         NSLocalizedString("help53", tableName: "Help", bundle: bundle, comment: "") +
         NSLocalizedString("help54", tableName: "Help", bundle: bundle, comment: "") +
         NSLocalizedString("help55", tableName: "Help", bundle: bundle, comment: "")
+        ,
+        NSLocalizedString("help60", tableName: "Help", bundle: bundle, comment: "") +
+        NSLocalizedString("help61", tableName: "Help", bundle: bundle, comment: "") +
+        NSLocalizedString("help62", tableName: "Help", bundle: bundle, comment: "") +
+        NSLocalizedString("help63", tableName: "Help", bundle: bundle, comment: "") +
+        NSLocalizedString("help64", tableName: "Help", bundle: bundle, comment: "") +
+        NSLocalizedString("help65", tableName: "Help", bundle: bundle, comment: "")
     ]
 }

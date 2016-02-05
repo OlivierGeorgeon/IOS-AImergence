@@ -10,7 +10,7 @@ import Foundation
 
 class Level3 : Level1 {
     
-    override var number:Int { return 2 }
+    override var number:Int { return 3 }
     
     var previousPreviousExperiment:Experiment?
     

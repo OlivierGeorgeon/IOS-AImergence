@@ -10,7 +10,7 @@ func ==(lhs: Experience, rhs: Experience) -> Bool {
     return lhs.hashValue == rhs.hashValue
 }
 
-class Experience : Hashable
+class Experience: Hashable
 {
     let experiment: Experiment
     let resultNumber: Int
@@ -22,13 +22,7 @@ class Experience : Hashable
     var shapeIndex: Int {return experiment.shapeIndex}
     var colorIndex = 0
     
-    init(experiment: Experiment, resultNumber: Int, valence: Int){
-        self.experiment = experiment
-        self.resultNumber = resultNumber
-        self.valence = valence
-    }
-
-    init(experiment: Experiment, resultNumber: Int, valence: Int, colorIndex: Int){
+    init(experiment: Experiment, resultNumber: Int, valence: Int, colorIndex: Int = 0) {
         self.experiment = experiment
         self.resultNumber = resultNumber
         self.valence = valence

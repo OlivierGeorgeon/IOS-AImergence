@@ -44,18 +44,27 @@
 
 /* Help for Level 4 */
 
-"help40" = "Commencez par chercher des expérimentations \"persistentes\" qui produisent toujours les mêmes expériences quand vous les répétez plusieurs fois de suite.\n\n";
-"help41" = "Les expériementations persistantes vous permettent \"d'observer l'état de l'environnement\" sans le modifier.\n\n";
-"help42" = "Ensuite, cherchez des expérimentations qui produisent des expériences plaisantes dans certains états de l'environnement.\n\n";
-"help43" = "Enfin, cherchez des expérimentations qui vous permettent de changer l'état de l'environnement.\n\n";
+"help40" = "Commencez par chercher des expérimentations \"persistantes\" qui produisent toujours les mêmes expériences quand vous les répétez plusieurs fois de suite.\n\n";
+"help41" = "Les expériementations persistantes vous permettent \"d'observer l'état du monde\" sans le modifier.\n\n";
+"help42" = "Ensuite, cherchez des expérimentations qui produisent des expériences plaisantes dans certains états du monde.\n\n";
+"help43" = "Enfin, cherchez des expérimentations qui vous permettent de changer l'état du monde.\n\n";
 "help44" = "";
 "help45" = "";
 
 /* Help for Level 5 */
 
-"help50" = "Au niveau 5, les expérimentations sont similaires à celles du niveau 3, ";
-"help51" = "sauf qu'elles changent l'environnement sur le long terme.\n\n";
-"help52" = "Leurs valeurs sont également différentes.";
+"help50" = "Le niveau 5 est identique au niveau 4, ";
+"help51" = "sauf que c'est à vous de choisir les formes des expérimentations et les couleurs des expériences.\n\n";
+"help52" = "Essayez d'associer une couleur particulière à chaque état possible du monde.";
 "help53" = "";
 "help54" = "";
 "help55" = "";
+
+/* Help for Level 6 */
+
+"help60" = "Au niveau 6, les expérimentations sont similaires à celles des niveaux 3 et 4, ";
+"help61" = "sauf qu'elles transforment l'environnement de manière durable.\n\n";
+"help62" = "Leurs valeurs sont également différentes.";
+"help63" = "";
+"help64" = "";
+"help65" = "";

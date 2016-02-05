@@ -11,7 +11,7 @@ import GameplayKit
 
 class Level2 : Level0 {
     
-    override var number:Int { return 1 }
+    override var number:Int { return 2 }
     
     var previousExperiment:Experiment?
     
