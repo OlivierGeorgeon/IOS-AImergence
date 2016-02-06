@@ -10,11 +10,12 @@ import SpriteKit
 
 struct HomeStruct
 {
+    static let numberOfLevels = 6
+
     let portraitSceneSize   = CGSize(width: 375, height: 667)
     let landscapeSceneSize  = CGSize(width: 1188, height: 667)
     let backgroundColor     = SKColor.whiteColor()
     let fontSize            = CGFloat(30)
-    let numberOfLevels      = 6
     let transitionOut       = SKTransition.revealWithDirection(SKTransitionDirection.Up, duration: 0.5)
     let titleFont            = UIFont.preferredFontForTextStyle(UIFontTextStyleTitle1)
     

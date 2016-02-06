@@ -45,7 +45,7 @@ class HomeScene: SKScene {
         let cancelBackgroundNode = homeStruct.createBackgroundNode()
         cancelNode.addChild(cancelBackgroundNode)
         
-        for i in 0...homeStruct.numberOfLevels {
+        for i in 0...HomeStruct.numberOfLevels {
             let levelNode = homeStruct.createLabelNode("\(i)")
             levelNode.userData = ["level": i]
             levelNode.position = homeStruct.level0Position + (i % 5) * homeStruct.levelXOffset + (i / 5) * homeStruct.levelYOffset

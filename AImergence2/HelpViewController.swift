@@ -42,18 +42,18 @@ class HelpViewController: UIViewController {
     
     @IBAction func previousButton(sender: UIButton) {
         if level > 0 { level-- }
-        else { level = HelpStruct.text.count - 1 }
+        else { level = HomeStruct.numberOfLevels - 1 }
     }
 
     @IBAction func nextButton(sender: UIButton) {
-        if level < HelpStruct.text.count - 1 { level++ }
+        if level < HomeStruct.numberOfLevels - 1 { level++ }
         else { level = 0 }
     }
     
     override func didRotateFromInterfaceOrientation(fromInterfaceOrientation: UIInterfaceOrientation) {
         // seems to fix a bug that the textview wont display entirely
         textView.text = ""
-        textView.text = HelpStruct.text[level]
+        textView.text = helpBlobArray()[level]
     }
     
     func helpBlobArray() -> [String] {
