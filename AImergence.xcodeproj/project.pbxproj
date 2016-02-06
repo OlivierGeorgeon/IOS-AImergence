@@ -39,7 +39,6 @@
 		099452831C62007000F0ABFF /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 099452851C62007000F0ABFF /* InfoPlist.strings */; };
 		099452881C62007000F0ABFF /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0994528A1C62007000F0ABFF /* InfoPlist.strings */; };
 		099452981C620CF600F0ABFF /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0994529A1C620CF600F0ABFF /* Localizable.strings */; };
-		0994529B1C620D1200F0ABFF /* Help.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0994529D1C620D1200F0ABFF /* Help.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -101,8 +100,6 @@
 		099452841C62007000F0ABFF /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		099452891C62007000F0ABFF /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		099452991C620CF600F0ABFF /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
-		0994529C1C620D1200F0ABFF /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Help.strings; sourceTree = "<group>"; };
-		099452A01C620DCA00F0ABFF /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Help.strings; sourceTree = "<group>"; };
 		099452A11C620DD300F0ABFF /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -169,7 +166,6 @@
 				0994526D1C5F983400F0ABFF /* HelpView.swift */,
 				0961EBC21C66658B00A4E55C /* Help.plist */,
 				0994529A1C620CF600F0ABFF /* Localizable.strings */,
-				0994529D1C620D1200F0ABFF /* Help.strings */,
 				093681451C417378008C6B5D /* Assets.xcassets */,
 				093681471C417378008C6B5D /* LaunchScreen.storyboard */,
 				0936814A1C417378008C6B5D /* Info.plist */,
@@ -334,7 +330,6 @@
 				099452981C620CF600F0ABFF /* Localizable.strings in Resources */,
 				093681461C417378008C6B5D /* Assets.xcassets in Resources */,
 				093681441C417378008C6B5D /* Main.storyboard in Resources */,
-				0994529B1C620D1200F0ABFF /* Help.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -469,15 +464,6 @@
 				099452A11C620DD300F0ABFF /* Base */,
 			);
 			name = Localizable.strings;
-			sourceTree = "<group>";
-		};
-		0994529D1C620D1200F0ABFF /* Help.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				0994529C1C620D1200F0ABFF /* fr */,
-				099452A01C620DCA00F0ABFF /* Base */,
-			);
-			name = Help.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
