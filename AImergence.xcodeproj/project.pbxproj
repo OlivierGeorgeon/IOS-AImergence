@@ -151,9 +151,9 @@
 		093681391C417378008C6B5D /* AImergence2 */ = {
 			isa = PBXGroup;
 			children = (
+				093681421C417378008C6B5D /* Main.storyboard */,
 				0961EBB61C63D16900A4E55C /* Levels */,
 				0961EBB71C63D19E00A4E55C /* Nodes */,
-				093681421C417378008C6B5D /* Main.storyboard */,
 				0936816E1C42708E008C6B5D /* Experiment.swift */,
 				0936816C1C42707B008C6B5D /* Experience.swift */,
 				093681401C417378008C6B5D /* GameViewController.swift */,
