@@ -31,6 +31,7 @@
 		0936817D1C46A86C008C6B5D /* HomeStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0936817C1C46A86C008C6B5D /* HomeStruct.swift */; };
 		0961EBB91C63EE2200A4E55C /* Level2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0961EBB81C63EE2200A4E55C /* Level2.swift */; };
 		0961EBBB1C64961F00A4E55C /* Level5.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0961EBBA1C64961F00A4E55C /* Level5.swift */; };
+		0961EBBD1C66067900A4E55C /* Level7.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0961EBBC1C66067900A4E55C /* Level7.swift */; };
 		096F5CB51C53F1C90041EA5F /* HelpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096F5CB41C53F1C90041EA5F /* HelpViewController.swift */; };
 		096F5CB71C56AA340041EA5F /* HelpStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096F5CB61C56AA340041EA5F /* HelpStruct.swift */; };
 		096F5CB91C56D7240041EA5F /* Level6.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096F5CB81C56D7240041EA5F /* Level6.swift */; };
@@ -89,6 +90,7 @@
 		0936817C1C46A86C008C6B5D /* HomeStruct.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeStruct.swift; sourceTree = "<group>"; };
 		0961EBB81C63EE2200A4E55C /* Level2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Level2.swift; sourceTree = "<group>"; };
 		0961EBBA1C64961F00A4E55C /* Level5.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Level5.swift; sourceTree = "<group>"; };
+		0961EBBC1C66067900A4E55C /* Level7.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Level7.swift; sourceTree = "<group>"; };
 		096F5CB41C53F1C90041EA5F /* HelpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpViewController.swift; sourceTree = "<group>"; };
 		096F5CB61C56AA340041EA5F /* HelpStruct.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpStruct.swift; sourceTree = "<group>"; };
 		096F5CB81C56D7240041EA5F /* Level6.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Level6.swift; sourceTree = "<group>"; };
@@ -204,6 +206,7 @@
 				093681761C4549CB008C6B5D /* Level4.swift */,
 				0961EBBA1C64961F00A4E55C /* Level5.swift */,
 				096F5CB81C56D7240041EA5F /* Level6.swift */,
+				0961EBBC1C66067900A4E55C /* Level7.swift */,
 			);
 			name = Levels;
 			sourceTree = "<group>";
@@ -362,6 +365,7 @@
 				093000E01C4FD3B700425BB1 /* ReshapableNode.swift in Sources */,
 				096F5CB51C53F1C90041EA5F /* HelpViewController.swift in Sources */,
 				093000E21C4FD5D000425BB1 /* ExperimentStruct.swift in Sources */,
+				0961EBBD1C66067900A4E55C /* Level7.swift in Sources */,
 				093681751C45455F008C6B5D /* Level3.swift in Sources */,
 				0936816F1C42708E008C6B5D /* Experiment.swift in Sources */,
 				096F5CB71C56AA340041EA5F /* HelpStruct.swift in Sources */,
