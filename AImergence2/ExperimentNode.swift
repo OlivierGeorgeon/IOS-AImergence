@@ -23,7 +23,7 @@ class ExperimentNode: ReshapableNode
         reshape()
         fillColor = experimentStruct.color
         lineWidth = 0
-        name = "experiment"
+        name = "experiment_\(experiment.number)"
     }
 
     required init?(coder aDecoder: NSCoder) {

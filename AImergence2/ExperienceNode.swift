@@ -28,7 +28,7 @@ class ExperienceNode: ReshapableNode
         reshape()
         lineWidth = 0
         refill()
-        name = "experience"
+        name = "experience_\(experience.hashValue)"
         setScale(experienceStruct.initialScale)
         zPosition = 1
     }
