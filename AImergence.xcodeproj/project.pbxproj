@@ -32,8 +32,8 @@
 		0961EBB91C63EE2200A4E55C /* Level2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0961EBB81C63EE2200A4E55C /* Level2.swift */; };
 		0961EBBB1C64961F00A4E55C /* Level5.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0961EBBA1C64961F00A4E55C /* Level5.swift */; };
 		0961EBBD1C66067900A4E55C /* Level7.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0961EBBC1C66067900A4E55C /* Level7.swift */; };
+		0961EBC01C66658B00A4E55C /* Help.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0961EBC21C66658B00A4E55C /* Help.plist */; };
 		096F5CB51C53F1C90041EA5F /* HelpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096F5CB41C53F1C90041EA5F /* HelpViewController.swift */; };
-		096F5CB71C56AA340041EA5F /* HelpStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096F5CB61C56AA340041EA5F /* HelpStruct.swift */; };
 		096F5CB91C56D7240041EA5F /* Level6.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096F5CB81C56D7240041EA5F /* Level6.swift */; };
 		0994526E1C5F983400F0ABFF /* HelpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0994526D1C5F983400F0ABFF /* HelpView.swift */; };
 		099452831C62007000F0ABFF /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 099452851C62007000F0ABFF /* InfoPlist.strings */; };
@@ -91,8 +91,9 @@
 		0961EBB81C63EE2200A4E55C /* Level2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Level2.swift; sourceTree = "<group>"; };
 		0961EBBA1C64961F00A4E55C /* Level5.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Level5.swift; sourceTree = "<group>"; };
 		0961EBBC1C66067900A4E55C /* Level7.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Level7.swift; sourceTree = "<group>"; };
+		0961EBC11C66658B00A4E55C /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = fr; path = fr.lproj/Help.plist; sourceTree = "<group>"; };
+		0961EBC31C66658E00A4E55C /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Base; path = Base.lproj/Help.plist; sourceTree = "<group>"; };
 		096F5CB41C53F1C90041EA5F /* HelpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpViewController.swift; sourceTree = "<group>"; };
-		096F5CB61C56AA340041EA5F /* HelpStruct.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpStruct.swift; sourceTree = "<group>"; };
 		096F5CB81C56D7240041EA5F /* Level6.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Level6.swift; sourceTree = "<group>"; };
 		0994526D1C5F983400F0ABFF /* HelpView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpView.swift; sourceTree = "<group>"; };
 		0994526F1C614A6E00F0ABFF /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Main.strings; sourceTree = "<group>"; };
@@ -166,7 +167,7 @@
 				093681781C4677A6008C6B5D /* GameStruct.swift */,
 				096F5CB41C53F1C90041EA5F /* HelpViewController.swift */,
 				0994526D1C5F983400F0ABFF /* HelpView.swift */,
-				096F5CB61C56AA340041EA5F /* HelpStruct.swift */,
+				0961EBC21C66658B00A4E55C /* Help.plist */,
 				0994529A1C620CF600F0ABFF /* Localizable.strings */,
 				0994529D1C620D1200F0ABFF /* Help.strings */,
 				093681451C417378008C6B5D /* Assets.xcassets */,
@@ -329,6 +330,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				093681491C417378008C6B5D /* LaunchScreen.storyboard in Resources */,
+				0961EBC01C66658B00A4E55C /* Help.plist in Resources */,
 				099452981C620CF600F0ABFF /* Localizable.strings in Resources */,
 				093681461C417378008C6B5D /* Assets.xcassets in Resources */,
 				093681441C417378008C6B5D /* Main.storyboard in Resources */,
@@ -368,7 +370,6 @@
 				0961EBBD1C66067900A4E55C /* Level7.swift in Sources */,
 				093681751C45455F008C6B5D /* Level3.swift in Sources */,
 				0936816F1C42708E008C6B5D /* Experiment.swift in Sources */,
-				096F5CB71C56AA340041EA5F /* HelpStruct.swift in Sources */,
 				0936813F1C417378008C6B5D /* GameScene.swift in Sources */,
 				0994526E1C5F983400F0ABFF /* HelpView.swift in Sources */,
 				093681411C417378008C6B5D /* GameViewController.swift in Sources */,
@@ -434,6 +435,15 @@
 				099452701C614A6E00F0ABFF /* fr */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		0961EBC21C66658B00A4E55C /* Help.plist */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0961EBC11C66658B00A4E55C /* fr */,
+				0961EBC31C66658E00A4E55C /* Base */,
+			);
+			name = Help.plist;
 			sourceTree = "<group>";
 		};
 		099452851C62007000F0ABFF /* InfoPlist.strings */ = {

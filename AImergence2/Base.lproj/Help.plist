@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Help</key>
+	<array>
+		<array>
+			<string>The two white circles at the bottom represent &quot;experiments&quot;. Tap them to &quot;do experiments&quot;.</string>
+			<string>Experiments generate small white circles that move up the screen called &quot;experiences&quot;. Each experience has a numerical &quot;value&quot; displayed on its right.</string>
+			<string>Your score (top left) is the sum of the values of your last ten experiences. Try to reach 10 before moving on to the next level.</string>
+		</array>
+		<array>
+			<string>Experiments do not always produce the same experiences.</string>
+			<string>Experiences that have a positive value are considerred &quot;enjoyable&quot;, and those that have a negative value &quot;unpleasant&quot;.</string>
+			<string>Try to generate a sequence of enjoyable experiences.</string>
+		</array>
+		<array>
+			<string>You can indentify experiments by their shape, and experiences by their shape and their color.</string>
+			<string>Long-press an experiment to change its shape. This will also change the shape of the experiences produed by this experiment.</string>
+			<string>Long-press an experience to change its color. This will also change the color of the other experiences produced by the same experiment and having the same result.</string>
+		</array>
+		<array>
+			<string>In the world of Level 3, you cannot always avoid unpleasant experiences.</string>
+			<string>Just try to generate a sequence that contains as few unpleasant experiences as possible.</string>
+			<string>For help, you can display enjoyable experiences in green and unpleasant experiences in red.</string>
+		</array>
+		<array>
+			<string>Begin with looking for &quot;persistent&quot; experiments: experiments that always produce the same experiences when you repete them several times in a raw.</string>
+			<string>Persistent experiments allow you to &quot;observe the state of the world&quot; without changing it.</string>
+			<string>Then, look for experiments that generate enjoyable experiences in some particular states of the world.</string>
+			<string>Finally, look for experiments that let you change the state of the world.</string>
+		</array>
+		<array>
+			<string>Level 5 is identical to level 4, but you must choose the shapes of the experiments and the colors of the experiences yourself.</string>
+			<string>Try to find what experiments correspond to the triangle and square of Level 4, and what experiences correspond to green and red.</string>
+			<string>Replaying Level 4 may help you.</string>
+		</array>
+		<array>
+			<string>In Level 6, experiments are similar to those in Levels 4 and 5, but they transform the world on the long term, and their values are different.</string>
+		</array>
+	</array>
+</dict>
+</plist>

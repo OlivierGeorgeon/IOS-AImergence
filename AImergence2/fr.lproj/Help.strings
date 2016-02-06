@@ -10,7 +10,7 @@
 
 "help00" = "Les deux cercles blancs en bas de l'écran représentent des \"experimentations\". ";
 "help01" = "Pressez-les pour \"faire des experimentations\".\n\n";
-"help02" = "Les expérimentations prodiusent des petits cercles blancs qui montent, appelés \"expériences\". ";
+"help02" = "Les expérimentations produisent des petits cercles blancs qui montent, appelés \"expériences\". ";
 "help03" = "Chaque expérience a une \"valeur\" numérique qui s'affiche à sa droite.\n\n";
 "help04" = "Votre score (en haut à gauche) est la somme des valeurs des dix dernières expériences. ";
 "help05" = "Essayez d'atteindre 10 avant de passer au niveau suivant.";
@@ -37,7 +37,7 @@
 
 "help30" = "Dans le monde du niveau 3, vous ne pouvez pas toujours éviter les expériences déplaisantes.\n\n";
 "help31" = "Essayez juste de générer une séquence qui contienne aussi peu d'expériences déplaisantes que possible.\n\n";
-"help32" = "Pour vous aider, vous pouvez afficher les expéreinces positives en vert et les négatives en rouge.";
+"help32" = "Pour vous aider, vous pouvez afficher les expériences plaisantes en vert et les déplaisantes en rouge.";
 "help33" = "";
 "help34" = "";
 "help35" = "";

@@ -18,7 +18,7 @@ class HelpViewController: UIViewController {
     var level:Int = 0 {
         didSet {
             labelView?.text = NSLocalizedString("Level", comment: "") + " \(level)"
-            textView?.text = HelpStruct.text[level]
+            textView?.text = helpBlobArray()[level]
         }
     }
     
@@ -32,7 +32,7 @@ class HelpViewController: UIViewController {
     
     @IBOutlet weak var textView: UITextView! {
         didSet {
-            textView.text = HelpStruct.text[level]
+            textView.text = helpBlobArray()[level]
         }
     }
     
@@ -55,4 +55,19 @@ class HelpViewController: UIViewController {
         textView.text = ""
         textView.text = HelpStruct.text[level]
     }
+    
+    func helpBlobArray() -> [String] {
+        var helpBlobArray = [String]()
+        if let path = NSBundle.mainBundle().pathForResource("Help", ofType: "plist", inDirectory: nil, forLocalization: "fr") {
+        //if let path = NSBundle.mainBundle().pathForResource("Help", ofType: "plist") {
+            let localizedDictionary = NSDictionary(contentsOfFile: path)
+            if let helpLineArray = localizedDictionary?["Help"] as? [[String]] {
+                helpBlobArray = helpLineArray.map({$0.reduce("", combine: {$0 + $1 + "\n\n"})})
+            } else {
+                print("The Help key of file Help.plist must only contain an array of arrays of strings.")
+            }
+        }
+        return helpBlobArray
+    }
+
 }
