@@ -10,10 +10,10 @@
 
 "help00" = "Les deux cercles blancs en bas de l'écran représentent des \"experimentations\". ";
 "help01" = "Pressez-les pour \"faire des experimentations\".\n\n";
-"help02" = "Les expérimentations produsent des petits cercles blancs qui montent, appelés \"expériences\". ";
+"help02" = "Les expérimentations prodiusent des petits cercles blancs qui montent, appelés \"expériences\". ";
 "help03" = "Chaque expérience a une \"valeur\" numérique qui s'affiche à sa droite.\n\n";
 "help04" = "Votre score (en haut à gauche) est la somme des valeurs des dix dernières expériences. ";
-"help05" = "Assayez d'atteindre 10 avant de passer au niveau suivant.";
+"help05" = "Essayez d'atteindre 10 avant de passer au niveau suivant.";
 
 /* Help for Level 1 */
 
@@ -36,8 +36,8 @@
 /* Help for Level 3 */
 
 "help30" = "Dans le monde du niveau 3, vous ne pouvez pas toujours éviter les expériences déplaisantes.\n\n";
-"help31" = "Essayez juste de générer une séquence qui contienne aussi peu d'expériences déplaisantes que possible";
-"help32" = "";
+"help31" = "Essayez juste de générer une séquence qui contienne aussi peu d'expériences déplaisantes que possible.\n\n";
+"help32" = "Pour vous aider, vous pouvez afficher les expéreinces positives en vert et les négatives en rouge.";
 "help33" = "";
 "help34" = "";
 "help35" = "";
@@ -55,16 +55,16 @@
 
 "help50" = "Le niveau 5 est identique au niveau 4, ";
 "help51" = "sauf que c'est à vous de choisir les formes des expérimentations et les couleurs des expériences.\n\n";
-"help52" = "Essayez d'associer une couleur particulière à chaque état possible du monde.";
-"help53" = "";
+"help52" = "Essayez de retrouver quelles expérimentations correspondent au triangle et au carré, et quelles expériences correspondent au rouge et au vert.\n\n";
+"help53" = "Vous pouvez rejouer le niveau 4 pour vous aider.";
 "help54" = "";
 "help55" = "";
 
 /* Help for Level 6 */
 
-"help60" = "Au niveau 6, les expérimentations sont similaires à celles des niveaux 3 et 4, ";
-"help61" = "sauf qu'elles transforment l'environnement de manière durable.\n\n";
-"help62" = "Leurs valeurs sont également différentes.";
+"help60" = "Au niveau 6, les expérimentations sont similaires à celles des niveaux 4 et 5, ";
+"help61" = "sauf qu'elles transforment l'environnement de manière durable, ";
+"help62" = "et que leurs valeurs sont différentes.";
 "help63" = "";
 "help64" = "";
 "help65" = "";
