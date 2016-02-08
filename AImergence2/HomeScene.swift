@@ -16,6 +16,8 @@ protocol HomeSceneDelegate
 class HomeScene: SKScene {
     
     let homeStruct = HomeStruct()
+    let cancelString = NSLocalizedString("Cancel", comment: "The Cancel button in the level-selection window.")
+
     
     var userDelegate:HomeSceneDelegate?
     
@@ -36,7 +38,7 @@ class HomeScene: SKScene {
     func layoutScene()
     {
         backgroundColor = homeStruct.backgroundColor
-        let cancelNode = homeStruct.createLabelNode("Cancel")
+        let cancelNode = homeStruct.createLabelNode(cancelString)
         cancelNode.name = "Cancel"
         cancelNode.position = homeStruct.cancelPosition
         buttonNodes.append(cancelNode)

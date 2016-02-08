@@ -15,24 +15,43 @@ protocol HelpViewControllerDelegate
 
 class HelpViewController: UIViewController {
     
+    let helpBlobArray:[String]
+    let levelString = NSLocalizedString("Level", comment: "the game level displayed in the header of the help window")
+    
     var level:Int = 0 {
         didSet {
-            labelView?.text = NSLocalizedString("Level", comment: "") + " \(level)"
-            textView?.text = helpBlobArray()[level]
+            labelView?.text = levelString + " \(level)"
+            textView?.text = helpBlobArray[level]
         }
     }
     
     var delegate: HelpViewControllerDelegate?
     
+    required init(coder aDecoder: NSCoder)
+    {
+        var tempHelpBlobArray = [String]()
+        if let path = NSBundle.mainBundle().pathForResource("Help", ofType: "plist", inDirectory: nil, forLocalization: "fr") {
+        //if let path = NSBundle.mainBundle().pathForResource("Help", ofType: "plist") {
+            let localizedDictionary = NSDictionary(contentsOfFile: path)
+            if let helpLineArray = localizedDictionary?["Help"] as? [[String]] {
+                tempHelpBlobArray = helpLineArray.map({$0.reduce("", combine: {$0 + $1 + "\n\n"})})
+            } else {
+                print("The Help key of file Help.plist must only contain an array of arrays of strings.")
+            }
+        }
+        helpBlobArray = tempHelpBlobArray
+        super.init(coder: aDecoder)!
+    }
+    
     @IBOutlet weak var labelView: UILabel! {
         didSet {
-            labelView.text = NSLocalizedString("Level", comment: "") + " \(level)"
+            labelView.text = levelString + " \(level)"
         }
     }
     
     @IBOutlet weak var textView: UITextView! {
         didSet {
-            textView.text = helpBlobArray()[level]
+            textView.text = helpBlobArray[level]
         }
     }
     
@@ -51,23 +70,8 @@ class HelpViewController: UIViewController {
     }
     
     override func didRotateFromInterfaceOrientation(fromInterfaceOrientation: UIInterfaceOrientation) {
-        // seems to fix a bug that the textview wont display entirely
+        // seems to fix a bug that the textview won't display entirely
         textView.text = ""
-        textView.text = helpBlobArray()[level]
+        textView.text = helpBlobArray[level]
     }
-    
-    func helpBlobArray() -> [String] {
-        var helpBlobArray = [String]()
-        if let path = NSBundle.mainBundle().pathForResource("Help", ofType: "plist", inDirectory: nil, forLocalization: "fr") {
-        //if let path = NSBundle.mainBundle().pathForResource("Help", ofType: "plist") {
-            let localizedDictionary = NSDictionary(contentsOfFile: path)
-            if let helpLineArray = localizedDictionary?["Help"] as? [[String]] {
-                helpBlobArray = helpLineArray.map({$0.reduce("", combine: {$0 + $1 + "\n\n"})})
-            } else {
-                print("The Help key of file Help.plist must only contain an array of arrays of strings.")
-            }
-        }
-        return helpBlobArray
-    }
-
 }
