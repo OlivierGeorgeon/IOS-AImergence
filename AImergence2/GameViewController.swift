@@ -50,8 +50,10 @@ class GameViewController: UIViewController, HelpViewControllerDelegate, HomeScen
         let skView = view as! SKView
         if toInterfaceOrientation.isLandscape {
             skView.scene?.size = gameStruct.landscapeSceneSize
+            skView.scene?.camera?.position =  gameStruct.landscapeCameraPosition
         } else {
             skView.scene?.size = gameStruct.portraitSceneSize
+            skView.scene?.camera?.position =  gameStruct.portraitCameraPosition
         }
         
     }

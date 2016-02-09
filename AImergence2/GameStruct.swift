@@ -16,6 +16,9 @@ struct GameStruct
     let portraitSceneSize   = CGSize(width: 375, height: 667)
     let landscapeSceneSize  = CGSize(width: 1188, height: 667)
     
+    let portraitCameraPosition      = CGPoint(x: 0, y: 233)
+    let landscapeCameraPosition     = CGPoint(x: 400, y: 233)
+    
     let backgroundColor     = SKColor.lightGrayColor()
     let fontSize            = CGFloat(30)
     let titleFont           = UIFont.preferredFontForTextStyle(UIFontTextStyleTitle1)
@@ -25,18 +28,14 @@ struct GameStruct
     let transitionLeft      = SKTransition.pushWithDirection(SKTransitionDirection.Left, duration: 0.5)
     let transitionRight     = SKTransition.pushWithDirection(SKTransitionDirection.Right, duration: 0.5)
     
-    var experimentPositions = [CGPoint(x: 100, y: 100), CGPoint(x: 275, y: 100), CGPoint(x: 180, y: 100)]
+    var experimentPositions = [CGPoint(x: -90, y: 0), CGPoint(x: 90, y: 0), CGPoint(x: 0, y: 0)]
  
-    let experiencePosition  = CGPoint(x: 187, y: 145)
-        
     let actionScale         = SKAction.scaleTo(1, duration: 0.2)
     let actionMoveTrace     = SKAction.moveBy(CGVector(dx:0, dy:50), duration: 0.3)
     
     let colorNodeRect       = CGRect(x: -30, y:-30, width: 60, height: 60)
     
-    func moveByVect(point: CGPoint) -> CGVector {
-        return CGVector(dx: 187 - point.x, dy: 190 - point.y)
-    }
+    func moveByVect(point: CGPoint) -> CGVector { return CGVector(dx: -point.x, dy: 90 - point.y) }
     
     func createScoreLabel() -> SKLabelNode {
         let scoreLabel = SKLabelNode(text: "0")
@@ -48,7 +47,7 @@ struct GameStruct
     
     func createScoreBackground() -> SKShapeNode {
         let scoreBackground = SKShapeNode(rect: CGRect(x: -30, y: -30, width: 60, height: 60), cornerRadius: 20)
-        scoreBackground.position = CGPoint(x: 70, y: 580)
+        scoreBackground.position = CGPoint(x: -117, y: 480)
         scoreBackground.lineWidth = 0
         scoreBackground.name = "scoreBackground"
         scoreBackground.fillColor = UIColor.grayColor()
