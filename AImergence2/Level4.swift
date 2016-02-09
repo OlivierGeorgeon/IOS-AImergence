@@ -13,7 +13,8 @@ class Level4 : Level0 {
     
     override var number:Int { return 4 }
 
-    var phenomenon:Bool = (arc4random_uniform(2) == 0)
+    var nextPhenomenon = false
+    var currentPhenomenon = false
     
     convenience init() {
         let experiment0 = Experiment(number: 0, shapeIndex: 1)
@@ -38,13 +39,14 @@ class Level4 : Level0 {
         
         switch experiment.number {
         case 0: // touch
-            if phenomenon { result = 1 }
+            if currentPhenomenon { result = 1 }
         case 1: // eat
-            if phenomenon { result = 1 }
-            phenomenon = (arc4random_uniform(2) == 0)
+            if currentPhenomenon { result = 1 }
+            currentPhenomenon = nextPhenomenon // (arc4random_uniform(2) == 0)
+            nextPhenomenon = !nextPhenomenon
         case 2: //swap
-            phenomenon = !phenomenon
-            if phenomenon { result = 1 }
+            currentPhenomenon = !currentPhenomenon
+            if currentPhenomenon { result = 1 }
         default:
             break
         }

@@ -9,12 +9,10 @@
 import Foundation
 import GameplayKit
 
-class Level5 : Level0 {
+class Level5 : Level4 {
     
     override var number:Int { return 5 }
 
-    var phenomenon:Bool = (arc4random_uniform(2) == 0)
-    
     convenience init() {
         let experiment0 = Experiment(number: 0)
         let experiment1 = Experiment(number: 1)
@@ -30,27 +28,5 @@ class Level5 : Level0 {
         let experiences = [[experience00, experience01], [experience10, experience11], [experience20, experience21]]
 
         self.init(winScore: 10, historicalDepth: 10, experiments: experiments, experiences: experiences)
-    }
-    
-    override func play(experiment: Experiment) -> (Experience, Int) {
-      
-        var result = 0
-        
-        switch experiment.number {
-        case 0: // touch
-            if phenomenon { result = 1 }
-        case 1: // eat
-            if phenomenon { result = 1 }
-            phenomenon = (arc4random_uniform(2) == 0)
-        case 2: //swap
-            phenomenon = !phenomenon
-            if phenomenon { result = 1 }
-        default:
-            break
-        }
-
-        let experience = experiences[experiment.number][result]
-        
-        return (experience, score(experience))
-    }
+    }    
 }
