@@ -145,6 +145,8 @@
                     </view>
                     <connections>
                         <outlet property="labelView" destination="LU5-OA-XkX" id="y0d-XO-lc5"/>
+                        <outlet property="nextButtonOutlet" destination="BeF-yu-6un" id="7Tc-Bh-6OM"/>
+                        <outlet property="previousButtonOutlet" destination="s0F-Ij-QNG" id="6DR-th-GYK"/>
                         <outlet property="textView" destination="waE-OD-fCN" id="QKo-kt-Yor"/>
                     </connections>
                 </viewController>

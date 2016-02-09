@@ -13,7 +13,7 @@ class GameScene: SKScene {
     let gameStruct:GameStruct
     let level:Level0
     
-    var cam:SKCameraNode!
+    var cameraNode:SKCameraNode!
     
     var experimentNodes = Set<ExperimentNode>()
     var experienceNodes = Set<ExperienceNode>()
@@ -107,7 +107,7 @@ class GameScene: SKScene {
     {
         /* Setup your scene here */
         
-        cam = SKCameraNode()
+        cameraNode = SKCameraNode()
         
         var size = gameStruct.portraitSceneSize
         var cameraPosition = gameStruct.portraitCameraPosition
@@ -117,9 +117,9 @@ class GameScene: SKScene {
             cameraPosition = gameStruct.landscapeCameraPosition
         }
         self.size = size
-        cam.position = cameraPosition
-        camera = cam
-        self.addChild(cam)
+        cameraNode.position = cameraPosition
+        camera = cameraNode
+        self.addChild(cameraNode)
         
         for recognizer in view.gestureRecognizers ?? [] {
             if recognizer is UITapGestureRecognizer || recognizer is UILongPressGestureRecognizer {

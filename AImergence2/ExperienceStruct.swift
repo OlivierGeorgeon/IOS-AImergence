@@ -16,4 +16,6 @@ struct ExperienceStruct
     var initialScale = CGFloat(120)/40
     
     let valencePosition = CGPoint(x: 50, y: -10)
+    
+    let obsolescence = 100
 }

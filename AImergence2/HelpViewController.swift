@@ -10,7 +10,7 @@ import UIKit
 
 protocol HelpViewControllerDelegate
 {
-    func close()
+    func closeHelpView()
 }
 
 class HelpViewController: UIViewController {
@@ -22,6 +22,10 @@ class HelpViewController: UIViewController {
         didSet {
             labelView?.text = levelString + " \(level)"
             textView?.text = helpBlobArray[level]
+            if level == 0 { previousButtonOutlet.enabled = false }
+            else { previousButtonOutlet.enabled = true }
+            if level == HomeStruct.numberOfLevels { nextButtonOutlet.enabled = false }
+            else { nextButtonOutlet.enabled = true }
         }
     }
     
@@ -56,18 +60,22 @@ class HelpViewController: UIViewController {
     }
     
     @IBAction func closeButton(sender: UIButton) {
-        delegate?.close()
+        delegate?.closeHelpView()
     }
     
     @IBAction func previousButton(sender: UIButton) {
         if level > 0 { level-- }
-        else { level = HomeStruct.numberOfLevels - 1 }
     }
 
-    @IBAction func nextButton(sender: UIButton) {
-        if level < HomeStruct.numberOfLevels - 1 { level++ }
-        else { level = 0 }
+    @IBOutlet weak var previousButtonOutlet: UIButton! {
+        didSet { previousButtonOutlet.enabled = false }
     }
+    
+    @IBAction func nextButton(sender: UIButton) {
+        if level < HomeStruct.numberOfLevels { level++ }
+    }
+    
+    @IBOutlet weak var nextButtonOutlet: UIButton!
     
     override func didRotateFromInterfaceOrientation(fromInterfaceOrientation: UIInterfaceOrientation) {
         // seems to fix a bug that the textview won't display entirely

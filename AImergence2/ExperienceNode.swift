@@ -52,7 +52,7 @@ class ExperienceNode: ReshapableNode
     }
     
     func isObsolete(clock: Int) -> Bool {
-        return clock - stepOfCreation > 10
+        return clock - stepOfCreation > experienceStruct.obsolescence
     }
 }
 

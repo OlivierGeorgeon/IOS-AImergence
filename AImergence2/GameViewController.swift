@@ -40,6 +40,12 @@ class GameViewController: UIViewController, HelpViewControllerDelegate, HomeScen
         let swipeRight = UISwipeGestureRecognizer(target:self, action: "swipeRight:")
         swipeRight.direction = .Right
         view.addGestureRecognizer(swipeRight)
+        let swipeUp = UISwipeGestureRecognizer(target:self, action: "swipeUp:")
+        swipeUp.direction = .Up
+        view.addGestureRecognizer(swipeUp)
+        let swipeDown = UISwipeGestureRecognizer(target:self, action: "swipeDown:")
+        swipeDown.direction = .Down
+        view.addGestureRecognizer(swipeDown)
     }
 
     override func shouldAutorotate() -> Bool {
@@ -91,19 +97,43 @@ class GameViewController: UIViewController, HelpViewControllerDelegate, HomeScen
     
     
     func swipeLeft(gesture:UISwipeGestureRecognizer) {
-        if level < HomeStruct.numberOfLevels - 1 { level++ }
-        else { level = 0 }
-        let nextGameScene = GameStruct.createGameScene(level)
         let skView = view as! SKView
-        skView.presentScene(nextGameScene, transition: gameStruct.transitionLeft)
+        if level < HomeStruct.numberOfLevels {
+            level++
+            let nextGameScene = GameStruct.createGameScene(level)
+            skView.presentScene(nextGameScene, transition: gameStruct.transitionLeft)
+        } else {
+            skView.scene?.camera?.runAction(gameStruct.actionMoveCameraRightLeft)
+        }
     }
     
     func swipeRight(gesture:UISwipeGestureRecognizer) {
-        if level > 0 { level-- }
-        else { level = HomeStruct.numberOfLevels - 1 }
-        let nextGameScene = GameStruct.createGameScene(level)
         let skView = view as! SKView
-        skView.presentScene(nextGameScene, transition: gameStruct.transitionRight)
+        if level > 0 {
+            level--
+            let nextGameScene = GameStruct.createGameScene(level)
+            skView.presentScene(nextGameScene, transition: gameStruct.transitionRight)
+        } else {
+            skView.scene?.camera?.runAction(gameStruct.actionMoveCameraLeftRight)
+        }
+    }
+    
+    func swipeUp(gesture:UISwipeGestureRecognizer) {
+        let skView = view as! SKView
+        if let scene = skView.scene as? GameScene {
+            if scene.camera?.position.y > gameStruct.portraitSceneSize.height {
+                scene.camera?.runAction(gameStruct.actionMoveCameraDown)
+            } else {
+                scene.camera?.runAction(gameStruct.actionMoveCameraDownUp)
+            }
+        }
+    }
+    
+    func swipeDown(gesture:UISwipeGestureRecognizer) {
+        let skView = view as! SKView
+        if let scene = skView.scene as? GameScene {
+            scene.camera?.runAction(gameStruct.actionMoveCameraUp)
+        }
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -118,7 +148,7 @@ class GameViewController: UIViewController, HelpViewControllerDelegate, HomeScen
         }
     }
     
-    func close() {
+    func closeHelpView() {
         container.hidden = true
     }
     
