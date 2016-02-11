@@ -38,6 +38,9 @@
                                 <rect key="frame" x="535" y="559" width="45" height="33"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <state key="normal" title="World"/>
+                                <connections>
+                                    <action selector="worldButton:" destination="BV1-FR-VrT" eventType="touchUpInside" id="7FI-Fj-E6g"/>
+                                </connections>
                             </button>
                             <containerView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" verticalHuggingPriority="249" horizontalCompressionResistancePriority="749" verticalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="1qa-vJ-nr5">
                                 <rect key="frame" x="230" y="53" width="350" height="420"/>
@@ -59,7 +62,7 @@
                                     <constraint firstAttribute="width" relation="lessThanOrEqual" constant="400" id="YJe-cE-Do6"/>
                                 </constraints>
                                 <connections>
-                                    <segue destination="S9v-w3-pyN" kind="embed" id="Ke4-Ra-wcX"/>
+                                    <segue destination="S9v-w3-pyN" kind="embed" identifier="ShowWorld" id="Ke4-Ra-wcX"/>
                                 </connections>
                             </containerView>
                         </subviews>
@@ -83,6 +86,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="WorldViewContainer" destination="7gD-Dy-RkZ" id="ZWi-gh-1Su"/>
                         <outlet property="container" destination="1qa-vJ-nr5" id="8UO-Bl-eRo"/>
                         <outlet property="levelButtonOutlet" destination="7U6-td-9dq" id="P8N-6p-6y5"/>
                     </connections>
@@ -177,19 +181,35 @@
             </objects>
             <point key="canvasLocation" x="1218" y="212"/>
         </scene>
-        <!--View Controller-->
+        <!--World View Controller-->
         <scene sceneID="ud3-8c-Jm6">
             <objects>
-                <viewController id="S9v-w3-pyN" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Oej-sS-MrJ">
+                <viewController id="S9v-w3-pyN" customClass="WorldViewController" customModule="AImergence2" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Oej-sS-MrJ" customClass="SCNView">
                         <rect key="frame" x="0.0" y="0.0" width="350" height="420"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T1U-Yf-6NB">
+                                <rect key="frame" x="287" y="0.0" width="39" height="30"/>
+                                <state key="normal" title="Close"/>
+                                <connections>
+                                    <action selector="closeButton:" destination="S9v-w3-pyN" eventType="touchUpInside" id="fil-gU-POB"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="T1U-Yf-6NB" secondAttribute="trailing" constant="8" id="RmN-O8-U7h"/>
+                            <constraint firstItem="T1U-Yf-6NB" firstAttribute="top" secondItem="Oej-sS-MrJ" secondAttribute="topMargin" id="jWi-cq-msQ"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="sceneView" destination="Oej-sS-MrJ" id="N9L-gz-PFx"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kzU-Ao-ubp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1140" y="708"/>
+            <point key="canvasLocation" x="1218" y="712"/>
         </scene>
     </scenes>
 </document>

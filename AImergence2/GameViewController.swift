@@ -9,12 +9,12 @@
 import UIKit
 import SpriteKit
 
-class GameViewController: UIViewController, HelpViewControllerDelegate, HomeSceneDelegate {
+class GameViewController: UIViewController, HelpViewControllerDelegate, HomeSceneDelegate, WorldViewControllerDelegate {
     
     let gameStruct = GameStruct()
     
-    var helpViewControler:HelpViewController?
-    
+    var helpViewControler: HelpViewController?
+    var worldViewControler: WorldViewController?
     
     var level = 0 {
         didSet {
@@ -93,8 +93,13 @@ class GameViewController: UIViewController, HelpViewControllerDelegate, HomeScen
         container.hidden = !container.hidden
     }
     
+    @IBAction func worldButton(sender: UIButton) {
+        WorldViewContainer.hidden = !WorldViewContainer.hidden
+    }
+    
     @IBOutlet weak var container: UIView!
     
+    @IBOutlet weak var WorldViewContainer: UIView!
     
     func swipeLeft(gesture:UISwipeGestureRecognizer) {
         let skView = view as! SKView
@@ -144,6 +149,9 @@ class GameViewController: UIViewController, HelpViewControllerDelegate, HomeScen
             case "ShowHelp":
                 helpViewControler = segue.destinationViewController as? HelpViewController
                 helpViewControler!.delegate = self
+            case "ShowWorld":
+                worldViewControler = segue.destinationViewController as? WorldViewController
+                worldViewControler!.delegate = self
             default:
                 break
             }
@@ -152,6 +160,10 @@ class GameViewController: UIViewController, HelpViewControllerDelegate, HomeScen
     
     func closeHelpView() {
         container.hidden = true
+    }
+    
+    func closeWorldView() {
+        WorldViewContainer.hidden = true
     }
     
     func updateLevel(levelNumber: Int) {

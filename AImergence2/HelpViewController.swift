@@ -38,7 +38,7 @@ class HelpViewController: UIViewController {
         //if let path = NSBundle.mainBundle().pathForResource("Help", ofType: "plist") {
             let localizedDictionary = NSDictionary(contentsOfFile: path)
             if let helpLineArray = localizedDictionary?["Help"] as? [[String]] {
-                tempHelpBlobArray = helpLineArray.map({$0.reduce("", combine: {$0 + $1 + "\n\n"})})
+                tempHelpBlobArray = helpLineArray.map({$0.reduce("", combine: {$0 + "\n\n" + $1 }).stringByTrimmingCharactersInSet(NSCharacterSet.newlineCharacterSet())})
             } else {
                 print("The Help key of file Help.plist must only contain an array of arrays of strings.")
             }
