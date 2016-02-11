@@ -27,15 +27,21 @@
 		<array>
 			<string>Obervez le comportement individuel des expérimentations quand vous les utilisez seules plusieurs fois de suite. Celles qui produisent toujours le même résultat sont appelées &quot;expérimentations persistantes&quot;.</string>
 			<string>Les expériementations persistantes vous permettent &quot;d&apos;observer l&apos;état du monde&quot; sans le modifier.</string>
-			<string>Observez quels états du monde vous permettent de faire des expériences plaisantes, et comment changer l&apos;état du monde.</string>
+			<string>Repérez quels états du monde vous permettent de faire des expériences plaisantes, et comment changer l&apos;état du monde.</string>
 		</array>
 		<array>
-			<string>Le niveau 5 est identique au niveau 4, sauf que c&apos;est à vous de choisir les formes des expérimentations et les couleurs des expériences.</string>
-			<string>Essayez de retrouver quelles expérimentations correspondent au triangle et au carré, et quelles expériences correspondent au rouge et au vert.</string>
-			<string>Rejouer le niveau 4 pourrait vous aider.</string>
+			<string>Au niveau 5, les expérimentations ont les mêmes effets qu&apos;au niveau 4, mais elles sont redisposées dans un ordre aléatoire et représentées initialement par des cercles identiques.</string>
+			<string>C&apos;est à vous d&apos;attribuer les couleurs vertes et rouges aux expériences, et les formes carré et triangle aux experimentations sur la base des expériences produites. </string>
+			<string>Essayez d&apos;attriber les mêmes formes au experimentations qui produisent les mêmes effets qu&apos;au niveau 4, et les mêmes couleurs aux mêmes expériences. Il peut être utile de rejouer le niveau 4.</string>
 		</array>
 		<array>
-			<string>Au niveau 6, les expérimentations sont similaires à celles des niveaux 4 et 5, sauf qu&apos;elles transforment l&apos;environnement de manière durable, et que leurs valeurs sont différentes.</string>
+			<string>Au niveau 6, les expériementations ont les mêmes effets qu&apos;au niveau 4 et 5, mais les expériences n&apos;ont pas les mêmes valeurs.</string>
+			<string>Vous pouvez attribuer la couleur verte aux expériences qui sont plaisantes ou qui laissent expérer une expérience plaisante au coup suivant.</string>
+			<string>Vous pouvez attribuer la couleur rouge aux expériences qui sont déplaisantes ou qui laissent craindre une expérience déplaisante au coup suivant.</string>
+		</array>
+		<array>
+			<string>Au niveau 6, les expérimentations ont les mêmes effets immédiats qu&apos;aux niveaux 4, 5, et 6, mais, en plus, elles transforment le monde sur le long term.</string>
+			<string>Une fois que le monde a été transformé de manière appropriée, vous pouvez obtenir une expérience plaisante à chaque coup.</string>
 		</array>
 	</array>
 </dict>

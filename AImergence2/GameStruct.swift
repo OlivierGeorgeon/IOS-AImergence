@@ -108,12 +108,18 @@ struct GameStruct
             gameStruct = GameStruct(experiment:experimentStruct, experience:experienceStruct,
                 experimentPositions: [CGPoint(x: -115, y: 0), CGPoint(x: 0, y: 0), CGPoint(x: 115, y: 0)])
             level = Level5()
-        case 6,-1:
+        case 6:
             let experimentStruct = ExperimentStruct(rect:CGRect(x: -50, y: -50, width: 100, height: 100))
             let experienceStruct = ExperienceStruct(initialScale:CGFloat(100)/40)
             gameStruct = GameStruct(experiment:experimentStruct, experience:experienceStruct,
                 experimentPositions: [CGPoint(x: -115, y: 0), CGPoint(x: 0, y: 0), CGPoint(x: 115, y: 0)])
             level = Level6()
+        case 7:
+            let experimentStruct = ExperimentStruct(rect:CGRect(x: -50, y: -50, width: 100, height: 100))
+            let experienceStruct = ExperienceStruct(initialScale:CGFloat(100)/40)
+            gameStruct = GameStruct(experiment:experimentStruct, experience:experienceStruct,
+                experimentPositions: [CGPoint(x: -115, y: 0), CGPoint(x: 0, y: 0), CGPoint(x: 115, y: 0)])
+            level = Level7()
         default:
             level = Level0()
         }

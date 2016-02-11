@@ -132,7 +132,9 @@ class GameViewController: UIViewController, HelpViewControllerDelegate, HomeScen
     func swipeDown(gesture:UISwipeGestureRecognizer) {
         let skView = view as! SKView
         if let scene = skView.scene as? GameScene {
-            scene.camera?.runAction(gameStruct.actionMoveCameraUp)
+            if scene.camera?.position.y < 7 * gameStruct.portraitSceneSize.height {
+                scene.camera?.runAction(gameStruct.actionMoveCameraUp)
+            }
         }
     }
     

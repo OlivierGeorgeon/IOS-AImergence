@@ -13,10 +13,10 @@ class Level7: Level4 {
     
     override var number:Int { return 6 }
 
-    var env = [1, 7, 3, 2, 9, 8, 5, 6, 7, 8, 0]
+    var env = [false, true, false, true, false, true, true, false, true, false]
     var p = 0
     
-    convenience init() {
+   convenience init() {
         let experiment0 = Experiment(number: 0)
         let experiment1 = Experiment(number: 1)
         let experiment2 = Experiment(number: 2)
@@ -39,18 +39,19 @@ class Level7: Level4 {
         
         switch experiment.number {
         case 0: // touch
-            if env[p] <= env[p + 1] { result = 1 }
+            if currentPhenomenon { result = 1 }
         case 1: // eat
-            if env[p] <= env[p + 1] { result = 1 }
-            if ++p > 6 { p = 0 }
-        case 2: // swap
-            let temp = env[p]
-            env[p] = env[p + 1]
-            env[p + 1] = temp
-            if env[p] <= env[p + 1] { result = 1 }
+            if currentPhenomenon { result = 1 }
+            env[p] = currentPhenomenon
+            if ++p >= env.count { p = 0 }
+            currentPhenomenon = env[p]
+        case 2: //swap
+            currentPhenomenon = !currentPhenomenon
+            if currentPhenomenon { result = 1 }
         default:
             break
         }
+        
         let experience = experiences[experiment.number][result]
         
         return (experience, score(experience))

@@ -10,7 +10,7 @@ import SpriteKit
 
 struct HomeStruct
 {
-    static let numberOfLevels = 6
+    static let numberOfLevels = 7
 
     let portraitSceneSize   = CGSize(width: 375, height: 667)
     let landscapeSceneSize  = CGSize(width: 1188, height: 667)
