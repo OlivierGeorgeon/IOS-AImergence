@@ -29,8 +29,14 @@ class WorldViewController: UIViewController {
             case 0:
                 worldScene = WorldScene0()
                 sceneSetup()
-            default:
+            case 1, 2:
                 worldScene = WorldScene1()
+                sceneSetup()
+            case 3:
+                worldScene = WorldScene3()
+                sceneSetup()
+            default:
+                worldScene = WorldScene0()
                 sceneSetup()
             }
         }

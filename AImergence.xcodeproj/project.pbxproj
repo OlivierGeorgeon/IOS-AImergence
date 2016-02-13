@@ -29,6 +29,7 @@
 		093681791C4677A6008C6B5D /* GameStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093681781C4677A6008C6B5D /* GameStruct.swift */; };
 		0936817B1C4696AB008C6B5D /* HomeScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0936817A1C4696AB008C6B5D /* HomeScene.swift */; };
 		0936817D1C46A86C008C6B5D /* HomeStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0936817C1C46A86C008C6B5D /* HomeStruct.swift */; };
+		093C3F661C6F68B9000BC6FB /* WorldScene1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093C3F651C6F68B9000BC6FB /* WorldScene1.swift */; };
 		0961EBB91C63EE2200A4E55C /* Level2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0961EBB81C63EE2200A4E55C /* Level2.swift */; };
 		0961EBBB1C64961F00A4E55C /* Level5.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0961EBBA1C64961F00A4E55C /* Level5.swift */; };
 		0961EBBD1C66067900A4E55C /* Level8.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0961EBBC1C66067900A4E55C /* Level8.swift */; };
@@ -43,7 +44,7 @@
 		09ED657F1C6D0EE6004A8CA7 /* WorldViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09ED657E1C6D0EE6004A8CA7 /* WorldViewController.swift */; };
 		09ED65831C6D11A1004A8CA7 /* WorldPhenomena.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09ED65821C6D11A1004A8CA7 /* WorldPhenomena.swift */; };
 		09ED65851C6D1400004A8CA7 /* WorldScene0.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09ED65841C6D1400004A8CA7 /* WorldScene0.swift */; };
-		09ED65871C6E36B7004A8CA7 /* WorldScene1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09ED65861C6E36B7004A8CA7 /* WorldScene1.swift */; };
+		09ED65871C6E36B7004A8CA7 /* WorldScene3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09ED65861C6E36B7004A8CA7 /* WorldScene3.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -92,6 +93,7 @@
 		093681781C4677A6008C6B5D /* GameStruct.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameStruct.swift; sourceTree = "<group>"; };
 		0936817A1C4696AB008C6B5D /* HomeScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeScene.swift; sourceTree = "<group>"; };
 		0936817C1C46A86C008C6B5D /* HomeStruct.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeStruct.swift; sourceTree = "<group>"; };
+		093C3F651C6F68B9000BC6FB /* WorldScene1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorldScene1.swift; sourceTree = "<group>"; };
 		0961EBB81C63EE2200A4E55C /* Level2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Level2.swift; sourceTree = "<group>"; };
 		0961EBBA1C64961F00A4E55C /* Level5.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Level5.swift; sourceTree = "<group>"; };
 		0961EBBC1C66067900A4E55C /* Level8.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Level8.swift; sourceTree = "<group>"; };
@@ -110,7 +112,7 @@
 		09ED657E1C6D0EE6004A8CA7 /* WorldViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorldViewController.swift; sourceTree = "<group>"; };
 		09ED65821C6D11A1004A8CA7 /* WorldPhenomena.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorldPhenomena.swift; sourceTree = "<group>"; };
 		09ED65841C6D1400004A8CA7 /* WorldScene0.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorldScene0.swift; sourceTree = "<group>"; };
-		09ED65861C6E36B7004A8CA7 /* WorldScene1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorldScene1.swift; sourceTree = "<group>"; };
+		09ED65861C6E36B7004A8CA7 /* WorldScene3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorldScene3.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -246,7 +248,8 @@
 				09ED657E1C6D0EE6004A8CA7 /* WorldViewController.swift */,
 				09ED65821C6D11A1004A8CA7 /* WorldPhenomena.swift */,
 				09ED65841C6D1400004A8CA7 /* WorldScene0.swift */,
-				09ED65861C6E36B7004A8CA7 /* WorldScene1.swift */,
+				093C3F651C6F68B9000BC6FB /* WorldScene1.swift */,
+				09ED65861C6E36B7004A8CA7 /* WorldScene3.swift */,
 			);
 			name = Imagine;
 			sourceTree = "<group>";
@@ -410,9 +413,10 @@
 				0936816D1C42707B008C6B5D /* Experience.swift in Sources */,
 				093000DA1C4FB39000425BB1 /* ExperimentNode.swift in Sources */,
 				093000DE1C4FC77700425BB1 /* ExperienceNode.swift in Sources */,
-				09ED65871C6E36B7004A8CA7 /* WorldScene1.swift in Sources */,
+				09ED65871C6E36B7004A8CA7 /* WorldScene3.swift in Sources */,
 				09ED657D1C6C87D2004A8CA7 /* Level6.swift in Sources */,
 				093681791C4677A6008C6B5D /* GameStruct.swift in Sources */,
+				093C3F661C6F68B9000BC6FB /* WorldScene1.swift in Sources */,
 				09ED657F1C6D0EE6004A8CA7 /* WorldViewController.swift in Sources */,
 				0961EBB91C63EE2200A4E55C /* Level2.swift in Sources */,
 			);

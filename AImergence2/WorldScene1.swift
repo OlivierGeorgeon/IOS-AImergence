@@ -39,15 +39,6 @@ class WorldScene1: WorldScene0
         }
     }
     
-    /*
-    override func createBodyNode() {
-        bodyNode = SCNNode(geometry: WorldPhenomena.pyramid())
-        bodyNode.position = SCNVector3(-0.5, 0, 0)
-        bodyNode.pivot = SCNMatrix4MakeRotation(Float(M_PI/2), 0, 0, 1)
-        worldNode.addChildNode(bodyNode)
-    }
-*/
-
     func createSwitchNode0() {
         switchNode0 = SCNNode(geometry: WorldPhenomena.cube())
         switchNode0.position = SCNVector3(-1.5, 0, 0)
