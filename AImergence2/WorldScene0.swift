@@ -11,8 +11,11 @@ import SceneKit
 
 class WorldScene0
 {
-    let moveLeft = SCNAction.moveByX(-0.5, y: 0.0, z: 0.0, duration: 0.1)
-    let moveRight = SCNAction.moveByX(0.5, y: 0.0, z: 0.0, duration: 0.1)
+    let moveHalfLeft = SCNAction.moveByX(-0.5, y: 0.0, z: 0.0, duration: 0.1)
+    let moveHalfRight = SCNAction.moveByX(0.5, y: 0.0, z: 0.0, duration: 0.1)
+    
+    var bumpLeft:SCNAction {return SCNAction.sequence([moveHalfLeft, moveHalfRight])}
+    var bumpRight:SCNAction {return SCNAction.sequence([moveHalfRight, moveHalfLeft])}
 
     var worldNode = SCNNode()
     var bodyNode: SCNNode!
@@ -24,12 +27,10 @@ class WorldScene0
         switch experience.experiment.number {
         case 0:
             if neutralNode == nil { createNeutralNode() }
-            //neutralNode.geometry!.firstMaterial!.diffuse.contents = ExperienceNode.colors[experience.colorIndex]
-            bodyNode.runAction(SCNAction.sequence([moveLeft, moveRight]))
+            bodyNode.runAction(bumpLeft)
         case 1:
             if enjoyableNode == nil { createEnjoyableNode() }
-            //enjoyableNode.geometry!.firstMaterial!.diffuse.contents = ExperienceNode.colors[experience.colorIndex]
-            bodyNode.runAction(SCNAction.sequence([moveRight, moveLeft]))
+            bodyNode.runAction(bumpRight)
         default:
             break
         }
@@ -49,7 +50,6 @@ class WorldScene0
     private func createNeutralNode() {
         neutralNode = SCNNode(geometry: WorldPhenomena.sphere())
         neutralNode.position = SCNVector3(-1.5, 0, 0)
-        //neutralNode.pivot = SCNMatrix4MakeRotation(Float(M_PI/2), 0, 0, 1)
         worldNode.addChildNode(neutralNode)
     }
     
