@@ -21,10 +21,23 @@ class WorldViewController: UIViewController {
         delegate?.closeWorldView()
     }
 
+    var worldScene = WorldScene0()
     var delegate: WorldViewControllerDelegate?
+    var level:Int = 0 {
+        didSet {
+            switch level {
+            case 0:
+                worldScene = WorldScene0()
+                sceneSetup()
+            default:
+                worldScene = WorldScene1()
+                sceneSetup()
+            }
+        }
+    }
 
     // Geometry
-    var geometryNode: SCNNode = SCNNode()
+    var worldNode: SCNNode = SCNNode()
     
     // Gestures
     var currentAngle: Float = 0.0
@@ -32,8 +45,6 @@ class WorldViewController: UIViewController {
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         sceneSetup()
-        geometryNode = WorldScene1.allScene()
-        sceneView.scene!.rootNode.addChildNode(geometryNode)
     }
 
     // MARK: Scene
@@ -54,12 +65,19 @@ class WorldViewController: UIViewController {
         
         let cameraNode = SCNNode()
         cameraNode.camera = SCNCamera()
-        cameraNode.position = SCNVector3Make(0, 0, 5)
+        cameraNode.position = SCNVector3Make(0, 1.0, 5)
         scene.rootNode.addChildNode(cameraNode)
         
         sceneView.scene = scene
         //sceneView.autoenablesDefaultLighting = true
         sceneView.allowsCameraControl = true
+
+        worldNode = worldScene.worldNode
+        sceneView.scene!.rootNode.addChildNode(worldNode)
+    }
+    
+    func playExperience(experience: Experience) {
+        worldScene.playExperience(experience)
     }
 
     // MARK: Transition

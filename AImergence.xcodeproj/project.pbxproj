@@ -42,7 +42,8 @@
 		09ED657D1C6C87D2004A8CA7 /* Level6.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09ED657C1C6C87D2004A8CA7 /* Level6.swift */; };
 		09ED657F1C6D0EE6004A8CA7 /* WorldViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09ED657E1C6D0EE6004A8CA7 /* WorldViewController.swift */; };
 		09ED65831C6D11A1004A8CA7 /* WorldPhenomena.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09ED65821C6D11A1004A8CA7 /* WorldPhenomena.swift */; };
-		09ED65851C6D1400004A8CA7 /* WorldScene1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09ED65841C6D1400004A8CA7 /* WorldScene1.swift */; };
+		09ED65851C6D1400004A8CA7 /* WorldScene0.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09ED65841C6D1400004A8CA7 /* WorldScene0.swift */; };
+		09ED65871C6E36B7004A8CA7 /* WorldScene1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09ED65861C6E36B7004A8CA7 /* WorldScene1.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -108,7 +109,8 @@
 		09ED657C1C6C87D2004A8CA7 /* Level6.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Level6.swift; sourceTree = "<group>"; };
 		09ED657E1C6D0EE6004A8CA7 /* WorldViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorldViewController.swift; sourceTree = "<group>"; };
 		09ED65821C6D11A1004A8CA7 /* WorldPhenomena.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorldPhenomena.swift; sourceTree = "<group>"; };
-		09ED65841C6D1400004A8CA7 /* WorldScene1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorldScene1.swift; sourceTree = "<group>"; };
+		09ED65841C6D1400004A8CA7 /* WorldScene0.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorldScene0.swift; sourceTree = "<group>"; };
+		09ED65861C6E36B7004A8CA7 /* WorldScene1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorldScene1.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -160,13 +162,13 @@
 			isa = PBXGroup;
 			children = (
 				093681421C417378008C6B5D /* Main.storyboard */,
+				093681401C417378008C6B5D /* GameViewController.swift */,
 				0961EBB61C63D16900A4E55C /* Levels */,
 				09ED65801C6D0EF5004A8CA7 /* Help */,
-				09ED65811C6D0F27004A8CA7 /* World */,
+				09ED65811C6D0F27004A8CA7 /* Imagine */,
 				0961EBB71C63D19E00A4E55C /* Nodes */,
 				0936816E1C42708E008C6B5D /* Experiment.swift */,
 				0936816C1C42707B008C6B5D /* Experience.swift */,
-				093681401C417378008C6B5D /* GameViewController.swift */,
 				0936813A1C417378008C6B5D /* AppDelegate.swift */,
 				0936817A1C4696AB008C6B5D /* HomeScene.swift */,
 				0936817C1C46A86C008C6B5D /* HomeStruct.swift */,
@@ -238,14 +240,15 @@
 			name = Help;
 			sourceTree = "<group>";
 		};
-		09ED65811C6D0F27004A8CA7 /* World */ = {
+		09ED65811C6D0F27004A8CA7 /* Imagine */ = {
 			isa = PBXGroup;
 			children = (
 				09ED657E1C6D0EE6004A8CA7 /* WorldViewController.swift */,
 				09ED65821C6D11A1004A8CA7 /* WorldPhenomena.swift */,
-				09ED65841C6D1400004A8CA7 /* WorldScene1.swift */,
+				09ED65841C6D1400004A8CA7 /* WorldScene0.swift */,
+				09ED65861C6E36B7004A8CA7 /* WorldScene1.swift */,
 			);
-			name = World;
+			name = Imagine;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -401,12 +404,13 @@
 				093000DC1C4FB62C00425BB1 /* ExperienceStruct.swift in Sources */,
 				093681711C4270A5008C6B5D /* Level1.swift in Sources */,
 				0936813B1C417378008C6B5D /* AppDelegate.swift in Sources */,
-				09ED65851C6D1400004A8CA7 /* WorldScene1.swift in Sources */,
+				09ED65851C6D1400004A8CA7 /* WorldScene0.swift in Sources */,
 				0936817B1C4696AB008C6B5D /* HomeScene.swift in Sources */,
 				096F5CB91C56D7240041EA5F /* Level7.swift in Sources */,
 				0936816D1C42707B008C6B5D /* Experience.swift in Sources */,
 				093000DA1C4FB39000425BB1 /* ExperimentNode.swift in Sources */,
 				093000DE1C4FC77700425BB1 /* ExperienceNode.swift in Sources */,
+				09ED65871C6E36B7004A8CA7 /* WorldScene1.swift in Sources */,
 				09ED657D1C6C87D2004A8CA7 /* Level6.swift in Sources */,
 				093681791C4677A6008C6B5D /* GameStruct.swift in Sources */,
 				09ED657F1C6D0EE6004A8CA7 /* WorldViewController.swift in Sources */,

@@ -8,10 +8,17 @@
 
 import SpriteKit
 
+protocol GameSceneDelegate
+{
+    func playExperience(experience: Experience)
+}
+
 class GameScene: SKScene {
     
     let gameStruct:GameStruct
     let level:Level0
+    
+    var gameSceneDelegate: GameSceneDelegate!
     
     var cameraNode:SKCameraNode!
     
@@ -204,6 +211,8 @@ class GameScene: SKScene {
         
         let(experience, score) = level.play(experiment)
         self.score = score
+        
+        gameSceneDelegate.playExperience(experience)
         
         for node in experienceNodes {
             if node.isObsolete(clock) {

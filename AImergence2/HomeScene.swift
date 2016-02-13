@@ -23,7 +23,7 @@ class HomeScene: SKScene {
     
     var buttonNodes = [SKNode]()
     
-    var cancelScene:GameScene?
+    var previousGameScene:GameScene?
 
     override init() {
         super.init(size: homeStruct.portraitSceneSize)
@@ -83,9 +83,10 @@ class HomeScene: SKScene {
                     if let ln = levelNode.userData?["level"] as! Int? {
                         userDelegate?.updateLevel(ln)
                         let gameScene = GameStruct.createGameScene(ln)
+                        gameScene.gameSceneDelegate = previousGameScene?.gameSceneDelegate
                         self.view?.presentScene(gameScene, transition: homeStruct.transitionOut)
                     } else {
-                        self.view?.presentScene(cancelScene!, transition: homeStruct.transitionOut)
+                        self.view?.presentScene(previousGameScene!, transition: homeStruct.transitionOut)
                     }
                 }
             }

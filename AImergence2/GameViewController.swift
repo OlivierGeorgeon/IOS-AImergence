@@ -9,17 +9,18 @@
 import UIKit
 import SpriteKit
 
-class GameViewController: UIViewController, HelpViewControllerDelegate, HomeSceneDelegate, WorldViewControllerDelegate {
+class GameViewController: UIViewController, GameSceneDelegate, HelpViewControllerDelegate, HomeSceneDelegate, WorldViewControllerDelegate {
     
     let gameStruct = GameStruct()
     
-    var helpViewControler: HelpViewController?
-    var worldViewControler: WorldViewController?
+    var helpViewController: HelpViewController?
+    var worldViewController: WorldViewController?
     
     var level = 0 {
         didSet {
             levelButtonOutlet.setTitle(NSLocalizedString("Level", comment: "") + " \(level)", forState: .Normal)
-            helpViewControler?.level = level
+            helpViewController?.level = level
+            worldViewController?.level = level
         }
     }
     
@@ -28,6 +29,7 @@ class GameViewController: UIViewController, HelpViewControllerDelegate, HomeScen
         super.viewDidLoad()
         
         let gameScene = GameScene(level: Level0(), gameStruct: gameStruct)
+        gameScene.gameSceneDelegate = self
         let skView = view as! SKView
         skView.showsFPS = true
         skView.showsNodeCount = true
@@ -81,7 +83,7 @@ class GameViewController: UIViewController, HelpViewControllerDelegate, HomeScen
         let skView = view as! SKView
         if let scene  = skView.scene as? GameScene {
             let homeScene = HomeScene()
-            homeScene.cancelScene = scene
+            homeScene.previousGameScene = scene
             homeScene.userDelegate = self
             skView.presentScene(homeScene, transition: gameStruct.transitionDown)
         }
@@ -94,6 +96,7 @@ class GameViewController: UIViewController, HelpViewControllerDelegate, HomeScen
     }
     
     @IBAction func worldButton(sender: UIButton) {
+        container.hidden = true
         WorldViewContainer.hidden = !WorldViewContainer.hidden
     }
     
@@ -106,6 +109,7 @@ class GameViewController: UIViewController, HelpViewControllerDelegate, HomeScen
         if level < HomeStruct.numberOfLevels {
             level++
             let nextGameScene = GameStruct.createGameScene(level)
+            nextGameScene.gameSceneDelegate = self
             skView.presentScene(nextGameScene, transition: gameStruct.transitionLeft)
         } else {
             skView.scene?.camera?.runAction(gameStruct.actionMoveCameraRightLeft)
@@ -117,6 +121,7 @@ class GameViewController: UIViewController, HelpViewControllerDelegate, HomeScen
         if level > 0 {
             level--
             let nextGameScene = GameStruct.createGameScene(level)
+            nextGameScene.gameSceneDelegate = self
             skView.presentScene(nextGameScene, transition: gameStruct.transitionRight)
         } else {
             skView.scene?.camera?.runAction(gameStruct.actionMoveCameraLeftRight)
@@ -147,15 +152,19 @@ class GameViewController: UIViewController, HelpViewControllerDelegate, HomeScen
         if let identifier = segue.identifier {
             switch identifier {
             case "ShowHelp":
-                helpViewControler = segue.destinationViewController as? HelpViewController
-                helpViewControler!.delegate = self
+                helpViewController = segue.destinationViewController as? HelpViewController
+                helpViewController!.delegate = self
             case "ShowWorld":
-                worldViewControler = segue.destinationViewController as? WorldViewController
-                worldViewControler!.delegate = self
+                worldViewController = segue.destinationViewController as? WorldViewController
+                worldViewController!.delegate = self
             default:
                 break
             }
         }
+    }
+    
+    func playExperience(experience: Experience) {
+        worldViewController?.playExperience(experience)
     }
     
     func closeHelpView() {

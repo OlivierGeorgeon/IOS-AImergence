@@ -35,9 +35,9 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jqj-ax-hzY">
-                                <rect key="frame" x="535" y="559" width="45" height="33"/>
+                                <rect key="frame" x="519" y="559" width="61" height="33"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <state key="normal" title="World"/>
+                                <state key="normal" title="Imagine"/>
                                 <connections>
                                     <action selector="worldButton:" destination="BV1-FR-VrT" eventType="touchUpInside" id="7FI-Fj-E6g"/>
                                 </connections>
@@ -185,6 +185,10 @@
         <scene sceneID="ud3-8c-Jm6">
             <objects>
                 <viewController id="S9v-w3-pyN" customClass="WorldViewController" customModule="AImergence2" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="VEL-m5-zKm"/>
+                        <viewControllerLayoutGuide type="bottom" id="a8D-PE-kOS"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Oej-sS-MrJ" customClass="SCNView">
                         <rect key="frame" x="0.0" y="0.0" width="350" height="420"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -196,11 +200,17 @@
                                     <action selector="closeButton:" destination="S9v-w3-pyN" eventType="touchUpInside" id="fil-gU-POB"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ceU-MJ-Rek">
+                                <rect key="frame" x="24" y="0.0" width="30" height="30"/>
+                                <state key="normal" title="Else"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="ceU-MJ-Rek" firstAttribute="leading" secondItem="Oej-sS-MrJ" secondAttribute="leadingMargin" constant="8" id="Lro-KH-J8c"/>
                             <constraint firstAttribute="trailingMargin" secondItem="T1U-Yf-6NB" secondAttribute="trailing" constant="8" id="RmN-O8-U7h"/>
                             <constraint firstItem="T1U-Yf-6NB" firstAttribute="top" secondItem="Oej-sS-MrJ" secondAttribute="topMargin" id="jWi-cq-msQ"/>
+                            <constraint firstItem="ceU-MJ-Rek" firstAttribute="baseline" secondItem="T1U-Yf-6NB" secondAttribute="baseline" id="mV0-Bb-g3i"/>
                         </constraints>
                     </view>
                     <connections>
