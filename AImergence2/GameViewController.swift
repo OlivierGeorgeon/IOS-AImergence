@@ -9,7 +9,9 @@
 import UIKit
 import SpriteKit
 
-class GameViewController: UIViewController, GameSceneDelegate, HelpViewControllerDelegate, HomeSceneDelegate, WorldViewControllerDelegate {
+class GameViewController: UIViewController, GameSceneDelegate, HomeSceneDelegate, HelpViewControllerDelegate, WorldViewControllerDelegate
+{
+    @IBOutlet weak var sceneView: SKView!
     
     let gameStruct = GameStruct()
     
@@ -30,11 +32,10 @@ class GameViewController: UIViewController, GameSceneDelegate, HelpViewControlle
         
         let gameScene = GameScene(level: Level0(), gameStruct: gameStruct)
         gameScene.gameSceneDelegate = self
-        let skView = view as! SKView
-        skView.showsFPS = true
-        skView.showsNodeCount = true
-        skView.ignoresSiblingOrder = true
-        skView.presentScene(gameScene)
+        sceneView.showsFPS = true
+        sceneView.showsNodeCount = true
+        sceneView.ignoresSiblingOrder = true
+        sceneView.presentScene(gameScene)
         
         let swipeLeft = UISwipeGestureRecognizer(target:self, action: "swipeLeft:")
         swipeLeft.direction = .Left
@@ -55,13 +56,12 @@ class GameViewController: UIViewController, GameSceneDelegate, HelpViewControlle
     }
     
     override func willRotateToInterfaceOrientation(toInterfaceOrientation: UIInterfaceOrientation, duration: NSTimeInterval) {
-        let skView = view as! SKView
         if toInterfaceOrientation.isLandscape {
-            skView.scene?.size = gameStruct.landscapeSceneSize
-            skView.scene?.camera?.position =  gameStruct.landscapeCameraPosition
+            sceneView.scene?.size = gameStruct.landscapeSceneSize
+            sceneView.scene?.camera?.position =  gameStruct.landscapeCameraPosition
         } else {
-            skView.scene?.size = gameStruct.portraitSceneSize
-            skView.scene?.camera?.position =  gameStruct.portraitCameraPosition
+            sceneView.scene?.size = gameStruct.portraitSceneSize
+            sceneView.scene?.camera?.position =  gameStruct.portraitCameraPosition
         }
         
     }
@@ -80,18 +80,19 @@ class GameViewController: UIViewController, GameSceneDelegate, HelpViewControlle
     
     @IBAction func levelButton(sender: UIButton) {
         container.hidden = true
-        let skView = view as! SKView
-        if let scene  = skView.scene as? GameScene {
+        WorldViewContainer.hidden = true
+        if let scene  = sceneView.scene as? GameScene {
             let homeScene = HomeScene()
             homeScene.previousGameScene = scene
             homeScene.userDelegate = self
-            skView.presentScene(homeScene, transition: gameStruct.transitionDown)
+            sceneView.presentScene(homeScene, transition: gameStruct.transitionDown)
         }
     }
     
     @IBOutlet weak var levelButtonOutlet: UIButton!
     
     @IBAction func hepButton(sender: UIButton) {
+        WorldViewContainer.hidden = true
         container.hidden = !container.hidden
     }
     
@@ -105,32 +106,29 @@ class GameViewController: UIViewController, GameSceneDelegate, HelpViewControlle
     @IBOutlet weak var WorldViewContainer: UIView!
     
     func swipeLeft(gesture:UISwipeGestureRecognizer) {
-        let skView = view as! SKView
         if level < HomeStruct.numberOfLevels {
             level++
             let nextGameScene = GameStruct.createGameScene(level)
             nextGameScene.gameSceneDelegate = self
-            skView.presentScene(nextGameScene, transition: gameStruct.transitionLeft)
+            sceneView.presentScene(nextGameScene, transition: gameStruct.transitionLeft)
         } else {
-            skView.scene?.camera?.runAction(gameStruct.actionMoveCameraRightLeft)
+            sceneView.scene?.camera?.runAction(gameStruct.actionMoveCameraRightLeft)
         }
     }
     
     func swipeRight(gesture:UISwipeGestureRecognizer) {
-        let skView = view as! SKView
         if level > 0 {
             level--
             let nextGameScene = GameStruct.createGameScene(level)
             nextGameScene.gameSceneDelegate = self
-            skView.presentScene(nextGameScene, transition: gameStruct.transitionRight)
+            sceneView.presentScene(nextGameScene, transition: gameStruct.transitionRight)
         } else {
-            skView.scene?.camera?.runAction(gameStruct.actionMoveCameraLeftRight)
+            sceneView.scene?.camera?.runAction(gameStruct.actionMoveCameraLeftRight)
         }
     }
     
     func swipeUp(gesture:UISwipeGestureRecognizer) {
-        let skView = view as! SKView
-        if let scene = skView.scene as? GameScene {
+        if let scene = sceneView.scene as? GameScene {
             if scene.camera?.position.y > gameStruct.portraitSceneSize.height {
                 scene.camera?.runAction(gameStruct.actionMoveCameraDown)
             } else {
@@ -140,8 +138,7 @@ class GameViewController: UIViewController, GameSceneDelegate, HelpViewControlle
     }
     
     func swipeDown(gesture:UISwipeGestureRecognizer) {
-        let skView = view as! SKView
-        if let scene = skView.scene as? GameScene {
+        if let scene = sceneView.scene as? GameScene {
             if scene.camera?.position.y < 7 * gameStruct.portraitSceneSize.height {
                 scene.camera?.runAction(gameStruct.actionMoveCameraUp)
             }
@@ -163,19 +160,23 @@ class GameViewController: UIViewController, GameSceneDelegate, HelpViewControlle
         }
     }
     
+    // Implement GameSceneDelegate
     func playExperience(experience: Experience) {
         worldViewController?.playExperience(experience)
     }
     
+    //Implement HomeSceneDelegate
+    func updateLevel(levelNumber: Int) {
+        self.level = levelNumber
+    }
+
+    // Implement HelpViewControllerDelegate
     func closeHelpView() {
         container.hidden = true
     }
     
+    // Implement WorldViewControllerDelegate
     func closeWorldView() {
         WorldViewContainer.hidden = true
-    }
-    
-    func updateLevel(levelNumber: Int) {
-        self.level = levelNumber
     }
 }

@@ -17,33 +17,12 @@ protocol WorldViewControllerDelegate
 class WorldViewController: UIViewController {
 
     @IBOutlet weak var sceneView: SCNView!
-    @IBAction func closeButton(sender: UIButton) {
-        delegate?.closeWorldView()
-    }
-
-    var worldScene = WorldScene0()
+    @IBAction func closeButton(sender: UIButton) { delegate?.closeWorldView() }
+    @IBAction func elseButton(sender: UIButton) { imagineModelShift() }
+    
+    var imagineModel = WorldScene0()
     var delegate: WorldViewControllerDelegate?
-    var level:Int = 0 {
-        didSet {
-            switch level {
-            case 0:
-                worldScene = WorldScene0()
-                sceneSetup()
-            case 1:
-                worldScene = WorldScene1()
-                sceneSetup()
-            case 2:
-                worldScene = WorldScene2()
-                sceneSetup()
-            case 3:
-                worldScene = WorldScene3()
-                sceneSetup()
-            default:
-                worldScene = WorldScene0()
-                sceneSetup()
-            }
-        }
-    }
+    var level:Int = 0 { didSet { imagineModelShift() } }
 
     // Geometry
     var worldNode: SCNNode = SCNNode()
@@ -54,6 +33,26 @@ class WorldViewController: UIViewController {
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         sceneSetup()
+    }
+    
+    func imagineModelShift(imagineNumber: Int = 0) {
+        switch level {
+        case 0:
+            imagineModel = WorldScene0()
+            sceneSetup()
+        case 1:
+            imagineModel = WorldScene1()
+            sceneSetup()
+        case 2:
+            imagineModel = WorldScene2()
+            sceneSetup()
+        case 3:
+            imagineModel = WorldScene3()
+            sceneSetup()
+        default:
+            imagineModel = WorldScene0()
+            sceneSetup()
+        }
     }
 
     // MARK: Scene
@@ -77,16 +76,22 @@ class WorldViewController: UIViewController {
         cameraNode.position = SCNVector3Make(0, 1.0, 5)
         scene.rootNode.addChildNode(cameraNode)
         
+        let originNode = SCNNode()
+        scene.rootNode.addChildNode(originNode)
+        //let constraint = SCNLookAtConstraint(target: originNode)
+        //constraint.gimbalLockEnabled = true
+        //cameraNode.constraints = [constraint]
+        
         sceneView.scene = scene
         //sceneView.autoenablesDefaultLighting = true
         sceneView.allowsCameraControl = true
 
-        worldNode = worldScene.worldNode
+        worldNode = imagineModel.worldNode
         sceneView.scene!.rootNode.addChildNode(worldNode)
     }
     
     func playExperience(experience: Experience) {
-        worldScene.playExperience(experience)
+        imagineModel.playExperience(experience)
     }
 
     // MARK: Transition

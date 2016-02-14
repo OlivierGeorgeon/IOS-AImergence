@@ -12,48 +12,29 @@ import SceneKit
 class WorldScene2: WorldScene1
 {
         
-    let moveHalfUp = SCNAction.moveByX(0.0, y: 0.5, z: 0.0, duration: 0.1)
+    let moveHalfUp   = SCNAction.moveByX(0.0, y:  0.5, z: 0.0, duration: 0.1)
     let moveHalfdown = SCNAction.moveByX(0.0, y: -0.5, z: 0.0, duration: 0.1)
     
     var jump:SCNAction { return SCNAction.sequence([moveHalfUp, moveHalfdown]) }
     
-    var up = false
-
     override func playExperience(experience: Experience)
     {
         if bodyNode == nil { createBodyNode() }
-        switch experience.experiment.number
-        {
-        case 0:
+        switch experience.hashValue {
+        case 00:
             if switchNode0 == nil { createSwitchNode0() }
-            if experience.resultNumber == 0 {
-                bodyNode.runAction(bumpLeft)
-            } else {
-                if up {
-                    bodyNode.runAction(SCNAction.sequence([rotateToLeft, bumpLeftRotate]))
-                    up = false
-                } else {
-                    bodyNode.runAction(bumpLeftRotate)
-                }
-            }
-        case 1:
+            bodyNode.runAction(rotateToRightBumpLeft)
+        case 01:
+            if switchNode0 == nil { createSwitchNode0() }
+            bodyNode.runAction(rotateToLeftBumpLeftRotateToRight)
+        case 10:
             if switchNode1 == nil { createSwitchNode1() }
-            if experience.resultNumber == 0 {
-                bodyNode.runAction(bumpRight)
-            } else {
-                if up {
-                    bodyNode.runAction(SCNAction.sequence([rotateToRight, bumpRightRotate]))
-                    up = false
-                } else {
-                    bodyNode.runAction(bumpRightRotate)
-                }
-            }
-        case 2:
-            if up { bodyNode.runAction(jump) }
-            else {
-                bodyNode.runAction(SCNAction.sequence([rotateToUp, jump]))
-                up = true
-            }
+            bodyNode.runAction(rotateToLeftbumpRight)
+        case 11:
+            if switchNode1 == nil { createSwitchNode1() }
+            bodyNode.runAction(rotateToRightbumpRightRotateToLeft)
+        case 20, 21:
+            bodyNode.runAction(SCNAction.group([rotateToUp, jump]))
         default:
             break
         }

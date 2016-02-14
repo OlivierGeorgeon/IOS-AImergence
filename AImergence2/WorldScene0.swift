@@ -11,10 +11,10 @@ import SceneKit
 
 class WorldScene0
 {
-    let moveHalfLeft = SCNAction.moveByX(-0.5, y: 0.0, z: 0.0, duration: 0.1)
-    let moveHalfRight = SCNAction.moveByX(0.5, y: 0.0, z: 0.0, duration: 0.1)
+    let moveHalfLeft  = SCNAction.moveByX(-0.5, y: 0.0, z: 0.0, duration: 0.1)
+    let moveHalfRight = SCNAction.moveByX( 0.5, y: 0.0, z: 0.0, duration: 0.1)
     
-    var bumpLeft:SCNAction {return SCNAction.sequence([moveHalfLeft, moveHalfRight])}
+    var bumpLeft:SCNAction  {return SCNAction.sequence([moveHalfLeft, moveHalfRight])}
     var bumpRight:SCNAction {return SCNAction.sequence([moveHalfRight, moveHalfLeft])}
 
     var worldNode = SCNNode()
