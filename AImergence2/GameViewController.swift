@@ -25,7 +25,7 @@ class GameViewController: UIViewController, GameSceneDelegate, HomeSceneDelegate
         didSet {
             levelButton.setTitle(NSLocalizedString("Level", comment: "") + " \(level)", forState: .Normal)
             if !helpViewControllerContainer.hidden { helpViewController?.displayLevel(level) }
-            imagineViewController?.displayLevel(level)
+            if !imagineViewControllerContainer.hidden { imagineViewController?.displayLevel(level) }
         }
     }
     
@@ -58,17 +58,6 @@ class GameViewController: UIViewController, GameSceneDelegate, HomeSceneDelegate
         return true
     }
     
-    override func willRotateToInterfaceOrientation(toInterfaceOrientation: UIInterfaceOrientation, duration: NSTimeInterval) {
-        if toInterfaceOrientation.isLandscape {
-            sceneView.scene?.size = gameStruct.landscapeSceneSize
-            sceneView.scene?.camera?.position =  gameStruct.landscapeCameraPosition
-        } else {
-            sceneView.scene?.size = gameStruct.portraitSceneSize
-            sceneView.scene?.camera?.position =  gameStruct.portraitCameraPosition
-        }
-        
-    }
-
     override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
         if UIDevice.currentDevice().userInterfaceIdiom == .Phone {
             return .AllButUpsideDown
@@ -79,6 +68,11 @@ class GameViewController: UIViewController, GameSceneDelegate, HomeSceneDelegate
 
     override func prefersStatusBarHidden() -> Bool {
         return true
+    }
+    
+    override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
+        if let gameScene = sceneView.scene as? GameScene { gameScene.fitToParent(size) }
+        super.viewWillTransitionToSize(size, withTransitionCoordinator: coordinator)
     }
     
     @IBAction func levelButton(sender: UIButton) {
@@ -100,8 +94,13 @@ class GameViewController: UIViewController, GameSceneDelegate, HomeSceneDelegate
     
     @IBAction func worldButton(sender: UIButton) {
         helpViewControllerContainer.hidden = true
-        imagineViewController?.displayLevel(level)
-        imagineViewControllerContainer.hidden = !imagineViewControllerContainer.hidden
+        if imagineViewControllerContainer.hidden {
+            imagineViewController?.displayLevel(level)
+            imagineViewControllerContainer.hidden = false
+        } else {
+            imagineViewControllerContainer.hidden = true
+            imagineViewController?.sceneView.scene = nil
+        }
     }
     
     

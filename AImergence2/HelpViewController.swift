@@ -50,10 +50,14 @@ class HelpViewController: UIViewController {
         textView?.text = helpBlobArray[level]
     }
     
-    override func didRotateFromInterfaceOrientation(fromInterfaceOrientation: UIInterfaceOrientation) {
+    override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
         // seems to fix a bug that the textview won't display entirely
-        let temp = textView.text
-        textView.text = ""
-        textView.text = temp
+        coordinator.animateAlongsideTransition({ (UIViewControllerTransitionCoordinatorContext) -> Void in }, completion: { (UIViewControllerTransitionCoordinatorContext) -> Void in
+            let temp = self.textView.text
+            self.textView.text = ""
+            self.textView.text = temp
+            print("rotation completed")
+        })
     }
+  
 }

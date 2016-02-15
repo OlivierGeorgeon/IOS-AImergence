@@ -115,19 +115,11 @@ class GameScene: SKScene {
         /* Setup your scene here */
         
         cameraNode = SKCameraNode()
-        
-        var size = gameStruct.portraitSceneSize
-        var cameraPosition = gameStruct.portraitCameraPosition
-        if UIDevice.currentDevice().orientation == .LandscapeRight ||
-            UIDevice.currentDevice().orientation == .LandscapeLeft {
-            size = gameStruct.landscapeSceneSize
-            cameraPosition = gameStruct.landscapeCameraPosition
-        }
-        self.size = size
-        cameraNode.position = cameraPosition
-        camera = cameraNode
+        self.camera = cameraNode
         self.addChild(cameraNode)
         
+        fitToParent(view.frame.size)
+
         for recognizer in view.gestureRecognizers ?? [] {
             if recognizer is UITapGestureRecognizer || recognizer is UILongPressGestureRecognizer {
                 view.removeGestureRecognizer(recognizer)
@@ -138,6 +130,16 @@ class GameScene: SKScene {
         let longPressGestureRecognizer = UILongPressGestureRecognizer(target: self, action: "longPress:")
         view.addGestureRecognizer(longPressGestureRecognizer)
 
+    }
+    
+    func fitToParent(parentSize: CGSize) {
+        if parentSize.height < parentSize.width {
+            self.size = gameStruct.landscapeSceneSize
+            camera?.position =  gameStruct.landscapeCameraPosition
+        } else {
+            self.size = gameStruct.portraitSceneSize
+            camera?.position =  gameStruct.portraitCameraPosition
+        }
     }
     
     func tap(recognizer: UITapGestureRecognizer)
