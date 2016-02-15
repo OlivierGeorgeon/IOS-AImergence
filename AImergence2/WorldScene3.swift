@@ -22,21 +22,27 @@ class WorldScene3: WorldScene1
         case (00, 0):
             if switchNode0 == nil { createSwitchNode0() }
             bodyNode.runAction(rotateToRightBumpLeft)
+            createTraceNode(experience, position: SCNVector3( -1.0, 0.0, 0.0))
         case (00, 1):
             bodyNode.runAction(moveLeft)
             bodyCell = 0
+            createTraceNode(experience, position: SCNVector3( 1.0, 0.0, 0.0))
         case (01, 0):
             if switchNode0 == nil { createSwitchNode0() }
             bodyNode.runAction(rotateToLeftBumpLeftRotateToRight)
+            createTraceNode(experience, position: SCNVector3( -1.0, 0.0, 0.0))
         case (10, 0):
             bodyNode.runAction(moveRight)
             bodyCell = 1
+            createTraceNode(experience, position: SCNVector3( 0.0, 0.0, 0.0))
         case (10, 1):
             if switchNode1 == nil { createSwitchNode1() }
             bodyNode.runAction(rotateToLeftbumpRight)
+            createTraceNode(experience, position: SCNVector3( 2.0, 0.0, 0.0))
         case (11, 1):
             if switchNode1 == nil { createSwitchNode1() }
             bodyNode.runAction(rotateToRightbumpRightRotateToLeft)
+            createTraceNode(experience, position: SCNVector3( 2.0, 0.0, 0.0))
         default:
             break
         }

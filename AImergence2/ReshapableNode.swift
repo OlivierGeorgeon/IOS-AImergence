@@ -11,16 +11,15 @@ import SpriteKit
 class ReshapableNode: SKShapeNode
 {
 
-    static let paths = [{UIBezierPath(ovalInRect: $0).CGPath},{UIBezierPath(rect: $0).CGPath}, triangle ]
+    static let paths = [{UIBezierPath(ovalInRect: $0)},{UIBezierPath(rect: $0)}, triangle ]
     static let actionReshape = SKAction.customActionWithDuration(0, actionBlock: changeShape)
 
     var shapeIndex:Int {return 0}
     var rect:CGRect {return CGRect()}
 
     func reshape() {
-        self.path = ReshapableNode.paths[shapeIndex](rect)
+        self.path = ReshapableNode.paths[shapeIndex](rect).CGPath
     }
-    
 }
 
 private func changeShape(node: SKNode, elapsedTime:CGFloat) -> Void {
@@ -29,12 +28,12 @@ private func changeShape(node: SKNode, elapsedTime:CGFloat) -> Void {
     }
 }
 
-private func triangle(rect: CGRect) -> CGPath {
+private func triangle(rect: CGRect) -> UIBezierPath {
     let path = UIBezierPath()
     path.moveToPoint(CGPoint(x: rect.minX, y: rect.maxY))
     path.addLineToPoint(CGPoint(x: rect.maxX, y: rect.maxY))
     path.addLineToPoint(CGPoint(x:0, y: rect.minY))
     path.closePath()
-    return path.CGPath
+    return path
 }
 

@@ -84,9 +84,9 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="WorldViewContainer" destination="7gD-Dy-RkZ" id="ZWi-gh-1Su"/>
-                        <outlet property="container" destination="1qa-vJ-nr5" id="8UO-Bl-eRo"/>
-                        <outlet property="levelButtonOutlet" destination="7U6-td-9dq" id="P8N-6p-6y5"/>
+                        <outlet property="helpViewControllerContainer" destination="1qa-vJ-nr5" id="hRc-rm-cpO"/>
+                        <outlet property="imagineViewControllerContainer" destination="7gD-Dy-RkZ" id="2al-92-iNT"/>
+                        <outlet property="levelButton" destination="7U6-td-9dq" id="KDa-Fa-MIr"/>
                         <outlet property="sceneView" destination="3se-qz-xqx" id="w9Y-Ss-33w"/>
                     </connections>
                 </viewController>

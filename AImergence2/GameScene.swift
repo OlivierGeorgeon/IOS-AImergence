@@ -81,7 +81,7 @@ class GameScene: SKScene {
 
         shapePopupNode = gameStruct.createShapePopup()
         for i in 0..<ReshapableNode.paths.count {
-            let shapeNode = SKShapeNode(path: ReshapableNode.paths[i](CGRect(x: -40, y: -40, width: 80, height: 80)))
+            let shapeNode = SKShapeNode(path: ReshapableNode.paths[i](CGRect(x: -40, y: -40, width: 80, height: 80)).CGPath)
             shapeNode.lineWidth = 3
             shapeNode.strokeColor = UIColor.grayColor()
             shapeNode.fillColor = UIColor.whiteColor()

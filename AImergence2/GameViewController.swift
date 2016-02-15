@@ -12,17 +12,20 @@ import SpriteKit
 class GameViewController: UIViewController, GameSceneDelegate, HomeSceneDelegate, HelpViewControllerDelegate, WorldViewControllerDelegate
 {
     @IBOutlet weak var sceneView: SKView!
+    @IBOutlet weak var helpViewControllerContainer: UIView!
+    @IBOutlet weak var imagineViewControllerContainer: UIView!
+    @IBOutlet weak var levelButton: UIButton!
     
     let gameStruct = GameStruct()
     
-    var helpViewController: HelpViewController?
-    var worldViewController: WorldViewController?
+    var helpViewController:  HelpViewController?
+    var imagineViewController: WorldViewController?
     
     var level = 0 {
         didSet {
-            levelButtonOutlet.setTitle(NSLocalizedString("Level", comment: "") + " \(level)", forState: .Normal)
-            helpViewController?.level = level
-            worldViewController?.level = level
+            levelButton.setTitle(NSLocalizedString("Level", comment: "") + " \(level)", forState: .Normal)
+            if !helpViewControllerContainer.hidden { helpViewController?.displayLevel(level) }
+            imagineViewController?.displayLevel(level)
         }
     }
     
@@ -79,8 +82,8 @@ class GameViewController: UIViewController, GameSceneDelegate, HomeSceneDelegate
     }
     
     @IBAction func levelButton(sender: UIButton) {
-        container.hidden = true
-        WorldViewContainer.hidden = true
+        helpViewControllerContainer.hidden = true
+        imagineViewControllerContainer.hidden = true
         if let scene  = sceneView.scene as? GameScene {
             let homeScene = HomeScene()
             homeScene.previousGameScene = scene
@@ -89,21 +92,18 @@ class GameViewController: UIViewController, GameSceneDelegate, HomeSceneDelegate
         }
     }
     
-    @IBOutlet weak var levelButtonOutlet: UIButton!
-    
     @IBAction func hepButton(sender: UIButton) {
-        WorldViewContainer.hidden = true
-        container.hidden = !container.hidden
+        imagineViewControllerContainer.hidden = true
+        helpViewController?.displayLevel(level)
+        helpViewControllerContainer.hidden = !helpViewControllerContainer.hidden
     }
     
     @IBAction func worldButton(sender: UIButton) {
-        container.hidden = true
-        WorldViewContainer.hidden = !WorldViewContainer.hidden
+        helpViewControllerContainer.hidden = true
+        imagineViewController?.displayLevel(level)
+        imagineViewControllerContainer.hidden = !imagineViewControllerContainer.hidden
     }
     
-    @IBOutlet weak var container: UIView!
-    
-    @IBOutlet weak var WorldViewContainer: UIView!
     
     func swipeLeft(gesture:UISwipeGestureRecognizer) {
         if level < HomeStruct.numberOfLevels {
@@ -152,8 +152,8 @@ class GameViewController: UIViewController, GameSceneDelegate, HomeSceneDelegate
                 helpViewController = segue.destinationViewController as? HelpViewController
                 helpViewController!.delegate = self
             case "ShowWorld":
-                worldViewController = segue.destinationViewController as? WorldViewController
-                worldViewController!.delegate = self
+                imagineViewController = segue.destinationViewController as? WorldViewController
+                imagineViewController!.delegate = self
             default:
                 break
             }
@@ -162,7 +162,7 @@ class GameViewController: UIViewController, GameSceneDelegate, HomeSceneDelegate
     
     // Implement GameSceneDelegate
     func playExperience(experience: Experience) {
-        worldViewController?.playExperience(experience)
+        imagineViewController?.playExperience(experience)
     }
     
     //Implement HomeSceneDelegate
@@ -171,12 +171,13 @@ class GameViewController: UIViewController, GameSceneDelegate, HomeSceneDelegate
     }
 
     // Implement HelpViewControllerDelegate
-    func closeHelpView() {
-        container.hidden = true
+    func hideHelpViewControllerContainer() {
+        helpViewControllerContainer.hidden = true
     }
     
     // Implement WorldViewControllerDelegate
-    func closeWorldView() {
-        WorldViewContainer.hidden = true
+    func hideImagineViewControllerContainer() {
+        imagineViewControllerContainer.hidden = true
+        imagineViewController!.sceneView.scene = nil
     }
 }

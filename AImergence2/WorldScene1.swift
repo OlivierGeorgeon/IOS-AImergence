@@ -31,15 +31,19 @@ class WorldScene1: WorldScene0
         case 00:
             if switchNode0 == nil { createSwitchNode0() }
             bodyNode.runAction(rotateToRightBumpLeft)
+            createTraceNode(experience, position: SCNVector3( -1.0, 0.0, 0.0))
         case 01:
             if switchNode0 == nil { createSwitchNode0() }
             bodyNode.runAction(rotateToLeftBumpLeftRotateToRight)
+            createTraceNode(experience, position: SCNVector3( -1.0, 0.0, 0.0))
         case 10:
             if switchNode1 == nil { createSwitchNode1() }
             bodyNode.runAction(rotateToLeftbumpRight)
+            createTraceNode(experience, position: SCNVector3( 1.0, 0.0, 0.0))
         case 11:
             if switchNode1 == nil { createSwitchNode1() }
             bodyNode.runAction(rotateToRightbumpRightRotateToLeft)
+            createTraceNode(experience, position: SCNVector3( 1.0, 0.0, 0.0))
         default:
             break
         }

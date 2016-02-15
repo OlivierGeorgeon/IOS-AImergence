@@ -11,18 +11,18 @@ import SceneKit
 
 protocol WorldViewControllerDelegate
 {
-    func closeWorldView()
+    func hideImagineViewControllerContainer()
 }
 
 class WorldViewController: UIViewController {
 
     @IBOutlet weak var sceneView: SCNView!
-    @IBAction func closeButton(sender: UIButton) { delegate?.closeWorldView() }
-    @IBAction func elseButton(sender: UIButton) { imagineModelShift() }
+    @IBAction func closeButton(sender: UIButton) { delegate?.hideImagineViewControllerContainer() }
+    @IBAction func elseButton(sender: UIButton) { displayLevel(level) }
     
     var imagineModel = WorldScene0()
     var delegate: WorldViewControllerDelegate?
-    var level:Int = 0 { didSet { imagineModelShift() } }
+    private var level:Int = 0
 
     // Geometry
     var worldNode: SCNNode = SCNNode()
@@ -33,9 +33,10 @@ class WorldViewController: UIViewController {
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         sceneSetup()
+        displayLevel(level)
     }
     
-    func imagineModelShift(imagineNumber: Int = 0) {
+    func displayLevel(level: Int, imagineNumber: Int = 0) {
         switch level {
         case 0:
             imagineModel = WorldScene0()
@@ -73,7 +74,7 @@ class WorldViewController: UIViewController {
         
         let cameraNode = SCNNode()
         cameraNode.camera = SCNCamera()
-        cameraNode.position = SCNVector3Make(0, 1.0, 5)
+        cameraNode.position = SCNVector3Make(0, 1.0, 5.0)
         scene.rootNode.addChildNode(cameraNode)
         
         let originNode = SCNNode()
@@ -83,6 +84,7 @@ class WorldViewController: UIViewController {
         //cameraNode.constraints = [constraint]
         
         sceneView.scene = scene
+        
         //sceneView.autoenablesDefaultLighting = true
         sceneView.allowsCameraControl = true
 

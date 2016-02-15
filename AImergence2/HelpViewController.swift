@@ -10,20 +10,17 @@ import UIKit
 
 protocol HelpViewControllerDelegate
 {
-    func closeHelpView()
+    func hideHelpViewControllerContainer()
 }
 
 class HelpViewController: UIViewController {
     
+    @IBOutlet weak var labelView: UILabel!
+    @IBOutlet weak var textView:  UITextView!
+    @IBAction func closeButton(sender: UIButton) { delegate?.hideHelpViewControllerContainer() }
+    
     let helpBlobArray:[String]
     let levelString = NSLocalizedString("Level", comment: "the game level displayed in the header of the help window")
-    
-    var level:Int = 0 {
-        didSet {
-            labelView?.text = levelString + " \(level)"
-            textView?.text = helpBlobArray[level]
-        }
-    }
     
     var delegate: HelpViewControllerDelegate?
     
@@ -43,25 +40,20 @@ class HelpViewController: UIViewController {
         super.init(coder: aDecoder)!
     }
     
-    @IBOutlet weak var labelView: UILabel! {
-        didSet {
-            labelView.text = levelString + " \(level)"
-        }
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        displayLevel(0)
     }
     
-    @IBOutlet weak var textView: UITextView! {
-        didSet {
-            textView.text = helpBlobArray[level]
-        }
-    }
-    
-    @IBAction func closeButton(sender: UIButton) {
-        delegate?.closeHelpView()
+    func displayLevel(level: Int) {
+        labelView?.text = levelString + " \(level)"
+        textView?.text = helpBlobArray[level]
     }
     
     override func didRotateFromInterfaceOrientation(fromInterfaceOrientation: UIInterfaceOrientation) {
         // seems to fix a bug that the textview won't display entirely
+        let temp = textView.text
         textView.text = ""
-        textView.text = helpBlobArray[level]
+        textView.text = temp
     }
 }
