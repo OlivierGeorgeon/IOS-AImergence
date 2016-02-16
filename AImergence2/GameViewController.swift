@@ -15,12 +15,34 @@ class GameViewController: UIViewController, GameSceneDelegate, HomeSceneDelegate
     @IBOutlet weak var helpViewControllerContainer: UIView!
     @IBOutlet weak var imagineViewControllerContainer: UIView!
     @IBOutlet weak var levelButton: UIButton!
-    
-    let gameStruct = GameStruct()
+    @IBAction func levelButton(sender: UIButton) {
+        helpViewControllerContainer.hidden = true
+        imagineViewControllerContainer.hidden = true
+        if let scene  = sceneView.scene as? GameScene {
+            let homeScene = HomeScene()
+            homeScene.previousGameScene = scene
+            homeScene.userDelegate = self
+            sceneView.presentScene(homeScene, transition: PositionedSKScene.transitionDown)
+        }
+    }
+    @IBAction func hepButton(sender: UIButton) {
+        imagineViewControllerContainer.hidden = true
+        helpViewController?.displayLevel(level)
+        helpViewControllerContainer.hidden = !helpViewControllerContainer.hidden
+    }
+    @IBAction func worldButton(sender: UIButton) {
+        helpViewControllerContainer.hidden = true
+        if imagineViewControllerContainer.hidden {
+            imagineViewController?.displayLevel(level)
+            imagineViewControllerContainer.hidden = false
+        } else {
+            imagineViewControllerContainer.hidden = true
+            imagineViewController?.sceneView.scene = nil
+        }
+    }
     
     var helpViewController:  HelpViewController?
     var imagineViewController: WorldViewController?
-    
     var level = 0 {
         didSet {
             levelButton.setTitle(NSLocalizedString("Level", comment: "") + " \(level)", forState: .Normal)
@@ -33,7 +55,7 @@ class GameViewController: UIViewController, GameSceneDelegate, HomeSceneDelegate
     {
         super.viewDidLoad()
         
-        let gameScene = GameScene(level: Level0(), gameStruct: gameStruct)
+        let gameScene = GameScene(level: Level0(), gameStruct: GameStruct())
         gameScene.gameSceneDelegate = self
         sceneView.showsFPS = true
         sceneView.showsNodeCount = true
@@ -54,64 +76,14 @@ class GameViewController: UIViewController, GameSceneDelegate, HomeSceneDelegate
         view.addGestureRecognizer(swipeDown)
     }
 
-    override func shouldAutorotate() -> Bool {
-        return true
-    }
-    
-    override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
-        if UIDevice.currentDevice().userInterfaceIdiom == .Phone {
-            return .AllButUpsideDown
-        } else {
-            return .All
-        }
-    }
-
-    override func prefersStatusBarHidden() -> Bool {
-        return true
-    }
-    
-    override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
-        if let gameScene = sceneView.scene as? GameScene { gameScene.fitToParent(size) }
-        super.viewWillTransitionToSize(size, withTransitionCoordinator: coordinator)
-    }
-    
-    @IBAction func levelButton(sender: UIButton) {
-        helpViewControllerContainer.hidden = true
-        imagineViewControllerContainer.hidden = true
-        if let scene  = sceneView.scene as? GameScene {
-            let homeScene = HomeScene()
-            homeScene.previousGameScene = scene
-            homeScene.userDelegate = self
-            sceneView.presentScene(homeScene, transition: gameStruct.transitionDown)
-        }
-    }
-    
-    @IBAction func hepButton(sender: UIButton) {
-        imagineViewControllerContainer.hidden = true
-        helpViewController?.displayLevel(level)
-        helpViewControllerContainer.hidden = !helpViewControllerContainer.hidden
-    }
-    
-    @IBAction func worldButton(sender: UIButton) {
-        helpViewControllerContainer.hidden = true
-        if imagineViewControllerContainer.hidden {
-            imagineViewController?.displayLevel(level)
-            imagineViewControllerContainer.hidden = false
-        } else {
-            imagineViewControllerContainer.hidden = true
-            imagineViewController?.sceneView.scene = nil
-        }
-    }
-    
-    
     func swipeLeft(gesture:UISwipeGestureRecognizer) {
-        if level < HomeStruct.numberOfLevels {
+        if level < PositionedSKScene.maxLevelNumber {
             level++
             let nextGameScene = GameStruct.createGameScene(level)
             nextGameScene.gameSceneDelegate = self
-            sceneView.presentScene(nextGameScene, transition: gameStruct.transitionLeft)
+            sceneView.presentScene(nextGameScene, transition: PositionedSKScene.transitionLeft)
         } else {
-            sceneView.scene?.camera?.runAction(gameStruct.actionMoveCameraRightLeft)
+            sceneView.scene?.camera?.runAction(PositionedSKScene.actionMoveCameraRightLeft)
         }
     }
     
@@ -120,26 +92,26 @@ class GameViewController: UIViewController, GameSceneDelegate, HomeSceneDelegate
             level--
             let nextGameScene = GameStruct.createGameScene(level)
             nextGameScene.gameSceneDelegate = self
-            sceneView.presentScene(nextGameScene, transition: gameStruct.transitionRight)
+            sceneView.presentScene(nextGameScene, transition: PositionedSKScene.transitionRight)
         } else {
-            sceneView.scene?.camera?.runAction(gameStruct.actionMoveCameraLeftRight)
+            sceneView.scene?.camera?.runAction(PositionedSKScene.actionMoveCameraLeftRight)
         }
     }
     
     func swipeUp(gesture:UISwipeGestureRecognizer) {
         if let scene = sceneView.scene as? GameScene {
-            if scene.camera?.position.y > gameStruct.portraitSceneSize.height {
-                scene.camera?.runAction(gameStruct.actionMoveCameraDown)
+            if scene.camera?.position.y > PositionedSKScene.portraitSize.height {
+                scene.camera?.runAction(PositionedSKScene.actionMoveCameraDown)
             } else {
-                scene.camera?.runAction(gameStruct.actionMoveCameraDownUp)
+                scene.camera?.runAction(PositionedSKScene.actionMoveCameraDownUp)
             }
         }
     }
     
     func swipeDown(gesture:UISwipeGestureRecognizer) {
         if let scene = sceneView.scene as? GameScene {
-            if scene.camera?.position.y < 7 * gameStruct.portraitSceneSize.height {
-                scene.camera?.runAction(gameStruct.actionMoveCameraUp)
+            if scene.camera?.position.y < 7 * PositionedSKScene.portraitSize.height {
+                scene.camera?.runAction(PositionedSKScene.actionMoveCameraUp)
             }
         }
     }
@@ -157,6 +129,11 @@ class GameViewController: UIViewController, GameSceneDelegate, HomeSceneDelegate
                 break
             }
         }
+    }
+    
+    override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
+        if let positionedScene = sceneView.scene as? PositionedSKScene { positionedScene.positionInFrame(size) }
+        super.viewWillTransitionToSize(size, withTransitionCoordinator: coordinator)
     }
     
     // Implement GameSceneDelegate
@@ -178,5 +155,21 @@ class GameViewController: UIViewController, GameSceneDelegate, HomeSceneDelegate
     func hideImagineViewControllerContainer() {
         imagineViewControllerContainer.hidden = true
         imagineViewController!.sceneView.scene = nil
+    }
+    
+    override func shouldAutorotate() -> Bool {
+        return true
+    }
+    
+    override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
+        if UIDevice.currentDevice().userInterfaceIdiom == .Phone {
+            return .AllButUpsideDown
+        } else {
+            return .All
+        }
+    }
+    
+    override func prefersStatusBarHidden() -> Bool {
+        return true
     }
 }

@@ -39,7 +39,7 @@ class WorldScene2: WorldScene1
             createTraceNode(experience, position: SCNVector3( 1.0, 0.0, 0.0))
         case 20, 21:
             bodyNode.runAction(SCNAction.group([rotateToUp, jump]))
-            createTraceNode(experience, position: SCNVector3( 0.0, 0.0, 0.0))
+            createTraceNode(experience, position: SCNVector3( 0.0, 0.5, 0.0))
         default:
             break
         }

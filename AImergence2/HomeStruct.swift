@@ -10,15 +10,6 @@ import SpriteKit
 
 struct HomeStruct
 {
-    static let numberOfLevels = 7
-
-    let portraitSceneSize   = CGSize(width: 375, height: 667)
-    let landscapeSceneSize  = CGSize(width: 1188, height: 667)
-    let backgroundColor     = SKColor.whiteColor()
-    let fontSize            = CGFloat(30)
-    let transitionOut       = SKTransition.revealWithDirection(SKTransitionDirection.Up, duration: 0.5)
-    let titleFont            = UIFont.preferredFontForTextStyle(UIFontTextStyleTitle1)
-    
     let level0Position      = CGPoint(x: 60, y: 540)
     let levelXOffset        = CGVector( dx: 60, dy: 0)
     let levelYOffset        = CGVector( dx:  0, dy: -80)
@@ -27,8 +18,8 @@ struct HomeStruct
 
     func createLabelNode(text: String) -> SKLabelNode {
         let labelNode = SKLabelNode(text: text)
-        labelNode.fontName = titleFont.fontName
-        labelNode.fontSize = titleFont.pointSize
+        labelNode.fontName = PositionedSKScene.titleFont.fontName
+        labelNode.fontSize = PositionedSKScene.titleFont.pointSize
         labelNode.fontColor = UIColor.whiteColor()
         labelNode.verticalAlignmentMode = .Center
         return labelNode
@@ -51,12 +42,5 @@ struct HomeStruct
     
 }
 
-func + (left: CGPoint, right: CGVector) -> CGPoint {
-    return CGPoint(x: left.x + right.dx, y: left.y + right.dy) }
-
-func * (left: Int, right: CGVector) -> CGVector {
-    return CGVector(dx: CGFloat(left) * right.dx, dy: CGFloat(left) * right.dy) }
-
-func += (inout left: CGPoint, right: CGVector) {left = left + right }
 
 

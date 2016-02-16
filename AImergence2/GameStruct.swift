@@ -13,32 +13,15 @@ struct GameStruct
     var experiment = ExperimentStruct()
     var experience = ExperienceStruct()
     
-    let portraitSceneSize   = CGSize(width: 375, height: 667)
-    let landscapeSceneSize  = CGSize(width: 1188, height: 667)
-    
-    let portraitCameraPosition      = CGPoint(x: 0, y: 233)
-    let landscapeCameraPosition     = CGPoint(x: 400, y: 233)
-    
     let backgroundColor     = SKColor.lightGrayColor()
-    let fontSize            = CGFloat(30)
     let titleFont           = UIFont.preferredFontForTextStyle(UIFontTextStyleTitle1)
-    let bodyFont            = UIFont.preferredFontForTextStyle(UIFontTextStyleCallout)
-    
-    let transitionDown      = SKTransition.revealWithDirection(SKTransitionDirection.Down, duration: 0.5)
-    let transitionLeft      = SKTransition.pushWithDirection(SKTransitionDirection.Left, duration: 0.5)
-    let transitionRight     = SKTransition.pushWithDirection(SKTransitionDirection.Right, duration: 0.5)
+    //let bodyFont            = UIFont.preferredFontForTextStyle(UIFontTextStyleCallout)
     
     var experimentPositions = [CGPoint(x: -90, y: 0), CGPoint(x: 90, y: 0), CGPoint(x: 0, y: 0)]
  
     let actionScale         = SKAction.scaleTo(1, duration: 0.2)
     let actionMoveTrace     = SKAction.moveBy(CGVector(dx:0, dy:50), duration: 0.3)
     
-    let actionMoveCameraUp   = SKAction.moveBy(CGVector(dx:0, dy:667), duration: 0.3)
-    let actionMoveCameraDown = SKAction.moveBy(CGVector(dx:0, dy:-667), duration: 0.3)
-    let actionMoveCameraDownUp = SKAction.sequence([SKAction.moveBy(CGVector(dx:0, dy:-50), duration: 0.1), SKAction.moveBy(CGVector(dx:0, dy:50), duration: 0.1)])
-    let actionMoveCameraLeftRight = SKAction.sequence([SKAction.moveBy(CGVector(dx:-50, dy:0), duration: 0.1), SKAction.moveBy(CGVector(dx:50, dy:0), duration: 0.1)])
-    let actionMoveCameraRightLeft = SKAction.sequence([SKAction.moveBy(CGVector(dx:50, dy:0), duration: 0.1), SKAction.moveBy(CGVector(dx:-50, dy:0), duration: 0.1)])
-
     let colorNodeRect       = CGRect(x: -30, y:-30, width: 60, height: 60)
     
     func moveByVect(point: CGPoint) -> CGVector { return CGVector(dx: -point.x, dy: 90 - point.y) }
@@ -46,7 +29,7 @@ struct GameStruct
     func createScoreLabel() -> SKLabelNode {
         let scoreLabel = SKLabelNode(text: "0")
         scoreLabel.fontName = titleFont.fontName
-        scoreLabel.fontSize = fontSize
+        scoreLabel.fontSize = titleFont.pointSize
         scoreLabel.verticalAlignmentMode = .Center
         return scoreLabel
     }

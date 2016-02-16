@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0911B7F21C731CF400DC3F69 /* PositionedSKScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0911B7F11C731CF400DC3F69 /* PositionedSKScene.swift */; };
 		093000DA1C4FB39000425BB1 /* ExperimentNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093000D91C4FB39000425BB1 /* ExperimentNode.swift */; };
 		093000DC1C4FB62C00425BB1 /* ExperienceStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093000DB1C4FB62C00425BB1 /* ExperienceStruct.swift */; };
 		093000DE1C4FC77700425BB1 /* ExperienceNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093000DD1C4FC77700425BB1 /* ExperienceNode.swift */; };
@@ -66,6 +67,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0911B7F11C731CF400DC3F69 /* PositionedSKScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PositionedSKScene.swift; sourceTree = "<group>"; };
 		093000D91C4FB39000425BB1 /* ExperimentNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExperimentNode.swift; sourceTree = "<group>"; };
 		093000DB1C4FB62C00425BB1 /* ExperienceStruct.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExperienceStruct.swift; sourceTree = "<group>"; };
 		093000DD1C4FC77700425BB1 /* ExperienceNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExperienceNode.swift; sourceTree = "<group>"; };
@@ -174,6 +176,7 @@
 				0936816E1C42708E008C6B5D /* Experiment.swift */,
 				0936816C1C42707B008C6B5D /* Experience.swift */,
 				0936813A1C417378008C6B5D /* AppDelegate.swift */,
+				0911B7F11C731CF400DC3F69 /* PositionedSKScene.swift */,
 				0936817A1C4696AB008C6B5D /* HomeScene.swift */,
 				0936817C1C46A86C008C6B5D /* HomeStruct.swift */,
 				0936813E1C417378008C6B5D /* GameScene.swift */,
@@ -413,6 +416,7 @@
 				0936813B1C417378008C6B5D /* AppDelegate.swift in Sources */,
 				09ED65851C6D1400004A8CA7 /* WorldScene0.swift in Sources */,
 				0936817B1C4696AB008C6B5D /* HomeScene.swift in Sources */,
+				0911B7F21C731CF400DC3F69 /* PositionedSKScene.swift in Sources */,
 				096F5CB91C56D7240041EA5F /* Level7.swift in Sources */,
 				0936816D1C42707B008C6B5D /* Experience.swift in Sources */,
 				093000DA1C4FB39000425BB1 /* ExperimentNode.swift in Sources */,

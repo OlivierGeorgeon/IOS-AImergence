@@ -13,7 +13,7 @@ protocol GameSceneDelegate
     func playExperience(experience: Experience)
 }
 
-class GameScene: SKScene {
+class GameScene: PositionedSKScene {
     
     let gameStruct:GameStruct
     let level:Level0
@@ -54,7 +54,7 @@ class GameScene: SKScene {
         self.gameStruct = sceneStruct
         scoreLabel = sceneStruct.createScoreLabel()
         scoreBackground = sceneStruct.createScoreBackground()
-        super.init(size: sceneStruct.portraitSceneSize)
+        super.init(size: PositionedSKScene.portraitSize)
         layoutScene()
     }
 
@@ -118,7 +118,7 @@ class GameScene: SKScene {
         self.camera = cameraNode
         self.addChild(cameraNode)
         
-        fitToParent(view.frame.size)
+        positionInFrame(view.frame.size)
 
         for recognizer in view.gestureRecognizers ?? [] {
             if recognizer is UITapGestureRecognizer || recognizer is UILongPressGestureRecognizer {
@@ -131,17 +131,7 @@ class GameScene: SKScene {
         view.addGestureRecognizer(longPressGestureRecognizer)
 
     }
-    
-    func fitToParent(parentSize: CGSize) {
-        if parentSize.height < parentSize.width {
-            self.size = gameStruct.landscapeSceneSize
-            camera?.position =  gameStruct.landscapeCameraPosition
-        } else {
-            self.size = gameStruct.portraitSceneSize
-            camera?.position =  gameStruct.portraitCameraPosition
-        }
-    }
-    
+        
     func tap(recognizer: UITapGestureRecognizer)
     {
         let positionInScene = self.convertPointFromView(recognizer.locationInView(self.view))
