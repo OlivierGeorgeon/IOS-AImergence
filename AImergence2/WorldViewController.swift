@@ -30,13 +30,14 @@ class WorldViewController: UIViewController {
     // Gestures
     var currentAngle: Float = 0.0
 
-    override func viewDidAppear(animated: Bool) {
+/*    override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         sceneSetup()
         displayLevel(level)
     }
-    
+  */
     func displayLevel(level: Int, imagineNumber: Int = 0) {
+        self.level = level
         switch level {
         case 0:
             imagineModel = WorldScene0()
@@ -50,8 +51,11 @@ class WorldViewController: UIViewController {
         case 3:
             imagineModel = WorldScene3()
             sceneSetup()
+        case 4:
+            imagineModel = WorldScene4()
+            sceneSetup()
         default:
-            imagineModel = WorldScene0()
+            imagineModel = WorldScene4()
             sceneSetup()
         }
     }

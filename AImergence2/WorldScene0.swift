@@ -6,7 +6,6 @@
 //  Copyright © 2016 Olivier Georgeon. All rights reserved.
 //
 
-import Foundation
 import SceneKit
 
 class WorldScene0
@@ -26,20 +25,20 @@ class WorldScene0
 
     var worldNode = SCNNode()
     var bodyNode: SCNNode!
-    private var neutralNode: SCNNode!
-    private var enjoyableNode: SCNNode!
+    var neutralNode: SCNNode!
+    var enjoyableNode: SCNNode!
     
     func playExperience(experience: Experience) {
         if bodyNode == nil { createBodyNode() }
         switch experience.experiment.number {
         case 0:
-            if neutralNode == nil { createNeutralNode() }
+            if neutralNode == nil { neutralNode = createNeutralNode(SCNVector3(-1.5, 0, 0)) }
             bodyNode.runAction(bumpLeft)
-            createTraceNode(experience, position: SCNVector3( -1.0, 0.0, 0.0))
+            createExperienceNode(experience, position: SCNVector3( -1.0, 0.0, 0.0))
         case 1:
-            if enjoyableNode == nil { createEnjoyableNode() }
+            if enjoyableNode == nil { enjoyableNode = createEnjoyableNode(SCNVector3(1.25, 0, 0)) }
             bodyNode.runAction(bumpRight)
-            createTraceNode(experience, position: SCNVector3( 1.0, 0.0, 0.0))
+            createExperienceNode(experience, position: SCNVector3( 1.0, 0.0, 0.0))
         default:
             break
         }
@@ -56,34 +55,34 @@ class WorldScene0
         worldNode.addChildNode(bodyNode)
     }
     
-    func createNeutralNode() {
-        neutralNode = SCNNode(geometry: WorldPhenomena.sphere())
-        neutralNode.position = SCNVector3(-1.5, 0, 0)
-        worldNode.addChildNode(neutralNode)
+    func createNeutralNode(position: SCNVector3) -> SCNNode {
+        let node = SCNNode(geometry: WorldPhenomena.sphere())
+        node.position = position
+        worldNode.addChildNode(node)
+        return node
     }
     
-    func createEnjoyableNode() {
-        enjoyableNode = SCNNode(geometry: WorldPhenomena.cube())
-        enjoyableNode.position = SCNVector3(1.5, 0, 0)
-        worldNode.addChildNode(enjoyableNode)
+    func createEnjoyableNode(position: SCNVector3) -> SCNNode {
+        let node = SCNNode(geometry: WorldPhenomena.brick())
+        node.position = position
+        worldNode.addChildNode(node)
+        return node
     }
     
-    func createTraceNode(experience: Experience, position: SCNVector3) {
+    func createExperienceNode(experience: Experience, position: SCNVector3) {
         let rect = CGRect(x: -0.2 * scale, y: -0.2 * scale, width: 0.4 * scale, height: 0.4 * scale)
         let path = ReshapableNode.paths[experience.experiment.shapeIndex](rect)
         let geometry = SCNShape(path: path, extrusionDepth: 0.1 * scale)
-        if experience.colorIndex == 0 {
-            geometry.firstMaterial!.diffuse.contents = UIColor.lightGrayColor()
-        } else {
+        geometry.materials = [WorldPhenomena.defaultMaterial()]
+        if experience.colorIndex > 0 {
             geometry.firstMaterial!.diffuse.contents = ExperienceNode.colors[experience.colorIndex]
         }
-        geometry.firstMaterial!.specular.contents = UIColor.whiteColor()
-        let traceNode = SCNNode(geometry: geometry)
-        traceNode.scale = SCNVector3(1/scale, 1/scale, 1/scale)
-        traceNode.position = position
-        traceNode.hidden = true
-        worldNode.addChildNode(traceNode)
-        traceNode.runAction(sparkle)
+        let experienceNode = SCNNode(geometry: geometry)
+        experienceNode.scale = SCNVector3(1/scale, 1/scale, 1/scale)
+        experienceNode.position = position
+        experienceNode.hidden = true
+        worldNode.addChildNode(experienceNode)
+        experienceNode.runAction(sparkle)
     }
     
 }

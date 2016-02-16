@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0911B7F21C731CF400DC3F69 /* PositionedSKScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0911B7F11C731CF400DC3F69 /* PositionedSKScene.swift */; };
+		0911B7F41C73A4B600DC3F69 /* WorldScene4.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0911B7F31C73A4B600DC3F69 /* WorldScene4.swift */; };
 		093000DA1C4FB39000425BB1 /* ExperimentNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093000D91C4FB39000425BB1 /* ExperimentNode.swift */; };
 		093000DC1C4FB62C00425BB1 /* ExperienceStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093000DB1C4FB62C00425BB1 /* ExperienceStruct.swift */; };
 		093000DE1C4FC77700425BB1 /* ExperienceNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093000DD1C4FC77700425BB1 /* ExperienceNode.swift */; };
@@ -68,6 +69,7 @@
 
 /* Begin PBXFileReference section */
 		0911B7F11C731CF400DC3F69 /* PositionedSKScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PositionedSKScene.swift; sourceTree = "<group>"; };
+		0911B7F31C73A4B600DC3F69 /* WorldScene4.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorldScene4.swift; sourceTree = "<group>"; };
 		093000D91C4FB39000425BB1 /* ExperimentNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExperimentNode.swift; sourceTree = "<group>"; };
 		093000DB1C4FB62C00425BB1 /* ExperienceStruct.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExperienceStruct.swift; sourceTree = "<group>"; };
 		093000DD1C4FC77700425BB1 /* ExperienceNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExperienceNode.swift; sourceTree = "<group>"; };
@@ -256,6 +258,7 @@
 				093C3F651C6F68B9000BC6FB /* WorldScene1.swift */,
 				093C3F671C6F8482000BC6FB /* WorldScene2.swift */,
 				09ED65861C6E36B7004A8CA7 /* WorldScene3.swift */,
+				0911B7F31C73A4B600DC3F69 /* WorldScene4.swift */,
 			);
 			name = Imagine;
 			sourceTree = "<group>";
@@ -418,6 +421,7 @@
 				0936817B1C4696AB008C6B5D /* HomeScene.swift in Sources */,
 				0911B7F21C731CF400DC3F69 /* PositionedSKScene.swift in Sources */,
 				096F5CB91C56D7240041EA5F /* Level7.swift in Sources */,
+				0911B7F41C73A4B600DC3F69 /* WorldScene4.swift in Sources */,
 				0936816D1C42707B008C6B5D /* Experience.swift in Sources */,
 				093000DA1C4FB39000425BB1 /* ExperimentNode.swift in Sources */,
 				093000DE1C4FC77700425BB1 /* ExperienceNode.swift in Sources */,

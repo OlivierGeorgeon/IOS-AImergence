@@ -6,7 +6,6 @@
 //  Copyright © 2016 Olivier Georgeon. All rights reserved.
 //
 
-import Foundation
 import SceneKit
 
 class WorldScene2: WorldScene1
@@ -22,24 +21,24 @@ class WorldScene2: WorldScene1
         if bodyNode == nil { createBodyNode() }
         switch experience.hashValue {
         case 00:
-            if switchNode0 == nil { createSwitchNode0() }
+            if switchNode0 == nil { switchNode0 = createSwitchNode(SCNVector3(-1.5, 0, 0)) }
             bodyNode.runAction(rotateToRightBumpLeft)
-            createTraceNode(experience, position: SCNVector3( -1.0, 0.0, 0.0))
+            createExperienceNode(experience, position: SCNVector3( -1.0, 0.0, 0.0))
         case 01:
-            if switchNode0 == nil { createSwitchNode0() }
+            if switchNode0 == nil { switchNode0 = createSwitchNode(SCNVector3(-1.5, 0, 0)) }
             bodyNode.runAction(rotateToLeftBumpLeftRotateToRight)
-            createTraceNode(experience, position: SCNVector3( -1.0, 0.0, 0.0))
+            createExperienceNode(experience, position: SCNVector3( -1.0, 0.0, 0.0))
         case 10:
-            if switchNode1 == nil { createSwitchNode1() }
+            if switchNode1 == nil { switchNode1 = createSwitchNode(SCNVector3(1.5, 0, 0)) }
             bodyNode.runAction(rotateToLeftbumpRight)
-            createTraceNode(experience, position: SCNVector3( 1.0, 0.0, 0.0))
+            createExperienceNode(experience, position: SCNVector3( 1.0, 0.0, 0.0))
         case 11:
-            if switchNode1 == nil { createSwitchNode1() }
+            if switchNode1 == nil { switchNode1 = createSwitchNode(SCNVector3(1.5, 0, 0)) }
             bodyNode.runAction(rotateToRightbumpRightRotateToLeft)
-            createTraceNode(experience, position: SCNVector3( 1.0, 0.0, 0.0))
+            createExperienceNode(experience, position: SCNVector3( 1.0, 0.0, 0.0))
         case 20, 21:
             bodyNode.runAction(SCNAction.group([rotateToUp, jump]))
-            createTraceNode(experience, position: SCNVector3( 0.0, 0.5, 0.0))
+            createExperienceNode(experience, position: SCNVector3( 0.0, 0.5, 0.0))
         default:
             break
         }

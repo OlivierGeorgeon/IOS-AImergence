@@ -13,7 +13,7 @@ class Level4 : Level0 {
     
     override var number:Int { return 4 }
 
-    var nextPhenomenon = false
+    var nextPhenomenon = true
     var currentPhenomenon = false
     
     convenience init() {
