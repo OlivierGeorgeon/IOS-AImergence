@@ -51,11 +51,14 @@ class WorldViewController: UIViewController {
         case 3:
             imagineModel = WorldScene3()
             sceneSetup()
-        case 4:
+        case 4, 5, 6:
             imagineModel = WorldScene4()
             sceneSetup()
+        case 7:
+            imagineModel = WorldScene7()
+            sceneSetup()
         default:
-            imagineModel = WorldScene4()
+            imagineModel = WorldScene0()
             sceneSetup()
         }
     }

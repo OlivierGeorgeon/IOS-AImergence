@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0911B7F21C731CF400DC3F69 /* PositionedSKScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0911B7F11C731CF400DC3F69 /* PositionedSKScene.swift */; };
 		0911B7F41C73A4B600DC3F69 /* WorldScene4.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0911B7F31C73A4B600DC3F69 /* WorldScene4.swift */; };
+		0911B7F61C748BFC00DC3F69 /* WorldScene7.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0911B7F51C748BFC00DC3F69 /* WorldScene7.swift */; };
 		093000DA1C4FB39000425BB1 /* ExperimentNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093000D91C4FB39000425BB1 /* ExperimentNode.swift */; };
 		093000DC1C4FB62C00425BB1 /* ExperienceStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093000DB1C4FB62C00425BB1 /* ExperienceStruct.swift */; };
 		093000DE1C4FC77700425BB1 /* ExperienceNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093000DD1C4FC77700425BB1 /* ExperienceNode.swift */; };
@@ -70,6 +71,7 @@
 /* Begin PBXFileReference section */
 		0911B7F11C731CF400DC3F69 /* PositionedSKScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PositionedSKScene.swift; sourceTree = "<group>"; };
 		0911B7F31C73A4B600DC3F69 /* WorldScene4.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorldScene4.swift; sourceTree = "<group>"; };
+		0911B7F51C748BFC00DC3F69 /* WorldScene7.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorldScene7.swift; sourceTree = "<group>"; };
 		093000D91C4FB39000425BB1 /* ExperimentNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExperimentNode.swift; sourceTree = "<group>"; };
 		093000DB1C4FB62C00425BB1 /* ExperienceStruct.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExperienceStruct.swift; sourceTree = "<group>"; };
 		093000DD1C4FC77700425BB1 /* ExperienceNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExperienceNode.swift; sourceTree = "<group>"; };
@@ -259,6 +261,7 @@
 				093C3F671C6F8482000BC6FB /* WorldScene2.swift */,
 				09ED65861C6E36B7004A8CA7 /* WorldScene3.swift */,
 				0911B7F31C73A4B600DC3F69 /* WorldScene4.swift */,
+				0911B7F51C748BFC00DC3F69 /* WorldScene7.swift */,
 			);
 			name = Imagine;
 			sourceTree = "<group>";
@@ -407,6 +410,7 @@
 				096F5CB51C53F1C90041EA5F /* HelpViewController.swift in Sources */,
 				093000E21C4FD5D000425BB1 /* ExperimentStruct.swift in Sources */,
 				0961EBBD1C66067900A4E55C /* Level8.swift in Sources */,
+				0911B7F61C748BFC00DC3F69 /* WorldScene7.swift in Sources */,
 				093681751C45455F008C6B5D /* Level3.swift in Sources */,
 				0936816F1C42708E008C6B5D /* Experiment.swift in Sources */,
 				0936813F1C417378008C6B5D /* GameScene.swift in Sources */,

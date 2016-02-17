@@ -10,6 +10,7 @@ import SceneKit
 
 class WorldScene1: WorldScene0
 {
+    let flip          = SCNAction.rotateByX(0.0, y: 0.0, z: CGFloat(M_PI), duration: 0.2)
     
     let rotateToUp    = SCNAction.rotateToX(0, y: 0, z: CGFloat(M_PI_2), duration: 0.2)
     let rotateToRight = SCNAction.rotateToX(0, y: 0, z: 0, duration: 0.2)
