@@ -16,31 +16,30 @@ class WorldScene3: WorldScene2
     var bodyCell = 0
     
     override func playExperience(experience: Experience) {
-        if bodyNode == nil { createBodyNode() }
         switch (experience.hashValue, bodyCell) {
         case (00, 0):
+            createOrRetrieveBodyNodeAndRunAction(action: rotateToRightBumpLeft)
             if switchNode0 == nil { switchNode0 = createSwitchNode(SCNVector3(-1.5, 0, 0)) }
-            bodyNode.runAction(rotateToRightBumpLeft)
             createExperienceNode(experience, position: SCNVector3( -1.0, 0.0, 0.0))
         case (00, 1):
-            bodyNode.runAction(moveLeft)
+            createOrRetrieveBodyNodeAndRunAction(backward: true, action: moveLeft)
             bodyCell = 0
             createExperienceNode(experience, position: SCNVector3( 1.0, 0.0, 0.0))
         case (01, 0):
+            createOrRetrieveBodyNodeAndRunAction(backward: true, action: rotateToLeftBumpLeftRotateToRight)
             if switchNode0 == nil { switchNode0 = createSwitchNode(SCNVector3(-1.5, 0, 0)) }
-            bodyNode.runAction(rotateToLeftBumpLeftRotateToRight)
             createExperienceNode(experience, position: SCNVector3( -1.0, 0.0, 0.0))
         case (10, 0):
-            bodyNode.runAction(moveRight)
+            createOrRetrieveBodyNodeAndRunAction(action: moveRight)
             bodyCell = 1
             createExperienceNode(experience, position: SCNVector3( 0.0, 0.0, 0.0))
         case (10, 1):
+            createOrRetrieveBodyNodeAndRunAction(backward: true, action: rotateToLeftbumpRight)
             if switchNode1 == nil { switchNode1 = createSwitchNode(SCNVector3(2.5, 0, 0)) }
-            bodyNode.runAction(rotateToLeftbumpRight)
             createExperienceNode(experience, position: SCNVector3( 2.0, 0.0, 0.0))
         case (11, 1):
+            createOrRetrieveBodyNodeAndRunAction(action: rotateToRightbumpRightRotateToLeft)
             if switchNode1 == nil { switchNode1 = createSwitchNode(SCNVector3(2.5, 0, 0)) }
-            bodyNode.runAction(rotateToRightbumpRightRotateToLeft)
             createExperienceNode(experience, position: SCNVector3( 2.0, 0.0, 0.0))
         default:
             break

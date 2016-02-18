@@ -159,7 +159,7 @@ class GameScene: PositionedSKScene {
             for experienceNode in experienceNodes {
                 if experienceNode.containsPoint(positionInScene) {
                     editNode = experienceNode
-                    addChild(colorPopupNode!)
+                    cameraRelativeOriginNode.addChild(colorPopupNode!)
                 }
                 
             }

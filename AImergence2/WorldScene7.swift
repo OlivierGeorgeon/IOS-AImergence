@@ -25,7 +25,7 @@ class WorldScene7: WorldScene4
     
     func rotateCarrousel() {
         carrouselAngle = CGFloat(M_PI) / 5.0 + carrouselAngle
-        carrouselNode?.runAction(SCNAction.sequence([wait,actionRotateCarrousel]) )
+        carrouselNode?.runAction(SCNAction.sequence([actions.wait,actionRotateCarrousel]) )
         if ++carrouselIndex >= nbSlotsInCarroussel { carrouselIndex = 0 }
     }
     
@@ -34,66 +34,59 @@ class WorldScene7: WorldScene4
         
         switch experience.hashValue {
         case 00: // Touch
-            if bodyNode == nil { createOrRetreaveBodyNode() }
+            createOrRetrieveBodyNodeAndRunAction(positionInCarroussel ,action: actions.bumpBack())
             if neutralNode == nil { neutralNode = createNeutralNode(SCNVector3(-1.5, 0, 0)) }
-            bodyNode.runAction(bumpLeft)
-            createExperienceNode(experience, position: SCNVector3( -1.0, 0.0, 0.0))
+            createExperienceNode(experience, position: SCNVector3( -1.0, 0.0, 0.0), delayed: true)
         case 01:
-            if bodyNode == nil { createOrRetreaveBodyNodeLeft()}
+            createOrRetrieveBodyNodeAndRunAction(positionInCarroussel, backward: true, action: actions.bump())
             if neutralNode == nil { neutralNode = createNeutralNode(SCNVector3(-1.5, 0, 0)) }
-            bodyNode.runAction(bumpLeft)
-            createExperienceNode(experience, position: SCNVector3( -1.0, 0.0, 0.0))
+            createExperienceNode(experience, position: SCNVector3( -1.0, 0.0, 0.0), delayed: true)
         case 10:  // eat
-            if bodyNode == nil { createOrRetreaveBodyNode() }
+            createOrRetrieveBodyNodeAndRunAction(positionInCarroussel)
             if neutralNode == nil { neutralNode = createNeutralNode(SCNVector3(-1.5, 0, 0)) }
-            neutralNode.runAction(bumpRight)
-            rotateCarrousel()
-            createExperienceNode(experience, position: SCNVector3( -0.5, 0.0, 0.0))
+            neutralNode.runAction(SCNAction.sequence([actions.moveHalfFront, actions.moveHalfBack]))
+            createExperienceNode(experience, position: SCNVector3( -0.5, 0.0, 0.0), delayed: true)
             bodyNode = nil
+            rotateCarrousel()
         case 11:
-            if bodyNode == nil { createOrRetreaveBodyNodeLeft() }
+            createOrRetrieveBodyNodeAndRunAction(positionInCarroussel ,backward: true)
             if neutralNode == nil { neutralNode = createNeutralNode(SCNVector3(-1.5, 0, 0)) }
-            neutralNode.runAction(bumpRight)
-            rotateCarrousel()
-            createExperienceNode(experience, position: SCNVector3( -0.5, 0.0, 0.0))
+            neutralNode.runAction(SCNAction.sequence([actions.moveHalfFront, actions.moveHalfBack]))
+            createExperienceNode(experience, position: SCNVector3( -0.5, 0.0, 0.0), delayed: true)
             bodyNode = nil
+            rotateCarrousel()
         case 20: // swap
-            if bodyNode == nil { createOrRetreaveBodyNodeLeft()}
-            bodyNode.runAction(flip)
+            createOrRetrieveBodyNodeAndRunAction(positionInCarroussel ,backward: true, action: actions.turnover())
             createExperienceNode(experience, position: SCNVector3( 0.0, 0.0, 0.0))
         case 21:
-            if bodyNode == nil { createOrRetreaveBodyNode() }
-            bodyNode.runAction(flip)
+            createOrRetrieveBodyNodeAndRunAction(positionInCarroussel ,action: actions.turnover())
             createExperienceNode(experience, position: SCNVector3( 0.0, 0.0, 0.0))
         default:
             break
         }
     }
     
-    func createOrRetreaveBodyNode() {
-        if carrouselNode?.childNodes.count >= 10 {
-            bodyNode = carrouselNode?.childNodes[carrouselIndex]
+    override func createOrRetrieveBodyNodeAndRunAction(position: SCNVector3 = SCNVector3(), backward:Bool = false, action: SCNAction = SCNAction.unhide()) -> SCNNode
+    {
+        if bodyNode == nil {
+            if carrouselNode?.childNodes.count >= 10 {
+                bodyNode = carrouselNode?.childNodes[carrouselIndex]
+                bodyNode.runAction(action)
+            } else {
+                bodyNode = SCNNode()
+                bodyNode.position = position
+                bodyNode.hidden = true
+                bodyNode.addChildNode(createPawnNode())
+                carrouselNode!.addChildNode(bodyNode)
+                if backward { bodyNode.runAction(SCNAction.sequence([SCNAction.rotateByX(0.0, y: 0.0, z: carrouselAngle, duration: 0.0), actions.unhide, action])) }
+                else { bodyNode.runAction(SCNAction.sequence([SCNAction.rotateByX(0.0, y: 0.0, z: carrouselAngle - CGFloat(M_PI), duration: 0.0), actions.unhide, action])) }
+            }
         } else {
-            createBodyNode()
-            bodyNode.hidden = true
-            bodyNode.position = positionInCarroussel
-            bodyNode.runAction(SCNAction.sequence([SCNAction.rotateByX(0.0, y: 0.0, z: carrouselAngle - CGFloat(M_PI), duration: 0.0), unhide]))
-            carrouselNode?.addChildNode(bodyNode)
+            bodyNode.runAction(action)
         }
+        return bodyNode
     }
-
-    func createOrRetreaveBodyNodeLeft() {
-        if carrouselNode?.childNodes.count >= 10 {
-            bodyNode = carrouselNode?.childNodes[carrouselIndex]
-        } else {
-            createBodyNode()
-            bodyNode.hidden = true
-            bodyNode.position = positionInCarroussel
-            bodyNode.runAction(SCNAction.sequence([SCNAction.rotateByX(0.0, y: 0.0, z: carrouselAngle, duration: 0.0), unhide]))
-            carrouselNode?.addChildNode(bodyNode)
-        }
-    }
-
+    
     func createCarrouselNode() {
         carrouselNode = SCNNode()
         carrouselNode!.position = SCNVector3( carrouselDiameter, 0.0, 0.0)

@@ -18,6 +18,7 @@ class GameViewController: UIViewController, GameSceneDelegate, HomeSceneDelegate
     @IBAction func levelButton(sender: UIButton) {
         helpViewControllerContainer.hidden = true
         imagineViewControllerContainer.hidden = true
+        imagineViewController?.sceneView.scene = nil
         if let scene  = sceneView.scene as? GameScene {
             let homeScene = HomeScene()
             homeScene.previousGameScene = scene
@@ -27,6 +28,7 @@ class GameViewController: UIViewController, GameSceneDelegate, HomeSceneDelegate
     }
     @IBAction func hepButton(sender: UIButton) {
         imagineViewControllerContainer.hidden = true
+        imagineViewController?.sceneView.scene = nil
         helpViewController?.displayLevel(level)
         helpViewControllerContainer.hidden = !helpViewControllerContainer.hidden
     }

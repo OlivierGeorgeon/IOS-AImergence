@@ -5,8 +5,8 @@
 	<key>Help</key>
 	<array>
 		<array>
-			<string>Les deux cercles blancs en bas de l&apos;écran représentent des &quot;experimentations&quot;. Pressez-les pour &quot;faire des experimentations&quot;.</string>
-			<string>Les expérimentations produisent des petits cercles blancs qui montent, appelés &quot;expériences&quot;. Chaque expérience a une &quot;valeur&quot; numérique qui s&apos;affiche à sa droite.</string>
+			<string>Les deux cercles blancs en bas de l&apos;écran représentent des &quot;experimentations&quot;.</string>
+			<string>En pressant les expérimentations, vous produisez des petits cercles blancs qui montent, appelés &quot;expériences&quot;. Chaque expérience a une &quot;valeur&quot; numérique qui s&apos;affiche à sa droite.</string>
 			<string>Votre score (en haut à gauche) est la somme des valeurs des dix dernières expériences. Essayez d&apos;atteindre 10 avant de passer au niveau suivant.</string>
 		</array>
 		<array>

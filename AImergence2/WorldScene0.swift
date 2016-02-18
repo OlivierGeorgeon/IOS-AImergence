@@ -10,18 +10,8 @@ import SceneKit
 
 class WorldScene0
 {
-    let scale = CGFloat(100)
-    let moveHalfLeft  = SCNAction.moveByX(-0.5, y: 0.0, z: 0.0, duration: 0.1)
-    let moveHalfRight = SCNAction.moveByX( 0.5, y: 0.0, z: 0.0, duration: 0.1)
-    
-    let moveUp = SCNAction.moveByX( 0.0, y: 5.0, z: 0.0, duration: 3.0)
-    let remove = SCNAction.removeFromParentNode()
-    let wait = SCNAction.waitForDuration(0.1)
-    let unhide = SCNAction.unhide()
-    
-    var bumpLeft: SCNAction  {return SCNAction.sequence([moveHalfLeft, moveHalfRight])}
-    var bumpRight: SCNAction {return SCNAction.sequence([moveHalfRight, moveHalfLeft])}
-    var sparkle: SCNAction   {return SCNAction.sequence([wait, unhide, moveUp, remove])}
+    let actions = Actions()
+    let scaleExperience = CGFloat(100)
 
     var worldNode = SCNNode()
     var bodyNode: SCNNode!
@@ -29,30 +19,44 @@ class WorldScene0
     var enjoyableNode: SCNNode!
     
     func playExperience(experience: Experience) {
-        if bodyNode == nil { createBodyNode() }
         switch experience.experiment.number {
         case 0:
+            createOrRetrieveBodyNodeAndRunAction(action: actions.bumpBack())
             if neutralNode == nil { neutralNode = createNeutralNode(SCNVector3(-1.5, 0, 0)) }
-            bodyNode.runAction(bumpLeft)
-            createExperienceNode(experience, position: SCNVector3( -1.0, 0.0, 0.0))
+            createExperienceNode(experience, position: SCNVector3( -1.0, 0.0, 0.0), delayed: true)
         case 1:
+            createOrRetrieveBodyNodeAndRunAction(action: actions.bump())
             if enjoyableNode == nil { enjoyableNode = createEnjoyableNode(SCNVector3(1.25, 0, 0)) }
-            bodyNode.runAction(bumpRight)
-            createExperienceNode(experience, position: SCNVector3( 1.0, 0.0, 0.0))
+            createExperienceNode(experience, position: SCNVector3( 1.0, 0.0, 0.0), delayed: true)
         default:
             break
         }
     }
     
-    func createBodyNode() {
-        bodyNode = SCNNode()
+    func createOrRetrieveBodyNodeAndRunAction(position: SCNVector3 = SCNVector3(), backward:Bool = false, action: SCNAction = SCNAction.unhide()) -> SCNNode {
+        if bodyNode == nil {
+            bodyNode = SCNNode()
+            bodyNode.position = position
+            bodyNode.hidden = backward
+            bodyNode.addChildNode(createPawnNode())
+            worldNode.addChildNode(bodyNode)
+            if backward { bodyNode.runAction(SCNAction.sequence([actions.actionAppearBackward(), action])) }
+            else { bodyNode.runAction(action) }
+        } else {
+            bodyNode.runAction(action)
+        }
+        return bodyNode
+    }
+    
+    func createPawnNode() -> SCNNode {
+        let pawnNode = SCNNode()
         let cylinder = SCNNode(geometry: WorldPhenomena.halfCylinder())
         cylinder.position = SCNVector3(0, -0.25, 0)
-        bodyNode.addChildNode(cylinder)
+        pawnNode.addChildNode(cylinder)
         let sphere = SCNNode(geometry: WorldPhenomena.sphere())
-        bodyNode.addChildNode(sphere)
-        bodyNode.pivot = SCNMatrix4MakeRotation(Float(M_PI/2), 0, 0, 1)
-        worldNode.addChildNode(bodyNode)
+        pawnNode.addChildNode(sphere)
+        pawnNode.pivot = SCNMatrix4MakeRotation(Float(M_PI/2), 0, 0, 1)
+        return pawnNode
     }
     
     func createNeutralNode(position: SCNVector3) -> SCNNode {
@@ -69,20 +73,20 @@ class WorldScene0
         return node
     }
     
-    func createExperienceNode(experience: Experience, position: SCNVector3) {
-        let rect = CGRect(x: -0.2 * scale, y: -0.2 * scale, width: 0.4 * scale, height: 0.4 * scale)
+    func createExperienceNode(experience: Experience, position: SCNVector3, delayed:Bool = false) {
+        let rect = CGRect(x: -0.2 * scaleExperience, y: -0.2 * scaleExperience, width: 0.4 * scaleExperience, height: 0.4 * scaleExperience)
         let path = ReshapableNode.paths[experience.experiment.shapeIndex](rect)
-        let geometry = SCNShape(path: path, extrusionDepth: 0.1 * scale)
+        let geometry = SCNShape(path: path, extrusionDepth: 0.1 * scaleExperience)
         geometry.materials = [WorldPhenomena.defaultMaterial()]
         if experience.colorIndex > 0 {
             geometry.firstMaterial!.diffuse.contents = ExperienceNode.colors[experience.colorIndex]
         }
         let experienceNode = SCNNode(geometry: geometry)
-        experienceNode.scale = SCNVector3(1/scale, 1/scale, 1/scale)
+        experienceNode.scale = SCNVector3(1/scaleExperience, 1/scaleExperience, 1/scaleExperience)
         experienceNode.position = position
         experienceNode.hidden = true
         worldNode.addChildNode(experienceNode)
-        experienceNode.runAction(sparkle)
+        if delayed { experienceNode.runAction(actions.waitAndEmitExperience()) }
+        else { experienceNode.runAction(actions.emitExperience()) }
     }
-    
 }

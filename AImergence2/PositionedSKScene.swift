@@ -31,14 +31,19 @@ class PositionedSKScene: SKScene {
     
     static let titleFont      = UIFont.preferredFontForTextStyle(UIFontTextStyleTitle1)
     
+    var cameraRelativeOriginNode = SKNode()
+    
     func positionInFrame(frameSize: CGSize) {
         if frameSize.height < frameSize.width {
             self.size = PositionedSKScene.landscapeSize
             camera?.position =  PositionedSKScene.landscapeCameraPosition
+            cameraRelativeOriginNode.position = -PositionedSKScene.landscapeCameraPosition
         } else {
             self.size = PositionedSKScene.portraitSize
             camera?.position =  PositionedSKScene.portraitCameraPosition
+            cameraRelativeOriginNode.position = -PositionedSKScene.portraitCameraPosition
         }
+        if cameraRelativeOriginNode.parent == nil { camera?.addChild(cameraRelativeOriginNode) }
     }
 }
 
@@ -49,3 +54,8 @@ func * (left: Int, right: CGVector) -> CGVector {
     return CGVector(dx: CGFloat(left) * right.dx, dy: CGFloat(left) * right.dy) }
 
 func += (inout left: CGPoint, right: CGVector) {left = left + right }
+
+prefix func - (point: CGPoint) -> CGPoint {
+    return CGPoint(x: -point.x, y: -point.y)
+}
+
