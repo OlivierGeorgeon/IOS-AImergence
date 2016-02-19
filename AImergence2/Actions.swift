@@ -25,12 +25,12 @@ struct Actions
     let moveFarRight = SCNAction.moveByX( 2.0, y: 0.0, z: 0.0, duration: 1.0)
     let shrink = SCNAction.scaleBy(0.0, duration: 1.0)
 
-    func emitExperience() -> SCNAction {
+    func spawnExperience() -> SCNAction {
         return SCNAction.sequence([unhide, moveUpExperience, remove])
     }
     
-    func waitAndEmitExperience() -> SCNAction {
-        return SCNAction.sequence([wait,  emitExperience()])
+    func waitAndSpawnExperience() -> SCNAction {
+        return SCNAction.sequence([wait,  spawnExperience()])
     }
     
     func actionAppearBackward() -> SCNAction {

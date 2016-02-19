@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		090AD9E81C77488000F2FE8C /* ImagineModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090AD9E71C77488000F2FE8C /* ImagineModel.swift */; };
 		0911B7F21C731CF400DC3F69 /* PositionedSKScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0911B7F11C731CF400DC3F69 /* PositionedSKScene.swift */; };
 		0911B7F41C73A4B600DC3F69 /* WorldScene4.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0911B7F31C73A4B600DC3F69 /* WorldScene4.swift */; };
 		0911B7F61C748BFC00DC3F69 /* WorldScene7.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0911B7F51C748BFC00DC3F69 /* WorldScene7.swift */; };
@@ -47,7 +48,7 @@
 		09B12C7D1C75D53F000FBEF6 /* Actions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B12C7C1C75D53F000FBEF6 /* Actions.swift */; };
 		09ED657D1C6C87D2004A8CA7 /* Level6.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09ED657C1C6C87D2004A8CA7 /* Level6.swift */; };
 		09ED657F1C6D0EE6004A8CA7 /* WorldViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09ED657E1C6D0EE6004A8CA7 /* WorldViewController.swift */; };
-		09ED65831C6D11A1004A8CA7 /* WorldPhenomena.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09ED65821C6D11A1004A8CA7 /* WorldPhenomena.swift */; };
+		09ED65831C6D11A1004A8CA7 /* Geometries.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09ED65821C6D11A1004A8CA7 /* Geometries.swift */; };
 		09ED65851C6D1400004A8CA7 /* WorldScene0.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09ED65841C6D1400004A8CA7 /* WorldScene0.swift */; };
 		09ED65871C6E36B7004A8CA7 /* WorldScene3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09ED65861C6E36B7004A8CA7 /* WorldScene3.swift */; };
 /* End PBXBuildFile section */
@@ -70,6 +71,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		090AD9E71C77488000F2FE8C /* ImagineModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagineModel.swift; sourceTree = "<group>"; };
 		0911B7F11C731CF400DC3F69 /* PositionedSKScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PositionedSKScene.swift; sourceTree = "<group>"; };
 		0911B7F31C73A4B600DC3F69 /* WorldScene4.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorldScene4.swift; sourceTree = "<group>"; };
 		0911B7F51C748BFC00DC3F69 /* WorldScene7.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorldScene7.swift; sourceTree = "<group>"; };
@@ -120,7 +122,7 @@
 		09B12C7C1C75D53F000FBEF6 /* Actions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Actions.swift; sourceTree = "<group>"; };
 		09ED657C1C6C87D2004A8CA7 /* Level6.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Level6.swift; sourceTree = "<group>"; };
 		09ED657E1C6D0EE6004A8CA7 /* WorldViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorldViewController.swift; sourceTree = "<group>"; };
-		09ED65821C6D11A1004A8CA7 /* WorldPhenomena.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorldPhenomena.swift; sourceTree = "<group>"; };
+		09ED65821C6D11A1004A8CA7 /* Geometries.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Geometries.swift; sourceTree = "<group>"; };
 		09ED65841C6D1400004A8CA7 /* WorldScene0.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorldScene0.swift; sourceTree = "<group>"; };
 		09ED65861C6E36B7004A8CA7 /* WorldScene3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorldScene3.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -257,8 +259,9 @@
 			isa = PBXGroup;
 			children = (
 				09ED657E1C6D0EE6004A8CA7 /* WorldViewController.swift */,
-				09ED65821C6D11A1004A8CA7 /* WorldPhenomena.swift */,
+				09ED65821C6D11A1004A8CA7 /* Geometries.swift */,
 				09B12C7C1C75D53F000FBEF6 /* Actions.swift */,
+				090AD9E71C77488000F2FE8C /* ImagineModel.swift */,
 				09ED65841C6D1400004A8CA7 /* WorldScene0.swift */,
 				093C3F651C6F68B9000BC6FB /* WorldScene1.swift */,
 				093C3F671C6F8482000BC6FB /* WorldScene2.swift */,
@@ -420,7 +423,7 @@
 				0936813F1C417378008C6B5D /* GameScene.swift in Sources */,
 				0994526E1C5F983400F0ABFF /* HelpView.swift in Sources */,
 				093681411C417378008C6B5D /* GameViewController.swift in Sources */,
-				09ED65831C6D11A1004A8CA7 /* WorldPhenomena.swift in Sources */,
+				09ED65831C6D11A1004A8CA7 /* Geometries.swift in Sources */,
 				0961EBBB1C64961F00A4E55C /* Level5.swift in Sources */,
 				093000DC1C4FB62C00425BB1 /* ExperienceStruct.swift in Sources */,
 				093681711C4270A5008C6B5D /* Level1.swift in Sources */,
@@ -434,6 +437,7 @@
 				093000DA1C4FB39000425BB1 /* ExperimentNode.swift in Sources */,
 				093000DE1C4FC77700425BB1 /* ExperienceNode.swift in Sources */,
 				09ED65871C6E36B7004A8CA7 /* WorldScene3.swift in Sources */,
+				090AD9E81C77488000F2FE8C /* ImagineModel.swift in Sources */,
 				09ED657D1C6C87D2004A8CA7 /* Level6.swift in Sources */,
 				093681791C4677A6008C6B5D /* GameStruct.swift in Sources */,
 				093C3F661C6F68B9000BC6FB /* WorldScene1.swift in Sources */,

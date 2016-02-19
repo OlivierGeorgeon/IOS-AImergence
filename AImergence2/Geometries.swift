@@ -9,7 +9,7 @@
 import Foundation
 import SceneKit
 
-class WorldPhenomena
+class Geometries
 {
     class func defaultMaterial() -> SCNMaterial {
         let material = SCNMaterial()

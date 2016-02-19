@@ -8,13 +8,8 @@
 
 import SceneKit
 
-class WorldScene0
+class WorldScene0: ImagineModel
 {
-    let actions = Actions()
-    let scaleExperience = CGFloat(100)
-
-    var worldNode = SCNNode()
-    var bodyNode: SCNNode!
     var neutralNode: SCNNode!
     var enjoyableNode: SCNNode!
     
@@ -23,11 +18,11 @@ class WorldScene0
         case 0:
             createOrRetrieveBodyNodeAndRunAction(action: actions.bumpBack())
             if neutralNode == nil { neutralNode = createNeutralNode(SCNVector3(-1.5, 0, 0)) }
-            createExperienceNode(experience, position: SCNVector3( -1.0, 0.0, 0.0), delayed: true)
+            spawnExperienceNode(experience, position: SCNVector3( -1.0, 0.0, 0.0), delayed: true)
         case 1:
             createOrRetrieveBodyNodeAndRunAction(action: actions.bump())
             if enjoyableNode == nil { enjoyableNode = createEnjoyableNode(SCNVector3(1.25, 0, 0)) }
-            createExperienceNode(experience, position: SCNVector3( 1.0, 0.0, 0.0), delayed: true)
+            spawnExperienceNode(experience, position: SCNVector3( 1.0, 0.0, 0.0), delayed: true)
         default:
             break
         }
@@ -48,45 +43,18 @@ class WorldScene0
         return bodyNode
     }
     
-    func createPawnNode() -> SCNNode {
-        let pawnNode = SCNNode()
-        let cylinder = SCNNode(geometry: WorldPhenomena.halfCylinder())
-        cylinder.position = SCNVector3(0, -0.25, 0)
-        pawnNode.addChildNode(cylinder)
-        let sphere = SCNNode(geometry: WorldPhenomena.sphere())
-        pawnNode.addChildNode(sphere)
-        pawnNode.pivot = SCNMatrix4MakeRotation(Float(M_PI/2), 0, 0, 1)
-        return pawnNode
-    }
-    
     func createNeutralNode(position: SCNVector3) -> SCNNode {
-        let node = SCNNode(geometry: WorldPhenomena.sphere())
+        let node = SCNNode(geometry: Geometries.sphere())
         node.position = position
         worldNode.addChildNode(node)
         return node
     }
     
     func createEnjoyableNode(position: SCNVector3) -> SCNNode {
-        let node = SCNNode(geometry: WorldPhenomena.brick())
+        let node = SCNNode(geometry: Geometries.brick())
         node.position = position
         worldNode.addChildNode(node)
         return node
     }
     
-    func createExperienceNode(experience: Experience, position: SCNVector3, delayed:Bool = false) {
-        let rect = CGRect(x: -0.2 * scaleExperience, y: -0.2 * scaleExperience, width: 0.4 * scaleExperience, height: 0.4 * scaleExperience)
-        let path = ReshapableNode.paths[experience.experiment.shapeIndex](rect)
-        let geometry = SCNShape(path: path, extrusionDepth: 0.1 * scaleExperience)
-        geometry.materials = [WorldPhenomena.defaultMaterial()]
-        if experience.colorIndex > 0 {
-            geometry.firstMaterial!.diffuse.contents = ExperienceNode.colors[experience.colorIndex]
-        }
-        let experienceNode = SCNNode(geometry: geometry)
-        experienceNode.scale = SCNVector3(1/scaleExperience, 1/scaleExperience, 1/scaleExperience)
-        experienceNode.position = position
-        experienceNode.hidden = true
-        worldNode.addChildNode(experienceNode)
-        if delayed { experienceNode.runAction(actions.waitAndEmitExperience()) }
-        else { experienceNode.runAction(actions.emitExperience()) }
-    }
 }

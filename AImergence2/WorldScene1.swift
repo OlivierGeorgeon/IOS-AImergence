@@ -18,26 +18,26 @@ class WorldScene1: WorldScene0
         case 00:
             createOrRetrieveBodyNodeAndRunAction(action: actions.bumpBack())
             if switchNode0 == nil { switchNode0 = createSwitchNode(SCNVector3(-1.5, 0, 0)) }
-            createExperienceNode(experience, position: SCNVector3( -1.0, 0.0, 0.0), delayed: true)
+            spawnExperienceNode(experience, position: SCNVector3( -1.0, 0.0, 0.0), delayed: true)
         case 01:
             createOrRetrieveBodyNodeAndRunAction(backward: true, action: actions.bumpAndTurnover())
             if switchNode0 == nil { switchNode0 = createSwitchNode(SCNVector3(-1.5, 0, 0)) }
-            createExperienceNode(experience, position: SCNVector3( -1.0, 0.0, 0.0), delayed: true)
+            spawnExperienceNode(experience, position: SCNVector3( -1.0, 0.0, 0.0), delayed: true)
         case 10:
             createOrRetrieveBodyNodeAndRunAction(backward: true, action: actions.bumpBack())
             if switchNode1 == nil { switchNode1 = createSwitchNode(SCNVector3(1.5, 0, 0)) }
-            createExperienceNode(experience, position: SCNVector3( 1.0, 0.0, 0.0), delayed: true)
+            spawnExperienceNode(experience, position: SCNVector3( 1.0, 0.0, 0.0), delayed: true)
         case 11:
             createOrRetrieveBodyNodeAndRunAction(action: actions.bumpAndTurnover())
             if switchNode1 == nil { switchNode1 = createSwitchNode(SCNVector3(1.5, 0, 0)) }
-            createExperienceNode(experience, position: SCNVector3( 1.0, 0.0, 0.0), delayed: true)
+            spawnExperienceNode(experience, position: SCNVector3( 1.0, 0.0, 0.0), delayed: true)
         default:
             break
         }
     }
     
     func createSwitchNode(position: SCNVector3) -> SCNNode {
-        let node = SCNNode(geometry: WorldPhenomena.cube())
+        let node = SCNNode(geometry: Geometries.cube())
         node.position = position
         worldNode.addChildNode(node)
         return node

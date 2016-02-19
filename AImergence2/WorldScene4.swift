@@ -15,29 +15,29 @@ class WorldScene4: WorldScene3
         case 00: // Touch
             createOrRetrieveBodyNodeAndRunAction(action: actions.bumpBack())
             if neutralNode == nil { neutralNode = createNeutralNode(SCNVector3(-1.5, 0, 0)) }
-            createExperienceNode(experience, position: SCNVector3( -1.0, 0.0, 0.0), delayed: true)
+            spawnExperienceNode(experience, position: SCNVector3( -1.0, 0.0, 0.0), delayed: true)
         case 01:
             createOrRetrieveBodyNodeAndRunAction(backward: true, action: actions.bump())
             if neutralNode == nil { neutralNode = createNeutralNode(SCNVector3(-1.5, 0, 0)) }
-            createExperienceNode(experience, position: SCNVector3( -1.0, 0.0, 0.0), delayed: true)
+            spawnExperienceNode(experience, position: SCNVector3( -1.0, 0.0, 0.0), delayed: true)
         case 10:  // eat
             createOrRetrieveBodyNodeAndRunAction(action: actions.waitAndToss())
             if neutralNode == nil { neutralNode = createNeutralNode(SCNVector3(-1.5, 0, 0)) }
             neutralNode.runAction(SCNAction.sequence([actions.moveHalfFront, actions.moveHalfBack]))
-            createExperienceNode(experience, position: SCNVector3( -0.5, 0.0, 0.0), delayed: true)
+            spawnExperienceNode(experience, position: SCNVector3( -0.5, 0.0, 0.0), delayed: true)
             bodyNode = nil
         case 11:
             createOrRetrieveBodyNodeAndRunAction(backward: true, action: actions.waitAndToss())
             if neutralNode == nil { neutralNode = createNeutralNode(SCNVector3(-1.5, 0, 0)) }
             neutralNode.runAction(SCNAction.sequence([actions.moveHalfFront, actions.moveHalfBack]))
-            createExperienceNode(experience, position: SCNVector3( -0.5, 0.0, 0.0), delayed: true)
+            spawnExperienceNode(experience, position: SCNVector3( -0.5, 0.0, 0.0), delayed: true)
             bodyNode = nil
         case 20: // swap
             createOrRetrieveBodyNodeAndRunAction(backward: true, action: actions.turnover())
-            createExperienceNode(experience, position: SCNVector3( 0.0, 0.0, 0.0))
+            spawnExperienceNode(experience, position: SCNVector3( 0.0, 0.0, 0.0))
         case 21:
             createOrRetrieveBodyNodeAndRunAction(action: actions.turnover())
-            createExperienceNode(experience, position: SCNVector3( 0.0, 0.0, 0.0))
+            spawnExperienceNode(experience, position: SCNVector3( 0.0, 0.0, 0.0))
         default:
             break
         }
