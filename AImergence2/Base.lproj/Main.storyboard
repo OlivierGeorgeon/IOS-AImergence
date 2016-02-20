@@ -160,10 +160,10 @@
             </objects>
             <point key="canvasLocation" x="1218" y="212"/>
         </scene>
-        <!--World View Controller-->
+        <!--Imagine View Controller-->
         <scene sceneID="ud3-8c-Jm6">
             <objects>
-                <viewController id="S9v-w3-pyN" customClass="WorldViewController" customModule="AImergence2" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="S9v-w3-pyN" customClass="ImagineViewController" customModule="AImergence2" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="VEL-m5-zKm"/>
                         <viewControllerLayoutGuide type="bottom" id="a8D-PE-kOS"/>
@@ -186,17 +186,28 @@
                                     <action selector="elseButton:" destination="S9v-w3-pyN" eventType="touchUpInside" id="f2X-z9-aXR"/>
                                 </connections>
                             </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Vous devez atteindre le score de 10 pour pouvoir voir une représentation imaginaire du monde dans cette fenêtre" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="dPD-EN-VYk">
+                                <rect key="frame" x="28" y="38" width="344" height="342"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="dPD-EN-VYk" firstAttribute="top" secondItem="ceU-MJ-Rek" secondAttribute="bottom" constant="8" symbolic="YES" id="CQh-no-mRG"/>
                             <constraint firstItem="ceU-MJ-Rek" firstAttribute="leading" secondItem="Oej-sS-MrJ" secondAttribute="leadingMargin" constant="8" id="Lro-KH-J8c"/>
                             <constraint firstAttribute="trailingMargin" secondItem="T1U-Yf-6NB" secondAttribute="trailing" constant="8" id="RmN-O8-U7h"/>
                             <constraint firstItem="T1U-Yf-6NB" firstAttribute="top" secondItem="Oej-sS-MrJ" secondAttribute="topMargin" id="jWi-cq-msQ"/>
                             <constraint firstItem="ceU-MJ-Rek" firstAttribute="baseline" secondItem="T1U-Yf-6NB" secondAttribute="baseline" id="mV0-Bb-g3i"/>
+                            <constraint firstItem="dPD-EN-VYk" firstAttribute="trailing" secondItem="T1U-Yf-6NB" secondAttribute="trailing" id="nt1-Xa-Fwk"/>
+                            <constraint firstItem="dPD-EN-VYk" firstAttribute="leading" secondItem="Oej-sS-MrJ" secondAttribute="leadingMargin" constant="8" id="pwB-iQ-eQr"/>
+                            <constraint firstAttribute="bottom" secondItem="dPD-EN-VYk" secondAttribute="bottom" constant="20" symbolic="YES" id="uXF-yr-GEZ"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="sceneView" destination="Oej-sS-MrJ" id="N9L-gz-PFx"/>
+                        <outlet property="textView" destination="dPD-EN-VYk" id="ahi-nI-ev1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kzU-Ao-ubp" userLabel="First Responder" sceneMemberID="firstResponder"/>

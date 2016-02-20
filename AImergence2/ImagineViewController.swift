@@ -12,43 +12,34 @@ import SceneKit
 protocol WorldViewControllerDelegate
 {
     func hideImagineViewControllerContainer()
+    func currentLevelIsUnlocked() -> Bool
 }
 
-class WorldViewController: UIViewController {
+class ImagineViewController: UIViewController {
 
     @IBOutlet weak var sceneView: SCNView!
+    @IBOutlet weak var textView: UITextView!
     @IBAction func closeButton(sender: UIButton) { delegate?.hideImagineViewControllerContainer() }
-    @IBAction func elseButton(sender: UIButton) //{ displayLevel(level) }
-    { sceneView.pointOfView = imagineModel.cameraNodes[1] }
+    @IBAction func elseButton(sender: UIButton)  { //sceneView.pointOfView = imagineModel.cameraNodes[1] 
+    }
     
-    var imagineModel = WorldScene0()
-    var delegate: WorldViewControllerDelegate?
+    let bundleName = NSBundle.mainBundle().infoDictionary!["CFBundleName"] as! String
+
+    var imagineModel:ImagineModel!
+    var delegate: WorldViewControllerDelegate!
     private var level:Int = 0
 
     func displayLevel(level: Int, imagineNumber: Int = 0) {
         self.level = level
-        switch level {
-        case 0:
-            imagineModel = WorldScene0()
+        if delegate.currentLevelIsUnlocked() {
+            textView.hidden = true
+            let aClass =  NSClassFromString(bundleName + ".ImagineModel\(level)") as! ImagineModel.Type
+            imagineModel = aClass.init()
+            if imagineModel == nil { imagineModel = ImagineModel4() }
             sceneViewSetup()
-        case 1:
-            imagineModel = WorldScene1()
-            sceneViewSetup()
-        case 2:
-            imagineModel = WorldScene2()
-            sceneViewSetup()
-        case 3:
-            imagineModel = WorldScene3()
-            sceneViewSetup()
-        case 4, 5, 6:
-            imagineModel = WorldScene4()
-            sceneViewSetup()
-        case 7:
-            imagineModel = WorldScene7()
-            sceneViewSetup()
-        default:
-            imagineModel = WorldScene0()
-            sceneViewSetup()
+        } else {
+            textView.hidden = false
+            sceneView.scene = nil
         }
     }
 
@@ -57,13 +48,13 @@ class WorldViewController: UIViewController {
         sceneView.scene = scene
         sceneView.allowsCameraControl = true
         sceneView.jitteringEnabled = true
-        //sceneView.showsStatistics = true
-        //sceneView.autoenablesDefaultLighting = true
+        sceneView.showsStatistics = false
+        sceneView.autoenablesDefaultLighting = false
         imagineModel.setup(scene)
     }
     
     func playExperience(experience: Experience) {
-        imagineModel.playExperience(experience)
+        imagineModel?.playExperience(experience)
     }
 
     override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {

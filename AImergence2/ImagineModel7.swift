@@ -8,7 +8,7 @@
 
 import SceneKit
 
-class WorldScene7: WorldScene4
+class ImagineModel7: ImagineModel4
 {
     let actionRotateCarrousel = SCNAction.rotateByX(0.0, y: 0.0, z: CGFloat(-M_PI) / 5.0, duration: 1.0)
     

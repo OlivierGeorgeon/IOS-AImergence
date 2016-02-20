@@ -44,7 +44,7 @@ class GameViewController: UIViewController, GameSceneDelegate, HomeSceneDelegate
     }
     
     var helpViewController:  HelpViewController?
-    var imagineViewController: WorldViewController?
+    var imagineViewController: ImagineViewController?
     var level = 0 {
         didSet {
             levelButton.setTitle(NSLocalizedString("Level", comment: "") + " \(level)", forState: .Normal)
@@ -53,14 +53,16 @@ class GameViewController: UIViewController, GameSceneDelegate, HomeSceneDelegate
         }
     }
     
+    var unlockedLevels = [false, false, false, false, true, true, true, true]
+    
     override func viewDidLoad()
     {
         super.viewDidLoad()
         
         let gameScene = GameScene(level: Level0(), gameStruct: GameStruct())
         gameScene.gameSceneDelegate = self
-        sceneView.showsFPS = true
-        sceneView.showsNodeCount = true
+        sceneView.showsFPS = false
+        sceneView.showsNodeCount = false
         sceneView.ignoresSiblingOrder = true
         sceneView.presentScene(gameScene)
         
@@ -125,7 +127,7 @@ class GameViewController: UIViewController, GameSceneDelegate, HomeSceneDelegate
                 helpViewController = segue.destinationViewController as? HelpViewController
                 helpViewController!.delegate = self
             case "ShowWorld":
-                imagineViewController = segue.destinationViewController as? WorldViewController
+                imagineViewController = segue.destinationViewController as? ImagineViewController
                 imagineViewController!.delegate = self
             default:
                 break
@@ -143,6 +145,15 @@ class GameViewController: UIViewController, GameSceneDelegate, HomeSceneDelegate
         imagineViewController?.playExperience(experience)
     }
     
+    func unlockLevel() {
+        if !unlockedLevels[level] {
+            unlockedLevels[level] = true
+            if !imagineViewControllerContainer.hidden {
+                imagineViewController?.displayLevel(level)
+            }
+        }
+    }
+    
     //Implement HomeSceneDelegate
     func updateLevel(levelNumber: Int) {
         self.level = levelNumber
@@ -157,6 +168,10 @@ class GameViewController: UIViewController, GameSceneDelegate, HomeSceneDelegate
     func hideImagineViewControllerContainer() {
         imagineViewControllerContainer.hidden = true
         imagineViewController!.sceneView.scene = nil
+    }
+    
+    func currentLevelIsUnlocked() -> Bool {
+        return unlockedLevels[level]
     }
     
     override func shouldAutorotate() -> Bool {

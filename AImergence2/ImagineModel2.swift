@@ -8,7 +8,7 @@
 
 import SceneKit
 
-class WorldScene2: WorldScene1
+class ImagineModel2: ImagineModel1
 {
         
     let rotateToUp    = SCNAction.rotateToX(0, y: 0, z: CGFloat(M_PI_2), duration: 0.2)

@@ -8,7 +8,7 @@
 
 import SceneKit
 
-class WorldScene1: WorldScene0
+class ImagineModel1: ImagineModel0
 {
     var switchNode0: SCNNode!
     var switchNode1: SCNNode!

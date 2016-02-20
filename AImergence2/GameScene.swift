@@ -11,6 +11,7 @@ import SpriteKit
 protocol GameSceneDelegate
 {
     func playExperience(experience: Experience)
+    func unlockLevel()
 }
 
 class GameScene: PositionedSKScene {
@@ -42,6 +43,7 @@ class GameScene: PositionedSKScene {
             scoreLabel.text = "\(score)"
             if score >= level.winScore {
                 scoreBackground.fillColor = UIColor.greenColor()
+                gameSceneDelegate.unlockLevel()
             } else {
                 scoreBackground.fillColor = UIColor.grayColor()
             }

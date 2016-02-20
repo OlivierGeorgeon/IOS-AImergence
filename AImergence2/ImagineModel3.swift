@@ -8,7 +8,7 @@
 
 import SceneKit
 
-class WorldScene3: WorldScene2
+class ImagineModel3: ImagineModel2
 {
     var moveLeft:SCNAction  { return SCNAction.group([SCNAction.moveByX(-1, y: 0.0, z: 0.0, duration: 0.1), rotateToLeft ])}
     var moveRight:SCNAction { return SCNAction.group([SCNAction.moveByX( 1, y: 0.0, z: 0.0, duration: 0.1), rotateToRight])}

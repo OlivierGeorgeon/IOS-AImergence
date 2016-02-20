@@ -8,12 +8,12 @@
 
 import SceneKit
 
-class WorldScene0: ImagineModel
+class ImagineModel0: ImagineModel
 {
     var neutralNode: SCNNode!
     var enjoyableNode: SCNNode!
     
-    func playExperience(experience: Experience) {
+    override func playExperience(experience: Experience) {
         switch experience.experiment.number {
         case 0:
             createOrRetrieveBodyNodeAndRunAction(action: actions.bumpBack())

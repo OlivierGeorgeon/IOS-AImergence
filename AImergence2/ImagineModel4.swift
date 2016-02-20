@@ -8,7 +8,7 @@
 
 import SceneKit
 
-class WorldScene4: WorldScene3
+class ImagineModel4: ImagineModel3
 {    
     override func playExperience(experience: Experience) {
         switch experience.hashValue {

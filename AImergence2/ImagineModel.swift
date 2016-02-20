@@ -17,6 +17,12 @@ class ImagineModel {
     var worldNode = SCNNode()
     var bodyNode: SCNNode!
 
+    required init() {
+    }
+    
+    func playExperience(experience: Experience) {
+    }
+    
     func setup(scene: SCNScene) {
         let ambientLightNode = SCNNode()
         ambientLightNode.light = SCNLight()
@@ -53,16 +59,18 @@ class ImagineModel {
         let sphere = SCNNode(geometry: Geometries.sphere())
         pawnNode.addChildNode(sphere)
         pawnNode.pivot = SCNMatrix4MakeRotation(Float(M_PI/2), 0, 0, 1)
-        pawnNode.addChildNode(createBodyCamera())
-        return pawnNode.flattenedClone()
+        let pawnNodeFlat = pawnNode.flattenedClone()
+        pawnNodeFlat.addChildNode(createBodyCamera())
+        return pawnNodeFlat
     }
     
     func createBodyCamera() -> SCNNode {
         let bodyCamera = SCNNode()
         bodyCamera.camera = SCNCamera()
-        bodyCamera.position = SCNVector3Make(-0.0, 0.0, 5.0)
-        //bodyCamera.pivot = SCNMatrix4MakeRotation(Float(M_PI/2), 0, 1, 0)
+        //bodyCamera.pivot = SCNMatrix4MakeRotation(Float(-M_PI_2), 1, 1, 1)
+        bodyCamera.position = SCNVector3Make(-2.0, -3.0, 0.0)
         cameraNodes.append(bodyCamera)
+        bodyCamera.runAction(SCNAction.repeatAction(SCNAction.rotateByX(0, y: CGFloat(-M_PI_2), z: CGFloat(M_PI_2 - 0.2), duration: 1), count: 1))
         return bodyCamera
     }
     
