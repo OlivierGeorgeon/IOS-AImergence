@@ -53,7 +53,7 @@ class GameViewController: UIViewController, GameSceneDelegate, HomeSceneDelegate
         }
     }
     
-    var unlockedLevels = [false, false, false, false, true, true, true, true]
+    var unlockedLevels = [false, false, false, false, true, true, true, true, true]
     
     override func viewDidLoad()
     {

@@ -34,11 +34,8 @@ class ImagineViewController: UIViewController {
         if delegate.currentLevelIsUnlocked() {
             textView.hidden = true
             let aClass:AnyClass? =  NSClassFromString(bundleName + ".ImagineModel\(level)")
-            if let imagineModelType = aClass as? ImagineModel.Type {
-                imagineModel = imagineModelType.init()
-            } else {
-                imagineModel = ImagineModel4()
-            }
+            if let imagineModelType = aClass as? ImagineModel.Type { imagineModel = imagineModelType.init() }
+            else { imagineModel = ImagineModel0() }
             sceneViewSetup()
         } else {
             textView.hidden = false

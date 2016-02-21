@@ -11,7 +11,7 @@ import SpriteKit
 class ExperienceNode: ReshapableNode
 {
     static let actionRefill = SKAction.customActionWithDuration(0, actionBlock: changeColor)
-    static let colors = [UIColor.whiteColor(), UIColor.greenColor(), UIColor.redColor(), UIColor.blueColor(), UIColor.yellowColor()]
+    static let colors = [UIColor.whiteColor(), UIColor.greenColor(), UIColor.redColor(), UIColor.blueColor(), UIColor.orangeColor()]
     
     let experience:Experience
     let stepOfCreation:Int

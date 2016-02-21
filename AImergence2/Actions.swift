@@ -22,7 +22,7 @@ struct Actions
     let wait = SCNAction.waitForDuration(0.1)
     let unhide = SCNAction.unhide()
     
-    let moveFarRight = SCNAction.moveByX( 2.0, y: 0.0, z: 0.0, duration: 1.0)
+    let moveFarRight = SCNAction.moveByX( 5.0, y: 0.0, z: 0.0, duration: 0.3)
     let shrink = SCNAction.scaleBy(0.0, duration: 1.0)
 
     func spawnExperience() -> SCNAction {
@@ -58,8 +58,12 @@ struct Actions
         return SCNAction.sequence([SCNAction.group([shrink, actionRoll, moveFarRight]), remove])
     }
     
+    func toss2() -> SCNAction {
+        return SCNAction.sequence([SCNAction.group([moveFarRight]), remove])
+    }
+    
     func waitAndToss() -> SCNAction {
-        return SCNAction.sequence([wait, toss()])
+        return SCNAction.sequence([wait, toss2()])
     }
 
     func bumpBlock(node: SCNNode) {

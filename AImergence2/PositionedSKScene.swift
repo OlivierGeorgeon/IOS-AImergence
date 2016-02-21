@@ -11,7 +11,7 @@ import SpriteKit
 
 class PositionedSKScene: SKScene {
     
-    static let maxLevelNumber = 7
+    static let maxLevelNumber = 8
     
     static let portraitSize              = CGSize(width: 375, height: 667)
     static let landscapeSize             = CGSize(width: 1188, height: 667)

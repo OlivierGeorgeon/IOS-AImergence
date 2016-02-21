@@ -35,12 +35,16 @@
 			<string>Essayez d&apos;attriber les mêmes formes aux experimentations qui produisent les mêmes effets qu&apos;au niveau 4, et les mêmes couleurs aux mêmes expériences. Il peut être utile de rejouer le niveau 4.</string>
 		</array>
 		<array>
-			<string>Au niveau 6, les expériementations ont les mêmes effets qu&apos;au niveau 4 et 5, mais les expériences n&apos;ont pas les mêmes valeurs.</string>
+			<string>Au niveau 6, les expériementations ont les mêmes effets qu&apos;aux niveaux 4 et 5, mais les expériences n&apos;ont pas les mêmes valeurs.</string>
 			<string>Vous pouvez attribuer la couleur verte aux expériences qui sont plaisantes ou qui laissent espérer une expérience plaisante au coup suivant.</string>
 			<string>Vous pouvez attribuer la couleur rouge aux expériences qui sont déplaisantes ou qui laissent craindre une expérience déplaisante au coup suivant.</string>
 		</array>
 		<array>
-			<string>Au niveau 7, les expérimentations ont les mêmes effets immédiats qu&apos;aux niveaux 4, 5, et 6, mais, en plus, elles transforment le monde sur le long terme.</string>
+			<string>Au niveau 7, les expérimentations ont les mêmes effets et les mêmes valeurs qu&apos;au niveau 6.</string>
+			<string>Par contre, l&apos;expérimentation représentée par un cercle produit toujours la même expérience. Cette expérimentation n&apos;apporte donc aucune information mais est néammoins utile pour changer l&apos;état du monde.</string>
+		</array>
+		<array>
+			<string>Au niveau 8, les expérimentations ont les mêmes effets immédiats qu&apos;aux niveaux 4, 5, 6, et 7, mais, en plus, elles transforment le monde sur le long terme.</string>
 			<string>Une fois que le monde a été transformé de manière appropriée, vous pouvez obtenir une expérience plaisante à chaque coup.</string>
 		</array>
 	</array>
