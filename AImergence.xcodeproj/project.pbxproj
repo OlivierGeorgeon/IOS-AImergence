@@ -19,7 +19,7 @@
 		093000DE1C4FC77700425BB1 /* ExperienceSKNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093000DD1C4FC77700425BB1 /* ExperienceSKNode.swift */; };
 		093000E01C4FD3B700425BB1 /* ReshapableSKNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093000DF1C4FD3B700425BB1 /* ReshapableSKNode.swift */; };
 		0936813B1C417378008C6B5D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0936813A1C417378008C6B5D /* AppDelegate.swift */; };
-		0936813F1C417378008C6B5D /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0936813E1C417378008C6B5D /* GameScene.swift */; };
+		0936813F1C417378008C6B5D /* GameSKScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0936813E1C417378008C6B5D /* GameSKScene.swift */; };
 		093681411C417378008C6B5D /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093681401C417378008C6B5D /* GameViewController.swift */; };
 		093681441C417378008C6B5D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 093681421C417378008C6B5D /* Main.storyboard */; };
 		093681461C417378008C6B5D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 093681451C417378008C6B5D /* Assets.xcassets */; };
@@ -33,7 +33,7 @@
 		093681751C45455F008C6B5D /* Level3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093681741C45455F008C6B5D /* Level3.swift */; };
 		093681771C4549CB008C6B5D /* Level4.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093681761C4549CB008C6B5D /* Level4.swift */; };
 		093681791C4677A6008C6B5D /* GameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093681781C4677A6008C6B5D /* GameModel.swift */; };
-		0936817B1C4696AB008C6B5D /* HomeScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0936817A1C4696AB008C6B5D /* HomeScene.swift */; };
+		0936817B1C4696AB008C6B5D /* MenuSKScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0936817A1C4696AB008C6B5D /* MenuSKScene.swift */; };
 		0936817D1C46A86C008C6B5D /* HomeStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0936817C1C46A86C008C6B5D /* HomeStruct.swift */; };
 		093C3F661C6F68B9000BC6FB /* ImagineModel1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093C3F651C6F68B9000BC6FB /* ImagineModel1.swift */; };
 		093C3F681C6F8482000BC6FB /* ImagineModel2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093C3F671C6F8482000BC6FB /* ImagineModel2.swift */; };
@@ -87,7 +87,7 @@
 		093000DF1C4FD3B700425BB1 /* ReshapableSKNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReshapableSKNode.swift; sourceTree = "<group>"; };
 		093681371C417378008C6B5D /* AImergence2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AImergence2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0936813A1C417378008C6B5D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		0936813E1C417378008C6B5D /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
+		0936813E1C417378008C6B5D /* GameSKScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSKScene.swift; sourceTree = "<group>"; };
 		093681401C417378008C6B5D /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		093681431C417378008C6B5D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		093681451C417378008C6B5D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -106,7 +106,7 @@
 		093681741C45455F008C6B5D /* Level3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Level3.swift; sourceTree = "<group>"; };
 		093681761C4549CB008C6B5D /* Level4.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Level4.swift; sourceTree = "<group>"; };
 		093681781C4677A6008C6B5D /* GameModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameModel.swift; sourceTree = "<group>"; };
-		0936817A1C4696AB008C6B5D /* HomeScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeScene.swift; sourceTree = "<group>"; };
+		0936817A1C4696AB008C6B5D /* MenuSKScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuSKScene.swift; sourceTree = "<group>"; };
 		0936817C1C46A86C008C6B5D /* HomeStruct.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeStruct.swift; sourceTree = "<group>"; };
 		093C3F651C6F68B9000BC6FB /* ImagineModel1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagineModel1.swift; sourceTree = "<group>"; };
 		093C3F671C6F8482000BC6FB /* ImagineModel2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagineModel2.swift; sourceTree = "<group>"; };
@@ -186,14 +186,9 @@
 				0961EBB61C63D16900A4E55C /* Levels */,
 				09ED65801C6D0EF5004A8CA7 /* Help */,
 				09ED65811C6D0F27004A8CA7 /* Imagine */,
-				0961EBB71C63D19E00A4E55C /* Nodes */,
-				0936816E1C42708E008C6B5D /* Experiment.swift */,
-				0936816C1C42707B008C6B5D /* Experience.swift */,
+				0961EBB71C63D19E00A4E55C /* SKSceneElements */,
 				0936813A1C417378008C6B5D /* AppDelegate.swift */,
-				0911B7F11C731CF400DC3F69 /* PositionedSKScene.swift */,
-				0936817A1C4696AB008C6B5D /* HomeScene.swift */,
 				0936817C1C46A86C008C6B5D /* HomeStruct.swift */,
-				0936813E1C417378008C6B5D /* GameScene.swift */,
 				093681781C4677A6008C6B5D /* GameModel.swift */,
 				09AC4CB91C7DD63700C149EC /* GameModel0.swift */,
 				09AC4CBB1C7DDBFC00C149EC /* GameModel2.swift */,
@@ -228,6 +223,8 @@
 		0961EBB61C63D16900A4E55C /* Levels */ = {
 			isa = PBXGroup;
 			children = (
+				0936816E1C42708E008C6B5D /* Experiment.swift */,
+				0936816C1C42707B008C6B5D /* Experience.swift */,
 				093681721C4523B1008C6B5D /* Level0.swift */,
 				093681701C4270A5008C6B5D /* Level1.swift */,
 				0961EBB81C63EE2200A4E55C /* Level2.swift */,
@@ -241,14 +238,17 @@
 			name = Levels;
 			sourceTree = "<group>";
 		};
-		0961EBB71C63D19E00A4E55C /* Nodes */ = {
+		0961EBB71C63D19E00A4E55C /* SKSceneElements */ = {
 			isa = PBXGroup;
 			children = (
 				093000DF1C4FD3B700425BB1 /* ReshapableSKNode.swift */,
 				093000D91C4FB39000425BB1 /* ExperimentSKNode.swift */,
 				093000DD1C4FC77700425BB1 /* ExperienceSKNode.swift */,
+				0911B7F11C731CF400DC3F69 /* PositionedSKScene.swift */,
+				0936813E1C417378008C6B5D /* GameSKScene.swift */,
+				0936817A1C4696AB008C6B5D /* MenuSKScene.swift */,
 			);
-			name = Nodes;
+			name = SKSceneElements;
 			sourceTree = "<group>";
 		};
 		09ED65801C6D0EF5004A8CA7 /* Help */ = {
@@ -429,7 +429,7 @@
 				0911B7F61C748BFC00DC3F69 /* ImagineModel8.swift in Sources */,
 				093681751C45455F008C6B5D /* Level3.swift in Sources */,
 				0936816F1C42708E008C6B5D /* Experiment.swift in Sources */,
-				0936813F1C417378008C6B5D /* GameScene.swift in Sources */,
+				0936813F1C417378008C6B5D /* GameSKScene.swift in Sources */,
 				0994526E1C5F983400F0ABFF /* HelpView.swift in Sources */,
 				093681411C417378008C6B5D /* GameViewController.swift in Sources */,
 				09ED65831C6D11A1004A8CA7 /* Geometries.swift in Sources */,
@@ -439,7 +439,7 @@
 				0936813B1C417378008C6B5D /* AppDelegate.swift in Sources */,
 				090AD9EC1C7A5F2400F2FE8C /* ImagineModel6.swift in Sources */,
 				09ED65851C6D1400004A8CA7 /* ImagineModel0.swift in Sources */,
-				0936817B1C4696AB008C6B5D /* HomeScene.swift in Sources */,
+				0936817B1C4696AB008C6B5D /* MenuSKScene.swift in Sources */,
 				0911B7F21C731CF400DC3F69 /* PositionedSKScene.swift in Sources */,
 				096F5CB91C56D7240041EA5F /* Level8.swift in Sources */,
 				0911B7F41C73A4B600DC3F69 /* ImagineModel4.swift in Sources */,

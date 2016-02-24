@@ -8,18 +8,18 @@
 
 import SpriteKit
 
-protocol HomeSceneDelegate
+protocol MenuSceneDelegate
 {
     func updateLevel(level: Int)
 }
 
-class HomeScene: PositionedSKScene {
+class MenuSKScene: PositionedSKScene {
     
     let cancelString = NSLocalizedString("Cancel", comment: "The Cancel button in the level-selection window.")
 
-    var userDelegate:HomeSceneDelegate?
+    var userDelegate: MenuSceneDelegate?
     var buttonNodes = [SKNode]()
-    var previousGameScene:GameScene?
+    var previousGameScene:GameSKScene?
 
     override func didMoveToView(view: SKView)
     {
@@ -61,7 +61,7 @@ class HomeScene: PositionedSKScene {
                 if let ln = levelNode.userData?["level"] as! Int? {
                     userDelegate?.updateLevel(ln)
                     let gameModel = GameModel.createGameModel(ln)
-                    let gameScene = GameScene(gameModel: gameModel)
+                    let gameScene = GameSKScene(gameModel: gameModel)
                     gameScene.gameSceneDelegate = previousGameScene?.gameSceneDelegate
                     self.view?.presentScene(gameScene, transition: PositionedSKScene.transitionUp)
                 } else {

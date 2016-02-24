@@ -9,7 +9,7 @@
 import UIKit
 import SpriteKit
 
-class GameViewController: UIViewController, GameSceneDelegate, HomeSceneDelegate, HelpViewControllerDelegate, WorldViewControllerDelegate
+class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate, HelpViewControllerDelegate, WorldViewControllerDelegate
 {
     @IBOutlet weak var sceneView: SKView!
     @IBOutlet weak var helpViewControllerContainer: UIView!
@@ -19,11 +19,11 @@ class GameViewController: UIViewController, GameSceneDelegate, HomeSceneDelegate
         helpViewControllerContainer.hidden = true
         imagineViewControllerContainer.hidden = true
         imagineViewController?.sceneView.scene = nil
-        if let scene  = sceneView.scene as? GameScene {
-            let homeScene = HomeScene()
-            homeScene.previousGameScene = scene
-            homeScene.userDelegate = self
-            sceneView.presentScene(homeScene, transition: PositionedSKScene.transitionDown)
+        if let scene  = sceneView.scene as? GameSKScene {
+            let menuScene = MenuSKScene()
+            menuScene.previousGameScene = scene
+            menuScene.userDelegate = self
+            sceneView.presentScene(menuScene, transition: PositionedSKScene.transitionDown)
         }
     }
     @IBAction func hepButton(sender: UIButton) {
@@ -59,7 +59,7 @@ class GameViewController: UIViewController, GameSceneDelegate, HomeSceneDelegate
     {
         super.viewDidLoad()
         
-        let gameScene = GameScene(gameModel: GameModel.createGameModel(0))
+        let gameScene = GameSKScene(gameModel: GameModel.createGameModel(0))
         gameScene.gameSceneDelegate = self
         sceneView.showsFPS = false
         sceneView.showsNodeCount = false
@@ -83,7 +83,7 @@ class GameViewController: UIViewController, GameSceneDelegate, HomeSceneDelegate
     func swipeLeft(gesture:UISwipeGestureRecognizer) {
         if level < PositionedSKScene.maxLevelNumber {
             level++
-            let nextGameScene = GameScene(gameModel: GameModel.createGameModel(level))
+            let nextGameScene = GameSKScene(gameModel: GameModel.createGameModel(level))
             nextGameScene.gameSceneDelegate = self
             sceneView.presentScene(nextGameScene, transition: PositionedSKScene.transitionLeft)
         } else {
@@ -94,7 +94,7 @@ class GameViewController: UIViewController, GameSceneDelegate, HomeSceneDelegate
     func swipeRight(gesture:UISwipeGestureRecognizer) {
         if level > 0 {
             level--
-            let nextGameScene = GameScene(gameModel: GameModel.createGameModel(level))
+            let nextGameScene = GameSKScene(gameModel: GameModel.createGameModel(level))
             nextGameScene.gameSceneDelegate = self
             sceneView.presentScene(nextGameScene, transition: PositionedSKScene.transitionRight)
         } else {
@@ -103,7 +103,7 @@ class GameViewController: UIViewController, GameSceneDelegate, HomeSceneDelegate
     }
     
     func swipeUp(gesture:UISwipeGestureRecognizer) {
-        if let scene = sceneView.scene as? GameScene {
+        if let scene = sceneView.scene as? GameSKScene {
             if scene.camera?.position.y > PositionedSKScene.portraitSize.height {
                 scene.camera?.runAction(PositionedSKScene.actionMoveCameraDown)
             } else {
@@ -113,7 +113,7 @@ class GameViewController: UIViewController, GameSceneDelegate, HomeSceneDelegate
     }
     
     func swipeDown(gesture:UISwipeGestureRecognizer) {
-        if let scene = sceneView.scene as? GameScene {
+        if let scene = sceneView.scene as? GameSKScene {
             if scene.camera?.position.y < 7 * PositionedSKScene.portraitSize.height {
                 scene.camera?.runAction(PositionedSKScene.actionMoveCameraUp)
             }
@@ -154,7 +154,7 @@ class GameViewController: UIViewController, GameSceneDelegate, HomeSceneDelegate
         }
     }
     
-    //Implement HomeSceneDelegate
+    //Implement MenuSceneDelegate
     func updateLevel(levelNumber: Int) {
         self.level = levelNumber
     }

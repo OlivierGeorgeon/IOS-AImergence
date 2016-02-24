@@ -14,30 +14,23 @@ protocol GameSceneDelegate
     func unlockLevel()
 }
 
-class GameScene: PositionedSKScene {
+class GameSKScene: PositionedSKScene {
     
     let gameModel:GameModel0
     let level:Level0
     
     var gameSceneDelegate: GameSceneDelegate!
-    
     var cameraNode:SKCameraNode!
-    
     var experimentNodes = Set<ExperimentSKNode>()
     var experienceNodes = Set<ExperienceSKNode>()
-
     var clock:Int = 0
     var scoreLabel:SKLabelNode
     var scoreBackground:SKShapeNode
-    
     var shapePopupNode:SKNode?
     var shapeNodes = Array<SKShapeNode>()
-
     var colorPopupNode:SKNode?
     var colorNodes = Array<SKShapeNode>()
-    
     var editNode: ReshapableSKNode?
-    
     var score:Int = 0 {
         didSet {
             scoreLabel.text = "\(score)"
@@ -190,8 +183,7 @@ class GameScene: PositionedSKScene {
                     }
                 }
             }
-            colorPopupNode?.removeFromParent()
-            
+            colorPopupNode?.removeFromParent()            
         default:
             break
         }
