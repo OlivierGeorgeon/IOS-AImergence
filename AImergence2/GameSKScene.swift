@@ -156,7 +156,6 @@ class GameSKScene: PositionedSKScene {
                     editNode = experienceNode
                     cameraRelativeOriginNode.addChild(colorPopupNode!)
                 }
-                
             }
         case .Ended:
             for i in 0..<ReshapableSKNode.paths.count {
@@ -183,7 +182,8 @@ class GameSKScene: PositionedSKScene {
                     }
                 }
             }
-            colorPopupNode?.removeFromParent()            
+            colorPopupNode?.removeFromParent()
+            editNode = nil
         default:
             break
         }
