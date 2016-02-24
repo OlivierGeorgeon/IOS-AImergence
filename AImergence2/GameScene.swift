@@ -23,8 +23,8 @@ class GameScene: PositionedSKScene {
     
     var cameraNode:SKCameraNode!
     
-    var experimentNodes = Set<ExperimentNode>()
-    var experienceNodes = Set<ExperienceNode>()
+    var experimentNodes = Set<ExperimentSKNode>()
+    var experienceNodes = Set<ExperienceSKNode>()
 
     var clock:Int = 0
     var scoreLabel:SKLabelNode
@@ -36,7 +36,7 @@ class GameScene: PositionedSKScene {
     var colorPopupNode:SKNode?
     var colorNodes = Array<SKShapeNode>()
     
-    var editNode: ReshapableNode?
+    var editNode: ReshapableSKNode?
     
     var score:Int = 0 {
         didSet {
@@ -82,8 +82,8 @@ class GameScene: PositionedSKScene {
         scoreBackground.addChild(scoreLabel)
 
         shapePopupNode = gameModel.createShapePopup()
-        for i in 0..<ReshapableNode.paths.count {
-            let shapeNode = SKShapeNode(path: ReshapableNode.paths[i](CGRect(x: -40, y: -40, width: 80, height: 80)).CGPath)
+        for i in 0..<ReshapableSKNode.paths.count {
+            let shapeNode = SKShapeNode(path: ReshapableSKNode.paths[i](CGRect(x: -40, y: -40, width: 80, height: 80)).CGPath)
             shapeNode.lineWidth = 3
             shapeNode.strokeColor = UIColor.grayColor()
             shapeNode.fillColor = UIColor.whiteColor()
@@ -93,9 +93,9 @@ class GameScene: PositionedSKScene {
         }
         
         colorPopupNode = gameModel.createColorPopup()
-        for i in 0..<ExperienceNode.colors.count {
+        for i in 0..<ExperienceSKNode.colors.count {
             let colorNode = SKShapeNode(rect: gameModel.colorNodeRect)
-            colorNode.fillColor = ExperienceNode.colors[i]
+            colorNode.fillColor = ExperienceSKNode.colors[i]
             colorNode.strokeColor = UIColor.grayColor()
             colorNode.lineWidth = 1
             colorNode.position = CGPoint(x:0, y: i * 80 - 160)
@@ -104,7 +104,7 @@ class GameScene: PositionedSKScene {
         }
         
         for i in 0...(level.experiments.count - 1) {
-            let experimentNode = ExperimentNode(experiment: level.experiments[i], gameModel: gameModel)
+            let experimentNode = ExperimentSKNode(experiment: level.experiments[i], gameModel: gameModel)
             experimentNode.position = gameModel.experimentPositions[i]
             addChild(experimentNode)
             experimentNodes.insert(experimentNode)
@@ -166,26 +166,26 @@ class GameScene: PositionedSKScene {
                 
             }
         case .Ended:
-            for i in 0..<ReshapableNode.paths.count {
+            for i in 0..<ReshapableSKNode.paths.count {
                 if shapeNodes[i].containsPoint(positionInShapePopup!) {
-                    if let experimentNode = editNode as? ExperimentNode {
+                    if let experimentNode = editNode as? ExperimentSKNode {
                         experimentNode.experiment.shapeIndex = i
-                        experimentNode.runAction(ReshapableNode.actionReshape)
+                        experimentNode.runAction(ReshapableSKNode.actionReshape)
                         for node in experienceNodes {
                             if node.experience.experimentNumber == experimentNode.experiment.number {
-                                node.runAction(ReshapableNode.actionReshape)
+                                node.runAction(ReshapableSKNode.actionReshape)
                             }
                         }
                     }
                 }
             }
             shapePopupNode?.removeFromParent()
-            for i in 0..<ExperienceNode.colors.count {
+            for i in 0..<ExperienceSKNode.colors.count {
                 if colorNodes[i].containsPoint(positionInColorPopup!) {
-                    if let experienceNode = editNode as? ExperienceNode {
+                    if let experienceNode = editNode as? ExperienceSKNode {
                         experienceNode.experience.colorIndex = i
                         for node in experienceNodes {
-                            node.runAction(ExperienceNode.actionRefill)
+                            node.runAction(ExperienceSKNode.actionRefill)
                         }
                     }
                 }
@@ -197,7 +197,7 @@ class GameScene: PositionedSKScene {
         }
     }
     
-    func play(experimentNode: ExperimentNode) {
+    func play(experimentNode: ExperimentSKNode) {
         
         clock++
         
@@ -217,7 +217,7 @@ class GameScene: PositionedSKScene {
             }
         }
         
-        let experienceNode = ExperienceNode(experience: experience, stepOfCreation: clock, gameModel: gameModel)
+        let experienceNode = ExperienceSKNode(experience: experience, stepOfCreation: clock, gameModel: gameModel)
         experienceNode.position = experimentNode.position 
         addChild(experienceNode)
         experienceNodes.insert(experienceNode)

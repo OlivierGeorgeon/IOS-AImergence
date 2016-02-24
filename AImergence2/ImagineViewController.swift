@@ -42,6 +42,10 @@ class ImagineViewController: UIViewController {
             sceneView.scene = nil
         }
     }
+    
+    override func viewDidLoad() {
+        self.textView.text = NSLocalizedString("You must reach the score of 10", comment: "comment for the translator");
+    }
 
     func sceneViewSetup() {
         let scene = SCNScene()

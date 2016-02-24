@@ -76,11 +76,11 @@ class ImagineModel {
     
     func spawnExperienceNode(experience: Experience, position: SCNVector3, delayed:Bool = false) {
         let rect = CGRect(x: -0.2 * scaleExperience, y: -0.2 * scaleExperience, width: 0.4 * scaleExperience, height: 0.4 * scaleExperience)
-        let path = ReshapableNode.paths[experience.experiment.shapeIndex](rect)
+        let path = ReshapableSKNode.paths[experience.experiment.shapeIndex](rect)
         let geometry = SCNShape(path: path, extrusionDepth: 0.1 * scaleExperience)
         geometry.materials = [Geometries.defaultMaterial()]
         if experience.colorIndex > 0 {
-            geometry.firstMaterial!.diffuse.contents = ExperienceNode.colors[experience.colorIndex]
+            geometry.firstMaterial!.diffuse.contents = ExperienceSKNode.colors[experience.colorIndex]
         }
         let experienceNode = SCNNode(geometry: geometry)
         experienceNode.scale = SCNVector3(1/scaleExperience, 1/scaleExperience, 1/scaleExperience)

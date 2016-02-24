@@ -117,7 +117,6 @@
 		096F5CB41C53F1C90041EA5F /* HelpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpViewController.swift; sourceTree = "<group>"; };
 		096F5CB81C56D7240041EA5F /* Level8.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Level8.swift; sourceTree = "<group>"; };
 		0994526D1C5F983400F0ABFF /* HelpView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpView.swift; sourceTree = "<group>"; };
-		0994526F1C614A6E00F0ABFF /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Main.strings; sourceTree = "<group>"; };
 		099452701C614A6E00F0ABFF /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		099452841C62007000F0ABFF /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		099452891C62007000F0ABFF /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -125,6 +124,7 @@
 		099452A11C620DD300F0ABFF /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		09AC4CB91C7DD63700C149EC /* GameModel0.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameModel0.swift; sourceTree = "<group>"; };
 		09AC4CBB1C7DDBFC00C149EC /* GameModel2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameModel2.swift; sourceTree = "<group>"; };
+		09AC4CBF1C7DF3BC00C149EC /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Main.strings; sourceTree = "<group>"; };
 		09B12C7C1C75D53F000FBEF6 /* Actions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Actions.swift; sourceTree = "<group>"; };
 		09ED657C1C6C87D2004A8CA7 /* Level6.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Level6.swift; sourceTree = "<group>"; };
 		09ED657E1C6D0EE6004A8CA7 /* ImagineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagineViewController.swift; sourceTree = "<group>"; };
@@ -494,7 +494,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				093681431C417378008C6B5D /* Base */,
-				0994526F1C614A6E00F0ABFF /* fr */,
+				09AC4CBF1C7DF3BC00C149EC /* fr */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
