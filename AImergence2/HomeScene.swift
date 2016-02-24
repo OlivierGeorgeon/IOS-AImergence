@@ -60,7 +60,8 @@ class HomeScene: PositionedSKScene {
             if levelNode.containsPoint(positionInScene){
                 if let ln = levelNode.userData?["level"] as! Int? {
                     userDelegate?.updateLevel(ln)
-                    let gameScene = GameStruct.createGameScene(ln)
+                    let gameModel = GameModel.createGameModel(ln)
+                    let gameScene = GameScene(gameModel: gameModel)
                     gameScene.gameSceneDelegate = previousGameScene?.gameSceneDelegate
                     self.view?.presentScene(gameScene, transition: PositionedSKScene.transitionUp)
                 } else {

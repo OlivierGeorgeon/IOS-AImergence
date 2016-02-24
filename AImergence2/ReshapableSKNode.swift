@@ -8,22 +8,31 @@
 
 import SpriteKit
 
-class ReshapableNode: SKShapeNode
+class ReshapableSKNode: SKShapeNode
 {
 
     static let paths = [{UIBezierPath(ovalInRect: $0)},{UIBezierPath(rect: $0)}, triangle ]
     static let actionReshape = SKAction.customActionWithDuration(0, actionBlock: changeShape)
 
-    var shapeIndex:Int {return 0}
-    var rect:CGRect {return CGRect()}
+    var rect:CGRect
+    var shapeIndex:Int { return 0}
+    
+    init(rect: CGRect = CGRect()) {
+        self.rect = rect
+        super.init()
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 
     func reshape() {
-        self.path = ReshapableNode.paths[shapeIndex](rect).CGPath
+        self.path = ReshapableSKNode.paths[shapeIndex](rect).CGPath
     }
 }
 
 private func changeShape(node: SKNode, elapsedTime:CGFloat) -> Void {
-    if let shapeNode = node as? ReshapableNode {
+    if let shapeNode = node as? ReshapableSKNode {
         shapeNode.reshape()
     }
 }

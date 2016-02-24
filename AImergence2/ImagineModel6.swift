@@ -8,6 +8,6 @@
 
 import SceneKit
 
-class ImagineModel6: ImagineModel4
+class ImagineModel6: ImagineModel5
 {
 }

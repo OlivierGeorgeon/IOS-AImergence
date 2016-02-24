@@ -8,28 +8,31 @@
 
 import SpriteKit
 
-class ExperienceNode: ReshapableNode
+class ExperienceSKNode: ReshapableSKNode
 {
     static let actionRefill = SKAction.customActionWithDuration(0, actionBlock: changeColor)
     static let colors = [UIColor.whiteColor(), UIColor.greenColor(), UIColor.redColor(), UIColor.blueColor(), UIColor.orangeColor()]
     
     let experience:Experience
     let stepOfCreation:Int
-    let experienceStruct:ExperienceStruct
+    let gameModel: GameModel0
 
-    override var rect:CGRect {return experienceStruct.rect}
     override var shapeIndex:Int {return experience.shapeIndex }
 
-    init(experience:Experience, stepOfCreation: Int, experienceStruct:ExperienceStruct){
+    init(rect: CGRect, experience: Experience, stepOfCreation: Int, gameModel: GameModel0) {
         self.experience = experience
         self.stepOfCreation = stepOfCreation
-        self.experienceStruct = experienceStruct
-        super.init()
+        self.gameModel = gameModel
+        super.init(rect: rect)
+    }
+    
+    convenience init(experience:Experience, stepOfCreation: Int, gameModel:GameModel0){
+        self.init(rect: gameModel.experienceRect, experience: experience, stepOfCreation: stepOfCreation, gameModel: gameModel)
         reshape()
         lineWidth = 0
         refill()
         name = "experience_\(experience.hashValue)"
-        setScale(experienceStruct.initialScale)
+        setScale(gameModel.initialScale)
         zPosition = 1
     }
     
@@ -38,26 +41,26 @@ class ExperienceNode: ReshapableNode
     }
     
     func refill() {
-        fillColor = ExperienceNode.colors[experience.colorIndex]
+        fillColor = ExperienceSKNode.colors[experience.colorIndex]
     }
     
     func addValenceNode()
     {
         let valenceNode = SKLabelNode()
-        valenceNode.fontName = experienceStruct.titleFont.fontName
-        valenceNode.fontSize = experienceStruct.titleFont.pointSize
-        valenceNode.position = experienceStruct.valencePosition
+        valenceNode.fontName = gameModel.titleFont.fontName
+        valenceNode.fontSize = gameModel.titleFont.pointSize
+        valenceNode.position = gameModel.valencePosition
         valenceNode.text = "\(experience.valence)"
         addChild(valenceNode)
     }
     
     func isObsolete(clock: Int) -> Bool {
-        return clock - stepOfCreation > experienceStruct.obsolescence
+        return clock - stepOfCreation > gameModel.obsolescence
     }
 }
 
 func changeColor(node: SKNode, elapsedTime:CGFloat) -> Void {
-    if let experienceNode = node as? ExperienceNode {
+    if let experienceNode = node as? ExperienceSKNode {
         experienceNode.refill()
     }
 }

@@ -37,7 +37,7 @@ class ImagineModel7: ImagineModel6
             canKnowNextBodyNode = true
             nextBodyNode?.runAction(moveUp)
         case 20: // swap
-            canKnowNextBodyNode = false
+            if nextBodyNode == nil { canKnowNextBodyNode = false }
             if bodyNode == nil { bodyNode = nextBodyNode; nextBodyNode = nil }
             if bodyNode != nil { bodyNode.runAction(actions.turnover()) }
             spawnExperienceNode(experience, position: SCNVector3( 0.0, 0.0, 0.0))

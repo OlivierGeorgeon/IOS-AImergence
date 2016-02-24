@@ -10,7 +10,7 @@ import SceneKit
 
 class ImagineModel8: ImagineModel4
 {
-    let actionRotateCarrousel = SCNAction.rotateByX(0.0, y: 0.0, z: CGFloat(-M_PI) / 5.0, duration: 0.7)
+    let actionRotateCarrousel = SCNAction.rotateByX(0.0, y: 0.0, z: CGFloat(-M_PI) / 5.0, duration: 0.5)
     
     let carrouselDiameter = CGFloat(2.2)
     let nbSlotsInCarroussel = 10

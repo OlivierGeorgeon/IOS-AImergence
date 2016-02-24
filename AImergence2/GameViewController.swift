@@ -59,7 +59,7 @@ class GameViewController: UIViewController, GameSceneDelegate, HomeSceneDelegate
     {
         super.viewDidLoad()
         
-        let gameScene = GameScene(level: Level0(), gameStruct: GameStruct())
+        let gameScene = GameScene(gameModel: GameModel.createGameModel(0))
         gameScene.gameSceneDelegate = self
         sceneView.showsFPS = false
         sceneView.showsNodeCount = false
@@ -83,7 +83,7 @@ class GameViewController: UIViewController, GameSceneDelegate, HomeSceneDelegate
     func swipeLeft(gesture:UISwipeGestureRecognizer) {
         if level < PositionedSKScene.maxLevelNumber {
             level++
-            let nextGameScene = GameStruct.createGameScene(level)
+            let nextGameScene = GameScene(gameModel: GameModel.createGameModel(level))
             nextGameScene.gameSceneDelegate = self
             sceneView.presentScene(nextGameScene, transition: PositionedSKScene.transitionLeft)
         } else {
@@ -94,7 +94,7 @@ class GameViewController: UIViewController, GameSceneDelegate, HomeSceneDelegate
     func swipeRight(gesture:UISwipeGestureRecognizer) {
         if level > 0 {
             level--
-            let nextGameScene = GameStruct.createGameScene(level)
+            let nextGameScene = GameScene(gameModel: GameModel.createGameModel(level))
             nextGameScene.gameSceneDelegate = self
             sceneView.presentScene(nextGameScene, transition: PositionedSKScene.transitionRight)
         } else {

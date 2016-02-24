@@ -8,20 +8,21 @@
 
 import SpriteKit
 
-class ExperimentNode: ReshapableNode
+class ExperimentSKNode: ReshapableSKNode
 {
     let experiment: Experiment
-    let experimentStruct:ExperimentStruct
 
-    override var rect:CGRect {return experimentStruct.rect}
     override var shapeIndex:Int {return experiment.shapeIndex }
     
-    init(experiment:Experiment, experimentStruct:ExperimentStruct){
+    init(rect: CGRect, experiment: Experiment) {
         self.experiment = experiment
-        self.experimentStruct = experimentStruct
-        super.init()
+        super.init(rect: rect)
+    }
+    
+    convenience init(experiment:Experiment, gameModel:GameModel0){
+        self.init(rect: gameModel.experimentRect, experiment: experiment)
         reshape()
-        fillColor = experimentStruct.color
+        fillColor = gameModel.color
         lineWidth = 0
         name = "experiment_\(experiment.number)"
     }

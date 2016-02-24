@@ -16,7 +16,7 @@ protocol GameSceneDelegate
 
 class GameScene: PositionedSKScene {
     
-    let gameStruct:GameStruct
+    let gameModel:GameModel0
     let level:Level0
     
     var gameSceneDelegate: GameSceneDelegate!
@@ -50,12 +50,12 @@ class GameScene: PositionedSKScene {
         }
     }
     
-    init(level: Level0, gameStruct sceneStruct: GameStruct)
+    init(gameModel: GameModel0)
     {
-        self.level = level
-        self.gameStruct = sceneStruct
-        scoreLabel = sceneStruct.createScoreLabel()
-        scoreBackground = sceneStruct.createScoreBackground()
+        self.level = gameModel.level
+        self.gameModel = gameModel
+        scoreLabel = gameModel.createScoreLabel()
+        scoreBackground = gameModel.createScoreBackground()
         super.init(size: PositionedSKScene.portraitSize)
         layoutScene()
     }
@@ -63,9 +63,9 @@ class GameScene: PositionedSKScene {
     required init?(coder aDecoder: NSCoder)
     {
         self.level = Level0()
-        self.gameStruct = GameStruct()
-        scoreLabel = gameStruct.createScoreLabel()
-        scoreBackground = gameStruct.createScoreBackground()
+        self.gameModel = GameModel0()
+        scoreLabel = gameModel.createScoreLabel()
+        scoreBackground = gameModel.createScoreBackground()
         super.init(coder: aDecoder)
         layoutScene()
     }
@@ -76,12 +76,12 @@ class GameScene: PositionedSKScene {
         scaleMode = .AspectFill
         name = "gameScene"
         
-        backgroundColor = gameStruct.backgroundColor
+        backgroundColor = gameModel.backgroundColor
         
         self.addChild(scoreBackground)
         scoreBackground.addChild(scoreLabel)
 
-        shapePopupNode = gameStruct.createShapePopup()
+        shapePopupNode = gameModel.createShapePopup()
         for i in 0..<ReshapableNode.paths.count {
             let shapeNode = SKShapeNode(path: ReshapableNode.paths[i](CGRect(x: -40, y: -40, width: 80, height: 80)).CGPath)
             shapeNode.lineWidth = 3
@@ -92,9 +92,9 @@ class GameScene: PositionedSKScene {
             shapeNodes.append(shapeNode)
         }
         
-        colorPopupNode = gameStruct.createColorPopup()
+        colorPopupNode = gameModel.createColorPopup()
         for i in 0..<ExperienceNode.colors.count {
-            let colorNode = SKShapeNode(rect: gameStruct.colorNodeRect)
+            let colorNode = SKShapeNode(rect: gameModel.colorNodeRect)
             colorNode.fillColor = ExperienceNode.colors[i]
             colorNode.strokeColor = UIColor.grayColor()
             colorNode.lineWidth = 1
@@ -104,8 +104,8 @@ class GameScene: PositionedSKScene {
         }
         
         for i in 0...(level.experiments.count - 1) {
-            let experimentNode = ExperimentNode(experiment: level.experiments[i], experimentStruct: gameStruct.experiment)
-            experimentNode.position = gameStruct.experimentPositions[i]
+            let experimentNode = ExperimentNode(experiment: level.experiments[i], gameModel: gameModel)
+            experimentNode.position = gameModel.experimentPositions[i]
             addChild(experimentNode)
             experimentNodes.insert(experimentNode)
         }        
@@ -213,18 +213,18 @@ class GameScene: PositionedSKScene {
                 node.removeFromParent()
                 experienceNodes.remove(node)
             } else {
-                node.runAction(gameStruct.actionMoveTrace)
+                node.runAction(gameModel.actionMoveTrace)
             }
         }
         
-        let experienceNode = ExperienceNode(experience: experience, stepOfCreation: clock, experienceStruct: gameStruct.experience)
+        let experienceNode = ExperienceNode(experience: experience, stepOfCreation: clock, gameModel: gameModel)
         experienceNode.position = experimentNode.position 
         addChild(experienceNode)
         experienceNodes.insert(experienceNode)
         
-        let actionIntroduce = SKAction.moveBy(gameStruct.moveByVect(experimentNode.position), duration: 0.3)
+        let actionIntroduce = SKAction.moveBy(gameModel.moveByVect(experimentNode.position), duration: 0.3)
 
-        experienceNode.runAction(gameStruct.actionScale)
+        experienceNode.runAction(gameModel.actionScale)
         experienceNode.runAction(actionIntroduce, completion: {experienceNode.addValenceNode()})
     }
     
