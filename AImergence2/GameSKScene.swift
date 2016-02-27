@@ -38,7 +38,7 @@ class GameSKScene: PositionedSKScene {
                 scoreBackground.fillColor = UIColor.greenColor()
                 gameSceneDelegate.unlockLevel()
             } else {
-                scoreBackground.fillColor = UIColor.grayColor()
+                scoreBackground.fillColor = UIColor.whiteColor()
             }
         }
     }
@@ -102,7 +102,8 @@ class GameSKScene: PositionedSKScene {
             addChild(experimentNode)
             experimentNodes.insert(experimentNode)
         }        
-        
+        cameraRelativeOriginNode.addChild(gameModel.createRobotNode())
+        cameraRelativeOriginNode.addChild(gameModel.createBackroundNode())
     }
     
     override func didMoveToView(view: SKView)

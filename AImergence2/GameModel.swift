@@ -25,6 +25,7 @@ class GameModel
         scoreLabel.fontName = titleFont.fontName
         scoreLabel.fontSize = titleFont.pointSize
         scoreLabel.verticalAlignmentMode = .Center
+        scoreLabel.fontColor = UIColor.darkGrayColor()// blackColor()
         return scoreLabel
     }
     
@@ -33,7 +34,7 @@ class GameModel
         scoreBackground.position = CGPoint(x: -117, y: 480)
         scoreBackground.lineWidth = 0
         scoreBackground.name = "scoreBackground"
-        scoreBackground.fillColor = UIColor.grayColor()
+        scoreBackground.fillColor = UIColor.whiteColor()
         return scoreBackground
     }
     
@@ -56,7 +57,22 @@ class GameModel
         popupBackground.name = "colorPopup"
         return popupBackground
     }
+    
+    func createRobotNode() -> SKSpriteNode {
+        let robotNode = SKSpriteNode(imageNamed: "robot.png")
+        robotNode.size = CGSize(width: 100, height: 100)
+        robotNode.position = CGPoint(x: 120, y: 180)
+        return robotNode
+    }
 
+    func createBackroundNode() -> SKSpriteNode {
+        let backgroundNode = SKSpriteNode(imageNamed: "fond.png")
+        backgroundNode.size = CGSize(width: 667 , height: 1188)
+        backgroundNode.position = CGPoint(x: 0, y: 0)
+        backgroundNode.zPosition = -20
+        return backgroundNode
+    }
+    
     class func createGameModel(levelNumber: Int) -> GameModel0 {
         let level:Level0
         var gameModel = GameModel0()
