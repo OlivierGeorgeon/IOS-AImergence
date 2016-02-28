@@ -17,6 +17,11 @@ class PositionedSKScene: SKScene {
     static let landscapeSize             = CGSize(width: 1188, height: 667)
     static let portraitCameraPosition    = CGPoint(x: 0, y: 233)
     static let landscapeCameraPosition   = CGPoint(x: 400, y: 233)
+    static let portraitRobotPosition     = CGPoint(x: 120, y: 180)
+    static let landscapeRobotPosition    = CGPoint(x: 700, y: 100)
+    static let portraitRobotSize         = CGSize(width: 100, height: 100)
+    static let landscapeRobotSize        = CGSize(width: 200, height: 200)
+    
     
     static let actionMoveCameraUp        = SKAction.moveBy(CGVector(dx:0, dy:667), duration: 0.3)
     static let actionMoveCameraDown      = SKAction.moveBy(CGVector(dx:0, dy:-667), duration: 0.3)
@@ -31,19 +36,29 @@ class PositionedSKScene: SKScene {
     
     static let titleFont      = UIFont.preferredFontForTextStyle(UIFontTextStyleTitle1)
     
+    var cameraNode: SKCameraNode?
     var cameraRelativeOriginNode = SKNode()
+    var backgroundNode: SKNode?
+    var robotNode: SKSpriteNode?
+    
+    override func didMoveToView(view: SKView) {
+        positionInFrame(view.frame.size)
+    }
     
     func positionInFrame(frameSize: CGSize) {
-        if frameSize.height < frameSize.width {
-            self.size = PositionedSKScene.landscapeSize
-            camera?.position =  PositionedSKScene.landscapeCameraPosition
-            cameraRelativeOriginNode.position = -PositionedSKScene.landscapeCameraPosition
-        } else {
+        if frameSize.height > frameSize.width {
             self.size = PositionedSKScene.portraitSize
-            camera?.position =  PositionedSKScene.portraitCameraPosition
+            cameraNode?.position =  PositionedSKScene.portraitCameraPosition
             cameraRelativeOriginNode.position = -PositionedSKScene.portraitCameraPosition
+            robotNode?.position = PositionedSKScene.portraitRobotPosition
+            robotNode?.size = PositionedSKScene.portraitRobotSize
+        } else {
+            self.size = PositionedSKScene.landscapeSize
+            cameraNode?.position =  PositionedSKScene.landscapeCameraPosition
+            cameraRelativeOriginNode.position = -PositionedSKScene.landscapeCameraPosition
+            robotNode?.position = PositionedSKScene.landscapeRobotPosition
+            robotNode?.size = PositionedSKScene.landscapeRobotSize
         }
-        if cameraRelativeOriginNode.parent == nil { camera?.addChild(cameraRelativeOriginNode) }
     }
 }
 

@@ -20,7 +20,6 @@ class GameSKScene: PositionedSKScene {
     let level:Level0
     
     var gameSceneDelegate: GameSceneDelegate!
-    var cameraNode:SKCameraNode!
     var experimentNodes = Set<ExperimentSKNode>()
     var experienceNodes = Set<ExperienceSKNode>()
     var clock:Int = 0
@@ -50,6 +49,10 @@ class GameSKScene: PositionedSKScene {
         scoreLabel = gameModel.createScoreLabel()
         scoreBackground = gameModel.createScoreBackground()
         super.init(size: PositionedSKScene.portraitSize)
+        cameraNode = SKCameraNode()
+        self.camera = cameraNode
+        self.addChild(cameraNode!)
+        cameraNode!.addChild(cameraRelativeOriginNode)        
         layoutScene()
     }
 
@@ -101,20 +104,17 @@ class GameSKScene: PositionedSKScene {
             experimentNode.position = gameModel.experimentPositions[i]
             addChild(experimentNode)
             experimentNodes.insert(experimentNode)
-        }        
-        cameraRelativeOriginNode.addChild(gameModel.createRobotNode())
-        cameraRelativeOriginNode.addChild(gameModel.createBackroundNode())
+        }
+        robotNode = gameModel.createRobotNode()
+        cameraRelativeOriginNode.addChild(robotNode!)
+        backgroundNode = gameModel.createBackroundNode()
+        cameraRelativeOriginNode.addChild(backgroundNode!)
     }
     
     override func didMoveToView(view: SKView)
     {
         /* Setup your scene here */
-        
-        cameraNode = SKCameraNode()
-        self.camera = cameraNode
-        self.addChild(cameraNode)
-        
-        positionInFrame(view.frame.size)
+        super.didMoveToView(view)
 
         for recognizer in view.gestureRecognizers ?? [] {
             if recognizer is UITapGestureRecognizer || recognizer is UILongPressGestureRecognizer {
@@ -125,6 +125,8 @@ class GameSKScene: PositionedSKScene {
         view.addGestureRecognizer(tapGestureRecognizer)
         let longPressGestureRecognizer = UILongPressGestureRecognizer(target: self, action: "longPress:")
         view.addGestureRecognizer(longPressGestureRecognizer)
+        
+        print("didMoveToView GameSKSCene")
 
     }
         

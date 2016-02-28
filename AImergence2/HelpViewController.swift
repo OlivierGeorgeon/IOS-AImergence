@@ -43,7 +43,22 @@ class HelpViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         displayLevel(0)
-    }
+
+        // Set vertical effect
+        let verticalMotionEffect = UIInterpolatingMotionEffect(keyPath: "center.y", type: .TiltAlongVerticalAxis)
+        verticalMotionEffect.minimumRelativeValue = -10
+        verticalMotionEffect.maximumRelativeValue = 10
+        
+        // Set horiztontal effect
+        let horizontalMotionEffect = UIInterpolatingMotionEffect(keyPath: "center.x", type: .TiltAlongHorizontalAxis)
+        horizontalMotionEffect.minimumRelativeValue = -10
+        horizontalMotionEffect.maximumRelativeValue = 10
+        
+        let group = UIMotionEffectGroup()
+        group.motionEffects = [horizontalMotionEffect, verticalMotionEffect]
+        //let helpView = view.subviews[0] as! HelpView
+        view.addMotionEffect(group)
+}
     
     func displayLevel(level: Int) {
         labelView?.text = levelString + " \(level)"
@@ -56,7 +71,6 @@ class HelpViewController: UIViewController {
             let temp = self.textView.text
             self.textView.text = ""
             self.textView.text = temp
-            print("rotation completed")
         })
     }
   

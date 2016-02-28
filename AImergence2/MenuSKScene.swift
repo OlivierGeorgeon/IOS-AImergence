@@ -16,6 +16,8 @@ protocol MenuSceneDelegate
 class MenuSKScene: PositionedSKScene {
     
     let cancelString = NSLocalizedString("Cancel", comment: "The Cancel button in the level-selection window.")
+    
+    let gameModel = GameModel()
 
     var userDelegate: MenuSceneDelegate?
     var buttonNodes = [SKNode]()
@@ -51,6 +53,9 @@ class MenuSKScene: PositionedSKScene {
         
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: "tap:")
         view.addGestureRecognizer(tapGestureRecognizer);
+        let robotNode = gameModel.createRobotNode()
+        robotNode.position = CGPoint(x: 300, y: 300)
+        addChild(robotNode)
     }
 
     func tap(recognizer: UITapGestureRecognizer)

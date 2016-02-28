@@ -67,9 +67,10 @@ class GameModel
 
     func createBackroundNode() -> SKSpriteNode {
         let backgroundNode = SKSpriteNode(imageNamed: "fond.png")
-        backgroundNode.size = CGSize(width: 667 , height: 1188)
-        backgroundNode.position = CGPoint(x: 0, y: 0)
+        backgroundNode.size = CGSize(width: 1188 , height: 1188)
+        backgroundNode.position = CGPoint(x: 400, y: 0)
         backgroundNode.zPosition = -20
+        backgroundNode.name = "background"
         return backgroundNode
     }
     

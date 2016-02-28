@@ -11,7 +11,7 @@ import SpriteKit
 
 class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate, HelpViewControllerDelegate, WorldViewControllerDelegate
 {
-    @IBOutlet weak var sceneView: SKView!
+    @IBOutlet weak var sceneView: GameView!
     @IBOutlet weak var helpViewControllerContainer: UIView!
     @IBOutlet weak var imagineViewControllerContainer: UIView!
     @IBOutlet weak var levelButton: UIButton!
@@ -78,6 +78,20 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
         let swipeDown = UISwipeGestureRecognizer(target:self, action: "swipeDown:")
         swipeDown.direction = .Down
         view.addGestureRecognizer(swipeDown)
+        
+        // Set vertical effect
+        let verticalMotionEffect = UIInterpolatingMotionEffect(keyPath: "backgroundNodeX", type: .TiltAlongVerticalAxis)
+        verticalMotionEffect.minimumRelativeValue = -50
+        verticalMotionEffect.maximumRelativeValue = 50
+        
+        // Set horiztontal effect
+        let horizontalMotionEffect = UIInterpolatingMotionEffect(keyPath: "backgroundNodeX", type: .TiltAlongHorizontalAxis)
+        horizontalMotionEffect.minimumRelativeValue = -50
+        horizontalMotionEffect.maximumRelativeValue = 50
+        
+        let group = UIMotionEffectGroup()
+        group.motionEffects = [horizontalMotionEffect, verticalMotionEffect]
+        sceneView.addMotionEffect(group)
     }
 
     func swipeLeft(gesture:UISwipeGestureRecognizer) {
@@ -104,18 +118,18 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
     
     func swipeUp(gesture:UISwipeGestureRecognizer) {
         if let scene = sceneView.scene as? GameSKScene {
-            if scene.camera?.position.y > PositionedSKScene.portraitSize.height {
-                scene.camera?.runAction(PositionedSKScene.actionMoveCameraDown)
+            if scene.cameraNode?.position.y > PositionedSKScene.portraitSize.height {
+                scene.cameraNode?.runAction(PositionedSKScene.actionMoveCameraDown)
             } else {
-                scene.camera?.runAction(PositionedSKScene.actionMoveCameraDownUp)
+                scene.cameraNode?.runAction(PositionedSKScene.actionMoveCameraDownUp)
             }
         }
     }
     
     func swipeDown(gesture:UISwipeGestureRecognizer) {
         if let scene = sceneView.scene as? GameSKScene {
-            if scene.camera?.position.y < 7 * PositionedSKScene.portraitSize.height {
-                scene.camera?.runAction(PositionedSKScene.actionMoveCameraUp)
+            if scene.cameraNode?.position.y < 7 * PositionedSKScene.portraitSize.height {
+                scene.cameraNode?.runAction(PositionedSKScene.actionMoveCameraUp)
             }
         }
     }
@@ -136,7 +150,9 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
     }
     
     override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
-        if let positionedScene = sceneView.scene as? PositionedSKScene { positionedScene.positionInFrame(size) }
+        if let positionedScene = sceneView.scene as? PositionedSKScene {
+            positionedScene.positionInFrame(size)
+        }
         super.viewWillTransitionToSize(size, withTransitionCoordinator: coordinator)
     }
     
