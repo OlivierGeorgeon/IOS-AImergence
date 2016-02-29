@@ -45,12 +45,12 @@ class HelpViewController: UIViewController {
         displayLevel(0)
 
         // Set vertical effect
-        let verticalMotionEffect = UIInterpolatingMotionEffect(keyPath: "center.y", type: .TiltAlongVerticalAxis)
+        let verticalMotionEffect = UIInterpolatingMotionEffect(keyPath: "test", type: .TiltAlongVerticalAxis)
         verticalMotionEffect.minimumRelativeValue = -10
         verticalMotionEffect.maximumRelativeValue = 10
         
         // Set horiztontal effect
-        let horizontalMotionEffect = UIInterpolatingMotionEffect(keyPath: "center.x", type: .TiltAlongHorizontalAxis)
+        let horizontalMotionEffect = UIInterpolatingMotionEffect(keyPath: "test", type: .TiltAlongHorizontalAxis)
         horizontalMotionEffect.minimumRelativeValue = -10
         horizontalMotionEffect.maximumRelativeValue = 10
         

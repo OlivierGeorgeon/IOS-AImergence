@@ -19,7 +19,7 @@ class ExperimentSKNode: ReshapableSKNode
         super.init(rect: rect)
     }
     
-    convenience init(experiment:Experiment, gameModel:GameModel0){
+    convenience init(experiment:Experiment, gameModel:GameModel2){
         self.init(rect: gameModel.experimentRect, experiment: experiment)
         reshape()
         fillColor = gameModel.color

@@ -11,22 +11,22 @@ import SpriteKit
 class ExperienceSKNode: ReshapableSKNode
 {
     static let actionRefill = SKAction.customActionWithDuration(0, actionBlock: changeColor)
-    static let colors = [UIColor.whiteColor(), UIColor.greenColor(), UIColor.redColor(), UIColor.blueColor(), UIColor.orangeColor()]
+    static let colors = [UIColor.whiteColor(), UIColor(red: 0, green: 0.9, blue: 0, alpha: 1), UIColor.redColor(), UIColor.blueColor(), UIColor.orangeColor()]
     
     let experience:Experience
     let stepOfCreation:Int
-    let gameModel: GameModel0
+    let gameModel: GameModel2
 
     override var shapeIndex:Int {return experience.shapeIndex }
 
-    init(rect: CGRect, experience: Experience, stepOfCreation: Int, gameModel: GameModel0) {
+    init(rect: CGRect, experience: Experience, stepOfCreation: Int, gameModel: GameModel2) {
         self.experience = experience
         self.stepOfCreation = stepOfCreation
         self.gameModel = gameModel
         super.init(rect: rect)
     }
     
-    convenience init(experience:Experience, stepOfCreation: Int, gameModel:GameModel0){
+    convenience init(experience:Experience, stepOfCreation: Int, gameModel:GameModel2){
         self.init(rect: gameModel.experienceRect, experience: experience, stepOfCreation: stepOfCreation, gameModel: gameModel)
         reshape()
         lineWidth = 0

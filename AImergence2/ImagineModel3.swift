@@ -8,39 +8,51 @@
 
 import SceneKit
 
-class ImagineModel3: ImagineModel2
+class ImagineModel3: ImagineModel1
 {
-    var moveLeft:SCNAction  { return SCNAction.group([SCNAction.moveByX(-1, y: 0.0, z: 0.0, duration: 0.1), rotateToLeft ])}
-    var moveRight:SCNAction { return SCNAction.group([SCNAction.moveByX( 1, y: 0.0, z: 0.0, duration: 0.1), rotateToRight])}
-
-    var bodyCell = 0
+        
+    let rotateToUp    = SCNAction.rotateToX(0, y: 0, z: CGFloat(M_PI_2), duration: 0.2)
+    let rotateToRight = SCNAction.rotateToX(0, y: 0, z: 0, duration: 0.2)
+    let rotateToLeft  = SCNAction.rotateToX(0, y: 0, z: CGFloat(M_PI), duration: 0.2)
     
-    override func playExperience(experience: Experience) {
-        switch (experience.hashValue, bodyCell) {
-        case (00, 0):
+    let moveHalfLeft  = SCNAction.moveByX(-0.5, y: 0.0, z: 0.0, duration: 0.1)
+    let moveHalfRight = SCNAction.moveByX( 0.5, y: 0.0, z: 0.0, duration: 0.1)
+
+    var rotateToLeftBumpLeftRotateToRight:SCNAction {return SCNAction.sequence([SCNAction.group([moveHalfLeft, rotateToLeft]), SCNAction.group([moveHalfRight, rotateToRight])]) }
+    var rotateToRightBumpLeft:SCNAction {return SCNAction.sequence([SCNAction.group([moveHalfLeft, rotateToRight]), moveHalfRight]) }
+    var rotateToRightbumpRightRotateToLeft:SCNAction {return SCNAction.sequence([SCNAction.group([moveHalfRight, rotateToRight]), SCNAction.group([moveHalfLeft, rotateToLeft])]) }
+    var rotateToLeftbumpRight:SCNAction {return SCNAction.sequence([SCNAction.group([moveHalfRight, rotateToLeft]), moveHalfLeft]) }
+
+    let moveHalfUp   = SCNAction.moveByX(0.0, y:  0.5, z: 0.0, duration: 0.1)
+    let moveHalfDown = SCNAction.moveByX(0.0, y: -0.5, z: 0.0, duration: 0.1)
+    
+    var jump:SCNAction { return SCNAction.sequence([moveHalfUp, moveHalfDown]) }
+    
+    var leftAndBumpAndTurnover: SCNAction { return SCNAction.sequence([rotateToLeft, actions.bumpAndTurnover()]) }
+    var RightAndBumpAndTurnover: SCNAction { return SCNAction.sequence([rotateToRight, actions.bumpAndTurnover()]) }
+    
+    override func playExperience(experience: Experience)
+    {
+        switch experience.hashValue {
+        case 00:
             createOrRetrieveBodyNodeAndRunAction(action: rotateToRightBumpLeft)
             if switchNode0 == nil { switchNode0 = createSwitchNode(SCNVector3(-1.5, 0, 0)) }
             spawnExperienceNode(experience, position: SCNVector3( -1.0, 0.0, 0.0))
-        case (00, 1):
-            createOrRetrieveBodyNodeAndRunAction(backward: true, action: moveLeft)
-            bodyCell = 0
-            spawnExperienceNode(experience, position: SCNVector3( 1.0, 0.0, 0.0))
-        case (01, 0):
+        case 01:
             createOrRetrieveBodyNodeAndRunAction(backward: true, action: rotateToLeftBumpLeftRotateToRight)
             if switchNode0 == nil { switchNode0 = createSwitchNode(SCNVector3(-1.5, 0, 0)) }
             spawnExperienceNode(experience, position: SCNVector3( -1.0, 0.0, 0.0))
-        case (10, 0):
-            createOrRetrieveBodyNodeAndRunAction(action: moveRight)
-            bodyCell = 1
-            spawnExperienceNode(experience, position: SCNVector3( 0.0, 0.0, 0.0))
-        case (10, 1):
+        case 10:
             createOrRetrieveBodyNodeAndRunAction(backward: true, action: rotateToLeftbumpRight)
-            if switchNode1 == nil { switchNode1 = createSwitchNode(SCNVector3(2.5, 0, 0)) }
-            spawnExperienceNode(experience, position: SCNVector3( 2.0, 0.0, 0.0))
-        case (11, 1):
+            if switchNode1 == nil { switchNode1 = createSwitchNode(SCNVector3(1.5, 0, 0)) }
+            spawnExperienceNode(experience, position: SCNVector3( 1.0, 0.0, 0.0))
+        case 11:
             createOrRetrieveBodyNodeAndRunAction(action: rotateToRightbumpRightRotateToLeft)
-            if switchNode1 == nil { switchNode1 = createSwitchNode(SCNVector3(2.5, 0, 0)) }
-            spawnExperienceNode(experience, position: SCNVector3( 2.0, 0.0, 0.0))
+            if switchNode1 == nil { switchNode1 = createSwitchNode(SCNVector3(1.5, 0, 0)) }
+            spawnExperienceNode(experience, position: SCNVector3( 1.0, 0.0, 0.0))
+        case 20, 21:
+            createOrRetrieveBodyNodeAndRunAction(action: SCNAction.group([rotateToUp, jump]))
+            spawnExperienceNode(experience, position: SCNVector3( 0.0, 0.5, 0.0))
         default:
             break
         }

@@ -38,7 +38,7 @@ class PositionedSKScene: SKScene {
     
     var cameraNode: SKCameraNode?
     var cameraRelativeOriginNode = SKNode()
-    var backgroundNode: SKNode?
+    var backgroundNode: SKSpriteNode?
     var robotNode: SKSpriteNode?
     
     override func didMoveToView(view: SKView) {
@@ -50,12 +50,16 @@ class PositionedSKScene: SKScene {
             self.size = PositionedSKScene.portraitSize
             cameraNode?.position =  PositionedSKScene.portraitCameraPosition
             cameraRelativeOriginNode.position = -PositionedSKScene.portraitCameraPosition
+            backgroundNode?.position.x = 0
+            backgroundNode?.size.width = 667
             robotNode?.position = PositionedSKScene.portraitRobotPosition
             robotNode?.size = PositionedSKScene.portraitRobotSize
         } else {
             self.size = PositionedSKScene.landscapeSize
             cameraNode?.position =  PositionedSKScene.landscapeCameraPosition
             cameraRelativeOriginNode.position = -PositionedSKScene.landscapeCameraPosition
+            backgroundNode?.position.x = 400
+            backgroundNode?.size.width = 1188
             robotNode?.position = PositionedSKScene.landscapeRobotPosition
             robotNode?.size = PositionedSKScene.landscapeRobotSize
         }

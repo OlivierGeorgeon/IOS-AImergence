@@ -16,7 +16,7 @@ protocol GameSceneDelegate
 
 class GameSKScene: PositionedSKScene {
     
-    let gameModel:GameModel0
+    let gameModel:GameModel2
     let level:Level0
     
     var gameSceneDelegate: GameSceneDelegate!
@@ -42,7 +42,7 @@ class GameSKScene: PositionedSKScene {
         }
     }
     
-    init(gameModel: GameModel0)
+    init(gameModel: GameModel2)
     {
         self.level = gameModel.level
         self.gameModel = gameModel
@@ -59,7 +59,7 @@ class GameSKScene: PositionedSKScene {
     required init?(coder aDecoder: NSCoder)
     {
         self.level = Level0()
-        self.gameModel = GameModel0()
+        self.gameModel = GameModel2()
         scoreLabel = gameModel.createScoreLabel()
         scoreBackground = gameModel.createScoreBackground()
         super.init(coder: aDecoder)
@@ -125,9 +125,6 @@ class GameSKScene: PositionedSKScene {
         view.addGestureRecognizer(tapGestureRecognizer)
         let longPressGestureRecognizer = UILongPressGestureRecognizer(target: self, action: "longPress:")
         view.addGestureRecognizer(longPressGestureRecognizer)
-        
-        print("didMoveToView GameSKSCene")
-
     }
         
     func tap(recognizer: UITapGestureRecognizer)

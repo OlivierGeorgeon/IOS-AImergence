@@ -8,14 +8,12 @@
 
 import UIKit
 
-@IBDesignable
-
 class HelpView: UIView {
     
-    // Test for motion effect
-    @IBInspectable var test2 =  0 { didSet { print("test \(test2)" )}}
+    // Test for motion effect @NSManaged
+    dynamic var test2 =  0 { didSet { print("test \(test2)" )}}
     
-    @IBInspectable var test: CGFloat {
+    dynamic var test: CGFloat {
         get {
             print("get var test \(center.x)")
             return center.x
@@ -25,6 +23,8 @@ class HelpView: UIView {
             print("set var test \(center.x)")
         }
     }
+    
+    @NSManaged var toto: CGFloat
     
    override func drawRect(rect: CGRect) {
         UIColor.whiteColor().set()

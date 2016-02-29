@@ -10,7 +10,12 @@
 			<string>Votre score (en haut à gauche) est la somme des valeurs des dix dernières expériences. Essayez d&apos;atteindre 10 avant de passer au niveau suivant.</string>
 		</array>
 		<array>
-			<string>Les expérimentations ne produisent pas toujours les mêmes expériences.</string>
+			<string>Certaines expérimentations peuvent changer &quot;l&apos;état du monde&quot;.</string>
+			<string>Après avoir atteint le score de 10, continuez à jouer jusqu&apos;a ce que vous ayez compris quelle expérimentation change l&apos;état du monde dans le niveau 1.</string>
+			<string>Ensuite, tapez sur &quot;Imagine&quot; (en bas à droite) pour voir une interprétation possible du monde qui peut expliquer ce fonctionnement.</string>
+		</array>
+		<array>
+			<string>Les expérimentations peuvent produire des expériences différentes en fonction de l&apos;état du monde dans lequel elles sont effectuées.</string>
 			<string>Les expériences qui ont une valeur positive sont consédérées &quot;plaisantes&quot;, et celles qui ont une valeur négative &quot;déplaisantes&quot;.</string>
 			<string>Essayez de générez une séquence d&apos;expériences plaisantes.</string>
 		</array>
@@ -20,7 +25,7 @@
 			<string>Presser longuement une experience pour changer sa couleur. Cela changera aussi la couleur des autres expériences produites par la même expérimentation et donnant le même résultat.</string>
 		</array>
 		<array>
-			<string>Dans le monde du niveau 3, vous ne pouvez pas toujours éviter les expériences déplaisantes.</string>
+			<string>Dans le monde du niveau 4, vous ne pouvez pas toujours éviter les expériences déplaisantes.</string>
 			<string>Essayez juste de générer une séquence qui contienne aussi peu d&apos;expériences déplaisantes que possible.</string>
 			<string>Pour vous aider, vous pouvez afficher les expériences plaisantes en vert et les déplaisantes en rouge.</string>
 		</array>
@@ -30,21 +35,21 @@
 			<string>Repérez quels états du monde vous permettent de faire des expériences plaisantes, et comment changer l&apos;état du monde.</string>
 		</array>
 		<array>
-			<string>Au niveau 5, les expérimentations ont les mêmes effets qu&apos;au niveau 4, mais elles sont redisposées dans un ordre aléatoire et représentées initialement par des cercles identiques.</string>
+			<string>Au niveau 6, les expérimentations ont les mêmes effets qu&apos;au niveau 5, mais elles sont redisposées dans un ordre aléatoire et représentées initialement par des cercles identiques.</string>
 			<string>C&apos;est à vous d&apos;attribuer les couleurs vertes et rouges aux expériences, et les formes carré et triangle aux experimentations sur la base des expériences produites. </string>
 			<string>Essayez d&apos;attriber les mêmes formes aux experimentations qui produisent les mêmes effets qu&apos;au niveau 4, et les mêmes couleurs aux mêmes expériences. Il peut être utile de rejouer le niveau 4.</string>
 		</array>
 		<array>
-			<string>Au niveau 6, les expériementations ont les mêmes effets qu&apos;aux niveaux 4 et 5, mais les expériences n&apos;ont pas les mêmes valeurs.</string>
+			<string>Au niveau 7, les expériementations ont les mêmes effets qu&apos;aux niveaux 5 et 6, mais les expériences n&apos;ont pas les mêmes valeurs.</string>
 			<string>Vous pouvez attribuer la couleur verte aux expériences qui sont plaisantes ou qui laissent espérer une expérience plaisante au coup suivant.</string>
 			<string>Vous pouvez attribuer la couleur rouge aux expériences qui sont déplaisantes ou qui laissent craindre une expérience déplaisante au coup suivant.</string>
 		</array>
 		<array>
-			<string>Au niveau 7, les expérimentations ont les mêmes effets et les mêmes valeurs qu&apos;au niveau 6.</string>
+			<string>Au niveau 8, les expérimentations ont les mêmes effets et les mêmes valeurs qu&apos;au niveau 7.</string>
 			<string>Par contre, l&apos;expérimentation représentée par un cercle produit toujours la même expérience. Cette expérimentation n&apos;apporte donc aucune information mais est néammoins utile pour changer l&apos;état du monde.</string>
 		</array>
 		<array>
-			<string>Au niveau 8, les expérimentations ont les mêmes effets immédiats qu&apos;aux niveaux 4, 5, 6, et 7, mais, en plus, elles transforment le monde sur le long terme.</string>
+			<string>Au niveau 9, les expérimentations ont les mêmes effets immédiats qu&apos;aux niveaux 5, 6, 7, et 8, mais, en plus, elles transforment le monde sur le long terme.</string>
 			<string>Une fois que le monde a été transformé de manière appropriée, vous pouvez obtenir une expérience plaisante à chaque coup.</string>
 		</array>
 	</array>

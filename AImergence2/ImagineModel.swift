@@ -78,7 +78,7 @@ class ImagineModel {
         let rect = CGRect(x: -0.2 * scaleExperience, y: -0.2 * scaleExperience, width: 0.4 * scaleExperience, height: 0.4 * scaleExperience)
         let path = ReshapableSKNode.paths[experience.experiment.shapeIndex](rect)
         let geometry = SCNShape(path: path, extrusionDepth: 0.1 * scaleExperience)
-        geometry.materials = [Geometries.defaultMaterial()]
+        geometry.materials = [Geometries.defaultExperienceMaterial()]
         if experience.colorIndex > 0 {
             geometry.firstMaterial!.diffuse.contents = ExperienceSKNode.colors[experience.colorIndex]
         }

@@ -20,6 +20,14 @@ class Level0 {
     var number:Int { return 0 }
     var valenceTrace:[Int]
     
+    var gameModelString: String {
+        var gameModelString = "GameModel2"
+        if experiments.count > 2 {
+            gameModelString = "GameModel3"
+        }
+        return gameModelString
+    }
+
     init(winScore: Int, historicalDepth: Int, experiments:[Experiment], experiences:[[Experience]]) {
         self.winScore = winScore
         self.historicalDepth = historicalDepth
@@ -28,7 +36,7 @@ class Level0 {
         self.experiences = experiences
     }
     
-    convenience init() {
+    convenience  required init() {
         let experiment0 = Experiment(number: 0)
         let experiment1 = Experiment(number: 1)
         

@@ -10,10 +10,24 @@ import SceneKit
 
 class Geometries
 {
+    class func defaultExperienceMaterial() -> SCNMaterial {
+        let material = SCNMaterial()
+        //material.diffuse.contents = UIColor.lightGrayColor()
+        //material.diffuse.contents = UIColor(red: 214/256, green: 236/256, blue: 255/256, alpha: 1)
+        material.diffuse.contents = UIColor(red: 162/256, green: 191/256, blue: 214/256, alpha: 1)
+        material.specular.contents = UIColor.whiteColor()
+        //material.specular.contents = UIColor(red: 114/256, green: 114/256, blue: 171/256, alpha: 1)
+        return material
+    }
+    
     class func defaultMaterial() -> SCNMaterial {
         let material = SCNMaterial()
-        material.diffuse.contents = UIColor.lightGrayColor()
+        //material.diffuse.contents = UIColor.lightGrayColor()
+        material.diffuse.contents = UIColor(red: 140/256, green: 133/256, blue: 190/256, alpha: 1)
+        //material.diffuse.contents = UIColor(red: 185/256, green: 184/256, blue: 239/256, alpha: 1)
+        //material.diffuse.contents = UIColor(red: 195/256, green: 198/256, blue: 250/256, alpha: 1)
         material.specular.contents = UIColor.whiteColor()
+        //material.specular.contents = UIColor(red: 183/256, green: 137/256, blue: 194/256, alpha: 0.5)
         return material
     }
     

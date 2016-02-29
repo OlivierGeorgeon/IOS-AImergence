@@ -12,25 +12,28 @@ class ImagineModel1: ImagineModel0
 {
     var switchNode0: SCNNode!
     var switchNode1: SCNNode!
-
+    
     override func playExperience(experience: Experience) {
         switch experience.hashValue {
-        case 00:
+        case 00: // Left
             createOrRetrieveBodyNodeAndRunAction(action: actions.bumpBack())
             if switchNode0 == nil { switchNode0 = createSwitchNode(SCNVector3(-1.5, 0, 0)) }
             spawnExperienceNode(experience, position: SCNVector3( -1.0, 0.0, 0.0), delayed: true)
         case 01:
-            createOrRetrieveBodyNodeAndRunAction(backward: true, action: actions.bumpAndTurnover())
+            createOrRetrieveBodyNodeAndRunAction(backward: true, action: actions.bump())
             if switchNode0 == nil { switchNode0 = createSwitchNode(SCNVector3(-1.5, 0, 0)) }
             spawnExperienceNode(experience, position: SCNVector3( -1.0, 0.0, 0.0), delayed: true)
-        case 10:
+        case 10: // Right
             createOrRetrieveBodyNodeAndRunAction(backward: true, action: actions.bumpBack())
             if switchNode1 == nil { switchNode1 = createSwitchNode(SCNVector3(1.5, 0, 0)) }
             spawnExperienceNode(experience, position: SCNVector3( 1.0, 0.0, 0.0), delayed: true)
         case 11:
-            createOrRetrieveBodyNodeAndRunAction(action: actions.bumpAndTurnover())
+            createOrRetrieveBodyNodeAndRunAction(action: actions.bump())
             if switchNode1 == nil { switchNode1 = createSwitchNode(SCNVector3(1.5, 0, 0)) }
             spawnExperienceNode(experience, position: SCNVector3( 1.0, 0.0, 0.0), delayed: true)
+        case 20, 21: // swap
+            if bodyNode != nil { bodyNode.runAction(actions.turnover()) }
+            spawnExperienceNode(experience, position: SCNVector3( 0.0, 0.0, 0.0))
         default:
             break
         }

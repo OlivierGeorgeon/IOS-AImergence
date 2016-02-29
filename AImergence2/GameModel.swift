@@ -74,8 +74,20 @@ class GameModel
         return backgroundNode
     }
     
-    class func createGameModel(levelNumber: Int) -> GameModel0 {
-        let level:Level0
+    class func createGameModel(levelNumber: Int) -> GameModel2 {
+        var level = Level0()
+        let bundleName = NSBundle.mainBundle().infoDictionary!["CFBundleName"] as! String
+        let aClass:AnyClass? =  NSClassFromString(bundleName + ".Level\(levelNumber)")
+        if let levelType = aClass as? Level0.Type { level = levelType.init() }
+
+        var gameModel = GameModel2()
+        let gameModelString = level.gameModelString
+        let aClass2:AnyClass? =  NSClassFromString(bundleName + "." + gameModelString)
+        if let gameModelType = aClass2 as? GameModel2.Type {
+            gameModel = gameModelType.init()
+        }
+        
+        /*
         var gameModel = GameModel0()
         switch levelNumber {
         case 0:
@@ -86,9 +98,9 @@ class GameModel
             gameModel = GameModel2()
             level = Level2()
         case 3:
+            gameModel = GameModel2()
             level = Level3()
         case 4:
-            gameModel = GameModel2()
             level = Level4()
         case 5:
             gameModel = GameModel2()
@@ -102,9 +114,13 @@ class GameModel
         case 8:
             gameModel = GameModel2()
             level = Level8()
+        case 9:
+            gameModel = GameModel2()
+            level = Level9()
         default:
             level = Level0()
         }
+*/
         gameModel.level = level
         return gameModel
     }
