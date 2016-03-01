@@ -7,12 +7,12 @@
 		<array>
 			<string>Les deux cercles blancs en bas de l&apos;écran représentent des &quot;experimentations&quot;.</string>
 			<string>En pressant les expérimentations, vous produisez des petits cercles blancs qui montent, appelés &quot;expériences&quot;. Chaque expérience a une &quot;valeur&quot; numérique qui s&apos;affiche à sa droite.</string>
-			<string>Votre score (en haut à gauche) est la somme des valeurs des dix dernières expériences. Essayez d&apos;atteindre 10 avant de passer au niveau suivant.</string>
+			<string>Votre score (en haut à gauche sous cette fenêtre) est la somme des valeurs des dix dernières expériences. Essayez d&apos;atteindre 10 avant de passer au niveau suivant.</string>
 		</array>
 		<array>
 			<string>Certaines expérimentations peuvent changer &quot;l&apos;état du monde&quot;.</string>
-			<string>Après avoir atteint le score de 10, continuez à jouer jusqu&apos;a ce que vous ayez compris quelle expérimentation change l&apos;état du monde dans le niveau 1.</string>
-			<string>Ensuite, tapez sur &quot;Imagine&quot; (en bas à droite) pour voir une interprétation possible du monde qui peut expliquer ce fonctionnement.</string>
+			<string>Après avoir atteint le score de 10,  tapez sur &quot;Imagine&quot; (en bas à droite) pour afficher une représentation possible du monde qui peut expliquer les réguarités d&apos;expérience constatées.</string>
+			<string>Avec la fenêtre &quot;Imagine&quot; ouverte, continuez à faire des expérimentations et obervez leurs effets dans le monde imaginaire.</string>
 		</array>
 		<array>
 			<string>Les expérimentations peuvent produire des expériences différentes en fonction de l&apos;état du monde dans lequel elles sont effectuées.</string>
@@ -27,7 +27,7 @@
 		<array>
 			<string>Dans le monde du niveau 4, vous ne pouvez pas toujours éviter les expériences déplaisantes.</string>
 			<string>Essayez juste de générer une séquence qui contienne aussi peu d&apos;expériences déplaisantes que possible.</string>
-			<string>Pour vous aider, vous pouvez afficher les expériences plaisantes en vert et les déplaisantes en rouge.</string>
+			<string>Vous pouvez afficher les expériences plaisantes en vert et les déplaisantes en rouge. Cela peut vous aider à voir apparaitre une régularité.</string>
 		</array>
 		<array>
 			<string>Observez le comportement individuel des expérimentations quand vous les utilisez seules plusieurs fois de suite. Celles qui produisent toujours le même résultat sont appelées &quot;expérimentations persistantes&quot;.</string>

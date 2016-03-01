@@ -11,7 +11,7 @@ import GameplayKit
 
 class Level1 : Level0 {
     
-    override var number:Int { return 2 }
+    override var number:Int { return 1 }
     
     var orienationRight = false
     

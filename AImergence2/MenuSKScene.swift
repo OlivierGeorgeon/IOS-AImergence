@@ -40,7 +40,7 @@ class MenuSKScene: PositionedSKScene {
         let cancelBackgroundNode = homeStruct.createBackgroundNode()
         cancelNode.addChild(cancelBackgroundNode)
         
-        for i in 0...PositionedSKScene.maxLevelNumber {
+        for i in 0...GameViewController.maxLevelNumber {
             let levelNode = homeStruct.createLabelNode("\(i)")
             levelNode.userData = ["level": i]
             levelNode.position = homeStruct.level0Position + (i % 5) * homeStruct.levelXOffset + (i / 5) * homeStruct.levelYOffset

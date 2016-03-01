@@ -11,6 +11,8 @@ import SpriteKit
 
 class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate, HelpViewControllerDelegate, WorldViewControllerDelegate
 {
+    static let maxLevelNumber = 9
+    
     @IBOutlet weak var sceneView: GameView!
     @IBOutlet weak var helpViewControllerContainer: UIView!
     @IBOutlet weak var imagineViewControllerContainer: UIView!
@@ -53,7 +55,7 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
         }
     }
     
-    var unlockedLevels = [false, false, false, false, true, true, true, true, true]
+    var unlockedLevels = [false, false, false, false, false, false, true, true, true, true]
     
     override func viewDidLoad()
     {
@@ -95,7 +97,7 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
     }
 
     func swipeLeft(gesture:UISwipeGestureRecognizer) {
-        if level < PositionedSKScene.maxLevelNumber {
+        if level < GameViewController.maxLevelNumber {
             level++
             let nextGameScene = GameSKScene(gameModel: GameModel.createGameModel(level))
             nextGameScene.gameSceneDelegate = self

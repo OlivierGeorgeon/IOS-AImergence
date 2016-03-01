@@ -86,41 +86,6 @@ class GameModel
         if let gameModelType = aClass2 as? GameModel2.Type {
             gameModel = gameModelType.init()
         }
-        
-        /*
-        var gameModel = GameModel0()
-        switch levelNumber {
-        case 0:
-            level = Level0()
-        case 1:
-            level = Level1()
-        case 2:
-            gameModel = GameModel2()
-            level = Level2()
-        case 3:
-            gameModel = GameModel2()
-            level = Level3()
-        case 4:
-            level = Level4()
-        case 5:
-            gameModel = GameModel2()
-            level = Level5()
-        case 6:
-            gameModel = GameModel2()
-            level = Level6()
-        case 7:
-            gameModel = GameModel2()
-            level = Level7()
-        case 8:
-            gameModel = GameModel2()
-            level = Level8()
-        case 9:
-            gameModel = GameModel2()
-            level = Level9()
-        default:
-            level = Level0()
-        }
-*/
         gameModel.level = level
         return gameModel
     }
