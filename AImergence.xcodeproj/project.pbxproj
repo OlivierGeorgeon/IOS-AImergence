@@ -89,6 +89,8 @@
 		09AC4D131C821BC000C149EC /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09AC4D121C821BC000C149EC /* GameView.swift */; };
 		09AC4D151C8491DA00C149EC /* Level1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09AC4D141C8491DA00C149EC /* Level1.swift */; };
 		09AC4D171C84D36100C149EC /* ImagineModel1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09AC4D161C84D36100C149EC /* ImagineModel1.swift */; };
+		09AC4D191C86E0D600C149EC /* Level10.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09AC4D181C86E0D600C149EC /* Level10.swift */; };
+		09AC4D1B1C86E29200C149EC /* ImagineModel10.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09AC4D1A1C86E29200C149EC /* ImagineModel10.swift */; };
 		09B12C7D1C75D53F000FBEF6 /* Actions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B12C7C1C75D53F000FBEF6 /* Actions.swift */; };
 		09ED657D1C6C87D2004A8CA7 /* Level7.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09ED657C1C6C87D2004A8CA7 /* Level7.swift */; };
 		09ED657F1C6D0EE6004A8CA7 /* ImagineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09ED657E1C6D0EE6004A8CA7 /* ImagineViewController.swift */; };
@@ -207,6 +209,8 @@
 		09AC4D121C821BC000C149EC /* GameView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
 		09AC4D141C8491DA00C149EC /* Level1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Level1.swift; sourceTree = "<group>"; };
 		09AC4D161C84D36100C149EC /* ImagineModel1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagineModel1.swift; sourceTree = "<group>"; };
+		09AC4D181C86E0D600C149EC /* Level10.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Level10.swift; sourceTree = "<group>"; };
+		09AC4D1A1C86E29200C149EC /* ImagineModel10.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagineModel10.swift; sourceTree = "<group>"; };
 		09B12C7C1C75D53F000FBEF6 /* Actions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Actions.swift; sourceTree = "<group>"; };
 		09ED657C1C6C87D2004A8CA7 /* Level7.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Level7.swift; sourceTree = "<group>"; };
 		09ED657E1C6D0EE6004A8CA7 /* ImagineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagineViewController.swift; sourceTree = "<group>"; };
@@ -319,6 +323,7 @@
 				09ED657C1C6C87D2004A8CA7 /* Level7.swift */,
 				090AD9EF1C7A618500F2FE8C /* Level8.swift */,
 				096F5CB81C56D7240041EA5F /* Level9.swift */,
+				09AC4D181C86E0D600C149EC /* Level10.swift */,
 			);
 			name = Levels;
 			sourceTree = "<group>";
@@ -449,6 +454,7 @@
 				090AD9EB1C7A5F2400F2FE8C /* ImagineModel7.swift */,
 				090AD9F11C7A628C00F2FE8C /* ImagineModel8.swift */,
 				0911B7F51C748BFC00DC3F69 /* ImagineModel9.swift */,
+				09AC4D1A1C86E29200C149EC /* ImagineModel10.swift */,
 			);
 			name = Imagine;
 			sourceTree = "<group>";
@@ -643,6 +649,7 @@
 				0936816F1C42708E008C6B5D /* Experiment.swift in Sources */,
 				0936813F1C417378008C6B5D /* GameSKScene.swift in Sources */,
 				0994526E1C5F983400F0ABFF /* HelpView.swift in Sources */,
+				09AC4D1B1C86E29200C149EC /* ImagineModel10.swift in Sources */,
 				093681411C417378008C6B5D /* GameViewController.swift in Sources */,
 				09ED65831C6D11A1004A8CA7 /* Geometries.swift in Sources */,
 				0961EBBB1C64961F00A4E55C /* Level6.swift in Sources */,
@@ -664,6 +671,7 @@
 				09ED657D1C6C87D2004A8CA7 /* Level7.swift in Sources */,
 				093681791C4677A6008C6B5D /* GameModel.swift in Sources */,
 				093C3F661C6F68B9000BC6FB /* ImagineModel2.swift in Sources */,
+				09AC4D191C86E0D600C149EC /* Level10.swift in Sources */,
 				09ED657F1C6D0EE6004A8CA7 /* ImagineViewController.swift in Sources */,
 				090AD9F21C7A628C00F2FE8C /* ImagineModel8.swift in Sources */,
 				09AC4D131C821BC000C149EC /* GameView.swift in Sources */,

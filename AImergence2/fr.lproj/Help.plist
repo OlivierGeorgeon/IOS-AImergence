@@ -52,6 +52,10 @@
 			<string>Au niveau 9, les expérimentations ont les mêmes effets immédiats qu&apos;aux niveaux 5, 6, 7, et 8, mais, en plus, elles transforment le monde sur le long terme.</string>
 			<string>Une fois que le monde a été transformé de manière appropriée, vous pouvez obtenir une expérience plaisante à chaque coup.</string>
 		</array>
+		<array>
+			<string>Le monde du niveau 10 est identique au monde du niveau 9, et les expériences ont les mêmes valeurs.</string>
+			<string>Comme au niveau 8, il y a une expérimentation qui produit toujours la même expérience mais qui change l&apos;état du monde.</string>
+		</array>
 	</array>
 </dict>
 </plist>

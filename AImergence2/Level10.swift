@@ -9,25 +9,22 @@
 import GameplayKit
 import Foundation
 
-class Level9: Level5 {
+class Level10: Level9 {
     
-    override var number:Int { return 9 }
+    override var number:Int { return 10 }
 
-    var env = [false, true, false, true, false, true, true, false, true, false]
-    var p = 0
-    
    convenience required init() {
-        let experiment0 = Experiment(number: 0, shapeIndex: 1)
-        let experiment1 = Experiment(number: 1, shapeIndex: 2)
-        let experiment2 = Experiment(number: 2, shapeIndex: 0)
+        let experiment0 = Experiment(number: 0)
+        let experiment1 = Experiment(number: 1)
+        let experiment2 = Experiment(number: 2)
         let experiments = GKRandomSource.sharedRandom().arrayByShufflingObjectsInArray([experiment0, experiment1, experiment2]) as! [Experiment]
         
-        let experience00 = Experience(experiment: experiment0, resultNumber: 0, valence:0, colorIndex: 2)
-        let experience01 = Experience(experiment: experiment0, resultNumber: 1, valence:0, colorIndex: 1)
-        let experience10 = Experience(experiment: experiment1, resultNumber: 0, valence:0, colorIndex: 2)
-        let experience11 = Experience(experiment: experiment1, resultNumber: 1, valence:1, colorIndex: 1)
-        let experience20 = Experience(experiment: experiment2, resultNumber: 0, valence:0, colorIndex: 2)
-        let experience21 = Experience(experiment: experiment2, resultNumber: 1, valence:0, colorIndex: 1)
+        let experience00 = Experience(experiment: experiment0, resultNumber: 0, valence:0)
+        let experience01 = Experience(experiment: experiment0, resultNumber: 1, valence:0)
+        let experience10 = Experience(experiment: experiment1, resultNumber: 0, valence:0)
+        let experience11 = Experience(experiment: experiment1, resultNumber: 1, valence:1)
+        let experience20 = Experience(experiment: experiment2, resultNumber: 0, valence:0)
+        let experience21 = Experience(experiment: experiment2, resultNumber: 1, valence:0)
         let experiences = [[experience00, experience01], [experience10, experience11], [experience20, experience21]]
         
         self.init(winScore: 10, historicalDepth: 10, experiments: experiments, experiences: experiences)
@@ -47,7 +44,6 @@ class Level9: Level5 {
             currentPhenomenon = env[p]
         case 2: //swap
             currentPhenomenon = !currentPhenomenon
-            if currentPhenomenon { result = 1 }
         default:
             break
         }

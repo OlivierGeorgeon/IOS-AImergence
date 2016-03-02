@@ -11,7 +11,7 @@ import SpriteKit
 
 class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate, HelpViewControllerDelegate, WorldViewControllerDelegate
 {
-    static let maxLevelNumber = 9
+    static let maxLevelNumber = 10
     
     @IBOutlet weak var sceneView: GameView!
     @IBOutlet weak var helpViewControllerContainer: UIView!
@@ -55,7 +55,7 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
         }
     }
     
-    var unlockedLevels = [false, false, false, false, false, false, true, true, true, true]
+    var unlockedLevels = Array(count: GameViewController.maxLevelNumber + 1, repeatedValue: false)
     
     override func viewDidLoad()
     {
