@@ -37,19 +37,19 @@ class ImagineModel3: ImagineModel1
         case 00:
             createOrRetrieveBodyNodeAndRunAction(action: rotateToRightBumpLeft)
             if switchNode0 == nil { switchNode0 = createSwitchNode(SCNVector3(-1.5, 0, 0)) }
-            spawnExperienceNode(experience, position: SCNVector3( -1.0, 0.0, 0.0))
+            spawnExperienceNode(experience, position: SCNVector3( -1.0, 0.0, 0.0), delayed: true)
         case 01:
             createOrRetrieveBodyNodeAndRunAction(backward: true, action: rotateToLeftBumpLeftRotateToRight)
             if switchNode0 == nil { switchNode0 = createSwitchNode(SCNVector3(-1.5, 0, 0)) }
-            spawnExperienceNode(experience, position: SCNVector3( -1.0, 0.0, 0.0))
+            spawnExperienceNode(experience, position: SCNVector3( -1.0, 0.0, 0.0), delayed: true)
         case 10:
             createOrRetrieveBodyNodeAndRunAction(backward: true, action: rotateToLeftbumpRight)
             if switchNode1 == nil { switchNode1 = createSwitchNode(SCNVector3(1.5, 0, 0)) }
-            spawnExperienceNode(experience, position: SCNVector3( 1.0, 0.0, 0.0))
+            spawnExperienceNode(experience, position: SCNVector3( 1.0, 0.0, 0.0), delayed: true)
         case 11:
             createOrRetrieveBodyNodeAndRunAction(action: rotateToRightbumpRightRotateToLeft)
             if switchNode1 == nil { switchNode1 = createSwitchNode(SCNVector3(1.5, 0, 0)) }
-            spawnExperienceNode(experience, position: SCNVector3( 1.0, 0.0, 0.0))
+            spawnExperienceNode(experience, position: SCNVector3( 1.0, 0.0, 0.0), delayed: true)
         case 20, 21:
             createOrRetrieveBodyNodeAndRunAction(action: SCNAction.group([rotateToUp, jump]))
             spawnExperienceNode(experience, position: SCNVector3( 0.0, 0.5, 0.0))

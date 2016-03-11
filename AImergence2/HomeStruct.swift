@@ -33,7 +33,7 @@ struct HomeStruct
     }
 
     func createLevelBackgroundNode() -> SKShapeNode {
-        let backgroundNode = SKShapeNode(path: UIBezierPath(ovalInRect: CGRect(x: -20, y: -20, width: 40, height: 40)).CGPath)
+        let backgroundNode = SKShapeNode(path: UIBezierPath(ovalInRect: CGRect(x: -25, y: -25, width: 50, height: 50)).CGPath)
         //(rect: CGRect(x: -100, y: -20, width: 200, height: 40), cornerRadius: 20)
         backgroundNode.fillColor = UIColor.lightGrayColor()
         backgroundNode.lineWidth = 0
