@@ -27,8 +27,8 @@ class HelpViewController: UIViewController {
     required init(coder aDecoder: NSCoder)
     {
         var tempHelpBlobArray = [String]()
-        if let path = NSBundle.mainBundle().pathForResource("Help", ofType: "plist", inDirectory: nil, forLocalization: "fr") {
-        //if let path = NSBundle.mainBundle().pathForResource("Help", ofType: "plist") {
+        //if let path = NSBundle.mainBundle().pathForResource("Help", ofType: "plist", inDirectory: nil, forLocalization: "fr") {
+        if let path = NSBundle.mainBundle().pathForResource("Help", ofType: "plist") {
             let localizedDictionary = NSDictionary(contentsOfFile: path)
             if let helpLineArray = localizedDictionary?["Help"] as? [[String]] {
                 tempHelpBlobArray = helpLineArray.map({$0.reduce("", combine: {$0 + "\n\n" + $1 }).stringByTrimmingCharactersInSet(NSCharacterSet.newlineCharacterSet())})

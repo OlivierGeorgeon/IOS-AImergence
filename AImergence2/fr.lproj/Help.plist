@@ -30,17 +30,17 @@
 			<string>Vous pouvez afficher les expériences plaisantes en vert et les déplaisantes en rouge. Cela peut vous aider à voir apparaitre une régularité.</string>
 		</array>
 		<array>
-			<string>Observez le comportement individuel des expérimentations quand vous les utilisez seules plusieurs fois de suite. Celles qui produisent toujours le même résultat sont appelées &quot;expérimentations persistantes&quot;.</string>
+			<string>Observez le comportement individuel des expérimentations quand vous les utilisez seules plusieurs fois de suite. Celles qui produisent toujours la même expérience dans un état du monde donné sont appelées &quot;expérimentations persistantes&quot;.</string>
 			<string>Les expériementations persistantes vous permettent &quot;d&apos;observer l&apos;état du monde&quot; sans le modifier.</string>
 			<string>Les couleurs des expériences peuvent aider à repérer les états du monde qui offrent des possibilités d&apos;expériences plaisantes.</string>
 		</array>
 		<array>
 			<string>Au niveau 6, les expérimentations ont les mêmes effets qu&apos;au niveau 5, mais elles sont redisposées dans un ordre aléatoire et représentées initialement par des cercles identiques.</string>
 			<string>C&apos;est à vous d&apos;attribuer les couleurs vertes et rouges aux expériences, et les formes carré et triangle aux experimentations sur la base des expériences produites. </string>
-			<string>Essayez d&apos;attriber les mêmes formes aux experimentations qui produisent les mêmes effets qu&apos;au niveau 4, et les mêmes couleurs aux mêmes expériences. Il peut être utile de rejouer le niveau 4.</string>
+			<string>Essayez de choisir les mêmes formes et couleurs qu&apos;au niveau 4. Il peut être utile de rejouer le niveau 4.</string>
 		</array>
 		<array>
-			<string>Au niveau 7, les expériementations ont les mêmes effets qu&apos;aux niveaux 5 et 6, mais les expériences n&apos;ont pas les mêmes valeurs.</string>
+			<string>Au niveau 7, les expériementations ont les mêmes effets qu&apos;aux niveaux 5 et 6, mais certaines expériences ont des valeurs différentes.</string>
 			<string>Vous pouvez attribuer la couleur verte aux expériences qui sont plaisantes ou qui laissent espérer une expérience plaisante au coup suivant.</string>
 			<string>Vous pouvez attribuer la couleur rouge aux expériences qui sont déplaisantes ou qui laissent craindre une expérience déplaisante au coup suivant.</string>
 		</array>
