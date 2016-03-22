@@ -30,14 +30,14 @@
 			<string>Displaying enjoyable experiences in green and unpleasant experiences in red may help you see regularities.</string>
 		</array>
 		<array>
-			<string>Observe the effects of each experiment when you try to use it alone several times in a row. Those that always produce the same experiences in a given state of the world are called &quot;persistent experiments&quot;.</string>
-			<string>Persistent experiments allow you to observe the state of the world without modifying it.</string>
+			<string>Observe the effects of experiments when you try to use them alone several times in a row. One of them always produces the same experiences in a given state of the world. It is called a &quot;persistent experiments&quot;.</string>
+			<string>This persistent experiment allows you to observe the state of the world without modifying it.</string>
 			<string>The colors of experiences may help you identify the states of the world that afford enjoyable experiences.</string>
 		</array>
 		<array>
 			<string>In Level 6, experiments have the same effects as in Level 5, but they have been rearranged in a random order and are all initially represented by circles.</string>
 			<string>It is left to you to attribute the green and red colors to experiences, and the square and triangle shapes to experiments on the basis of the effect they produce.</string>
-			<string>Try to choose the same shapes and colors as in Level 4. Playing again Level 4 may be useful.</string>
+			<string>Try to choose the same shapes and colors as in Level 5. Playing again Level 5 may be useful.</string>
 		</array>
 		<array>
 			<string>In Level 7, experiments have the same effects as in Levels 5 and 6, but some experiences have different values.</string>
