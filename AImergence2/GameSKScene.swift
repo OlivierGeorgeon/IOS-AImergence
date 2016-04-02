@@ -42,6 +42,8 @@ class GameSKScene: PositionedSKScene {
         }
     }
     
+    var robotHappyFrames: [SKTexture]!
+    
     init(gameModel: GameModel2)
     {
         self.level = gameModel.level
@@ -109,6 +111,22 @@ class GameSKScene: PositionedSKScene {
         cameraRelativeOriginNode.addChild(robotNode!)
         backgroundNode = gameModel.createBackroundNode()
         cameraRelativeOriginNode.addChild(backgroundNode!)
+        
+        let robotHappyAtlas = SKTextureAtlas(named: "robothappy")
+        var happyFrames = [SKTexture]()
+        
+        let numImages = robotHappyAtlas.textureNames.count
+        for var i=1; i<=numImages; i = i + 3 {
+            let happyTextureName = "happy\(i)"
+            happyFrames.append(robotHappyAtlas.textureNamed(happyTextureName))
+        }
+        for var i = numImages - 1; i > 0; i = i - 3 {
+            let happyTextureName = "happy\(i)"
+            happyFrames.append(robotHappyAtlas.textureNamed(happyTextureName))
+        }
+        robotHappyFrames = happyFrames
+        
+        jumpingRobot()
     }
     
     override func didMoveToView(view: SKView)
@@ -220,5 +238,12 @@ class GameSKScene: PositionedSKScene {
         experienceNode.runAction(actionIntroduce, completion: {experienceNode.addValenceNode()})
     }
     
+    func jumpingRobot() {
+        robotNode!.runAction(
+            SKAction.animateWithTextures(robotHappyFrames,
+                timePerFrame: 0.05,
+                resize: false,
+                restore: false))
+    }
 }
 
