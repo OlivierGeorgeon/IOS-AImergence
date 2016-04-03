@@ -43,6 +43,8 @@ class GameSKScene: PositionedSKScene {
     }
     
     var robotHappyFrames: [SKTexture]!
+    var robotSadFrames: [SKTexture]!
+    var robotBlinkFrames: [SKTexture]!
     
     init(gameModel: GameModel2)
     {
@@ -112,21 +114,9 @@ class GameSKScene: PositionedSKScene {
         backgroundNode = gameModel.createBackroundNode()
         cameraRelativeOriginNode.addChild(backgroundNode!)
         
-        let robotHappyAtlas = SKTextureAtlas(named: "robothappy")
-        var happyFrames = [SKTexture]()
-        
-        let numImages = robotHappyAtlas.textureNames.count
-        for var i=1; i<=numImages; i = i + 3 {
-            let happyTextureName = "happy\(i)"
-            happyFrames.append(robotHappyAtlas.textureNamed(happyTextureName))
-        }
-        for var i = numImages - 1; i > 0; i = i - 3 {
-            let happyTextureName = "happy\(i)"
-            happyFrames.append(robotHappyAtlas.textureNamed(happyTextureName))
-        }
-        robotHappyFrames = happyFrames
-        
-        jumpingRobot()
+        robotHappyFrames = loadFrames("robothappy", imageName: "happy")
+        robotSadFrames = loadFrames("robotsad", imageName: "sad")
+        robotBlinkFrames = loadFrames("robotblink", imageName: "blink")
     }
     
     override func didMoveToView(view: SKView)
@@ -215,6 +205,15 @@ class GameSKScene: PositionedSKScene {
         
         let(experience, score) = level.play(experiment)
         self.score = score
+
+        switch experience.valence {
+        case let x where x > 0 :
+            animRobot(robotHappyFrames)
+        case let x where x < 0:
+            animRobot(robotSadFrames)
+        default:
+            animRobot(robotBlinkFrames)
+        }
         
         gameSceneDelegate.playExperience(experience)
         
@@ -238,12 +237,28 @@ class GameSKScene: PositionedSKScene {
         experienceNode.runAction(actionIntroduce, completion: {experienceNode.addValenceNode()})
     }
     
-    func jumpingRobot() {
+    func animRobot(texture: [SKTexture]) {
         robotNode!.runAction(
-            SKAction.animateWithTextures(robotHappyFrames,
+            SKAction.animateWithTextures(texture,
                 timePerFrame: 0.05,
                 resize: false,
                 restore: false))
+    }
+    
+    func loadFrames(atlasName: String, imageName: String) -> [SKTexture] {
+        let robotAtlas = SKTextureAtlas(named: atlasName)
+        var frames = [SKTexture]()
+        
+        let numImages = robotAtlas.textureNames.count
+        for var i=1; i<=numImages; i = i + 3 {
+            let textureName = imageName + "\(i)"
+            frames.append(robotAtlas.textureNamed(textureName))
+        }
+        for var i = numImages - 1; i > 0; i = i - 3 {
+            let happyTextureName = imageName + "\(i)"
+            frames.append(robotAtlas.textureNamed(happyTextureName))
+        }
+        return frames
     }
 }
 
