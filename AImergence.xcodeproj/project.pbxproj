@@ -15,11 +15,6 @@
 		0911B7F21C731CF400DC3F69 /* PositionedSKScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0911B7F11C731CF400DC3F69 /* PositionedSKScene.swift */; };
 		0911B7F41C73A4B600DC3F69 /* ImagineModel5.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0911B7F31C73A4B600DC3F69 /* ImagineModel5.swift */; };
 		0911B7F61C748BFC00DC3F69 /* ImagineModel9.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0911B7F51C748BFC00DC3F69 /* ImagineModel9.swift */; };
-		0925C0901CAFD71500097ABF /* close.png in Resources */ = {isa = PBXBuildFile; fileRef = 0925C08C1CAFD71500097ABF /* close.png */; };
-		0925C0911CAFD71500097ABF /* imagine.png in Resources */ = {isa = PBXBuildFile; fileRef = 0925C08D1CAFD71500097ABF /* imagine.png */; };
-		0925C0921CAFD71500097ABF /* instructions.png in Resources */ = {isa = PBXBuildFile; fileRef = 0925C08E1CAFD71500097ABF /* instructions.png */; };
-		0925C0931CAFD71500097ABF /* levels.png in Resources */ = {isa = PBXBuildFile; fileRef = 0925C08F1CAFD71500097ABF /* levels.png */; };
-		0925C0951CB01A2A00097ABF /* fond.png in Resources */ = {isa = PBXBuildFile; fileRef = 0925C0941CB01A2A00097ABF /* fond.png */; };
 		093000DA1C4FB39000425BB1 /* ExperimentSKNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093000D91C4FB39000425BB1 /* ExperimentSKNode.swift */; };
 		093000DE1C4FC77700425BB1 /* ExperienceSKNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093000DD1C4FC77700425BB1 /* ExperienceSKNode.swift */; };
 		093000E01C4FD3B700425BB1 /* ReshapableSKNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093000DF1C4FD3B700425BB1 /* ReshapableSKNode.swift */; };
@@ -92,11 +87,6 @@
 		0911B7F11C731CF400DC3F69 /* PositionedSKScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PositionedSKScene.swift; sourceTree = "<group>"; };
 		0911B7F31C73A4B600DC3F69 /* ImagineModel5.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagineModel5.swift; sourceTree = "<group>"; };
 		0911B7F51C748BFC00DC3F69 /* ImagineModel9.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagineModel9.swift; sourceTree = "<group>"; };
-		0925C08C1CAFD71500097ABF /* close.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = close.png; sourceTree = "<group>"; };
-		0925C08D1CAFD71500097ABF /* imagine.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = imagine.png; sourceTree = "<group>"; };
-		0925C08E1CAFD71500097ABF /* instructions.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = instructions.png; sourceTree = "<group>"; };
-		0925C08F1CAFD71500097ABF /* levels.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = levels.png; sourceTree = "<group>"; };
-		0925C0941CB01A2A00097ABF /* fond.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fond.png; sourceTree = "<group>"; };
 		093000D91C4FB39000425BB1 /* ExperimentSKNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExperimentSKNode.swift; sourceTree = "<group>"; };
 		093000DD1C4FC77700425BB1 /* ExperienceSKNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExperienceSKNode.swift; sourceTree = "<group>"; };
 		093000DF1C4FD3B700425BB1 /* ReshapableSKNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReshapableSKNode.swift; sourceTree = "<group>"; };
@@ -178,21 +168,9 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0925C08B1CAFD71500097ABF /* ui */ = {
-			isa = PBXGroup;
-			children = (
-				0925C08C1CAFD71500097ABF /* close.png */,
-				0925C08D1CAFD71500097ABF /* imagine.png */,
-				0925C08E1CAFD71500097ABF /* instructions.png */,
-				0925C08F1CAFD71500097ABF /* levels.png */,
-			);
-			path = ui;
-			sourceTree = "<group>";
-		};
 		0936812E1C417377008C6B5D = {
 			isa = PBXGroup;
 			children = (
-				09AC4CC01C7F451800C149EC /* images */,
 				093681391C417378008C6B5D /* AImergence2 */,
 				093681521C417378008C6B5D /* AImergence2Tests */,
 				0936815D1C417378008C6B5D /* AImergence2UITests */,
@@ -284,15 +262,6 @@
 				0936817A1C4696AB008C6B5D /* MenuSKScene.swift */,
 			);
 			name = SKSceneElements;
-			sourceTree = "<group>";
-		};
-		09AC4CC01C7F451800C149EC /* images */ = {
-			isa = PBXGroup;
-			children = (
-				0925C0941CB01A2A00097ABF /* fond.png */,
-				0925C08B1CAFD71500097ABF /* ui */,
-			);
-			path = images;
 			sourceTree = "<group>";
 		};
 		09ED65801C6D0EF5004A8CA7 /* Help */ = {
@@ -434,13 +403,8 @@
 			files = (
 				093681491C417378008C6B5D /* LaunchScreen.storyboard in Resources */,
 				0961EBC01C66658B00A4E55C /* Help.plist in Resources */,
-				0925C0921CAFD71500097ABF /* instructions.png in Resources */,
-				0925C0901CAFD71500097ABF /* close.png in Resources */,
-				0925C0911CAFD71500097ABF /* imagine.png in Resources */,
 				099452981C620CF600F0ABFF /* Localizable.strings in Resources */,
-				0925C0931CAFD71500097ABF /* levels.png in Resources */,
 				093681461C417378008C6B5D /* Assets.xcassets in Resources */,
-				0925C0951CB01A2A00097ABF /* fond.png in Resources */,
 				093681441C417378008C6B5D /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
