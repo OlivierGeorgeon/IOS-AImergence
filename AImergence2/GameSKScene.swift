@@ -114,9 +114,9 @@ class GameSKScene: PositionedSKScene {
         backgroundNode = gameModel.createBackroundNode()
         cameraRelativeOriginNode.addChild(backgroundNode!)
         
-        robotHappyFrames = loadFrames("robothappy", imageName: "happy")
-        robotSadFrames = loadFrames("robotsad", imageName: "sad")
-        robotBlinkFrames = loadFrames("robotblink", imageName: "blink")
+        robotHappyFrames = loadFrames("happy", imageNumber: 20)
+        robotSadFrames = loadFrames("sad", imageNumber: 20)
+        robotBlinkFrames = loadFrames("blink", imageNumber: 9)
     }
     
     override func didMoveToView(view: SKView)
@@ -245,18 +245,18 @@ class GameSKScene: PositionedSKScene {
                 restore: false))
     }
     
-    func loadFrames(atlasName: String, imageName: String) -> [SKTexture] {
-        let robotAtlas = SKTextureAtlas(named: atlasName)
+    func loadFrames(imageName: String, imageNumber: Int) -> [SKTexture] {
         var frames = [SKTexture]()
         
-        let numImages = robotAtlas.textureNames.count
-        for var i=1; i<=numImages; i = i + 3 {
+        for var i=1; i<=imageNumber; i = i + 3 {
             let textureName = imageName + "\(i)"
-            frames.append(robotAtlas.textureNamed(textureName))
+            //frames.append(robotAtlas.textureNamed(textureName))
+            frames.append(SKTexture(imageNamed: textureName))
         }
-        for var i = numImages - 1; i > 0; i = i - 3 {
-            let happyTextureName = imageName + "\(i)"
-            frames.append(robotAtlas.textureNamed(happyTextureName))
+        for var i = imageNumber - 1; i > 0; i = i - 3 {
+            let textureName = imageName + "\(i)"
+            //frames.append(robotAtlas.textureNamed(textureName))
+            frames.append(SKTexture(imageNamed: textureName))
         }
         return frames
     }
