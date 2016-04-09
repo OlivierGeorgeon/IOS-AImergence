@@ -51,7 +51,7 @@ class MenuSKScene: PositionedSKScene {
             levelNode.addChild(backgroundNode)
         }
         
-        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: "tap:")
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(MenuSKScene.tap(_:)))
         view.addGestureRecognizer(tapGestureRecognizer);
         let robotNode = gameModel.createRobotNode()
         robotNode.position = CGPoint(x: 300, y: 300)

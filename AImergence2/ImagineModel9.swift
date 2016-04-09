@@ -88,6 +88,7 @@ class ImagineModel9: ImagineModel5
     func rotateCarrousel() {
         carrouselAngle = CGFloat(M_PI) / 5.0 + carrouselAngle
         carrouselNode.runAction(SCNAction.sequence([actions.wait,actionRotateCarrousel]) )
-        if ++carrouselIndex >= nbSlotsInCarroussel { carrouselIndex = 0 }
+        carrouselIndex += 1
+        if carrouselIndex >= nbSlotsInCarroussel { carrouselIndex = 0 }
     }    
 }

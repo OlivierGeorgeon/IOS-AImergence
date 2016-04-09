@@ -40,7 +40,7 @@ class Level10: Level9 {
         case 1: // eat
             if currentPhenomenon { result = 1 }
             env[p] = currentPhenomenon
-            if ++p >= env.count { p = 0 }
+            p += 1; if p >= env.count { p = 0 }
             currentPhenomenon = env[p]
         case 2: //swap
             currentPhenomenon = !currentPhenomenon

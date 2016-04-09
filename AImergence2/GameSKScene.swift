@@ -114,9 +114,9 @@ class GameSKScene: PositionedSKScene {
         backgroundNode = gameModel.createBackroundNode()
         cameraRelativeOriginNode.addChild(backgroundNode!)
         
-        robotHappyFrames = loadFrames("happy", imageNumber: 20)
-        robotSadFrames = loadFrames("sad", imageNumber: 20)
-        robotBlinkFrames = loadFrames("blink", imageNumber: 9)
+        robotHappyFrames = loadFrames("happy", imageNumber: 20, by: 4)
+        robotSadFrames = loadFrames("sad", imageNumber: 20, by: 4)
+        robotBlinkFrames = loadFrames("blink", imageNumber: 9, by: 3)
     }
     
     override func didMoveToView(view: SKView)
@@ -129,9 +129,9 @@ class GameSKScene: PositionedSKScene {
                 view.removeGestureRecognizer(recognizer)
             }
         }
-        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: "tap:")
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(GameSKScene.tap(_:)))
         view.addGestureRecognizer(tapGestureRecognizer)
-        let longPressGestureRecognizer = UILongPressGestureRecognizer(target: self, action: "longPress:")
+        let longPressGestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(GameSKScene.longPress(_:)))
         view.addGestureRecognizer(longPressGestureRecognizer)
     }
         
@@ -199,7 +199,7 @@ class GameSKScene: PositionedSKScene {
     
     func play(experimentNode: ExperimentSKNode) {
         
-        clock++
+        clock += 1
         
         let experiment = experimentNode.experiment
         
@@ -245,19 +245,22 @@ class GameSKScene: PositionedSKScene {
                 restore: false))
     }
     
-    func loadFrames(imageName: String, imageNumber: Int) -> [SKTexture] {
+    func loadFrames(imageName: String, imageNumber: Int, by: Int) -> [SKTexture] {
         var frames = [SKTexture]()
         
-        for var i=1; i<=imageNumber; i = i + 3 {
+        for i in 1.stride(to: imageNumber, by: by) {
+        //for var i=1; i<=imageNumber; i = i + 3 {
             let textureName = imageName + "\(i)"
             //frames.append(robotAtlas.textureNamed(textureName))
             frames.append(SKTexture(imageNamed: textureName))
         }
-        for var i = imageNumber - 1; i > 0; i = i - 3 {
+        for i in imageNumber.stride(to: 0, by: -by) {
+        //for var i = imageNumber - 1; i > 0; i = i - 3 {
             let textureName = imageName + "\(i)"
             //frames.append(robotAtlas.textureNamed(textureName))
             frames.append(SKTexture(imageNamed: textureName))
         }
+        frames.append(SKTexture(imageNamed: imageName + "1"))
         return frames
     }
 }

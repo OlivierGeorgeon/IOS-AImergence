@@ -68,16 +68,16 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
         sceneView.ignoresSiblingOrder = true
         sceneView.presentScene(gameScene)
         
-        let swipeLeft = UISwipeGestureRecognizer(target:self, action: "swipeLeft:")
+        let swipeLeft = UISwipeGestureRecognizer(target:self, action: #selector(GameViewController.swipeLeft(_:)))
         swipeLeft.direction = .Left
         view.addGestureRecognizer(swipeLeft)
-        let swipeRight = UISwipeGestureRecognizer(target:self, action: "swipeRight:")
+        let swipeRight = UISwipeGestureRecognizer(target:self, action: #selector(GameViewController.swipeRight(_:)))
         swipeRight.direction = .Right
         view.addGestureRecognizer(swipeRight)
-        let swipeUp = UISwipeGestureRecognizer(target:self, action: "swipeUp:")
+        let swipeUp = UISwipeGestureRecognizer(target:self, action: #selector(GameViewController.swipeUp(_:)))
         swipeUp.direction = .Up
         view.addGestureRecognizer(swipeUp)
-        let swipeDown = UISwipeGestureRecognizer(target:self, action: "swipeDown:")
+        let swipeDown = UISwipeGestureRecognizer(target:self, action: #selector(GameViewController.swipeDown(_:)))
         swipeDown.direction = .Down
         view.addGestureRecognizer(swipeDown)
         
@@ -98,7 +98,7 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
 
     func swipeLeft(gesture:UISwipeGestureRecognizer) {
         if level < GameViewController.maxLevelNumber {
-            level++
+            level += 1
             let nextGameScene = GameSKScene(gameModel: GameModel.createGameModel(level))
             nextGameScene.gameSceneDelegate = self
             sceneView.presentScene(nextGameScene, transition: PositionedSKScene.transitionLeft)
@@ -109,7 +109,7 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
     
     func swipeRight(gesture:UISwipeGestureRecognizer) {
         if level > 0 {
-            level--
+            level -= 1
             let nextGameScene = GameSKScene(gameModel: GameModel.createGameModel(level))
             nextGameScene.gameSceneDelegate = self
             sceneView.presentScene(nextGameScene, transition: PositionedSKScene.transitionRight)
