@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="14F1605" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BV1-FR-VrT">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BV1-FR-VrT">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -21,6 +22,7 @@
                             <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BJ8-tY-cJW">
                                 <rect key="frame" x="489" y="20" width="91" height="33"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <size key="titleShadowOffset" width="2.2250738585072014e-308" height="2.2250738585072014e-308"/>
                                 <state key="normal" title="Instructions"/>
                                 <connections>
                                     <action selector="hepButton:" destination="BV1-FR-VrT" eventType="touchUpInside" id="RfA-E3-wyI"/>
@@ -42,7 +44,7 @@
                                     <action selector="worldButton:" destination="BV1-FR-VrT" eventType="touchUpInside" id="7FI-Fj-E6g"/>
                                 </connections>
                             </button>
-                            <containerView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" verticalHuggingPriority="249" horizontalCompressionResistancePriority="749" verticalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="1qa-vJ-nr5">
+                            <containerView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" verticalHuggingPriority="249" horizontalCompressionResistancePriority="749" verticalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="1qa-vJ-nr5">
                                 <rect key="frame" x="180" y="53" width="400" height="400"/>
                                 <constraints>
                                     <constraint firstAttribute="width" priority="100" constant="400" id="lbd-ef-7dt"/>
@@ -116,27 +118,40 @@
                                         <color key="highlightedColor" red="0.40000000596046448" green="0.80000001192092896" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     </label>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Help" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="waE-OD-fCN">
-                                        <rect key="frame" x="20" y="46" width="320" height="334"/>
+                                        <rect key="frame" x="20" y="46" width="320" height="304"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3UZ-lq-r3k">
-                                        <rect key="frame" x="301" y="0.0" width="39" height="30"/>
-                                        <state key="normal" title="Close"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3UZ-lq-r3k">
+                                        <rect key="frame" x="335" y="-5" width="30" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="4tJ-wQ-zzb"/>
+                                            <constraint firstAttribute="width" constant="30" id="HX7-tR-fPD"/>
+                                        </constraints>
+                                        <state key="normal" image="close"/>
                                         <connections>
                                             <action selector="closeButton:" destination="1A5-gt-hTc" eventType="touchUpInside" id="NSL-Kd-YUw"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IWI-lU-vxl">
+                                        <rect key="frame" x="140" y="350" width="81" height="30"/>
+                                        <state key="normal" title="Understood"/>
+                                        <connections>
+                                            <action selector="UnderstoodButton:" destination="1A5-gt-hTc" eventType="touchUpInside" id="cVH-UX-2fJ"/>
                                         </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="3UZ-lq-r3k" secondAttribute="trailing" constant="20" symbolic="YES" id="ASb-wJ-78z"/>
+                                    <constraint firstAttribute="bottom" secondItem="IWI-lU-vxl" secondAttribute="bottom" constant="20" symbolic="YES" id="5tl-O3-tNt"/>
+                                    <constraint firstItem="waE-OD-fCN" firstAttribute="bottom" secondItem="IWI-lU-vxl" secondAttribute="top" id="EnG-L8-knW"/>
+                                    <constraint firstAttribute="trailing" secondItem="3UZ-lq-r3k" secondAttribute="centerX" constant="10" id="G61-Qz-6Ae"/>
+                                    <constraint firstItem="3UZ-lq-r3k" firstAttribute="centerY" secondItem="mdg-Na-z8E" secondAttribute="top" constant="10" id="KFS-GA-dZS"/>
                                     <constraint firstAttribute="trailing" secondItem="waE-OD-fCN" secondAttribute="trailing" constant="20" symbolic="YES" id="Q22-gv-mFj"/>
                                     <constraint firstItem="waE-OD-fCN" firstAttribute="top" secondItem="LU5-OA-XkX" secondAttribute="bottom" constant="8" symbolic="YES" id="Qaz-bS-z0h"/>
-                                    <constraint firstItem="3UZ-lq-r3k" firstAttribute="top" secondItem="mdg-Na-z8E" secondAttribute="top" id="Uo6-OX-Dep"/>
+                                    <constraint firstItem="IWI-lU-vxl" firstAttribute="centerX" secondItem="waE-OD-fCN" secondAttribute="centerX" id="anN-4A-INM"/>
                                     <constraint firstItem="waE-OD-fCN" firstAttribute="leading" secondItem="mdg-Na-z8E" secondAttribute="leading" constant="20" symbolic="YES" id="f5w-Vl-qsZ"/>
-                                    <constraint firstAttribute="bottom" secondItem="waE-OD-fCN" secondAttribute="bottom" constant="20" symbolic="YES" id="jab-dM-Ags"/>
                                     <constraint firstItem="LU5-OA-XkX" firstAttribute="leading" secondItem="mdg-Na-z8E" secondAttribute="leading" constant="20" symbolic="YES" id="r8V-0J-uY7"/>
                                     <constraint firstItem="LU5-OA-XkX" firstAttribute="top" secondItem="mdg-Na-z8E" secondAttribute="top" constant="20" symbolic="YES" id="ydO-xo-oQm"/>
                                 </constraints>
@@ -162,7 +177,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jBv-Gs-3v7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1218" y="212"/>
+            <point key="canvasLocation" x="1218" y="208"/>
         </scene>
         <!--Imagine View Controller-->
         <scene sceneID="ud3-8c-Jm6">
@@ -176,37 +191,49 @@
                         <rect key="frame" x="0.0" y="0.0" width="400" height="400"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T1U-Yf-6NB">
-                                <rect key="frame" x="333" y="0.0" width="39" height="30"/>
-                                <state key="normal" title="Close"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T1U-Yf-6NB">
+                                <rect key="frame" x="355" y="-5" width="30" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="ImT-0C-Lbr"/>
+                                    <constraint firstAttribute="width" constant="30" id="Q2N-l8-ziG"/>
+                                </constraints>
+                                <state key="normal" image="close"/>
                                 <connections>
                                     <action selector="closeButton:" destination="S9v-w3-pyN" eventType="touchUpInside" id="fil-gU-POB"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ceU-MJ-Rek">
                                 <rect key="frame" x="28" y="0.0" width="30" height="30"/>
-                                <state key="normal" title="Else"/>
                                 <connections>
                                     <action selector="elseButton:" destination="S9v-w3-pyN" eventType="touchUpInside" id="f2X-z9-aXR"/>
                                 </connections>
                             </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="You must reach the sore of 10 to be able to see an imaginary representation of the world in this window." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="dPD-EN-VYk">
                                 <rect key="frame" x="28" y="38" width="344" height="342"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xY4-R3-8Ig">
+                                <rect key="frame" x="160" y="350" width="81" height="30"/>
+                                <state key="normal" title="Understood"/>
+                                <connections>
+                                    <action selector="understoodButton:" destination="S9v-w3-pyN" eventType="touchUpInside" id="xam-B9-YWb"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="dPD-EN-VYk" firstAttribute="top" secondItem="ceU-MJ-Rek" secondAttribute="bottom" constant="8" symbolic="YES" id="CQh-no-mRG"/>
                             <constraint firstItem="ceU-MJ-Rek" firstAttribute="leading" secondItem="Oej-sS-MrJ" secondAttribute="leadingMargin" constant="8" id="Lro-KH-J8c"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="T1U-Yf-6NB" secondAttribute="trailing" constant="8" id="RmN-O8-U7h"/>
-                            <constraint firstItem="T1U-Yf-6NB" firstAttribute="top" secondItem="Oej-sS-MrJ" secondAttribute="topMargin" id="jWi-cq-msQ"/>
-                            <constraint firstItem="ceU-MJ-Rek" firstAttribute="baseline" secondItem="T1U-Yf-6NB" secondAttribute="baseline" id="mV0-Bb-g3i"/>
-                            <constraint firstItem="dPD-EN-VYk" firstAttribute="trailing" secondItem="T1U-Yf-6NB" secondAttribute="trailing" id="nt1-Xa-Fwk"/>
+                            <constraint firstItem="ceU-MJ-Rek" firstAttribute="top" secondItem="VEL-m5-zKm" secondAttribute="bottom" id="RSb-Xg-exH"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="T1U-Yf-6NB" secondAttribute="centerX" constant="10" id="RmN-O8-U7h"/>
+                            <constraint firstItem="T1U-Yf-6NB" firstAttribute="centerY" secondItem="Oej-sS-MrJ" secondAttribute="topMargin" constant="10" id="jWi-cq-msQ"/>
+                            <constraint firstItem="xY4-R3-8Ig" firstAttribute="bottom" secondItem="dPD-EN-VYk" secondAttribute="bottom" id="nPF-7N-PS5"/>
                             <constraint firstItem="dPD-EN-VYk" firstAttribute="leading" secondItem="Oej-sS-MrJ" secondAttribute="leadingMargin" constant="8" id="pwB-iQ-eQr"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="dPD-EN-VYk" secondAttribute="trailing" constant="8" id="pwI-jg-iHM"/>
                             <constraint firstAttribute="bottom" secondItem="dPD-EN-VYk" secondAttribute="bottom" constant="20" symbolic="YES" id="uXF-yr-GEZ"/>
+                            <constraint firstItem="xY4-R3-8Ig" firstAttribute="centerX" secondItem="dPD-EN-VYk" secondAttribute="centerX" id="x2W-bo-RhE"/>
                         </constraints>
                     </view>
                     <connections>
@@ -219,4 +246,7 @@
             <point key="canvasLocation" x="1218" y="712"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="close" width="42" height="42"/>
+    </resources>
 </document>

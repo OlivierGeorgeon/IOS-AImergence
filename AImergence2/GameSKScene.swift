@@ -12,6 +12,11 @@ protocol GameSceneDelegate
 {
     func playExperience(experience: Experience)
     func unlockLevel()
+    func isInstructionUnderstood() -> Bool
+    func isImagineUnderstood() -> Bool
+    func showInstructionWindow()
+    func showImagineWindow()
+    func showLevelWindow()
 }
 
 class GameSKScene: PositionedSKScene {
@@ -36,6 +41,8 @@ class GameSKScene: PositionedSKScene {
             if score >= level.winScore {
                 scoreBackground.fillColor = UIColor.greenColor()
                 gameSceneDelegate.unlockLevel()
+                buttonIndex = 1
+                showButton()
             } else {
                 scoreBackground.fillColor = UIColor.whiteColor()
             }
@@ -45,6 +52,9 @@ class GameSKScene: PositionedSKScene {
     var robotHappyFrames: [SKTexture]!
     var robotSadFrames: [SKTexture]!
     var robotBlinkFrames: [SKTexture]!
+    
+    var buttonIndex = 0
+    var buttonTextures = [SKTexture(imageNamed: "instructions"), SKTexture(imageNamed: "imagine"), SKTexture(imageNamed: "levels")]
     
     init(gameModel: GameModel2)
     {
@@ -113,6 +123,8 @@ class GameSKScene: PositionedSKScene {
         cameraRelativeOriginNode.addChild(robotNode!)
         backgroundNode = gameModel.createBackroundNode()
         cameraRelativeOriginNode.addChild(backgroundNode!)
+        buttonNode = SKSpriteNode(imageNamed: "instructions")
+        cameraRelativeOriginNode.addChild(buttonNode!)
         
         robotHappyFrames = loadFrames("happy", imageNumber: 20, by: 4)
         robotSadFrames = loadFrames("sad", imageNumber: 20, by: 4)
@@ -123,6 +135,17 @@ class GameSKScene: PositionedSKScene {
     {
         /* Setup your scene here */
         super.didMoveToView(view)
+
+        if !gameSceneDelegate.isInstructionUnderstood() {
+            buttonIndex = 0
+        } else {
+            if !gameSceneDelegate.isImagineUnderstood() {
+                buttonIndex = 1
+            } else {
+                buttonIndex = -1
+            }
+        }
+        showButton()
 
         for recognizer in view.gestureRecognizers ?? [] {
             if recognizer is UITapGestureRecognizer || recognizer is UILongPressGestureRecognizer {
@@ -142,6 +165,31 @@ class GameSKScene: PositionedSKScene {
             if experimentNode.containsPoint(positionInScene){
                 play(experimentNode)
             }
+        }
+        if robotNode!.containsPoint(positionInScene) {
+            buttonIndex += 1
+            if buttonIndex > 1 { buttonIndex = -1 }
+            showButton()
+        }
+        if buttonNode!.containsPoint(positionInScene) {
+            switch buttonIndex {
+            case 0:
+                gameSceneDelegate.showInstructionWindow()
+            case 1:
+                gameSceneDelegate.showImagineWindow()
+            case 2:
+                gameSceneDelegate.showLevelWindow()
+            default:
+                break
+            }
+        }
+    }
+    
+    func showButton() {
+        if buttonIndex == -1 {
+            buttonNode?.texture = nil
+        } else {
+            buttonNode?.texture = buttonTextures[buttonIndex]
         }
     }
     
@@ -239,10 +287,7 @@ class GameSKScene: PositionedSKScene {
     
     func animRobot(texture: [SKTexture]) {
         robotNode!.runAction(
-            SKAction.animateWithTextures(texture,
-                timePerFrame: 0.05,
-                resize: false,
-                restore: false))
+            SKAction.animateWithTextures(texture, timePerFrame: 0.05, resize: false, restore: false))
     }
     
     func loadFrames(imageName: String, imageNumber: Int, by: Int) -> [SKTexture] {

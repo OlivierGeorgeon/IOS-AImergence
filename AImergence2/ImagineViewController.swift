@@ -13,6 +13,7 @@ protocol WorldViewControllerDelegate
 {
     func hideImagineViewControllerContainer()
     func currentLevelIsUnlocked() -> Bool
+    func understandImagine()
 }
 
 class ImagineViewController: UIViewController {
@@ -20,9 +21,15 @@ class ImagineViewController: UIViewController {
     @IBOutlet weak var sceneView: SCNView!
     @IBOutlet weak var textView: UITextView!
     @IBAction func closeButton(sender: UIButton) { delegate?.hideImagineViewControllerContainer() }
-    @IBAction func elseButton(sender: UIButton)  { //sceneView.pointOfView = imagineModel.cameraNodes[1] 
+    @IBAction func understoodButton(sender: UIButton) {
+        delegate?.understandImagine()
+        delegate?.hideImagineViewControllerContainer()
+    }
+
+    @IBAction func elseButton(sender: UIButton)  { //sceneView.pointOfView = imagineModel.cameraNodes[1]
     }
     
+
     let bundleName = NSBundle.mainBundle().infoDictionary!["CFBundleName"] as! String
 
     var imagineModel:ImagineModel!
@@ -32,7 +39,11 @@ class ImagineViewController: UIViewController {
     func displayLevel(level: Int, imagineNumber: Int = 0) {
         self.level = level
         if delegate.currentLevelIsUnlocked() {
-            textView.hidden = true
+            if level == 0 {
+                self.textView.text = NSLocalizedString("Keep playing", comment: "Message in the Imagine window on Level 0.");
+            } else {
+                textView.hidden = true
+            }
             let aClass:AnyClass? =  NSClassFromString(bundleName + ".ImagineModel\(level)")
             if let imagineModelType = aClass as? ImagineModel.Type { imagineModel = imagineModelType.init() }
             else { imagineModel = ImagineModel0() }

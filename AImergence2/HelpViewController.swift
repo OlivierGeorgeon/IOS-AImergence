@@ -11,6 +11,7 @@ import UIKit
 protocol HelpViewControllerDelegate
 {
     func hideHelpViewControllerContainer()
+    func understandInstruction()
 }
 
 class HelpViewController: UIViewController {
@@ -18,6 +19,10 @@ class HelpViewController: UIViewController {
     @IBOutlet weak var labelView: UILabel!
     @IBOutlet weak var textView:  UITextView!
     @IBAction func closeButton(sender: UIButton) { delegate?.hideHelpViewControllerContainer() }
+    @IBAction func UnderstoodButton(sender: UIButton) {
+        delegate?.understandInstruction()
+        delegate?.hideHelpViewControllerContainer()
+    }
     
     let helpBlobArray:[String]
     let levelString = NSLocalizedString("Level", comment: "the game level displayed in the header of the help window")

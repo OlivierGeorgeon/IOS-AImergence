@@ -12,14 +12,18 @@ import SpriteKit
 class PositionedSKScene: SKScene {
     
     static let portraitSize              = CGSize(width: 375, height: 667)
-    static let landscapeSize             = CGSize(width: 1188, height: 667)
     static let portraitCameraPosition    = CGPoint(x: 0, y: 233)
-    static let landscapeCameraPosition   = CGPoint(x: 400, y: 233)
     static let portraitRobotPosition     = CGPoint(x: 120, y: 180)
-    static let landscapeRobotPosition    = CGPoint(x: 700, y: 100)
     static let portraitRobotSize         = CGSize(width: 100, height: 100)
+    static let portraitButtonPosition    = CGPoint(x: 120, y: 280)
+    static let portraitButtonSize        = CGSize(width: 70, height: 70)
+
+    static let landscapeSize             = CGSize(width: 1188, height: 667)
+    static let landscapeCameraPosition   = CGPoint(x: 400, y: 233)
+    static let landscapeRobotPosition    = CGPoint(x: 700, y: 100)
     static let landscapeRobotSize        = CGSize(width: 200, height: 200)
-    
+    static let landscapeButtonPosition    = CGPoint(x: 700, y: 300)
+    static let landscapeButtonSize        = CGSize(width: 140, height: 140)
     
     static let actionMoveCameraUp        = SKAction.moveBy(CGVector(dx:0, dy:667), duration: 0.3)
     static let actionMoveCameraDown      = SKAction.moveBy(CGVector(dx:0, dy:-667), duration: 0.3)
@@ -38,6 +42,7 @@ class PositionedSKScene: SKScene {
     var cameraRelativeOriginNode = SKNode()
     var backgroundNode: SKSpriteNode?
     var robotNode: SKSpriteNode?
+    var buttonNode: SKSpriteNode?
     
     override func didMoveToView(view: SKView) {
         positionInFrame(view.frame.size)
@@ -52,6 +57,8 @@ class PositionedSKScene: SKScene {
             backgroundNode?.size.width = 667
             robotNode?.position = PositionedSKScene.portraitRobotPosition
             robotNode?.size = PositionedSKScene.portraitRobotSize
+            buttonNode?.position = PositionedSKScene.portraitButtonPosition
+            buttonNode?.size = PositionedSKScene.portraitButtonSize
         } else {
             self.size = PositionedSKScene.landscapeSize
             cameraNode?.position =  PositionedSKScene.landscapeCameraPosition
@@ -60,6 +67,8 @@ class PositionedSKScene: SKScene {
             backgroundNode?.size.width = 1188
             robotNode?.position = PositionedSKScene.landscapeRobotPosition
             robotNode?.size = PositionedSKScene.landscapeRobotSize
+            buttonNode?.position = PositionedSKScene.landscapeButtonPosition
+            buttonNode?.size = PositionedSKScene.landscapeButtonSize
         }
     }
 }

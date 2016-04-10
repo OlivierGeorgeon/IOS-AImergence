@@ -17,33 +17,9 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
     @IBOutlet weak var helpViewControllerContainer: UIView!
     @IBOutlet weak var imagineViewControllerContainer: UIView!
     @IBOutlet weak var levelButton: UIButton!
-    @IBAction func levelButton(sender: UIButton) {
-        helpViewControllerContainer.hidden = true
-        imagineViewControllerContainer.hidden = true
-        imagineViewController?.sceneView.scene = nil
-        if let scene  = sceneView.scene as? GameSKScene {
-            let menuScene = MenuSKScene()
-            menuScene.previousGameScene = scene
-            menuScene.userDelegate = self
-            sceneView.presentScene(menuScene, transition: PositionedSKScene.transitionDown)
-        }
-    }
-    @IBAction func hepButton(sender: UIButton) {
-        imagineViewControllerContainer.hidden = true
-        imagineViewController?.sceneView.scene = nil
-        helpViewController?.displayLevel(level)
-        helpViewControllerContainer.hidden = !helpViewControllerContainer.hidden
-    }
-    @IBAction func worldButton(sender: UIButton) {
-        helpViewControllerContainer.hidden = true
-        if imagineViewControllerContainer.hidden {
-            imagineViewController?.displayLevel(level)
-            imagineViewControllerContainer.hidden = false
-        } else {
-            imagineViewControllerContainer.hidden = true
-            imagineViewController?.sceneView.scene = nil
-        }
-    }
+    @IBAction func levelButton(sender: UIButton) { showLevelWindow() }
+    @IBAction func hepButton(sender: UIButton)   { showInstructionWindow() }
+    @IBAction func worldButton(sender: UIButton) { showImagineWindow() }
     
     var helpViewController:  HelpViewController?
     var imagineViewController: ImagineViewController?
@@ -54,7 +30,9 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
             if !imagineViewControllerContainer.hidden { imagineViewController?.displayLevel(level) }
         }
     }
-    
+
+    var instructionUnderstood = Array(count: GameViewController.maxLevelNumber + 1, repeatedValue: false)
+    var imagineUnderstood = Array(count: GameViewController.maxLevelNumber + 1, repeatedValue: false)
     var unlockedLevels = Array(count: GameViewController.maxLevelNumber + 1, repeatedValue: false)
     
     override func viewDidLoad()
@@ -102,6 +80,7 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
             let nextGameScene = GameSKScene(gameModel: GameModel.createGameModel(level))
             nextGameScene.gameSceneDelegate = self
             sceneView.presentScene(nextGameScene, transition: PositionedSKScene.transitionLeft)
+            //if !instructionsUnderstood[level] { showInstructionWindow() }
         } else {
             sceneView.scene?.camera?.runAction(PositionedSKScene.actionMoveCameraRightLeft)
         }
@@ -113,6 +92,7 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
             let nextGameScene = GameSKScene(gameModel: GameModel.createGameModel(level))
             nextGameScene.gameSceneDelegate = self
             sceneView.presentScene(nextGameScene, transition: PositionedSKScene.transitionRight)
+            //if !instructionsUnderstood[level] { showInstructionWindow() }
         } else {
             sceneView.scene?.camera?.runAction(PositionedSKScene.actionMoveCameraLeftRight)
         }
@@ -163,6 +143,44 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
         imagineViewController?.playExperience(experience)
     }
     
+    func showInstructionWindow() {
+        imagineViewControllerContainer.hidden = true
+        imagineViewController?.sceneView.scene = nil
+        helpViewController?.displayLevel(level)
+        helpViewControllerContainer.hidden = false
+    }
+    
+    func isInstructionUnderstood() -> Bool {
+        return instructionUnderstood[level]
+    }
+    
+    func isImagineUnderstood() -> Bool {
+        return imagineUnderstood[level]
+    }
+    
+    func showImagineWindow() {
+        helpViewControllerContainer.hidden = true
+        if imagineViewControllerContainer.hidden {
+            imagineViewController?.displayLevel(level)
+            imagineViewControllerContainer.hidden = false
+        } else {
+            imagineViewControllerContainer.hidden = true
+            imagineViewController?.sceneView.scene = nil
+        }
+    }
+    
+    func showLevelWindow() {
+        helpViewControllerContainer.hidden = true
+        imagineViewControllerContainer.hidden = true
+        imagineViewController?.sceneView.scene = nil
+        if let scene  = sceneView.scene as? GameSKScene {
+            let menuScene = MenuSKScene()
+            menuScene.previousGameScene = scene
+            menuScene.userDelegate = self
+            sceneView.presentScene(menuScene, transition: PositionedSKScene.transitionDown)
+        }
+    }
+    
     func unlockLevel() {
         if !unlockedLevels[level] {
             unlockedLevels[level] = true
@@ -182,10 +200,26 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
         helpViewControllerContainer.hidden = true
     }
     
+    func understandInstruction() {
+        if let scene = sceneView.scene as? GameSKScene {
+            scene.buttonIndex = -1
+            scene.showButton()
+        }
+        instructionUnderstood[level] = true
+    }
+    
     // Implement WorldViewControllerDelegate
     func hideImagineViewControllerContainer() {
         imagineViewControllerContainer.hidden = true
         imagineViewController!.sceneView.scene = nil
+    }
+    
+    func understandImagine() {
+        if let scene = sceneView.scene as? GameSKScene {
+            scene.buttonIndex = -1
+            scene.showButton()
+        }
+        imagineUnderstood[level] = true
     }
     
     func currentLevelIsUnlocked() -> Bool {
