@@ -80,7 +80,7 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
             let nextGameScene = GameSKScene(gameModel: GameModel.createGameModel(level))
             nextGameScene.gameSceneDelegate = self
             sceneView.presentScene(nextGameScene, transition: PositionedSKScene.transitionLeft)
-            //if !instructionsUnderstood[level] { showInstructionWindow() }
+            hideImagineViewControllerContainer()
         } else {
             sceneView.scene?.camera?.runAction(PositionedSKScene.actionMoveCameraRightLeft)
         }
@@ -92,7 +92,7 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
             let nextGameScene = GameSKScene(gameModel: GameModel.createGameModel(level))
             nextGameScene.gameSceneDelegate = self
             sceneView.presentScene(nextGameScene, transition: PositionedSKScene.transitionRight)
-            //if !instructionsUnderstood[level] { showInstructionWindow() }
+            hideImagineViewControllerContainer()
         } else {
             sceneView.scene?.camera?.runAction(PositionedSKScene.actionMoveCameraLeftRight)
         }

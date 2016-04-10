@@ -22,8 +22,8 @@ class ImagineViewController: UIViewController {
     @IBOutlet weak var textView: UITextView!
     @IBAction func closeButton(sender: UIButton) { delegate?.hideImagineViewControllerContainer() }
     @IBAction func understoodButton(sender: UIButton) {
-        delegate?.understandImagine()
-        delegate?.hideImagineViewControllerContainer()
+        if delegate.currentLevelIsUnlocked() { delegate.understandImagine() }
+        delegate.hideImagineViewControllerContainer()
     }
 
     @IBAction func elseButton(sender: UIButton)  { //sceneView.pointOfView = imagineModel.cameraNodes[1]
@@ -41,6 +41,7 @@ class ImagineViewController: UIViewController {
         if delegate.currentLevelIsUnlocked() {
             if level == 0 {
                 self.textView.text = NSLocalizedString("Keep playing", comment: "Message in the Imagine window on Level 0.");
+                textView.hidden = false
             } else {
                 textView.hidden = true
             }
@@ -49,6 +50,7 @@ class ImagineViewController: UIViewController {
             else { imagineModel = ImagineModel0() }
             sceneViewSetup()
         } else {
+            self.textView.text = NSLocalizedString("You must reach the score of 10", comment: "Message in the Imagine window when the user tries to see the imaginary model before reaching the score of 10.");
             textView.hidden = false
             sceneView.scene = nil
         }
