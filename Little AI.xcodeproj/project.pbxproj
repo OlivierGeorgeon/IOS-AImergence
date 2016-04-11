@@ -90,7 +90,7 @@
 		093000D91C4FB39000425BB1 /* ExperimentSKNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExperimentSKNode.swift; sourceTree = "<group>"; };
 		093000DD1C4FC77700425BB1 /* ExperienceSKNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExperienceSKNode.swift; sourceTree = "<group>"; };
 		093000DF1C4FD3B700425BB1 /* ReshapableSKNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReshapableSKNode.swift; sourceTree = "<group>"; };
-		093681371C417378008C6B5D /* AImergence2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AImergence2.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		093681371C417378008C6B5D /* Little AI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Little AI.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0936813A1C417378008C6B5D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0936813E1C417378008C6B5D /* GameSKScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSKScene.swift; sourceTree = "<group>"; };
 		093681401C417378008C6B5D /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
@@ -98,10 +98,10 @@
 		093681451C417378008C6B5D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		093681481C417378008C6B5D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0936814A1C417378008C6B5D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		0936814F1C417378008C6B5D /* AImergence2Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AImergence2Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		0936814F1C417378008C6B5D /* Little AITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Little AITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		093681531C417378008C6B5D /* AImergence2Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AImergence2Tests.swift; sourceTree = "<group>"; };
 		093681551C417378008C6B5D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		0936815A1C417378008C6B5D /* AImergence2UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AImergence2UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		0936815A1C417378008C6B5D /* Little AIUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Little AIUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0936815E1C417378008C6B5D /* AImergence2UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AImergence2UITests.swift; sourceTree = "<group>"; };
 		093681601C417378008C6B5D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0936816C1C42707B008C6B5D /* Experience.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Experience.swift; sourceTree = "<group>"; };
@@ -181,9 +181,9 @@
 		093681381C417378008C6B5D /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				093681371C417378008C6B5D /* AImergence2.app */,
-				0936814F1C417378008C6B5D /* AImergence2Tests.xctest */,
-				0936815A1C417378008C6B5D /* AImergence2UITests.xctest */,
+				093681371C417378008C6B5D /* Little AI.app */,
+				0936814F1C417378008C6B5D /* Little AITests.xctest */,
+				0936815A1C417378008C6B5D /* Little AIUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -299,9 +299,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		093681361C417378008C6B5D /* AImergence2 */ = {
+		093681361C417378008C6B5D /* Little AI */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 093681631C417378008C6B5D /* Build configuration list for PBXNativeTarget "AImergence2" */;
+			buildConfigurationList = 093681631C417378008C6B5D /* Build configuration list for PBXNativeTarget "Little AI" */;
 			buildPhases = (
 				093681331C417378008C6B5D /* Sources */,
 				093681341C417378008C6B5D /* Frameworks */,
@@ -311,14 +311,14 @@
 			);
 			dependencies = (
 			);
-			name = AImergence2;
+			name = "Little AI";
 			productName = AImergence2;
-			productReference = 093681371C417378008C6B5D /* AImergence2.app */;
+			productReference = 093681371C417378008C6B5D /* Little AI.app */;
 			productType = "com.apple.product-type.application";
 		};
-		0936814E1C417378008C6B5D /* AImergence2Tests */ = {
+		0936814E1C417378008C6B5D /* Little AITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 093681661C417378008C6B5D /* Build configuration list for PBXNativeTarget "AImergence2Tests" */;
+			buildConfigurationList = 093681661C417378008C6B5D /* Build configuration list for PBXNativeTarget "Little AITests" */;
 			buildPhases = (
 				0936814B1C417378008C6B5D /* Sources */,
 				0936814C1C417378008C6B5D /* Frameworks */,
@@ -329,14 +329,14 @@
 			dependencies = (
 				093681511C417378008C6B5D /* PBXTargetDependency */,
 			);
-			name = AImergence2Tests;
+			name = "Little AITests";
 			productName = AImergence2Tests;
-			productReference = 0936814F1C417378008C6B5D /* AImergence2Tests.xctest */;
+			productReference = 0936814F1C417378008C6B5D /* Little AITests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		093681591C417378008C6B5D /* AImergence2UITests */ = {
+		093681591C417378008C6B5D /* Little AIUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 093681691C417378008C6B5D /* Build configuration list for PBXNativeTarget "AImergence2UITests" */;
+			buildConfigurationList = 093681691C417378008C6B5D /* Build configuration list for PBXNativeTarget "Little AIUITests" */;
 			buildPhases = (
 				093681561C417378008C6B5D /* Sources */,
 				093681571C417378008C6B5D /* Frameworks */,
@@ -347,9 +347,9 @@
 			dependencies = (
 				0936815C1C417378008C6B5D /* PBXTargetDependency */,
 			);
-			name = AImergence2UITests;
+			name = "Little AIUITests";
 			productName = AImergence2UITests;
-			productReference = 0936815A1C417378008C6B5D /* AImergence2UITests.xctest */;
+			productReference = 0936815A1C417378008C6B5D /* Little AIUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -364,7 +364,7 @@
 				TargetAttributes = {
 					093681361C417378008C6B5D = {
 						CreatedOnToolsVersion = 7.2;
-						DevelopmentTeam = NZMA4LQPTX;
+						DevelopmentTeam = 7E3U988CXW;
 					};
 					0936814E1C417378008C6B5D = {
 						CreatedOnToolsVersion = 7.2;
@@ -389,9 +389,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				093681361C417378008C6B5D /* AImergence2 */,
-				0936814E1C417378008C6B5D /* AImergence2Tests */,
-				093681591C417378008C6B5D /* AImergence2UITests */,
+				093681361C417378008C6B5D /* Little AI */,
+				0936814E1C417378008C6B5D /* Little AITests */,
+				093681591C417378008C6B5D /* Little AIUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -499,12 +499,12 @@
 /* Begin PBXTargetDependency section */
 		093681511C417378008C6B5D /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 093681361C417378008C6B5D /* AImergence2 */;
+			target = 093681361C417378008C6B5D /* Little AI */;
 			targetProxy = 093681501C417378008C6B5D /* PBXContainerItemProxy */;
 		};
 		0936815C1C417378008C6B5D /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 093681361C417378008C6B5D /* AImergence2 */;
+			target = 093681361C417378008C6B5D /* Little AI */;
 			targetProxy = 0936815B1C417378008C6B5D /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -656,8 +656,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = AImergence2/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.oliviergeorgeon.AImergence;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.oliviergeorgeon.Little-AI";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -669,8 +670,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = AImergence2/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.oliviergeorgeon.AImergence;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.oliviergeorgeon.Little-AI";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -685,7 +687,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.oliviergeorgeon.AImergence2Tests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AImergence2.app/AImergence2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Little AI.app/Little AI";
 			};
 			name = Debug;
 		};
@@ -697,7 +699,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.oliviergeorgeon.AImergence2Tests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AImergence2.app/AImergence2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Little AI.app/Little AI";
 			};
 			name = Release;
 		};
@@ -738,7 +740,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		093681631C417378008C6B5D /* Build configuration list for PBXNativeTarget "AImergence2" */ = {
+		093681631C417378008C6B5D /* Build configuration list for PBXNativeTarget "Little AI" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				093681641C417378008C6B5D /* Debug */,
@@ -747,7 +749,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		093681661C417378008C6B5D /* Build configuration list for PBXNativeTarget "AImergence2Tests" */ = {
+		093681661C417378008C6B5D /* Build configuration list for PBXNativeTarget "Little AITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				093681671C417378008C6B5D /* Debug */,
@@ -756,7 +758,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		093681691C417378008C6B5D /* Build configuration list for PBXNativeTarget "AImergence2UITests" */ = {
+		093681691C417378008C6B5D /* Build configuration list for PBXNativeTarget "Little AIUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				0936816A1C417378008C6B5D /* Debug */,

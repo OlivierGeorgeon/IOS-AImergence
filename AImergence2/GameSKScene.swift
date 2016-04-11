@@ -174,8 +174,7 @@ class GameSKScene: PositionedSKScene {
             }
         }
         if robotNode!.containsPoint(positionInScene) {
-            buttonIndex += 1
-            if buttonIndex > 1 { buttonIndex = -1 }
+            buttonIndex += 1; if buttonIndex > 2 { buttonIndex = -1 }
             showButton()
         }
         if buttonNode!.containsPoint(positionInScene) {
