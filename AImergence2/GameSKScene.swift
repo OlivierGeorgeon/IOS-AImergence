@@ -24,6 +24,10 @@ class GameSKScene: PositionedSKScene {
     let gameModel:GameModel2
     let level:Level0
     
+    let actionMoveButton    = SKAction.moveBy(CGVector(dx:0, dy: 60), duration: 0.2)
+    let actionScaleButton   = SKAction.scaleTo(1.0, duration: 0.2)
+    let actionClearButton   = SKAction.scaleTo(0.0, duration: 0.1)
+    
     var gameSceneDelegate: GameSceneDelegate!
     var experimentNodes = Set<ExperimentSKNode>()
     var experienceNodes = Set<ExperienceSKNode>()
@@ -41,8 +45,10 @@ class GameSKScene: PositionedSKScene {
             if score >= level.winScore {
                 scoreBackground.fillColor = UIColor.greenColor()
                 gameSceneDelegate.unlockLevel()
-                buttonIndex = 1
-                showButton()
+                if buttonIndex != 1 && !gameSceneDelegate.isImagineUnderstood() {
+                    buttonIndex = 1
+                    showButton()
+                }
             } else {
                 scoreBackground.fillColor = UIColor.whiteColor()
             }
@@ -124,6 +130,7 @@ class GameSKScene: PositionedSKScene {
         backgroundNode = gameModel.createBackroundNode()
         cameraRelativeOriginNode.addChild(backgroundNode!)
         buttonNode = SKSpriteNode(imageNamed: "instructions")
+        buttonNode!.setScale(0.0)
         cameraRelativeOriginNode.addChild(buttonNode!)
         
         robotHappyFrames = loadFrames("happy", imageNumber: 20, by: 4)
@@ -187,8 +194,12 @@ class GameSKScene: PositionedSKScene {
     
     func showButton() {
         if buttonIndex == -1 {
+            //buttonNode!.runAction(actionClearButton)
             buttonNode?.texture = nil
         } else {
+            buttonNode!.setScale(0)
+            buttonNode!.position.y -= 60
+            buttonNode!.runAction(SKAction.group([actionScaleButton, actionMoveButton]))
             buttonNode?.texture = buttonTextures[buttonIndex]
         }
     }
@@ -218,10 +229,10 @@ class GameSKScene: PositionedSKScene {
                 if shapeNodes[i].containsPoint(positionInShapePopup!) {
                     if let experimentNode = editNode as? ExperimentSKNode {
                         experimentNode.experiment.shapeIndex = i
-                        experimentNode.runAction(ReshapableSKNode.actionReshape)
+                        experimentNode.reshape()
                         for node in experienceNodes {
                             if node.experience.experimentNumber == experimentNode.experiment.number {
-                                node.runAction(ReshapableSKNode.actionReshape)
+                                node.reshape()
                             }
                         }
                     }
@@ -233,7 +244,7 @@ class GameSKScene: PositionedSKScene {
                     if let experienceNode = editNode as? ExperienceSKNode {
                         experienceNode.experience.colorIndex = i
                         for node in experienceNodes {
-                            node.runAction(ExperienceSKNode.actionRefill)
+                            node.refill()
                         }
                     }
                 }

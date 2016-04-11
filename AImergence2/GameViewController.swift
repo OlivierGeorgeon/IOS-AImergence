@@ -202,7 +202,11 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
     
     func understandInstruction() {
         if let scene = sceneView.scene as? GameSKScene {
-            scene.buttonIndex = -1
+            if imagineUnderstood[level] || !unlockedLevels[level] {
+                scene.buttonIndex = -1
+            } else {
+                scene.buttonIndex = 1
+            }
             scene.showButton()
         }
         instructionUnderstood[level] = true
@@ -216,7 +220,11 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
     
     func understandImagine() {
         if let scene = sceneView.scene as? GameSKScene {
-            scene.buttonIndex = -1
+            if instructionUnderstood[level] {
+                scene.buttonIndex = -1
+            } else {
+                scene.buttonIndex = 0
+            }
             scene.showButton()
         }
         imagineUnderstood[level] = true

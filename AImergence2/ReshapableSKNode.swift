@@ -12,7 +12,6 @@ class ReshapableSKNode: SKShapeNode
 {
 
     static let paths = [{UIBezierPath(ovalInRect: $0)},{UIBezierPath(rect: $0)}, triangle ]
-    static let actionReshape = SKAction.customActionWithDuration(0, actionBlock: changeShape)
 
     var rect:CGRect
     var shapeIndex:Int { return 0}
@@ -28,12 +27,6 @@ class ReshapableSKNode: SKShapeNode
 
     func reshape() {
         self.path = ReshapableSKNode.paths[shapeIndex](rect).CGPath
-    }
-}
-
-private func changeShape(node: SKNode, elapsedTime:CGFloat) -> Void {
-    if let shapeNode = node as? ReshapableSKNode {
-        shapeNode.reshape()
     }
 }
 

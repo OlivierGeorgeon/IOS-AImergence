@@ -10,6 +10,7 @@ import SceneKit
 
 class ImagineModel {
     let actions = Actions()
+    
     let scaleExperience = CGFloat(100)
     
     var cameraNodes = [SCNNode]()

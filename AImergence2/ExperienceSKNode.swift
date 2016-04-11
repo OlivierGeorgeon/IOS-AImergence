@@ -10,7 +10,6 @@ import SpriteKit
 
 class ExperienceSKNode: ReshapableSKNode
 {
-    static let actionRefill = SKAction.customActionWithDuration(0, actionBlock: changeColor)
     static let colors = [UIColor.whiteColor(), UIColor(red: 0, green: 0.9, blue: 0, alpha: 1), UIColor.redColor(), UIColor.blueColor(), UIColor.orangeColor()]
     
     let experience:Experience
@@ -58,10 +57,3 @@ class ExperienceSKNode: ReshapableSKNode
         return clock - stepOfCreation > gameModel.obsolescence
     }
 }
-
-func changeColor(node: SKNode, elapsedTime:CGFloat) -> Void {
-    if let experienceNode = node as? ExperienceSKNode {
-        experienceNode.refill()
-    }
-}
-
