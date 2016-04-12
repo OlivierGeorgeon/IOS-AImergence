@@ -41,6 +41,7 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
         
         let gameScene = GameSKScene(gameModel: GameModel.createGameModel(0))
         gameScene.gameSceneDelegate = self
+        gameScene.scaleMode = SKSceneScaleMode.AspectFill
         sceneView.showsFPS = false
         sceneView.showsNodeCount = false
         sceneView.ignoresSiblingOrder = true
@@ -181,6 +182,7 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
             let menuScene = MenuSKScene()
             menuScene.previousGameScene = scene
             menuScene.userDelegate = self
+            menuScene.scaleMode = SKSceneScaleMode.AspectFill
             sceneView.presentScene(menuScene, transition: PositionedSKScene.transitionDown)
         }
     }

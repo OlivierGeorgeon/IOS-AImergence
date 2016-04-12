@@ -12,7 +12,7 @@ import SpriteKit
 class PositionedSKScene: SKScene {
     
     static let portraitSize              = CGSize(width: 375, height: 667)
-    //static let portraitSize              = CGSize(width: 667, height: 667)
+    //static let portraitSize              = CGSize(width: 1188, height: 667)
     static let portraitCameraPosition    = CGPoint(x: 0, y: 233)
     //static let portraitCameraPosition    = CGPoint(x: 0, y: 0)
     static let portraitRobotPosition     = CGPoint(x: 120, y: 180)
@@ -56,8 +56,11 @@ class PositionedSKScene: SKScene {
     }
     
     func positionInFrame(frameSize: CGSize) {
+        let size = CGSize(width: 667 * frameSize.width / frameSize.height, height: 667)
+        self.size = size
+        
         if frameSize.height > frameSize.width {
-            self.size = PositionedSKScene.portraitSize
+            //self.size = PositionedSKScene.portraitSize
             cameraNode?.position =  PositionedSKScene.portraitCameraPosition
             cameraRelativeOriginNode.position = -PositionedSKScene.portraitCameraPosition
             backgroundNode?.position.x = 0
@@ -67,9 +70,14 @@ class PositionedSKScene: SKScene {
             buttonNode?.position = PositionedSKScene.portraitButtonPosition
             buttonNode?.size = PositionedSKScene.portraitButtonSize
         } else {
-            self.size = PositionedSKScene.landscapeSize
-            cameraNode?.position =  PositionedSKScene.landscapeCameraPosition
-            cameraRelativeOriginNode.position = -PositionedSKScene.landscapeCameraPosition
+            //self.size = PositionedSKScene.landscapeSize
+            //cameraNode?.position =  PositionedSKScene.landscapeCameraPosition
+            cameraNode?.position.x =  size.width / 2 - 190
+            cameraNode?.position.y =  233
+            //cameraRelativeOriginNode.position = -PositionedSKScene.landscapeCameraPosition
+            if cameraNode != nil {
+                cameraRelativeOriginNode.position = -cameraNode!.position
+            }
             backgroundNode?.position.x = 400
             backgroundNode?.size.width = 1188
             robotNode?.position = PositionedSKScene.landscapeRobotPosition
