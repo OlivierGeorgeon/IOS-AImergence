@@ -16,24 +16,24 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fond" translatesAutoresizingMaskIntoConstraints="NO" id="gFQ-1o-wxG">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fond" translatesAutoresizingMaskIntoConstraints="NO" id="gFQ-1o-wxG">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                             </imageView>
                             <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Little AI" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uml-NA-9LI">
-                                <rect key="frame" x="132.5" y="220" width="335" height="160"/>
+                                <rect key="frame" x="218.5" y="261.5" width="163" height="77"/>
                                 <color key="textColor" red="0.46532386979086038" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="100"/>
+                                <fontDescription key="fontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="48"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="gFQ-1o-wxG" secondAttribute="trailing" id="Hze-8W-l9t"/>
-                            <constraint firstItem="uml-NA-9LI" firstAttribute="centerX" secondItem="gFQ-1o-wxG" secondAttribute="centerX" id="Il1-Mk-RoZ"/>
-                            <constraint firstItem="uml-NA-9LI" firstAttribute="centerY" secondItem="gFQ-1o-wxG" secondAttribute="centerY" id="ZXW-JT-39F"/>
-                            <constraint firstItem="gFQ-1o-wxG" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="fB3-Hb-V5t"/>
-                            <constraint firstItem="gFQ-1o-wxG" firstAttribute="bottom" secondItem="xb3-aO-Qok" secondAttribute="top" id="kBy-qD-yO5"/>
-                            <constraint firstItem="gFQ-1o-wxG" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="w6U-tj-YaJ"/>
+                            <constraint firstItem="gFQ-1o-wxG" firstAttribute="centerY" secondItem="uml-NA-9LI" secondAttribute="centerY" id="3Ys-dj-S5X"/>
+                            <constraint firstItem="gFQ-1o-wxG" firstAttribute="centerX" secondItem="uml-NA-9LI" secondAttribute="centerX" id="6qw-nl-m6f"/>
+                            <constraint firstItem="gFQ-1o-wxG" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="8rb-xA-QM2"/>
+                            <constraint firstItem="gFQ-1o-wxG" firstAttribute="bottom" secondItem="xb3-aO-Qok" secondAttribute="top" id="QTz-lf-esl"/>
+                            <constraint firstItem="gFQ-1o-wxG" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="Xkq-pr-xp6"/>
+                            <constraint firstAttribute="trailing" secondItem="gFQ-1o-wxG" secondAttribute="trailing" id="g3w-MV-OVX"/>
                         </constraints>
                     </view>
                 </viewController>

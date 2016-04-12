@@ -45,9 +45,39 @@ class ImagineViewController: UIViewController {
             } else {
                 textView.hidden = true
             }
+            /* Not working since app was renamed Little AI
             let aClass:AnyClass? =  NSClassFromString(bundleName + ".ImagineModel\(level)")
             if let imagineModelType = aClass as? ImagineModel.Type { imagineModel = imagineModelType.init() }
             else { imagineModel = ImagineModel0() }
+             */
+            
+            switch level {
+            case 0:
+                imagineModel = ImagineModel0()
+            case 1:
+                imagineModel = ImagineModel1()
+            case 2:
+                imagineModel = ImagineModel2()
+            case 3:
+                imagineModel = ImagineModel3()
+            case 4:
+                imagineModel = ImagineModel4()
+            case 5:
+                imagineModel = ImagineModel5()
+            case 6:
+                imagineModel = ImagineModel6()
+            case 7:
+                imagineModel = ImagineModel7()
+            case 8:
+                imagineModel = ImagineModel8()
+            case 9:
+                imagineModel = ImagineModel9()
+            case 10:
+                imagineModel = ImagineModel10()
+            default:
+                imagineModel = ImagineModel0()
+            }
+            
             sceneViewSetup()
         } else {
             self.textView.text = NSLocalizedString("You must reach the score of 10", comment: "Message in the Imagine window when the user tries to see the imaginary model before reaching the score of 10.");

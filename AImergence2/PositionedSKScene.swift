@@ -12,14 +12,19 @@ import SpriteKit
 class PositionedSKScene: SKScene {
     
     static let portraitSize              = CGSize(width: 375, height: 667)
+    //static let portraitSize              = CGSize(width: 667, height: 667)
     static let portraitCameraPosition    = CGPoint(x: 0, y: 233)
+    //static let portraitCameraPosition    = CGPoint(x: 0, y: 0)
     static let portraitRobotPosition     = CGPoint(x: 120, y: 180)
+    //static let portraitRobotPosition     = CGPoint(x: 0, y: 0)
     static let portraitRobotSize         = CGSize(width: 100, height: 100)
+    //static let portraitRobotSize         = CGSize(width: 20, height: 20)
     static let portraitButtonPosition    = CGPoint(x: 120, y: 280)
     static let portraitButtonSize        = CGSize(width: 70, height: 70)
 
     static let landscapeSize             = CGSize(width: 1188, height: 667)
     static let landscapeCameraPosition   = CGPoint(x: 400, y: 233)
+    //static let landscapeCameraPosition    = CGPoint(x: 0, y: 0)
     static let landscapeRobotPosition    = CGPoint(x: 700, y: 100)
     static let landscapeRobotSize        = CGSize(width: 200, height: 200)
     static let landscapeButtonPosition    = CGPoint(x: 700, y: 300)
@@ -45,6 +50,7 @@ class PositionedSKScene: SKScene {
     var buttonNode: SKSpriteNode?
     
     override func didMoveToView(view: SKView) {
+        super.didMoveToView(view)
         positionInFrame(view.frame.size)
     }
     

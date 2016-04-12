@@ -69,6 +69,7 @@ class GameSKScene: PositionedSKScene {
         scoreLabel = gameModel.createScoreLabel()
         scoreBackground = gameModel.createScoreBackground()
         super.init(size: PositionedSKScene.portraitSize)
+        self.scaleMode = SKSceneScaleMode.AspectFit
         cameraNode = SKCameraNode()
         self.camera = cameraNode
         self.addChild(cameraNode!)
