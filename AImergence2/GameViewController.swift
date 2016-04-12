@@ -75,7 +75,7 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
     }
 
     func swipeLeft(gesture:UISwipeGestureRecognizer) {
-        if level < GameViewController.maxLevelNumber {
+        if unlockedLevels[level] && level < GameViewController.maxLevelNumber {
             level += 1
             let nextGameScene = GameSKScene(gameModel: GameModel.createGameModel(level))
             nextGameScene.gameSceneDelegate = self
@@ -150,6 +150,10 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
         helpViewControllerContainer.hidden = false
     }
     
+    func isUnlockedLevel() -> Bool {
+        return unlockedLevels[level]
+    }
+    
     func isInstructionUnderstood() -> Bool {
         return instructionUnderstood[level]
     }
@@ -193,6 +197,16 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
     //Implement MenuSceneDelegate
     func updateLevel(levelNumber: Int) {
         self.level = levelNumber
+    }
+    
+    func levelStatus(level: Int) -> Int {
+        var levelStatus = 0 // forbidden
+        if level == 0 { levelStatus = 1 } //  allowed
+        if level > 0 {
+            if unlockedLevels[level - 1] {levelStatus = 1 }
+        }
+        if unlockedLevels[level] { levelStatus = 2 } // unlocked
+        return levelStatus
     }
 
     // Implement HelpViewControllerDelegate

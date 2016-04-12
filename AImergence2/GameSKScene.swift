@@ -12,6 +12,7 @@ protocol GameSceneDelegate
 {
     func playExperience(experience: Experience)
     func unlockLevel()
+    func isUnlockedLevel() -> Bool
     func isInstructionUnderstood() -> Bool
     func isImagineUnderstood() -> Bool
     func showInstructionWindow()
@@ -147,7 +148,7 @@ class GameSKScene: PositionedSKScene {
         if !gameSceneDelegate.isInstructionUnderstood() {
             buttonIndex = 0
         } else {
-            if !gameSceneDelegate.isImagineUnderstood() {
+            if gameSceneDelegate.isUnlockedLevel() && !gameSceneDelegate.isImagineUnderstood() {
                 buttonIndex = 1
             } else {
                 buttonIndex = -1

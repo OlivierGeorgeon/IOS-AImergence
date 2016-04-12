@@ -14,7 +14,7 @@ struct HomeStruct
     let levelXOffset        = CGVector( dx: 60, dy: 0)
     let levelYOffset        = CGVector( dx:  0, dy: -80)
     
-    let cancelPosition      = CGPoint(x: 187, y: 100)
+    let cancelPosition      = CGPoint(x: 187, y: 150)
 
     func createLabelNode(text: String) -> SKLabelNode {
         let labelNode = SKLabelNode(text: text)
@@ -35,6 +35,13 @@ struct HomeStruct
     func createLevelBackgroundNode() -> SKShapeNode {
         let backgroundNode = SKShapeNode(path: UIBezierPath(ovalInRect: CGRect(x: -25, y: -25, width: 50, height: 50)).CGPath)
         //(rect: CGRect(x: -100, y: -20, width: 200, height: 40), cornerRadius: 20)
+        backgroundNode.fillColor = UIColor.lightGrayColor()
+        backgroundNode.lineWidth = 0
+        return backgroundNode
+    }
+    
+    func createUnlockedLevelBackgroundNode() -> SKShapeNode {
+        let backgroundNode = SKShapeNode(rect: CGRect(x: -25, y: -25, width: 50, height: 50))
         backgroundNode.fillColor = UIColor.lightGrayColor()
         backgroundNode.lineWidth = 0
         return backgroundNode

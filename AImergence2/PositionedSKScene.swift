@@ -42,6 +42,7 @@ class PositionedSKScene: SKScene {
     static let transitionRight = SKTransition.pushWithDirection(SKTransitionDirection.Right, duration: 0.5)
     
     static let titleFont      = UIFont.preferredFontForTextStyle(UIFontTextStyleTitle1)
+    static let bodyFont       = UIFont.preferredFontForTextStyle(UIFontTextStyleBody)
     
     var cameraNode: SKCameraNode?
     var cameraRelativeOriginNode = SKNode()

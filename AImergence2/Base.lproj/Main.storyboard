@@ -29,7 +29,7 @@
                                     <action selector="hepButton:" destination="BV1-FR-VrT" eventType="touchUpInside" id="RfA-E3-wyI"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7U6-td-9dq">
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7U6-td-9dq">
                                 <rect key="frame" x="20" y="20" width="55" height="33"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <state key="normal" title="Level 0">
@@ -141,7 +141,7 @@
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IWI-lU-vxl">
                                         <rect key="frame" x="165" y="350" width="30" height="30"/>
-                                        <state key="normal" title="OK"/>
+                                        <state key="normal" title="Ok"/>
                                         <connections>
                                             <action selector="UnderstoodButton:" destination="1A5-gt-hTc" eventType="touchUpInside" id="cVH-UX-2fJ"/>
                                         </connections>
@@ -221,7 +221,7 @@
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xY4-R3-8Ig">
                                 <rect key="frame" x="185" y="350" width="30" height="30"/>
-                                <state key="normal" title="OK"/>
+                                <state key="normal" title="Ok"/>
                                 <connections>
                                     <action selector="understoodButton:" destination="S9v-w3-pyN" eventType="touchUpInside" id="xam-B9-YWb"/>
                                 </connections>

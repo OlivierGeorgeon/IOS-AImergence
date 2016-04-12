@@ -10,20 +10,19 @@
 			<string>Votre score (en haut à gauche sous cette fenêtre) est la somme des valeurs des dix dernières expériences. Essayez d&apos;atteindre 10 avant de passer au niveau suivant.</string>
 		</array>
 		<array>
-			<string>Les expériences sont l&apos;association de l&apos;expérimentation que vous avez faite et du résultat que vous avez obtenu.</string>
+			<string>Une expérience est l&apos;association d&apos;une expérimentation effectuée et d&apos;un &quot;résultat&quot; obtenu.</string>
 			<string>Au niveau 1, les expérimentations sont représentées par des formes différentes, et les résultats par des couleurs différentes.</string>
-			<string>Les expérimentations que vous faites peuvent changer &quot;l&apos;état du monde&quot;. Après avoir atteint le score de 10, tapez sur l&apos;icône &quot;nuage&quot; qui apparait au dessus du robot pour voir les effets produits par les expérimentations dans un monde imaginaire. </string>
+			<string>Après avoir atteint le score de 10, tapez sur l&apos;icône &quot;nuage&quot; qui apparait au dessus du robot pour voir les effets produits par les expérimentations dans un monde imaginaire. </string>
 		</array>
 		<array>
-			<string>Les expérimentations peuvent produire des expériences différentes en fonction de l&apos;état du monde dans lequel elles sont effectuées.</string>
+			<string>Les expérimentations peuvent produire des expériences différentes en fonction de &quot;l&apos;état du monde&quot; dans lequel elles sont effectuées. Elles peuvent changer l&apos;état du monde.</string>
 			<string>Les expériences qui ont une valeur positive sont consédérées &quot;plaisantes&quot;, et celles qui ont une valeur négative &quot;déplaisantes&quot;.</string>
 			<string>Essayez de générez une séquence d&apos;expériences plaisantes.</string>
 		</array>
 		<array>
-			<string>Vous pouvez chosiri les formes des expérimentations et les couleurs des expériences.</string>
 			<string>Presser longuement une experimentation pour changer sa forme. Cela changera aussi la forme des experiences produites par cette expérimentation.</string>
 			<string>Presser longuement une experience pour changer sa couleur. Cela changera aussi la couleur des autres expériences produites par la même expérimentation et donnant le même résultat.</string>
-			<string>Les formes et les couleurs que vous choisissez ne changent pas les effets produits par les expérimentations.</string>
+			<string>Les formes et les couleurs sont uniquement illustratives. Quand vous les changez, elles ne changent pas les comportements des expérimentations ni les valeurs des expérience.</string>
 		</array>
 		<array>
 			<string>Dans le monde du niveau 4, vous ne pouvez pas toujours éviter les expériences déplaisantes.</string>

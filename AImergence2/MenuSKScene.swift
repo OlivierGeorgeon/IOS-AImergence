@@ -11,11 +11,13 @@ import SpriteKit
 protocol MenuSceneDelegate
 {
     func updateLevel(level: Int)
+    func levelStatus(level: Int) -> Int
 }
 
 class MenuSKScene: PositionedSKScene {
     
     let cancelString = NSLocalizedString("Cancel", comment: "The Cancel button in the level-selection window.")
+    let swipeString = NSLocalizedString("Swipe", comment: "Swipe horizontally to change level.")
     
     let gameModel = GameModel()
 
@@ -37,6 +39,14 @@ class MenuSKScene: PositionedSKScene {
         buttonNodes.append(cancelNode)
         addChild(cancelNode)
         
+        let instructionNode = SKLabelNode(text: swipeString)
+        instructionNode.fontName = PositionedSKScene.bodyFont.fontName
+        instructionNode.fontSize = PositionedSKScene.bodyFont.pointSize
+        instructionNode.fontColor = UIColor.blackColor()
+        instructionNode.verticalAlignmentMode = .Center
+        instructionNode.position = CGPoint(x: 187, y: 50)
+        addChild(instructionNode)
+        
         let cancelBackgroundNode = homeStruct.createBackgroundNode()
         cancelNode.addChild(cancelBackgroundNode)
         
@@ -47,8 +57,13 @@ class MenuSKScene: PositionedSKScene {
             buttonNodes.append(levelNode)
             addChild(levelNode)
             
-            let backgroundNode = homeStruct.createLevelBackgroundNode()
-            levelNode.addChild(backgroundNode)
+            if userDelegate?.levelStatus(i) == 0 {
+                let backgroundNode = homeStruct.createLevelBackgroundNode()
+                levelNode.addChild(backgroundNode)
+            } else {
+                let backgroundNode = homeStruct.createUnlockedLevelBackgroundNode()
+                levelNode.addChild(backgroundNode)
+            }
         }
         
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(MenuSKScene.tap(_:)))
@@ -64,11 +79,13 @@ class MenuSKScene: PositionedSKScene {
         for levelNode in buttonNodes {
             if levelNode.containsPoint(positionInScene){
                 if let ln = levelNode.userData?["level"] as! Int? {
-                    userDelegate?.updateLevel(ln)
-                    let gameModel = GameModel.createGameModel(ln)
-                    let gameScene = GameSKScene(gameModel: gameModel)
-                    gameScene.gameSceneDelegate = previousGameScene?.gameSceneDelegate
-                    self.view?.presentScene(gameScene, transition: PositionedSKScene.transitionUp)
+                    if userDelegate?.levelStatus(ln) > 0 {
+                        userDelegate?.updateLevel(ln)
+                        let gameModel = GameModel.createGameModel(ln)
+                        let gameScene = GameSKScene(gameModel: gameModel)
+                        gameScene.gameSceneDelegate = previousGameScene?.gameSceneDelegate
+                        self.view?.presentScene(gameScene, transition: PositionedSKScene.transitionUp)
+                    }
                 } else {
                     self.view?.presentScene(previousGameScene!, transition: PositionedSKScene.transitionUp)
                 }
