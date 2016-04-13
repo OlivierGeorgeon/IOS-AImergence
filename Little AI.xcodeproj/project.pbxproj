@@ -34,7 +34,6 @@
 		093681771C4549CB008C6B5D /* Level5.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093681761C4549CB008C6B5D /* Level5.swift */; };
 		093681791C4677A6008C6B5D /* GameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093681781C4677A6008C6B5D /* GameModel.swift */; };
 		0936817B1C4696AB008C6B5D /* MenuSKScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0936817A1C4696AB008C6B5D /* MenuSKScene.swift */; };
-		0936817D1C46A86C008C6B5D /* HomeStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0936817C1C46A86C008C6B5D /* HomeStruct.swift */; };
 		093C3F661C6F68B9000BC6FB /* ImagineModel2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093C3F651C6F68B9000BC6FB /* ImagineModel2.swift */; };
 		093C3F681C6F8482000BC6FB /* ImagineModel3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093C3F671C6F8482000BC6FB /* ImagineModel3.swift */; };
 		0961EBB91C63EE2200A4E55C /* Level3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0961EBB81C63EE2200A4E55C /* Level3.swift */; };
@@ -112,7 +111,6 @@
 		093681761C4549CB008C6B5D /* Level5.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Level5.swift; sourceTree = "<group>"; };
 		093681781C4677A6008C6B5D /* GameModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameModel.swift; sourceTree = "<group>"; };
 		0936817A1C4696AB008C6B5D /* MenuSKScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuSKScene.swift; sourceTree = "<group>"; };
-		0936817C1C46A86C008C6B5D /* HomeStruct.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeStruct.swift; sourceTree = "<group>"; };
 		093C3F651C6F68B9000BC6FB /* ImagineModel2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagineModel2.swift; sourceTree = "<group>"; };
 		093C3F671C6F8482000BC6FB /* ImagineModel3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagineModel3.swift; sourceTree = "<group>"; };
 		0961EBB81C63EE2200A4E55C /* Level3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Level3.swift; sourceTree = "<group>"; };
@@ -199,7 +197,6 @@
 				09ED65801C6D0EF5004A8CA7 /* Help */,
 				09ED65811C6D0F27004A8CA7 /* Imagine */,
 				0961EBB71C63D19E00A4E55C /* SKSceneElements */,
-				0936817C1C46A86C008C6B5D /* HomeStruct.swift */,
 				093681781C4677A6008C6B5D /* GameModel.swift */,
 				09AC4CB91C7DD63700C149EC /* GameModel2.swift */,
 				09AC4CBB1C7DDBFC00C149EC /* GameModel3.swift */,
@@ -433,7 +430,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				093681771C4549CB008C6B5D /* Level5.swift in Sources */,
-				0936817D1C46A86C008C6B5D /* HomeStruct.swift in Sources */,
 				09AC4D151C8491DA00C149EC /* Level1.swift in Sources */,
 				090AD9F01C7A618500F2FE8C /* Level8.swift in Sources */,
 				09AC4D171C84D36100C149EC /* ImagineModel1.swift in Sources */,

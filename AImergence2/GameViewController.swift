@@ -197,6 +197,10 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
     }
     
     //Implement MenuSceneDelegate
+    func currentlevel() -> Int {
+        return level
+    }
+    
     func updateLevel(levelNumber: Int) {
         self.level = levelNumber
     }

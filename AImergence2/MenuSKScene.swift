@@ -10,6 +10,7 @@ import SpriteKit
 
 protocol MenuSceneDelegate
 {
+    func currentlevel() -> Int
     func updateLevel(level: Int)
     func levelStatus(level: Int) -> Int
 }
@@ -19,6 +20,10 @@ class MenuSKScene: PositionedSKScene {
     let cancelString = NSLocalizedString("Cancel", comment: "The Cancel button in the level-selection window.")
     let swipeString = NSLocalizedString("Swipe", comment: "Swipe horizontally to change level.")
     
+    let level0Position      = CGPoint(x: 60, y: 540)
+    let levelXOffset        = CGVector( dx: 60, dy: 0)
+    let levelYOffset        = CGVector( dx:  0, dy: -80)
+
     let gameModel = GameModel()
 
     var userDelegate: MenuSceneDelegate?
@@ -31,11 +36,9 @@ class MenuSKScene: PositionedSKScene {
         positionInFrame(view.frame.size)
         backgroundColor = UIColor.whiteColor()
 
-        let homeStruct = HomeStruct()
-
-        let cancelNode = homeStruct.createLabelNode(cancelString)
+        let cancelNode = createLabelNode(cancelString)
         cancelNode.name = "Cancel"
-        cancelNode.position = homeStruct.cancelPosition
+        cancelNode.position = CGPoint(x: 187, y: 150)
         buttonNodes.append(cancelNode)
         addChild(cancelNode)
         
@@ -47,23 +50,32 @@ class MenuSKScene: PositionedSKScene {
         instructionNode.position = CGPoint(x: 187, y: 50)
         addChild(instructionNode)
         
-        let cancelBackgroundNode = homeStruct.createBackgroundNode()
+        let cancelBackgroundNode = SKShapeNode(rect: CGRect(x: -100, y: -20, width: 200, height: 40), cornerRadius: 20)
+        cancelBackgroundNode.fillColor = UIColor.lightGrayColor()
+        cancelBackgroundNode.lineWidth = 0
         cancelNode.addChild(cancelBackgroundNode)
         
         for i in 0...GameViewController.maxLevelNumber {
-            let levelNode = homeStruct.createLabelNode("\(i)")
+            let levelNode = createLabelNode("\(i)")
             levelNode.userData = ["level": i]
-            levelNode.position = homeStruct.level0Position + (i % 5) * homeStruct.levelXOffset + (i / 5) * homeStruct.levelYOffset
+            levelNode.position = level0Position + (i % 5) * levelXOffset + (i / 5) * levelYOffset
             buttonNodes.append(levelNode)
             addChild(levelNode)
             
-            if userDelegate?.levelStatus(i) == 0 {
-                let backgroundNode = homeStruct.createLevelBackgroundNode()
-                levelNode.addChild(backgroundNode)
-            } else {
-                let backgroundNode = homeStruct.createUnlockedLevelBackgroundNode()
-                levelNode.addChild(backgroundNode)
+            var backgroundNode = SKShapeNode()
+            switch userDelegate!.levelStatus(i) {
+            case 1:
+                backgroundNode = SKShapeNode(rect: CGRect(x: -25, y: -25, width: 50, height: 50), cornerRadius: 15)
+            case 2:
+                backgroundNode = SKShapeNode(rect: CGRect(x: -25, y: -25, width: 50, height: 50))
+            default:
+                backgroundNode = SKShapeNode(path: UIBezierPath(ovalInRect: CGRect(x: -25, y: -25, width: 50, height: 50)).CGPath)
             }
+            
+            if i == userDelegate?.currentlevel() { backgroundNode.fillColor = UIColor.blackColor() }
+            else { backgroundNode.fillColor = UIColor.lightGrayColor() }
+            backgroundNode.lineWidth = 0
+            levelNode.addChild(backgroundNode)
         }
         
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(MenuSKScene.tap(_:)))
@@ -71,6 +83,15 @@ class MenuSKScene: PositionedSKScene {
         let robotNode = gameModel.createRobotNode()
         robotNode.position = CGPoint(x: 300, y: 300)
         addChild(robotNode)
+    }
+    
+    func createLabelNode(text: String) -> SKLabelNode {
+        let labelNode = SKLabelNode(text: text)
+        labelNode.fontName = PositionedSKScene.titleFont.fontName
+        labelNode.fontSize = PositionedSKScene.titleFont.pointSize
+        labelNode.fontColor = UIColor.whiteColor()
+        labelNode.verticalAlignmentMode = .Center
+        return labelNode
     }
 
     func tap(recognizer: UITapGestureRecognizer)
