@@ -17,23 +17,28 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Little AI" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uml-NA-9LI">
-                                <rect key="frame" x="218" y="261" width="163" height="77"/>
+                                <rect key="frame" x="219" y="261" width="163" height="77"/>
                                 <color key="textColor" red="0.46532386979086038" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="48"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fond" translatesAutoresizingMaskIntoConstraints="NO" id="gFQ-1o-wxG">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                            </imageView>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Loading..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4r6-Tt-Le9">
+                                <rect key="frame" x="252" y="346" width="97" height="39"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="97" id="Ixn-6Z-iAX"/>
+                                </constraints>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="24"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
-                        <color key="backgroundColor" red="0.73506550996106013" green="0.71933796505630676" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.87018635356509277" green="0.80405672524640914" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="gFQ-1o-wxG" firstAttribute="centerY" secondItem="uml-NA-9LI" secondAttribute="centerY" id="3Ys-dj-S5X"/>
-                            <constraint firstItem="gFQ-1o-wxG" firstAttribute="centerX" secondItem="uml-NA-9LI" secondAttribute="centerX" id="6qw-nl-m6f"/>
-                            <constraint firstItem="gFQ-1o-wxG" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="8rb-xA-QM2"/>
-                            <constraint firstItem="gFQ-1o-wxG" firstAttribute="bottom" secondItem="xb3-aO-Qok" secondAttribute="top" id="QTz-lf-esl"/>
-                            <constraint firstItem="gFQ-1o-wxG" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="Xkq-pr-xp6"/>
-                            <constraint firstAttribute="trailing" secondItem="gFQ-1o-wxG" secondAttribute="trailing" id="g3w-MV-OVX"/>
+                            <constraint firstItem="uml-NA-9LI" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="Q47-zm-cwF"/>
+                            <constraint firstItem="uml-NA-9LI" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="Tp4-tw-gmo"/>
+                            <constraint firstItem="4r6-Tt-Le9" firstAttribute="centerX" secondItem="uml-NA-9LI" secondAttribute="centerX" id="VzL-vU-vBZ"/>
+                            <constraint firstItem="4r6-Tt-Le9" firstAttribute="top" secondItem="uml-NA-9LI" secondAttribute="bottom" constant="8" symbolic="YES" id="nwh-vy-mrX"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -42,7 +47,4 @@
             <point key="canvasLocation" x="53" y="375"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="fond" width="667" height="1188"/>
-    </resources>
 </document>

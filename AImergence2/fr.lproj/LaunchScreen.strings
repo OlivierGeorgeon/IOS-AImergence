@@ -1,1 +1,6 @@
-/* No Localized Strings */
+
+/* Class = "UITextField"; text = "Loading..."; ObjectID = "4r6-Tt-Le9"; */
+"4r6-Tt-Le9.text" = "Chargement...";
+
+/* Class = "UITextField"; text = "Little AI"; ObjectID = "uml-NA-9LI"; */
+"uml-NA-9LI.text" = "Little AI";

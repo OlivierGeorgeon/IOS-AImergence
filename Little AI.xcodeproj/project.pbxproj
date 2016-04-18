@@ -86,6 +86,7 @@
 		0911B7F11C731CF400DC3F69 /* PositionedSKScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PositionedSKScene.swift; sourceTree = "<group>"; };
 		0911B7F31C73A4B600DC3F69 /* ImagineModel5.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagineModel5.swift; sourceTree = "<group>"; };
 		0911B7F51C748BFC00DC3F69 /* ImagineModel9.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagineModel9.swift; sourceTree = "<group>"; };
+		092B00371CBFF47A00A6FF3C /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		093000D91C4FB39000425BB1 /* ExperimentSKNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExperimentSKNode.swift; sourceTree = "<group>"; };
 		093000DD1C4FC77700425BB1 /* ExperienceSKNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExperienceSKNode.swift; sourceTree = "<group>"; };
 		093000DF1C4FD3B700425BB1 /* ReshapableSKNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReshapableSKNode.swift; sourceTree = "<group>"; };
@@ -120,7 +121,6 @@
 		096F5CB41C53F1C90041EA5F /* HelpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpViewController.swift; sourceTree = "<group>"; };
 		096F5CB81C56D7240041EA5F /* Level9.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Level9.swift; sourceTree = "<group>"; };
 		0994526D1C5F983400F0ABFF /* HelpView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpView.swift; sourceTree = "<group>"; };
-		099452701C614A6E00F0ABFF /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		099452841C62007000F0ABFF /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		099452891C62007000F0ABFF /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		099452991C620CF600F0ABFF /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -380,6 +380,7 @@
 			knownRegions = (
 				en,
 				Base,
+				fr,
 			);
 			mainGroup = 0936812E1C417377008C6B5D;
 			productRefGroup = 093681381C417378008C6B5D /* Products */;
@@ -519,7 +520,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				093681481C417378008C6B5D /* Base */,
-				099452701C614A6E00F0ABFF /* fr */,
+				092B00371CBFF47A00A6FF3C /* fr */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
