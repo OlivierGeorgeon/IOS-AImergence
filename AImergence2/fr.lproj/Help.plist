@@ -20,9 +20,9 @@
 			<string>Essayez de générez une séquence d&apos;expériences plaisantes.</string>
 		</array>
 		<array>
-			<string>Presser longuement une experimentation pour changer sa forme. Cela changera aussi la forme des experiences produites par cette expérimentation.</string>
-			<string>Presser longuement une experience pour changer sa couleur. Cela changera aussi la couleur des autres expériences produites par la même expérimentation et donnant le même résultat.</string>
-			<string>Les formes et les couleurs sont uniquement illustratives. Quand vous les changez, elles ne changent pas les comportements des expérimentations ni les valeurs des expérience.</string>
+			<string>Presser longuement et glissez une experimentation pour changer sa forme. Cela changera aussi la forme des experiences produites par cette expérimentation.</string>
+			<string>Presser longuement et glissez une experience pour changer sa couleur. Cela changera aussi la couleur des autres expériences produites par la même expérimentation et donnant le même résultat.</string>
+			<string>Vous êtes encouragés à les changer pour pouvoir les repérer. Ces changements ne changent pas les comportements des expérimentations ni les valeurs des expériences.</string>
 		</array>
 		<array>
 			<string>Dans le monde du niveau 4, vous ne pouvez pas toujours éviter les expériences déplaisantes.</string>

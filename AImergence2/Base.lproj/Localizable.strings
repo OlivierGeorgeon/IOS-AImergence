@@ -7,7 +7,7 @@
 */
 
 "Level" = "Level";
-"Cancel" = "Cancel";
+"Cancel" = "Back";
 "You must reach the score of 10" = "You must reach the score of 10 to reveal an imaginary representation of the world in this window.";
-"Keep playing" = "Keep playing to show the imaginary world in this window. Next, swipe left to move on to Level 1.";
+"Keep playing" = "Excellent! You have completed Level 0! Keep playing with this display on to show the imaginary world. Next, swipe left to move on to Level 1.";
 "Swipe" = "Swipe horizontally to change level.";
