@@ -39,7 +39,7 @@ class ImagineViewController: UIViewController {
     func displayLevel(level: Int, imagineNumber: Int = 0) {
         self.level = level
         if delegate.currentLevelIsUnlocked() {
-            if level == 0 {
+            if level <= 1 {
                 self.textView.text = NSLocalizedString("Keep playing", comment: "Message in the Imagine window on Level 0.");
                 textView.hidden = false
             } else {
