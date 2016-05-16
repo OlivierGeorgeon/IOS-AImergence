@@ -12,6 +12,7 @@ import SpriteKit
 class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate, HelpViewControllerDelegate, WorldViewControllerDelegate
 {
     static let maxLevelNumber = 10
+    static let unlockDefaultKey = "unlockDefaultKey"
     
     @IBOutlet weak var sceneView: GameView!
     @IBOutlet weak var helpViewControllerContainer: UIView!
@@ -38,6 +39,12 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        
+        let defaults = NSUserDefaults.standardUserDefaults()
+        let unlockDefaultArray = defaults.arrayForKey(GameViewController.unlockDefaultKey)
+        if let unlockDefaultArrayBool = unlockDefaultArray as? [Bool] {
+            unlockedLevels = unlockDefaultArrayBool
+        }
         
         let gameScene = GameSKScene(gameModel: GameModel.createGameModel(0))
         gameScene.gameSceneDelegate = self
@@ -190,6 +197,8 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
     func unlockLevel() {
         if !unlockedLevels[level] {
             unlockedLevels[level] = true
+            let defaults = NSUserDefaults.standardUserDefaults()
+            defaults.setObject(unlockedLevels, forKey: GameViewController.unlockDefaultKey)
             if !imagineViewControllerContainer.hidden {
                 imagineViewController?.displayLevel(level)
             }
