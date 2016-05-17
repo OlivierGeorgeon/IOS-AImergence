@@ -14,13 +14,10 @@ class PositionedSKScene: SKScene {
     static let portraitSize              = CGSize(width: 375, height: 667)
     //static let portraitSize              = CGSize(width: 1188, height: 667)
     static let portraitCameraPosition    = CGPoint(x: 0, y: 233)
-    //static let portraitCameraPosition    = CGPoint(x: 0, y: 0)
     static let portraitRobotPosition     = CGPoint(x: 120, y: 180)
-    //static let portraitRobotPosition     = CGPoint(x: 0, y: 0)
     static let portraitRobotSize         = CGSize(width: 100, height: 100)
-    //static let portraitRobotSize         = CGSize(width: 20, height: 20)
     static let portraitButtonPosition    = CGPoint(x: 120, y: 280)
-    static let portraitButtonSize        = CGSize(width: 70, height: 70)
+    static let portraitButtonSize        = CGSize(width: 76, height: 76)
 
     static let landscapeSize             = CGSize(width: 1188, height: 667)
     static let landscapeCameraPosition   = CGPoint(x: 400, y: 233)
@@ -28,7 +25,7 @@ class PositionedSKScene: SKScene {
     static let landscapeRobotPosition    = CGPoint(x: 700, y: 100)
     static let landscapeRobotSize        = CGSize(width: 200, height: 200)
     static let landscapeButtonPosition    = CGPoint(x: 700, y: 300)
-    static let landscapeButtonSize        = CGSize(width: 140, height: 140)
+    static let landscapeButtonSize        = CGSize(width: 152, height: 152)
     
     static let actionMoveCameraUp        = SKAction.moveBy(CGVector(dx:0, dy:667), duration: 0.3)
     static let actionMoveCameraDown      = SKAction.moveBy(CGVector(dx:0, dy:-667), duration: 0.3)

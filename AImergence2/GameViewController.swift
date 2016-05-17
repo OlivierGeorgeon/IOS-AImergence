@@ -26,7 +26,8 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
     var imagineViewController: ImagineViewController?
     var level = 0 {
         didSet {
-            levelButton.setTitle(NSLocalizedString("Level", comment: "") + " \(level)", forState: .Normal)
+            //levelButton.setTitle(NSLocalizedString("Level", comment: "") + " \(level)", forState: .Normal)
+            levelButton.setTitle("\(level)", forState: .Normal)
             if !helpViewControllerContainer.hidden { helpViewController?.displayLevel(level) }
             if !imagineViewControllerContainer.hidden { imagineViewController?.displayLevel(level) }
         }

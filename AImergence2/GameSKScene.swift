@@ -63,7 +63,7 @@ class GameSKScene: PositionedSKScene {
     
     var buttonIndex = 0
     var buttonTextures = [[SKTexture(imageNamed: "instructions1"), SKTexture(imageNamed: "instructions2")], [SKTexture(imageNamed: "imagine1"), SKTexture(imageNamed: "imagine2")],
-        [SKTexture(imageNamed: "gamecenter"), SKTexture(imageNamed: "gamecenter")]]
+        [SKTexture(imageNamed: "levels2"), SKTexture(imageNamed: "levels")]]
     
     init(gameModel: GameModel2)
     {
@@ -171,7 +171,6 @@ class GameSKScene: PositionedSKScene {
     func tap(recognizer: UITapGestureRecognizer)
     {
         let positionInScene = self.convertPointFromView(recognizer.locationInView(self.view))
-        print(positionInScene)
         let positionInScreen = cameraRelativeOriginNode.convertPoint(positionInScene, fromNode: self)
         for experimentNode in experimentNodes {
             if experimentNode.containsPoint(positionInScene){

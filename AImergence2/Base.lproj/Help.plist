@@ -46,7 +46,7 @@
 		</array>
 		<array>
 			<string>On Level 8, experiences have the same effects and the same values as in Level 7.</string>
-			<string>However, the experiment represented by a circle always produces the same experience. This experiment thus provides no unformation. It is nonetheless usefull to change the state of the world.</string>
+			<string>However, the experiment represented by a circle always produces the same experience. This experiment thus provides no information. It is nonetheless usefull to change the state of the world.</string>
 		</array>
 		<array>
 			<string>On level 9, the experiments have the same immediate effects as in Levels 5, 6, 7, and 8, but they also change the world on the long term.</string>

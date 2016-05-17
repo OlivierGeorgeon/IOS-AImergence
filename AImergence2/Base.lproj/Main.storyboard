@@ -29,10 +29,10 @@
                                     <action selector="hepButton:" destination="BV1-FR-VrT" eventType="touchUpInside" id="RfA-E3-wyI"/>
                                 </connections>
                             </button>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7U6-td-9dq">
-                                <rect key="frame" x="20" y="20" width="55" height="33"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <state key="normal" title="Level 0">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7U6-td-9dq">
+                                <rect key="frame" x="549" y="53" width="31" height="72"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="50"/>
+                                <state key="normal" title="0">
                                     <color key="titleColor" red="0.40000000600000002" green="0.80000001190000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
@@ -76,16 +76,16 @@
                         <constraints>
                             <constraint firstItem="7gD-Dy-RkZ" firstAttribute="top" secondItem="BJ8-tY-cJW" secondAttribute="bottom" id="0uS-5U-Dxr"/>
                             <constraint firstItem="7gD-Dy-RkZ" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="3se-qz-xqx" secondAttribute="leadingMargin" id="2BY-TT-ebZ"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="7U6-td-9dq" secondAttribute="trailing" id="CQc-XI-nl6"/>
                             <constraint firstItem="jqj-ax-hzY" firstAttribute="trailing" secondItem="3se-qz-xqx" secondAttribute="trailingMargin" id="DD7-q2-vbQ"/>
                             <constraint firstItem="1qa-vJ-nr5" firstAttribute="trailing" secondItem="3se-qz-xqx" secondAttribute="trailingMargin" id="KtG-9g-Fxu"/>
                             <constraint firstItem="qHh-Mt-9TT" firstAttribute="top" secondItem="jqj-ax-hzY" secondAttribute="bottom" id="MCI-jf-GOX"/>
                             <constraint firstItem="jqj-ax-hzY" firstAttribute="top" relation="greaterThanOrEqual" secondItem="7gD-Dy-RkZ" secondAttribute="bottom" id="Mfw-pU-mvY"/>
                             <constraint firstItem="BJ8-tY-cJW" firstAttribute="top" secondItem="8aa-yV-Osq" secondAttribute="bottom" id="NoE-RA-vIn"/>
-                            <constraint firstItem="7U6-td-9dq" firstAttribute="leading" secondItem="3se-qz-xqx" secondAttribute="leadingMargin" id="QXp-QG-5jg"/>
                             <constraint firstItem="1qa-vJ-nr5" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="3se-qz-xqx" secondAttribute="leadingMargin" id="UnP-4S-skH"/>
                             <constraint firstItem="7gD-Dy-RkZ" firstAttribute="trailing" secondItem="3se-qz-xqx" secondAttribute="trailingMargin" id="YSd-3f-8R6"/>
+                            <constraint firstItem="7U6-td-9dq" firstAttribute="top" secondItem="BJ8-tY-cJW" secondAttribute="bottom" id="fSj-dC-ycV"/>
                             <constraint firstItem="jqj-ax-hzY" firstAttribute="top" relation="greaterThanOrEqual" secondItem="1qa-vJ-nr5" secondAttribute="bottom" id="h5v-67-JLk"/>
-                            <constraint firstItem="7U6-td-9dq" firstAttribute="top" secondItem="8aa-yV-Osq" secondAttribute="bottom" id="s3w-Qf-UMy"/>
                             <constraint firstAttribute="trailingMargin" secondItem="BJ8-tY-cJW" secondAttribute="trailing" id="v6N-pT-zDD"/>
                             <constraint firstItem="1qa-vJ-nr5" firstAttribute="top" secondItem="BJ8-tY-cJW" secondAttribute="bottom" id="zc7-Oz-hQm"/>
                         </constraints>
