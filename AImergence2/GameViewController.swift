@@ -32,18 +32,23 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
         }
     }
 
-    var instructionUnderstood = Array(count: GameViewController.maxLevelNumber + 1, repeatedValue: false)
-    var imagineUnderstood = Array(count: GameViewController.maxLevelNumber + 1, repeatedValue: false)
-    var unlockedLevels = Array(count: GameViewController.maxLevelNumber + 1, repeatedValue: false)
+    static let instructionInterfaceIndex = 0
+    static let imagineInterfaceIndex = 1
+    static let levelInterfaceIndex = 2
+
+    let userDefaults = NSUserDefaults.standardUserDefaults()
+    var interfaceLocks = [[Bool]](count: GameViewController.maxLevelNumber + 1, repeatedValue: [false, false, false])
+    //var instructionUnderstood = Array(count: GameViewController.maxLevelNumber + 1, repeatedValue: false)
+    //var imagineUnderstood = Array(count: GameViewController.maxLevelNumber + 1, repeatedValue: false)
+    //var unlockedLevels = Array(count: GameViewController.maxLevelNumber + 1, repeatedValue: false)
     
     override func viewDidLoad()
     {
         super.viewDidLoad()
         
-        let defaults = NSUserDefaults.standardUserDefaults()
-        let unlockDefaultArray = defaults.arrayForKey(GameViewController.unlockDefaultKey)
-        if let unlockDefaultArrayBool = unlockDefaultArray as? [Bool] {
-            unlockedLevels = unlockDefaultArrayBool
+        let userInterfaceLocks = userDefaults.arrayForKey(GameViewController.unlockDefaultKey)
+        if let userIntergaceLocksBool = userInterfaceLocks as? [[Bool]] {
+            interfaceLocks = userIntergaceLocksBool
         }
         
         let gameScene = GameSKScene(gameModel: GameModel.createGameModel(0))
@@ -83,7 +88,7 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
     }
 
     func swipeLeft(gesture:UISwipeGestureRecognizer) {
-        if unlockedLevels[level] && level < GameViewController.maxLevelNumber {
+        if interfaceLocks[level][GameViewController.levelInterfaceIndex] && level < GameViewController.maxLevelNumber {
             level += 1
             let nextGameScene = GameSKScene(gameModel: GameModel.createGameModel(level))
             nextGameScene.gameSceneDelegate = self
@@ -158,18 +163,22 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
         helpViewControllerContainer.hidden = false
     }
     
-    func isUnlockedLevel() -> Bool {
-        return unlockedLevels[level]
+    func isLevelUnlocked() -> Bool {
+        return interfaceLocks[level][GameViewController.levelInterfaceIndex]
     }
     
     func isInstructionUnderstood() -> Bool {
-        return instructionUnderstood[level]
+        return interfaceLocks[level][GameViewController.instructionInterfaceIndex]
     }
     
     func isImagineUnderstood() -> Bool {
-        return imagineUnderstood[level]
+        return interfaceLocks[level][GameViewController.imagineInterfaceIndex]
     }
     
+    func isInterfaceUnlocked(interface: Int) -> Bool {
+        return interfaceLocks[level][interface]
+    }
+
     func showImagineWindow() {
         helpViewControllerContainer.hidden = true
         if imagineViewControllerContainer.hidden {
@@ -195,10 +204,10 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
     }
     
     func unlockLevel() {
-        if !unlockedLevels[level] {
-            unlockedLevels[level] = true
+        if !isLevelUnlocked() {
+            interfaceLocks[level][GameViewController.levelInterfaceIndex] = true
             let defaults = NSUserDefaults.standardUserDefaults()
-            defaults.setObject(unlockedLevels, forKey: GameViewController.unlockDefaultKey)
+            defaults.setObject(interfaceLocks, forKey: GameViewController.unlockDefaultKey)
             if !imagineViewControllerContainer.hidden {
                 imagineViewController?.displayLevel(level)
             }
@@ -218,9 +227,11 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
         var levelStatus = 0 // forbidden
         if level == 0 { levelStatus = 1 } //  allowed
         if level > 0 {
-            if unlockedLevels[level - 1] {levelStatus = 1 }
+            if interfaceLocks[level - 1][GameViewController.levelInterfaceIndex]
+                {levelStatus = 1 }
         }
-        if unlockedLevels[level] { levelStatus = 2 } // unlocked
+        if interfaceLocks[level][GameViewController.levelInterfaceIndex]
+            { levelStatus = 2 } // unlocked
         return levelStatus
     }
 
@@ -231,14 +242,15 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
     
     func understandInstruction() {
         if let scene = sceneView.scene as? GameSKScene {
-            if imagineUnderstood[level] || !unlockedLevels[level] {
+            if isImagineUnderstood() || !isLevelUnlocked() {
                 scene.buttonIndex = -1
             } else {
                 scene.buttonIndex = 1
             }
             scene.showButton()
         }
-        instructionUnderstood[level] = true
+        interfaceLocks[level][GameViewController.instructionInterfaceIndex] = true
+        userDefaults.setObject(interfaceLocks, forKey: GameViewController.unlockDefaultKey)
     }
     
     // Implement WorldViewControllerDelegate
@@ -249,18 +261,15 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
     
     func understandImagine() {
         if let scene = sceneView.scene as? GameSKScene {
-            if instructionUnderstood[level] {
+            if isInstructionUnderstood() {
                 scene.buttonIndex = -1
             } else {
                 scene.buttonIndex = 0
             }
             scene.showButton()
         }
-        imagineUnderstood[level] = true
-    }
-    
-    func currentLevelIsUnlocked() -> Bool {
-        return unlockedLevels[level]
+        interfaceLocks[level][GameViewController.imagineInterfaceIndex] = true
+        userDefaults.setObject(interfaceLocks, forKey: GameViewController.unlockDefaultKey)
     }
     
     override func shouldAutorotate() -> Bool {

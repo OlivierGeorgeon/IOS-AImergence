@@ -12,9 +12,10 @@ protocol GameSceneDelegate
 {
     func playExperience(experience: Experience)
     func unlockLevel()
-    func isUnlockedLevel() -> Bool
     func isInstructionUnderstood() -> Bool
     func isImagineUnderstood() -> Bool
+    func isLevelUnlocked() -> Bool
+    func isInterfaceUnlocked(interface: Int) -> Bool
     func showInstructionWindow()
     func showImagineWindow()
     func showLevelWindow()
@@ -61,7 +62,8 @@ class GameSKScene: PositionedSKScene {
     var robotBlinkFrames: [SKTexture]!
     
     var buttonIndex = 0
-    var buttonTextures = [SKTexture(imageNamed: "instructions"), SKTexture(imageNamed: "imagine"), SKTexture(imageNamed: "levels")]
+    var buttonTextures = [[SKTexture(imageNamed: "instructions1"), SKTexture(imageNamed: "instructions2")], [SKTexture(imageNamed: "imagine1"), SKTexture(imageNamed: "imagine2")],
+        [SKTexture(imageNamed: "gamecenter"), SKTexture(imageNamed: "gamecenter")]]
     
     init(gameModel: GameModel2)
     {
@@ -147,7 +149,7 @@ class GameSKScene: PositionedSKScene {
         if !gameSceneDelegate.isInstructionUnderstood() {
             buttonIndex = 0
         } else {
-            if gameSceneDelegate.isUnlockedLevel() && !gameSceneDelegate.isImagineUnderstood() {
+            if gameSceneDelegate.isLevelUnlocked() && !gameSceneDelegate.isImagineUnderstood() {
                 buttonIndex = 1
             } else {
                 buttonIndex = -1
@@ -202,7 +204,8 @@ class GameSKScene: PositionedSKScene {
             buttonNode!.setScale(0)
             buttonNode!.position.y -= 60
             buttonNode!.runAction(SKAction.group([actionScaleButton, actionMoveButton]))
-            buttonNode?.texture = buttonTextures[buttonIndex]
+            let textureIndex =  gameSceneDelegate.isInterfaceUnlocked(buttonIndex) ? 0 : 1
+            buttonNode?.texture = buttonTextures[buttonIndex][textureIndex]
         }
     }
     

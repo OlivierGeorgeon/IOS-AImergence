@@ -134,7 +134,7 @@
                                             <constraint firstAttribute="height" constant="40" id="4tJ-wQ-zzb"/>
                                             <constraint firstAttribute="width" constant="40" id="HX7-tR-fPD"/>
                                         </constraints>
-                                        <state key="normal" image="close"/>
+                                        <state key="normal" image="close2"/>
                                         <connections>
                                             <action selector="closeButton:" destination="1A5-gt-hTc" eventType="touchUpInside" id="NSL-Kd-YUw"/>
                                         </connections>
@@ -202,7 +202,7 @@
                                     <constraint firstAttribute="height" constant="40" id="ImT-0C-Lbr"/>
                                     <constraint firstAttribute="width" constant="40" id="Q2N-l8-ziG"/>
                                 </constraints>
-                                <state key="normal" image="close"/>
+                                <state key="normal" image="close2"/>
                                 <connections>
                                     <action selector="closeButton:" destination="S9v-w3-pyN" eventType="touchUpInside" id="fil-gU-POB"/>
                                 </connections>
@@ -252,6 +252,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="close" width="42" height="42"/>
+        <image name="close2" width="42" height="42"/>
     </resources>
 </document>

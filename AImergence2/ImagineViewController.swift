@@ -12,7 +12,7 @@ import SceneKit
 protocol WorldViewControllerDelegate
 {
     func hideImagineViewControllerContainer()
-    func currentLevelIsUnlocked() -> Bool
+    func isLevelUnlocked() -> Bool
     func understandImagine()
 }
 
@@ -22,7 +22,7 @@ class ImagineViewController: UIViewController {
     @IBOutlet weak var textView: UITextView!
     @IBAction func closeButton(sender: UIButton) { delegate?.hideImagineViewControllerContainer() }
     @IBAction func understoodButton(sender: UIButton) {
-        if delegate.currentLevelIsUnlocked() { delegate.understandImagine() }
+        if delegate.isLevelUnlocked() { delegate.understandImagine() }
         delegate.hideImagineViewControllerContainer()
     }
 
@@ -38,7 +38,7 @@ class ImagineViewController: UIViewController {
 
     func displayLevel(level: Int, imagineNumber: Int = 0) {
         self.level = level
-        if delegate.currentLevelIsUnlocked() {
+        if delegate.isLevelUnlocked() {
             if level <= 1 {
                 self.textView.text = NSLocalizedString("Keep playing", comment: "Message in the Imagine window on Level 0.");
                 textView.hidden = false
