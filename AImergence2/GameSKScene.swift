@@ -169,16 +169,18 @@ class GameSKScene: PositionedSKScene {
     func tap(recognizer: UITapGestureRecognizer)
     {
         let positionInScene = self.convertPointFromView(recognizer.locationInView(self.view))
+        print(positionInScene)
+        let positionInScreen = cameraRelativeOriginNode.convertPoint(positionInScene, fromNode: self)
         for experimentNode in experimentNodes {
             if experimentNode.containsPoint(positionInScene){
                 play(experimentNode)
             }
         }
-        if robotNode!.containsPoint(positionInScene) {
+        if robotNode!.containsPoint(positionInScreen) {
             buttonIndex += 1; if buttonIndex > 2 { buttonIndex = -1 }
             showButton()
         }
-        if buttonNode!.containsPoint(positionInScene) {
+        if buttonNode!.containsPoint(positionInScreen) {
             switch buttonIndex {
             case 0:
                 gameSceneDelegate.showInstructionWindow()
