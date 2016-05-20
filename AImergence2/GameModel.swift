@@ -77,12 +77,12 @@ class GameModel
     class func createGameModel(levelNumber: Int) -> GameModel2 {
         var level = Level0()
         
-        /* // Not working since the app has been renamed Little AI
-        let bundleName = NSBundle.mainBundle().infoDictionary!["CFBundleName"] as! String
-        //bundleName = "AImergence2"
-        let aClass:AnyClass? =  NSClassFromString(bundleName + ".Level\(levelNumber)")
-        if let levelType = aClass as? Level0.Type { level = levelType.init() }
-        */
+        // Not working since the app has been renamed Little AI
+        //let bundleName = NSBundle.mainBundle().infoDictionary!["CFBundleName"] as! String
+        let aClass:AnyClass? =  NSClassFromString("Little_AI.Level\(levelNumber)")
+        if let levelType = aClass as? Level0.Type
+            { level = levelType.init() }
+        /*
         switch levelNumber {
         case 1:
             level = Level1()
@@ -107,7 +107,7 @@ class GameModel
         default:
             level = Level0()
         }
-
+         */
         var gameModel = GameModel2()
         switch level.gameModelString {
         case "GameModel3":

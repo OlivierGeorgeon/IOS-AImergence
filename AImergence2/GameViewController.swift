@@ -11,7 +11,7 @@ import SpriteKit
 
 class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate, HelpViewControllerDelegate, WorldViewControllerDelegate
 {
-    static let maxLevelNumber = 10
+    static let maxLevelNumber = 11
     static let unlockDefaultKey = "unlockDefaultKey"
     
     @IBOutlet weak var sceneView: GameView!
@@ -38,10 +38,7 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
     static let levelInterfaceIndex = 2
 
     let userDefaults = NSUserDefaults.standardUserDefaults()
-    var interfaceLocks = [[Bool]](count: GameViewController.maxLevelNumber + 1, repeatedValue: [false, false, false])
-    //var instructionUnderstood = Array(count: GameViewController.maxLevelNumber + 1, repeatedValue: false)
-    //var imagineUnderstood = Array(count: GameViewController.maxLevelNumber + 1, repeatedValue: false)
-    //var unlockedLevels = Array(count: GameViewController.maxLevelNumber + 1, repeatedValue: false)
+    var interfaceLocks = [[Bool]](count: GameViewController.maxLevelNumber + 1, repeatedValue: [false, false, true])
     
     override func viewDidLoad()
     {
@@ -49,7 +46,9 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
         
         let userInterfaceLocks = userDefaults.arrayForKey(GameViewController.unlockDefaultKey)
         if let userIntergaceLocksBool = userInterfaceLocks as? [[Bool]] {
-            interfaceLocks = userIntergaceLocksBool
+            if userIntergaceLocksBool.count == interfaceLocks.count {
+                interfaceLocks = userIntergaceLocksBool
+            }
         }
         
         let gameScene = GameSKScene(gameModel: GameModel.createGameModel(0))

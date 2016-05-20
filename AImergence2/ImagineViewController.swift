@@ -45,12 +45,14 @@ class ImagineViewController: UIViewController {
             } else {
                 textView.hidden = true
             }
-            /* Not working since app was renamed Little AI
-            let aClass:AnyClass? =  NSClassFromString(bundleName + ".ImagineModel\(level)")
-            if let imagineModelType = aClass as? ImagineModel.Type { imagineModel = imagineModelType.init() }
-            else { imagineModel = ImagineModel0() }
-             */
+            // Not working since app was renamed Little AI
+            let aClass:AnyClass? =  NSClassFromString("Little_AI.ImagineModel\(level)")
+            if let imagineModelType = aClass as? ImagineModel.Type
+                { imagineModel = imagineModelType.init() }
+            else
+                { imagineModel = ImagineModel0() }
             
+            /*
             switch level {
             case 0:
                 imagineModel = ImagineModel0()
@@ -77,6 +79,7 @@ class ImagineViewController: UIViewController {
             default:
                 imagineModel = ImagineModel0()
             }
+             */
             
             sceneViewSetup()
         } else {

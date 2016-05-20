@@ -48,6 +48,12 @@ class Geometries
         return geometry
     }
     
+    class func tile() -> SCNGeometry {
+        let geometry = SCNBox(width: 1.0, height: 0.2, length: 1.0, chamferRadius: 0.1)
+        geometry.materials = [defaultMaterial()]
+        return geometry
+    }
+    
     class func cube() -> SCNGeometry {
         let geometry = SCNBox(width: 1.0, height: 1.0, length: 1.0, chamferRadius: 0.1)
         geometry.materials = [defaultMaterial()]

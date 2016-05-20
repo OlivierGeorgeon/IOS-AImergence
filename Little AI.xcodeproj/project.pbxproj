@@ -39,6 +39,11 @@
 		0961EBB91C63EE2200A4E55C /* Level3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0961EBB81C63EE2200A4E55C /* Level3.swift */; };
 		0961EBBB1C64961F00A4E55C /* Level6.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0961EBBA1C64961F00A4E55C /* Level6.swift */; };
 		0961EBC01C66658B00A4E55C /* Help.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0961EBC21C66658B00A4E55C /* Help.plist */; };
+		0964BB0D1CEE29A800A4B40D /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0964BB0C1CEE29A800A4B40D /* GameKit.framework */; };
+		0964BB0F1CEEFA9B00A4B40D /* Level11.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0964BB0E1CEEFA9B00A4B40D /* Level11.swift */; };
+		0964BB111CEF37D000A4B40D /* Robot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0964BB101CEF37D000A4B40D /* Robot.swift */; };
+		0964BB131CEF488300A4B40D /* SCNRobotNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0964BB121CEF488300A4B40D /* SCNRobotNode.swift */; };
+		0964BB151CEF501E00A4B40D /* ImagineModel11.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0964BB141CEF501E00A4B40D /* ImagineModel11.swift */; };
 		096F5CB51C53F1C90041EA5F /* HelpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096F5CB41C53F1C90041EA5F /* HelpViewController.swift */; };
 		096F5CB91C56D7240041EA5F /* Level9.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096F5CB81C56D7240041EA5F /* Level9.swift */; };
 		0994526E1C5F983400F0ABFF /* HelpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0994526D1C5F983400F0ABFF /* HelpView.swift */; };
@@ -118,6 +123,11 @@
 		0961EBBA1C64961F00A4E55C /* Level6.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Level6.swift; sourceTree = "<group>"; };
 		0961EBC11C66658B00A4E55C /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = fr; path = fr.lproj/Help.plist; sourceTree = "<group>"; };
 		0961EBC31C66658E00A4E55C /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Base; path = Base.lproj/Help.plist; sourceTree = "<group>"; };
+		0964BB0C1CEE29A800A4B40D /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
+		0964BB0E1CEEFA9B00A4B40D /* Level11.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Level11.swift; sourceTree = "<group>"; };
+		0964BB101CEF37D000A4B40D /* Robot.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Robot.swift; sourceTree = "<group>"; };
+		0964BB121CEF488300A4B40D /* SCNRobotNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCNRobotNode.swift; sourceTree = "<group>"; };
+		0964BB141CEF501E00A4B40D /* ImagineModel11.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagineModel11.swift; sourceTree = "<group>"; };
 		096F5CB41C53F1C90041EA5F /* HelpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpViewController.swift; sourceTree = "<group>"; };
 		096F5CB81C56D7240041EA5F /* Level9.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Level9.swift; sourceTree = "<group>"; };
 		0994526D1C5F983400F0ABFF /* HelpView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpView.swift; sourceTree = "<group>"; };
@@ -146,6 +156,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0964BB0D1CEE29A800A4B40D /* GameKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -169,6 +180,7 @@
 		0936812E1C417377008C6B5D = {
 			isa = PBXGroup;
 			children = (
+				0964BB0C1CEE29A800A4B40D /* GameKit.framework */,
 				093681391C417378008C6B5D /* AImergence2 */,
 				093681521C417378008C6B5D /* AImergence2Tests */,
 				0936815D1C417378008C6B5D /* AImergence2UITests */,
@@ -244,6 +256,8 @@
 				090AD9EF1C7A618500F2FE8C /* Level8.swift */,
 				096F5CB81C56D7240041EA5F /* Level9.swift */,
 				09AC4D181C86E0D600C149EC /* Level10.swift */,
+				0964BB0E1CEEFA9B00A4B40D /* Level11.swift */,
+				0964BB101CEF37D000A4B40D /* Robot.swift */,
 			);
 			name = Levels;
 			sourceTree = "<group>";
@@ -289,6 +303,8 @@
 				090AD9F11C7A628C00F2FE8C /* ImagineModel8.swift */,
 				0911B7F51C748BFC00DC3F69 /* ImagineModel9.swift */,
 				09AC4D1A1C86E29200C149EC /* ImagineModel10.swift */,
+				0964BB141CEF501E00A4B40D /* ImagineModel11.swift */,
+				0964BB121CEF488300A4B40D /* SCNRobotNode.swift */,
 			);
 			name = Imagine;
 			sourceTree = "<group>";
@@ -362,6 +378,11 @@
 					093681361C417378008C6B5D = {
 						CreatedOnToolsVersion = 7.2;
 						DevelopmentTeam = 7E3U988CXW;
+						SystemCapabilities = {
+							com.apple.GameCenter = {
+								enabled = 1;
+							};
+						};
 					};
 					0936814E1C417378008C6B5D = {
 						CreatedOnToolsVersion = 7.2;
@@ -441,7 +462,9 @@
 				096F5CB51C53F1C90041EA5F /* HelpViewController.swift in Sources */,
 				09AC4CBC1C7DDBFC00C149EC /* GameModel3.swift in Sources */,
 				0911B7F61C748BFC00DC3F69 /* ImagineModel9.swift in Sources */,
+				0964BB131CEF488300A4B40D /* SCNRobotNode.swift in Sources */,
 				093681751C45455F008C6B5D /* Level4.swift in Sources */,
+				0964BB0F1CEEFA9B00A4B40D /* Level11.swift in Sources */,
 				0936816F1C42708E008C6B5D /* Experiment.swift in Sources */,
 				0936813F1C417378008C6B5D /* GameSKScene.swift in Sources */,
 				0994526E1C5F983400F0ABFF /* HelpView.swift in Sources */,
@@ -454,11 +477,13 @@
 				0936813B1C417378008C6B5D /* AppDelegate.swift in Sources */,
 				090AD9EC1C7A5F2400F2FE8C /* ImagineModel7.swift in Sources */,
 				09ED65851C6D1400004A8CA7 /* ImagineModel0.swift in Sources */,
+				0964BB151CEF501E00A4B40D /* ImagineModel11.swift in Sources */,
 				0936817B1C4696AB008C6B5D /* MenuSKScene.swift in Sources */,
 				0911B7F21C731CF400DC3F69 /* PositionedSKScene.swift in Sources */,
 				096F5CB91C56D7240041EA5F /* Level9.swift in Sources */,
 				0911B7F41C73A4B600DC3F69 /* ImagineModel5.swift in Sources */,
 				0936816D1C42707B008C6B5D /* Experience.swift in Sources */,
+				0964BB111CEF37D000A4B40D /* Robot.swift in Sources */,
 				093000DA1C4FB39000425BB1 /* ExperimentSKNode.swift in Sources */,
 				093000DE1C4FC77700425BB1 /* ExperienceSKNode.swift in Sources */,
 				09ED65871C6E36B7004A8CA7 /* ImagineModel4.swift in Sources */,

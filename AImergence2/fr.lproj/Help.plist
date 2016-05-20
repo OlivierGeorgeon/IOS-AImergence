@@ -56,6 +56,9 @@
 			<string>Le monde du niveau 10 est identique au monde du niveau 9, et les expériences ont les mêmes valeurs.</string>
 			<string>Comme au niveau 8, il y a une expérimentation qui produit toujours la même expérience mais qui change l&apos;état du monde.</string>
 		</array>
+		<array>
+			<string>Au niveau 11, vous pilotez un petit robot dans une petite boite.</string>
+		</array>
 	</array>
 </dict>
 </plist>

@@ -62,8 +62,8 @@ class GameSKScene: PositionedSKScene {
     var robotBlinkFrames: [SKTexture]!
     
     var buttonIndex = 0
-    var buttonTextures = [[SKTexture(imageNamed: "instructions1"), SKTexture(imageNamed: "instructions2")], [SKTexture(imageNamed: "imagine1"), SKTexture(imageNamed: "imagine2")],
-        [SKTexture(imageNamed: "levels2"), SKTexture(imageNamed: "levels")]]
+    var buttonTextures = [[SKTexture(imageNamed: "instructions-black"), SKTexture(imageNamed: "instructions-color")], [SKTexture(imageNamed: "imagine-black"), SKTexture(imageNamed: "imagine-color")],
+        [SKTexture(imageNamed: "levels-color"), SKTexture(imageNamed: "levels-color")]]
     
     init(gameModel: GameModel2)
     {

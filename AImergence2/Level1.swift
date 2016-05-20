@@ -13,7 +13,7 @@ class Level1 : Level0 {
     
     override var number:Int { return 1 }
     
-    var orienationRight = false
+    var orientationRight = false
     
     convenience required init() {
         let experiment0 = Experiment(number: 0, shapeIndex: 0)
@@ -36,7 +36,7 @@ class Level1 : Level0 {
         
         var result:Int
         
-        switch (experiment.number, orienationRight) {
+        switch (experiment.number, orientationRight) {
         case (0, false):
             result = 1
         case (0, true):
@@ -46,7 +46,7 @@ class Level1 : Level0 {
         case (1, true):
             result = 1
         case (2, false), (2, true):
-            orienationRight = !orienationRight
+            orientationRight = !orientationRight
             result = 0
         default:
             result = 0

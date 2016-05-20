@@ -56,6 +56,9 @@
 			<string>The world of Level 10 is the same as that of Level 9, and experiences have the same values.</string>
 			<string>As in Level 8, there is an experiment that always produces the same experience but changes the state of the world.</string>
 		</array>
+		<array>
+			<string>On level 11, you are controling a little robot in a little box.</string>
+		</array>
 	</array>
 </dict>
 </plist>
