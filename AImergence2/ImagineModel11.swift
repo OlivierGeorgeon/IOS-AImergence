@@ -8,25 +8,11 @@
 
 import SceneKit
 
-func ==(lhs: cell, rhs: cell) -> Bool {
-    return lhs.hashValue == rhs.hashValue
-}
-
-class cell: Hashable {
-    var x:Int
-    var y:Int
-    var hashValue: Int {return x * 1000 + y}
-    init(x: Int, y: Int) {
-        self.x = x
-        self.y = y
-    }
-}
-
 class ImagineModel11: ImagineModel
 {
     
     var robotNode: SCNRobotNode!
-    var tiles = [cell: SCNNode]()
+    var tiles = [Cell: SCNNode]()
     
     override func setup(scene: SCNScene) {
         super.setup(scene)
@@ -54,8 +40,8 @@ class ImagineModel11: ImagineModel
                 spawnExperienceNode(experience, position: robotNode.position, delayed: false)
             default:
                 robotNode.bump()
-                if tiles[cell(x: robotNode.robot.px, y: robotNode.robot.py)] == nil {
-                    createTileNode(robotNode.position + robotNode.forwardVector() + SCNVector3(0, -0.4, 0))
+                if tiles[robotNode.robot.cellFront()] == nil {
+                    createTileNode(robotNode.positionForward() + SCNVector3(0, -0.4, 0))
                 }
                 spawnExperienceNode(experience, position: robotNode.position + robotNode.forwardVector(), delayed: true)
             }
@@ -68,7 +54,9 @@ class ImagineModel11: ImagineModel
     func createTileNode(position: SCNVector3) -> SCNNode {
         let node = SCNNode(geometry: Geometries.tile())
         node.position = position
+        node.hidden = true
         worldNode.addChildNode(node)
+        node.runAction(SCNAction.sequence([SCNAction.waitForDuration(0.1), SCNAction.unhide()]))
         return node
     }
     

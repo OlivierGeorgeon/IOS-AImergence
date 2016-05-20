@@ -11,7 +11,7 @@ import SpriteKit
 
 class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate, HelpViewControllerDelegate, WorldViewControllerDelegate
 {
-    static let maxLevelNumber = 11
+    static let maxLevelNumber = 12
     static let unlockDefaultKey = "unlockDefaultKey"
     
     @IBOutlet weak var sceneView: GameView!

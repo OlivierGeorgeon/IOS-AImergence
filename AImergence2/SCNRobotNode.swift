@@ -11,7 +11,7 @@ import SceneKit
 
 class SCNRobotNode: SCNNode {
     
-    var robot = Robot()
+    var robot = Robot(i: 0, j: 0, direction: Compass.EAST)
         
     func turnLeft(){
         self.runAction(SCNAction.rotateByX(0.0, y: CGFloat(M_PI) / 2, z: 0.0, duration: 0.2))
@@ -35,7 +35,7 @@ class SCNRobotNode: SCNNode {
     }
     
     func positionForward() -> SCNVector3 {
-        return SCNVector3(robot.pxForward(), robot.pyForward(), 0)
+        return SCNVector3(robot.cellFront().i, 0, -robot.cellFront().j)
     }
 
     func forwardVector() -> SCNVector3 {

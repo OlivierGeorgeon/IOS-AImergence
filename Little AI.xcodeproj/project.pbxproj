@@ -44,6 +44,8 @@
 		0964BB111CEF37D000A4B40D /* Robot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0964BB101CEF37D000A4B40D /* Robot.swift */; };
 		0964BB131CEF488300A4B40D /* SCNRobotNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0964BB121CEF488300A4B40D /* SCNRobotNode.swift */; };
 		0964BB151CEF501E00A4B40D /* ImagineModel11.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0964BB141CEF501E00A4B40D /* ImagineModel11.swift */; };
+		0964BB171CEF94D900A4B40D /* Level12.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0964BB161CEF94D900A4B40D /* Level12.swift */; };
+		0964BB191CEF95AA00A4B40D /* ImagineModel12.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0964BB181CEF95AA00A4B40D /* ImagineModel12.swift */; };
 		096F5CB51C53F1C90041EA5F /* HelpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096F5CB41C53F1C90041EA5F /* HelpViewController.swift */; };
 		096F5CB91C56D7240041EA5F /* Level9.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096F5CB81C56D7240041EA5F /* Level9.swift */; };
 		0994526E1C5F983400F0ABFF /* HelpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0994526D1C5F983400F0ABFF /* HelpView.swift */; };
@@ -128,6 +130,8 @@
 		0964BB101CEF37D000A4B40D /* Robot.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Robot.swift; sourceTree = "<group>"; };
 		0964BB121CEF488300A4B40D /* SCNRobotNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCNRobotNode.swift; sourceTree = "<group>"; };
 		0964BB141CEF501E00A4B40D /* ImagineModel11.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagineModel11.swift; sourceTree = "<group>"; };
+		0964BB161CEF94D900A4B40D /* Level12.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Level12.swift; sourceTree = "<group>"; };
+		0964BB181CEF95AA00A4B40D /* ImagineModel12.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagineModel12.swift; sourceTree = "<group>"; };
 		096F5CB41C53F1C90041EA5F /* HelpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpViewController.swift; sourceTree = "<group>"; };
 		096F5CB81C56D7240041EA5F /* Level9.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Level9.swift; sourceTree = "<group>"; };
 		0994526D1C5F983400F0ABFF /* HelpView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpView.swift; sourceTree = "<group>"; };
@@ -257,6 +261,7 @@
 				096F5CB81C56D7240041EA5F /* Level9.swift */,
 				09AC4D181C86E0D600C149EC /* Level10.swift */,
 				0964BB0E1CEEFA9B00A4B40D /* Level11.swift */,
+				0964BB161CEF94D900A4B40D /* Level12.swift */,
 				0964BB101CEF37D000A4B40D /* Robot.swift */,
 			);
 			name = Levels;
@@ -304,6 +309,7 @@
 				0911B7F51C748BFC00DC3F69 /* ImagineModel9.swift */,
 				09AC4D1A1C86E29200C149EC /* ImagineModel10.swift */,
 				0964BB141CEF501E00A4B40D /* ImagineModel11.swift */,
+				0964BB181CEF95AA00A4B40D /* ImagineModel12.swift */,
 				0964BB121CEF488300A4B40D /* SCNRobotNode.swift */,
 			);
 			name = Imagine;
@@ -495,6 +501,8 @@
 				09AC4D191C86E0D600C149EC /* Level10.swift in Sources */,
 				09ED657F1C6D0EE6004A8CA7 /* ImagineViewController.swift in Sources */,
 				090AD9F21C7A628C00F2FE8C /* ImagineModel8.swift in Sources */,
+				0964BB171CEF94D900A4B40D /* Level12.swift in Sources */,
+				0964BB191CEF95AA00A4B40D /* ImagineModel12.swift in Sources */,
 				09AC4D131C821BC000C149EC /* GameView.swift in Sources */,
 				0961EBB91C63EE2200A4E55C /* Level3.swift in Sources */,
 			);

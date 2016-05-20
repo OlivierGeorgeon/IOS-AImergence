@@ -13,10 +13,10 @@ class Level11 : Level0 {
     
     override var number:Int { return 11 }
     
-    var board = [[1, 1, 1],
-                 [1, 0, 1],
-                 [1, 0, 1],
-                 [1, 1, 1]]
+    var board: [[Int]] { return [[1, 1, 1],
+                                 [1, 0, 1],
+                                 [1, 0, 1],
+                                 [1, 1, 1]] }
     
     var robot = Robot()
     
@@ -45,7 +45,7 @@ class Level11 : Level0 {
         case 0:
             robot.turnLeft()
         case 1:
-            if board[robot.pxForward()][robot.pyForward()] == 0 {
+            if board[robot.cellFront().i][robot.cellFront().j] == 0 {
                 robot.moveForward()
                 result = 1
             }

@@ -57,8 +57,12 @@
 			<string>As in Level 8, there is an experiment that always produces the same experience but changes the state of the world.</string>
 		</array>
 		<array>
-			<string>On level 11, you are controling a little robot in a little box.</string>
+			<string>in Level 11, you are controling a little robot in a little box.</string>
 		</array>
+		<array>
+			<string>Level 12 is similar to Level 11 but the box is slightly bigger.</string>
+		</array>
+		<array/>
 	</array>
 </dict>
 </plist>

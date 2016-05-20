@@ -8,79 +8,77 @@
 
 import Foundation
 
-enum compass: Int { case EAST, NORTH, WEST, SOUTH }
+enum Compass: Int { case EAST, NORTH, WEST, SOUTH }
+
+func ==(lhs: Cell, rhs: Cell) -> Bool {
+    return lhs.hashValue == rhs.hashValue
+}
+
+class Cell: Hashable {
+    var i:Int
+    var j:Int
+    var hashValue: Int {return i * 1000 + j}
+    init(i: Int, j: Int) {
+        self.i = i
+        self.j = j
+    }
+}
 
 class Robot {
 
-    var px: Int
-    var py: Int
-    var direction: compass
+    var cell: Cell
+    var direction: Compass
 
-    init(px: Int, py: Int, direction: compass){
-        self.px = px
-        self.py = py
+    init(i: Int, j: Int, direction: Compass){
+        self.cell = Cell(i: i, j: j)
         self.direction = direction
     }
     
     convenience init() {
-        self.init(px: 1, py: 1, direction: compass.EAST)
+        self.init(i: 1, j: 1, direction: Compass.EAST)
     }
  
     func turnLeft() {
         switch direction {
         case .EAST, .NORTH, .WEST:
-            direction = compass(rawValue: direction.rawValue + 1)!
+            direction = Compass(rawValue: direction.rawValue + 1)!
         case .SOUTH:
-            direction = compass.EAST
+            direction = Compass.EAST
         }
     }
         
     func turnRight() {
         switch direction {
         case .NORTH, .WEST, .SOUTH:
-            direction = compass(rawValue: direction.rawValue - 1)!
+            direction = Compass(rawValue: direction.rawValue - 1)!
         case .EAST:
-            direction = compass.SOUTH
+            direction = Compass.SOUTH
         }
     }
     
     func moveForward() {
         switch direction {
         case .EAST:
-            px  += 1
+            cell.i  += 1
         case .NORTH:
-            py  += 1
+            cell.j  += 1
         case .WEST:
-            px  -= 1
+            cell.i  -= 1
         case .SOUTH:
-            py  -= 1
+            cell.j  -= 1
         }
     }
     
-    func pxForward() -> Int {
+    func cellFront() -> Cell {
         switch direction {
         case .EAST:
-            return px  + 1
+            return Cell(i: cell.i + 1, j: cell.j)
         case .NORTH:
-            return px
+            return Cell(i: cell.i, j: cell.j + 1)
         case .WEST:
-            return px - 1
+            return Cell(i: cell.i - 1, j: cell.j)
         case .SOUTH:
-            return px
+            return Cell(i: cell.i, j: cell.j - 1)
         }
     }
-
-    func pyForward() -> Int {
-        switch direction {
-        case .EAST:
-            return py
-        case .NORTH:
-            return py + 1
-        case .WEST:
-            return py
-        case .SOUTH:
-            return py - 1
-        }
-    }
-
 }
