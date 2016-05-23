@@ -2,11 +2,12 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "happy20.png",
+      "filename" : "levels_black.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
+      "filename" : "levels_black@2x.png",
       "scale" : "2x"
     },
     {

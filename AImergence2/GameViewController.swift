@@ -38,7 +38,7 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
     static let levelInterfaceIndex = 2
 
     let userDefaults = NSUserDefaults.standardUserDefaults()
-    var interfaceLocks = [[Bool]](count: GameViewController.maxLevelNumber + 1, repeatedValue: [false, false, true])
+    var interfaceLocks = [[Bool]](count: GameViewController.maxLevelNumber + 1, repeatedValue: [false, false, false])
     
     override func viewDidLoad()
     {

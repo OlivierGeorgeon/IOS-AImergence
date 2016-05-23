@@ -62,8 +62,9 @@ class GameSKScene: PositionedSKScene {
     var robotBlinkFrames: [SKTexture]!
     
     var buttonIndex = 0
-    var buttonTextures = [[SKTexture(imageNamed: "instructions-black"), SKTexture(imageNamed: "instructions-color")], [SKTexture(imageNamed: "imagine-black"), SKTexture(imageNamed: "imagine-color")],
-        [SKTexture(imageNamed: "levels-color"), SKTexture(imageNamed: "levels-color")]]
+    var buttonTextures = [[SKTexture(imageNamed: "instructions-black"), SKTexture(imageNamed: "instructions-color")],
+                          [SKTexture(imageNamed: "imagine-black"), SKTexture(imageNamed: "imagine-color")],
+                          [SKTexture(imageNamed: "levels-color"), SKTexture(imageNamed: "levels-black")]]
     
     init(gameModel: GameModel2)
     {
@@ -116,8 +117,8 @@ class GameSKScene: PositionedSKScene {
         buttonNode!.setScale(0.0)
         cameraRelativeOriginNode.addChild(buttonNode!)
         
-        robotHappyFrames = loadFrames("happy", imageNumber: 20, by: 4)
-        robotSadFrames = loadFrames("sad", imageNumber: 20, by: 4)
+        robotHappyFrames = loadFrames("happy", imageNumber: 6, by: 1)
+        robotSadFrames = loadFrames("sad", imageNumber: 7, by: 1)
         robotBlinkFrames = loadFrames("blink", imageNumber: 9, by: 3)
     }
     
