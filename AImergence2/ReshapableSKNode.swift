@@ -11,13 +11,13 @@ import SpriteKit
 class ReshapableSKNode: SKShapeNode
 {
 
-    static let paths = [{UIBezierPath(ovalInRect: $0)},{UIBezierPath(rect: $0)}, triangle ]
-
     var rect:CGRect
     var shapeIndex:Int { return 0}
+    var gameModel: GameModel
     
-    init(rect: CGRect = CGRect()) {
+    init(rect: CGRect = CGRect(), gameModel: GameModel) {
         self.rect = rect
+        self.gameModel = gameModel
         super.init()
     }
 
@@ -26,16 +26,7 @@ class ReshapableSKNode: SKShapeNode
     }
 
     func reshape() {
-        self.path = ReshapableSKNode.paths[shapeIndex](rect).CGPath
+        self.path = gameModel.experimentPaths[shapeIndex](rect).CGPath
     }
-}
-
-private func triangle(rect: CGRect) -> UIBezierPath {
-    let path = UIBezierPath()
-    path.moveToPoint(CGPoint(x: rect.minX, y: rect.maxY))
-    path.addLineToPoint(CGPoint(x: rect.maxX, y: rect.maxY))
-    path.addLineToPoint(CGPoint(x:0, y: rect.minY))
-    path.closePath()
-    return path
 }
 

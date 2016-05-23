@@ -11,27 +11,20 @@ import SpriteKit
 class GameModel2: GameModel
 {
 
-    let experimentRect: CGRect
     let experimentPositions: [CGPoint]
     let experienceRect: CGRect
-    let initialScale: CGFloat
-    let valencePosition: CGPoint
-    let obsolescence: Int
     let actionScale: SKAction
     
     var level: Level0!
     
-    init(experimentRect: CGRect, experimentPositions: [CGPoint], experienceRect: CGRect, initialScale: CGFloat, valencePosition: CGPoint, obsolescence: Int, actionScale: SKAction) {
-        self.experimentRect = experimentRect
+    init(experimentRect: CGRect, experimentPositions: [CGPoint], experienceRect: CGRect, initialScale: CGFloat, valencePosition: CGPoint, obsolescence: Int, actionScale: SKAction, experimentPaths: [(CGRect) -> UIBezierPath], experienceColors: [UIColor]) {
         self.experimentPositions = experimentPositions
         self.experienceRect = experienceRect
-        self.initialScale = initialScale
-        self.valencePosition = valencePosition
-        self.obsolescence = obsolescence
         self.actionScale = actionScale
+        super.init(experimentRect: experimentRect, experimentPaths: experimentPaths, initialScale: initialScale, valencePosition: valencePosition, obsolescence: obsolescence, experienceColors: experienceColors)
     }
     
-    required override convenience init()
+    required convenience init()
     {
         let experimentRect = CGRect(x: -60, y: -60, width: 120, height: 120)
         let experimentPositions = [CGPoint(x: -90, y: 0), CGPoint(x: 90, y: 0), CGPoint(x: 0, y: 0)]
@@ -40,6 +33,31 @@ class GameModel2: GameModel
         let valencePosition = CGPoint(x: 50, y: -10)
         let obsolescence = 100
         let actionScale = SKAction.scaleTo(1, duration: 0.2)
-        self.init(experimentRect: experimentRect, experimentPositions: experimentPositions, experienceRect: experienceRect, initialScale: initialScale, valencePosition: valencePosition, obsolescence: obsolescence, actionScale: actionScale)
+        let experimentPaths = [{UIBezierPath(ovalInRect: $0)},{UIBezierPath(rect: $0)}, triangle]
+        let experienceColors = [UIColor.whiteColor(), UIColor(red: 0, green: 0.9, blue: 0, alpha: 1), UIColor.redColor(), UIColor.blueColor(), UIColor.orangeColor()]
+
+        self.init(experimentRect: experimentRect, experimentPositions: experimentPositions, experienceRect: experienceRect, initialScale: initialScale, valencePosition: valencePosition, obsolescence: obsolescence, actionScale: actionScale, experimentPaths: experimentPaths, experienceColors: experienceColors)
     }    
+
+    func createExperimentNodes(scene: SKScene) -> [ExperimentSKNode] {
+        var experimentNodes = [ExperimentSKNode]()
+        for i in 0...1 {
+            let experimentNode = ExperimentSKNode(gameModel: self, experiment: level.experiments[i])
+            experimentNode.position = experimentPositions[i]
+            scene.addChild(experimentNode)
+            experimentNodes.append(experimentNode)
+        }
+        return experimentNodes
+    }
 }
+
+func triangle(rect: CGRect) -> UIBezierPath {
+    let path = UIBezierPath()
+    path.moveToPoint(CGPoint(x: rect.minX, y: rect.maxY))
+    path.addLineToPoint(CGPoint(x: rect.maxX, y: rect.maxY))
+    path.addLineToPoint(CGPoint(x:0, y: rect.minY))
+    path.closePath()
+    return path
+}
+
+

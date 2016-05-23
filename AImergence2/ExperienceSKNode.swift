@@ -10,23 +10,15 @@ import SpriteKit
 
 class ExperienceSKNode: ReshapableSKNode
 {
-    static let colors = [UIColor.whiteColor(), UIColor(red: 0, green: 0.9, blue: 0, alpha: 1), UIColor.redColor(), UIColor.blueColor(), UIColor.orangeColor()]
-    
     let experience:Experience
     let stepOfCreation:Int
-    let gameModel: GameModel2
 
     override var shapeIndex:Int {return experience.shapeIndex }
 
-    init(rect: CGRect, experience: Experience, stepOfCreation: Int, gameModel: GameModel2) {
+    init(rect: CGRect, experience: Experience, stepOfCreation: Int, gameModel: GameModel) {
         self.experience = experience
         self.stepOfCreation = stepOfCreation
-        self.gameModel = gameModel
-        super.init(rect: rect)
-    }
-    
-    convenience init(experience:Experience, stepOfCreation: Int, gameModel:GameModel2){
-        self.init(rect: gameModel.experienceRect, experience: experience, stepOfCreation: stepOfCreation, gameModel: gameModel)
+        super.init(rect: rect, gameModel: gameModel)
         reshape()
         lineWidth = 0
         refill()
@@ -35,12 +27,16 @@ class ExperienceSKNode: ReshapableSKNode
         zPosition = 1
     }
     
+    convenience init(experience:Experience, stepOfCreation: Int, gameModel:GameModel2){
+        self.init(rect: gameModel.experienceRect, experience: experience, stepOfCreation: stepOfCreation, gameModel: gameModel)
+    }
+    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
     func refill() {
-        fillColor = ExperienceSKNode.colors[experience.colorIndex]
+        fillColor = gameModel.experienceColors[experience.colorIndex]
     }
     
     func addValenceNode()

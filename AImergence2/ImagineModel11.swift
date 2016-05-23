@@ -25,6 +25,7 @@ class ImagineModel11: ImagineModel
         robotNode.addChildNode(sphere)
         robotNode.pivot = SCNMatrix4MakeRotation(Float(M_PI/2), 0, 0, 1)
         robotNode = robotNode.flattenedClone()
+        robotNode.addChildNode(createBodyCamera())
         worldNode.addChildNode(robotNode)
     }
     

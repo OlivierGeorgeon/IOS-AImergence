@@ -12,6 +12,7 @@ import GameplayKit
 class Level11 : Level0 {
     
     override var number:Int { return 11 }
+    override var gameModelString: String { return "GameModel4"}
     
     var board: [[Int]] { return [[1, 1, 1],
                                  [1, 0, 1],
@@ -22,15 +23,16 @@ class Level11 : Level0 {
     
     
     convenience required init() {
-        let experiment0 = Experiment(number: 0)
-        let experiment1 = Experiment(number: 1)
-        let experiment2 = Experiment(number: 2)
+        let experiment0 = Experiment(number: 0, shapeIndex: 1)
+        let experiment1 = Experiment(number: 1, shapeIndex: 2)
+        let experiment2 = Experiment(number: 2, shapeIndex: 3)
         
-        let experiments = GKRandomSource.sharedRandom().arrayByShufflingObjectsInArray([experiment0, experiment1, experiment2]) as! [Experiment]
+        //let experiments = GKRandomSource.sharedRandom().arrayByShufflingObjectsInArray([experiment0, experiment1, experiment2]) as! [Experiment]
+        let experiments = [experiment0, experiment1, experiment2]
         
         let experience00 = Experience(experiment: experiment0, resultNumber: 0, valence:-1)
-        let experience10 = Experience(experiment: experiment1, resultNumber: 0, valence:-4)
-        let experience11 = Experience(experiment: experiment1, resultNumber: 1, valence: 4)
+        let experience10 = Experience(experiment: experiment1, resultNumber: 0, valence:-4, colorIndex: 2)
+        let experience11 = Experience(experiment: experiment1, resultNumber: 1, valence: 4, colorIndex: 1)
         let experience20 = Experience(experiment: experiment2, resultNumber: 0, valence:-1)
         let experiences = [[experience00], [experience10, experience11], [experience20]]
         

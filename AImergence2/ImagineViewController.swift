@@ -26,7 +26,8 @@ class ImagineViewController: UIViewController {
         delegate.hideImagineViewControllerContainer()
     }
 
-    @IBAction func elseButton(sender: UIButton)  { //sceneView.pointOfView = imagineModel.cameraNodes[1]
+    @IBAction func elseButton(sender: UIButton)  {
+        sceneView.pointOfView = imagineModel.cameraNodes[1]
     }
     
 
@@ -45,7 +46,6 @@ class ImagineViewController: UIViewController {
             } else {
                 textView.hidden = true
             }
-            // Not working since app was renamed Little AI
             let aClass:AnyClass? =  NSClassFromString("Little_AI.ImagineModel\(level)")
             if let imagineModelType = aClass as? ImagineModel.Type
                 { imagineModel = imagineModelType.init() }

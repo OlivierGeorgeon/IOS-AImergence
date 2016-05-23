@@ -14,17 +14,17 @@ class ExperimentSKNode: ReshapableSKNode
 
     override var shapeIndex:Int {return experiment.shapeIndex }
     
-    init(rect: CGRect, experiment: Experiment) {
+    init(rect: CGRect, gameModel: GameModel, experiment: Experiment) {
         self.experiment = experiment
-        super.init(rect: rect)
-    }
-    
-    convenience init(experiment:Experiment, gameModel:GameModel2){
-        self.init(rect: gameModel.experimentRect, experiment: experiment)
+        super.init(rect: rect, gameModel: gameModel)
         reshape()
         fillColor = gameModel.color
         lineWidth = 0
         name = "experiment_\(experiment.number)"
+    }
+    
+    convenience init(gameModel:GameModel, experiment:Experiment){
+        self.init(rect: gameModel.experimentRect, gameModel: gameModel, experiment: experiment)
     }
 
     required init?(coder aDecoder: NSCoder) {

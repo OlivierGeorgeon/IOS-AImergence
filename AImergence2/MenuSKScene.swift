@@ -24,7 +24,7 @@ class MenuSKScene: PositionedSKScene {
     let levelXOffset        = CGVector( dx: 60, dy: 0)
     let levelYOffset        = CGVector( dx:  0, dy: -80)
 
-    let gameModel = GameModel()
+    let gameModel = GameModel2()
 
     var userDelegate: MenuSceneDelegate?
     var buttonNodes = [SKNode]()

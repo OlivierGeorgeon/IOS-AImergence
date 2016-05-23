@@ -134,7 +134,7 @@
                                             <constraint firstAttribute="height" constant="40" id="4tJ-wQ-zzb"/>
                                             <constraint firstAttribute="width" constant="40" id="HX7-tR-fPD"/>
                                         </constraints>
-                                        <state key="normal" image="close2"/>
+                                        <state key="normal" image="close"/>
                                         <connections>
                                             <action selector="closeButton:" destination="1A5-gt-hTc" eventType="touchUpInside" id="NSL-Kd-YUw"/>
                                         </connections>
@@ -202,13 +202,14 @@
                                     <constraint firstAttribute="height" constant="40" id="ImT-0C-Lbr"/>
                                     <constraint firstAttribute="width" constant="40" id="Q2N-l8-ziG"/>
                                 </constraints>
-                                <state key="normal" image="close2"/>
+                                <state key="normal" image="close"/>
                                 <connections>
                                     <action selector="closeButton:" destination="S9v-w3-pyN" eventType="touchUpInside" id="fil-gU-POB"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ceU-MJ-Rek">
-                                <rect key="frame" x="28" y="0.0" width="30" height="30"/>
+                                <rect key="frame" x="28" y="0.0" width="54" height="30"/>
+                                <state key="normal" title="Camera"/>
                                 <connections>
                                     <action selector="elseButton:" destination="S9v-w3-pyN" eventType="touchUpInside" id="f2X-z9-aXR"/>
                                 </connections>
@@ -252,6 +253,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="close2" width="42" height="42"/>
+        <image name="close" width="40" height="40"/>
     </resources>
 </document>

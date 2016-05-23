@@ -31,14 +31,14 @@ class GameSKScene: PositionedSKScene {
     let actionClearButton   = SKAction.scaleTo(0.0, duration: 0.1)
     
     var gameSceneDelegate: GameSceneDelegate!
-    var experimentNodes = Set<ExperimentSKNode>()
+    var experimentNodes = [ExperimentSKNode]()
     var experienceNodes = Set<ExperienceSKNode>()
     var clock:Int = 0
     var scoreLabel:SKLabelNode
     var scoreBackground:SKShapeNode
-    var shapePopupNode:SKNode?
+    var shapePopupNode:SKNode!
     var shapeNodes = Array<SKShapeNode>()
-    var colorPopupNode:SKNode?
+    var colorPopupNode:SKNode!
     var colorNodes = Array<SKShapeNode>()
     var editNode: ReshapableSKNode?
     var score:Int = 0 {
@@ -101,33 +101,13 @@ class GameSKScene: PositionedSKScene {
         scoreBackground.addChild(scoreLabel)
 
         shapePopupNode = gameModel.createShapePopup()
-        for i in 0..<ReshapableSKNode.paths.count {
-            let shapeNode = SKShapeNode(path: ReshapableSKNode.paths[i](CGRect(x: -40, y: -40, width: 80, height: 80)).CGPath)
-            shapeNode.lineWidth = 3
-            shapeNode.strokeColor = UIColor.grayColor()
-            shapeNode.fillColor = UIColor.whiteColor()
-            shapeNode.position = CGPoint(x: i * 100 - 100 , y: 0)
-            shapePopupNode!.addChild(shapeNode)
-            shapeNodes.append(shapeNode)
-        }
+        shapeNodes = gameModel.createShapeNodes(shapePopupNode)
         
         colorPopupNode = gameModel.createColorPopup()
-        for i in 0..<ExperienceSKNode.colors.count {
-            let colorNode = SKShapeNode(rect: gameModel.colorNodeRect)
-            colorNode.fillColor = ExperienceSKNode.colors[i]
-            colorNode.strokeColor = UIColor.grayColor()
-            colorNode.lineWidth = 1
-            colorNode.position = CGPoint(x:0, y: i * 80 - 160)
-            colorPopupNode?.addChild(colorNode)
-            colorNodes.append(colorNode)
-        }
+        colorNodes = gameModel.createColorNodes(colorPopupNode)
         
-        for i in 0...(level.experiments.count - 1) {
-            let experimentNode = ExperimentSKNode(experiment: level.experiments[i], gameModel: gameModel)
-            experimentNode.position = gameModel.experimentPositions[i]
-            addChild(experimentNode)
-            experimentNodes.insert(experimentNode)
-        }
+        experimentNodes = gameModel.createExperimentNodes(self)
+        
         robotNode = gameModel.createRobotNode()
         cameraRelativeOriginNode.addChild(robotNode!)
         backgroundNode = gameModel.createBackroundNode()
@@ -229,7 +209,7 @@ class GameSKScene: PositionedSKScene {
                 }
             }
         case .Ended:
-            for i in 0..<ReshapableSKNode.paths.count {
+            for i in 0..<shapeNodes.count {
                 if shapeNodes[i].containsPoint(positionInShapePopup!) {
                     if let experimentNode = editNode as? ExperimentSKNode {
                         experimentNode.experiment.shapeIndex = i
@@ -243,7 +223,7 @@ class GameSKScene: PositionedSKScene {
                 }
             }
             shapePopupNode?.removeFromParent()
-            for i in 0..<ExperienceSKNode.colors.count {
+            for i in 0..<colorNodes.count {
                 if colorNodes[i].containsPoint(positionInColorPopup!) {
                     if let experienceNode = editNode as? ExperienceSKNode {
                         experienceNode.experience.colorIndex = i

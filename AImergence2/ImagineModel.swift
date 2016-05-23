@@ -8,13 +8,12 @@
 
 import SceneKit
 
-class ImagineModel {
+class ImagineModel
+{
+    let gameModel = GameModel2()
     let actions = Actions()
-    
     let scaleExperience = CGFloat(100)
-    
     var cameraNodes = [SCNNode]()
-    
     var worldNode = SCNNode()
     var bodyNode: SCNNode!
 
@@ -69,19 +68,19 @@ class ImagineModel {
         let bodyCamera = SCNNode()
         bodyCamera.camera = SCNCamera()
         //bodyCamera.pivot = SCNMatrix4MakeRotation(Float(-M_PI_2), 1, 1, 1)
-        bodyCamera.position = SCNVector3Make(-2.0, -3.0, 0.0)
+        bodyCamera.position = SCNVector3Make(-4.0, -3.0, 0.0)
         cameraNodes.append(bodyCamera)
-        bodyCamera.runAction(SCNAction.repeatAction(SCNAction.rotateByX(0, y: CGFloat(-M_PI_2), z: CGFloat(M_PI_2 - 0.2), duration: 1), count: 1))
+        bodyCamera.runAction(SCNAction.repeatAction(SCNAction.rotateByX(0, y: CGFloat(-M_PI_2), z: CGFloat(M_PI_2 - 0.8), duration: 1), count: 1))
         return bodyCamera
     }
     
     func spawnExperienceNode(experience: Experience, position: SCNVector3, delayed:Bool = false) {
         let rect = CGRect(x: -0.2 * scaleExperience, y: -0.2 * scaleExperience, width: 0.4 * scaleExperience, height: 0.4 * scaleExperience)
-        let path = ReshapableSKNode.paths[experience.experiment.shapeIndex](rect)
+        let path = gameModel.experimentPaths[experience.experiment.shapeIndex](rect)
         let geometry = SCNShape(path: path, extrusionDepth: 0.1 * scaleExperience)
         geometry.materials = [Geometries.defaultExperienceMaterial()]
         if experience.colorIndex > 0 {
-            geometry.firstMaterial!.diffuse.contents = ExperienceSKNode.colors[experience.colorIndex]
+            geometry.firstMaterial!.diffuse.contents = gameModel.experienceColors[experience.colorIndex]
         }
         let experienceNode = SCNNode(geometry: geometry)
         experienceNode.scale = SCNVector3(1/scaleExperience, 1/scaleExperience, 1/scaleExperience)
