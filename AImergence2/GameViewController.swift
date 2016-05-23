@@ -51,7 +51,8 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
             }
         }
         
-        let gameScene = GameSKScene(gameModel: GameModel.createGameModel(0))
+        let gameModel = GameModel.createGameModel(0)
+        let gameScene = GameSKScene(gameModel: gameModel)
         gameScene.gameSceneDelegate = self
         gameScene.scaleMode = SKSceneScaleMode.AspectFill
         sceneView.showsFPS = false
@@ -90,7 +91,8 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
     func swipeLeft(gesture:UISwipeGestureRecognizer) {
         if interfaceLocks[level][GameViewController.levelInterfaceIndex] && level < GameViewController.maxLevelNumber {
             level += 1
-            let nextGameScene = GameSKScene(gameModel: GameModel.createGameModel(level))
+            let gameModel = GameModel.createGameModel(level)
+            let nextGameScene = GameSKScene(gameModel: gameModel)
             nextGameScene.gameSceneDelegate = self
             sceneView.presentScene(nextGameScene, transition: PositionedSKScene.transitionLeft)
             hideImagineViewControllerContainer()
@@ -102,7 +104,8 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
     func swipeRight(gesture:UISwipeGestureRecognizer) {
         if level > 0 {
             level -= 1
-            let nextGameScene = GameSKScene(gameModel: GameModel.createGameModel(level))
+            let gameModel = GameModel.createGameModel(level)
+            let nextGameScene = GameSKScene(gameModel: gameModel)
             nextGameScene.gameSceneDelegate = self
             sceneView.presentScene(nextGameScene, transition: PositionedSKScene.transitionRight)
             hideImagineViewControllerContainer()
@@ -259,7 +262,15 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
         imagineViewController!.sceneView.scene = nil
     }
     
-    func understandImagine() {
+    func getGameModel() -> GameModel2 {
+        var gameModel = GameModel2()
+        if let scene = sceneView.scene as? GameSKScene {
+            gameModel = scene.gameModel
+        }
+        return gameModel
+    }
+    
+    func imagineOk() {
         if let scene = sceneView.scene as? GameSKScene {
             if isInstructionUnderstood() {
                 scene.buttonIndex = -1

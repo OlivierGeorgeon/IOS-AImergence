@@ -13,7 +13,8 @@ protocol WorldViewControllerDelegate
 {
     func hideImagineViewControllerContainer()
     func isLevelUnlocked() -> Bool
-    func understandImagine()
+    func imagineOk()
+    func getGameModel() -> GameModel2
 }
 
 class ImagineViewController: UIViewController {
@@ -22,7 +23,7 @@ class ImagineViewController: UIViewController {
     @IBOutlet weak var textView: UITextView!
     @IBAction func closeButton(sender: UIButton) { delegate?.hideImagineViewControllerContainer() }
     @IBAction func understoodButton(sender: UIButton) {
-        if delegate.isLevelUnlocked() { delegate.understandImagine() }
+        if delegate.isLevelUnlocked() { delegate.imagineOk() }
         delegate.hideImagineViewControllerContainer()
     }
 
@@ -48,9 +49,9 @@ class ImagineViewController: UIViewController {
             }
             let aClass:AnyClass? =  NSClassFromString("Little_AI.ImagineModel\(level)")
             if let imagineModelType = aClass as? ImagineModel.Type
-                { imagineModel = imagineModelType.init() }
+                { imagineModel = imagineModelType.init(gameModel: delegate.getGameModel()) }
             else
-                { imagineModel = ImagineModel0() }
+                { imagineModel = ImagineModel0(gameModel: delegate.getGameModel()) }
             
             /*
             switch level {

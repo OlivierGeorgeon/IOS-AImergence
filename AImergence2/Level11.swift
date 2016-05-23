@@ -19,8 +19,7 @@ class Level11 : Level0 {
                                  [1, 0, 1],
                                  [1, 1, 1]] }
     
-    var robot = Robot()
-    
+    var robot = Robot()    
     
     convenience required init() {
         let experiment0 = Experiment(number: 0, shapeIndex: 1)

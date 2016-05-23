@@ -10,14 +10,15 @@ import SceneKit
 
 class ImagineModel
 {
-    let gameModel = GameModel2()
+    let gameModel: GameModel2
     let actions = Actions()
     let scaleExperience = CGFloat(100)
     var cameraNodes = [SCNNode]()
     var worldNode = SCNNode()
     var bodyNode: SCNNode!
 
-    required init() {
+    required init(gameModel: GameModel2) {
+        self.gameModel = gameModel
     }
     
     func playExperience(experience: Experience) {
