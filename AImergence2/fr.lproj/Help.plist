@@ -57,10 +57,10 @@
 			<string>Comme au niveau 8, il y a une expérience qui produit toujours le même type d&apos;événement mais qui change l&apos;état du monde.</string>
 		</array>
 		<array>
-			<string>Au niveau 11, vous pilotez un petit robot dans une petite boite.</string>
+			<string>Au niveau 11, vous pilotez un petit robot qui peut avancer et tourner dans une petite boite.</string>
 		</array>
 		<array>
-			<string>Le monde du niveau 12 est similaire à celui du niveau 11, mais la boite est légèrement plus grande.</string>
+			<string>Le monde du niveau 12 est similaire à celui du niveau 11, mais la boite est encore plus petite. Les expériences ont été placées aléatoirement.</string>
 		</array>
 	</array>
 </dict>

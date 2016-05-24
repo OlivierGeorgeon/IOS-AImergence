@@ -14,12 +14,12 @@ class Level11 : Level0 {
     override var number:Int { return 11 }
     override var gameModelString: String { return "GameModel4"}
     
-    var board: [[Int]] { return [[1, 1, 1],
-                                 [1, 0, 1],
-                                 [1, 0, 1],
-                                 [1, 1, 1]] }
+    var board: [[Int]] { return [[1, 1, 1, 1],
+                                 [1, 0, 0, 1],
+                                 [1, 0, 0, 1],
+                                 [1, 1, 1, 1]] }
     
-    var robot = Robot()    
+    var robot = Robot()
     
     convenience required init() {
         let experiment0 = Experiment(number: 0, shapeIndex: 1)
@@ -30,8 +30,8 @@ class Level11 : Level0 {
         let experiments = [experiment0, experiment1, experiment2]
         
         let experience00 = Experience(experiment: experiment0, resultNumber: 0, valence:-1)
-        let experience10 = Experience(experiment: experiment1, resultNumber: 0, valence:-4, colorIndex: 2)
-        let experience11 = Experience(experiment: experiment1, resultNumber: 1, valence: 4, colorIndex: 1)
+        let experience10 = Experience(experiment: experiment1, resultNumber: 0, valence:-3, colorIndex: 2)
+        let experience11 = Experience(experiment: experiment1, resultNumber: 1, valence: 3, colorIndex: 1)
         let experience20 = Experience(experiment: experiment2, resultNumber: 0, valence:-1)
         let experiences = [[experience00], [experience10, experience11], [experience20]]
         
