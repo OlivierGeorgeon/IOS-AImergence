@@ -80,7 +80,7 @@ func trapezoidRight(rect: CGRect) -> UIBezierPath {
     return path
 }
 
-private func halfCircleLeft(rect: CGRect) -> UIBezierPath {
+func halfCircleLeft(rect: CGRect) -> UIBezierPath {
     let path = UIBezierPath()
     path.addArcWithCenter(CGPoint(), radius: rect.maxX, startAngle: CGFloat(M_PI) / 2 , endAngle: -CGFloat(M_PI) / 2, clockwise: true)
     path.addLineToPoint(CGPoint(x: rect.maxX, y: rect.minY))
@@ -89,7 +89,7 @@ private func halfCircleLeft(rect: CGRect) -> UIBezierPath {
     return path
 }
 
-private func halfCircleRight(rect: CGRect) -> UIBezierPath {
+func halfCircleRight(rect: CGRect) -> UIBezierPath {
     let path = UIBezierPath()
     path.addArcWithCenter(CGPoint(), radius: rect.maxX, startAngle: CGFloat(M_PI) / 2 , endAngle: -CGFloat(M_PI) / 2, clockwise: false)
     path.addLineToPoint(CGPoint(x: rect.minX, y: rect.minY))

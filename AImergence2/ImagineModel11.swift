@@ -18,14 +18,18 @@ class ImagineModel11: ImagineModel
         super.setup(scene)
         
         robotNode = SCNRobotNode()
-        let cylinder = SCNNode(geometry: Geometries.halfCylinder())
-        cylinder.position = SCNVector3(0, -0.25, 0)
-        robotNode.addChildNode(cylinder)
-        let sphere = SCNNode(geometry: Geometries.sphere())
-        robotNode.addChildNode(sphere)
-        robotNode.pivot = SCNMatrix4MakeRotation(Float(M_PI/2), 0, 0, 1)
-        robotNode = robotNode.flattenedClone()
-        robotNode.addChildNode(createBodyCamera())
+        
+        //let robotScene = SCNScene(named: "art.scnassets/RobotjDer2.dae")!
+        let robotScene = SCNScene(named: "art.scnassets/Robot9bJoints4a.dae")!
+        
+        let nodeArray = robotScene.rootNode.childNodes
+        for childNode in nodeArray {
+            robotNode.addChildNode(childNode as SCNNode)
+        }
+        
+        robotNode.pivot = SCNMatrix4MakeRotation(Float(-M_PI/2), 0, 1, 0)
+        robotNode.scale = SCNVector3(0.3, 0.3, 0.3)
+        robotNode.addChildNode(createRobotCamera())
         worldNode.addChildNode(robotNode)
     }
     
@@ -42,9 +46,9 @@ class ImagineModel11: ImagineModel
             default:
                 robotNode.bump()
                 if tiles[robotNode.robot.cellFront()] == nil {
-                    createTileNode(robotNode.positionForward() + SCNVector3(0, -0.4, 0))
+                    createTileNode(robotNode.positionForward() + SCNVector3(0, -0.5, 0))
                 }
-                spawnExperienceNode(experience, position: robotNode.position + robotNode.forwardVector(), delayed: true)
+                spawnExperienceNode(experience, position: robotNode.position + robotNode.forwardVector() / 2, delayed: true)
             }
         default:
             robotNode.turnRight()
@@ -60,5 +64,15 @@ class ImagineModel11: ImagineModel
         node.runAction(SCNAction.sequence([SCNAction.waitForDuration(0.1), SCNAction.unhide()]))
         return node
     }
+
+    func createRobotCamera() -> SCNNode {
+        let bodyCamera = SCNNode()
+        bodyCamera.camera = SCNCamera()
+        bodyCamera.position = SCNVector3Make(0.0, 15, -15)
+        cameraNodes.append(bodyCamera)
+        bodyCamera.runAction(SCNAction.rotateByX(-0.7, y: CGFloat(M_PI), z: 0, duration: 1))
+        return bodyCamera
+    }
+    
     
 }

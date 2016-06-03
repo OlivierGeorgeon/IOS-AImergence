@@ -97,7 +97,7 @@ class ImagineViewController: UIViewController {
 
     func sceneViewSetup() {
         //let scene = SCNScene(named: "Assets.xcassets/RobotPackg.dae")!
-        //let scene = SCNScene(named: "art.scnassets/RobotjDer2.dae")!
+        //let scene = SCNScene(named: "art.scnassets/Robot9bJoints2.dae")!
         let scene = SCNScene()
         sceneView.scene = scene
         sceneView.allowsCameraControl = true

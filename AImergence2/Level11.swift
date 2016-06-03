@@ -23,10 +23,9 @@ class Level11 : Level0 {
     
     convenience required init() {
         let experiment0 = Experiment(number: 0, shapeIndex: 1)
-        let experiment1 = Experiment(number: 1, shapeIndex: 2)
+        let experiment1 = Experiment(number: 1, shapeIndex: 4)
         let experiment2 = Experiment(number: 2, shapeIndex: 3)
         
-        //let experiments = GKRandomSource.sharedRandom().arrayByShufflingObjectsInArray([experiment0, experiment1, experiment2]) as! [Experiment]
         let experiments = [experiment0, experiment1, experiment2]
         
         let experience00 = Experience(experiment: experiment0, resultNumber: 0, valence:-1)

@@ -62,6 +62,13 @@
 		<array>
 			<string>Le monde du niveau 12 est similaire à celui du niveau 11, mais la boite est encore plus petite. Les expériences ont été placées aléatoirement.</string>
 		</array>
+		<array>
+			<string>Au niveau 13, vous dispoez des mêmes expériences qu&apos;au niveau 11 plus une expérience persistante qui permet d&apos;observer l&apos;environnement.</string>
+			<string>La boite devient un peu plus grande.</string>
+		</array>
+		<array>
+			<string>Le monde du niveau 14 est le même que celui du niveau 13 mais les expérimentations ont été placées dans un ordre aléatoire.</string>
+		</array>
 	</array>
 </dict>
 </plist>

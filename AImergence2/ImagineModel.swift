@@ -61,7 +61,7 @@ class ImagineModel
         pawnNode.addChildNode(sphere)
         pawnNode.pivot = SCNMatrix4MakeRotation(Float(M_PI/2), 0, 0, 1)
         let pawnNodeFlat = pawnNode.flattenedClone()
-        pawnNodeFlat.addChildNode(createBodyCamera())
+        //pawnNodeFlat.addChildNode(createBodyCamera())
         return pawnNodeFlat
     }
     

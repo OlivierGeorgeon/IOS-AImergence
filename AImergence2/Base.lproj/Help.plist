@@ -62,7 +62,13 @@
 		<array>
 			<string>Level 12 is similar to Level 11 but the box is even smaller. The experiments have been placed randomly.</string>
 		</array>
-		<array/>
+		<array>
+			<string>In Level 13, you have the same experiments as in Level 12 plus a persistent experiment that allows you to observe the environment.</string>
+			<string>The box is getting bigger.</string>
+		</array>
+		<array>
+			<string>The world of Level 14 is the same as that of Level 13 but the experiments have been placed in a random order.</string>
+		</array>
 	</array>
 </dict>
 </plist>

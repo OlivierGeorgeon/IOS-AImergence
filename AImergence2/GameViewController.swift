@@ -11,7 +11,7 @@ import SpriteKit
 
 class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate, HelpViewControllerDelegate, WorldViewControllerDelegate
 {
-    static let maxLevelNumber = 12
+    static let maxLevelNumber = 14
     static let unlockDefaultKey = "unlockDefaultKey"
     
     @IBOutlet weak var sceneView: GameView!
@@ -38,7 +38,7 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
     static let levelInterfaceIndex = 2
 
     let userDefaults = NSUserDefaults.standardUserDefaults()
-    var interfaceLocks = [[Bool]](count: GameViewController.maxLevelNumber + 1, repeatedValue: [false, false, false])
+    var interfaceLocks = [[Bool]](count: GameViewController.maxLevelNumber + 1, repeatedValue: [false, false, true])
     
     override func viewDidLoad()
     {
