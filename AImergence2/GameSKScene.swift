@@ -27,8 +27,10 @@ class GameSKScene: PositionedSKScene {
     let level:Level0
     
     let actionMoveButton    = SKAction.moveBy(CGVector(dx:0, dy: 60), duration: 0.2)
-    let actionScaleButton   = SKAction.scaleTo(1.0, duration: 0.2)
+    let actionScaleButton   = SKAction.scaleTo(0.9, duration: 0.2)
     let actionClearButton   = SKAction.scaleTo(0.0, duration: 0.1)
+    let actionPulseUp = SKAction.scaleTo(1, duration: 0.5)
+    let actionPulseDown = SKAction.scaleTo(0.9, duration: 0.5)
     
     var gameSceneDelegate: GameSceneDelegate!
     var experimentNodes = [ExperimentSKNode]()
@@ -183,9 +185,17 @@ class GameSKScene: PositionedSKScene {
         } else {
             buttonNode!.setScale(0)
             buttonNode!.position.y -= 60
-            buttonNode!.runAction(SKAction.group([actionScaleButton, actionMoveButton]))
-            let textureIndex =  gameSceneDelegate.isInterfaceUnlocked(buttonIndex) ? 0 : 1
-            buttonNode?.texture = buttonTextures[buttonIndex][textureIndex]
+            if gameSceneDelegate.isInterfaceUnlocked(buttonIndex) {
+                buttonNode!.removeAllActions()
+                buttonNode!.runAction(SKAction.group([actionScaleButton, actionMoveButton]))
+                buttonNode!.texture = buttonTextures[buttonIndex][0]
+            } else {
+                let actionPulse = SKAction.sequence([actionPulseUp, actionPulseDown])
+                let actionRepeatPulse = SKAction.repeatActionForever(actionPulse)
+                let actionAppear = SKAction.group([actionScaleButton, actionMoveButton])
+                buttonNode!.runAction(SKAction.sequence([actionAppear, actionRepeatPulse]), withKey: "pulse")
+                buttonNode!.texture = buttonTextures[buttonIndex][1]
+            }
         }
     }
     

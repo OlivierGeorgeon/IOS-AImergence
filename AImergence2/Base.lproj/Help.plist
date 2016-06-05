@@ -57,10 +57,11 @@
 			<string>As in Level 8, there is an experiment that always produces the same type of event but changes the state of the world.</string>
 		</array>
 		<array>
-			<string>in Level 11, you are controling a little robot that can move forward and turn in a little box.</string>
+			<string>in Level 11, you can imagine that you are controling a little robot that can move forward and turn in a little box.</string>
 		</array>
 		<array>
-			<string>Level 12 is similar to Level 11 but the box is even smaller. The experiments have been placed randomly.</string>
+			<string>Level 12 is similar to Level 11 but the box is even smaller.</string>
+			<string>The experiments have been placed randomly.</string>
 		</array>
 		<array>
 			<string>In Level 13, you have the same experiments as in Level 12 plus a persistent experiment that allows you to observe the environment.</string>
