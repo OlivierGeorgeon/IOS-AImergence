@@ -35,30 +35,11 @@ class SCNRobotNode: SCNNode {
     }
     
     func feelFront() {
-        let bendFront: SCNAction
-        let bendBack: SCNAction
-        switch robot.direction {
-        case .EAST:
-            bendFront = SCNAction.rotateByX(0, y: 0, z: -CGFloat(M_PI) / 2, duration: 0.2)
-            bendBack  = SCNAction.rotateByX(0, y: 0, z:  CGFloat(M_PI) / 2, duration: 0.2)
-        case .NORTH:
-            bendFront = SCNAction.rotateByAngle(-CGFloat(M_PI) / 2, aroundAxis: SCNVector3(1.0, 0.0, 0.0), duration: 0.2)
-            // Why we need to turn the robot back is totally mysterious
-            bendBack  = SCNAction.sequence([bendFront.reversedAction(), SCNAction.rotateByX(0, y: CGFloat(M_PI), z:  0, duration: 0)])
-            // why the rotataByX wont work along the x axis is tottaly mysterious
-            //bendFront = SCNAction.rotateByX(-CGFloat(M_PI) / 2, y: 0, z: 0, duration: 0.2)
-            //bendBack  = SCNAction.rotateByX( CGFloat(M_PI) / 2, y: 0, z: 0, duration: 0.2)
-        case .WEST:
-            bendFront = SCNAction.rotateByX(0, y: 0, z:  CGFloat(M_PI) / 2, duration: 0.2)
-            bendBack  = SCNAction.rotateByX(0, y: 0, z: -CGFloat(M_PI) / 2, duration: 0.2)
-        case .SOUTH:
-            bendFront = SCNAction.rotateByAngle(-CGFloat(M_PI) / 2, aroundAxis: SCNVector3(-1.0, 0.0, 0.0), duration: 0.2)
-            bendBack  = SCNAction.sequence([bendFront.reversedAction(), SCNAction.rotateByX(0, y: CGFloat(M_PI), z:  0, duration: 0)])
-            //bendFront = SCNAction.rotateByX(-CGFloat(M_PI) / 2, y: 0, z: 0, duration: 0.2)
-            //bendBack  = SCNAction.rotateByX( CGFloat(M_PI) / 2, y: 0, z: 0, duration: 0.2)
-        }
+        let bendFront = SCNAction.rotateByX( CGFloat(M_PI) / 2, y: 0, z: 0, duration: 0.2)
+        let bendBack  = SCNAction.rotateByX(-CGFloat(M_PI) / 2, y: 0, z: 0, duration: 0.2)
         
-        self.runAction(SCNAction.sequence([bendFront, bendBack]))
+        let bodyNode = self.childNodeWithName("body", recursively: false)
+        bodyNode?.runAction(SCNAction.sequence([bendFront, bendBack]))
     }
     
     func positionForward() -> SCNVector3 {
@@ -77,20 +58,6 @@ class SCNRobotNode: SCNNode {
             return SCNVector3(0.0, 0.0, 1.0)
         }
     }
-
-    func bendVector() -> SCNVector3 {
-        switch robot.direction {
-        case .EAST:
-            return SCNVector3(0.0, 0.0, 1.0)
-        case .NORTH:
-            return SCNVector3(1.0, 0.0, 0.0)
-        case .WEST:
-            return SCNVector3(0.0, 0.0, -1.0)
-        case .SOUTH:
-            return SCNVector3(-1.0, 0.0, 0.0)
-        }
-    }
-
 }
 
 func / (left: SCNVector3, right: Int) -> SCNVector3 {

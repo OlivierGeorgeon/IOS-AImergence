@@ -185,14 +185,18 @@ class GameSKScene: PositionedSKScene {
         } else {
             buttonNode!.setScale(0)
             buttonNode!.position.y -= 60
+            let actionPath = UIBezierPath()
+            actionPath.addArcWithCenter(CGPoint(x: 0, y: 30), radius: 30, startAngle: -CGFloat(M_PI) / 2 , endAngle: CGFloat(M_PI) / 2, clockwise: false)
+            let actionFollow = SKAction.followPath(actionPath.CGPath, asOffset: true, orientToPath: false, duration: 0.2)
             if gameSceneDelegate.isInterfaceUnlocked(buttonIndex) {
                 buttonNode!.removeAllActions()
-                buttonNode!.runAction(SKAction.group([actionScaleButton, actionMoveButton]))
+                //buttonNode!.runAction(SKAction.group([actionScaleButton, actionMoveButton]))
+                buttonNode!.runAction(SKAction.group([actionScaleButton, actionFollow]))
                 buttonNode!.texture = buttonTextures[buttonIndex][0]
             } else {
                 let actionPulse = SKAction.sequence([actionPulseUp, actionPulseDown])
                 let actionRepeatPulse = SKAction.repeatActionForever(actionPulse)
-                let actionAppear = SKAction.group([actionScaleButton, actionMoveButton])
+                let actionAppear = SKAction.group([actionScaleButton, actionFollow])
                 buttonNode!.runAction(SKAction.sequence([actionAppear, actionRepeatPulse]), withKey: "pulse")
                 buttonNode!.texture = buttonTextures[buttonIndex][1]
             }

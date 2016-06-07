@@ -12,19 +12,28 @@ class ImagineModel11: ImagineModel
 {
     
     var robotNode: SCNRobotNode!
+
     var tiles = [Cell: SCNNode]()
     
     override func setup(scene: SCNScene) {
         super.setup(scene)
         
         robotNode = SCNRobotNode()
+        let robotBaseNode = SCNNode()
+        robotNode.addChildNode(robotBaseNode)
+        let caterpillarScene = SCNScene(named: "art.scnassets/ChenillesSeules.dae")!
+        let baseNodeArray = caterpillarScene.rootNode.childNodes
+        for childNode in baseNodeArray {
+            robotBaseNode.addChildNode(childNode as SCNNode)
+        }
         
-        //let robotScene = SCNScene(named: "art.scnassets/RobotjDer2.dae")!
-        let robotScene = SCNScene(named: "art.scnassets/Robot9bJoints4a.dae")!
-        
-        let nodeArray = robotScene.rootNode.childNodes
-        for childNode in nodeArray {
-            robotNode.addChildNode(childNode as SCNNode)
+        let robotBodyNode = SCNNode()
+        robotBodyNode.name = "body"
+        robotNode.addChildNode(robotBodyNode)
+        let robotScene = SCNScene(named: "art.scnassets/Robot8aa.dae")!
+        let bodyNodeArray = robotScene.rootNode.childNodes
+        for childNode in bodyNodeArray {
+            robotBodyNode.addChildNode(childNode as SCNNode)
         }
         
         robotNode.pivot = SCNMatrix4MakeRotation(Float(-M_PI/2), 0, 1, 0)
