@@ -45,7 +45,6 @@ class PositionedSKScene: SKScene {
     var cameraRelativeOriginNode = SKNode()
     var backgroundNode: SKSpriteNode?
     var robotNode: SKSpriteNode?
-    var buttonNode: SKSpriteNode?
     
     override func didMoveToView(view: SKView) {
         super.didMoveToView(view)
@@ -57,18 +56,14 @@ class PositionedSKScene: SKScene {
         self.size = size
         
         if frameSize.height > frameSize.width {
-            //self.size = PositionedSKScene.portraitSize
             cameraNode?.position =  PositionedSKScene.portraitCameraPosition
             cameraRelativeOriginNode.position = -PositionedSKScene.portraitCameraPosition
             backgroundNode?.position.x = 0
             backgroundNode?.size.width = 667
             robotNode?.position = PositionedSKScene.portraitRobotPosition
-            robotNode?.size = PositionedSKScene.portraitRobotSize
-            buttonNode?.position = PositionedSKScene.portraitButtonPosition
-            buttonNode?.size = PositionedSKScene.portraitButtonSize
+            robotNode?.setScale(1)
+            //robotNode?.size = PositionedSKScene.portraitRobotSize
         } else {
-            //self.size = PositionedSKScene.landscapeSize
-            //cameraNode?.position =  PositionedSKScene.landscapeCameraPosition
             cameraNode?.position.x =  size.width / 2 - 190
             cameraNode?.position.y =  233
             //cameraRelativeOriginNode.position = -PositionedSKScene.landscapeCameraPosition
@@ -78,9 +73,8 @@ class PositionedSKScene: SKScene {
             backgroundNode?.position.x = 400
             backgroundNode?.size.width = 1188
             robotNode?.position = PositionedSKScene.landscapeRobotPosition
-            robotNode?.size = PositionedSKScene.landscapeRobotSize
-            buttonNode?.position = PositionedSKScene.landscapeButtonPosition
-            buttonNode?.size = PositionedSKScene.landscapeButtonSize
+            robotNode?.setScale(2)
+            //robotNode?.size = PositionedSKScene.landscapeRobotSize
         }
     }
 }

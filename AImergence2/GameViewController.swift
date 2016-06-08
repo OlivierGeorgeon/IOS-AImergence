@@ -47,7 +47,7 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
         let userInterfaceLocks = userDefaults.arrayForKey(GameViewController.unlockDefaultKey)
         if let userIntergaceLocksBool = userInterfaceLocks as? [[Bool]] {
             if userIntergaceLocksBool.count == interfaceLocks.count {
-                interfaceLocks = userIntergaceLocksBool
+                //interfaceLocks = userIntergaceLocksBool
             }
         }
         
@@ -244,6 +244,8 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
     }
     
     func understandInstruction() {
+        interfaceLocks[level][GameViewController.instructionInterfaceIndex] = true
+        userDefaults.setObject(interfaceLocks, forKey: GameViewController.unlockDefaultKey)
         if let scene = sceneView.scene as? GameSKScene {
             if isImagineUnderstood() || !isLevelUnlocked() {
                 scene.buttonIndex = -1
@@ -252,8 +254,6 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
             }
             scene.showButton()
         }
-        interfaceLocks[level][GameViewController.instructionInterfaceIndex] = true
-        userDefaults.setObject(interfaceLocks, forKey: GameViewController.unlockDefaultKey)
     }
     
     // Implement WorldViewControllerDelegate
@@ -271,16 +271,16 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
     }
     
     func imagineOk() {
+        interfaceLocks[level][GameViewController.imagineInterfaceIndex] = true
+        userDefaults.setObject(interfaceLocks, forKey: GameViewController.unlockDefaultKey)
         if let scene = sceneView.scene as? GameSKScene {
             if isInstructionUnderstood() {
-                scene.buttonIndex = -1
+                scene.buttonIndex = 2
             } else {
                 scene.buttonIndex = 0
             }
             scene.showButton()
         }
-        interfaceLocks[level][GameViewController.imagineInterfaceIndex] = true
-        userDefaults.setObject(interfaceLocks, forKey: GameViewController.unlockDefaultKey)
     }
     
     override func shouldAutorotate() -> Bool {

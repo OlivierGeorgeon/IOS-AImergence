@@ -104,6 +104,7 @@ class GameModel
         let robotNode = SKSpriteNode(imageNamed: "happy1.png")
         robotNode.size = CGSize(width: 100, height: 100)
         robotNode.position = CGPoint(x: 120, y: 180)
+        robotNode.zPosition = 1
         return robotNode
     }
 

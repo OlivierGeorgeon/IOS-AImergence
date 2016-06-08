@@ -81,7 +81,7 @@ class ImagineModel
         let geometry = SCNShape(path: path, extrusionDepth: 0.1 * scaleExperience)
         geometry.materials = [Geometries.defaultExperienceMaterial()]
         if experience.colorIndex > 0 {
-            geometry.firstMaterial!.diffuse.contents = gameModel.experienceColors[experience.colorIndex]
+            geometry.firstMaterial?.diffuse.contents = gameModel.experienceColors[experience.colorIndex]
         }
         let experienceNode = SCNNode(geometry: geometry)
         experienceNode.scale = SCNVector3(1/scaleExperience, 1/scaleExperience, 1/scaleExperience)

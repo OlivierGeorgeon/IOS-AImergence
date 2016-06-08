@@ -50,6 +50,7 @@
 		0964BB191CEF95AA00A4B40D /* ImagineModel12.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0964BB181CEF95AA00A4B40D /* ImagineModel12.swift */; };
 		096F5CB51C53F1C90041EA5F /* HelpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096F5CB41C53F1C90041EA5F /* HelpViewController.swift */; };
 		096F5CB91C56D7240041EA5F /* Level9.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096F5CB81C56D7240041EA5F /* Level9.swift */; };
+		098203F01D088818009303C5 /* ButtonSKNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 098203EF1D088818009303C5 /* ButtonSKNode.swift */; };
 		0994526E1C5F983400F0ABFF /* HelpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0994526D1C5F983400F0ABFF /* HelpView.swift */; };
 		099452831C62007000F0ABFF /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 099452851C62007000F0ABFF /* InfoPlist.strings */; };
 		099452881C62007000F0ABFF /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0994528A1C62007000F0ABFF /* InfoPlist.strings */; };
@@ -143,6 +144,7 @@
 		0964BB181CEF95AA00A4B40D /* ImagineModel12.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagineModel12.swift; sourceTree = "<group>"; };
 		096F5CB41C53F1C90041EA5F /* HelpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpViewController.swift; sourceTree = "<group>"; };
 		096F5CB81C56D7240041EA5F /* Level9.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Level9.swift; sourceTree = "<group>"; };
+		098203EF1D088818009303C5 /* ButtonSKNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonSKNode.swift; sourceTree = "<group>"; };
 		0994526D1C5F983400F0ABFF /* HelpView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpView.swift; sourceTree = "<group>"; };
 		099452841C62007000F0ABFF /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		099452891C62007000F0ABFF /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -295,6 +297,7 @@
 				0911B7F11C731CF400DC3F69 /* PositionedSKScene.swift */,
 				0936813E1C417378008C6B5D /* GameSKScene.swift */,
 				0936817A1C4696AB008C6B5D /* MenuSKScene.swift */,
+				098203EF1D088818009303C5 /* ButtonSKNode.swift */,
 			);
 			name = SKSceneElements;
 			sourceTree = "<group>";
@@ -513,6 +516,7 @@
 				0911B7F21C731CF400DC3F69 /* PositionedSKScene.swift in Sources */,
 				096F5CB91C56D7240041EA5F /* Level9.swift in Sources */,
 				0911B7F41C73A4B600DC3F69 /* ImagineModel5.swift in Sources */,
+				098203F01D088818009303C5 /* ButtonSKNode.swift in Sources */,
 				0936816D1C42707B008C6B5D /* Experience.swift in Sources */,
 				09F145151D02240B00D0BDC7 /* ImagineModel14.swift in Sources */,
 				0964BB111CEF37D000A4B40D /* Robot.swift in Sources */,
