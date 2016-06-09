@@ -166,6 +166,7 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="1Ra-ka-8GZ" firstAttribute="top" secondItem="mdg-Na-z8E" secondAttribute="bottom" id="7HF-sE-h3O"/>
                             <constraint firstItem="3UZ-lq-r3k" firstAttribute="top" secondItem="mdg-Na-z8E" secondAttribute="top" id="KAk-fQ-gXs"/>
@@ -174,6 +175,9 @@
                             <constraint firstAttribute="trailingMargin" secondItem="mdg-Na-z8E" secondAttribute="trailing" id="c5F-ay-o7t"/>
                             <constraint firstItem="mdg-Na-z8E" firstAttribute="top" secondItem="Rck-lh-pCm" secondAttribute="topMargin" id="hlz-F7-D74"/>
                         </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="W5f-EX-kPF" appends="YES" id="Rvu-5b-jbU"/>
+                        </connections>
                     </view>
                     <connections>
                         <outlet property="labelView" destination="LU5-OA-XkX" id="y0d-XO-lc5"/>
@@ -181,6 +185,16 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jBv-Gs-3v7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="W5f-EX-kPF">
+                    <connections>
+                        <action selector="longPress:" destination="1A5-gt-hTc" id="3qI-7Y-en0"/>
+                    </connections>
+                </pongPressGestureRecognizer>
+                <tapGestureRecognizer id="8TK-lF-x5z">
+                    <connections>
+                        <action selector="tapGesture:" destination="1A5-gt-hTc" id="ywd-fo-zS7"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1218" y="208"/>
         </scene>
@@ -203,7 +217,7 @@
                                     <action selector="elseButton:" destination="S9v-w3-pyN" eventType="touchUpInside" id="f2X-z9-aXR"/>
                                 </connections>
                             </button>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="You must reach the sore of 10 to be able to see an imaginary representation of the world in this window." textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dPD-EN-VYk">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="You must reach the sore of 10 to be able to see an imaginary representation of the world in this window." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="dPD-EN-VYk">
                                 <rect key="frame" x="28" y="38" width="344" height="342"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <accessibility key="accessibilityConfiguration">
@@ -221,6 +235,7 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T1U-Yf-6NB">
                                 <rect key="frame" x="340" y="0.0" width="40" height="40"/>
+                                <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="ImT-0C-Lbr"/>
                                     <constraint firstAttribute="width" constant="40" id="Q2N-l8-ziG"/>
@@ -228,10 +243,12 @@
                                 <state key="normal" image="close"/>
                                 <connections>
                                     <action selector="closeButton:" destination="S9v-w3-pyN" eventType="touchUpInside" id="fil-gU-POB"/>
+                                    <outletCollection property="gestureRecognizers" destination="vBV-PH-CCh" appends="YES" id="3NI-sF-DDR"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="T1U-Yf-6NB" secondAttribute="trailing" id="8Tb-Z1-q82"/>
                             <constraint firstItem="dPD-EN-VYk" firstAttribute="top" secondItem="ceU-MJ-Rek" secondAttribute="bottom" constant="8" symbolic="YES" id="CQh-no-mRG"/>
@@ -250,6 +267,10 @@
                                 <exclude reference="jWi-cq-msQ"/>
                             </mask>
                         </variation>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="sxK-6N-0Kr" appends="YES" id="1V4-g9-pMb"/>
+                            <outletCollection property="gestureRecognizers" destination="vBV-PH-CCh" appends="YES" id="5mF-TG-kCm"/>
+                        </connections>
                     </view>
                     <connections>
                         <outlet property="sceneView" destination="Oej-sS-MrJ" id="N9L-gz-PFx"/>
@@ -257,6 +278,16 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kzU-Ao-ubp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="sxK-6N-0Kr">
+                    <connections>
+                        <action selector="longPressGesture:" destination="S9v-w3-pyN" id="Mox-Bl-6UB"/>
+                    </connections>
+                </pongPressGestureRecognizer>
+                <tapGestureRecognizer id="vBV-PH-CCh">
+                    <connections>
+                        <action selector="tapGesture:" destination="S9v-w3-pyN" id="i3f-Oa-R1m"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1218" y="712"/>
         </scene>

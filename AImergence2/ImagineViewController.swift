@@ -31,6 +31,10 @@ class ImagineViewController: UIViewController {
         sceneView.pointOfView = imagineModel.cameraNodes[1]
     }
     
+    @IBAction func tapGesture(sender: AnyObject) {
+    }
+    @IBAction func longPressGesture(sender: AnyObject) {
+    }
 
     let bundleName = NSBundle.mainBundle().infoDictionary!["CFBundleName"] as! String
 

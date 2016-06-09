@@ -47,7 +47,7 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
         let userInterfaceLocks = userDefaults.arrayForKey(GameViewController.unlockDefaultKey)
         if let userIntergaceLocksBool = userInterfaceLocks as? [[Bool]] {
             if userIntergaceLocksBool.count == interfaceLocks.count {
-                //interfaceLocks = userIntergaceLocksBool
+                interfaceLocks = userIntergaceLocksBool
             }
         }
         

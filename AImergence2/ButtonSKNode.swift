@@ -18,12 +18,13 @@ class ButtonSKNode: SKSpriteNode
     let activatedTexture: SKTexture
     let disactivatedTexture: SKTexture
 
-    var activated = false
+    var active = false
+    var visible = false
     
-    init(activatedImageNamed: String, disactivatedImageNamed: String, activated: Bool) {
+    init(activatedImageNamed: String, disactivatedImageNamed: String, active: Bool) {
         activatedTexture = SKTexture(imageNamed: activatedImageNamed)
         disactivatedTexture = SKTexture(imageNamed: disactivatedImageNamed)
-        self.activated = activated
+        self.active = active
         let appearPath = UIBezierPath()
         appearPath.addArcWithCenter(CGPoint(x: 0, y: 60), radius: 30, startAngle: -CGFloat(M_PI) / 2 , endAngle: CGFloat(M_PI) / 2, clockwise: false)
         let actionAppearPath = SKAction.followPath(appearPath.CGPath, asOffset: false, orientToPath: false, duration: 0.2)
@@ -38,7 +39,7 @@ class ButtonSKNode: SKSpriteNode
         let actionDisappearPath = SKAction.followPath(disappearPath.CGPath, asOffset: false, orientToPath: false, duration: 0.2)
         let actionScaleDisappear   = SKAction.scaleTo(0.0, duration: 0.2)
         actionDisappear = SKAction.group([actionDisappearPath, actionScaleDisappear])
-        let texture = activated ? self.activatedTexture : self.disactivatedTexture
+        let texture = active ? self.activatedTexture : self.disactivatedTexture
         super.init(texture: texture, color: UIColor.clearColor(), size: CGSize(width: 76, height: 76))
         setScale(0.0)
         zPosition = -1
@@ -49,26 +50,32 @@ class ButtonSKNode: SKSpriteNode
     }
     
     func appear() {
-        removeAllActions()
-        if activated {
-            runAction(SKAction.sequence([actionAppear, actionRepeatPulse]))
-        } else {
-            runAction(actionAppear)
+        if !visible {
+            removeAllActions()
+            if active {
+                runAction(SKAction.sequence([actionAppear, actionRepeatPulse]))
+            } else {
+                runAction(actionAppear)
+            }
+            visible = true
         }
     }
     
     func disappear() {
-        removeAllActions()
-        runAction(actionDisappear)
+        if visible {
+            removeAllActions()
+            runAction(actionDisappear)
+            visible = false
+        }
     }
     
     func activate() {
-        activated = true
+        active = true
         texture = activatedTexture
     }
     
     func disactivate() {
-        activated = false
+        active = false
         texture = disactivatedTexture
     }
 }

@@ -26,9 +26,9 @@ class GameSKScene: PositionedSKScene {
     let gameModel:GameModel2
     let level:Level0
     
-    let instructionButtonNode = ButtonSKNode(activatedImageNamed: "instructions-color", disactivatedImageNamed: "instructions-black", activated: true)
-    let imagineButtonNode = ButtonSKNode(activatedImageNamed: "imagine-color", disactivatedImageNamed: "imagine-black", activated: true)
-    let levelButtonNode = ButtonSKNode(activatedImageNamed: "levels-color", disactivatedImageNamed: "levels-black", activated: false)
+    let instructionButtonNode = ButtonSKNode(activatedImageNamed: "instructions-color", disactivatedImageNamed: "instructions-black", active: true)
+    let imagineButtonNode = ButtonSKNode(activatedImageNamed: "imagine-color", disactivatedImageNamed: "imagine-black", active: true)
+    let levelButtonNode = ButtonSKNode(activatedImageNamed: "levels-color", disactivatedImageNamed: "levels-black", active: false)
     
     var gameSceneDelegate: GameSceneDelegate!
     var experimentNodes = [ExperimentSKNode]()
@@ -180,10 +180,13 @@ class GameSKScene: PositionedSKScene {
         case 0:
             instructionButtonNode.appear()
             imagineButtonNode.disappear()
+            levelButtonNode.disappear()
         case 1:
             instructionButtonNode.disappear()
             imagineButtonNode.appear()
+            levelButtonNode.disappear()
         case 2:
+            instructionButtonNode.disappear()
             imagineButtonNode.disappear()
             levelButtonNode.appear()
         default:
@@ -191,32 +194,6 @@ class GameSKScene: PositionedSKScene {
             imagineButtonNode.disappear()
             levelButtonNode.disappear()
         }
-        
-/*
-        if buttonIndex == -1 {
-            instructionButtonNode.disappear()
-            imagineButtonNode.disappear()
-            levelButtonNode.disappear()
-        } else {
-            buttonNode!.setScale(0)
-            buttonNode!.position.y -= 60
-            let actionPath = UIBezierPath()
-            actionPath.addArcWithCenter(CGPoint(x: 0, y: 30), radius: 30, startAngle: -CGFloat(M_PI) / 2 , endAngle: CGFloat(M_PI) / 2, clockwise: false)
-            let actionFollow = SKAction.followPath(actionPath.CGPath, asOffset: true, orientToPath: false, duration: 0.2)
-            if gameSceneDelegate.isInterfaceUnlocked(buttonIndex) {
-                buttonNode!.removeAllActions()
-                //buttonNode!.runAction(SKAction.group([actionScaleButton, actionMoveButton]))
-                buttonNode!.runAction(SKAction.group([actionScaleButton, actionFollow]))
-                buttonNode!.texture = buttonTextures[buttonIndex][0]
-            } else {
-                let actionPulse = SKAction.sequence([actionPulseUp, actionPulseDown])
-                let actionRepeatPulse = SKAction.repeatActionForever(actionPulse)
-                let actionAppear = SKAction.group([actionScaleButton, actionFollow])
-                buttonNode!.runAction(SKAction.sequence([actionAppear, actionRepeatPulse]), withKey: "pulse")
-                buttonNode!.texture = buttonTextures[buttonIndex][1]
-            }
-        }
- */
     }
     
     func longPress(recognizer: UILongPressGestureRecognizer)
