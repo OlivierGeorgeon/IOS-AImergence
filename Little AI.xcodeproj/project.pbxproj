@@ -42,12 +42,6 @@
 		093C3F681C6F8482000BC6FB /* ImagineModel3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093C3F671C6F8482000BC6FB /* ImagineModel3.swift */; };
 		0955F6F81CF2E65400473C03 /* GameModel4.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0955F6F71CF2E65400473C03 /* GameModel4.swift */; };
 		0955F6FA1CF349BD00473C03 /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 0955F6F91CF349BD00473C03 /* art.scnassets */; };
-		095856641D0AC375002BD7D7 /* Fire.scnp in Resources */ = {isa = PBXBuildFile; fileRef = 095856621D0AC375002BD7D7 /* Fire.scnp */; };
-		095856651D0AC375002BD7D7 /* spark.png in Resources */ = {isa = PBXBuildFile; fileRef = 095856631D0AC375002BD7D7 /* spark.png */; };
-		095856691D0AC49F002BD7D7 /* Bokeh.scnp in Resources */ = {isa = PBXBuildFile; fileRef = 095856671D0AC49F002BD7D7 /* Bokeh.scnp */; };
-		0958566A1D0AC49F002BD7D7 /* bokeh.png in Resources */ = {isa = PBXBuildFile; fileRef = 095856681D0AC49F002BD7D7 /* bokeh.png */; };
-		0958566D1D0AC4DF002BD7D7 /* Stars.scnp in Resources */ = {isa = PBXBuildFile; fileRef = 0958566B1D0AC4DF002BD7D7 /* Stars.scnp */; };
-		0958566E1D0AC4DF002BD7D7 /* star.png in Resources */ = {isa = PBXBuildFile; fileRef = 0958566C1D0AC4DF002BD7D7 /* star.png */; };
 		095856711D0AC50B002BD7D7 /* Confetti.scnp in Resources */ = {isa = PBXBuildFile; fileRef = 0958566F1D0AC50B002BD7D7 /* Confetti.scnp */; };
 		095856721D0AC50B002BD7D7 /* confetti.png in Resources */ = {isa = PBXBuildFile; fileRef = 095856701D0AC50B002BD7D7 /* confetti.png */; };
 		0961EBB91C63EE2200A4E55C /* Level3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0961EBB81C63EE2200A4E55C /* Level3.swift */; };
@@ -150,12 +144,6 @@
 		093C3F671C6F8482000BC6FB /* ImagineModel3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagineModel3.swift; sourceTree = "<group>"; };
 		0955F6F71CF2E65400473C03 /* GameModel4.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameModel4.swift; sourceTree = "<group>"; };
 		0955F6F91CF349BD00473C03 /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
-		095856621D0AC375002BD7D7 /* Fire.scnp */ = {isa = PBXFileReference; lastKnownFileType = file.scp; path = Fire.scnp; sourceTree = "<group>"; };
-		095856631D0AC375002BD7D7 /* spark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spark.png; sourceTree = "<group>"; };
-		095856671D0AC49F002BD7D7 /* Bokeh.scnp */ = {isa = PBXFileReference; lastKnownFileType = file.scp; path = Bokeh.scnp; sourceTree = "<group>"; };
-		095856681D0AC49F002BD7D7 /* bokeh.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bokeh.png; sourceTree = "<group>"; };
-		0958566B1D0AC4DF002BD7D7 /* Stars.scnp */ = {isa = PBXFileReference; lastKnownFileType = file.scp; path = Stars.scnp; sourceTree = "<group>"; };
-		0958566C1D0AC4DF002BD7D7 /* star.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = star.png; sourceTree = "<group>"; };
 		0958566F1D0AC50B002BD7D7 /* Confetti.scnp */ = {isa = PBXFileReference; lastKnownFileType = file.scp; path = Confetti.scnp; sourceTree = "<group>"; };
 		095856701D0AC50B002BD7D7 /* confetti.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = confetti.png; sourceTree = "<group>"; };
 		0961EBB81C63EE2200A4E55C /* Level3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Level3.swift; sourceTree = "<group>"; };
@@ -230,12 +218,6 @@
 		0914EA6D1D0AC03B00E78D5F /* Particles */ = {
 			isa = PBXGroup;
 			children = (
-				095856621D0AC375002BD7D7 /* Fire.scnp */,
-				095856631D0AC375002BD7D7 /* spark.png */,
-				095856671D0AC49F002BD7D7 /* Bokeh.scnp */,
-				095856681D0AC49F002BD7D7 /* bokeh.png */,
-				0958566B1D0AC4DF002BD7D7 /* Stars.scnp */,
-				0958566C1D0AC4DF002BD7D7 /* star.png */,
 				0958566F1D0AC50B002BD7D7 /* Confetti.scnp */,
 				095856701D0AC50B002BD7D7 /* confetti.png */,
 			);
@@ -521,15 +503,9 @@
 			files = (
 				093681491C417378008C6B5D /* LaunchScreen.storyboard in Resources */,
 				095856721D0AC50B002BD7D7 /* confetti.png in Resources */,
-				095856641D0AC375002BD7D7 /* Fire.scnp in Resources */,
-				095856691D0AC49F002BD7D7 /* Bokeh.scnp in Resources */,
 				0955F6FA1CF349BD00473C03 /* art.scnassets in Resources */,
-				0958566A1D0AC49F002BD7D7 /* bokeh.png in Resources */,
-				095856651D0AC375002BD7D7 /* spark.png in Resources */,
 				0961EBC01C66658B00A4E55C /* Help.plist in Resources */,
 				099452981C620CF600F0ABFF /* Localizable.strings in Resources */,
-				0958566D1D0AC4DF002BD7D7 /* Stars.scnp in Resources */,
-				0958566E1D0AC4DF002BD7D7 /* star.png in Resources */,
 				093681461C417378008C6B5D /* Assets.xcassets in Resources */,
 				095856711D0AC50B002BD7D7 /* Confetti.scnp in Resources */,
 				093681441C417378008C6B5D /* Main.storyboard in Resources */,

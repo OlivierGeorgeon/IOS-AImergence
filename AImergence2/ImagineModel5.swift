@@ -35,6 +35,10 @@ class ImagineModel5: ImagineModel4
             bodyNode = nil
             canKnowNextBodyNode = true
             nextBodyNode?.runAction(moveUp)
+            //if let particles = SCNParticleSystem(named: "Confetti.scnp", inDirectory: nil) {
+            //    nextBodyNode?.addParticleSystem(particles)
+            //}
+
         case 11:
             createOrRetrieveBodyNodeAndRunAction(action: actions.waitAndToss())
             if neutralNode == nil { neutralNode = createNeutralNode(SCNVector3(-1.5, 0, 0)) }
