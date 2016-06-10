@@ -13,8 +13,8 @@ class SCNRobotNode: SCNNode {
     
     let bendFront = SCNAction.rotateByX( CGFloat(M_PI) / 2, y: 0, z: 0, duration: 0.2)
     let bendBack  = SCNAction.rotateByX(-CGFloat(M_PI) / 2, y: 0, z: 0, duration: 0.2)
-    let bendLeft = SCNAction.rotateByX( 0, y: 0, z: CGFloat(M_PI) / 2, duration: 0.2)
-    let bendRight  = SCNAction.rotateByX(0, y: 0, z: -CGFloat(M_PI) / 2, duration: 0.2)
+    let bendLeft  = SCNAction.rotateByX(0, y: 0, z:  CGFloat(M_PI) / 2, duration: 0.2)
+    let bendRight = SCNAction.rotateByX(0, y: 0, z: -CGFloat(M_PI) / 2, duration: 0.2)
     
     var robot = Robot(i: 0, j: 0, direction: Compass.EAST)
         

@@ -14,12 +14,11 @@ class Level13 : Level12 {
     override var number:Int { return 13 }
     override var gameModelString: String { return "GameModel5"}
     
-    override var board: [[Int]] { return [[1, 1, 1, 1, 1, 1],
-                                          [1, 0, 0, 0, 0, 1],
-                                          [1, 0, 1, 1, 0, 1],
-                                          [1, 0, 1, 0, 0, 1],
-                                          [1, 0, 0, 0, 1, 1],
-                                          [1, 1, 1, 1, 1, 1]] }
+    override var board: [[Int]] { return [[1, 1, 1, 1, 1],
+                                          [1, 0, 0, 0, 1],
+                                          [1, 0, 1, 0, 1],
+                                          [1, 0, 0, 0, 1],
+                                          [1, 1, 1, 1, 1]] }
     
     convenience required init() {
         let experiment0 = Experiment(number: 0, shapeIndex: 1)

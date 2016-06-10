@@ -11,7 +11,7 @@ import SpriteKit
 
 class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate, HelpViewControllerDelegate, WorldViewControllerDelegate
 {
-    static let maxLevelNumber = 15
+    static let maxLevelNumber = 17
     static let unlockDefaultKey = "unlockDefaultKey"
     
     @IBOutlet weak var sceneView: GameView!
@@ -26,8 +26,8 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
     var imagineViewController: ImagineViewController?
     var level = 0 {
         didSet {
-            //levelButton.setTitle(NSLocalizedString("Level", comment: "") + " \(level)", forState: .Normal)
-            levelButton.setTitle("\(level)", forState: .Normal)
+            levelButton.setTitle(NSLocalizedString("Level", comment: "") + " \(level)", forState: .Normal)
+            //levelButton.setTitle("\(level)", forState: .Normal)
             if !helpViewControllerContainer.hidden { helpViewController?.displayLevel(level) }
             if !imagineViewControllerContainer.hidden { imagineViewController?.displayLevel(level) }
         }
@@ -38,7 +38,8 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
     static let levelInterfaceIndex = 2
 
     let userDefaults = NSUserDefaults.standardUserDefaults()
-    var interfaceLocks = [[Bool]](count: GameViewController.maxLevelNumber + 1, repeatedValue: [false, false, true])
+    
+    var interfaceLocks = [[Bool]](count: GameViewController.maxLevelNumber + 1, repeatedValue: [false, false, false])
     
     override func viewDidLoad()
     {
@@ -46,8 +47,12 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
         
         let userInterfaceLocks = userDefaults.arrayForKey(GameViewController.unlockDefaultKey)
         if let userIntergaceLocksBool = userInterfaceLocks as? [[Bool]] {
-            if userIntergaceLocksBool.count == interfaceLocks.count {
-                interfaceLocks = userIntergaceLocksBool
+            if Process.arguments[1] == "unlocked" {
+                interfaceLocks = [[Bool]](count: GameViewController.maxLevelNumber + 1, repeatedValue: [false, false, true])
+            } else {
+                if userIntergaceLocksBool.count == interfaceLocks.count {
+                    interfaceLocks = userIntergaceLocksBool
+                }
             }
         }
         

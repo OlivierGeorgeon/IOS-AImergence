@@ -71,7 +71,16 @@
 			<string>The world of Level 14 is the same as that of Level 13 but the experiments have been placed in a random order.</string>
 		</array>
 		<array>
-			<string>The world of Level 15 is the same as that of Level 14 but there are two more experiments that allow you to feel the box around the robot.</string>
+			<string>The world of Level 15 is simlar to that of Level 14 but there are two more experiments that allow you to feel the tiles around the robot.</string>
+			<string>The box is getting even bigger.</string>
+		</array>
+		<array>
+			<string>The world of Level 15 is the same as that of Level 14.</string>
+			<string>The experiments have been placed randomly.</string>
+		</array>
+		<array>
+			<string>The world of Level 17 is the same as that of Level 16. </string>
+			<string>All the events have a null value except moving forward and bumping.</string>
 		</array>
 	</array>
 </dict>
