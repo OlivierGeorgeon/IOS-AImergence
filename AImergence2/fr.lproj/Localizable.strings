@@ -8,6 +8,8 @@
 
 "Level" = "Niveau";
 "Cancel" = "Retour";
-"You must reach the score of 10" = "Vous devez atteindre le score de 10 pour pouvoir voir une représentation imaginaire du monde dans cette fenêtre.";
+"You must reach the score of 10" = "Vous devez atteindre le score de 10 avant de pouvoir voir une représentation imaginaire du monde dans cette fenêtre.";
 "Keep playing" = "Bravo ! Vous avez gagné ce niveau ! Continuez à jouer avec cette fenêtre ouverte pour afficher le monde imaginaire. Ensuite, faites glisser vers la gauche pour passer au niveau suivant.";
 "Swipe" = "Glissez horizontalement pour changer de niveau.";
+"Drag the 3D scene to move the camera" = "Pressez-glissez la scène 3D pour déplacer la caméra.";
+"Double tap to swap cameras." = "Double-tappez sur la scène 3D pour changer de camera.";

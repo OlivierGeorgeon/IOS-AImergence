@@ -48,6 +48,9 @@ class MenuSKScene: PositionedSKScene {
         instructionNode.fontColor = UIColor.blackColor()
         instructionNode.verticalAlignmentMode = .Center
         instructionNode.position = CGPoint(x: 187, y: 50)
+        while instructionNode.frame.size.width >= 375 {
+            instructionNode.fontSize-=1.0
+        }
         addChild(instructionNode)
         
         let cancelBackgroundNode = SKShapeNode(rect: CGRect(x: -100, y: -20, width: 200, height: 40), cornerRadius: 20)

@@ -11,3 +11,5 @@
 "You must reach the score of 10" = "You must reach the score of 10 to reveal an imaginary representation of the world in this window.";
 "Keep playing" = "Excellent! You have completed this level! Keep playing with this display on to show the imaginary world. Next, swipe left to move on to the next level.";
 "Swipe" = "Swipe horizontally to change level.";
+"Drag the 3D scene to move the camera" = "Drag the 3D scene to move the camera";
+"Double tap to swap cameras." = "Double tap on the 3D scene to swap cameras.";

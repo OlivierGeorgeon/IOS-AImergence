@@ -274,12 +274,6 @@
 				09ED65801C6D0EF5004A8CA7 /* Help */,
 				09ED65811C6D0F27004A8CA7 /* Imagine */,
 				0961EBB71C63D19E00A4E55C /* SKSceneElements */,
-				093681781C4677A6008C6B5D /* GameModel.swift */,
-				09AC4CB91C7DD63700C149EC /* GameModel2.swift */,
-				09AC4CBB1C7DDBFC00C149EC /* GameModel3.swift */,
-				0955F6F71CF2E65400473C03 /* GameModel4.swift */,
-				09AF841A1D01ABDD00C1E310 /* GameModel5.swift */,
-				0914EA671D09BAD100E78D5F /* GameModel6.swift */,
 				0994529A1C620CF600F0ABFF /* Localizable.strings */,
 				093681451C417378008C6B5D /* Assets.xcassets */,
 				0955F6F91CF349BD00473C03 /* art.scnassets */,
@@ -340,6 +334,7 @@
 		0961EBB71C63D19E00A4E55C /* SKSceneElements */ = {
 			isa = PBXGroup;
 			children = (
+				09D426481D0AFB4300B34CDF /* GameModels */,
 				093000DF1C4FD3B700425BB1 /* ReshapableSKNode.swift */,
 				093000D91C4FB39000425BB1 /* ExperimentSKNode.swift */,
 				093000DD1C4FC77700425BB1 /* ExperienceSKNode.swift */,
@@ -351,23 +346,9 @@
 			name = SKSceneElements;
 			sourceTree = "<group>";
 		};
-		09ED65801C6D0EF5004A8CA7 /* Help */ = {
+		09D426471D0AFB1E00B34CDF /* ImagineModels */ = {
 			isa = PBXGroup;
 			children = (
-				096F5CB41C53F1C90041EA5F /* HelpViewController.swift */,
-				0994526D1C5F983400F0ABFF /* HelpView.swift */,
-				0961EBC21C66658B00A4E55C /* Help.plist */,
-			);
-			name = Help;
-			sourceTree = "<group>";
-		};
-		09ED65811C6D0F27004A8CA7 /* Imagine */ = {
-			isa = PBXGroup;
-			children = (
-				0914EA6D1D0AC03B00E78D5F /* Particles */,
-				09ED657E1C6D0EE6004A8CA7 /* ImagineViewController.swift */,
-				09ED65821C6D11A1004A8CA7 /* Geometries.swift */,
-				09B12C7C1C75D53F000FBEF6 /* Actions.swift */,
 				090AD9E71C77488000F2FE8C /* ImagineModel.swift */,
 				09ED65841C6D1400004A8CA7 /* ImagineModel0.swift */,
 				09AC4D161C84D36100C149EC /* ImagineModel1.swift */,
@@ -387,6 +368,41 @@
 				0914EA691D0AA7DE00E78D5F /* ImagineModel15.swift */,
 				09D426411D0AD44000B34CDF /* ImagineModel16.swift */,
 				09D426451D0AE30200B34CDF /* ImagineModel17.swift */,
+			);
+			name = ImagineModels;
+			sourceTree = "<group>";
+		};
+		09D426481D0AFB4300B34CDF /* GameModels */ = {
+			isa = PBXGroup;
+			children = (
+				093681781C4677A6008C6B5D /* GameModel.swift */,
+				09AC4CB91C7DD63700C149EC /* GameModel2.swift */,
+				09AC4CBB1C7DDBFC00C149EC /* GameModel3.swift */,
+				0955F6F71CF2E65400473C03 /* GameModel4.swift */,
+				09AF841A1D01ABDD00C1E310 /* GameModel5.swift */,
+				0914EA671D09BAD100E78D5F /* GameModel6.swift */,
+			);
+			name = GameModels;
+			sourceTree = "<group>";
+		};
+		09ED65801C6D0EF5004A8CA7 /* Help */ = {
+			isa = PBXGroup;
+			children = (
+				096F5CB41C53F1C90041EA5F /* HelpViewController.swift */,
+				0994526D1C5F983400F0ABFF /* HelpView.swift */,
+				0961EBC21C66658B00A4E55C /* Help.plist */,
+			);
+			name = Help;
+			sourceTree = "<group>";
+		};
+		09ED65811C6D0F27004A8CA7 /* Imagine */ = {
+			isa = PBXGroup;
+			children = (
+				09D426471D0AFB1E00B34CDF /* ImagineModels */,
+				0914EA6D1D0AC03B00E78D5F /* Particles */,
+				09ED657E1C6D0EE6004A8CA7 /* ImagineViewController.swift */,
+				09ED65821C6D11A1004A8CA7 /* Geometries.swift */,
+				09B12C7C1C75D53F000FBEF6 /* Actions.swift */,
 				0964BB121CEF488300A4B40D /* SCNRobotNode.swift */,
 			);
 			name = Imagine;

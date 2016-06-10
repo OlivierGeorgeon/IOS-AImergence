@@ -49,6 +49,7 @@ class HelpViewController: UIViewController {
         super.viewDidLoad()
         displayLevel(0)
 
+        /*
         // Set vertical effect
         let verticalMotionEffect = UIInterpolatingMotionEffect(keyPath: "test", type: .TiltAlongVerticalAxis)
         verticalMotionEffect.minimumRelativeValue = -10
@@ -63,19 +64,22 @@ class HelpViewController: UIViewController {
         group.motionEffects = [horizontalMotionEffect, verticalMotionEffect]
         //let helpView = view.subviews[0] as! HelpView
         view.addMotionEffect(group)
+ */
 }
     
     func displayLevel(level: Int) {
-        labelView?.text = levelString + " \(level)"
-        textView?.text = helpBlobArray[level]
+        labelView.text = levelString + " \(level)"
+        textView.text = helpBlobArray[level]
+        textView.font = UIFont.systemFontOfSize(15)
     }
     
     override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
         // seems to fix a bug that the textview won't display entirely
         coordinator.animateAlongsideTransition({ (UIViewControllerTransitionCoordinatorContext) -> Void in }, completion: { (UIViewControllerTransitionCoordinatorContext) -> Void in
-            let temp = self.textView.text
-            self.textView.text = ""
-            self.textView.text = temp
+            //let temp = self.textView.text
+            //self.textView.text = ""
+            //self.textView.text = temp
+            self.textView.font = UIFont.systemFontOfSize(15)
         })
     }
   
