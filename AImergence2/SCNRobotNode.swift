@@ -11,6 +11,11 @@ import SceneKit
 
 class SCNRobotNode: SCNNode {
     
+    let bendFront = SCNAction.rotateByX( CGFloat(M_PI) / 2, y: 0, z: 0, duration: 0.2)
+    let bendBack  = SCNAction.rotateByX(-CGFloat(M_PI) / 2, y: 0, z: 0, duration: 0.2)
+    let bendLeft = SCNAction.rotateByX( 0, y: 0, z: CGFloat(M_PI) / 2, duration: 0.2)
+    let bendRight  = SCNAction.rotateByX(0, y: 0, z: -CGFloat(M_PI) / 2, duration: 0.2)
+    
     var robot = Robot(i: 0, j: 0, direction: Compass.EAST)
         
     func turnLeft(){
@@ -35,17 +40,32 @@ class SCNRobotNode: SCNNode {
     }
     
     func feelFront() {
-        let bendFront = SCNAction.rotateByX( CGFloat(M_PI) / 2, y: 0, z: 0, duration: 0.2)
-        let bendBack  = SCNAction.rotateByX(-CGFloat(M_PI) / 2, y: 0, z: 0, duration: 0.2)
-        
         let bodyNode = self.childNodeWithName("body", recursively: false)
         bodyNode?.runAction(SCNAction.sequence([bendFront, bendBack]))
+    }
+    
+    func feelLeft() {
+        let bodyNode = self.childNodeWithName("body", recursively: false)
+        bodyNode?.runAction(SCNAction.sequence([bendRight, bendLeft]))
+    }
+    
+    func feelRight() {
+        let bodyNode = self.childNodeWithName("body", recursively: false)
+        bodyNode?.runAction(SCNAction.sequence([bendLeft, bendRight]))
     }
     
     func positionForward() -> SCNVector3 {
         return SCNVector3(robot.cellFront().i, 0, -robot.cellFront().j)
     }
 
+    func positionLeft() -> SCNVector3 {
+        return SCNVector3(robot.cellLeft().i, 0, -robot.cellLeft().j)
+    }
+    
+    func positionRight() -> SCNVector3 {
+        return SCNVector3(robot.cellRight().i, 0, -robot.cellRight().j)
+    }
+    
     func forwardVector() -> SCNVector3 {
         switch robot.direction {
         case .EAST:

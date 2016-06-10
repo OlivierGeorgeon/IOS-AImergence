@@ -46,31 +46,32 @@ class ImagineModel11: ImagineModel
         switch experience.experiment.number {
         case 0:
             robotNode.turnLeft()
-            spawnExperienceNode(experience, position: robotNode.position, delayed: false)
+            spawnExperienceNode(experience, position: robotNode.position, delay: 0.1)
         case 1:
             switch experience.resultNumber {
             case 1:
                 robotNode.moveForward()
-                spawnExperienceNode(experience, position: robotNode.position, delayed: false)
+                spawnExperienceNode(experience, position: robotNode.position, delay: 0.1)
             default:
                 robotNode.bump()
                 if tiles[robotNode.robot.cellFront()] == nil {
-                    createTileNode(robotNode.positionForward() + SCNVector3(0, -0.5, 0))
+                    createTileNode(robotNode.positionForward() + SCNVector3(0, -0.5, 0), delay: 0.1)
                 }
-                spawnExperienceNode(experience, position: robotNode.position + robotNode.forwardVector() / 2, delayed: true)
+                spawnExperienceNode(experience, position: robotNode.position + robotNode.forwardVector() / 2, delay: 0.1)
             }
         default:
             robotNode.turnRight()
-            spawnExperienceNode(experience, position: robotNode.position, delayed: false)
+            spawnExperienceNode(experience, position: robotNode.position)
         }
     }
     
-    func createTileNode(position: SCNVector3) -> SCNNode {
+    func createTileNode(position: SCNVector3, delay: NSTimeInterval) -> SCNNode {
         let node = SCNNode(geometry: Geometries.tile())
         node.position = position
         node.hidden = true
         worldNode.addChildNode(node)
-        node.runAction(SCNAction.sequence([SCNAction.waitForDuration(0.1), SCNAction.unhide()]))
+        let actionWait = SCNAction.waitForDuration(delay)
+        node.runAction(SCNAction.sequence([actionWait, SCNAction.waitForDuration(0.1), SCNAction.unhide()]))
         return node
     }
 

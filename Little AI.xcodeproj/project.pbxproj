@@ -15,6 +15,10 @@
 		0911B7F21C731CF400DC3F69 /* PositionedSKScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0911B7F11C731CF400DC3F69 /* PositionedSKScene.swift */; };
 		0911B7F41C73A4B600DC3F69 /* ImagineModel5.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0911B7F31C73A4B600DC3F69 /* ImagineModel5.swift */; };
 		0911B7F61C748BFC00DC3F69 /* ImagineModel9.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0911B7F51C748BFC00DC3F69 /* ImagineModel9.swift */; };
+		0914EA661D09B82A00E78D5F /* Level15.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0914EA651D09B82A00E78D5F /* Level15.swift */; };
+		0914EA681D09BAD100E78D5F /* GameModel6.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0914EA671D09BAD100E78D5F /* GameModel6.swift */; };
+		0914EA6A1D0AA7DE00E78D5F /* ImagineModel15.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0914EA691D0AA7DE00E78D5F /* ImagineModel15.swift */; };
+		0914EA6C1D0AAD6300E78D5F /* Level16.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0914EA6B1D0AAD6300E78D5F /* Level16.swift */; };
 		093000DA1C4FB39000425BB1 /* ExperimentSKNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093000D91C4FB39000425BB1 /* ExperimentSKNode.swift */; };
 		093000DE1C4FC77700425BB1 /* ExperienceSKNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093000DD1C4FC77700425BB1 /* ExperienceSKNode.swift */; };
 		093000E01C4FD3B700425BB1 /* ReshapableSKNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093000DF1C4FD3B700425BB1 /* ReshapableSKNode.swift */; };
@@ -101,6 +105,10 @@
 		0911B7F11C731CF400DC3F69 /* PositionedSKScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PositionedSKScene.swift; sourceTree = "<group>"; };
 		0911B7F31C73A4B600DC3F69 /* ImagineModel5.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagineModel5.swift; sourceTree = "<group>"; };
 		0911B7F51C748BFC00DC3F69 /* ImagineModel9.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagineModel9.swift; sourceTree = "<group>"; };
+		0914EA651D09B82A00E78D5F /* Level15.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Level15.swift; sourceTree = "<group>"; };
+		0914EA671D09BAD100E78D5F /* GameModel6.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameModel6.swift; sourceTree = "<group>"; };
+		0914EA691D0AA7DE00E78D5F /* ImagineModel15.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagineModel15.swift; sourceTree = "<group>"; };
+		0914EA6B1D0AAD6300E78D5F /* Level16.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Level16.swift; sourceTree = "<group>"; };
 		092B00371CBFF47A00A6FF3C /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		093000D91C4FB39000425BB1 /* ExperimentSKNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExperimentSKNode.swift; sourceTree = "<group>"; };
 		093000DD1C4FC77700425BB1 /* ExperienceSKNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExperienceSKNode.swift; sourceTree = "<group>"; };
@@ -234,6 +242,7 @@
 				09AC4CBB1C7DDBFC00C149EC /* GameModel3.swift */,
 				0955F6F71CF2E65400473C03 /* GameModel4.swift */,
 				09AF841A1D01ABDD00C1E310 /* GameModel5.swift */,
+				0914EA671D09BAD100E78D5F /* GameModel6.swift */,
 				0994529A1C620CF600F0ABFF /* Localizable.strings */,
 				093681451C417378008C6B5D /* Assets.xcassets */,
 				0955F6F91CF349BD00473C03 /* art.scnassets */,
@@ -283,6 +292,8 @@
 				0964BB161CEF94D900A4B40D /* Level12.swift */,
 				09AF84161D01A3D900C1E310 /* Level13.swift */,
 				09F145121D02226300D0BDC7 /* Level14.swift */,
+				0914EA651D09B82A00E78D5F /* Level15.swift */,
+				0914EA6B1D0AAD6300E78D5F /* Level16.swift */,
 				0964BB101CEF37D000A4B40D /* Robot.swift */,
 			);
 			name = Levels;
@@ -334,6 +345,7 @@
 				0964BB181CEF95AA00A4B40D /* ImagineModel12.swift */,
 				09AF84181D01A82800C1E310 /* ImagineModel13.swift */,
 				09F145141D02240B00D0BDC7 /* ImagineModel14.swift */,
+				0914EA691D0AA7DE00E78D5F /* ImagineModel15.swift */,
 				0964BB121CEF488300A4B40D /* SCNRobotNode.swift */,
 			);
 			name = Imagine;
@@ -492,6 +504,7 @@
 				093C3F681C6F8482000BC6FB /* ImagineModel3.swift in Sources */,
 				093681731C4523B1008C6B5D /* Level0.swift in Sources */,
 				093000E01C4FD3B700425BB1 /* ReshapableSKNode.swift in Sources */,
+				0914EA6A1D0AA7DE00E78D5F /* ImagineModel15.swift in Sources */,
 				09AF84171D01A3D900C1E310 /* Level13.swift in Sources */,
 				096F5CB51C53F1C90041EA5F /* HelpViewController.swift in Sources */,
 				09AC4CBC1C7DDBFC00C149EC /* GameModel3.swift in Sources */,
@@ -502,8 +515,10 @@
 				0936816F1C42708E008C6B5D /* Experiment.swift in Sources */,
 				0936813F1C417378008C6B5D /* GameSKScene.swift in Sources */,
 				0994526E1C5F983400F0ABFF /* HelpView.swift in Sources */,
+				0914EA681D09BAD100E78D5F /* GameModel6.swift in Sources */,
 				09AC4D1B1C86E29200C149EC /* ImagineModel10.swift in Sources */,
 				093681411C417378008C6B5D /* GameViewController.swift in Sources */,
+				0914EA661D09B82A00E78D5F /* Level15.swift in Sources */,
 				09ED65831C6D11A1004A8CA7 /* Geometries.swift in Sources */,
 				0961EBBB1C64961F00A4E55C /* Level6.swift in Sources */,
 				09AC4CBA1C7DD63700C149EC /* GameModel2.swift in Sources */,
@@ -529,6 +544,7 @@
 				09ED657D1C6C87D2004A8CA7 /* Level7.swift in Sources */,
 				093681791C4677A6008C6B5D /* GameModel.swift in Sources */,
 				093C3F661C6F68B9000BC6FB /* ImagineModel2.swift in Sources */,
+				0914EA6C1D0AAD6300E78D5F /* Level16.swift in Sources */,
 				09AC4D191C86E0D600C149EC /* Level10.swift in Sources */,
 				09ED657F1C6D0EE6004A8CA7 /* ImagineViewController.swift in Sources */,
 				090AD9F21C7A628C00F2FE8C /* ImagineModel8.swift in Sources */,

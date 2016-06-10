@@ -18,11 +18,11 @@ class ImagineModel0: ImagineModel
         case 0:
             createOrRetrieveBodyNodeAndRunAction(action: actions.bumpBack())
             if neutralNode == nil { neutralNode = createNeutralNode(SCNVector3(-1.5, 0, 0)) }
-            spawnExperienceNode(experience, position: SCNVector3( -1.0, 0.0, 0.0), delayed: true)
+            spawnExperienceNode(experience, position: SCNVector3( -1.0, 0.0, 0.0), delay: 0.1)
         case 1:
             createOrRetrieveBodyNodeAndRunAction(action: actions.bump())
             if enjoyableNode == nil { enjoyableNode = createEnjoyableNode(SCNVector3(1.25, 0, 0)) }
-            spawnExperienceNode(experience, position: SCNVector3( 1.0, 0.0, 0.0), delayed: true)
+            spawnExperienceNode(experience, position: SCNVector3( 1.0, 0.0, 0.0), delay: 0.1)
         default:
             break
         }

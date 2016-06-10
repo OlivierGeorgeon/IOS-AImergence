@@ -10,6 +10,8 @@ import SceneKit
 
 class ImagineModel
 {
+    let actionLiftExperience = SCNAction.moveByX( 0.0, y: 5.0, z: 0.0, duration: 3.0)
+
     let gameModel: GameModel2
     let actions = Actions()
     let scaleExperience = CGFloat(100)
@@ -75,7 +77,7 @@ class ImagineModel
         return bodyCamera
     }
     
-    func spawnExperienceNode(experience: Experience, position: SCNVector3, delayed:Bool = false) {
+    func spawnExperienceNode(experience: Experience, position: SCNVector3, delay:NSTimeInterval = 0.0) {
         let rect = CGRect(x: -0.2 * scaleExperience, y: -0.2 * scaleExperience, width: 0.4 * scaleExperience, height: 0.4 * scaleExperience)
         let path = gameModel.experimentPaths[experience.experiment.shapeIndex](rect)
         let geometry = SCNShape(path: path, extrusionDepth: 0.1 * scaleExperience)
@@ -88,7 +90,7 @@ class ImagineModel
         experienceNode.position = position
         experienceNode.hidden = true
         worldNode.addChildNode(experienceNode)
-        if delayed { experienceNode.runAction(actions.waitAndSpawnExperience()) }
-        else { experienceNode.runAction(actions.spawnExperience()) }
+        let actionWait = SCNAction.waitForDuration(delay)
+        experienceNode.runAction(SCNAction.sequence([actionWait, SCNAction.unhide(), actionLiftExperience, SCNAction.removeFromParentNode()]))
     }
 }

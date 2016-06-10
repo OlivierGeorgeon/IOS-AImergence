@@ -24,9 +24,9 @@ class HelpViewController: UIViewController {
         delegate?.hideHelpViewControllerContainer()
     }
     
-    @IBAction func longPress(sender: AnyObject) {} // Intercepts longPress gestures
+    @IBAction func longPress(sender: AnyObject) {print("longPress instructions")} // Intercepts longPress gestures
     
-    @IBAction func tapGesture(sender: AnyObject) {}
+    @IBAction func tapGesture(sender: AnyObject) {print("tap instructions")}
     
     let helpBlobArray:[String]
     let levelString = NSLocalizedString("Level", comment: "the game level displayed in the header of the help window")

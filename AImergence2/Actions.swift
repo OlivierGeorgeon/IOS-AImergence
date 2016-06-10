@@ -10,7 +10,6 @@ import SceneKit
 
 struct Actions
 {
-    let moveUpExperience = SCNAction.moveByX( 0.0, y: 5.0, z: 0.0, duration: 3.0)
     
     let moveForward:SCNAction = SCNAction.moveByX( 1, y: 0.0, z: 0.0, duration: 0.2)
     let moveBackward:SCNAction = SCNAction.moveByX( -1, y: 0.0, z: 0.0, duration: 0.2)
@@ -25,14 +24,6 @@ struct Actions
     let moveFarRight = SCNAction.moveByX( 5.0, y: 0.0, z: 0.0, duration: 0.3)
     let shrink = SCNAction.scaleBy(0.0, duration: 1.0)
 
-    func spawnExperience() -> SCNAction {
-        return SCNAction.sequence([unhide, moveUpExperience, remove])
-    }
-    
-    func waitAndSpawnExperience() -> SCNAction {
-        return SCNAction.sequence([wait,  spawnExperience()])
-    }
-    
     func actionAppearBackward() -> SCNAction {
         return SCNAction.sequence([turnover(duration: 0), unhide])
     }

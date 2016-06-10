@@ -15,16 +15,16 @@ class ImagineModel8: ImagineModel5
         case 00: // Touch
             createOrRetrieveBodyNodeAndRunAction(backward: true, action: actions.bump())
             if neutralNode == nil { neutralNode = createNeutralNode(SCNVector3(-1.5, 0, 0)) }
-            spawnExperienceNode(experience, position: SCNVector3( -1.0, 0.0, 0.0), delayed: true)
+            spawnExperienceNode(experience, position: SCNVector3( -1.0, 0.0, 0.0), delay: 0.1)
         case 01:
             createOrRetrieveBodyNodeAndRunAction(action: actions.bumpBack())
             if neutralNode == nil { neutralNode = createNeutralNode(SCNVector3(-1.5, 0, 0)) }
-            spawnExperienceNode(experience, position: SCNVector3( -1.0, 0.0, 0.0), delayed: true)
+            spawnExperienceNode(experience, position: SCNVector3( -1.0, 0.0, 0.0), delay: 0.1)
         case 10:  // eat
             createOrRetrieveBodyNodeAndRunAction(backward: true, action: actions.waitAndToss())
             if neutralNode == nil { neutralNode = createNeutralNode(SCNVector3(-1.5, 0, 0)) }
             neutralNode.runAction(SCNAction.sequence([actions.moveHalfFront, actions.moveHalfBack]))
-            spawnExperienceNode(experience, position: SCNVector3( -0.5, 0.0, 0.0), delayed: true)
+            spawnExperienceNode(experience, position: SCNVector3( -0.5, 0.0, 0.0), delay: 0.1)
             bodyNode = nil
             canKnowNextBodyNode = true
             nextBodyNode?.runAction(moveUp)
@@ -32,7 +32,7 @@ class ImagineModel8: ImagineModel5
             createOrRetrieveBodyNodeAndRunAction(action: actions.waitAndToss())
             if neutralNode == nil { neutralNode = createNeutralNode(SCNVector3(-1.5, 0, 0)) }
             neutralNode.runAction(SCNAction.sequence([actions.moveHalfFront, actions.moveHalfBack]))
-            spawnExperienceNode(experience, position: SCNVector3( -0.5, 0.0, 0.0), delayed: true)
+            spawnExperienceNode(experience, position: SCNVector3( -0.5, 0.0, 0.0), delay: 0.1)
             bodyNode = nil
             canKnowNextBodyNode = true
             nextBodyNode?.runAction(moveUp)

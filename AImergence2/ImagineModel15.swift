@@ -8,9 +8,8 @@
 
 import SceneKit
 
-class ImagineModel13: ImagineModel12
+class ImagineModel15: ImagineModel14
 {
-    
     override func playExperience(experience: Experience) {
         switch experience.experiment.number {
         case 0:
@@ -31,7 +30,7 @@ class ImagineModel13: ImagineModel12
         case 2:
             robotNode.turnRight()
             spawnExperienceNode(experience, position: robotNode.position)
-        default:
+        case 3:
             robotNode.feelFront()
             spawnExperienceNode(experience, position: robotNode.position + robotNode.forwardVector() / 2, delay: 0.2)
             if experience.resultNumber == 1 {
@@ -39,6 +38,23 @@ class ImagineModel13: ImagineModel12
                     createTileNode(robotNode.positionForward() + SCNVector3(0, -0.5, 0), delay: 0.2)
                 }
             }
+        case 4:
+            robotNode.feelLeft()
+            spawnExperienceNode(experience, position: (robotNode.position + robotNode.positionLeft()) / 2, delay: 0.2)
+            if experience.resultNumber == 1 {
+                if tiles[robotNode.robot.cellLeft()] == nil {
+                    createTileNode(robotNode.positionLeft() + SCNVector3(0, -0.5, 0), delay: 0.2)
+                }
+            }
+        default:
+            robotNode.feelRight()
+            spawnExperienceNode(experience, position: (robotNode.position + robotNode.positionRight()) / 2, delay: 0.2)
+            if experience.resultNumber == 1 {
+                if tiles[robotNode.robot.cellRight()] == nil {
+                    createTileNode(robotNode.positionRight() + SCNVector3(0, -0.5, 0), delay: 0.2)
+                }
+            }
         }
     }
+    
 }

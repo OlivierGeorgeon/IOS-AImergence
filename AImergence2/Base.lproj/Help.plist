@@ -70,6 +70,9 @@
 		<array>
 			<string>The world of Level 14 is the same as that of Level 13 but the experiments have been placed in a random order.</string>
 		</array>
+		<array>
+			<string>The world of Level 15 is the same as that of Level 14 but there are two more experiments that allow you to feel the box around the robot.</string>
+		</array>
 	</array>
 </dict>
 </plist>
