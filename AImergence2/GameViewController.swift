@@ -12,7 +12,7 @@ import SpriteKit
 class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate, HelpViewControllerDelegate, WorldViewControllerDelegate
 {
     static let maxLevelNumber = 17
-    static let unlockDefaultKey = "unlockDefaultKey"
+    let unlockDefaultKey = "unlockDefaultKey"
     
     @IBOutlet weak var sceneView: GameView!
     @IBOutlet weak var helpViewControllerContainer: UIView!
@@ -45,14 +45,15 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
     {
         super.viewDidLoad()
         
-        let userInterfaceLocks = userDefaults.arrayForKey(GameViewController.unlockDefaultKey)
-        if let userIntergaceLocksBool = userInterfaceLocks as? [[Bool]] {
+        let userInterfaceLocksWrapped = userDefaults.arrayForKey(unlockDefaultKey)
+        if let userIntergaceLocks = userInterfaceLocksWrapped as? [[Bool]] {
+            for i in 0...(userIntergaceLocks.count - 1) {
+                interfaceLocks[i] = userIntergaceLocks[i]
+            }
+        }
+        if Process.arguments.count > 1 {
             if Process.arguments[1] == "unlocked" {
                 interfaceLocks = [[Bool]](count: GameViewController.maxLevelNumber + 1, repeatedValue: [false, false, true])
-            } else {
-                if userIntergaceLocksBool.count == interfaceLocks.count {
-                    interfaceLocks = userIntergaceLocksBool
-                }
             }
         }
         
@@ -215,7 +216,7 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
         if !isLevelUnlocked() {
             interfaceLocks[level][GameViewController.levelInterfaceIndex] = true
             let defaults = NSUserDefaults.standardUserDefaults()
-            defaults.setObject(interfaceLocks, forKey: GameViewController.unlockDefaultKey)
+            defaults.setObject(interfaceLocks, forKey: unlockDefaultKey)
             if !imagineViewControllerContainer.hidden {
                 imagineViewController?.displayLevel(level)
             }
@@ -250,7 +251,7 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
     
     func understandInstruction() {
         interfaceLocks[level][GameViewController.instructionInterfaceIndex] = true
-        userDefaults.setObject(interfaceLocks, forKey: GameViewController.unlockDefaultKey)
+        userDefaults.setObject(interfaceLocks, forKey: unlockDefaultKey)
         if let scene = sceneView.scene as? GameSKScene {
             if isImagineUnderstood() || !isLevelUnlocked() {
                 scene.buttonIndex = -1
@@ -277,7 +278,7 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
     
     func imagineOk() {
         interfaceLocks[level][GameViewController.imagineInterfaceIndex] = true
-        userDefaults.setObject(interfaceLocks, forKey: GameViewController.unlockDefaultKey)
+        userDefaults.setObject(interfaceLocks, forKey: unlockDefaultKey)
         if let scene = sceneView.scene as? GameSKScene {
             if isInstructionUnderstood() {
                 scene.buttonIndex = 2
