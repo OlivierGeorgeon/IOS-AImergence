@@ -55,6 +55,9 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
             if Process.arguments[1] == "unlocked" {
                 interfaceLocks = [[Bool]](count: GameViewController.maxLevelNumber + 1, repeatedValue: [false, false, true])
             }
+            if Process.arguments[1] == "locked" {
+                interfaceLocks = [[Bool]](count: GameViewController.maxLevelNumber + 1, repeatedValue: [false, false, false])
+            }
         }
         
         let gameModel = GameModel.createGameModel(0)
@@ -79,6 +82,7 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
         swipeDown.direction = .Down
         view.addGestureRecognizer(swipeDown)
         
+        /*
         // Set vertical effect
         let verticalMotionEffect = UIInterpolatingMotionEffect(keyPath: "backgroundNodeX", type: .TiltAlongVerticalAxis)
         verticalMotionEffect.minimumRelativeValue = -50
@@ -92,31 +96,46 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
         let group = UIMotionEffectGroup()
         group.motionEffects = [horizontalMotionEffect, verticalMotionEffect]
         sceneView.addMotionEffect(group)
+ */
     }
 
     func swipeLeft(gesture:UISwipeGestureRecognizer) {
-        if interfaceLocks[level][GameViewController.levelInterfaceIndex] && level < GameViewController.maxLevelNumber {
-            level += 1
-            let gameModel = GameModel.createGameModel(level)
-            let nextGameScene = GameSKScene(gameModel: gameModel)
-            nextGameScene.gameSceneDelegate = self
-            sceneView.presentScene(nextGameScene, transition: PositionedSKScene.transitionLeft)
-            hideImagineViewControllerContainer()
-        } else {
-            sceneView.scene?.camera?.runAction(PositionedSKScene.actionMoveCameraRightLeft)
+        if let scene = sceneView.scene as? GameSKScene {
+            let positionInScene = scene.convertPointFromView(gesture.locationInView(sceneView))
+            let positionInScreen = scene.cameraRelativeOriginNode.convertPoint(positionInScene, fromNode: scene)
+            if scene.robotNode!.containsPoint(positionInScreen) { // also includes the robotNode's child nodes
+                if interfaceLocks[level][GameViewController.levelInterfaceIndex] && level < GameViewController.maxLevelNumber {
+                    level += 1
+                    let gameModel = GameModel.createGameModel(level)
+                    let nextGameScene = GameSKScene(gameModel: gameModel)
+                    nextGameScene.gameSceneDelegate = self
+                    sceneView.presentScene(nextGameScene, transition: PositionedSKScene.transitionLeft)
+                    hideImagineViewControllerContainer()
+                } else {
+                    //scene.camera?.runAction(PositionedSKScene.actionMoveCameraRightLeft)
+                    scene.robotNode?.runAction(PositionedSKScene.actionMoveCameraLeftRight)
+                }
+            }
         }
     }
     
     func swipeRight(gesture:UISwipeGestureRecognizer) {
-        if level > 0 {
-            level -= 1
-            let gameModel = GameModel.createGameModel(level)
-            let nextGameScene = GameSKScene(gameModel: gameModel)
-            nextGameScene.gameSceneDelegate = self
-            sceneView.presentScene(nextGameScene, transition: PositionedSKScene.transitionRight)
-            hideImagineViewControllerContainer()
-        } else {
-            sceneView.scene?.camera?.runAction(PositionedSKScene.actionMoveCameraLeftRight)
+        if let scene = sceneView.scene as? GameSKScene {
+            let positionInScene = scene.convertPointFromView(gesture.locationInView(sceneView))
+            let positionInScreen = scene.cameraRelativeOriginNode.convertPoint(positionInScene, fromNode: scene)
+            if scene.robotNode!.containsPoint(positionInScreen) { // also includes the robotNode's child nodes
+                if level > 0 {
+                    level -= 1
+                    let gameModel = GameModel.createGameModel(level)
+                    let nextGameScene = GameSKScene(gameModel: gameModel)
+                    nextGameScene.gameSceneDelegate = self
+                    sceneView.presentScene(nextGameScene, transition: PositionedSKScene.transitionRight)
+                    hideImagineViewControllerContainer()
+                } else {
+                    //scene.camera?.runAction(PositionedSKScene.actionMoveCameraLeftRight)
+                    scene.robotNode?.runAction(PositionedSKScene.actionMoveCameraRightLeft)
+                }
+            }
         }
     }
     
@@ -127,6 +146,9 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
             } else {
                 scene.cameraNode?.runAction(PositionedSKScene.actionMoveCameraDownUp)
             }
+        }
+        if let menuScene = sceneView.scene as? MenuSKScene {
+            sceneView.presentScene(menuScene.previousGameScene!, transition: PositionedSKScene.transitionUp)
         }
     }
     
@@ -209,6 +231,9 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
             menuScene.userDelegate = self
             menuScene.scaleMode = SKSceneScaleMode.AspectFill
             sceneView.presentScene(menuScene, transition: PositionedSKScene.transitionDown)
+        }
+        if let menuScene  = sceneView.scene as? MenuSKScene {
+            sceneView.presentScene(menuScene.previousGameScene!, transition: PositionedSKScene.transitionUp)            
         }
     }
     

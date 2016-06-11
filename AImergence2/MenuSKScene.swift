@@ -17,7 +17,6 @@ protocol MenuSceneDelegate
 
 class MenuSKScene: PositionedSKScene {
     
-    let cancelString = NSLocalizedString("Cancel", comment: "The Cancel button in the level-selection window.")
     let swipeString = NSLocalizedString("Swipe", comment: "Swipe horizontally to change level.")
     
     let level0Position      = CGPoint(x: 60, y: 540)
@@ -36,12 +35,6 @@ class MenuSKScene: PositionedSKScene {
         positionInFrame(view.frame.size)
         backgroundColor = UIColor.whiteColor()
 
-        let cancelNode = createLabelNode(cancelString)
-        cancelNode.name = "Cancel"
-        cancelNode.position = CGPoint(x: 187, y: 150)
-        buttonNodes.append(cancelNode)
-        addChild(cancelNode)
-        
         let instructionNode = SKLabelNode(text: swipeString)
         instructionNode.fontName = PositionedSKScene.bodyFont.fontName
         instructionNode.fontSize = PositionedSKScene.bodyFont.pointSize
@@ -52,11 +45,6 @@ class MenuSKScene: PositionedSKScene {
             instructionNode.fontSize-=1.0
         }
         addChild(instructionNode)
-        
-        let cancelBackgroundNode = SKShapeNode(rect: CGRect(x: -100, y: -20, width: 200, height: 40), cornerRadius: 20)
-        cancelBackgroundNode.fillColor = UIColor.lightGrayColor()
-        cancelBackgroundNode.lineWidth = 0
-        cancelNode.addChild(cancelBackgroundNode)
         
         for i in 0...GameViewController.maxLevelNumber {
             let levelNode = createLabelNode("\(i)")
@@ -83,9 +71,6 @@ class MenuSKScene: PositionedSKScene {
         
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(MenuSKScene.tap(_:)))
         view.addGestureRecognizer(tapGestureRecognizer);
-        let robotNode = gameModel.createRobotNode()
-        robotNode.position = CGPoint(x: 300, y: 300)
-        addChild(robotNode)
     }
     
     func createLabelNode(text: String) -> SKLabelNode {

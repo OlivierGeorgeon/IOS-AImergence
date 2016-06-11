@@ -136,8 +136,8 @@ class GameSKScene: PositionedSKScene {
         showButton()
 
         for recognizer in view.gestureRecognizers ?? [] {
-            if recognizer is UITapGestureRecognizer || recognizer is UILongPressGestureRecognizer {
-                view.removeGestureRecognizer(recognizer)
+            if recognizer is UITapGestureRecognizer || recognizer is UILongPressGestureRecognizer || recognizer is UISwipeGestureRecognizer {
+                //view.removeGestureRecognizer(recognizer)
             }
         }
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(GameSKScene.tap(_:)))
@@ -299,13 +299,11 @@ class GameSKScene: PositionedSKScene {
         for i in 1.stride(to: imageNumber, by: by) {
         //for var i=1; i<=imageNumber; i = i + 3 {
             let textureName = imageName + "\(i)"
-            //frames.append(robotAtlas.textureNamed(textureName))
             frames.append(SKTexture(imageNamed: textureName))
         }
         for i in imageNumber.stride(to: 0, by: -by) {
         //for var i = imageNumber - 1; i > 0; i = i - 3 {
             let textureName = imageName + "\(i)"
-            //frames.append(robotAtlas.textureNamed(textureName))
             frames.append(SKTexture(imageNamed: textureName))
         }
         frames.append(SKTexture(imageNamed: imageName + "1"))

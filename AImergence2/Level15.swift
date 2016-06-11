@@ -31,10 +31,10 @@ class Level15 : Level14 {
         
         let experiments = [experiment0, experiment1, experiment2, experiment4, experiment3, experiment5]
         
-        let experience00 = Experience(experiment: experiment0, resultNumber: 0, valence:-2)
-        let experience10 = Experience(experiment: experiment1, resultNumber: 0, valence:-4, colorIndex: 2)
+        let experience00 = Experience(experiment: experiment0, resultNumber: 0, valence:-4)
+        let experience10 = Experience(experiment: experiment1, resultNumber: 0, valence:-10, colorIndex: 2)
         let experience11 = Experience(experiment: experiment1, resultNumber: 1, valence: 4, colorIndex: 1)
-        let experience20 = Experience(experiment: experiment2, resultNumber: 0, valence:-2)
+        let experience20 = Experience(experiment: experiment2, resultNumber: 0, valence:-4)
         let experience30 = Experience(experiment: experiment3, resultNumber: 0, valence:0, colorIndex: 1)
         let experience31 = Experience(experiment: experiment3, resultNumber: 1, valence:0, colorIndex: 2)
         let experience40 = Experience(experiment: experiment4, resultNumber: 0, valence:0, colorIndex: 1)

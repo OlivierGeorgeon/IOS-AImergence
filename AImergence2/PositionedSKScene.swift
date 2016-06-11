@@ -23,9 +23,9 @@ class PositionedSKScene: SKScene {
     static let landscapeCameraPosition   = CGPoint(x: 400, y: 233)
     //static let landscapeCameraPosition    = CGPoint(x: 0, y: 0)
     static let landscapeRobotPosition    = CGPoint(x: 700, y: 100)
-    static let landscapeRobotSize        = CGSize(width: 200, height: 200)
-    static let landscapeButtonPosition    = CGPoint(x: 700, y: 300)
-    static let landscapeButtonSize        = CGSize(width: 152, height: 152)
+    //static let landscapeRobotSize        = CGSize(width: 200, height: 200)
+    //static let landscapeButtonPosition    = CGPoint(x: 700, y: 300)
+    //static let landscapeButtonSize        = CGSize(width: 152, height: 152)
     
     static let actionMoveCameraUp        = SKAction.moveBy(CGVector(dx:0, dy:667), duration: 0.3)
     static let actionMoveCameraDown      = SKAction.moveBy(CGVector(dx:0, dy:-667), duration: 0.3)

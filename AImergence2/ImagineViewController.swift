@@ -31,18 +31,20 @@ class ImagineViewController: UIViewController {
         sceneView.pointOfView = imagineModel.cameraNodes[1]
     }
     
-    let bundleName = NSBundle.mainBundle().infoDictionary!["CFBundleName"] as! String
+    //let bundleName = NSBundle.mainBundle().infoDictionary!["CFBundleName"] as! String
 
-    var imagineModel:ImagineModel!
+    var imagineModel: ImagineModel!
     var delegate: WorldViewControllerDelegate!
-    private var level:Int = 0
 
     func displayLevel(level: Int, imagineNumber: Int = 0) {
-        self.level = level
         if delegate.isLevelUnlocked() {
             switch level {
-            case 0, 1:
-                textView.text = NSLocalizedString("Keep playing", comment: "Message in the Imagine window on Levels 0 and 1.");
+            case 0:
+                textView.text = NSLocalizedString("Excellent 0", comment: "Message in the Imagine window on Levels 0 and 1.");
+                textView.hidden = false
+            case 1:
+                textView.text = NSLocalizedString("Excellent 1", comment: "Message in the Imagine window on Levels 0 and 1.");
+                textView.hidden = false
             case 2, 3:
                 textView.text = NSLocalizedString("Drag the 3D scene to move the camera", comment: "Message in the Imagine window on Levels 2 and 3.");
             case 11, 12:
@@ -75,15 +77,12 @@ class ImagineViewController: UIViewController {
  */
 
     func sceneViewSetup() {
-        //let scene = SCNScene(named: "Assets.xcassets/RobotPackg.dae")!
-        //let scene = SCNScene(named: "art.scnassets/Robot9bJoints2.dae")!
-        let scene = SCNScene()
-        sceneView.scene = scene
+        sceneView.scene = SCNScene()
         sceneView.allowsCameraControl = true
         sceneView.jitteringEnabled = true
         sceneView.showsStatistics = false
         sceneView.autoenablesDefaultLighting = false
-        imagineModel.setup(scene)
+        imagineModel.setup(sceneView.scene!)
     }
     
     func playExperience(experience: Experience) {

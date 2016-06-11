@@ -21,10 +21,10 @@ class Level14 : Level13 {
         
         let experiments = GKRandomSource.sharedRandom().arrayByShufflingObjectsInArray([experiment0, experiment1, experiment2, experiment3]) as! [Experiment]
         
-        let experience00 = Experience(experiment: experiment0, resultNumber: 0, valence:-2)
-        let experience10 = Experience(experiment: experiment1, resultNumber: 0, valence:-4)
+        let experience00 = Experience(experiment: experiment0, resultNumber: 0, valence:-4)
+        let experience10 = Experience(experiment: experiment1, resultNumber: 0, valence:-10)
         let experience11 = Experience(experiment: experiment1, resultNumber: 1, valence: 4)
-        let experience20 = Experience(experiment: experiment2, resultNumber: 0, valence:-2)
+        let experience20 = Experience(experiment: experiment2, resultNumber: 0, valence:-4)
         let experience30 = Experience(experiment: experiment3, resultNumber: 0, valence:0)
         let experience31 = Experience(experiment: experiment3, resultNumber: 1, valence:0)
         let experiences = [[experience00], [experience10, experience11], [experience20], [experience30, experience31]]

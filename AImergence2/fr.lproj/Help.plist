@@ -58,29 +58,32 @@
 		</array>
 		<array>
 			<string>Au niveau 11, vous pouvez imaginer que vous pilotez un petit robot qui peut avancer et tourner dans une petite boite.</string>
+			<string>Ce robot adore avancer mais déteste ce cogner.</string>
 		</array>
 		<array>
 			<string>Le monde du niveau 12 est similaire à celui du niveau 11, mais la boite est encore plus petite.</string>
 			<string>Les expériences ont été placées aléatoirement.</string>
 		</array>
 		<array>
-			<string>Au niveau 13, vous dispoez des mêmes expériences qu&apos;au niveau 11 plus une expérience persistante qui permet d&apos;observer l&apos;environnement.</string>
-			<string>La boite devient un peu plus grande.</string>
+			<string>Le niveau 13 offre les mêmes expériences que les niveaux 11 et 12 plus une expérience persistante qui permet d&apos;observer le monde sans le modifier.</string>
+			<string>Utilisez l&apos;expérience persistantes pour éviter de cogner les pavés et pour minimiser les rotations.</string>
+			<string>Ce robot n&apos;aime pas tourner et déteste se cogner. Hereusement, la boite devient plus grande.</string>
 		</array>
 		<array>
-			<string>Le monde du niveau 14 est le même que celui du niveau 13 mais les expérimentations ont été placées dans un ordre aléatoire.</string>
+			<string>Le monde du niveau 14 est le même que celui du niveau 13 mais les expérimentations ont été disposées aléatoirement.</string>
+			<string>C&apos;est à vous de choisir les formes des éxpériences et les couleurs des événements.</string>
 		</array>
 		<array>
-			<string>Le monde du niveau 15 est similaire à celui du niveau 14, mais vous disposez de deux expériences supplémentaires qui permettent de sentir la boite autour du robot.</string>
+			<string>Vous disposez de deux expériences supplémentaires qui permettent de sentir les tuiles autour du robot.</string>
 			<string>La boite devient encore plus grande.</string>
 		</array>
 		<array>
-			<string>Le monde du niveau 16 est le même que celui du niveau 15.</string>
-			<string>Les expériences ont été placées aléatoirement.</string>
+			<string>Toujours le même monde avec les mêmes expériences disposées aléatoirement, et les mêmes événements.</string>
+			<string>C&apos;est à vous de choisir les formes des éxpériences et les couleurs des événements.</string>
 		</array>
 		<array>
-			<string>Le monde du niveau 17 est le même que celui du niveau 16.</string>
-			<string>Tous les événements ont une valeur nulle sauf avancer et cogner.</string>
+			<string>Toujours le même monde, mais presque tous les événements ont une valeur nulle.</string>
+			<string>Bonne chance avec ce niveau !</string>
 		</array>
 	</array>
 </dict>

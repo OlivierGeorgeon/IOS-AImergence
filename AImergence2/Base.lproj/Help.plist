@@ -58,29 +58,32 @@
 		</array>
 		<array>
 			<string>in Level 11, you can imagine that you are controling a little robot that can move forward and turn in a little box.</string>
+			<string>This robot enjoys moving forward but dislikes bumping into obstacles.</string>
 		</array>
 		<array>
 			<string>Level 12 is similar to Level 11 but the box is even smaller.</string>
-			<string>The experiments have been placed randomly.</string>
+			<string>The experiments have been placed randomly, and their shapes intialized as a circle.</string>
 		</array>
 		<array>
-			<string>In Level 13, you have the same experiments as in Level 12 plus a persistent experiment that allows you to observe the environment.</string>
-			<string>The box is getting bigger.</string>
+			<string>Level 13 offers the same experiments as Levels 11 and 12 plus a persistent experiment that allows observing the world without modifying it.</string>
+			<string>Use the persistent experiment to avoid bumping into tiles and to minimize turning.</string>
+			<string>This robot hates bumping, and quite dislikes turning. Fortunately, the box is getting bigger.</string>
 		</array>
 		<array>
 			<string>The world of Level 14 is the same as that of Level 13 but the experiments have been placed in a random order.</string>
+			<string>It is left to you to choose the shapes of experiments and the colors of events.</string>
 		</array>
 		<array>
-			<string>The world of Level 15 is simlar to that of Level 14 but there are two more experiments that allow you to feel the tiles around the robot.</string>
+			<string>Now there are two more experiments that allow you to feel the tiles around the robot.</string>
 			<string>The box is getting even bigger.</string>
 		</array>
 		<array>
-			<string>The world of Level 15 is the same as that of Level 14.</string>
-			<string>The experiments have been placed randomly.</string>
+			<string>It is the same world, with the same experiments and the same events. </string>
+			<string>It is left to you to determine what the experiments and the events correspond to.</string>
 		</array>
 		<array>
-			<string>The world of Level 17 is the same as that of Level 16. </string>
-			<string>All the events have a null value except moving forward and bumping.</string>
+			<string>Still the same world, but almost all events have a null value.</string>
+			<string>Good luck with this level!</string>
 		</array>
 	</array>
 </dict>
