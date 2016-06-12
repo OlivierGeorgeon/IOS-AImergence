@@ -12,8 +12,8 @@ class ImagineModel11: ImagineModel
 {
     
     var robotNode: SCNRobotNode!
-
     var tiles = [Cell: SCNNode]()
+    var constraint: SCNLookAtConstraint!
     
     override func setupSpecific(Scene: SCNScene) {
         //super.setup(scene)
@@ -41,13 +41,15 @@ class ImagineModel11: ImagineModel
         robotNode.addChildNode(createRobotCamera())
         worldNode.addChildNode(robotNode)
 
-        let constraint = SCNLookAtConstraint(target: robotNode)
+        constraint = SCNLookAtConstraint(target: robotNode)
+        constraint.influenceFactor = 0.5
         //constraint.gimbalLockEnabled = true
         cameraNodes[0].constraints = [constraint]
     
     }
     
     override func playExperience(experience: Experience) {
+        constraint.influenceFactor = 0.5
         switch experience.experiment.number {
         case 0:
             robotNode.turnLeft()
@@ -58,6 +60,7 @@ class ImagineModel11: ImagineModel
                 robotNode.moveForward()
                 spawnExperienceNode(experience, position: robotNode.position, delay: 0.1)
             default:
+                constraint.influenceFactor = 0
                 robotNode.bump()
                 if tiles[robotNode.robot.cellFront()] == nil {
                     createTileNode(robotNode.positionForward() + SCNVector3(0, -0.5, 0), delay: 0.1)

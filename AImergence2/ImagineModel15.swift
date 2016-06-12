@@ -11,6 +11,7 @@ import SceneKit
 class ImagineModel15: ImagineModel14
 {
     override func playExperience(experience: Experience) {
+        constraint.influenceFactor = 0.5
         switch experience.experiment.number {
         case 0:
             robotNode.turnLeft()
@@ -21,6 +22,7 @@ class ImagineModel15: ImagineModel14
                 robotNode.moveForward()
                 spawnExperienceNode(experience, position: robotNode.position)
             default:
+                constraint.influenceFactor = 0
                 robotNode.bump()
                 if tiles[robotNode.robot.cellFront()] == nil {
                     createTileNode(robotNode.positionForward() + SCNVector3(0, -0.5, 0), delay: 0.1)
