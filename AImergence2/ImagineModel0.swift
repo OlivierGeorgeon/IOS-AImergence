@@ -13,6 +13,12 @@ class ImagineModel0: ImagineModel
     var neutralNode: SCNNode!
     var enjoyableNode: SCNNode!
     
+    override func setupSpecific(scene: SCNScene) {
+        bodyNode = SCNNode()
+        bodyNode.addChildNode(createPawnNode())
+        worldNode.addChildNode(bodyNode)
+    }
+    
     override func playExperience(experience: Experience) {
         switch experience.experiment.number {
         case 0:

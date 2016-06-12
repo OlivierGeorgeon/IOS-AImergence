@@ -15,8 +15,8 @@ class ImagineModel11: ImagineModel
 
     var tiles = [Cell: SCNNode]()
     
-    override func setup(scene: SCNScene) {
-        super.setup(scene)
+    override func setupSpecific(Scene: SCNScene) {
+        //super.setup(scene)
         
         robotNode = SCNRobotNode()
         let robotBaseNode = SCNNode()
@@ -40,6 +40,11 @@ class ImagineModel11: ImagineModel
         robotNode.scale = SCNVector3(0.3, 0.3, 0.3)
         robotNode.addChildNode(createRobotCamera())
         worldNode.addChildNode(robotNode)
+
+        let constraint = SCNLookAtConstraint(target: robotNode)
+        //constraint.gimbalLockEnabled = true
+        cameraNodes[0].constraints = [constraint]
+    
     }
     
     override func playExperience(experience: Experience) {

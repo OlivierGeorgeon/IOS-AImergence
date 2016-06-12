@@ -47,11 +47,17 @@ class ImagineModel
         
         scene.rootNode.addChildNode(worldNode)
         
+        setupSpecific(scene)
+        
         //let originNode = SCNNode()
         //scene.rootNode.addChildNode(originNode)
         //let constraint = SCNLookAtConstraint(target: originNode)
         //constraint.gimbalLockEnabled = true
         //cameraNode.constraints = [constraint]
+    }
+    
+    func setupSpecific(Scene: SCNScene) {
+        
     }
     
     func createPawnNode() -> SCNNode {

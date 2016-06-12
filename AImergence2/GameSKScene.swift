@@ -38,7 +38,7 @@ class GameSKScene: PositionedSKScene {
     var scoreBackground:SKShapeNode
     var shapePopupNode:SKNode!
     var shapeNodes = Array<SKShapeNode>()
-    var colorPopupNode:SKNode!
+    var colorPopupNode: SKNode?
     var colorNodes = Array<SKShapeNode>()
     var editNode: ReshapableSKNode?
     var score:Int = 0 {
@@ -101,9 +101,6 @@ class GameSKScene: PositionedSKScene {
         shapePopupNode = gameModel.createShapePopup()
         shapeNodes = gameModel.createShapeNodes(shapePopupNode)
         
-        colorPopupNode = gameModel.createColorPopup()
-        colorNodes = gameModel.createColorNodes(colorPopupNode)
-        
         experimentNodes = gameModel.createExperimentNodes(self)
         
         robotNode = gameModel.createRobotNode()
@@ -136,8 +133,8 @@ class GameSKScene: PositionedSKScene {
         showButton()
 
         for recognizer in view.gestureRecognizers ?? [] {
-            if recognizer is UITapGestureRecognizer || recognizer is UILongPressGestureRecognizer || recognizer is UISwipeGestureRecognizer {
-                //view.removeGestureRecognizer(recognizer)
+            if recognizer is UITapGestureRecognizer || recognizer is UILongPressGestureRecognizer  {
+                view.removeGestureRecognizer(recognizer)
             }
         }
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(GameSKScene.tap(_:)))
@@ -213,6 +210,8 @@ class GameSKScene: PositionedSKScene {
             for experienceNode in experienceNodes {
                 if experienceNode.containsPoint(positionInScene) {
                     editNode = experienceNode
+                    colorPopupNode = gameModel.createColorPopup()
+                    colorNodes = gameModel.createColorNodes(colorPopupNode!, experience: experienceNode.experience)
                     cameraRelativeOriginNode.addChild(colorPopupNode!)
                 }
             }
@@ -241,7 +240,9 @@ class GameSKScene: PositionedSKScene {
                     }
                 }
             }
+            colorNodes = Array<SKShapeNode>()
             colorPopupNode?.removeFromParent()
+            colorPopupNode = nil
             editNode = nil
         default:
             break

@@ -17,6 +17,10 @@ class ImagineModel5: ImagineModel4
     var canKnowNextBodyNode = false
     var nextBodyNode: SCNNode!
     
+    override func setupSpecific(scene: SCNScene) {
+        neutralNode = createNeutralNode(SCNVector3(-1.5, 0, 0))
+    }
+    
     override func playExperience(experience: Experience) {
         switch experience.hashValue {
         case 00: // Touch

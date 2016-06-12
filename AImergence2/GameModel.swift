@@ -86,10 +86,11 @@ class GameModel
         return popupBackground
     }
     
-    func createColorNodes(colorPopupNode: SKNode) -> [SKShapeNode] {
+    func createColorNodes(colorPopupNode: SKNode, experience: Experience) -> [SKShapeNode] {
         var colorNodes = [SKShapeNode]()
         for i in 0..<5 {
-            let colorNode = SKShapeNode(rect: colorNodeRect)
+            //let colorNode = SKShapeNode(rect: colorNodeRect)
+            let colorNode = SKShapeNode(path: experimentPaths[experience.experiment.shapeIndex](colorNodeRect).CGPath)
             colorNode.fillColor = experienceColors[i]
             colorNode.strokeColor = UIColor.grayColor()
             colorNode.lineWidth = 1
