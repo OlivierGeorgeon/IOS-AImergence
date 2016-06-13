@@ -21,7 +21,7 @@ class ImagineModel11: ImagineModel
         robotNode = SCNRobotNode()
         let robotBaseNode = SCNNode()
         robotNode.addChildNode(robotBaseNode)
-        let caterpillarScene = SCNScene(named: "art.scnassets/ChenillesSeules.dae")!
+        let caterpillarScene = SCNScene(named: "art.scnassets/ChenillesSeulesLarges.dae")!
         let baseNodeArray = caterpillarScene.rootNode.childNodes
         for childNode in baseNodeArray {
             robotBaseNode.addChildNode(childNode as SCNNode)

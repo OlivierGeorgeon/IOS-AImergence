@@ -10,7 +10,7 @@
 "Cancel" = "Back";
 "You must reach the score of 10" = "You must reach the score of 10 to reveal an imaginary representation of the world in this window.";
 "Excellent 0" = "Excellent! You have completed Level 0! Keep playing with this display on to show the imaginary 3D world. Next, swipe the robot to the left to move on to Level 1.";
-"Excellent 1" = "Excellent! You have completed Level 1! To understand the game better, always play a little bit and observe the imaginary 3D world before moving on to the next level.";
+"Excellent 1" = "Excellent! You have completed Level 1! To understand the game better, always play a little bit with this display on before moving on to the next level.";
 "Swipe" = "Swipe the robot horizontally to change level.";
 "Drag the 3D scene to move the camera" = "You can move the camera by pressing and dragging the 3D scene";
 "Double tap to swap cameras." = "You can swap cameras by double-tapping on the 3D scene.";

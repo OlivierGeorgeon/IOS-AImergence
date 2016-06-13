@@ -88,7 +88,9 @@ class ImagineViewController: UIViewController {
     }
     
     func playExperience(experience: Experience) {
-        imagineModel?.playExperience(experience)
+        if sceneView.scene != nil {
+            imagineModel?.playExperience(experience)
+        }
     }
 
     override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {

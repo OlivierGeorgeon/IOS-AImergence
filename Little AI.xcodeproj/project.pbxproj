@@ -47,7 +47,6 @@
 		0961EBB91C63EE2200A4E55C /* Level3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0961EBB81C63EE2200A4E55C /* Level3.swift */; };
 		0961EBBB1C64961F00A4E55C /* Level6.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0961EBBA1C64961F00A4E55C /* Level6.swift */; };
 		0961EBC01C66658B00A4E55C /* Help.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0961EBC21C66658B00A4E55C /* Help.plist */; };
-		0964BB0D1CEE29A800A4B40D /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0964BB0C1CEE29A800A4B40D /* GameKit.framework */; };
 		0964BB0F1CEEFA9B00A4B40D /* Level11.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0964BB0E1CEEFA9B00A4B40D /* Level11.swift */; };
 		0964BB111CEF37D000A4B40D /* Robot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0964BB101CEF37D000A4B40D /* Robot.swift */; };
 		0964BB131CEF488300A4B40D /* SCNRobotNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0964BB121CEF488300A4B40D /* SCNRobotNode.swift */; };
@@ -150,7 +149,6 @@
 		0961EBBA1C64961F00A4E55C /* Level6.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Level6.swift; sourceTree = "<group>"; };
 		0961EBC11C66658B00A4E55C /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = fr; path = fr.lproj/Help.plist; sourceTree = "<group>"; };
 		0961EBC31C66658E00A4E55C /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Base; path = Base.lproj/Help.plist; sourceTree = "<group>"; };
-		0964BB0C1CEE29A800A4B40D /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		0964BB0E1CEEFA9B00A4B40D /* Level11.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Level11.swift; sourceTree = "<group>"; };
 		0964BB101CEF37D000A4B40D /* Robot.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Robot.swift; sourceTree = "<group>"; };
 		0964BB121CEF488300A4B40D /* SCNRobotNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCNRobotNode.swift; sourceTree = "<group>"; };
@@ -194,7 +192,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0964BB0D1CEE29A800A4B40D /* GameKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -227,7 +224,6 @@
 		0936812E1C417377008C6B5D = {
 			isa = PBXGroup;
 			children = (
-				0964BB0C1CEE29A800A4B40D /* GameKit.framework */,
 				093681391C417378008C6B5D /* AImergence2 */,
 				093681521C417378008C6B5D /* AImergence2Tests */,
 				0936815D1C417378008C6B5D /* AImergence2UITests */,
