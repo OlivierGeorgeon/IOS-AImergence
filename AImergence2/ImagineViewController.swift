@@ -35,8 +35,8 @@ class ImagineViewController: UIViewController {
 
     var imagineModel: ImagineModel!
     var delegate: WorldViewControllerDelegate!
-
-    func displayLevel(level: Int, imagineNumber: Int = 0) {
+    
+    func displayLevel(level: Int) {
         if delegate.isLevelUnlocked() {
             switch level {
             case 0:
@@ -47,8 +47,10 @@ class ImagineViewController: UIViewController {
                 textView.hidden = false
             case 2, 3:
                 textView.text = NSLocalizedString("Drag the 3D scene to move the camera", comment: "Message in the Imagine window on Levels 2 and 3.");
+                textView.hidden = false
             case 11, 12:
                 textView.text = NSLocalizedString("Double tap to swap cameras.", comment: "Message in the Imagine window on Levels 11 and 12.");
+                textView.hidden = false
             default:
                 textView.hidden = true
             }
