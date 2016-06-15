@@ -55,27 +55,27 @@ class SCNRobotNode: SCNNode {
     }
     
     func positionForward() -> SCNVector3 {
-        return SCNVector3(robot.cellFront().i, 0, -robot.cellFront().j)
+        return SCNVector3(robot.cellFront().i * 10, 0, -robot.cellFront().j * 10)
     }
 
     func positionLeft() -> SCNVector3 {
-        return SCNVector3(robot.cellLeft().i, 0, -robot.cellLeft().j)
+        return SCNVector3(robot.cellLeft().i * 10, 0, -robot.cellLeft().j * 10)
     }
     
     func positionRight() -> SCNVector3 {
-        return SCNVector3(robot.cellRight().i, 0, -robot.cellRight().j)
+        return SCNVector3(robot.cellRight().i * 10, 0, -robot.cellRight().j * 10)
     }
     
     func forwardVector() -> SCNVector3 {
         switch robot.direction {
         case .EAST:
-            return SCNVector3(1.0, 0.0, 0.0)
+            return SCNVector3(1.0 * 10, 0.0, 0.0)
         case .NORTH:
-            return SCNVector3(0.0, 0.0, -1.0)
+            return SCNVector3(0.0, 0.0, -1.0 * 10)
         case .WEST:
-            return SCNVector3(-1.0, 0.0, 0.0)
+            return SCNVector3(-1.0 * 10, 0.0, 0.0)
         case .SOUTH:
-            return SCNVector3(0.0, 0.0, 1.0)
+            return SCNVector3(0.0, 0.0, 1.0 * 10)
         }
     }
 }

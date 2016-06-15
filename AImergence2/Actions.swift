@@ -11,17 +11,17 @@ import SceneKit
 struct Actions
 {
     
-    let moveForward:SCNAction = SCNAction.moveByX( 1, y: 0.0, z: 0.0, duration: 0.2)
-    let moveBackward:SCNAction = SCNAction.moveByX( -1, y: 0.0, z: 0.0, duration: 0.2)
+    let moveForward:SCNAction = SCNAction.moveByX( 1 * 10, y: 0.0, z: 0.0, duration: 0.2)
+    let moveBackward:SCNAction = SCNAction.moveByX( -1 * 10, y: 0.0, z: 0.0, duration: 0.2)
     
-    let moveHalfFront = SCNAction.moveByX( 0.5, y: 0.0, z: 0.0, duration: 0.1)
-    let moveHalfBack  = SCNAction.moveByX(-0.5, y: 0.0, z: 0.0, duration: 0.1)
+    let moveHalfFront = SCNAction.moveByX( 0.5 * 10, y: 0.0, z: 0.0, duration: 0.1)
+    let moveHalfBack  = SCNAction.moveByX(-0.5 * 10, y: 0.0, z: 0.0, duration: 0.1)
 
     let remove = SCNAction.removeFromParentNode()
     let wait = SCNAction.waitForDuration(0.1)
     let unhide = SCNAction.unhide()
     
-    let moveFarRight = SCNAction.moveByX( 5.0, y: 0.0, z: 0.0, duration: 0.3)
+    let moveFarRight = SCNAction.moveByX( 5.0 * 10, y: 0.0, z: 0.0, duration: 0.3)
     let shrink = SCNAction.scaleBy(0.0, duration: 1.0)
 
     func actionAppearBackward() -> SCNAction {
@@ -57,6 +57,10 @@ struct Actions
         return SCNAction.sequence([wait, toss2()])
     }
 
+    func hideWaitAndremove() -> SCNAction {
+        return SCNAction.sequence([SCNAction.waitForDuration(1), remove])
+    }
+    
     func bumpBlock(node: SCNNode) {
         if node.childNodes.count > 0 {
             node.childNodes[0].runAction(SCNAction.sequence([moveHalfFront, moveHalfBack]))

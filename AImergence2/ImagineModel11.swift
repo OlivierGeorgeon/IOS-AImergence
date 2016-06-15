@@ -37,7 +37,7 @@ class ImagineModel11: ImagineModel
         }
         
         robotNode.pivot = SCNMatrix4MakeRotation(Float(-M_PI/2), 0, 1, 0)
-        robotNode.scale = SCNVector3(0.3, 0.3, 0.3)
+        robotNode.scale = SCNVector3(0.3 * scale, 0.3 * scale, 0.3 * scale)
         robotNode.addChildNode(createRobotCamera())
         worldNode.addChildNode(robotNode)
 
@@ -63,7 +63,7 @@ class ImagineModel11: ImagineModel
                 constraint.influenceFactor = 0
                 robotNode.bump()
                 if tiles[robotNode.robot.cellFront()] == nil {
-                    createTileNode(robotNode.positionForward() + SCNVector3(0, -0.5, 0), delay: 0.1)
+                    createTileNode(robotNode.positionForward() + SCNVector3(0, -0.5 * scale, 0), delay: 0.1)
                 }
                 spawnExperienceNode(experience, position: robotNode.position + robotNode.forwardVector() / 2, delay: 0.1)
             }

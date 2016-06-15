@@ -18,8 +18,9 @@ class ButtonSKNode: SKSpriteNode
     let activatedTexture: SKTexture
     let disactivatedTexture: SKTexture
 
-    var active = false
     var visible = false
+    var active = false
+    var pulsing = false
     
     init(activatedImageNamed: String, disactivatedImageNamed: String, active: Bool) {
         activatedTexture = SKTexture(imageNamed: activatedImageNamed)
@@ -77,5 +78,14 @@ class ButtonSKNode: SKSpriteNode
     func disactivate() {
         active = false
         texture = disactivatedTexture
+    }
+    
+    func pulse() {
+        pulsing = true
+    }
+    
+    func unpulse() {
+        pulsing = false
+        removeAllActions()
     }
 }

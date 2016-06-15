@@ -12,7 +12,7 @@ class ImagineModel9: ImagineModel5
 {
     let actionRotateCarrousel = SCNAction.rotateByX(0.0, y: 0.0, z: CGFloat(-M_PI) / 5.0, duration: 0.5)
     
-    let carrouselDiameter = CGFloat(2.2)
+    let carrouselDiameter = CGFloat(2.2 * 10)
     let nbSlotsInCarroussel = 10
     
     var carrouselNode = SCNNode()
@@ -33,24 +33,24 @@ class ImagineModel9: ImagineModel5
         switch experience.hashValue {
         case 00: // Touch
             createOrRetrieveBodyNodeAndRunAction(positionInCarroussel, backward: true, action: actions.bump())
-            if neutralNode == nil { neutralNode = createNeutralNode(SCNVector3(-1.5, 0, 0)) }
-            spawnExperienceNode(experience, position: SCNVector3( -1.0, 0.0, 0.0), delay: 0.1)
+            if neutralNode == nil { neutralNode = createNeutralNode(SCNVector3(-1.5 * scale, 0, 0)) }
+            spawnExperienceNode(experience, position: SCNVector3( -1.0 * scale, 0.0, 0.0), delay: 0.1)
         case 01:
             createOrRetrieveBodyNodeAndRunAction(positionInCarroussel ,action: actions.bumpBack())
-            if neutralNode == nil { neutralNode = createNeutralNode(SCNVector3(-1.5, 0, 0)) }
-            spawnExperienceNode(experience, position: SCNVector3( -1.0, 0.0, 0.0), delay: 0.1)
+            if neutralNode == nil { neutralNode = createNeutralNode(SCNVector3(-1.5 * scale, 0, 0)) }
+            spawnExperienceNode(experience, position: SCNVector3( -1.0 * scale, 0.0, 0.0), delay: 0.1)
         case 10:  // eat
             createOrRetrieveBodyNodeAndRunAction(positionInCarroussel ,backward: true)
-            if neutralNode == nil { neutralNode = createNeutralNode(SCNVector3(-1.5, 0, 0)) }
+            if neutralNode == nil { neutralNode = createNeutralNode(SCNVector3(-1.5 * scale, 0, 0)) }
             neutralNode.runAction(SCNAction.sequence([actions.moveHalfFront, actions.moveHalfBack]))
-            spawnExperienceNode(experience, position: SCNVector3( -0.5, 0.0, 0.0), delay: 0.1)
+            spawnExperienceNode(experience, position: SCNVector3( -0.5 * scale, 0.0, 0.0), delay: 0.1)
             bodyNode = nil
             rotateCarrousel()
         case 11:
             createOrRetrieveBodyNodeAndRunAction(positionInCarroussel)
-            if neutralNode == nil { neutralNode = createNeutralNode(SCNVector3(-1.5, 0, 0)) }
+            if neutralNode == nil { neutralNode = createNeutralNode(SCNVector3(-1.5 * scale, 0, 0)) }
             neutralNode.runAction(SCNAction.sequence([actions.moveHalfFront, actions.moveHalfBack]))
-            spawnExperienceNode(experience, position: SCNVector3( -0.5, 0.0, 0.0), delay: 0.1)
+            spawnExperienceNode(experience, position: SCNVector3( -0.5 * scale, 0.0, 0.0), delay: 0.1)
             bodyNode = nil
             rotateCarrousel()
         case 20: // swap

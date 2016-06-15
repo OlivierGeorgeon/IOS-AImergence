@@ -10,45 +10,47 @@ import SceneKit
 
 class ImagineModel5: ImagineModel4
 {
-    let moveUp = SCNAction.sequence([SCNAction.waitForDuration(0.1), SCNAction.moveByX(0.0, y: 1.5, z: 0.0, duration: 0.2)])
-    let positionNextBodyNode = SCNVector3(0.0, -1.5, 0.0)
+    let moveUp = SCNAction.sequence([SCNAction.waitForDuration(0.5), SCNAction.moveByX(0.0, y: 1.5 * 10, z: 0.0, duration: 0.2)])
+    let positionNextBodyNode = SCNVector3(0.0, -1.5 * 10, 0.0)
     
     var nextBodyNodeBackward: Bool!
     var canKnowNextBodyNode = false
     var nextBodyNode: SCNNode!
     
     override func setupSpecific(scene: SCNScene) {
-        neutralNode = createNeutralNode(SCNVector3(-1.5, 0, 0))
+        neutralNode = createNeutralNode(SCNVector3(-1.5  * scale, 0, 0))
     }
     
     override func playExperience(experience: Experience) {
         switch experience.hashValue {
         case 00: // Touch
             createOrRetrieveBodyNodeAndRunAction(backward: true, action: actions.bump())
-            if neutralNode == nil { neutralNode = createNeutralNode(SCNVector3(-1.5, 0, 0)) }
-            spawnExperienceNode(experience, position: SCNVector3( -1.0, 0.0, 0.0), delay: 0.1)
+            if neutralNode == nil { neutralNode = createNeutralNode(SCNVector3(-1.5 * scale, 0, 0)) }
+            spawnExperienceNode(experience, position: SCNVector3( -1.0 * scale, 0.0, 0.0), delay: 0.1)
         case 01:
             createOrRetrieveBodyNodeAndRunAction(action: actions.bumpBack())
-            if neutralNode == nil { neutralNode = createNeutralNode(SCNVector3(-1.5, 0, 0)) }
-            spawnExperienceNode(experience, position: SCNVector3( -1.0, 0.0, 0.0), delay: 0.1)
+            if neutralNode == nil { neutralNode = createNeutralNode(SCNVector3(-1.5 * scale, 0, 0)) }
+            spawnExperienceNode(experience, position: SCNVector3( -1.0 * scale, 0.0, 0.0), delay: 0.1)
         case 10:  // eat
-            createOrRetrieveBodyNodeAndRunAction(backward: true, action: actions.waitAndToss())
-            if neutralNode == nil { neutralNode = createNeutralNode(SCNVector3(-1.5, 0, 0)) }
+            createOrRetrieveBodyNodeAndRunAction(backward: true, action: actions.hideWaitAndremove())
+            if neutralNode == nil { neutralNode = createNeutralNode(SCNVector3(-1.5 * scale, 0, 0)) }
             neutralNode.runAction(SCNAction.sequence([actions.moveHalfFront, actions.moveHalfBack]))
-            spawnExperienceNode(experience, position: SCNVector3( -0.5, 0.0, 0.0), delay: 0.1)
-            bodyNode = nil
+            spawnExperienceNode(experience, position: SCNVector3( -0.5 * scale, 0.0, 0.0), delay: 0.1)
+            bodyNode.childNodes[0].runAction(SCNAction.sequence([SCNAction.waitForDuration(0.1),SCNAction.removeFromParentNode()]), completionHandler: explode)
+            //if let particles = SCNParticleSystem(named: "Confetti.scnp", inDirectory: nil) {
+            //    bodyNode?.addParticleSystem(particles)
+            //}
+            //bodyNode = nil
             canKnowNextBodyNode = true
             nextBodyNode?.runAction(moveUp)
-            //if let particles = SCNParticleSystem(named: "Confetti.scnp", inDirectory: nil) {
-            //    nextBodyNode?.addParticleSystem(particles)
-            //}
 
         case 11:
-            createOrRetrieveBodyNodeAndRunAction(action: actions.waitAndToss())
-            if neutralNode == nil { neutralNode = createNeutralNode(SCNVector3(-1.5, 0, 0)) }
+            createOrRetrieveBodyNodeAndRunAction(action: actions.hideWaitAndremove())
+            if neutralNode == nil { neutralNode = createNeutralNode(SCNVector3(-1.5 * scale, 0, 0)) }
             neutralNode.runAction(SCNAction.sequence([actions.moveHalfFront, actions.moveHalfBack]))
-            spawnExperienceNode(experience, position: SCNVector3( -0.5, 0.0, 0.0), delay: 0.1)
-            bodyNode = nil
+            spawnExperienceNode(experience, position: SCNVector3( -0.5 * scale, 0.0, 0.0), delay: 0.1)
+            bodyNode.childNodes[0].runAction(SCNAction.sequence([SCNAction.waitForDuration(0.1),SCNAction.removeFromParentNode()]), completionHandler: explode)
+            //bodyNode = nil
             canKnowNextBodyNode = true
             nextBodyNode?.runAction(moveUp)
         case 20: // swap
@@ -94,6 +96,14 @@ class ImagineModel5: ImagineModel4
             worldNode.addChildNode(nextBodyNode)
             if nextBodyNodeBackward! { nextBodyNode.runAction(actions.actionAppearBackward()) }
             nextBodyNodeBackward = !nextBodyNodeBackward
+        }
+    }
+    
+    func explode() {
+        if let particles = SCNParticleSystem(named: "Confetti.scnp", inDirectory: nil) {
+            bodyNode?.addParticleSystem(particles)
+            bodyNode = nil
+
         }
     }
 }
