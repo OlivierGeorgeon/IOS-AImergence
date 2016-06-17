@@ -32,25 +32,20 @@ class ImagineModel5: ImagineModel4
             if neutralNode == nil { neutralNode = createNeutralNode(SCNVector3(-1.5 * scale, 0, 0)) }
             spawnExperienceNode(experience, position: SCNVector3( -1.0 * scale, 0.0, 0.0), delay: 0.1)
         case 10:  // eat
-            createOrRetrieveBodyNodeAndRunAction(backward: true, action: actions.hideWaitAndremove())
+            createOrRetrieveBodyNodeAndRunAction(backward: true, action: actions.waitAndRemove())
             if neutralNode == nil { neutralNode = createNeutralNode(SCNVector3(-1.5 * scale, 0, 0)) }
             neutralNode.runAction(SCNAction.sequence([actions.moveHalfFront, actions.moveHalfBack]))
             spawnExperienceNode(experience, position: SCNVector3( -0.5 * scale, 0.0, 0.0), delay: 0.1)
             bodyNode.childNodes[0].runAction(SCNAction.sequence([SCNAction.waitForDuration(0.1),SCNAction.removeFromParentNode()]), completionHandler: explode)
-            //if let particles = SCNParticleSystem(named: "Confetti.scnp", inDirectory: nil) {
-            //    bodyNode?.addParticleSystem(particles)
-            //}
-            //bodyNode = nil
             canKnowNextBodyNode = true
             nextBodyNode?.runAction(moveUp)
 
         case 11:
-            createOrRetrieveBodyNodeAndRunAction(action: actions.hideWaitAndremove())
+            createOrRetrieveBodyNodeAndRunAction(action: actions.waitAndRemove())
             if neutralNode == nil { neutralNode = createNeutralNode(SCNVector3(-1.5 * scale, 0, 0)) }
             neutralNode.runAction(SCNAction.sequence([actions.moveHalfFront, actions.moveHalfBack]))
             spawnExperienceNode(experience, position: SCNVector3( -0.5 * scale, 0.0, 0.0), delay: 0.1)
             bodyNode.childNodes[0].runAction(SCNAction.sequence([SCNAction.waitForDuration(0.1),SCNAction.removeFromParentNode()]), completionHandler: explode)
-            //bodyNode = nil
             canKnowNextBodyNode = true
             nextBodyNode?.runAction(moveUp)
         case 20: // swap

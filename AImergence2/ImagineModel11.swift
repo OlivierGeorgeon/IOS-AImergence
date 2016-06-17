@@ -30,7 +30,7 @@ class ImagineModel11: ImagineModel
         let robotBodyNode = SCNNode()
         robotBodyNode.name = "body"
         robotNode.addChildNode(robotBodyNode)
-        let robotScene = SCNScene(named: "art.scnassets/Robot8aa.dae")!
+        let robotScene = SCNScene(named: "art.scnassets/Robot8aaNew2.dae")!
         let bodyNodeArray = robotScene.rootNode.childNodes
         for childNode in bodyNodeArray {
             robotBodyNode.addChildNode(childNode as SCNNode)

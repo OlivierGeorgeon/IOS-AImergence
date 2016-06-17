@@ -57,7 +57,7 @@ struct Actions
         return SCNAction.sequence([wait, toss2()])
     }
 
-    func hideWaitAndremove() -> SCNAction {
+    func waitAndRemove() -> SCNAction {
         return SCNAction.sequence([SCNAction.waitForDuration(1), remove])
     }
     
