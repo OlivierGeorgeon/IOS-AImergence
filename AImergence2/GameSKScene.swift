@@ -11,13 +11,14 @@ import SpriteKit
 protocol GameSceneDelegate
 {
     func playExperience(experience: Experience)
-    func unlockLevel()
+    func unlockLevel(score: Int)
     func isInstructionUnderstood() -> Bool
     func isImagineUnderstood() -> Bool
     func isLevelUnlocked() -> Bool
     func isInterfaceUnlocked(interface: Int) -> Bool
     func showInstructionWindow()
     func showImagineWindow()
+    func showGameCenter()
     func showLevelWindow()
 }
 
@@ -26,8 +27,9 @@ class GameSKScene: PositionedSKScene {
     let gameModel:GameModel2
     let level:Level0
     
-    let instructionButtonNode = ButtonSKNode(activatedImageNamed: "instructions-color", disactivatedImageNamed: "instructions-black", active: true)
-    let imagineButtonNode = ButtonSKNode(activatedImageNamed: "imagine-color", disactivatedImageNamed: "imagine-black", active: true)
+    let instructionButtonNode = ButtonSKNode(activatedImageNamed: "instructions-color", disactivatedImageNamed: "instructions-black", pulsing: true)
+    let imagineButtonNode = ButtonSKNode(activatedImageNamed: "imagine-color", disactivatedImageNamed: "imagine-black")
+    let gameCenterButtonNode = ButtonSKNode(activatedImageNamed: "gamecenter-color", disactivatedImageNamed: "gamecenter-black", active: false)
     let levelButtonNode = ButtonSKNode(activatedImageNamed: "levels-color", disactivatedImageNamed: "levels-black", active: false)
     
     var gameSceneDelegate: GameSceneDelegate!
@@ -41,14 +43,20 @@ class GameSKScene: PositionedSKScene {
     var colorPopupNode: SKNode?
     var colorNodes = Array<SKShapeNode>()
     var editNode: ReshapableSKNode?
+    var won = false
     var score:Int = 0 {
         didSet {
             scoreLabel.text = "\(score)"
             if score >= level.winScore {
                 scoreBackground.fillColor = UIColor.greenColor()
-                gameSceneDelegate.unlockLevel()
+                if !won {
+                    gameSceneDelegate.unlockLevel(clock)
+                    won = true
+                }
                 if buttonIndex != 1 && !gameSceneDelegate.isImagineUnderstood() {
                     buttonIndex = 1
+                    imagineButtonNode.pulse()
+                    gameCenterButtonNode.activate()
                     showButton()
                 }
             } else {
@@ -109,6 +117,7 @@ class GameSKScene: PositionedSKScene {
         cameraRelativeOriginNode.addChild(backgroundNode!)
         robotNode?.addChild(instructionButtonNode)
         robotNode?.addChild(imagineButtonNode)
+        robotNode?.addChild(gameCenterButtonNode)
         robotNode?.addChild(levelButtonNode)
         
         robotHappyFrames = loadFrames("happy", imageNumber: 6, by: 1)
@@ -155,7 +164,7 @@ class GameSKScene: PositionedSKScene {
         }
         //if robotNode!.containsPoint(positionInScreen) { // also includes the robotNode's child nodes
         if CGRectContainsPoint((robotNode?.frame)!, positionInScreen) {
-            buttonIndex += 1; if buttonIndex > 2 { buttonIndex = -1 }
+            buttonIndex += 1; if buttonIndex > 3 { buttonIndex = -1 }
             showButton()
         }
         if instructionButtonNode.containsPoint(positionInRobot) {
@@ -164,31 +173,56 @@ class GameSKScene: PositionedSKScene {
         if imagineButtonNode.containsPoint(positionInRobot) {
             gameSceneDelegate.showImagineWindow()
         }
+        if gameCenterButtonNode.containsPoint(positionInRobot) {
+            if gameCenterButtonNode.active {
+                gameSceneDelegate.showGameCenter()
+                gameCenterButtonNode.unpulse()
+            }
+        }
         if levelButtonNode.containsPoint(positionInRobot) {
             gameSceneDelegate.showLevelWindow()
+            levelButtonNode.unpulse()
         }
     }
     
     func showButton() {
-        if gameSceneDelegate.isInterfaceUnlocked(0) {instructionButtonNode.disactivate() }
-        if gameSceneDelegate.isInterfaceUnlocked(1) {imagineButtonNode.disactivate() }
-        if gameSceneDelegate.isInterfaceUnlocked(2) {levelButtonNode.activate() }
+        if gameSceneDelegate.isInterfaceUnlocked(0) {
+            instructionButtonNode.disactivate()
+            instructionButtonNode.unpulse()
+        }
+        if gameSceneDelegate.isInterfaceUnlocked(1) {
+            imagineButtonNode.disactivate()
+            imagineButtonNode.unpulse()
+        }
+        if gameSceneDelegate.isInterfaceUnlocked(2) {
+            gameCenterButtonNode.activate()
+            levelButtonNode.activate()
+        }
         switch buttonIndex {
         case 0:
             instructionButtonNode.appear()
             imagineButtonNode.disappear()
+            gameCenterButtonNode.disappear()
             levelButtonNode.disappear()
         case 1:
             instructionButtonNode.disappear()
             imagineButtonNode.appear()
+            gameCenterButtonNode.disappear()
             levelButtonNode.disappear()
         case 2:
             instructionButtonNode.disappear()
             imagineButtonNode.disappear()
+            gameCenterButtonNode.appear()
+            levelButtonNode.disappear()
+        case 3:
+            instructionButtonNode.disappear()
+            imagineButtonNode.disappear()
+            gameCenterButtonNode.disappear()
             levelButtonNode.appear()
         default:
             instructionButtonNode.disappear()
             imagineButtonNode.disappear()
+            gameCenterButtonNode.disappear()
             levelButtonNode.disappear()
         }
     }

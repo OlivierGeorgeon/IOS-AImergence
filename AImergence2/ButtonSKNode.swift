@@ -19,13 +19,14 @@ class ButtonSKNode: SKSpriteNode
     let disactivatedTexture: SKTexture
 
     var visible = false
-    var active = false
+    var active = true
     var pulsing = false
     
-    init(activatedImageNamed: String, disactivatedImageNamed: String, active: Bool) {
-        activatedTexture = SKTexture(imageNamed: activatedImageNamed)
-        disactivatedTexture = SKTexture(imageNamed: disactivatedImageNamed)
+    init(activatedImageNamed: String, disactivatedImageNamed: String, active: Bool = true, pulsing: Bool = false) {
+        self.activatedTexture = SKTexture(imageNamed: activatedImageNamed)
+        self.disactivatedTexture = SKTexture(imageNamed: disactivatedImageNamed)
         self.active = active
+        self.pulsing = pulsing
         let appearPath = UIBezierPath()
         appearPath.addArcWithCenter(CGPoint(x: 0, y: 60), radius: 30, startAngle: -CGFloat(M_PI) / 2 , endAngle: CGFloat(M_PI) / 2, clockwise: false)
         let actionAppearPath = SKAction.followPath(appearPath.CGPath, asOffset: false, orientToPath: false, duration: 0.2)
@@ -53,7 +54,7 @@ class ButtonSKNode: SKSpriteNode
     func appear() {
         if !visible {
             removeAllActions()
-            if active {
+            if pulsing {
                 runAction(SKAction.sequence([actionAppear, actionRepeatPulse]))
             } else {
                 runAction(actionAppear)

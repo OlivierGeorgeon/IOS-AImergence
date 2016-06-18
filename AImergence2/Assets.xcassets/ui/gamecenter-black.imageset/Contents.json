@@ -2,6 +2,7 @@
   "images" : [
     {
       "idiom" : "universal",
+      "filename" : "gamecenter-black.png",
       "scale" : "1x"
     },
     {

@@ -8,8 +8,9 @@
 
 import UIKit
 import SpriteKit
+import GameKit
 
-class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate, HelpViewControllerDelegate, WorldViewControllerDelegate
+class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate, HelpViewControllerDelegate, WorldViewControllerDelegate, GKGameCenterControllerDelegate
 {
     static let maxLevelNumber = 17
     let unlockDefaultKey = "unlockDefaultKey"
@@ -22,6 +23,11 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
     @IBAction func hepButton(sender: UIButton)   { showInstructionWindow() }
     @IBAction func worldButton(sender: UIButton) { showImagineWindow() }
     
+    var score: Int = 0 // Stores the score
+    
+    var gcEnabled = Bool() // Stores if the user has Game Center enabled
+    var gcDefaultLeaderBoard = String() // Stores the default leaderboardID
+
     var helpViewController:  HelpViewController?
     var imagineViewController: ImagineViewController?
     var level = 0 {
@@ -45,6 +51,8 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
     {
         super.viewDidLoad()
         
+        self.authenticateLocalPlayer()
+ 
         let userInterfaceLocksWrapped = userDefaults.arrayForKey(unlockDefaultKey)
         if let userIntergaceLocks = userInterfaceLocksWrapped as? [[Bool]] {
             for i in 0...(userIntergaceLocks.count - 1) {
@@ -221,6 +229,14 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
         }
     }
     
+    func showGameCenter() {
+        let gcVC: GKGameCenterViewController = GKGameCenterViewController()
+        gcVC.gameCenterDelegate = self
+        gcVC.viewState = GKGameCenterViewControllerState.Leaderboards
+        gcVC.leaderboardIdentifier = "Level\(level)"
+        self.presentViewController(gcVC, animated: true, completion: nil)
+    }
+    
     func showLevelWindow() {
         helpViewControllerContainer.hidden = true
         imagineViewControllerContainer.hidden = true
@@ -237,7 +253,19 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
         }
     }
     
-    func unlockLevel() {
+    func unlockLevel(score: Int) {
+        let leaderboardID = "Level\(level)"
+        let sScore = GKScore(leaderboardIdentifier: leaderboardID)
+        sScore.value = Int64(score)
+        GKScore.reportScores([sScore], withCompletionHandler: { (error: NSError?) -> Void in
+            if error != nil {
+                print(error!.localizedDescription)
+            } else {
+                print("Score submitted: \(score)")
+                
+            }
+        })
+        
         if !isLevelUnlocked() {
             interfaceLocks[level][GameViewController.levelInterfaceIndex] = true
             let defaults = NSUserDefaults.standardUserDefaults()
@@ -278,6 +306,7 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
         interfaceLocks[level][GameViewController.instructionInterfaceIndex] = true
         userDefaults.setObject(interfaceLocks, forKey: unlockDefaultKey)
         if let scene = sceneView.scene as? GameSKScene {
+            scene.instructionButtonNode.unpulse()
             if isImagineUnderstood() || !isLevelUnlocked() {
                 scene.buttonIndex = -1
             } else {
@@ -305,6 +334,8 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
         interfaceLocks[level][GameViewController.imagineInterfaceIndex] = true
         userDefaults.setObject(interfaceLocks, forKey: unlockDefaultKey)
         if let scene = sceneView.scene as? GameSKScene {
+            scene.imagineButtonNode.unpulse()
+            scene.gameCenterButtonNode.pulse()
             if isInstructionUnderstood() {
                 scene.buttonIndex = 2
             } else {
@@ -329,4 +360,37 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
     override func prefersStatusBarHidden() -> Bool {
         return true
     }
+    
+    func authenticateLocalPlayer() {
+        let localPlayer: GKLocalPlayer = GKLocalPlayer.localPlayer()
+        
+        localPlayer.authenticateHandler = {(ViewController, error) -> Void in
+            if((ViewController) != nil) {
+                // 1 Show login if player is not logged in
+                self.presentViewController(ViewController!, animated: true, completion: nil)
+            } else if (localPlayer.authenticated) {
+                // 2 Player is already euthenticated & logged in, load game center
+                self.gcEnabled = true
+                
+                // Get the default leaderboard ID
+                localPlayer.loadDefaultLeaderboardIdentifierWithCompletionHandler({ (leaderboardIdentifer: String?, error: NSError?) -> Void in
+                    if error != nil {
+                        print(error)
+                    } else {
+                        self.gcDefaultLeaderBoard = leaderboardIdentifer!
+                    }
+                })
+            } else {
+                // 3 Game center is not enabled on the users device
+                self.gcEnabled = false
+                print("Local player could not be authenticated, disabling game center")
+                print(error)
+            }
+        }
+    }
+    
+    func gameCenterViewControllerDidFinish(gameCenterViewController: GKGameCenterViewController) {
+        gameCenterViewController.dismissViewControllerAnimated(true, completion: nil)
+    }
+
 }
