@@ -29,8 +29,8 @@ class GameSKScene: PositionedSKScene {
     
     let instructionButtonNode = ButtonSKNode(activatedImageNamed: "instructions-color", disactivatedImageNamed: "instructions-black", pulsing: true)
     let imagineButtonNode = ButtonSKNode(activatedImageNamed: "imagine-color", disactivatedImageNamed: "imagine-black")
-    let gameCenterButtonNode = ButtonSKNode(activatedImageNamed: "gamecenter-color", disactivatedImageNamed: "gamecenter-black", active: false)
-    let levelButtonNode = ButtonSKNode(activatedImageNamed: "levels-color", disactivatedImageNamed: "levels-black", active: false)
+    let gameCenterButtonNode = ButtonSKNode(activatedImageNamed: "gamecenter-color", disactivatedImageNamed: "gamecenter-black")
+    let levelButtonNode = ButtonSKNode(activatedImageNamed: "levels-color", disactivatedImageNamed: "levels-black")
     
     var gameSceneDelegate: GameSceneDelegate!
     var experimentNodes = [ExperimentSKNode]()
@@ -53,10 +53,9 @@ class GameSKScene: PositionedSKScene {
                     gameSceneDelegate.unlockLevel(clock)
                     won = true
                 }
-                if buttonIndex != 1 && !gameSceneDelegate.isImagineUnderstood() {
+                if !gameSceneDelegate.isImagineUnderstood() {
                     buttonIndex = 1
                     imagineButtonNode.pulse()
-                    gameCenterButtonNode.activate()
                     showButton()
                 }
             } else {
@@ -139,6 +138,10 @@ class GameSKScene: PositionedSKScene {
                 buttonIndex = -1
             }
         }
+        if gameSceneDelegate.isInterfaceUnlocked(2) {
+            gameCenterButtonNode.disactivate()
+            levelButtonNode.disactivate()
+        }
         showButton()
 
         for recognizer in view.gestureRecognizers ?? [] {
@@ -174,10 +177,8 @@ class GameSKScene: PositionedSKScene {
             gameSceneDelegate.showImagineWindow()
         }
         if gameCenterButtonNode.containsPoint(positionInRobot) {
-            if gameCenterButtonNode.active {
-                gameSceneDelegate.showGameCenter()
-                gameCenterButtonNode.unpulse()
-            }
+            gameSceneDelegate.showGameCenter()
+            gameCenterButtonNode.unpulse()
         }
         if levelButtonNode.containsPoint(positionInRobot) {
             gameSceneDelegate.showLevelWindow()
@@ -193,10 +194,6 @@ class GameSKScene: PositionedSKScene {
         if gameSceneDelegate.isInterfaceUnlocked(1) {
             imagineButtonNode.disactivate()
             imagineButtonNode.unpulse()
-        }
-        if gameSceneDelegate.isInterfaceUnlocked(2) {
-            gameCenterButtonNode.activate()
-            levelButtonNode.activate()
         }
         switch buttonIndex {
         case 0:

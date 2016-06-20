@@ -83,6 +83,9 @@ class ButtonSKNode: SKSpriteNode
     
     func pulse() {
         pulsing = true
+        if visible {
+            runAction(actionRepeatPulse)
+        }
     }
     
     func unpulse() {

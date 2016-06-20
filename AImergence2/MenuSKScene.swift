@@ -33,7 +33,8 @@ class MenuSKScene: PositionedSKScene {
     {
         /* Setup your scene here */
         positionInFrame(view.frame.size)
-        backgroundColor = UIColor.whiteColor()
+        //backgroundColor = UIColor.whiteColor()
+        backgroundColor = UIColor(red: 222 / 256, green: 205 / 256, blue: 255 / 256, alpha: 1)
 
         let instructionNode = SKLabelNode(text: swipeString)
         instructionNode.fontName = PositionedSKScene.bodyFont.fontName
@@ -48,6 +49,7 @@ class MenuSKScene: PositionedSKScene {
         
         for i in 0...GameViewController.maxLevelNumber {
             let levelNode = createLabelNode("\(i)")
+            levelNode.fontName = "Noteworthy"
             levelNode.userData = ["level": i]
             levelNode.position = level0Position + (i % 5) * levelXOffset + (i / 5) * levelYOffset
             buttonNodes.append(levelNode)
@@ -63,8 +65,13 @@ class MenuSKScene: PositionedSKScene {
                 backgroundNode = SKShapeNode(path: UIBezierPath(ovalInRect: CGRect(x: -25, y: -25, width: 50, height: 50)).CGPath)
             }
             
-            if i == userDelegate?.currentlevel() { backgroundNode.fillColor = UIColor.blackColor() }
-            else { backgroundNode.fillColor = UIColor.lightGrayColor() }
+            if i == userDelegate?.currentlevel() {
+                //backgroundNode.fillColor = UIColor.blackColor()
+                backgroundNode.fillColor = UIColor(red: 114 / 256, green: 114 / 256, blue: 171 / 256, alpha: 1)
+            } else  {
+                //backgroundNode.fillColor = UIColor.lightGrayColor()
+                backgroundNode.fillColor = UIColor(red: 204 / 256, green: 153 / 256, blue: 204 / 256, alpha: 1)
+            }
             backgroundNode.lineWidth = 0
             levelNode.addChild(backgroundNode)
         }
