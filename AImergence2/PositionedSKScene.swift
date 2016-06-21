@@ -33,7 +33,7 @@ class PositionedSKScene: SKScene {
     static let actionMoveCameraLeftRight = SKAction.sequence([SKAction.moveBy(CGVector(dx:-50, dy:0), duration: 0.1), SKAction.moveBy(CGVector(dx:50, dy:0), duration: 0.1)])
     static let actionMoveCameraRightLeft = SKAction.sequence([SKAction.moveBy(CGVector(dx:50, dy:0), duration: 0.1), SKAction.moveBy(CGVector(dx:-50, dy:0), duration: 0.1)])
 
-    static let transitionUp    = SKTransition.revealWithDirection(SKTransitionDirection.Up, duration: 0.5)
+    static let transitionUp    = SKTransition.moveInWithDirection(SKTransitionDirection.Down, duration: 0.5)
     static let transitionDown  = SKTransition.revealWithDirection(SKTransitionDirection.Down, duration: 0.5)
     static let transitionLeft  = SKTransition.pushWithDirection(SKTransitionDirection.Left, duration: 0.5)
     static let transitionRight = SKTransition.pushWithDirection(SKTransitionDirection.Right, duration: 0.5)

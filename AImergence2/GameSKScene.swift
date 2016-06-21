@@ -47,6 +47,8 @@ class GameSKScene: PositionedSKScene {
     var score:Int = 0 {
         didSet {
             scoreLabel.text = "\(score)"
+            scoreLabel.removeAllChildren()
+            scoreLabel.addChild(gaugeNode(score))
             if score >= level.winScore {
                 scoreBackground.fillColor = UIColor.greenColor()
                 if !won {
@@ -104,6 +106,7 @@ class GameSKScene: PositionedSKScene {
         
         self.addChild(scoreBackground)
         scoreBackground.addChild(scoreLabel)
+        scoreLabel.addChild(gaugeNode(0))
 
         shapePopupNode = gameModel.createShapePopup()
         shapeNodes = gameModel.createShapeNodes(shapePopupNode)
@@ -340,6 +343,42 @@ class GameSKScene: PositionedSKScene {
         }
         frames.append(SKTexture(imageNamed: imageName + "1"))
         return frames
+    }
+    
+    func gaugeNode(score: Int) -> SKNode {
+        let gaugeNode = SKNode()
+        gaugeNode.position = CGPoint(x: -50, y: -40)
+        var y = -70
+        var height = 140
+        if score < -10 {
+            y = score * 6 - 10
+            height = -score * 6 + 80
+        }
+        if score > 10 {
+            height = score * 6 + 80
+        }
+        let gaugeBackgroundNode = SKShapeNode(rect: CGRect(x: -3, y: y, width: 10, height: height), cornerRadius: 5)
+        gaugeBackgroundNode.zPosition = -1
+        //gaugeBackgroundNode.fillColor = UIColor.whiteColor()
+        gaugeBackgroundNode.lineWidth = 1
+        gaugeNode.addChild(gaugeBackgroundNode)
+        if score > 0 {
+            for i in 1...score {
+                let dotNode = SKShapeNode(rect: CGRect(x: -1, y: i * 6, width: 6, height: 4))
+                dotNode.fillColor = UIColor.greenColor()
+                dotNode.lineWidth = 0
+                gaugeNode.addChild(dotNode)
+            }
+        }
+        if score < 0 {
+            for i in 1...(-score) {
+                let dotNode = SKShapeNode(rect: CGRect(x: -1, y: -i * 6, width: 6, height: 4))
+                dotNode.fillColor = UIColor.redColor()
+                dotNode.lineWidth = 0
+                gaugeNode.addChild(dotNode)
+            }
+        }
+        return gaugeNode
     }
 }
 

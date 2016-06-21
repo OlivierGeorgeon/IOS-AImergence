@@ -45,7 +45,7 @@ class GameModel
     
     func createScoreBackground() -> SKShapeNode {
         let scoreBackground = SKShapeNode(rect: CGRect(x: -30, y: -30, width: 60, height: 60), cornerRadius: 20)
-        scoreBackground.position = CGPoint(x: -117, y: 500)
+        scoreBackground.position = CGPoint(x: -117, y: 502)
         scoreBackground.lineWidth = 0
         scoreBackground.name = "scoreBackground"
         scoreBackground.fillColor = UIColor.whiteColor()
