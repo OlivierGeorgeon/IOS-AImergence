@@ -273,7 +273,9 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
         if gcEnabled {
             let sScore = GKScore(leaderboardIdentifier: "Level\(level)")
             sScore.value = Int64(score)
-            GKScore.reportScores([sScore], withCompletionHandler: { (error: NSError?) -> Void in
+            let sLevels = GKScore(leaderboardIdentifier: "Levels")
+            sLevels.value = Int64(level)
+            GKScore.reportScores([sLevels, sScore], withCompletionHandler: { (error: NSError?) -> Void in
                 if error != nil {
                     print(error!.localizedDescription)
                 } else {

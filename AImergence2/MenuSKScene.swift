@@ -100,10 +100,10 @@ class MenuSKScene: PositionedSKScene {
                         let gameModel = GameModel.createGameModel(ln)
                         let gameScene = GameSKScene(gameModel: gameModel)
                         gameScene.gameSceneDelegate = previousGameScene?.gameSceneDelegate
-                        self.view?.presentScene(gameScene, transition: PositionedSKScene.transitionUp)
+                        self.view?.presentScene(gameScene, transition: PositionedSKScene.transitionDown)
                     }
                 } else {
-                    self.view?.presentScene(previousGameScene!, transition: PositionedSKScene.transitionUp)
+                    self.view?.presentScene(previousGameScene!, transition: PositionedSKScene.transitionDown)
                 }
             }
         }
