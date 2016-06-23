@@ -134,13 +134,12 @@ class GameSKScene: PositionedSKScene {
 
         if !gameSceneDelegate.isInstructionUnderstood() {
             buttonIndex = 0
-        } else {
-            if gameSceneDelegate.isLevelUnlocked() && !gameSceneDelegate.isImagineUnderstood() {
-                buttonIndex = 1
-            } else {
+        } else if gameSceneDelegate.isLevelUnlocked() && !gameSceneDelegate.isImagineUnderstood() {
+            buttonIndex = 1
+        } else if buttonIndex < 3 {
                 buttonIndex = -1
-            }
         }
+        
         if gameSceneDelegate.isInterfaceUnlocked(2) {
             gameCenterButtonNode.disactivate()
             levelButtonNode.disactivate()
@@ -181,7 +180,6 @@ class GameSKScene: PositionedSKScene {
         }
         if gameCenterButtonNode.containsPoint(positionInRobot) {
             gameSceneDelegate.showGameCenter()
-            gameCenterButtonNode.unpulse()
         }
         if levelButtonNode.containsPoint(positionInRobot) {
             gameSceneDelegate.showLevelWindow()

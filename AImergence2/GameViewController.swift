@@ -235,8 +235,9 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
             let gcVC: GKGameCenterViewController = GKGameCenterViewController()
             gcVC.gameCenterDelegate = self
             gcVC.viewState = GKGameCenterViewControllerState.Leaderboards
+            //gcVC.leaderboardTimeScope = GKLeaderboardTimeScope.Today
             gcVC.leaderboardIdentifier = "Level\(level)" // GameCenter bug: it must be repeted in completion otherwise it is not working
-            self.presentViewController(gcVC, animated: true, completion: {gcVC.leaderboardIdentifier = "Level\(self.level)"})
+            self.presentViewController(gcVC, animated: true, completion: {gcVC.leaderboardIdentifier = "Levels";gcVC.leaderboardIdentifier = "Level\(self.level)"})
         } else {
             let alert = UIAlertController(title: "", message: gcLoginMessage, preferredStyle: UIAlertControllerStyle.Alert)
             alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: { (UIAlertAction) -> () in
@@ -324,13 +325,16 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
         interfaceLocks[level][GameViewController.instructionInterfaceIndex] = true
         userDefaults.setObject(interfaceLocks, forKey: unlockDefaultKey)
         if let scene = sceneView.scene as? GameSKScene {
-            scene.instructionButtonNode.unpulse()
-            if isImagineUnderstood() || !isLevelUnlocked() {
-                scene.buttonIndex = -1
-            } else {
+            if scene.instructionButtonNode.pulsing {
+                scene.instructionButtonNode.unpulse()
                 scene.buttonIndex = 1
-            }
+                /*if isImagineUnderstood() || !isLevelUnlocked() {
+                    scene.buttonIndex = -1
+                } else {
+                    scene.buttonIndex = 1
+                }*/
             scene.showButton()
+            }
         }
     }
     
@@ -352,10 +356,12 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
         interfaceLocks[level][GameViewController.imagineInterfaceIndex] = true
         userDefaults.setObject(interfaceLocks, forKey: unlockDefaultKey)
         if let scene = sceneView.scene as? GameSKScene {
-            scene.imagineButtonNode.unpulse()
-            scene.gameCenterButtonNode.pulse()
-            scene.buttonIndex = 2
-            scene.showButton()
+            if scene.imagineButtonNode.pulsing {
+                scene.imagineButtonNode.unpulse()
+                scene.gameCenterButtonNode.pulse()
+                scene.buttonIndex = 2
+                scene.showButton()
+            }
         }
     }
     
@@ -405,11 +411,13 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
         gameCenterViewController.dismissViewControllerAnimated(true, completion: nil)
         //print(gameCenterViewController.leaderboardIdentifier)
         if let scene = sceneView.scene as? GameSKScene {
-            scene.gameCenterButtonNode.unpulse()
+            if scene.gameCenterButtonNode.pulsing {
+                scene.gameCenterButtonNode.unpulse()
+                scene.levelButtonNode.pulse()
+                scene.buttonIndex = 3
+                scene.showButton()
+            }
             scene.gameCenterButtonNode.disactivate()
-            scene.levelButtonNode.pulse()
-            scene.buttonIndex = 3
-            scene.showButton()
         }
     }
 
