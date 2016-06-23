@@ -235,8 +235,8 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
             let gcVC: GKGameCenterViewController = GKGameCenterViewController()
             gcVC.gameCenterDelegate = self
             gcVC.viewState = GKGameCenterViewControllerState.Leaderboards
-            gcVC.leaderboardIdentifier = "Level\(level)"
-            self.presentViewController(gcVC, animated: true, completion: nil)
+            gcVC.leaderboardIdentifier = "Level\(level)" // GameCenter bug: it must be repeted in completion otherwise it is not working
+            self.presentViewController(gcVC, animated: true, completion: {gcVC.leaderboardIdentifier = "Level\(self.level)"})
         } else {
             let alert = UIAlertController(title: "", message: gcLoginMessage, preferredStyle: UIAlertControllerStyle.Alert)
             alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: { (UIAlertAction) -> () in

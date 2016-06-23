@@ -32,7 +32,7 @@ class GameModel
         self.experienceColors = experienceColors
     }
     
-    func moveByVect(point: CGPoint) -> CGVector { return CGVector(dx: -point.x, dy: 90 - point.y) }
+    func moveByVect(point: CGPoint) -> CGVector { return CGVector(dx: -20 - point.x, dy: 90 - point.y) }
     
     func createScoreLabel() -> SKLabelNode {
         let scoreLabel = SKLabelNode(text: "0")
@@ -77,7 +77,7 @@ class GameModel
     }
 
     func createColorPopup() -> SKShapeNode {
-        let popupBackground = SKShapeNode(rect: CGRect(x: -50, y: -230, width: 100, height: 460), cornerRadius: 10)
+        let popupBackground = SKShapeNode(rect: CGRect(x: -50, y: -228, width: 100, height: 460), cornerRadius: 10)
         popupBackground.position = CGPoint(x: -100, y: 300)
         popupBackground.lineWidth = 0
         popupBackground.fillColor = UIColor.whiteColor()
