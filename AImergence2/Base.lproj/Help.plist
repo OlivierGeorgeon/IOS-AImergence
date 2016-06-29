@@ -12,7 +12,7 @@
 		<array>
 			<string>An event is the association of a performed experiment with an obtained &quot;result&quot;.</string>
 			<string>In Level 1, experiments are represented by different shapes, and results by different colors.</string>
-			<string>When you have reached the score of 10, tap the &quot;gears&quot; icon that appears above the robot to see the effects produced by the experiments in an imaginary world.</string>
+			<string>When you have reached the score of 10, tap the &quot;gears&quot; icon above the robot to see the effects produced in an imaginary world when you do experiments.</string>
 		</array>
 		<array>
 			<string>Experiments may produce different types of events depending on the &quot;state of the world&quot; in which they are performed. They may also change the state of the world.</string>

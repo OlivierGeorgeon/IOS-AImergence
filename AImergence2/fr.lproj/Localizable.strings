@@ -9,9 +9,9 @@
 "Level" = "Niveau";
 "Cancel" = "Retour";
 "You must reach the score of 10" = "Vous devez atteindre le score de 10 avant de pouvoir voir une représentation imaginaire du monde dans cette fenêtre.";
-"Excellent 0" = "Bravo ! Vous avez gagné le niveau 0 ! Continuez à jouer avec cette fenêtre ouverte pour observer le monde imaginaire 3D. Ensuite, faites glisser le robot vers la gauche pour passer au niveau 1.";
+"Excellent 0" = "Bravo ! Vous avez gagné le niveau 0 ! Continuez à jouer avec cette fenêtre ouverte pour observer le monde imaginaire 3D. Ensuite, regardez votre classmeent, puis faites glisser le robot vers la gauche pour passer au niveau 1.";
 "Excellent 1" = "Bravo ! Vous avez gagné le niveau 1 ! Pour mieux comprendre le jeu, jouez toujours un peu en obervant le monde imaginaire 3D avant de passer au niveau suivant.";
-"Swipe" = "Glissez le robot horizontalement pour changer de niveau.";
+"Swipe" = "Glissez l'icône niveaux horizontalement pour changer de niveau.";
 "Drag the 3D scene to move the camera" = "Vous pouvez déplacer la caméra en pressant et glissant la scène 3D.";
 "Double tap to swap cameras." = "Vous pouvez changer de caméra en double-tappant sur la scène 3D.";
 "Please login to Game Center" = "Pour voir le classement, authentifiez-vous dans l'application Game Center !";

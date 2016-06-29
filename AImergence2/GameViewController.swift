@@ -90,22 +90,6 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
         let swipeDown = UISwipeGestureRecognizer(target:self, action: #selector(GameViewController.swipeDown(_:)))
         swipeDown.direction = .Down
         view.addGestureRecognizer(swipeDown)
-        
-        /*
-        // Set vertical effect
-        let verticalMotionEffect = UIInterpolatingMotionEffect(keyPath: "backgroundNodeX", type: .TiltAlongVerticalAxis)
-        verticalMotionEffect.minimumRelativeValue = -50
-        verticalMotionEffect.maximumRelativeValue = 50
-        
-        // Set horiztontal effect
-        let horizontalMotionEffect = UIInterpolatingMotionEffect(keyPath: "backgroundNodeX", type: .TiltAlongHorizontalAxis)
-        horizontalMotionEffect.minimumRelativeValue = -50
-        horizontalMotionEffect.maximumRelativeValue = 50
-        
-        let group = UIMotionEffectGroup()
-        group.motionEffects = [horizontalMotionEffect, verticalMotionEffect]
-        sceneView.addMotionEffect(group)
- */
     }
 
     func swipeLeft(gesture:UISwipeGestureRecognizer) {
@@ -413,7 +397,7 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
             }
             if scene.gameCenterButtonNode.pulsing {
                 scene.gameCenterButtonNode.unpulse()
-                //scene.levelButtonNode.pulse()
+                scene.levelButtonNode.pulse()
                 scene.shiftButton()
             }
         }

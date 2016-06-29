@@ -12,7 +12,7 @@ import SpriteKit
 class ButtonSKNode: SKSpriteNode
 {
     let actionAppear: SKAction
-    let actionPulse: SKAction
+    var actionPulse: SKAction
     let actionDisappear: SKAction
     
     let activatedTexture: SKTexture
@@ -31,7 +31,7 @@ class ButtonSKNode: SKSpriteNode
         let texture = active ? self.activatedTexture : self.disactivatedTexture
         
         let appearPath = UIBezierPath()
-        appearPath.addArcWithCenter(CGPoint(x: 0, y: 60), radius: 30, startAngle: -CGFloat(M_PI) / 2 , endAngle: CGFloat(M_PI) / 2, clockwise: false)
+        appearPath.addArcWithCenter(CGPoint(x: 0, y: 60), radius: 30, startAngle: -CGFloat(M_PI) / 2 , endAngle: CGFloat(M_PI) / 2, clockwise: true)
         let actionAppearPath = SKAction.followPath(appearPath.CGPath, asOffset: false, orientToPath: false, duration: 0.2)
         let actionAppearScale   = SKAction.scaleTo(0.9, duration: 0.2)
         actionAppear = SKAction.group([actionAppearScale, actionAppearPath])
@@ -42,7 +42,7 @@ class ButtonSKNode: SKSpriteNode
         actionPulse = SKAction.sequence([actionFirstPulseUp, SKAction.repeatActionForever(SKAction.sequence([actionPulseDown, actionPulseUp]))])
 
         let disappearPath = UIBezierPath()
-        disappearPath.addArcWithCenter(CGPoint(x: 0, y: 60), radius: 30, startAngle: CGFloat(M_PI) / 2 , endAngle: -CGFloat(M_PI) / 2, clockwise: false)
+        disappearPath.addArcWithCenter(CGPoint(x: 0, y: 60), radius: 30, startAngle: CGFloat(M_PI) / 2 , endAngle: -CGFloat(M_PI) / 2, clockwise: true)
         let actionDisappearPath = SKAction.followPath(disappearPath.CGPath, asOffset: false, orientToPath: false, duration: 0.2)
         let actionDisappearScale   = SKAction.scaleTo(0.0, duration: 0.2)
         actionDisappear = SKAction.group([actionDisappearPath, actionDisappearScale])
@@ -100,5 +100,9 @@ class ButtonSKNode: SKSpriteNode
         //removeAllActions()
         removeActionForKey("pulsing")
         removeActionForKey("appearing")
+    }
+    
+    func actionPulse(action: SKAction) {
+        actionPulse = action
     }
 }

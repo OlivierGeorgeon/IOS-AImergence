@@ -8,7 +8,7 @@
 
 import SpriteKit
 
-protocol GameSceneDelegate
+protocol GameSceneDelegate: class
 {
     func playExperience(experience: Experience)
     func unlockLevel(score: Int)
@@ -36,9 +36,11 @@ class GameSKScene: PositionedSKScene {
     let gameCenterButtonNode = ButtonSKNode(activatedImageNamed: "gamecenter-color", disactivatedImageNamed: "gamecenter-black")
     let levelButtonNode = ButtonSKNode(activatedImageNamed: "levels-color", disactivatedImageNamed: "levels-black")
     
+    var timer: NSTimer?
+    
     var currentButton = BUTTON.NONE
     
-    var gameSceneDelegate: GameSceneDelegate!
+    weak var gameSceneDelegate: GameSceneDelegate!
     var experimentNodes = [ExperimentSKNode]()
     var experienceNodes = Set<ExperienceSKNode>()
     var clock:Int = 0
@@ -46,8 +48,10 @@ class GameSKScene: PositionedSKScene {
     var scoreBackground:SKShapeNode
     var shapePopupNode:SKNode!
     var shapeNodes = Array<SKShapeNode>()
+    var shapeNodeIndex = 0
     var colorPopupNode: SKNode?
     var colorNodes = Array<SKShapeNode>()
+    var colorNodeIndex = 0
     var editNode: ReshapableSKNode?
     var won = false
     var score:Int = 0 {
@@ -60,7 +64,9 @@ class GameSKScene: PositionedSKScene {
                 if !won {
                     gameSceneDelegate.unlockLevel(clock)
                     won = true
-                    imagineButtonNode.pulse()
+                    if imagineButtonNode.active {
+                        imagineButtonNode.pulse()
+                    }
                 }
                 if !gameSceneDelegate.isImagineUnderstood() {
                     if currentButton == BUTTON.INSTRUCTION {
@@ -108,6 +114,9 @@ class GameSKScene: PositionedSKScene {
         name = "gameScene"
         
         backgroundColor = gameModel.backgroundColor
+        let actionRight = SKAction.moveBy(CGVector(dx: 20, dy: 0), duration: 0.5)
+        let actionLeft = SKAction.moveBy(CGVector(dx: -20, dy: 0), duration: 0.5)
+        levelButtonNode.actionPulse(SKAction.repeatActionForever(SKAction.sequence([actionRight, actionLeft])))
         
         self.addChild(scoreBackground)
         scoreBackground.addChild(scoreLabel)
@@ -261,47 +270,40 @@ class GameSKScene: PositionedSKScene {
         case .Began:
             for experimentNode in experimentNodes {
                 if CGRectContainsPoint(experimentNode.frame, positionInScene) {
-                //if experimentNode.containsPoint(positionInScene) {
+                    shapeNodeIndex = experimentNode.experiment.shapeIndex
+                    timer = NSTimer.scheduledTimerWithTimeInterval(0.7, target: self, selector: #selector(GameSKScene.revolveShapes), userInfo: nil, repeats: true)
                     editNode = experimentNode
+                    shapeNodes.forEach({$0.lineWidth = 3})
+                    shapeNodes[shapeNodeIndex].lineWidth = 6
                     addChild(shapePopupNode!)
                 }
             }
             for experienceNode in experienceNodes {
                 if CGRectContainsPoint(experienceNode.calculateAccumulatedFrame(), positionInScene) {
-                //if experienceNode.containsPoint(positionInScene) {
+                    shapeNodeIndex = experienceNode.experience.colorIndex
+                    timer = NSTimer.scheduledTimerWithTimeInterval(0.7, target: self, selector: #selector(GameSKScene.revolveColors), userInfo: nil, repeats: true)
                     editNode = experienceNode
                     colorPopupNode = gameModel.createColorPopup()
                     colorNodes = gameModel.createColorNodes(colorPopupNode!, experience: experienceNode.experience)
+                    colorNodes.forEach({$0.lineWidth = 1})
+                    colorNodes[colorNodeIndex].lineWidth = 6
                     cameraRelativeOriginNode.addChild(colorPopupNode!)
                 }
             }
+        case .Changed:
+            if editNode != nil {
+                if !CGRectContainsPoint(editNode!.calculateAccumulatedFrame(), positionInScene) {
+                    timer?.invalidate()
+                }
+                selectShapeNode(positionInShapePopup)
+                selectColorNode(positionInColorPopup)
+            }
+            break
         case .Ended:
-            for i in 0..<shapeNodes.count {
-                if CGRectContainsPoint(shapeNodes[i].frame, positionInShapePopup!) {
-                //if shapeNodes[i].containsPoint(positionInShapePopup!) {
-                    if let experimentNode = editNode as? ExperimentSKNode {
-                        experimentNode.experiment.shapeIndex = i
-                        experimentNode.reshape()
-                        for node in experienceNodes {
-                            if node.experience.experimentNumber == experimentNode.experiment.number {
-                                node.reshape()
-                            }
-                        }
-                    }
-                }
-            }
+            timer?.invalidate()
+            selectShapeNode(positionInShapePopup)
             shapePopupNode?.removeFromParent()
-            for i in 0..<colorNodes.count {
-                if CGRectContainsPoint(colorNodes[i].frame, positionInColorPopup!) {
-                //if colorNodes[i].containsPoint(positionInColorPopup!) {
-                    if let experienceNode = editNode as? ExperienceSKNode {
-                        experienceNode.experience.colorIndex = i
-                        for node in experienceNodes {
-                            node.refill()
-                        }
-                    }
-                }
-            }
+            selectColorNode(positionInColorPopup)
             colorNodes = Array<SKShapeNode>()
             colorPopupNode?.removeFromParent()
             colorPopupNode = nil
@@ -360,12 +362,10 @@ class GameSKScene: PositionedSKScene {
         var frames = [SKTexture]()
         
         for i in 1.stride(to: imageNumber, by: by) {
-        //for var i=1; i<=imageNumber; i = i + 3 {
             let textureName = imageName + "\(i)"
             frames.append(SKTexture(imageNamed: textureName))
         }
         for i in imageNumber.stride(to: 0, by: -by) {
-        //for var i = imageNumber - 1; i > 0; i = i - 3 {
             let textureName = imageName + "\(i)"
             frames.append(SKTexture(imageNamed: textureName))
         }
@@ -407,6 +407,66 @@ class GameSKScene: PositionedSKScene {
             }
         }
         return gaugeNode
+    }
+    
+    func selectShapeNode(positionInShapePopup: CGPoint?) {
+        for i in 0..<shapeNodes.count {
+            if CGRectContainsPoint(shapeNodes[i].frame, positionInShapePopup!) {
+                shapeNodes.forEach({$0.lineWidth = 3})
+                shapeNodes[i].lineWidth = 6
+                reshapeNodes(i)
+            }
+        }
+    }
+    func selectColorNode(positionInColorPopup: CGPoint?) {
+        for i in 0..<colorNodes.count {
+            if CGRectContainsPoint(colorNodes[i].frame, positionInColorPopup!) {
+                colorNodes.forEach({$0.lineWidth = 1})
+                colorNodes[i].lineWidth = 6
+                refillNodes(i)
+            }
+        }
+    }
+    
+    func revolveShapes() {
+        shapeNodes[shapeNodeIndex].lineWidth = 3
+        shapeNodeIndex += 1
+        if shapeNodeIndex >= shapeNodes.count {
+            shapeNodeIndex = 0
+        }
+        shapeNodes[shapeNodeIndex].lineWidth = 6
+        reshapeNodes(shapeNodeIndex)
+    }
+    
+    func reshapeNodes(shapeIndex: Int) {
+        if let experimentNode = editNode as? ExperimentSKNode {
+            experimentNode.experiment.shapeIndex = shapeIndex
+            experimentNode.reshape()
+            for node in experienceNodes {
+                if node.experience.experimentNumber == experimentNode.experiment.number {
+                    node.reshape()
+                }
+            }
+        }
+    }
+    
+    func revolveColors() {
+        colorNodes[colorNodeIndex].lineWidth = 1
+        colorNodeIndex += 1
+        if colorNodeIndex >= colorNodes.count {
+            colorNodeIndex = 0
+        }
+        colorNodes[colorNodeIndex].lineWidth = 6
+        refillNodes(colorNodeIndex)
+    }
+    
+    func refillNodes(colorIndex: Int) {
+        if let experienceNode = editNode as? ExperienceSKNode {
+            experienceNode.experience.colorIndex = colorIndex
+            for node in experienceNodes {
+                node.refill()
+            }
+        }
     }
 }
 

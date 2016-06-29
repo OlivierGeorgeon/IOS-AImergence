@@ -8,7 +8,7 @@
 
 import SpriteKit
 
-protocol MenuSceneDelegate
+protocol MenuSceneDelegate: class
 {
     func currentlevel() -> Int
     func updateLevel(level: Int)
@@ -25,7 +25,7 @@ class MenuSKScene: PositionedSKScene {
 
     let gameModel = GameModel2()
 
-    var userDelegate: MenuSceneDelegate?
+    weak var userDelegate: MenuSceneDelegate?
     var buttonNodes = [SKNode]()
     var previousGameScene:GameSKScene?
 

@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol HelpViewControllerDelegate
+protocol HelpViewControllerDelegate: class
 {
     func hideHelpViewControllerContainer()
     func understandInstruction()
@@ -27,7 +27,7 @@ class HelpViewController: UIViewController {
     let helpBlobArray:[String]
     let levelString = NSLocalizedString("Level", comment: "the game level displayed in the header of the help window")
     
-    var delegate: HelpViewControllerDelegate?
+    weak var delegate: HelpViewControllerDelegate?
     
     required init(coder aDecoder: NSCoder)
     {

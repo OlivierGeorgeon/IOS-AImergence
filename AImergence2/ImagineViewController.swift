@@ -9,7 +9,7 @@
 import UIKit
 import SceneKit
 
-protocol WorldViewControllerDelegate
+protocol WorldViewControllerDelegate: class
 {
     func hideImagineViewControllerContainer()
     func isLevelUnlocked() -> Bool
@@ -23,8 +23,8 @@ class ImagineViewController: UIViewController {
     @IBOutlet weak var textView: UITextView!
     @IBAction func closeButton(sender: UIButton) { delegate?.hideImagineViewControllerContainer() }
     @IBAction func understoodButton(sender: UIButton) {
-        if delegate.isLevelUnlocked() { delegate.imagineOk() }
-        delegate.hideImagineViewControllerContainer()
+        if delegate!.isLevelUnlocked() { delegate?.imagineOk() }
+        delegate?.hideImagineViewControllerContainer()
     }
 
     @IBAction func elseButton(sender: UIButton)  {
@@ -34,10 +34,10 @@ class ImagineViewController: UIViewController {
     //let bundleName = NSBundle.mainBundle().infoDictionary!["CFBundleName"] as! String
 
     var imagineModel: ImagineModel!
-    var delegate: WorldViewControllerDelegate!
+    weak var delegate: WorldViewControllerDelegate?
     
     func displayLevel(level: Int) {
-        if delegate.isLevelUnlocked() {
+        if delegate!.isLevelUnlocked() {
             switch level {
             case 0:
                 textView.text = NSLocalizedString("Excellent 0", comment: "Message in the Imagine window on Levels 0 and 1.");
@@ -58,9 +58,9 @@ class ImagineViewController: UIViewController {
 
             let aClass:AnyClass? =  NSClassFromString("Little_AI.ImagineModel\(level)")
             if let imagineModelType = aClass as? ImagineModel.Type
-                { imagineModel = imagineModelType.init(gameModel: delegate.getGameModel()) }
+                { imagineModel = imagineModelType.init(gameModel: delegate!.getGameModel()) }
             else
-                { imagineModel = ImagineModel0(gameModel: delegate.getGameModel()) }
+                { imagineModel = ImagineModel0(gameModel: delegate!.getGameModel()) }
             sceneViewSetup()
         } else {
             // Fix the bug that prevents the localization of UITextView in the storyboard from working.
