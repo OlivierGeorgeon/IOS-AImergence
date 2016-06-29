@@ -101,23 +101,6 @@ class GameModel
         return colorNodes
     }
     
-    func createRobotNode() -> SKSpriteNode {
-        let robotNode = SKSpriteNode(imageNamed: "happy1.png")
-        robotNode.size = CGSize(width: 100, height: 100)
-        robotNode.position = CGPoint(x: 120, y: 180)
-        robotNode.zPosition = 1
-        return robotNode
-    }
-
-    func createBackroundNode() -> SKSpriteNode {
-        let backgroundNode = SKSpriteNode(imageNamed: "fond.png")
-        backgroundNode.size = CGSize(width: 1188 , height: 1188)
-        backgroundNode.position = CGPoint(x: 400, y: 0)
-        backgroundNode.zPosition = -20
-        backgroundNode.name = "background"
-        return backgroundNode
-    }
-    
     class func createGameModel(levelNumber: Int) -> GameModel2 {
         var level = Level0()
         

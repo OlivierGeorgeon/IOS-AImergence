@@ -17,9 +17,9 @@ protocol MenuSceneDelegate
 
 class MenuSKScene: PositionedSKScene {
     
-    let swipeString = NSLocalizedString("Swipe", comment: "Swipe horizontally to change level.")
+    let instructionNode = SKLabelNode(text: NSLocalizedString("Swipe", comment: "Swipe horizontally to change level."))
     
-    let level0Position      = CGPoint(x: 60, y: 540)
+    let level0Position      = CGPoint(x: 60, y: 550)
     let levelXOffset        = CGVector( dx: 60, dy: 0)
     let levelYOffset        = CGVector( dx:  0, dy: -80)
 
@@ -32,28 +32,41 @@ class MenuSKScene: PositionedSKScene {
     override func didMoveToView(view: SKView)
     {
         /* Setup your scene here */
-        positionInFrame(view.frame.size)
-        //backgroundColor = UIColor.whiteColor()
+
         //backgroundColor = UIColor(red: 222 / 256, green: 205 / 256, blue: 255 / 256, alpha: 1)
         backgroundColor = UIColor.whiteColor()
         let backgroundNode = SKSpriteNode(imageNamed: "niveaux.png")
-        //backgroundNode.size = CGSize(width: 1188 , height: 1188)
         backgroundNode.position = CGPoint(x: 300, y: 300)
         backgroundNode.zPosition = -20
         backgroundNode.name = "background"
         addChild(backgroundNode)
 
-        let instructionNode = SKLabelNode(text: swipeString)
         instructionNode.fontName = PositionedSKScene.bodyFont.fontName
         instructionNode.fontSize = PositionedSKScene.bodyFont.pointSize
         instructionNode.fontColor = UIColor.blackColor()
         instructionNode.verticalAlignmentMode = .Center
-        instructionNode.position = CGPoint(x: 187, y: 50)
-        while instructionNode.frame.size.width >= 375 {
-            instructionNode.fontSize-=1.0
-        }
         addChild(instructionNode)
         
+        buttonNodes = createButtons(view.frame.size)
+        
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(MenuSKScene.tap(_:)))
+        view.addGestureRecognizer(tapGestureRecognizer);
+        
+        super.didMoveToView(view)
+    }
+    
+    override func positionInFrame(frameSize: CGSize) {
+        super.positionInFrame(frameSize)
+        instructionNode.position = CGPoint(x: self.size.width / 2, y: 50)
+        instructionNode.fontSize = PositionedSKScene.titleFont.pointSize
+        while instructionNode.frame.size.width >= self.size.width {
+            instructionNode.fontSize-=1.0
+        }
+    }
+    
+    func createButtons(frameSize: CGSize) -> [SKNode]
+    {
+        var buttonNodes = [SKNode]()
         for i in 0...GameViewController.maxLevelNumber {
             let levelNode = createLabelNode("\(i)")
             levelNode.fontName = "Noteworthy-Bold"
@@ -77,14 +90,13 @@ class MenuSKScene: PositionedSKScene {
                 backgroundNode.fillColor = UIColor(red: 114 / 256, green: 114 / 256, blue: 171 / 256, alpha: 1)
             } else  {
                 //backgroundNode.fillColor = UIColor.lightGrayColor()
-                backgroundNode.fillColor = UIColor(red: 204 / 256, green: 153 / 256, blue: 204 / 256, alpha: 1)
+                backgroundNode.fillColor = UIColor(red: 150 / 256, green: 100 / 256, blue: 150 / 256, alpha: 1)
+                //backgroundNode.fillColor = UIColor(red: 204 / 256, green: 153 / 256, blue: 04 / 256, alpha: 1)
             }
             backgroundNode.lineWidth = 0
             levelNode.addChild(backgroundNode)
         }
-        
-        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(MenuSKScene.tap(_:)))
-        view.addGestureRecognizer(tapGestureRecognizer);
+        return buttonNodes
     }
     
     func createLabelNode(text: String) -> SKLabelNode {

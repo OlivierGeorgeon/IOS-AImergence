@@ -22,15 +22,21 @@ protocol GameSceneDelegate
     func showLevelWindow()
 }
 
+enum BUTTON: Int { case INSTRUCTION, IMAGINE, GAMECENTER, LEVEL, NONE}
+
 class GameSKScene: PositionedSKScene {
     
     let gameModel:GameModel2
     let level:Level0
     
-    let instructionButtonNode = ButtonSKNode(activatedImageNamed: "instructions-color", disactivatedImageNamed: "instructions-black", pulsing: true)
+    let backgroundNode = SKSpriteNode(imageNamed: "fond.png")
+    let robotNode = SKSpriteNode(imageNamed: "happy1.png")
+    let instructionButtonNode = ButtonSKNode(activatedImageNamed: "instructions-color", disactivatedImageNamed: "instructions-black")
     let imagineButtonNode = ButtonSKNode(activatedImageNamed: "imagine-color", disactivatedImageNamed: "imagine-black")
     let gameCenterButtonNode = ButtonSKNode(activatedImageNamed: "gamecenter-color", disactivatedImageNamed: "gamecenter-black")
     let levelButtonNode = ButtonSKNode(activatedImageNamed: "levels-color", disactivatedImageNamed: "levels-black")
+    
+    var currentButton = BUTTON.NONE
     
     var gameSceneDelegate: GameSceneDelegate!
     var experimentNodes = [ExperimentSKNode]()
@@ -54,11 +60,12 @@ class GameSKScene: PositionedSKScene {
                 if !won {
                     gameSceneDelegate.unlockLevel(clock)
                     won = true
+                    imagineButtonNode.pulse()
                 }
                 if !gameSceneDelegate.isImagineUnderstood() {
-                    buttonIndex = 1
-                    imagineButtonNode.pulse()
-                    showButton()
+                    if currentButton == BUTTON.INSTRUCTION {
+                        shiftButton()
+                    }
                 }
             } else {
                 scoreBackground.fillColor = UIColor.whiteColor()
@@ -70,15 +77,13 @@ class GameSKScene: PositionedSKScene {
     var robotSadFrames: [SKTexture]!
     var robotBlinkFrames: [SKTexture]!
     
-    var buttonIndex = 0
-    
     init(gameModel: GameModel2)
     {
         self.level = gameModel.level
         self.gameModel = gameModel
         scoreLabel = gameModel.createScoreLabel()
         scoreBackground = gameModel.createScoreBackground()
-        super.init(size: PositionedSKScene.portraitSize)
+        super.init(size:CGSize(width: 0 , height: 0))
         cameraNode = SKCameraNode()
         self.camera = cameraNode
         self.addChild(cameraNode!)
@@ -107,20 +112,25 @@ class GameSKScene: PositionedSKScene {
         self.addChild(scoreBackground)
         scoreBackground.addChild(scoreLabel)
         scoreLabel.addChild(gaugeNode(0))
-
+        
         shapePopupNode = gameModel.createShapePopup()
         shapeNodes = gameModel.createShapeNodes(shapePopupNode)
         
         experimentNodes = gameModel.createExperimentNodes(self)
         
-        robotNode = gameModel.createRobotNode()
-        cameraRelativeOriginNode.addChild(robotNode!)
-        backgroundNode = gameModel.createBackroundNode()
-        cameraRelativeOriginNode.addChild(backgroundNode!)
-        robotNode?.addChild(instructionButtonNode)
-        robotNode?.addChild(imagineButtonNode)
-        robotNode?.addChild(gameCenterButtonNode)
-        robotNode?.addChild(levelButtonNode)
+        robotNode.size = CGSize(width: 100, height: 100)
+        robotNode.position = CGPoint(x: 120, y: 180)
+        robotNode.zPosition = 1
+        cameraRelativeOriginNode.addChild(robotNode)
+        backgroundNode.size = CGSize(width: 1188 , height: 1188)
+        backgroundNode.position = CGPoint(x: 400, y: 0)
+        backgroundNode.zPosition = -20
+        backgroundNode.name = "background"
+        cameraRelativeOriginNode.addChild(backgroundNode)
+        robotNode.addChild(instructionButtonNode)
+        robotNode.addChild(imagineButtonNode)
+        robotNode.addChild(gameCenterButtonNode)
+        robotNode.addChild(levelButtonNode)
         
         robotHappyFrames = loadFrames("happy", imageNumber: 6, by: 1)
         robotSadFrames = loadFrames("sad", imageNumber: 7, by: 1)
@@ -132,20 +142,29 @@ class GameSKScene: PositionedSKScene {
         /* Setup your scene here */
         super.didMoveToView(view)
 
+        // Needs the delegate to be ready
         if !gameSceneDelegate.isInstructionUnderstood() {
-            buttonIndex = 0
-        } else if gameSceneDelegate.isLevelUnlocked() && !gameSceneDelegate.isImagineUnderstood() {
-            buttonIndex = 1
-        } else if buttonIndex < 3 {
-                buttonIndex = -1
+            currentButton = BUTTON.INSTRUCTION
+            instructionButtonNode.pulse()
+            levelButtonNode.disappear()
+            instructionButtonNode.appear()
+        } else if !gameSceneDelegate.isImagineUnderstood() {
+            currentButton = BUTTON.IMAGINE
+            imagineButtonNode.pulse()
+            levelButtonNode.disappear()
+            imagineButtonNode.appear()
         }
-        
+        if gameSceneDelegate.isInstructionUnderstood() {
+            instructionButtonNode.disactivate()
+        }
+        if gameSceneDelegate.isImagineUnderstood() {
+            imagineButtonNode.disactivate()
+        }
         if gameSceneDelegate.isInterfaceUnlocked(2) {
             gameCenterButtonNode.disactivate()
             levelButtonNode.disactivate()
         }
-        showButton()
-
+        
         for recognizer in view.gestureRecognizers ?? [] {
             if recognizer is UITapGestureRecognizer || recognizer is UILongPressGestureRecognizer  {
                 view.removeGestureRecognizer(recognizer)
@@ -156,21 +175,43 @@ class GameSKScene: PositionedSKScene {
         let longPressGestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(GameSKScene.longPress(_:)))
         view.addGestureRecognizer(longPressGestureRecognizer)
     }
+    
+    override func positionInFrame(frameSize: CGSize) {
+        super.positionInFrame(frameSize)
+        if frameSize.height > frameSize.width {
+            cameraNode?.position =  PositionedSKScene.portraitCameraPosition
+            cameraRelativeOriginNode.position = -PositionedSKScene.portraitCameraPosition
+            backgroundNode.position.x = 0
+            backgroundNode.size.width = 667
+            robotNode.position = PositionedSKScene.portraitRobotPosition
+            robotNode.setScale(1)
+        } else {
+            cameraNode?.position.x =  size.width / 2 - 190
+            cameraNode?.position.y =  233
+            //cameraRelativeOriginNode.position = -PositionedSKScene.landscapeCameraPosition
+            if cameraNode != nil {
+                cameraRelativeOriginNode.position = -cameraNode!.position
+            }
+            backgroundNode.position.x = 400
+            backgroundNode.size.width = 1188
+            robotNode.position = PositionedSKScene.landscapeRobotPosition
+            robotNode.setScale(2)
+        }      
+    }
         
     func tap(recognizer: UITapGestureRecognizer)
     {
         let positionInScene = self.convertPointFromView(recognizer.locationInView(self.view))
         let positionInScreen = cameraRelativeOriginNode.convertPoint(positionInScene, fromNode: self)
-        let positionInRobot = robotNode!.convertPoint(positionInScene, fromNode: self)
+        let positionInRobot = robotNode.convertPoint(positionInScene, fromNode: self)
         for experimentNode in experimentNodes {
             if experimentNode.containsPoint(positionInScene){
                 play(experimentNode)
             }
         }
         //if robotNode!.containsPoint(positionInScreen) { // also includes the robotNode's child nodes
-        if CGRectContainsPoint((robotNode?.frame)!, positionInScreen) {
-            buttonIndex += 1; if buttonIndex > 3 { buttonIndex = -1 }
-            showButton()
+        if CGRectContainsPoint(robotNode.frame, positionInScreen) {
+            shiftButton()
         }
         if instructionButtonNode.containsPoint(positionInRobot) {
             gameSceneDelegate.showInstructionWindow()
@@ -187,40 +228,25 @@ class GameSKScene: PositionedSKScene {
         }
     }
     
-    func showButton() {
-        if gameSceneDelegate.isInterfaceUnlocked(0) {
-            instructionButtonNode.disactivate()
-            instructionButtonNode.unpulse()
+    func shiftButton() {
+        if currentButton.rawValue >= BUTTON.NONE.rawValue {
+            currentButton = BUTTON.INSTRUCTION
+        } else {
+            currentButton = BUTTON(rawValue: currentButton.rawValue + 1)!
         }
-        if gameSceneDelegate.isInterfaceUnlocked(1) {
-            imagineButtonNode.disactivate()
-            imagineButtonNode.unpulse()
-        }
-        switch buttonIndex {
-        case 0:
+        switch currentButton {
+        case .INSTRUCTION:
             instructionButtonNode.appear()
-            imagineButtonNode.disappear()
-            gameCenterButtonNode.disappear()
-            levelButtonNode.disappear()
-        case 1:
+        case .IMAGINE:
             instructionButtonNode.disappear()
             imagineButtonNode.appear()
-            gameCenterButtonNode.disappear()
-            levelButtonNode.disappear()
-        case 2:
-            instructionButtonNode.disappear()
+        case .GAMECENTER:
             imagineButtonNode.disappear()
             gameCenterButtonNode.appear()
-            levelButtonNode.disappear()
-        case 3:
-            instructionButtonNode.disappear()
-            imagineButtonNode.disappear()
+        case .LEVEL:
             gameCenterButtonNode.disappear()
             levelButtonNode.appear()
         default:
-            instructionButtonNode.disappear()
-            imagineButtonNode.disappear()
-            gameCenterButtonNode.disappear()
             levelButtonNode.disappear()
         }
     }
@@ -234,13 +260,15 @@ class GameSKScene: PositionedSKScene {
         switch recognizer.state {
         case .Began:
             for experimentNode in experimentNodes {
-                if experimentNode.containsPoint(positionInScene) {
+                if CGRectContainsPoint(experimentNode.frame, positionInScene) {
+                //if experimentNode.containsPoint(positionInScene) {
                     editNode = experimentNode
                     addChild(shapePopupNode!)
                 }
             }
             for experienceNode in experienceNodes {
-                if experienceNode.containsPoint(positionInScene) {
+                if CGRectContainsPoint(experienceNode.calculateAccumulatedFrame(), positionInScene) {
+                //if experienceNode.containsPoint(positionInScene) {
                     editNode = experienceNode
                     colorPopupNode = gameModel.createColorPopup()
                     colorNodes = gameModel.createColorNodes(colorPopupNode!, experience: experienceNode.experience)
@@ -249,7 +277,8 @@ class GameSKScene: PositionedSKScene {
             }
         case .Ended:
             for i in 0..<shapeNodes.count {
-                if shapeNodes[i].containsPoint(positionInShapePopup!) {
+                if CGRectContainsPoint(shapeNodes[i].frame, positionInShapePopup!) {
+                //if shapeNodes[i].containsPoint(positionInShapePopup!) {
                     if let experimentNode = editNode as? ExperimentSKNode {
                         experimentNode.experiment.shapeIndex = i
                         experimentNode.reshape()
@@ -263,7 +292,8 @@ class GameSKScene: PositionedSKScene {
             }
             shapePopupNode?.removeFromParent()
             for i in 0..<colorNodes.count {
-                if colorNodes[i].containsPoint(positionInColorPopup!) {
+                if CGRectContainsPoint(colorNodes[i].frame, positionInColorPopup!) {
+                //if colorNodes[i].containsPoint(positionInColorPopup!) {
                     if let experienceNode = editNode as? ExperienceSKNode {
                         experienceNode.experience.colorIndex = i
                         for node in experienceNodes {
@@ -322,7 +352,7 @@ class GameSKScene: PositionedSKScene {
     }
     
     func animRobot(texture: [SKTexture]) {
-        robotNode!.runAction(
+        robotNode.runAction(
             SKAction.animateWithTextures(texture, timePerFrame: 0.05, resize: false, restore: false))
     }
     

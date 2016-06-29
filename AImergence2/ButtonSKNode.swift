@@ -31,18 +31,18 @@ class ButtonSKNode: SKSpriteNode
         let texture = active ? self.activatedTexture : self.disactivatedTexture
         
         let appearPath = UIBezierPath()
-        //appearPath.addArcWithCenter(CGPoint(x: 0, y: 60), radius: 30, startAngle: -CGFloat(M_PI) / 2 , endAngle: CGFloat(M_PI) / 2, clockwise: false)
-        appearPath.addArcWithCenter(CGPoint(x: 0, y: 60), radius: 30, startAngle: -CGFloat(M_PI) / 2 , endAngle: CGFloat(M_PI) / 2, clockwise: true)
+        appearPath.addArcWithCenter(CGPoint(x: 0, y: 60), radius: 30, startAngle: -CGFloat(M_PI) / 2 , endAngle: CGFloat(M_PI) / 2, clockwise: false)
         let actionAppearPath = SKAction.followPath(appearPath.CGPath, asOffset: false, orientToPath: false, duration: 0.2)
         let actionAppearScale   = SKAction.scaleTo(0.9, duration: 0.2)
         actionAppear = SKAction.group([actionAppearScale, actionAppearPath])
 
-        let actionPulseUp = SKAction.scaleTo(1, duration: 0.5)
-        let actionPulseDown = SKAction.scaleTo(0.9, duration: 0.5)
-        actionPulse = SKAction.repeatActionForever(SKAction.sequence([actionPulseUp, actionPulseDown]))
+        let actionFirstPulseUp = SKAction.scaleTo(1.5, duration: 0.2)
+        let actionPulseDown = SKAction.scaleTo(0.9, duration: 0.3)
+        let actionPulseUp = SKAction.scaleTo(1, duration: 0.3)
+        actionPulse = SKAction.sequence([actionFirstPulseUp, SKAction.repeatActionForever(SKAction.sequence([actionPulseDown, actionPulseUp]))])
 
         let disappearPath = UIBezierPath()
-        disappearPath.addArcWithCenter(CGPoint(x: 0, y: 60), radius: 30, startAngle: CGFloat(M_PI) / 2 , endAngle: -CGFloat(M_PI) / 2, clockwise: true)
+        disappearPath.addArcWithCenter(CGPoint(x: 0, y: 60), radius: 30, startAngle: CGFloat(M_PI) / 2 , endAngle: -CGFloat(M_PI) / 2, clockwise: false)
         let actionDisappearPath = SKAction.followPath(disappearPath.CGPath, asOffset: false, orientToPath: false, duration: 0.2)
         let actionDisappearScale   = SKAction.scaleTo(0.0, duration: 0.2)
         actionDisappear = SKAction.group([actionDisappearPath, actionDisappearScale])
@@ -58,8 +58,8 @@ class ButtonSKNode: SKSpriteNode
     }
     
     func appear() {
+        removeActionForKey("appearing")
         if !visible {
-            removeActionForKey("appearing")
             if pulsing {
                 runAction(SKAction.sequence([actionAppear, actionPulse]), withKey: "appearing")
             } else {
@@ -71,7 +71,8 @@ class ButtonSKNode: SKSpriteNode
     
     func disappear() {
         if visible {
-            removeAllActions()
+            removeActionForKey("pulsing")
+            removeActionForKey("appearing")
             runAction(actionDisappear)
             visible = false
         }
@@ -90,12 +91,14 @@ class ButtonSKNode: SKSpriteNode
     func pulse() {
         pulsing = true
         if visible {
-            runAction(actionPulse)
+            runAction(actionPulse, withKey: "pulsing")
         }
     }
     
     func unpulse() {
         pulsing = false
-        removeAllActions()
+        //removeAllActions()
+        removeActionForKey("pulsing")
+        removeActionForKey("appearing")
     }
 }

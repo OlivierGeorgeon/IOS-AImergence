@@ -112,7 +112,7 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
         if let scene = sceneView.scene as? GameSKScene {
             let positionInScene = scene.convertPointFromView(gesture.locationInView(sceneView))
             let positionInScreen = scene.cameraRelativeOriginNode.convertPoint(positionInScene, fromNode: scene)
-            if scene.robotNode!.containsPoint(positionInScreen) { // also includes the robotNode's child nodes
+            if scene.robotNode.containsPoint(positionInScreen) { // also includes the robotNode's child nodes
                 if interfaceLocks[level][GameViewController.levelInterfaceIndex] && level < GameViewController.maxLevelNumber {
                     level += 1
                     let gameModel = GameModel.createGameModel(level)
@@ -122,7 +122,7 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
                     hideImagineViewControllerContainer()
                 } else {
                     //scene.camera?.runAction(PositionedSKScene.actionMoveCameraRightLeft)
-                    scene.robotNode?.runAction(PositionedSKScene.actionMoveCameraLeftRight)
+                    scene.robotNode.runAction(PositionedSKScene.actionMoveCameraLeftRight)
                 }
             }
         }
@@ -132,7 +132,7 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
         if let scene = sceneView.scene as? GameSKScene {
             let positionInScene = scene.convertPointFromView(gesture.locationInView(sceneView))
             let positionInScreen = scene.cameraRelativeOriginNode.convertPoint(positionInScene, fromNode: scene)
-            if scene.robotNode!.containsPoint(positionInScreen) { // also includes the robotNode's child nodes
+            if scene.robotNode.containsPoint(positionInScreen) { // also includes the robotNode's child nodes
                 if level > 0 {
                     level -= 1
                     let gameModel = GameModel.createGameModel(level)
@@ -142,7 +142,7 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
                     hideImagineViewControllerContainer()
                 } else {
                     //scene.camera?.runAction(PositionedSKScene.actionMoveCameraLeftRight)
-                    scene.robotNode?.runAction(PositionedSKScene.actionMoveCameraRightLeft)
+                    scene.robotNode.runAction(PositionedSKScene.actionMoveCameraRightLeft)
                 }
             }
         }
@@ -150,7 +150,7 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
     
     func swipeUp(gesture:UISwipeGestureRecognizer) {
         if let scene = sceneView.scene as? GameSKScene {
-            if scene.cameraNode?.position.y > PositionedSKScene.portraitSize.height {
+            if scene.cameraNode?.position.y > 667 {
                 scene.cameraNode?.runAction(PositionedSKScene.actionMoveCameraDown)
             } else {
                 scene.cameraNode?.runAction(PositionedSKScene.actionMoveCameraDownUp)
@@ -160,7 +160,7 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
     
     func swipeDown(gesture:UISwipeGestureRecognizer) {
         if let scene = sceneView.scene as? GameSKScene {
-            if scene.cameraNode?.position.y < 7 * PositionedSKScene.portraitSize.height {
+            if scene.cameraNode?.position.y < 7 * 667 {
                 scene.cameraNode?.runAction(PositionedSKScene.actionMoveCameraUp)
             }
         }
@@ -236,6 +236,7 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
             gcVC.gameCenterDelegate = self
             gcVC.viewState = GKGameCenterViewControllerState.Leaderboards
             //gcVC.leaderboardTimeScope = GKLeaderboardTimeScope.Today
+            //gcVC.leaderboardIdentifier = "Levels"
             gcVC.leaderboardIdentifier = "Level\(level)" // GameCenter bug: it must be repeted in completion otherwise it is not working
             self.presentViewController(gcVC, animated: true, completion: {gcVC.leaderboardIdentifier = "Levels";gcVC.leaderboardIdentifier = "Level\(self.level)"})
         } else {
@@ -245,8 +246,7 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
                     if let scene = self.sceneView.scene as? GameSKScene {
                         scene.gameCenterButtonNode.unpulse()
                         scene.levelButtonNode.pulse()
-                        scene.buttonIndex = 3
-                        scene.showButton()
+                        scene.shiftButton()
                     }
                 }
             }))
@@ -325,15 +325,10 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
         interfaceLocks[level][GameViewController.instructionInterfaceIndex] = true
         userDefaults.setObject(interfaceLocks, forKey: unlockDefaultKey)
         if let scene = sceneView.scene as? GameSKScene {
+            scene.instructionButtonNode.disactivate()
             if scene.instructionButtonNode.pulsing {
                 scene.instructionButtonNode.unpulse()
-                scene.buttonIndex = 1
-                /*if isImagineUnderstood() || !isLevelUnlocked() {
-                    scene.buttonIndex = -1
-                } else {
-                    scene.buttonIndex = 1
-                }*/
-            scene.showButton()
+                scene.shiftButton()
             }
         }
     }
@@ -356,11 +351,13 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
         interfaceLocks[level][GameViewController.imagineInterfaceIndex] = true
         userDefaults.setObject(interfaceLocks, forKey: unlockDefaultKey)
         if let scene = sceneView.scene as? GameSKScene {
+            scene.imagineButtonNode.disactivate()
             if scene.imagineButtonNode.pulsing {
                 scene.imagineButtonNode.unpulse()
-                scene.gameCenterButtonNode.pulse()
-                scene.buttonIndex = 2
-                scene.showButton()
+                if gcEnabled {
+                    scene.gameCenterButtonNode.pulse()
+                }
+                scene.shiftButton()
             }
         }
     }
@@ -411,14 +408,14 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
         gameCenterViewController.dismissViewControllerAnimated(true, completion: nil)
         //print(gameCenterViewController.leaderboardIdentifier)
         if let scene = sceneView.scene as? GameSKScene {
+            if isInterfaceUnlocked(2) {
+                scene.gameCenterButtonNode.disactivate()
+            }
             if scene.gameCenterButtonNode.pulsing {
                 scene.gameCenterButtonNode.unpulse()
-                scene.levelButtonNode.pulse()
-                scene.buttonIndex = 3
-                scene.showButton()
+                //scene.levelButtonNode.pulse()
+                scene.shiftButton()
             }
-            scene.gameCenterButtonNode.disactivate()
         }
     }
-
 }

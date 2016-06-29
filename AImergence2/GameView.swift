@@ -11,16 +11,4 @@ import SpriteKit
 
 class GameView: SKView {
 
-    // Test for motion effect
-    var backgroundNodeX: CGFloat {
-        get {
-            print("get")
-            return ((scene as! PositionedSKScene).backgroundNode?.position.x)!
-        }
-        set(newX) {
-            (scene as! PositionedSKScene).backgroundNode?.position.x = newX
-            print("set")
-            print(newX)
-        }
-    }
 }

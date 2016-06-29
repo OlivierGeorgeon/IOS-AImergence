@@ -11,21 +11,17 @@ import SpriteKit
 
 class PositionedSKScene: SKScene {
     
-    static let portraitSize              = CGSize(width: 375, height: 667)
-    //static let portraitSize              = CGSize(width: 1188, height: 667)
+    let sceneHeight = CGFloat(667)
+    
     static let portraitCameraPosition    = CGPoint(x: 0, y: 233)
     static let portraitRobotPosition     = CGPoint(x: 120, y: 180)
     static let portraitRobotSize         = CGSize(width: 100, height: 100)
-    static let portraitButtonPosition    = CGPoint(x: 120, y: 280)
-    static let portraitButtonSize        = CGSize(width: 76, height: 76)
+    //static let portraitButtonPosition    = CGPoint(x: 120, y: 280)
+    //static let portraitButtonSize        = CGSize(width: 76, height: 76)
 
-    static let landscapeSize             = CGSize(width: 1188, height: 667)
+    //static let landscapeSize             = CGSize(width: 1188, height: 667)
     static let landscapeCameraPosition   = CGPoint(x: 400, y: 233)
-    //static let landscapeCameraPosition    = CGPoint(x: 0, y: 0)
     static let landscapeRobotPosition    = CGPoint(x: 700, y: 100)
-    //static let landscapeRobotSize        = CGSize(width: 200, height: 200)
-    //static let landscapeButtonPosition    = CGPoint(x: 700, y: 300)
-    //static let landscapeButtonSize        = CGSize(width: 152, height: 152)
     
     static let actionMoveCameraUp        = SKAction.moveBy(CGVector(dx:0, dy:667), duration: 0.3)
     static let actionMoveCameraDown      = SKAction.moveBy(CGVector(dx:0, dy:-667), duration: 0.3)
@@ -43,8 +39,6 @@ class PositionedSKScene: SKScene {
     
     var cameraNode: SKCameraNode?
     var cameraRelativeOriginNode = SKNode()
-    var backgroundNode: SKSpriteNode?
-    var robotNode: SKSpriteNode?
     
     override func didMoveToView(view: SKView) {
         super.didMoveToView(view)
@@ -52,30 +46,7 @@ class PositionedSKScene: SKScene {
     }
     
     func positionInFrame(frameSize: CGSize) {
-        let size = CGSize(width: 667 * frameSize.width / frameSize.height, height: 667)
-        self.size = size
-        
-        if frameSize.height > frameSize.width {
-            cameraNode?.position =  PositionedSKScene.portraitCameraPosition
-            cameraRelativeOriginNode.position = -PositionedSKScene.portraitCameraPosition
-            backgroundNode?.position.x = 0
-            backgroundNode?.size.width = 667
-            robotNode?.position = PositionedSKScene.portraitRobotPosition
-            robotNode?.setScale(1)
-            //robotNode?.size = PositionedSKScene.portraitRobotSize
-        } else {
-            cameraNode?.position.x =  size.width / 2 - 190
-            cameraNode?.position.y =  233
-            //cameraRelativeOriginNode.position = -PositionedSKScene.landscapeCameraPosition
-            if cameraNode != nil {
-                cameraRelativeOriginNode.position = -cameraNode!.position
-            }
-            backgroundNode?.position.x = 400
-            backgroundNode?.size.width = 1188
-            robotNode?.position = PositionedSKScene.landscapeRobotPosition
-            robotNode?.setScale(2)
-            //robotNode?.size = PositionedSKScene.landscapeRobotSize
-        }
+        self.size = CGSize(width: sceneHeight * frameSize.width / frameSize.height, height: sceneHeight)
     }
 }
 

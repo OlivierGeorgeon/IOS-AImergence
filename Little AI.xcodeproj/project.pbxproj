@@ -44,6 +44,7 @@
 		0955F6FA1CF349BD00473C03 /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 0955F6F91CF349BD00473C03 /* art.scnassets */; };
 		095856711D0AC50B002BD7D7 /* Confetti.scnp in Resources */ = {isa = PBXBuildFile; fileRef = 0958566F1D0AC50B002BD7D7 /* Confetti.scnp */; };
 		095856721D0AC50B002BD7D7 /* confetti.png in Resources */ = {isa = PBXBuildFile; fileRef = 095856701D0AC50B002BD7D7 /* confetti.png */; };
+		095991361D22943100C2D3E9 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 095991351D22943100C2D3E9 /* StoreKit.framework */; };
 		0961EBB91C63EE2200A4E55C /* Level3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0961EBB81C63EE2200A4E55C /* Level3.swift */; };
 		0961EBBB1C64961F00A4E55C /* Level6.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0961EBBA1C64961F00A4E55C /* Level6.swift */; };
 		0961EBC01C66658B00A4E55C /* Help.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0961EBC21C66658B00A4E55C /* Help.plist */; };
@@ -146,6 +147,7 @@
 		0955F6F91CF349BD00473C03 /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
 		0958566F1D0AC50B002BD7D7 /* Confetti.scnp */ = {isa = PBXFileReference; lastKnownFileType = file.scp; path = Confetti.scnp; sourceTree = "<group>"; };
 		095856701D0AC50B002BD7D7 /* confetti.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = confetti.png; sourceTree = "<group>"; };
+		095991351D22943100C2D3E9 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		0961EBB81C63EE2200A4E55C /* Level3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Level3.swift; sourceTree = "<group>"; };
 		0961EBBA1C64961F00A4E55C /* Level6.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Level6.swift; sourceTree = "<group>"; };
 		0961EBC11C66658B00A4E55C /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = fr; path = fr.lproj/Help.plist; sourceTree = "<group>"; };
@@ -195,6 +197,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				09C16D551D15534A006ADB5C /* GameKit.framework in Frameworks */,
+				095991361D22943100C2D3E9 /* StoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -227,6 +230,7 @@
 		0936812E1C417377008C6B5D = {
 			isa = PBXGroup;
 			children = (
+				095991351D22943100C2D3E9 /* StoreKit.framework */,
 				09C16D541D15534A006ADB5C /* GameKit.framework */,
 				093681391C417378008C6B5D /* AImergence2 */,
 				093681521C417378008C6B5D /* AImergence2Tests */,
@@ -452,7 +456,7 @@
 		0936812F1C417377008C6B5D /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0720;
+				LastSwiftUpdateCheck = 0730;
 				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = "Olivier Georgeon";
 				TargetAttributes = {
@@ -461,6 +465,9 @@
 						DevelopmentTeam = 7E3U988CXW;
 						SystemCapabilities = {
 							com.apple.GameCenter = {
+								enabled = 1;
+							};
+							com.apple.InAppPurchase = {
 								enabled = 1;
 							};
 						};
