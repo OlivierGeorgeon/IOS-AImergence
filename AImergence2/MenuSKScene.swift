@@ -113,6 +113,7 @@ class MenuSKScene: PositionedSKScene {
         let positionInScene = self.convertPointFromView(recognizer.locationInView(self.view))
         for levelNode in buttonNodes {
             if levelNode.containsPoint(positionInScene){
+                levelNode.runAction(actionPress)
                 if let ln = levelNode.userData?["level"] as! Int? {
                     if userDelegate?.levelStatus(ln) > 0 {
                         userDelegate?.updateLevel(ln)

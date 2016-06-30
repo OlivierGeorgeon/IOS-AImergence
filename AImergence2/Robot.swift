@@ -81,6 +81,18 @@ class Robot {
             return Cell(i: cell.i, j: cell.j - 1)
         }
     }
+    func cellBack() -> Cell {
+        switch direction {
+        case .EAST:
+            return Cell(i: cell.i - 1, j: cell.j)
+        case .NORTH:
+            return Cell(i: cell.i, j: cell.j - 1)
+        case .WEST:
+            return Cell(i: cell.i + 1, j: cell.j)
+        case .SOUTH:
+            return Cell(i: cell.i, j: cell.j + 1)
+        }
+    }
     func cellLeft() -> Cell {
         switch direction {
         case .EAST:

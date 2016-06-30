@@ -19,6 +19,11 @@ class ImagineModel
     var worldNode = SCNNode()
     var bodyNode: SCNNode!
 
+    var robotNode: SCNRobotNode!
+    var tiles = [Cell: SCNNode]()
+    var constraint: SCNLookAtConstraint!
+    let tileYOffset = SCNVector3(0, -4, 0)
+
     required init(gameModel: GameModel2) {
         self.gameModel = gameModel
     }
@@ -41,7 +46,8 @@ class ImagineModel
         
         let cameraNode = SCNNode()
         cameraNode.camera = SCNCamera()
-        cameraNode.position = SCNVector3(0, 1 * scale, 5 * scale)
+        cameraNode.position = SCNVector3(40, 1 * scale, 4 * scale)
+        cameraNode.runAction(SCNAction.rotateByX(0, y: 0.75, z: 0, duration: 0))
         scene.rootNode.addChildNode(cameraNode)
         cameraNodes.append(cameraNode)
         

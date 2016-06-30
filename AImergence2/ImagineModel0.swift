@@ -14,11 +14,12 @@ class ImagineModel0: ImagineModel
     var enjoyableNode: SCNNode!
     
     override func setupSpecific(scene: SCNScene) {
-        bodyNode = SCNNode()
-        bodyNode.addChildNode(createPawnNode())
-        worldNode.addChildNode(bodyNode)
+        robotNode = SCNRobotNode()
+        cameraNodes.append(robotNode.bodyCamera)
+        worldNode.addChildNode(robotNode)
     }
     
+    /*
     override func playExperience(experience: Experience) {
         switch experience.experiment.number {
         case 0:
@@ -33,6 +34,37 @@ class ImagineModel0: ImagineModel
             break
         }
     }
+    */
+     
+    override func playExperience(experience: Experience) {
+        switch experience.experiment.number {
+        case 0:
+            robotNode.bump()
+            if tiles[robotNode.robot.cellFront()] == nil {
+                createTileNode(robotNode.positionForward() + SCNVector3(0.5 * scale, -0.5 * scale, 0), delay: 0.1)
+            }
+            spawnExperienceNode(experience, position: robotNode.position + robotNode.forwardVector() + tileYOffset, delay: 0.1)
+        default:
+            robotNode.bumpBack()
+            if tiles[robotNode.robot.cellBack()] == nil {
+                createTileNode(robotNode.positionBack() + SCNVector3(-0.5 * scale, -0.5 * scale, 0), delay: 0.1)
+            }
+            spawnExperienceNode(experience, position: robotNode.position + -robotNode.forwardVector() + tileYOffset, delay: 0.1)
+        }
+    }
+    
+    func createTileNode(position: SCNVector3, delay: NSTimeInterval) -> SCNNode {
+        let node = SCNNode(geometry: Geometries.tile())
+        node.position = position
+        node.hidden = true
+        worldNode.addChildNode(node)
+        let actionWait = SCNAction.waitForDuration(delay)
+        node.runAction(SCNAction.sequence([actionWait, SCNAction.waitForDuration(0.1), SCNAction.unhide()]))
+        return node
+    }
+    
+
+    
     
     func createOrRetrieveBodyNodeAndRunAction(position: SCNVector3 = SCNVector3(), backward:Bool = false, action: SCNAction = SCNAction.unhide()) -> SCNNode {
         if bodyNode == nil {

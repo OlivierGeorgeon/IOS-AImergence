@@ -12,10 +12,10 @@ class ImagineModel1: ImagineModel0
 {
     var switchNode0: SCNNode!
     var switchNode1: SCNNode!
-    
+
     override func setupSpecific(scene: SCNScene) {
     }
-    
+
     override func playExperience(experience: Experience) {
         switch experience.hashValue {
         case 00: // Left
@@ -41,7 +41,7 @@ class ImagineModel1: ImagineModel0
             break
         }
     }
-    
+ 
     func createSwitchNode(position: SCNVector3) -> SCNNode {
         let node = SCNNode(geometry: Geometries.cube())
         node.position = position

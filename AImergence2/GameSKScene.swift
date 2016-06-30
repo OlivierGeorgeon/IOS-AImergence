@@ -151,16 +151,20 @@ class GameSKScene: PositionedSKScene {
         /* Setup your scene here */
         super.didMoveToView(view)
 
-        // Needs the delegate to be ready
+        // The delegate is ready in didMoveToView
         if !gameSceneDelegate.isInstructionUnderstood() {
+            imagineButtonNode.disappear()
+            gameCenterButtonNode.disappear()
+            levelButtonNode.disappear()
             currentButton = BUTTON.INSTRUCTION
             instructionButtonNode.pulse()
-            levelButtonNode.disappear()
             instructionButtonNode.appear()
         } else if !gameSceneDelegate.isImagineUnderstood() {
+            imagineButtonNode.disappear()
+            gameCenterButtonNode.disappear()
+            levelButtonNode.disappear()
             currentButton = BUTTON.IMAGINE
             imagineButtonNode.pulse()
-            levelButtonNode.disappear()
             imagineButtonNode.appear()
         }
         if gameSceneDelegate.isInstructionUnderstood() {
@@ -218,7 +222,9 @@ class GameSKScene: PositionedSKScene {
                 play(experimentNode)
             }
         }
-        //if robotNode!.containsPoint(positionInScreen) { // also includes the robotNode's child nodes
+        if robotNode.containsPoint(positionInScreen) { // also includes the robotNode's child nodes
+            robotNode.runAction(actionPress)
+        }
         if CGRectContainsPoint(robotNode.frame, positionInScreen) {
             shiftButton()
         }
@@ -280,7 +286,7 @@ class GameSKScene: PositionedSKScene {
             }
             for experienceNode in experienceNodes {
                 if CGRectContainsPoint(experienceNode.calculateAccumulatedFrame(), positionInScene) {
-                    shapeNodeIndex = experienceNode.experience.colorIndex
+                    colorNodeIndex = experienceNode.experience.colorIndex
                     timer = NSTimer.scheduledTimerWithTimeInterval(0.7, target: self, selector: #selector(GameSKScene.revolveColors), userInfo: nil, repeats: true)
                     editNode = experienceNode
                     colorPopupNode = gameModel.createColorPopup()
@@ -316,6 +322,8 @@ class GameSKScene: PositionedSKScene {
     func play(experimentNode: ExperimentSKNode) {
         
         clock += 1
+        
+        experimentNode.runAction(actionPress)
         
         let experiment = experimentNode.experiment
         

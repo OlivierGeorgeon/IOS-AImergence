@@ -10,42 +10,17 @@ import SceneKit
 
 class ImagineModel11: ImagineModel
 {
-    
-    var robotNode: SCNRobotNode!
-    var tiles = [Cell: SCNNode]()
-    var constraint: SCNLookAtConstraint!
-    
     override func setupSpecific(Scene: SCNScene) {
         //super.setup(scene)
         
         robotNode = SCNRobotNode()
-        let robotBaseNode = SCNNode()
-        robotNode.addChildNode(robotBaseNode)
-        let caterpillarScene = SCNScene(named: "art.scnassets/ChenillesSeulesLarges.dae")!
-        let baseNodeArray = caterpillarScene.rootNode.childNodes
-        for childNode in baseNodeArray {
-            robotBaseNode.addChildNode(childNode as SCNNode)
-        }
-        
-        let robotBodyNode = SCNNode()
-        robotBodyNode.name = "body"
-        robotNode.addChildNode(robotBodyNode)
-        let robotScene = SCNScene(named: "art.scnassets/Robot8aaNew2.dae")!
-        let bodyNodeArray = robotScene.rootNode.childNodes
-        for childNode in bodyNodeArray {
-            robotBodyNode.addChildNode(childNode as SCNNode)
-        }
-        
-        robotNode.pivot = SCNMatrix4MakeRotation(Float(-M_PI/2), 0, 1, 0)
-        robotNode.scale = SCNVector3(0.3 * scale, 0.3 * scale, 0.3 * scale)
-        robotNode.addChildNode(createRobotCamera())
+        cameraNodes.append(robotNode.bodyCamera)
         worldNode.addChildNode(robotNode)
 
         constraint = SCNLookAtConstraint(target: robotNode)
         constraint.influenceFactor = 0.5
         //constraint.gimbalLockEnabled = true
-        cameraNodes[0].constraints = [constraint]
-    
+        cameraNodes[0].constraints = [constraint]    
     }
     
     override func playExperience(experience: Experience) {
@@ -83,6 +58,7 @@ class ImagineModel11: ImagineModel
         return node
     }
 
+    /*
     func createRobotCamera() -> SCNNode {
         let bodyCamera = SCNNode()
         bodyCamera.camera = SCNCamera()
@@ -91,6 +67,6 @@ class ImagineModel11: ImagineModel
         bodyCamera.runAction(SCNAction.rotateByX(-0.7, y: CGFloat(M_PI), z: 0, duration: 1))
         return bodyCamera
     }
-    
+    */
     
 }

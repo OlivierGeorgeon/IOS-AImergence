@@ -16,7 +16,42 @@ class SCNRobotNode: SCNNode {
     let bendLeft  = SCNAction.rotateByX(0, y: 0, z:  CGFloat(M_PI) / 2, duration: 0.2)
     let bendRight = SCNAction.rotateByX(0, y: 0, z: -CGFloat(M_PI) / 2, duration: 0.2)
     
-    var robot = Robot(i: 0, j: 0, direction: Compass.EAST)
+    let robot = Robot(i: 0, j: 0, direction: Compass.EAST)
+    
+    let bodyNode = SCNNode()
+    let bodyCamera = SCNNode()
+    
+    override init() {
+        
+        super.init()
+        
+        let robotBaseNode = SCNNode()
+        let caterpillarScene = SCNScene(named: "art.scnassets/ChenillesSeulesLarges.dae")!
+        let baseNodeArray = caterpillarScene.rootNode.childNodes
+        for childNode in baseNodeArray {
+            robotBaseNode.addChildNode(childNode as SCNNode)
+        }
+        addChildNode(robotBaseNode)
+        
+        let robotScene = SCNScene(named: "art.scnassets/Robot8aaNew2.dae")!
+        let bodyNodeArray = robotScene.rootNode.childNodes
+        for childNode in bodyNodeArray {
+            bodyNode.addChildNode(childNode as SCNNode)
+        }
+        addChildNode(bodyNode)
+        
+        pivot = SCNMatrix4MakeRotation(Float(-M_PI/2), 0, 1, 0)
+        scale = SCNVector3(3 , 3, 3)
+
+        bodyCamera.camera = SCNCamera()
+        bodyCamera.position = SCNVector3Make(0.0, 15, -15)
+        bodyCamera.runAction(SCNAction.rotateByX(-0.7, y: CGFloat(M_PI), z: 0, duration: 0))
+        addChildNode(bodyCamera)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
         
     func turnLeft(){
         self.runAction(SCNAction.rotateByX(0.0, y: CGFloat(M_PI) / 2, z: 0.0, duration: 0.2))
@@ -39,25 +74,32 @@ class SCNRobotNode: SCNNode {
         self.runAction(SCNAction.sequence([moveHalfFront, moveHalfBack]))
     }
     
+    func bumpBack() {
+        let moveHalfBack  = SCNAction.moveBy(-forwardVector() / 2, duration: 0.1)
+        let moveHalfFront = SCNAction.moveBy(forwardVector() / 2, duration: 0.1)
+        self.runAction(SCNAction.sequence([moveHalfBack, moveHalfFront]))
+    }
+    
     func feelFront() {
-        let bodyNode = self.childNodeWithName("body", recursively: false)
-        bodyNode?.runAction(SCNAction.sequence([bendFront, bendBack]))
+        bodyNode.runAction(SCNAction.sequence([bendFront, bendBack]))
     }
     
     func feelLeft() {
-        let bodyNode = self.childNodeWithName("body", recursively: false)
-        bodyNode?.runAction(SCNAction.sequence([bendRight, bendLeft]))
+        bodyNode.runAction(SCNAction.sequence([bendRight, bendLeft]))
     }
     
     func feelRight() {
-        let bodyNode = self.childNodeWithName("body", recursively: false)
-        bodyNode?.runAction(SCNAction.sequence([bendLeft, bendRight]))
+        bodyNode.runAction(SCNAction.sequence([bendLeft, bendRight]))
     }
     
     func positionForward() -> SCNVector3 {
         return SCNVector3(robot.cellFront().i * 10, 0, -robot.cellFront().j * 10)
     }
 
+    func positionBack() -> SCNVector3 {
+        return SCNVector3(robot.cellBack().i * 10, 0, -robot.cellBack().j * 10)
+    }
+    
     func positionLeft() -> SCNVector3 {
         return SCNVector3(robot.cellLeft().i * 10, 0, -robot.cellLeft().j * 10)
     }

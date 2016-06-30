@@ -16,25 +16,58 @@ class ImagineModel5: ImagineModel4
     var nextBodyNodeBackward: Bool!
     var canKnowNextBodyNode = false
     var nextBodyNode: SCNNode!
-    
+
+    override func setup(scene: SCNScene) {
+        let ambientLightNode = SCNNode()
+        ambientLightNode.light = SCNLight()
+        ambientLightNode.light!.type = SCNLightTypeAmbient
+        ambientLightNode.light!.color = UIColor(white: 0.67, alpha: 1.0)
+        scene.rootNode.addChildNode(ambientLightNode)
+        let omniLightNode = SCNNode()
+        omniLightNode.light = SCNLight()
+        omniLightNode.light!.type = SCNLightTypeOmni
+        omniLightNode.light!.color = UIColor(white: 0.75, alpha: 1.0)
+        omniLightNode.position = SCNVector3Make(0, 50 * scale, 50 * scale)
+        scene.rootNode.addChildNode(omniLightNode)
+        
+        let cameraNode = SCNNode()
+        cameraNode.camera = SCNCamera()
+        cameraNode.position = SCNVector3(0, 1 * scale, 5 * scale)
+        scene.rootNode.addChildNode(cameraNode)
+        cameraNodes.append(cameraNode)
+        
+        scene.rootNode.addChildNode(worldNode)
+        
+        setupSpecific(scene)
+    }
+
     override func setupSpecific(scene: SCNScene) {
-        neutralNode = createNeutralNode(SCNVector3(-1.5  * scale, 0, 0))
+        robotNode = SCNRobotNode()
+        robotNode.position = SCNVector3(-1.5  * scale, 0, 0)
+        worldNode.addChildNode(robotNode)
+
+        //neutralNode = createNeutralNode(SCNVector3(-1.5  * scale, 0, 0))
     }
     
     override func playExperience(experience: Experience) {
         switch experience.hashValue {
         case 00: // Touch
-            createOrRetrieveBodyNodeAndRunAction(backward: true, action: actions.bump())
-            if neutralNode == nil { neutralNode = createNeutralNode(SCNVector3(-1.5 * scale, 0, 0)) }
-            spawnExperienceNode(experience, position: SCNVector3( -1.0 * scale, 0.0, 0.0), delay: 0.1)
+            robotNode.feelFront()
+            //createOrRetrieveBodyNodeAndRunAction(backward: true, action: actions.bump())
+            createOrRetrieveBodyNodeAndRunAction(backward: true)
+            //if neutralNode == nil { neutralNode = createNeutralNode(SCNVector3(-1.5 * scale, 0, 0)) }
+            spawnExperienceNode(experience, position: SCNVector3( -0.5 * scale, 0.0, 0.0), delay: 0.1)
         case 01:
-            createOrRetrieveBodyNodeAndRunAction(action: actions.bumpBack())
-            if neutralNode == nil { neutralNode = createNeutralNode(SCNVector3(-1.5 * scale, 0, 0)) }
-            spawnExperienceNode(experience, position: SCNVector3( -1.0 * scale, 0.0, 0.0), delay: 0.1)
+            robotNode.feelFront()
+            //createOrRetrieveBodyNodeAndRunAction(action: actions.bumpBack())
+            createOrRetrieveBodyNodeAndRunAction()
+            //if neutralNode == nil { neutralNode = createNeutralNode(SCNVector3(-1.5 * scale, 0, 0)) }
+            spawnExperienceNode(experience, position: SCNVector3( -0.5 * scale, 0.0, 0.0), delay: 0.1)
         case 10:  // eat
             createOrRetrieveBodyNodeAndRunAction(backward: true, action: actions.waitAndRemove())
-            if neutralNode == nil { neutralNode = createNeutralNode(SCNVector3(-1.5 * scale, 0, 0)) }
-            neutralNode.runAction(SCNAction.sequence([actions.moveHalfFront, actions.moveHalfBack]))
+            //if neutralNode == nil { neutralNode = createNeutralNode(SCNVector3(-1.5 * scale, 0, 0)) }
+            robotNode.bump()
+            //neutralNode.runAction(SCNAction.sequence([actions.moveHalfFront, actions.moveHalfBack]))
             spawnExperienceNode(experience, position: SCNVector3( -0.5 * scale, 0.0, 0.0), delay: 0.1)
             bodyNode.childNodes[0].runAction(SCNAction.sequence([SCNAction.waitForDuration(0.1),SCNAction.removeFromParentNode()]), completionHandler: explode)
             canKnowNextBodyNode = true
@@ -42,8 +75,9 @@ class ImagineModel5: ImagineModel4
 
         case 11:
             createOrRetrieveBodyNodeAndRunAction(action: actions.waitAndRemove())
-            if neutralNode == nil { neutralNode = createNeutralNode(SCNVector3(-1.5 * scale, 0, 0)) }
-            neutralNode.runAction(SCNAction.sequence([actions.moveHalfFront, actions.moveHalfBack]))
+            //if neutralNode == nil { neutralNode = createNeutralNode(SCNVector3(-1.5 * scale, 0, 0)) }
+            robotNode.bump()
+            //neutralNode.runAction(SCNAction.sequence([actions.moveHalfFront, actions.moveHalfBack]))
             spawnExperienceNode(experience, position: SCNVector3( -0.5 * scale, 0.0, 0.0), delay: 0.1)
             bodyNode.childNodes[0].runAction(SCNAction.sequence([SCNAction.waitForDuration(0.1),SCNAction.removeFromParentNode()]), completionHandler: explode)
             canKnowNextBodyNode = true
