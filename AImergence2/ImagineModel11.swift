@@ -10,6 +10,30 @@ import SceneKit
 
 class ImagineModel11: ImagineModel
 {
+    override func setup(scene: SCNScene) {
+        let ambientLightNode = SCNNode()
+        ambientLightNode.light = SCNLight()
+        ambientLightNode.light!.type = SCNLightTypeAmbient
+        ambientLightNode.light!.color = UIColor(white: 0.67, alpha: 1.0)
+        scene.rootNode.addChildNode(ambientLightNode)
+        let omniLightNode = SCNNode()
+        omniLightNode.light = SCNLight()
+        omniLightNode.light!.type = SCNLightTypeOmni
+        omniLightNode.light!.color = UIColor(white: 0.75, alpha: 1.0)
+        omniLightNode.position = SCNVector3Make(0, 50 * scale, 50 * scale)
+        scene.rootNode.addChildNode(omniLightNode)
+        
+        let cameraNode = SCNNode()
+        cameraNode.camera = SCNCamera()
+        cameraNode.position = SCNVector3(0, 1 * scale, 5 * scale)
+        scene.rootNode.addChildNode(cameraNode)
+        cameraNodes.append(cameraNode)
+        
+        scene.rootNode.addChildNode(worldNode)
+        
+        setupSpecific(scene)
+    }
+
     override func setupSpecific(Scene: SCNScene) {
         //super.setup(scene)
         
