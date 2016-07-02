@@ -9,7 +9,7 @@
 "Level" = "Level";
 "Cancel" = "Back";
 "You must reach the score of 10" = "You must reach the score of 10 to reveal an imaginary representation of the world in this window.";
-"Excellent 0" = "Excellent! You have completed Level 0! Keep playing with this display on to show the imaginary 3D world. Next, see the leaderboard and then swipe the level icon to the left to move on to Level 1.";
+"Excellent 0" = "Excellent! You have completed Level 0! Keep playing with this display on to show the imaginary 3D world. Next, see the leaderboard and then swipe the robot icon to the left to move on to Level 1.";
 "Excellent 1" = "Excellent! You have completed Level 1! To understand the game better, always play a little bit with this display on before moving on to the next level.";
 "Swipe" = "Swipe the level icon horizontally to shift levels.";
 "Drag the 3D scene to move the camera" = "Keep playing. You can move the camera by pressing and dragging the 3D scene";

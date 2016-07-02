@@ -25,7 +25,7 @@ class ImagineModel13: ImagineModel12
             default:
                 constraint.influenceFactor = 0
                 robotNode.bump()
-                if tiles[robotNode.robot.cellFront()] == nil {
+                if robotNode.knownCells.updateValue(Phenomenon.TILE, forKey: robotNode.robot.cellFront()) == nil {
                     createTileNode(robotNode.positionForward() + SCNVector3(0, -0.5 * scale, 0), delay: 0.1)
                 }
                 spawnExperienceNode(experience, position: robotNode.position + robotNode.forwardVector() / 2, delay: 0.1)
@@ -37,7 +37,7 @@ class ImagineModel13: ImagineModel12
             robotNode.feelFront()
             spawnExperienceNode(experience, position: robotNode.position + robotNode.forwardVector() / 2, delay: 0.2)
             if experience.resultNumber == 1 {
-                if tiles[robotNode.robot.cellFront()] == nil {
+                if robotNode.knownCells.updateValue(Phenomenon.TILE, forKey: robotNode.robot.cellFront()) == nil {
                     createTileNode(robotNode.positionForward() + SCNVector3(0, -0.5 * scale, 0), delay: 0.2)
                 }
             }

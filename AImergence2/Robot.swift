@@ -69,6 +69,19 @@ class Robot {
         }
     }
     
+    func moveBackward() {
+        switch direction {
+        case .EAST:
+            cell.i  -= 1
+        case .NORTH:
+            cell.j  -= 1
+        case .WEST:
+            cell.i  += 1
+        case .SOUTH:
+            cell.j  += 1
+        }
+    }
+    
     func cellFront() -> Cell {
         switch direction {
         case .EAST:

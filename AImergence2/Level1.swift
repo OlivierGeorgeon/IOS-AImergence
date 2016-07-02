@@ -16,9 +16,9 @@ class Level1 : Level0 {
     var orientationRight = false
     
     convenience required init() {
-        let experiment0 = Experiment(number: 0, shapeIndex: 0)
-        let experiment1 = Experiment(number: 1, shapeIndex: 1)
-        let experiment2 = Experiment(number: 2, shapeIndex: 2)
+        let experiment0 = Experiment(number: 0, shapeIndex: 1)
+        let experiment1 = Experiment(number: 1, shapeIndex: 2)
+        let experiment2 = Experiment(number: 2, shapeIndex: 0)
         
         let experiments = GKRandomSource.sharedRandom().arrayByShufflingObjectsInArray([experiment0, experiment1, experiment2]) as! [Experiment]
         

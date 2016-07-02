@@ -24,7 +24,7 @@ class ImagineModel15: ImagineModel14
             default:
                 constraint.influenceFactor = 0
                 robotNode.bump()
-                if tiles[robotNode.robot.cellFront()] == nil {
+                if robotNode.knownCells.updateValue(Phenomenon.TILE, forKey: robotNode.robot.cellFront()) == nil {
                     createTileNode(robotNode.positionForward() + SCNVector3(0, -0.5 * scale, 0), delay: 0.1)
                 }
                 spawnExperienceNode(experience, position: robotNode.position + robotNode.forwardVector() / 2, delay: 0.1)
@@ -36,7 +36,7 @@ class ImagineModel15: ImagineModel14
             robotNode.feelFront()
             spawnExperienceNode(experience, position: robotNode.position + robotNode.forwardVector() / 2, delay: 0.2)
             if experience.resultNumber == 1 {
-                if tiles[robotNode.robot.cellFront()] == nil {
+                if robotNode.knownCells.updateValue(Phenomenon.TILE, forKey: robotNode.robot.cellFront()) == nil {
                     createTileNode(robotNode.positionForward() + SCNVector3(0, -0.5 * scale, 0), delay: 0.2)
                 }
             }
@@ -44,7 +44,7 @@ class ImagineModel15: ImagineModel14
             robotNode.feelLeft()
             spawnExperienceNode(experience, position: (robotNode.position + robotNode.positionLeft()) / 2, delay: 0.2)
             if experience.resultNumber == 1 {
-                if tiles[robotNode.robot.cellLeft()] == nil {
+                if robotNode.knownCells.updateValue(Phenomenon.TILE, forKey: robotNode.robot.cellLeft()) == nil {
                     createTileNode(robotNode.positionLeft() + SCNVector3(0, -0.5 * scale, 0), delay: 0.2)
                 }
             }
@@ -52,7 +52,7 @@ class ImagineModel15: ImagineModel14
             robotNode.feelRight()
             spawnExperienceNode(experience, position: (robotNode.position + robotNode.positionRight()) / 2, delay: 0.2)
             if experience.resultNumber == 1 {
-                if tiles[robotNode.robot.cellRight()] == nil {
+                if robotNode.knownCells.updateValue(Phenomenon.TILE, forKey: robotNode.robot.cellRight()) == nil {
                     createTileNode(robotNode.positionRight() + SCNVector3(0, -0.5 * scale, 0), delay: 0.2)
                 }
             }

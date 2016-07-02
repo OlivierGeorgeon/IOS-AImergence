@@ -14,28 +14,23 @@ class ImagineModel8: ImagineModel5
         switch experience.hashValue {
         case 00: // Touch
             robotNode.feelFront()
-            createOrRetrieveBodyNodeAndRunAction(backward: true)
-            //if neutralNode == nil { neutralNode = createNeutralNode(SCNVector3(-1.5 * scale, 0, 0)) }
+            createOrRetrieveBodyNodeAndRunAction()
             spawnExperienceNode(experience, position: SCNVector3( -0.5 * scale, 0.0, 0.0), delay: 0.1)
         case 01:
             robotNode.feelFront()
-            createOrRetrieveBodyNodeAndRunAction()
+            createOrRetrieveBodyNodeAndRunAction(direction: Compass.WEST)
             //if neutralNode == nil { neutralNode = createNeutralNode(SCNVector3(-1.5 * scale, 0, 0)) }
             spawnExperienceNode(experience, position: SCNVector3( -0.5 * scale, 0.0, 0.0), delay: 0.1)
         case 10:  // eat
             robotNode.bump()
-            createOrRetrieveBodyNodeAndRunAction(backward: true, action: actions.waitAndToss())
-            //if neutralNode == nil { neutralNode = createNeutralNode(SCNVector3(-1.5, 0, 0)) }
-            //neutralNode.runAction(SCNAction.sequence([actions.moveHalfFront, actions.moveHalfBack]))
+            createOrRetrieveBodyNodeAndRunAction(action: actions.waitAndToss())
             spawnExperienceNode(experience, position: SCNVector3( -0.5 * scale, 0.0, 0.0), delay: 0.1)
             bodyNode.childNodes[0].runAction(SCNAction.sequence([SCNAction.waitForDuration(0.1),SCNAction.removeFromParentNode()]), completionHandler: explode)
             canKnowNextBodyNode = true
             nextBodyNode?.runAction(moveUp)
         case 11:
             robotNode.bump()
-            createOrRetrieveBodyNodeAndRunAction(action: actions.waitAndToss())
-            //if neutralNode == nil { neutralNode = createNeutralNode(SCNVector3(-1.5 * scale, 0, 0)) }
-            //neutralNode.runAction(SCNAction.sequence([actions.moveHalfFront, actions.moveHalfBack]))
+            createOrRetrieveBodyNodeAndRunAction(direction: Compass.WEST, action: actions.waitAndToss())
             spawnExperienceNode(experience, position: SCNVector3( -0.5 * scale, 0.0, 0.0), delay: 0.1)
             bodyNode.childNodes[0].runAction(SCNAction.sequence([SCNAction.waitForDuration(0.1),SCNAction.removeFromParentNode()]), completionHandler: explode)
             canKnowNextBodyNode = true

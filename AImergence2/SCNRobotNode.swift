@@ -9,14 +9,19 @@
 import Foundation
 import SceneKit
 
+enum Phenomenon: Int { case NONE, TILE}
+
 class SCNRobotNode: SCNNode {
     
     let bendFront = SCNAction.rotateByX( CGFloat(M_PI) / 2, y: 0, z: 0, duration: 0.2)
     let bendBack  = SCNAction.rotateByX(-CGFloat(M_PI) / 2, y: 0, z: 0, duration: 0.2)
     let bendLeft  = SCNAction.rotateByX(0, y: 0, z:  CGFloat(M_PI) / 2, duration: 0.2)
     let bendRight = SCNAction.rotateByX(0, y: 0, z: -CGFloat(M_PI) / 2, duration: 0.2)
+    let actionUp = SCNAction.moveBy(SCNVector3(0, 7, 0), duration: 0.1)
+    let actionDown = SCNAction.moveBy(SCNVector3(0, -7, 0), duration: 0.1)
     
     let robot = Robot(i: 0, j: 0, direction: Compass.EAST)
+    var knownCells = [Cell: Phenomenon]()
     
     let bodyNode = SCNNode()
     let bodyCamera = SCNNode()
@@ -31,13 +36,14 @@ class SCNRobotNode: SCNNode {
         for childNode in baseNodeArray {
             robotBaseNode.addChildNode(childNode as SCNNode)
         }
-        addChildNode(robotBaseNode)
+        addChildNode(robotBaseNode.flattenedClone())
         
         let robotScene = SCNScene(named: "art.scnassets/Robot8aaNew2.dae")!
         let bodyNodeArray = robotScene.rootNode.childNodes
         for childNode in bodyNodeArray {
             bodyNode.addChildNode(childNode as SCNNode)
         }
+        bodyNode.name = "body"
         addChildNode(bodyNode)
         
         pivot = SCNMatrix4MakeRotation(Float(-M_PI/2), 0, 1, 0)
@@ -53,19 +59,29 @@ class SCNRobotNode: SCNNode {
         fatalError("init(coder:) has not been implemented")
     }
         
-    func turnLeft(){
-        self.runAction(SCNAction.rotateByX(0.0, y: CGFloat(M_PI) / 2, z: 0.0, duration: 0.2))
+    func appearRight() {
+        self.runAction(SCNAction.sequence([SCNAction.rotateByX(0.0, y: -CGFloat(M_PI) / 2, z: 0.0, duration: 0), SCNAction.unhide()]))
+        robot.turnRight()
+    }
+    
+    func turnLeft(duration: NSTimeInterval = 0.2){
+        self.runAction(SCNAction.rotateByX(0.0, y: CGFloat(M_PI) / 2, z: 0.0, duration: duration))
         robot.turnLeft()
     }
     
-    func turnRight() {
-        self.runAction(SCNAction.rotateByX(0.0, y: -CGFloat(M_PI) / 2, z: 0.0, duration: 0.2))
+    func turnRight(duration: NSTimeInterval = 0.2) {
+        self.runAction(SCNAction.rotateByX(0.0, y: -CGFloat(M_PI) / 2, z: 0.0, duration: duration))
         robot.turnRight()
     }
     
     func moveForward() {
         self.runAction(SCNAction.moveBy(forwardVector(), duration: 0.2))
         robot.moveForward()
+    }
+    
+    func moveBackward() {
+        self.runAction(SCNAction.moveBy(-forwardVector(), duration: 0.2))
+        robot.moveBackward()
     }
     
     func bump() {
@@ -90,6 +106,37 @@ class SCNRobotNode: SCNNode {
     
     func feelRight() {
         bodyNode.runAction(SCNAction.sequence([bendLeft, bendRight]))
+    }
+    
+    func turnOver(duration: NSTimeInterval = 0.3) {
+        self.runAction(SCNAction.rotateByX(0.0, y: -CGFloat(M_PI) , z: 0.0, duration: duration))
+        robot.turnRight()
+        robot.turnRight()
+    }
+    
+    func feelLeftAndTurnOver(duration: NSTimeInterval = 0.3) {
+        feelLeft()
+        let turnOver = SCNAction.rotateByX(0.0, y: -CGFloat(M_PI) , z: 0.0, duration: duration)
+        self.runAction(SCNAction.sequence([SCNAction.waitForDuration(0.2), turnOver]))
+        robot.turnRight()
+        robot.turnRight()
+    }
+    
+    func feelRightAndTurnOver(duration: NSTimeInterval = 0.3) {
+        feelRight()
+        let turnOver = SCNAction.rotateByX(0.0, y: -CGFloat(M_PI) , z: 0.0, duration: duration)
+        self.runAction(SCNAction.sequence([SCNAction.waitForDuration(0.2), turnOver]))
+        robot.turnRight()
+        robot.turnRight()
+    }
+    
+    func jumpi() {
+        print("jumpi")
+        self.runAction(SCNAction.sequence([actionUp, actionDown]))
+    }
+    
+    func positionCell(cell: Cell) -> SCNVector3 {
+        return SCNVector3(cell.i * 10, 0, -cell.j * 10)
     }
     
     func positionForward() -> SCNVector3 {

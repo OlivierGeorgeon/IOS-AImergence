@@ -15,14 +15,14 @@ class ImagineModel
     let gameModel: GameModel2
     let actions = Actions()
     let scale = Float(10)
-    var cameraNodes = [SCNNode]()
+    //var cameraNodes = [SCNNode]()
     var worldNode = SCNNode()
-    var bodyNode: SCNNode!
+    var bodyNode: SCNFlippableNode!
 
     var robotNode: SCNRobotNode!
-    var tiles = [Cell: SCNNode]()
+    //var tiles = [Cell: SCNNode]()
     var constraint: SCNLookAtConstraint!
-    let tileYOffset = SCNVector3(0, -4, 0)
+    let tileYOffset = SCNVector3(0, -5, 0)
 
     required init(gameModel: GameModel2) {
         self.gameModel = gameModel
@@ -32,6 +32,11 @@ class ImagineModel
     }
     
     func setup(scene: SCNScene) {
+        lightsAndCameras(scene)
+    }
+    
+    func lightsAndCameras(scene: SCNScene)
+    {
         let ambientLightNode = SCNNode()
         ambientLightNode.light = SCNLight()
         ambientLightNode.light!.type = SCNLightTypeAmbient
@@ -49,11 +54,9 @@ class ImagineModel
         cameraNode.position = SCNVector3(4 * scale, 1 * scale, 4 * scale)
         cameraNode.runAction(SCNAction.rotateByX(0, y: 0.75, z: 0, duration: 0))
         scene.rootNode.addChildNode(cameraNode)
-        cameraNodes.append(cameraNode)
+        //cameraNodes.append(cameraNode)
         
         scene.rootNode.addChildNode(worldNode)
-        
-        setupSpecific(scene)
         
         //let originNode = SCNNode()
         //scene.rootNode.addChildNode(originNode)
@@ -62,10 +65,7 @@ class ImagineModel
         //cameraNode.constraints = [constraint]
     }
     
-    func setupSpecific(Scene: SCNScene) {
-        
-    }
-    
+    /*
     func createPawnNode() -> SCNNode {
         let pawnNode = SCNNode()
         let cylinder = SCNNode(geometry: Geometries.halfCylinder())
@@ -78,7 +78,6 @@ class ImagineModel
         //pawnNodeFlat.addChildNode(createBodyCamera())
         return pawnNodeFlat
     }
-    
     func createBodyCamera() -> SCNNode {
         let bodyCamera = SCNNode()
         bodyCamera.camera = SCNCamera()
@@ -88,6 +87,7 @@ class ImagineModel
         bodyCamera.runAction(SCNAction.repeatAction(SCNAction.rotateByX(0, y: CGFloat(-M_PI_2), z: CGFloat(M_PI_2 - 0.8), duration: 1), count: 1))
         return bodyCamera
     }
+ */
     
     func spawnExperienceNode(experience: Experience, position: SCNVector3, delay:NSTimeInterval = 0.0) {
         let rect = CGRect(x: CGFloat(-2 * scale), y: CGFloat(-2 * scale), width: CGFloat(4 * scale), height: CGFloat(4 * scale))

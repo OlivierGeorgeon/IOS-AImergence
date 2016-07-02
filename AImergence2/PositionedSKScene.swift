@@ -31,8 +31,8 @@ class PositionedSKScene: SKScene {
     
     let actionPress = SKAction.sequence([SKAction.scaleTo(0.92, duration: 0.1),SKAction.scaleTo(1, duration: 0.1)])
 
-    static let transitionUp    = SKTransition.moveInWithDirection(SKTransitionDirection.Down, duration: 0.5)
-    static let transitionDown  = SKTransition.revealWithDirection(SKTransitionDirection.Down, duration: 0.5)
+    static let transitionUp    = SKTransition.moveInWithDirection(SKTransitionDirection.Down, duration: 0.3)
+    static let transitionDown  = SKTransition.revealWithDirection(SKTransitionDirection.Down, duration: 0.3)
     static let transitionLeft  = SKTransition.pushWithDirection(SKTransitionDirection.Left, duration: 0.5)
     static let transitionRight = SKTransition.pushWithDirection(SKTransitionDirection.Right, duration: 0.5)
     

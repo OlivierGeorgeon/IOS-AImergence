@@ -28,7 +28,7 @@ class ImagineViewController: UIViewController {
     }
 
     @IBAction func elseButton(sender: UIButton)  {
-        sceneView.pointOfView = imagineModel.cameraNodes[1]
+        //sceneView.pointOfView = imagineModel.cameraNodes[1]
     }
     
     //let bundleName = NSBundle.mainBundle().infoDictionary!["CFBundleName"] as! String
