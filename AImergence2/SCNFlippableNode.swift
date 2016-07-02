@@ -57,13 +57,13 @@ class SCNFlippableNode: SCNNode {
         }
     }
     
-    func appear(delay: NSTimeInterval = 0.0, direction: Compass = Compass.EAST) {
+    func appear(delay: NSTimeInterval = 0.0, direction: Compass = Compass.EAST, action: SCNAction =  SCNAction.unhide()) {
         switch direction {
         case .WEST:
             self.direction = Compass.WEST
-            runAction(SCNAction.sequence([SCNAction.waitForDuration(delay), actionInstantFlip, SCNAction.unhide()]))
+            runAction(SCNAction.sequence([SCNAction.waitForDuration(delay), actionInstantFlip, SCNAction.unhide(), action]))
         default:
-            runAction(SCNAction.sequence([SCNAction.waitForDuration(delay), SCNAction.unhide()]))
+            runAction(SCNAction.sequence([SCNAction.waitForDuration(delay), SCNAction.unhide(), action]))
         }
     }    
 }

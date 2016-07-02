@@ -94,7 +94,7 @@ class ImagineModel5: ImagineModel4
                 bodyNode.position = position
                 //bodyNode.hidden = backward
                 //bodyNode.addChildNode(createPawnNode())
-                bodyNode.appear(direction: direction)
+                bodyNode.appear(direction: direction, action: action)
                 worldNode.addChildNode(bodyNode)
                 if direction == Compass.EAST {
                     nextBodyNodeDirection = Compass.WEST

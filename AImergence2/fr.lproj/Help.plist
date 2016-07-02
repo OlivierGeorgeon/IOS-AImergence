@@ -6,84 +6,84 @@
 	<array>
 		<array>
 			<string>Les deux cercles blancs en bas de l&apos;écran représentent des &quot;expériences&quot;.</string>
-			<string>En pressant les expériences, vous produisez des petits cercles blancs qui montent, appelés &quot;événements&quot;. Chaque événement a une &quot;valeur&quot; numérique qui s&apos;affiche à sa droite.</string>
-			<string>Votre score (en haut à gauche sous cette fenêtre) est la somme des valeurs des dix derniers événements. Essayez d&apos;atteindre 10 avant de passer au niveau suivant.</string>
+			<string>En pressant les expériences, vous produisez des petits cercles blancs qui montent, appelés &quot;évènements&quot;. Chaque évènement a une &quot;valeur&quot; numérique qui s&apos;affiche à sa droite.</string>
+			<string>Votre score (en haut à gauche sous cette fenêtre) est la somme des valeurs des dix derniers évènements. Essayez d&apos;atteindre 10 avant de passer au niveau suivant.</string>
 		</array>
 		<array>
-			<string>Un événement est l&apos;association d&apos;une expérience effectuée et d&apos;un &quot;résultat&quot; obtenu.</string>
+			<string>Un évènement est l&apos;association d&apos;une expérience effectuée et d&apos;un &quot;résultat&quot; obtenu.</string>
 			<string>Au niveau 1, les expériences sont représentées par des formes différentes, et les résultats par des couleurs différentes.</string>
 			<string>Après avoir atteint le score de 10, tapez sur l&apos;icône &quot;engrenages&quot; qui apparait au dessus du robot pour voir les effets produits par les expériences dans un monde imaginaire. </string>
 		</array>
 		<array>
-			<string>Les expériences peuvent produire des événements différents en fonction de &quot;l&apos;état du monde&quot; dans lequel elles sont effectuées. Elles peuvent changer l&apos;état du monde.</string>
-			<string>Les événement qui ont une valeur positive sont consédérées &quot;plaisants&quot;, et ceux qui ont une valeur négative &quot;déplaisants&quot;.</string>
-			<string>Essayez de générez une séquence d&apos;événements plaisants.</string>
+			<string>Les expériences peuvent produire des évènements différents en fonction de &quot;l&apos;état du monde&quot; dans lequel elles sont effectuées. Elles peuvent changer l&apos;état du monde.</string>
+			<string>Les évènements qui ont une valeur positive sont consédérées &quot;plaisants&quot;, et ceux qui ont une valeur négative &quot;déplaisants&quot;.</string>
+			<string>Essayez de générez une séquence d&apos;évènements plaisants.</string>
 		</array>
 		<array>
-			<string>Presser longuement et glissez une expérience pour changer sa forme. Cela changera aussi la forme des événements produits par cette expérience.</string>
-			<string>Presser longuement et glissez un événdement pour changer sa couleur. Cela changera la couleur de tous les événements du même type, c&apos;est-à-dire produits par la même expérimentation et donnant le même résultat.</string>
-			<string>Vous êtes encouragés à changer les formes et les couleurs pour pouvoir repérer les types événements. Ces changements ne changent pas les comportements des expériences ni les valeurs des événements.</string>
+			<string>Pressez longuement et glissez une expérience pour changer sa forme. Cela changera aussi la forme des évènements produits par cette expérience.</string>
+			<string>Pressez longuement et glissez un évèndement pour changer sa couleur. Cela changera la couleur de tous les évènements du même type, c&apos;est-à-dire produits par la même expérimentation et donnant le même résultat.</string>
+			<string>Vous êtes encouragé à changer les formes et les couleurs pour pouvoir repérer les types évènements. Ces changements ne changent pas les comportements des expériences ni les valeurs des évènements.</string>
 		</array>
 		<array>
-			<string>Dans le monde du niveau 4, vous ne pouvez pas toujours éviter les événements déplaisants.</string>
+			<string>Dans le monde du niveau 4, vous ne pouvez pas toujours éviter les évènements déplaisants.</string>
 			<string>Essayez juste de générer une séquence qui contienne aussi peu d&apos;événements déplaisants que possible.</string>
 			<string>Vous pouvez afficher les événements plaisants en vert et les déplaisants en rouge. Cela peut vous aider à voir apparaitre une régularité.</string>
 		</array>
 		<array>
-			<string>Observez le comportement individuel des expériences quand vous les effectuez seules plusieurs fois de suite. L&apos;une d&apos;entre elles produit toujours le même type d&apos;événement dans un état du monde donné. C&apos;est une expérience &quot;persistante&quot;.</string>
+			<string>Observez le comportement individuel des expériences quand vous les effectuez seules plusieurs fois de suite. L&apos;une d&apos;entre elles produit toujours le même type d&apos;évènement dans un état du monde donné. C&apos;est une expérience &quot;persistante&quot;.</string>
 			<string>Cette expérience persistante vous permet &quot;d&apos;observer l&apos;état du monde&quot; sans le modifier.</string>
-			<string>Les couleurs des événements peuvent aider à repérer les états du monde qui permettent de générer des événements plaisants.</string>
+			<string>Les couleurs des évènements peuvent aider à repérer les états du monde qui permettent de générer des évènements plaisants.</string>
 		</array>
 		<array>
 			<string>Au niveau 6, les expériences ont les mêmes effets qu&apos;au niveau 5, mais elles sont redisposées dans un ordre aléatoire et représentées initialement par des cercles identiques.</string>
-			<string>C&apos;est à vous d&apos;attribuer les couleurs vertes et rouges aux événements, et les formes carré et triangle aux expériences sur la base des événements générés. </string>
+			<string>C&apos;est à vous d&apos;attribuer les couleurs vert et rouge aux évènements, et les formes carré et triangle aux expériences sur la base des évènements générés. </string>
 			<string>Essayez de choisir les mêmes formes et couleurs qu&apos;au niveau 5. Il peut être utile de rejouer le niveau 5.</string>
 		</array>
 		<array>
-			<string>Au niveau 7, les expériences ont les mêmes effets qu&apos;aux niveaux 5 et 6, mais certains événements ont des valeurs différentes.</string>
-			<string>Vous pouvez attribuer la couleur verte aux événements qui sont plaisants ou qui laissent espérer un événement plaisant au coup suivant.</string>
-			<string>Vous pouvez attribuer la couleur rouge aux événements qui sont déplaisants ou qui laissent craindre un événement déplaisant au coup suivant.</string>
+			<string>Au niveau 7, les expériences ont les mêmes effets qu&apos;aux niveaux 5 et 6, mais certains évènements ont des valeurs différentes.</string>
+			<string>Vous pouvez attribuer la couleur verte aux événements qui sont plaisants ou qui laissent espérer un évènement plaisant au coup suivant.</string>
+			<string>Vous pouvez attribuer la couleur rouge aux événements qui sont déplaisants ou qui laissent craindre un évènement déplaisant au coup suivant.</string>
 		</array>
 		<array>
 			<string>Au niveau 8, les événements ont les mêmes effets et les mêmes valeurs qu&apos;au niveau 7.</string>
-			<string>Par contre, l&apos;expérience représentée par un cercle produit toujours le même type d&apos;événement. Cette expérience n&apos;apporte donc aucune information mais est néammoins utile pour changer l&apos;état du monde.</string>
+			<string>Par contre, l&apos;expérience représentée par un cercle produit toujours le même type d&apos;évènement. Cette expérience n&apos;apporte donc aucune information mais est néanmoins utile pour changer l&apos;état du monde.</string>
 		</array>
 		<array>
 			<string>Au niveau 9, les expériences ont les mêmes effets immédiats qu&apos;aux niveaux 5, 6, 7, et 8, mais, en plus, elles transforment le monde sur le long terme.</string>
-			<string>Une fois que le monde a été transformé de manière appropriée, vous pouvez obtenir un événement plaisant à chaque coup.</string>
+			<string>Une fois que le monde a été transformé de manière appropriée, vous pouvez obtenir un évènement plaisant à chaque coup.</string>
 		</array>
 		<array>
-			<string>Le monde du niveau 10 est identique au monde du niveau 9, et les événements ont les mêmes valeurs.</string>
-			<string>Comme au niveau 8, il y a une expérience qui produit toujours le même type d&apos;événement mais qui change l&apos;état du monde.</string>
+			<string>Le monde du niveau 10 est identique au monde du niveau 9, et les évènements ont les mêmes valeurs.</string>
+			<string>Comme au niveau 8, il y a une expérience qui produit toujours le même type d&apos;évènement mais qui change l&apos;état du monde.</string>
 		</array>
 		<array>
-			<string>Au niveau 11, vous pouvez imaginer que vous pilotez un petit robot qui peut avancer et tourner dans une petite boite.</string>
-			<string>Ce robot adore avancer mais déteste ce cogner.</string>
+			<string>Au niveau 11, vous pouvez imaginer que vous pilotez un petit robot qui peut avancer et tourner dans une petite boîte.</string>
+			<string>Ce robot adore avancer mais déteste se cogner.</string>
 		</array>
 		<array>
-			<string>Le monde du niveau 12 est similaire à celui du niveau 11, mais la boite est encore plus petite.</string>
+			<string>Le monde du niveau 12 est similaire à celui du niveau 11, mais la boîte est encore plus petite.</string>
 			<string>Les expériences ont été placées aléatoirement.</string>
 		</array>
 		<array>
 			<string>Le niveau 13 offre les mêmes expériences que les niveaux 11 et 12 plus une expérience persistante qui permet d&apos;observer le monde sans le modifier.</string>
-			<string>Utilisez l&apos;expérience persistantes pour éviter de cogner les pavés et pour minimiser les rotations.</string>
-			<string>Ce robot n&apos;aime pas tourner et déteste se cogner. Hereusement, la boite devient plus grande.</string>
+			<string>Utilisez l&apos;expérience persistante pour éviter de cogner les tuiles et pour minimiser les rotations.</string>
+			<string>Ce robot n&apos;aime pas tourner et déteste se cogner. Heureusement, la boîte devient plus grande.</string>
 		</array>
 		<array>
-			<string>Le monde du niveau 14 est le même que celui du niveau 13 mais les expérimentations ont été disposées aléatoirement.</string>
-			<string>C&apos;est à vous de choisir les formes des éxpériences et les couleurs des événements.</string>
+			<string>Le monde du niveau 14 est le même que celui du niveau 13 mais les expériences ont été disposées aléatoirement.</string>
+			<string>C&apos;est à vous de choisir les formes des expériences et les couleurs des évènements.</string>
 		</array>
 		<array>
 			<string>Vous disposez de deux expériences supplémentaires qui permettent de sentir les tuiles autour du robot.</string>
-			<string>La boite devient encore plus grande.</string>
+			<string>La boîte devient encore plus grande.</string>
 		</array>
 		<array>
-			<string>Toujours le même monde avec les mêmes expériences disposées aléatoirement, et les mêmes événements.</string>
-			<string>C&apos;est à vous de choisir les formes des éxpériences et les couleurs des événements.</string>
+			<string>Toujours le même monde avec les mêmes expériences disposées aléatoirement, et les mêmes évènements.</string>
+			<string>C&apos;est à vous de choisir les formes des expériences et les couleurs des évènements.</string>
 		</array>
 		<array>
-			<string>Toujours le même monde, mais presque tous les événements ont une valeur nulle.</string>
-			<string>Bonne chance avec ce niveau !</string>
+			<string>Toujours le même monde, mais presque tous les évènements ont une valeur nulle.</string>
+			<string>Bonne chance pour ce niveau !</string>
 		</array>
 	</array>
 </dict>
