@@ -9,8 +9,9 @@
 import UIKit
 import SpriteKit
 import GameKit
+import StoreKit
 
-class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate, HelpViewControllerDelegate, WorldViewControllerDelegate, GKGameCenterControllerDelegate
+class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate, HelpViewControllerDelegate, WorldViewControllerDelegate, GKGameCenterControllerDelegate, SKProductsRequestDelegate, SKPaymentTransactionObserver
 {
     static let maxLevelNumber = 17
     let unlockDefaultKey = "unlockDefaultKey"
@@ -47,6 +48,8 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
     let userDefaults = NSUserDefaults.standardUserDefaults()
     
     var interfaceLocks = [[Bool]](count: GameViewController.maxLevelNumber + 1, repeatedValue: [false, false, false])
+    
+    let product_id = "com.oliviergeorgeon.little_ai.tip1"
     
     override func viewDidLoad()
     {
@@ -90,6 +93,70 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
         let swipeDown = UISwipeGestureRecognizer(target:self, action: #selector(GameViewController.swipeDown(_:)))
         swipeDown.direction = .Down
         view.addGestureRecognizer(swipeDown)
+        
+        SKPaymentQueue.defaultQueue().addTransactionObserver(self)
+    }
+    
+    func intializePurchase() {
+        if SKPaymentQueue.canMakePayments() {
+            let productID = NSSet(object: self.product_id)
+            let productRequest = SKProductsRequest(productIdentifiers: productID as! Set<String>)
+            productRequest.delegate = self
+            productRequest.start()
+            print("Fetching product")
+        } else {
+            print("Can't make purchase")
+        }
+    }
+    
+    func buyProduct(product: SKProduct) {
+        print("sending the payment request to Apple")
+        let payment = SKPayment(product: product)
+        SKPaymentQueue.defaultQueue().addPayment(payment)
+    }
+    
+    func productsRequest (request: SKProductsRequest, didReceiveResponse response: SKProductsResponse) {
+        
+        let count : Int = response.products.count
+        if (count>0) {
+            //var validProducts = response.products
+            let validProduct: SKProduct = response.products[0] as SKProduct
+            if (validProduct.productIdentifier == self.product_id) {
+                print(validProduct.localizedTitle)
+                print(validProduct.localizedDescription)
+                print(validProduct.price)
+                buyProduct(validProduct);
+            } else {
+                print(validProduct.productIdentifier)
+            }
+        } else {
+            print("nothing")
+        }
+    }
+    
+    func request(request: SKRequest, didFailWithError error: NSError) {
+        print("Error fetching product information")
+    }
+    
+    func paymentQueue(queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
+        print("Received payment transaction reponse from apple")
+        for transaction:AnyObject in transactions {
+            if let trans:SKPaymentTransaction = transaction as? SKPaymentTransaction {
+                switch trans.transactionState {
+                case .Purchased:
+                    print("Product purchased")
+                    SKPaymentQueue.defaultQueue().finishTransaction(transaction as! SKPaymentTransaction)
+                case .Failed:
+                    print("Purchased failed")
+                    SKPaymentQueue.defaultQueue().finishTransaction(transaction as! SKPaymentTransaction)
+                case .Restored:
+                    print("Already purchased")
+                    SKPaymentQueue.defaultQueue().restoreCompletedTransactions()
+                default:
+                    break
+                }
+            }
+        }
     }
 
     func swipeLeft(gesture:UISwipeGestureRecognizer) {
@@ -134,18 +201,18 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
     
     func swipeUp(gesture:UISwipeGestureRecognizer) {
         if let scene = sceneView.scene as? GameSKScene {
-            if scene.cameraNode?.position.y > 667 {
-                scene.cameraNode?.runAction(PositionedSKScene.actionMoveCameraDown)
+            if scene.cameraNode.position.y > 667 {
+                scene.cameraNode.runAction(PositionedSKScene.actionMoveCameraDown)
             } else {
-                scene.cameraNode?.runAction(PositionedSKScene.actionMoveCameraDownUp)
+                scene.cameraNode.runAction(PositionedSKScene.actionMoveCameraDownUp)
             }
         }
     }
     
     func swipeDown(gesture:UISwipeGestureRecognizer) {
         if let scene = sceneView.scene as? GameSKScene {
-            if scene.cameraNode?.position.y < 7 * 667 {
-                scene.cameraNode?.runAction(PositionedSKScene.actionMoveCameraUp)
+            if scene.cameraNode.position.y < 7 * 667 {
+                scene.cameraNode.runAction(PositionedSKScene.actionMoveCameraUp)
             }
         }
         if let menuScene = sceneView.scene as? MenuSKScene {

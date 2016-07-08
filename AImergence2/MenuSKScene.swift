@@ -17,6 +17,7 @@ protocol MenuSceneDelegate: class
 
 class MenuSKScene: PositionedSKScene {
     
+    let backgroundNode = SKSpriteNode(imageNamed: "niveaux.png")
     let instructionNode = SKLabelNode(text: NSLocalizedString("Swipe", comment: "Swipe horizontally to change level."))
     
     let level0Position      = CGPoint(x: 60, y: 550)
@@ -33,10 +34,7 @@ class MenuSKScene: PositionedSKScene {
     {
         /* Setup your scene here */
 
-        //backgroundColor = UIColor(red: 222 / 256, green: 205 / 256, blue: 255 / 256, alpha: 1)
         backgroundColor = UIColor.whiteColor()
-        let backgroundNode = SKSpriteNode(imageNamed: "niveaux.png")
-        backgroundNode.position = CGPoint(x: 300, y: 300)
         backgroundNode.zPosition = -20
         backgroundNode.name = "background"
         addChild(backgroundNode)
@@ -57,6 +55,11 @@ class MenuSKScene: PositionedSKScene {
     
     override func positionInFrame(frameSize: CGSize) {
         super.positionInFrame(frameSize)
+        if frameSize.height > frameSize.width {
+            backgroundNode.position = CGPoint(x: 300, y: 300)
+        } else {
+            backgroundNode.position = CGPoint(x: size.width / 2, y: size.height / 2)
+        }
         instructionNode.position = CGPoint(x: self.size.width / 2, y: 50)
         instructionNode.fontSize = PositionedSKScene.titleFont.pointSize
         while instructionNode.frame.size.width >= self.size.width {

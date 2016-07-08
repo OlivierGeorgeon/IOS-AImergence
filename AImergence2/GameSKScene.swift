@@ -31,6 +31,9 @@ class GameSKScene: PositionedSKScene {
     
     let backgroundNode = SKSpriteNode(imageNamed: "fond.png")
     let robotNode = SKSpriteNode(imageNamed: "happy1.png")
+    let cameraNode = SKCameraNode()
+    let cameraRelativeOriginNode = SKNode()
+    
     let instructionButtonNode = ButtonSKNode(activatedImageNamed: "instructions-color", disactivatedImageNamed: "instructions-black")
     let imagineButtonNode = ButtonSKNode(activatedImageNamed: "imagine-color", disactivatedImageNamed: "imagine-black")
     let gameCenterButtonNode = ButtonSKNode(activatedImageNamed: "gamecenter-color", disactivatedImageNamed: "gamecenter-black")
@@ -90,10 +93,9 @@ class GameSKScene: PositionedSKScene {
         scoreLabel = gameModel.createScoreLabel()
         scoreBackground = gameModel.createScoreBackground()
         super.init(size:CGSize(width: 0 , height: 0))
-        cameraNode = SKCameraNode()
         self.camera = cameraNode
-        self.addChild(cameraNode!)
-        cameraNode!.addChild(cameraRelativeOriginNode)        
+        self.addChild(cameraNode)
+        cameraNode.addChild(cameraRelativeOriginNode)
         layoutScene()
     }
 
@@ -131,8 +133,6 @@ class GameSKScene: PositionedSKScene {
         robotNode.position = CGPoint(x: 120, y: 180)
         robotNode.zPosition = 1
         cameraRelativeOriginNode.addChild(robotNode)
-        backgroundNode.size = CGSize(width: 1188 , height: 1188)
-        backgroundNode.position = CGPoint(x: 400, y: 0)
         backgroundNode.zPosition = -20
         backgroundNode.name = "background"
         cameraRelativeOriginNode.addChild(backgroundNode)
@@ -192,26 +192,20 @@ class GameSKScene: PositionedSKScene {
     override func positionInFrame(frameSize: CGSize) {
         super.positionInFrame(frameSize)
         if frameSize.height > frameSize.width {
-            cameraNode?.position =  PositionedSKScene.portraitCameraPosition
-            cameraRelativeOriginNode.position = -PositionedSKScene.portraitCameraPosition
+            cameraNode.position =  CGPoint(x: 0, y: 233)
             backgroundNode.position.x = 0
-            backgroundNode.size.width = 667
-            robotNode.position = PositionedSKScene.portraitRobotPosition
+            robotNode.position = CGPoint(x: max(120,size.width * 0.3) , y: 180)
             robotNode.setScale(1)
         } else {
-            cameraNode?.position.x =  size.width / 2 - 190
-            cameraNode?.position.y =  233
-            //cameraRelativeOriginNode.position = -PositionedSKScene.landscapeCameraPosition
-            if cameraNode != nil {
-                cameraRelativeOriginNode.position = -cameraNode!.position
-            }
-            backgroundNode.position.x = 400
-            backgroundNode.size.width = 1188
-            robotNode.position = PositionedSKScene.landscapeRobotPosition
+            cameraNode.position =  CGPoint(x: size.width / 2 - 190, y: 233)
+            backgroundNode.position.x = cameraNode.position.x // 400
+            robotNode.position = CGPoint(x: size.width * 0.6, y: 100) // 700
             robotNode.setScale(2)
         }      
+        backgroundNode.size.width = size.width
+        cameraRelativeOriginNode.position = -cameraNode.position
     }
-        
+    
     func tap(recognizer: UITapGestureRecognizer)
     {
         let positionInScene = self.convertPointFromView(recognizer.locationInView(self.view))
