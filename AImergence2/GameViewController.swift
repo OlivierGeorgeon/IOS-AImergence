@@ -50,6 +50,7 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
     var interfaceLocks = [[Bool]](count: GameViewController.maxLevelNumber + 1, repeatedValue: [false, false, false])
     
     let product_id = "com.oliviergeorgeon.little_ai.tip1"
+    var validProducts = [SKProduct]()
     
     override func viewDidLoad()
     {
@@ -95,12 +96,18 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
         view.addGestureRecognizer(swipeDown)
         
         SKPaymentQueue.defaultQueue().addTransactionObserver(self)
+        requestProducts()
     }
     
-    func intializePurchase() {
+    func leaveTip(product: SKProduct) {
+        buyProduct(product);
+        //unlockAction()
+    }
+
+    func requestProducts() {
         if SKPaymentQueue.canMakePayments() {
-            let productID = NSSet(object: self.product_id)
-            let productRequest = SKProductsRequest(productIdentifiers: productID as! Set<String>)
+            let productID: Set = ["com.oliviergeorgeon.little_ai.tip1", "com.oliviergeorgeon.little_ai.tip2", "com.oliviergeorgeon.little_ai.tip3"]
+            let productRequest = SKProductsRequest(productIdentifiers: productID )
             productRequest.delegate = self
             productRequest.start()
             print("Fetching product")
@@ -115,23 +122,13 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
         SKPaymentQueue.defaultQueue().addPayment(payment)
     }
     
-    func productsRequest (request: SKProductsRequest, didReceiveResponse response: SKProductsResponse) {
-        
-        let count : Int = response.products.count
-        if (count>0) {
-            //var validProducts = response.products
-            let validProduct: SKProduct = response.products[0] as SKProduct
-            if (validProduct.productIdentifier == self.product_id) {
-                print(validProduct.localizedTitle)
-                print(validProduct.localizedDescription)
-                print(validProduct.price)
-                buyProduct(validProduct);
-            } else {
-                print(validProduct.productIdentifier)
-            }
-        } else {
-            print("nothing")
-        }
+    func productsRequest(request: SKProductsRequest, didReceiveResponse response: SKProductsResponse) {
+        validProducts = response.products
+        print("Recieved \(validProducts.count) products from Apple.")
+    }
+    
+    func getProducts() -> [SKProduct] {
+        return validProducts
     }
     
     func request(request: SKRequest, didFailWithError error: NSError) {
@@ -310,6 +307,9 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
         imagineViewControllerContainer.hidden = true
         imagineViewController?.sceneView.scene = nil
         if let scene  = sceneView.scene as? GameSKScene {
+            if validProducts.count == 0 {
+                requestProducts()
+            }
             let menuScene = MenuSKScene()
             menuScene.previousGameScene = scene
             menuScene.userDelegate = self

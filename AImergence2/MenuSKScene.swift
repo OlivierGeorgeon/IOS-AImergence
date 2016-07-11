@@ -7,18 +7,27 @@
 //
 
 import SpriteKit
+import StoreKit
 
 protocol MenuSceneDelegate: class
 {
     func currentlevel() -> Int
     func updateLevel(level: Int)
     func levelStatus(level: Int) -> Int
+    func leaveTip(product: SKProduct)
+    func getProducts() -> [SKProduct]
 }
 
 class MenuSKScene: PositionedSKScene {
     
     let backgroundNode = SKSpriteNode(imageNamed: "niveaux.png")
-    let instructionNode = SKLabelNode(text: NSLocalizedString("Swipe", comment: "Swipe horizontally to change level."))
+    let label0Node = SKLabelNode()
+    var tip0Node: TipSKNode?
+    var tip1Node: TipSKNode?
+    var tip2Node: TipSKNode?
+    
+    var shortTipInvit = ""
+    var longTipInvit = ""
     
     let level0Position      = CGPoint(x: 60, y: 550)
     let levelXOffset        = CGVector( dx: 60, dy: 0)
@@ -39,13 +48,30 @@ class MenuSKScene: PositionedSKScene {
         backgroundNode.name = "background"
         addChild(backgroundNode)
 
-        instructionNode.fontName = PositionedSKScene.bodyFont.fontName
-        instructionNode.fontSize = PositionedSKScene.bodyFont.pointSize
-        instructionNode.fontColor = UIColor.blackColor()
-        instructionNode.verticalAlignmentMode = .Center
-        addChild(instructionNode)
-        
         buttonNodes = createButtons(view.frame.size)
+        
+        label0Node.fontName = PositionedSKScene.bodyFont.fontName
+        label0Node.fontSize = PositionedSKScene.titleFont.pointSize
+        label0Node.fontColor = UIColor.darkGrayColor()
+        label0Node.verticalAlignmentMode = .Center
+        addChild(label0Node)
+
+        let products = userDelegate!.getProducts()
+        
+        if products.count > 0 {
+            shortTipInvit =  products[0].localizedDescription
+            tip0Node = TipSKNode(product: products[0], size: CGSize(width: 70, height: 70))
+            addChild(tip0Node!)
+            if products.count > 1 {
+                longTipInvit =  products[1].localizedDescription
+                tip1Node = TipSKNode(product: products[1], size: CGSize(width: 80, height: 80))
+                addChild(tip1Node!)
+                if products.count > 2 {
+                    tip2Node = TipSKNode(product: products[2], size: CGSize(width: 80, height: 80))
+                    addChild(tip2Node!)
+                }
+            }
+        } 
         
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(MenuSKScene.tap(_:)))
         view.addGestureRecognizer(tapGestureRecognizer);
@@ -60,10 +86,21 @@ class MenuSKScene: PositionedSKScene {
         } else {
             backgroundNode.position = CGPoint(x: size.width / 2, y: size.height / 2)
         }
-        instructionNode.position = CGPoint(x: self.size.width / 2, y: 50)
-        instructionNode.fontSize = PositionedSKScene.titleFont.pointSize
-        while instructionNode.frame.size.width >= self.size.width {
-            instructionNode.fontSize-=1.0
+        
+        if frameSize.width >= 480 { // portrait - iPhone 4s portrait width
+            label0Node.text = longTipInvit
+            tip0Node?.position = CGPoint(x: size.width / 2 - 170, y: 130)
+            tip1Node?.position = CGPoint(x: size.width / 2, y: 70)
+            tip2Node?.position = CGPoint(x: size.width / 2 + 170, y: 105)
+        } else {
+            label0Node.text = shortTipInvit
+            tip0Node?.position = CGPoint(x: size.width / 2 - 100, y: 130)
+            tip1Node?.position = CGPoint(x: size.width / 2 - 10, y: 70)
+            tip2Node?.position = CGPoint(x: size.width / 2 + 100, y: 105)
+        }
+        label0Node.position = CGPoint(x: self.size.width / 2, y: 210)
+        while label0Node.frame.size.width >= self.size.width {
+            label0Node.fontSize -= 1.0
         }
     }
     
@@ -128,6 +165,24 @@ class MenuSKScene: PositionedSKScene {
                 } else {
                     self.view?.presentScene(previousGameScene!, transition: PositionedSKScene.transitionDown)
                 }
+            }
+        }
+        if tip0Node != nil {
+            if tip0Node!.containsPoint(positionInScene) {
+                tip0Node!.runAction(actionPress)
+                userDelegate?.leaveTip(tip0Node!.product)
+            }
+        }
+        if tip1Node != nil {
+            if tip1Node!.containsPoint(positionInScene) {
+                tip1Node!.runAction(actionPress)
+                userDelegate?.leaveTip(tip1Node!.product)
+            }
+        }
+        if tip2Node != nil {
+            if tip2Node!.containsPoint(positionInScene) {
+                tip2Node!.runAction(actionPress)
+                userDelegate?.leaveTip(tip2Node!.product)
             }
         }
     }

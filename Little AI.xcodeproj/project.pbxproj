@@ -19,6 +19,7 @@
 		0914EA681D09BAD100E78D5F /* GameModel6.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0914EA671D09BAD100E78D5F /* GameModel6.swift */; };
 		0914EA6A1D0AA7DE00E78D5F /* ImagineModel15.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0914EA691D0AA7DE00E78D5F /* ImagineModel15.swift */; };
 		0914EA6C1D0AAD6300E78D5F /* Level16.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0914EA6B1D0AAD6300E78D5F /* Level16.swift */; };
+		09246FC61D3145F80049CFA2 /* TipSKNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09246FC51D3145F80049CFA2 /* TipSKNode.swift */; };
 		093000DA1C4FB39000425BB1 /* ExperimentSKNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093000D91C4FB39000425BB1 /* ExperimentSKNode.swift */; };
 		093000DE1C4FC77700425BB1 /* ExperienceSKNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093000DD1C4FC77700425BB1 /* ExperienceSKNode.swift */; };
 		093000E01C4FD3B700425BB1 /* ReshapableSKNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093000DF1C4FD3B700425BB1 /* ReshapableSKNode.swift */; };
@@ -116,6 +117,7 @@
 		0914EA671D09BAD100E78D5F /* GameModel6.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameModel6.swift; sourceTree = "<group>"; };
 		0914EA691D0AA7DE00E78D5F /* ImagineModel15.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagineModel15.swift; sourceTree = "<group>"; };
 		0914EA6B1D0AAD6300E78D5F /* Level16.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Level16.swift; sourceTree = "<group>"; };
+		09246FC51D3145F80049CFA2 /* TipSKNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TipSKNode.swift; sourceTree = "<group>"; };
 		092B00371CBFF47A00A6FF3C /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		093000D91C4FB39000425BB1 /* ExperimentSKNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExperimentSKNode.swift; sourceTree = "<group>"; };
 		093000DD1C4FC77700425BB1 /* ExperienceSKNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExperienceSKNode.swift; sourceTree = "<group>"; };
@@ -330,6 +332,7 @@
 				0936813E1C417378008C6B5D /* GameSKScene.swift */,
 				0936817A1C4696AB008C6B5D /* MenuSKScene.swift */,
 				098203EF1D088818009303C5 /* ButtonSKNode.swift */,
+				09246FC51D3145F80049CFA2 /* TipSKNode.swift */,
 			);
 			name = SKSceneElements;
 			sourceTree = "<group>";
@@ -604,6 +607,7 @@
 				090AD9F21C7A628C00F2FE8C /* ImagineModel8.swift in Sources */,
 				0964BB171CEF94D900A4B40D /* Level12.swift in Sources */,
 				0964BB191CEF95AA00A4B40D /* ImagineModel12.swift in Sources */,
+				09246FC61D3145F80049CFA2 /* TipSKNode.swift in Sources */,
 				09AC4D131C821BC000C149EC /* GameView.swift in Sources */,
 				0961EBB91C63EE2200A4E55C /* Level3.swift in Sources */,
 				09D426461D0AE30200B34CDF /* ImagineModel17.swift in Sources */,
