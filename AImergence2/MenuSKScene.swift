@@ -16,12 +16,13 @@ protocol MenuSceneDelegate: class
     func levelStatus(level: Int) -> Int
     func leaveTip(product: SKProduct)
     func getProducts() -> [SKProduct]
+    func isPaidTip() -> Bool
 }
 
 class MenuSKScene: PositionedSKScene {
     
     let backgroundNode = SKSpriteNode(imageNamed: "niveaux.png")
-    let label0Node = SKLabelNode()
+    let tipInviteNode = SKLabelNode()
     var tip0Node: TipSKNode?
     var tip1Node: TipSKNode?
     var tip2Node: TipSKNode?
@@ -50,11 +51,10 @@ class MenuSKScene: PositionedSKScene {
 
         buttonNodes = createButtons(view.frame.size)
         
-        label0Node.fontName = PositionedSKScene.bodyFont.fontName
-        label0Node.fontSize = PositionedSKScene.titleFont.pointSize
-        label0Node.fontColor = UIColor.darkGrayColor()
-        label0Node.verticalAlignmentMode = .Center
-        addChild(label0Node)
+        tipInviteNode.fontName = PositionedSKScene.bodyFont.fontName
+        tipInviteNode.fontColor = UIColor.darkGrayColor()
+        tipInviteNode.verticalAlignmentMode = .Center
+        addChild(tipInviteNode)
 
         let products = userDelegate!.getProducts()
         
@@ -71,7 +71,12 @@ class MenuSKScene: PositionedSKScene {
                     addChild(tip2Node!)
                 }
             }
-        } 
+        }
+        
+        if userDelegate!.isPaidTip() {
+            shortTipInvit = NSLocalizedString("Thank you!", comment: "In the level window when the user has paid a tip.");
+            longTipInvit = shortTipInvit
+        }
         
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(MenuSKScene.tap(_:)))
         view.addGestureRecognizer(tapGestureRecognizer);
@@ -83,24 +88,26 @@ class MenuSKScene: PositionedSKScene {
         super.positionInFrame(frameSize)
         if frameSize.height > frameSize.width {
             backgroundNode.position = CGPoint(x: 300, y: 300)
-        } else {
-            backgroundNode.position = CGPoint(x: size.width / 2, y: size.height / 2)
-        }
-        
-        if frameSize.width >= 480 { // portrait - iPhone 4s portrait width
-            label0Node.text = longTipInvit
-            tip0Node?.position = CGPoint(x: size.width / 2 - 170, y: 130)
-            tip1Node?.position = CGPoint(x: size.width / 2, y: 70)
-            tip2Node?.position = CGPoint(x: size.width / 2 + 170, y: 105)
-        } else {
-            label0Node.text = shortTipInvit
+            tipInviteNode.text = shortTipInvit
             tip0Node?.position = CGPoint(x: size.width / 2 - 100, y: 130)
             tip1Node?.position = CGPoint(x: size.width / 2 - 10, y: 70)
             tip2Node?.position = CGPoint(x: size.width / 2 + 100, y: 105)
+        } else {
+            backgroundNode.position = CGPoint(x: size.width / 2, y: size.height / 2)
+            tipInviteNode.text = longTipInvit
+            tip0Node?.position = CGPoint(x: size.width / 2 - 170, y: 130)
+            tip1Node?.position = CGPoint(x: size.width / 2, y: 70)
+            tip2Node?.position = CGPoint(x: size.width / 2 + 170, y: 105)
         }
-        label0Node.position = CGPoint(x: self.size.width / 2, y: 210)
-        while label0Node.frame.size.width >= self.size.width {
-            label0Node.fontSize -= 1.0
+        
+        //if frameSize.width >= 480 { // portrait - iPhone 4s portrait width
+        //} else {
+        //}
+        
+        tipInviteNode.position = CGPoint(x: self.size.width / 2, y: 210)
+        tipInviteNode.fontSize = PositionedSKScene.titleFont.pointSize
+        while tipInviteNode.frame.size.width >= self.size.width {
+            tipInviteNode.fontSize -= 1.0
         }
     }
     

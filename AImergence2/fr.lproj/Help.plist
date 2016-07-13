@@ -16,12 +16,12 @@
 		</array>
 		<array>
 			<string>Les expériences peuvent produire des évènements différents en fonction de &quot;l&apos;état du monde&quot; dans lequel elles sont effectuées. Elles peuvent changer l&apos;état du monde.</string>
-			<string>Les évènements qui ont une valeur positive sont consédérées &quot;plaisants&quot;, et ceux qui ont une valeur négative &quot;déplaisants&quot;.</string>
+			<string>Les évènements qui ont une valeur positive sont consédérés &quot;plaisants&quot;, et ceux qui ont une valeur négative &quot;déplaisants&quot;.</string>
 			<string>Essayez de générez une séquence d&apos;évènements plaisants.</string>
 		</array>
 		<array>
 			<string>Pressez longuement et glissez une expérience pour changer sa forme. Cela changera aussi la forme des évènements produits par cette expérience.</string>
-			<string>Pressez longuement et glissez un évèndement pour changer sa couleur. Cela changera la couleur de tous les évènements du même type, c&apos;est-à-dire produits par la même expérimentation et donnant le même résultat.</string>
+			<string>Pressez longuement et glissez un évèndement pour changer sa couleur. Cela changera la couleur de tous les évènements du même type, c&apos;est-à-dire produits par la même expérimences et donnant le même résultat.</string>
 			<string>Vous êtes encouragé à changer les formes et les couleurs pour pouvoir repérer les types évènements. Ces changements ne changent pas les comportements des expériences ni les valeurs des évènements.</string>
 		</array>
 		<array>
@@ -58,7 +58,7 @@
 		</array>
 		<array>
 			<string>Au niveau 11, vous pouvez imaginer que vous pilotez un petit robot qui peut avancer et tourner dans une petite boîte.</string>
-			<string>Ce robot adore avancer mais déteste se cogner.</string>
+			<string>Il adore avancer mais déteste se cogner.</string>
 		</array>
 		<array>
 			<string>Le monde du niveau 12 est similaire à celui du niveau 11, mais la boîte est encore plus petite.</string>

@@ -51,6 +51,9 @@ class ImagineViewController: UIViewController {
             case 11, 12:
                 textView.text = NSLocalizedString("Double tap to swap cameras.", comment: "Message in the Imagine window on Levels 11 and 12.");
                 textView.hidden = false
+            case 17:
+                textView.text = NSLocalizedString("You won!", comment: "Message in the Imagine window on Levels 17 (last).");
+                textView.hidden = false
             default:
                 textView.hidden = true
             }

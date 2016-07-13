@@ -15,6 +15,7 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
 {
     static let maxLevelNumber = 17
     let unlockDefaultKey = "unlockDefaultKey"
+    let paidTipKey = "paidTipKey"
     
     @IBOutlet weak var sceneView: GameView!
     @IBOutlet weak var helpViewControllerContainer: UIView!
@@ -48,6 +49,7 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
     let userDefaults = NSUserDefaults.standardUserDefaults()
     
     var interfaceLocks = [[Bool]](count: GameViewController.maxLevelNumber + 1, repeatedValue: [false, false, false])
+    var paidTip = false
     
     let product_id = "com.oliviergeorgeon.little_ai.tip1"
     var validProducts = [SKProduct]()
@@ -58,10 +60,12 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
         
         self.authenticateLocalPlayer()
  
+        paidTip = userDefaults.boolForKey(paidTipKey)
+        
         let userInterfaceLocksWrapped = userDefaults.arrayForKey(unlockDefaultKey)
-        if let userIntergaceLocks = userInterfaceLocksWrapped as? [[Bool]] {
-            for i in 0...(userIntergaceLocks.count - 1) {
-                interfaceLocks[i] = userIntergaceLocks[i]
+        if let userInterfaceLocks = userInterfaceLocksWrapped as? [[Bool]] {
+            for i in 0...(userInterfaceLocks.count - 1) {
+                interfaceLocks[i] = userInterfaceLocks[i]
             }
         }
         if Process.arguments.count > 1 {
@@ -142,12 +146,16 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
                 switch trans.transactionState {
                 case .Purchased:
                     print("Product purchased")
+                    paidTip = true
+                    userDefaults.setBool(true, forKey: paidTipKey)
                     SKPaymentQueue.defaultQueue().finishTransaction(transaction as! SKPaymentTransaction)
                 case .Failed:
                     print("Purchased failed")
                     SKPaymentQueue.defaultQueue().finishTransaction(transaction as! SKPaymentTransaction)
                 case .Restored:
                     print("Already purchased")
+                    paidTip = true
+                    userDefaults.setBool(true, forKey: paidTipKey)
                     SKPaymentQueue.defaultQueue().restoreCompletedTransactions()
                 default:
                     break
@@ -156,6 +164,10 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
         }
     }
 
+    func isPaidTip() -> Bool {
+        return paidTip
+    }
+    
     func swipeLeft(gesture:UISwipeGestureRecognizer) {
         if let scene = sceneView.scene as? GameSKScene {
             let positionInScene = scene.convertPointFromView(gesture.locationInView(sceneView))
@@ -377,8 +389,8 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
         userDefaults.setObject(interfaceLocks, forKey: unlockDefaultKey)
         if let scene = sceneView.scene as? GameSKScene {
             scene.instructionButtonNode.disactivate()
-            if scene.instructionButtonNode.pulsing {
-                scene.instructionButtonNode.unpulse()
+            scene.instructionButtonNode.unpulse()
+            if scene.currentButton == BUTTON.INSTRUCTION {
                 scene.shiftButton()
             }
         }
