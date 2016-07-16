@@ -25,6 +25,8 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
     @IBAction func hepButton(sender: UIButton)   { showInstructionWindow() }
     @IBAction func worldButton(sender: UIButton) { showImagineWindow() }
     
+    var smallPortraitConstraint: NSLayoutConstraint?
+    
     var score: Int = 0 // Stores the score
     
     var gcEnabled = Bool() // Stores if the user has Game Center enabled
@@ -86,6 +88,10 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
         sceneView.ignoresSiblingOrder = true
         sceneView.presentScene(gameScene)
         
+        smallPortraitConstraint = NSLayoutConstraint(item: imagineViewControllerContainer, attribute: NSLayoutAttribute.Bottom, relatedBy: NSLayoutRelation.LessThanOrEqual, toItem: bottomLayoutGuide, attribute: NSLayoutAttribute.Bottom, multiplier: 1, constant: -120)
+        smallPortraitConstraint?.active = false
+        view.addConstraint(smallPortraitConstraint!)
+
         let swipeLeft = UISwipeGestureRecognizer(target:self, action: #selector(GameViewController.swipeLeft(_:)))
         swipeLeft.direction = .Left
         view.addGestureRecognizer(swipeLeft)
@@ -248,6 +254,13 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
         if let positionedScene = sceneView.scene as? PositionedSKScene {
             positionedScene.positionInFrame(size)
         }
+        
+        if size.width < size.height {
+            smallPortraitConstraint?.active = true
+        } else {
+            smallPortraitConstraint?.active = false
+        }
+        
         super.viewWillTransitionToSize(size, withTransitionCoordinator: coordinator)
     }
     

@@ -11,4 +11,20 @@ import SpriteKit
 
 class GameView: SKView {
 
+    override init (frame : CGRect) {
+        super.init(frame : frame)
+        addBehavior()
+    }
+    
+    convenience init () {
+        self.init(frame:CGRect.zero)
+    }
+    
+    required init(coder aDecoder: NSCoder) {
+        fatalError("This class does not support NSCoding")
+    }
+    
+    func addBehavior (){
+        print("Add all the behavior here")
+    }
 }

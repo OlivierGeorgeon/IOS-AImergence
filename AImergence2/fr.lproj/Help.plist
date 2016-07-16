@@ -20,8 +20,8 @@
 			<string>Essayez de générez une séquence d&apos;évènements plaisants.</string>
 		</array>
 		<array>
-			<string>Pressez longuement et glissez une expérience pour changer sa forme. Cela changera aussi la forme des évènements produits par cette expérience.</string>
-			<string>Pressez longuement et glissez un évèndement pour changer sa couleur. Cela changera la couleur de tous les évènements du même type, c&apos;est-à-dire produits par la même expérimences et donnant le même résultat.</string>
+			<string>Pressez longuement une expérience pour changer sa forme. Cela changera aussi la forme des évènements produits par cette expérience.</string>
+			<string>Pressez longuement un évènement pour changer sa couleur. Cela changera la couleur de tous les évènements du même type, c&apos;est-à-dire produits par la même expérimences et donnant le même résultat.</string>
 			<string>Vous êtes encouragé à changer les formes et les couleurs pour pouvoir repérer les types évènements. Ces changements ne changent pas les comportements des expériences ni les valeurs des évènements.</string>
 		</array>
 		<array>
