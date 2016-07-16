@@ -78,9 +78,6 @@ class MenuSKScene: PositionedSKScene {
             longTipInvit = shortTipInvit
         }
         
-        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(MenuSKScene.tap(_:)))
-        view.addGestureRecognizer(tapGestureRecognizer);
-        
         super.didMoveToView(view)
     }
     
@@ -154,8 +151,19 @@ class MenuSKScene: PositionedSKScene {
         labelNode.verticalAlignmentMode = .Center
         return labelNode
     }
+    
+    override func pan(recognizer: UIPanGestureRecognizer) {
+        switch recognizer.state {
+        case .Ended:
+            if recognizer.velocityInView(self.view!).y > 100 {
+                self.view!.presentScene(previousGameScene!, transition: PositionedSKScene.transitionDown)
+            }
+        default:
+            break
+        }
+    }
 
-    func tap(recognizer: UITapGestureRecognizer)
+    override func tap(recognizer: UITapGestureRecognizer)
     {
         let positionInScene = self.convertPointFromView(recognizer.locationInView(self.view))
         for levelNode in buttonNodes {

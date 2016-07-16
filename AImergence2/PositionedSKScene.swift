@@ -37,6 +37,16 @@ class PositionedSKScene: SKScene {
     func positionInFrame(frameSize: CGSize) {
         self.size = CGSize(width: sceneHeight * frameSize.width / frameSize.height, height: sceneHeight)
     }
+    
+    func tap(recognizer: UITapGestureRecognizer) {
+    }
+    
+    func longPress(recognizer: UILongPressGestureRecognizer) {
+    }
+
+    func pan(recognizer: UIPanGestureRecognizer) {
+    }
+
 }
 
 func + (left: CGPoint, right: CGVector) -> CGPoint {

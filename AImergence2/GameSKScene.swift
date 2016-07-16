@@ -86,6 +86,10 @@ class GameSKScene: PositionedSKScene {
     var robotSadFrames: [SKTexture]!
     var robotBlinkFrames: [SKTexture]!
     
+    var robotPan = false
+    var robotOrigin = CGFloat(0.0)
+    var horizontalPan = false
+    
     init(gameModel: GameModel2)
     {
         self.level = gameModel.level
@@ -177,16 +181,6 @@ class GameSKScene: PositionedSKScene {
             gameCenterButtonNode.disactivate()
             levelButtonNode.disactivate()
         }
-        
-        for recognizer in view.gestureRecognizers ?? [] {
-            if recognizer is UITapGestureRecognizer || recognizer is UILongPressGestureRecognizer  {
-                view.removeGestureRecognizer(recognizer)
-            }
-        }
-        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(GameSKScene.tap(_:)))
-        view.addGestureRecognizer(tapGestureRecognizer)
-        let longPressGestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(GameSKScene.longPress(_:)))
-        view.addGestureRecognizer(longPressGestureRecognizer)
     }
     
     override func positionInFrame(frameSize: CGSize) {
@@ -202,12 +196,63 @@ class GameSKScene: PositionedSKScene {
             robotNode.position = CGPoint(x: size.width * 0.6, y: 100) // 700
             robotNode.setScale(2)
         }      
+        robotOrigin = robotNode.position.x
         backgroundNode.size.width = size.width
         cameraRelativeOriginNode.position = -cameraNode.position
     }
     
-    func tap(recognizer: UITapGestureRecognizer)
-    {
+    override func pan(recognizer: UIPanGestureRecognizer) {
+        let positionInScene = self.convertPointFromView(recognizer.locationInView(self.view))
+        let positionInScreen = cameraRelativeOriginNode.convertPoint(positionInScene, fromNode: self)
+        let translation  = recognizer.translationInView(self.view!)
+
+        switch recognizer.state {
+        case .Began:
+            robotPan = robotNode.containsPoint(positionInScreen) // also includes the robotNode's child nodes
+            //horizontalPan = abs(translation.x) > abs(translation.y)
+        case .Changed:
+            if robotPan {
+                robotNode.position.x += translation.x * 667 / self.view!.frame.height
+                if robotNode.position.x <  robotOrigin * 0.9 {
+                    robotNode.runAction(SKAction.moveToX(robotOrigin, duration: 0.2))
+                    (self.view! as! GameView).nextLevel()
+                    recognizer.enabled = false
+                    recognizer.enabled = true
+                }
+                if robotNode.position.x > robotOrigin * 1.1 {
+                    robotNode.runAction(SKAction.moveToX(robotOrigin, duration: 0.2))
+                    (self.view! as! GameView).previousLevel()
+                    recognizer.enabled = false
+                    recognizer.enabled = true
+                }
+            } else {
+                cameraNode.position.y += translation.y * 667 / self.view!.frame.height
+            }
+        case .Ended:
+            if robotPan {
+                robotNode.runAction(SKAction.moveToX(robotOrigin, duration: 0.2))
+            } else {
+                if cameraNode.position.y < 233 {
+                    cameraNode.runAction(SKAction.moveToY(233, duration: 0.3))
+                }
+                if recognizer.velocityInView(self.view!).y > 300 {
+                    cameraNode.runAction(PositionedSKScene.actionMoveCameraUp)
+                }
+                if recognizer.velocityInView(self.view!).y < -300 {
+                    if cameraNode.position.y > 667 + 233 {
+                        cameraNode.runAction(PositionedSKScene.actionMoveCameraDown)
+                    } else {
+                        cameraNode.runAction(SKAction.moveToY(233, duration: 0.3))
+                    }
+                }
+            }
+        default:
+            break
+        }
+        recognizer.setTranslation(CGPoint(x: 0,y: 0), inView: self.view!)
+    }
+    
+    override func tap(recognizer: UITapGestureRecognizer) {
         let positionInScene = self.convertPointFromView(recognizer.locationInView(self.view))
         let positionInScreen = cameraRelativeOriginNode.convertPoint(positionInScene, fromNode: self)
         let positionInRobot = robotNode.convertPoint(positionInScene, fromNode: self)
@@ -260,7 +305,7 @@ class GameSKScene: PositionedSKScene {
         }
     }
     
-    func longPress(recognizer: UILongPressGestureRecognizer)
+    override func longPress(recognizer: UILongPressGestureRecognizer)
     {
         let positionInScene = self.convertPointFromView(recognizer.locationInView(self.view))
         let positionInShapePopup = shapePopupNode?.convertPoint(positionInScene, fromNode: self)
