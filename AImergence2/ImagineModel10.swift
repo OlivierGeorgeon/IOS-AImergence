@@ -14,21 +14,21 @@ class ImagineModel10: ImagineModel9
         switch experience.hashValue {
         case 00: // Touch
             robotNode.feelFront()
-            createOrRetrieveBodyNodeAndRunAction(positionInCarroussel)
-            spawnExperienceNode(experience, position: SCNVector3( -0.5 * scale, 0.0, 0.0), delay: 0.1)
+            createOrRetrieveBodyNodeAndRunAction(positionInCarroussel, delay: 0.2)
+            spawnExperienceNode(experience, position: SCNVector3( -0.5 * scale, 0.0, 0.0), delay: 0.2)
         case 01:
             robotNode.feelFront()
-            createOrRetrieveBodyNodeAndRunAction(positionInCarroussel, direction: Compass.WEST)
-            spawnExperienceNode(experience, position: SCNVector3( -0.5 * scale, 0.0, 0.0), delay: 0.1)
+            createOrRetrieveBodyNodeAndRunAction(positionInCarroussel, direction: Compass.WEST, delay: 0.2)
+            spawnExperienceNode(experience, position: SCNVector3( -0.5 * scale, 0.0, 0.0), delay: 0.2)
         case 10:  // eat
             robotNode.bump()
-            createOrRetrieveBodyNodeAndRunAction(positionInCarroussel)
+            createOrRetrieveBodyNodeAndRunAction(positionInCarroussel, delay: 0.1)
             spawnExperienceNode(experience, position: SCNVector3( -0.5 * scale, 0.0, 0.0), delay: 0.1)
             bodyNode = nil
             rotateCarrousel()
         case 11:
             robotNode.bump()
-            createOrRetrieveBodyNodeAndRunAction(positionInCarroussel, direction: Compass.WEST)
+            createOrRetrieveBodyNodeAndRunAction(positionInCarroussel, direction: Compass.WEST, delay: 0.1)
             spawnExperienceNode(experience, position: SCNVector3( -0.5 * scale, 0.0, 0.0), delay: 0.1)
             bodyNode = nil
             rotateCarrousel()

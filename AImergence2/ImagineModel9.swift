@@ -33,36 +33,36 @@ class ImagineModel9: ImagineModel5
         switch experience.hashValue {
         case 00: // Touch
             robotNode.feelFront()
-            createOrRetrieveBodyNodeAndRunAction(positionInCarroussel)
-            spawnExperienceNode(experience, position: SCNVector3( -0.5 * scale, 0.0, 0.0), delay: 0.1)
+            createOrRetrieveBodyNodeAndRunAction(positionInCarroussel, delay: 0.2)
+            spawnExperienceNode(experience, position: SCNVector3( -0.5 * scale, 0.0, 0.0), delay: 0.2)
         case 01:
             robotNode.feelFront()
-            createOrRetrieveBodyNodeAndRunAction(positionInCarroussel, direction: Compass.WEST)
-            spawnExperienceNode(experience, position: SCNVector3( -0.5 * scale, 0.0, 0.0), delay: 0.1)
+            createOrRetrieveBodyNodeAndRunAction(positionInCarroussel, direction: Compass.WEST, delay: 0.2)
+            spawnExperienceNode(experience, position: SCNVector3( -0.5 * scale, 0.0, 0.0), delay: 0.2)
         case 10:  // eat
             robotNode.bump()
-            createOrRetrieveBodyNodeAndRunAction(positionInCarroussel)
+            createOrRetrieveBodyNodeAndRunAction(positionInCarroussel, delay: 0.1)
             spawnExperienceNode(experience, position: SCNVector3( -0.5 * scale, 0.0, 0.0), delay: 0.1)
             bodyNode = nil
             rotateCarrousel()
         case 11:
             robotNode.bump()
-            createOrRetrieveBodyNodeAndRunAction(positionInCarroussel, direction: Compass.WEST)
+            createOrRetrieveBodyNodeAndRunAction(positionInCarroussel, direction: Compass.WEST, delay: 0.1)
             spawnExperienceNode(experience, position: SCNVector3( -0.5 * scale, 0.0, 0.0), delay: 0.1)
             bodyNode = nil
             rotateCarrousel()
         case 20: // swap
-            createOrRetrieveBodyNodeAndRunAction(positionInCarroussel ,action: actions.turnover())
+            createOrRetrieveBodyNodeAndRunAction(positionInCarroussel, direction: Compass.WEST, action: actions.turnover())
             spawnExperienceNode(experience, position: SCNVector3( 0.0, 0.0, 0.0))
         case 21:
-            createOrRetrieveBodyNodeAndRunAction(positionInCarroussel ,direction: Compass.WEST, action: actions.turnover())
+            createOrRetrieveBodyNodeAndRunAction(positionInCarroussel, action: actions.turnover())
             spawnExperienceNode(experience, position: SCNVector3( 0.0, 0.0, 0.0))
         default:
             break
         }
     }
     
-    override func createOrRetrieveBodyNodeAndRunAction(position: SCNVector3 = SCNVector3(), direction: Compass = Compass.EAST, action: SCNAction = SCNAction.unhide()) -> SCNFlippableNode
+    override func createOrRetrieveBodyNodeAndRunAction(position: SCNVector3 = SCNVector3(), direction: Compass = Compass.EAST, action: SCNAction = SCNAction.unhide(), delay: NSTimeInterval = 0.0) -> SCNFlippableNode
     {
         if bodyNode == nil {
             if carrouselNode.childNodes.count >= 10 {
@@ -73,8 +73,8 @@ class ImagineModel9: ImagineModel5
                 bodyNode.position = position
                 carrouselNode.addChildNode(bodyNode)
                 if direction == Compass.WEST {
-                    bodyNode.runAction(SCNAction.sequence([SCNAction.rotateByX(0.0, y: 0.0, z: carrouselAngle, duration: 0.0), actions.unhide, action])) }
-                else { bodyNode.runAction(SCNAction.sequence([SCNAction.rotateByX(0.0, y: 0.0, z: carrouselAngle - CGFloat(M_PI), duration: 0.0), actions.unhide, action])) }
+                    bodyNode.runAction(SCNAction.sequence([SCNAction.rotateByX(0.0, y: 0.0, z: carrouselAngle, duration: delay), actions.unhide, action])) }
+                else { bodyNode.runAction(SCNAction.sequence([SCNAction.rotateByX(0.0, y: 0.0, z: carrouselAngle - CGFloat(M_PI), duration: delay), actions.unhide, action])) }
             }
         } else {
             bodyNode.runAction(action)

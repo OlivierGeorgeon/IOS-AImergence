@@ -87,7 +87,7 @@ class ImagineModel5: ImagineModel4
             
         }
     }
-    func createOrRetrieveBodyNodeAndRunAction(position: SCNVector3 = SCNVector3(), direction:Compass = Compass.EAST, action: SCNAction = SCNAction.unhide()) -> SCNFlippableNode {
+    func createOrRetrieveBodyNodeAndRunAction(position: SCNVector3 = SCNVector3(), direction:Compass = Compass.EAST, action: SCNAction = SCNAction.unhide(), delay: NSTimeInterval = 0.0) -> SCNFlippableNode {
         if bodyNode == nil {
             if nextBodyNode == nil {
                 bodyNode = SCNFlippableNode()
