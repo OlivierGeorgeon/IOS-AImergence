@@ -52,6 +52,7 @@ class GameSKScene: PositionedSKScene {
     var shapePopupNode:SKNode!
     var shapeNodes = Array<SKShapeNode>()
     var shapeNodeIndex = 0
+    var scoreLine:SKShapeNode?
     var colorPopupNode: SKNode?
     var colorNodes = Array<SKShapeNode>()
     var colorNodeIndex = 0
@@ -64,6 +65,7 @@ class GameSKScene: PositionedSKScene {
             scoreLabel.addChild(gaugeNode(score))
             if score >= level.winScore {
                 scoreBackground.fillColor = UIColor.greenColor()
+                scoreLine?.strokeColor = UIColor.greenColor()
                 if !won {
                     gameSceneDelegate.unlockLevel(clock)
                     won = true
@@ -77,7 +79,13 @@ class GameSKScene: PositionedSKScene {
                     }
                 }
             } else {
-                scoreBackground.fillColor = UIColor.whiteColor()
+                if won {
+                    scoreBackground.fillColor = UIColor(red: 0.7, green: 1, blue: 0.7, alpha: 1)
+                    scoreLine?.strokeColor = UIColor(red: 0.7, green: 1, blue: 0.7, alpha: 1)
+                } else {
+                    scoreBackground.fillColor = UIColor.whiteColor()
+                    scoreLine?.strokeColor = UIColor.whiteColor()
+                }
             }
         }
     }
@@ -127,6 +135,20 @@ class GameSKScene: PositionedSKScene {
         self.addChild(scoreBackground)
         scoreBackground.addChild(scoreLabel)
         scoreLabel.addChild(gaugeNode(0))
+        let scoreInOriginWindow = SKConstraint.positionY(SKRange(lowerLimit: 270, upperLimit: 270))
+        scoreInOriginWindow.referenceNode = cameraNode
+        let scoreAboveTenthEvent = SKConstraint.positionY(SKRange(upperLimit: 565))
+        scoreBackground.constraints = [scoreInOriginWindow, scoreAboveTenthEvent]
+        
+        let pathToDraw:CGMutablePathRef = CGPathCreateMutable()
+        scoreLine = SKShapeNode(path:pathToDraw)
+        CGPathMoveToPoint(pathToDraw, nil, 0, 0)
+        CGPathAddLineToPoint(pathToDraw, nil, 178, 0)
+        scoreLine!.path = pathToDraw
+        scoreLine!.strokeColor = SKColor.whiteColor()
+        scoreLine!.zPosition = -1
+        scoreLine!.hidden = true
+        scoreBackground.addChild(scoreLine!)
         
         shapePopupNode = gameModel.createShapePopup()
         shapeNodes = gameModel.createShapeNodes(shapePopupNode)
@@ -148,6 +170,14 @@ class GameSKScene: PositionedSKScene {
         robotHappyFrames = loadFrames("happy", imageNumber: 6, by: 1)
         robotSadFrames = loadFrames("sad", imageNumber: 7, by: 1)
         robotBlinkFrames = loadFrames("blink", imageNumber: 9, by: 3)
+    }
+    
+    override func update(currentTime: NSTimeInterval) {
+        if scoreBackground.position.y == 565 {
+            scoreLine?.hidden = false
+        } else {
+            scoreLine?.hidden = true
+        }
     }
     
     override func didMoveToView(view: SKView)
@@ -208,8 +238,14 @@ class GameSKScene: PositionedSKScene {
 
         switch recognizer.state {
         case .Began:
-            robotPan = robotNode.containsPoint(positionInScreen) // also includes the robotNode's child nodes
-            //horizontalPan = abs(translation.x) > abs(translation.y)
+            for experimentNode in experimentNodes {
+                if experimentNode.containsPoint(positionInScene){
+                    recognizer.enabled = false
+                    recognizer.enabled = true
+                }
+            }
+            cameraNode.removeActionForKey("scroll")
+            robotPan = robotNode.containsPoint(positionInScreen) && abs(translation.x) > abs(translation.y)
         case .Changed:
             if robotPan {
                 robotNode.position.x += translation.x * 667 / self.view!.frame.height
@@ -232,19 +268,30 @@ class GameSKScene: PositionedSKScene {
             if robotPan {
                 robotNode.runAction(SKAction.moveToX(robotOrigin, duration: 0.2))
             } else {
-                if cameraNode.position.y < 233 {
-                    cameraNode.runAction(SKAction.moveToY(233, duration: 0.3))
-                }
-                if recognizer.velocityInView(self.view!).y > 300 {
-                    cameraNode.runAction(PositionedSKScene.actionMoveCameraUp)
-                }
-                if recognizer.velocityInView(self.view!).y < -300 {
-                    if cameraNode.position.y > 667 + 233 {
-                        cameraNode.runAction(PositionedSKScene.actionMoveCameraDown)
+                let acceleration = CGFloat(-10000.0)
+                    var scrollDuration = CGFloat(0.8)
+                    let velocity = recognizer.velocityInView(self.view!)
+                    var translateY = velocity.y * CGFloat(scrollDuration) * 0.9 * 667 / self.view!.frame.height
+                    if translateY > 667 { translateY = 667 }
+                    if translateY < -667 { translateY = -667 }
+
+                    if cameraNode.position.y + translateY > 233 {
+                        let actionMoveCameraUp = SKAction.moveBy(CGVector(dx: 0, dy: translateY), duration: Double(scrollDuration))
+                        actionMoveCameraUp.timingMode = .EaseOut
+                        cameraNode.runAction(actionMoveCameraUp, withKey: "scroll")
                     } else {
-                        cameraNode.runAction(SKAction.moveToY(233, duration: 0.3))
+                        scrollDuration  =  abs(velocity.y / acceleration)
+                        translateY = velocity.y * scrollDuration + acceleration * scrollDuration * scrollDuration / 2
+                        if cameraNode.position.y > 233 {
+                            translateY -= cameraNode.position.y - 233
+                            scrollDuration += (cameraNode.position.y - 233) / abs(velocity.y)
+                        }
+                        let actionMoveCameraUp = SKAction.moveBy(CGVector(dx: 0, dy: translateY), duration: Double(scrollDuration))
+                        actionMoveCameraUp.timingMode = .EaseOut
+                        let moveToOrigin = SKAction.moveToY(233, duration: 0.3)
+                        moveToOrigin.timingMode = .EaseInEaseOut
+                        cameraNode.runAction(SKAction.sequence([actionMoveCameraUp, moveToOrigin]), withKey: "scroll")
                     }
-                }
             }
         default:
             break

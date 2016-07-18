@@ -97,10 +97,6 @@ class MenuSKScene: PositionedSKScene {
             tip2Node?.position = CGPoint(x: size.width / 2 + 170, y: 105)
         }
         
-        //if frameSize.width >= 480 { // portrait - iPhone 4s portrait width
-        //} else {
-        //}
-        
         tipInviteNode.position = CGPoint(x: self.size.width / 2, y: 210)
         tipInviteNode.fontSize = PositionedSKScene.titleFont.pointSize
         while tipInviteNode.frame.size.width >= self.size.width {
@@ -130,10 +126,8 @@ class MenuSKScene: PositionedSKScene {
             }
             
             if i == userDelegate?.currentlevel() {
-                //backgroundNode.fillColor = UIColor.blackColor()
                 backgroundNode.fillColor = UIColor(red: 114 / 256, green: 114 / 256, blue: 171 / 256, alpha: 1)
             } else  {
-                //backgroundNode.fillColor = UIColor.lightGrayColor()
                 backgroundNode.fillColor = UIColor(red: 150 / 256, green: 100 / 256, blue: 150 / 256, alpha: 1)
                 //backgroundNode.fillColor = UIColor(red: 204 / 256, green: 153 / 256, blue: 04 / 256, alpha: 1)
             }
