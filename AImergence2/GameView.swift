@@ -17,6 +17,7 @@ protocol GameViewDelegate: class
 
 class GameView: SKView {
     
+    //let motionView = UIView()
     weak var delegate: GameViewDelegate?
 
     override init (frame : CGRect) {
@@ -36,6 +37,24 @@ class GameView: SKView {
         addGestureRecognizer(tapGestureRecognizer)
         let longPressGestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(GameView.longPress(_:)))
         addGestureRecognizer(longPressGestureRecognizer)
+        
+        /*
+        // Set vertical effect
+        let value = 200
+        let verticalMotionEffect = UIInterpolatingMotionEffect(keyPath: "center.y", type: .TiltAlongVerticalAxis)
+        verticalMotionEffect.minimumRelativeValue = -value
+        verticalMotionEffect.maximumRelativeValue = value
+        
+        // Set vertical effect
+        let horizontalMotionEffect = UIInterpolatingMotionEffect(keyPath: "center.x", type: .TiltAlongHorizontalAxis)
+        verticalMotionEffect.minimumRelativeValue = -value
+        verticalMotionEffect.maximumRelativeValue = value
+        
+        let group = UIMotionEffectGroup()
+        group.motionEffects = [horizontalMotionEffect, verticalMotionEffect]
+        addSubview(motionView)
+        motionView.addMotionEffect(group)
+ */
     }
     
     func pan(gesture: UIPanGestureRecognizer) {

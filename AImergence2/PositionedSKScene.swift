@@ -15,11 +15,11 @@ class PositionedSKScene: SKScene {
     
     static let actionMoveCameraUp        = SKAction.moveBy(CGVector(dx:0, dy:667), duration: 0.3)
     static let actionMoveCameraDown      = SKAction.moveBy(CGVector(dx:0, dy:-667), duration: 0.3)
-    //static let actionMoveCameraDownUp    = SKAction.sequence([SKAction.moveBy(CGVector(dx:0, dy:-50), duration: 0.1), SKAction.moveBy(CGVector(dx:0, dy:50), duration: 0.1)])
     static let actionMoveCameraLeftRight = SKAction.sequence([SKAction.moveBy(CGVector(dx:-50, dy:0), duration: 0.1), SKAction.moveBy(CGVector(dx:50, dy:0), duration: 0.1)])
     static let actionMoveCameraRightLeft = SKAction.sequence([SKAction.moveBy(CGVector(dx:50, dy:0), duration: 0.1), SKAction.moveBy(CGVector(dx:-50, dy:0), duration: 0.1)])
     
     let actionPress = SKAction.sequence([SKAction.scaleBy(0.909, duration: 0.1),SKAction.scaleBy(1.1, duration: 0.1)])
+    let actionActive = SKAction.repeatActionForever(SKAction.sequence([SKAction.scaleBy(0.8333, duration: 0.1),SKAction.scaleBy(1.2, duration: 0.1)]))
 
     static let transitionUp    = SKTransition.moveInWithDirection(SKTransitionDirection.Down, duration: 0.3)
     static let transitionDown  = SKTransition.revealWithDirection(SKTransitionDirection.Down, duration: 0.3)

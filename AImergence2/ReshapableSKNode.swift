@@ -11,9 +11,9 @@ import SpriteKit
 class ReshapableSKNode: SKShapeNode
 {
 
-    var rect:CGRect
+    let rect:CGRect
+    let gameModel: GameModel
     var shapeIndex:Int { return 0}
-    var gameModel: GameModel
     
     init(rect: CGRect = CGRect(), gameModel: GameModel) {
         self.rect = rect

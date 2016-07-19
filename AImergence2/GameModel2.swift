@@ -39,13 +39,13 @@ class GameModel2: GameModel
         self.init(experimentRect: experimentRect, experimentPositions: experimentPositions, experienceRect: experienceRect, initialScale: initialScale, valencePosition: valencePosition, obsolescence: obsolescence, actionScale: actionScale, experimentPaths: experimentPaths, experienceColors: experienceColors)
     }    
 
-    func createExperimentNodes(scene: SKScene) -> [ExperimentSKNode] {
-        var experimentNodes = [ExperimentSKNode]()
+    func createExperimentNodes(scene: SKScene) -> Dictionary<Int, ExperimentSKNode> {
+        var experimentNodes = Dictionary<Int, ExperimentSKNode>()
         for i in 0...1 {
             let experimentNode = ExperimentSKNode(gameModel: self, experiment: level.experiments[i])
             experimentNode.position = experimentPositions[i]
             scene.addChild(experimentNode)
-            experimentNodes.append(experimentNode)
+            experimentNodes.updateValue(experimentNode, forKey: experimentNode.experiment.number)
         }
         return experimentNodes
     }

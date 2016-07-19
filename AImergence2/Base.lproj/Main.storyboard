@@ -155,11 +155,6 @@
                                     <constraint firstItem="LU5-OA-XkX" firstAttribute="leading" secondItem="mdg-Na-z8E" secondAttribute="leading" constant="20" symbolic="YES" id="r8V-0J-uY7"/>
                                     <constraint firstItem="LU5-OA-XkX" firstAttribute="top" secondItem="mdg-Na-z8E" secondAttribute="top" constant="20" symbolic="YES" id="ydO-xo-oQm"/>
                                 </constraints>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="test2">
-                                        <integer key="value" value="0"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3UZ-lq-r3k">
                                 <rect key="frame" x="340" y="0.0" width="40" height="40"/>

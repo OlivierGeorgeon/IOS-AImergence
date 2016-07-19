@@ -41,11 +41,13 @@ class GameSKScene: PositionedSKScene {
     
     var timer: NSTimer?
     
+    var activeEventNode: EventSKNode?
+    
     var currentButton = BUTTON.NONE
     
     weak var gameSceneDelegate: GameSceneDelegate!
-    var experimentNodes = [ExperimentSKNode]()
-    var experienceNodes = Set<ExperienceSKNode>()
+    var experimentNodes = Dictionary<Int, ExperimentSKNode>()
+    var eventNodes = Dictionary<Int, EventSKNode>()
     var clock:Int = 0
     var scoreLabel:SKLabelNode
     var scoreBackground:SKShapeNode
@@ -238,7 +240,7 @@ class GameSKScene: PositionedSKScene {
 
         switch recognizer.state {
         case .Began:
-            for experimentNode in experimentNodes {
+            for experimentNode in experimentNodes.values {
                 if experimentNode.containsPoint(positionInScene){
                     recognizer.enabled = false
                     recognizer.enabled = true
@@ -300,12 +302,24 @@ class GameSKScene: PositionedSKScene {
     }
     
     override func tap(recognizer: UITapGestureRecognizer) {
+        activeEventNode?.removeActionForKey("active")
         let positionInScene = self.convertPointFromView(recognizer.locationInView(self.view))
         let positionInScreen = cameraRelativeOriginNode.convertPoint(positionInScene, fromNode: self)
         let positionInRobot = robotNode.convertPoint(positionInScene, fromNode: self)
-        for experimentNode in experimentNodes {
+        var playExperience = false
+        for experimentNode in experimentNodes.values {
             if experimentNode.containsPoint(positionInScene){
+                playExperience = true
                 play(experimentNode)
+            }
+        }
+        if !playExperience {
+            for eventNode in eventNodes.values {
+                if CGRectContainsPoint(eventNode.calculateAccumulatedFrame(), positionInScene) {
+                    //experienceNode.runAction(actionActive, withKey: "active")
+                    activeEventNode = eventNode
+                    play(experimentNodes[eventNode.experienceNode.experience.experiment.number]!)
+                }
             }
         }
         if robotNode.containsPoint(positionInScreen) { // also includes the robotNode's child nodes
@@ -360,7 +374,7 @@ class GameSKScene: PositionedSKScene {
 
         switch recognizer.state {
         case .Began:
-            for experimentNode in experimentNodes {
+            for experimentNode in experimentNodes.values {
                 if CGRectContainsPoint(experimentNode.frame, positionInScene) {
                     shapeNodeIndex = experimentNode.experiment.shapeIndex
                     timer = NSTimer.scheduledTimerWithTimeInterval(0.7, target: self, selector: #selector(GameSKScene.revolveShapes), userInfo: nil, repeats: true)
@@ -370,13 +384,13 @@ class GameSKScene: PositionedSKScene {
                     addChild(shapePopupNode!)
                 }
             }
-            for experienceNode in experienceNodes {
-                if CGRectContainsPoint(experienceNode.calculateAccumulatedFrame(), positionInScene) {
-                    colorNodeIndex = experienceNode.experience.colorIndex
+            for eventNode in eventNodes.values {
+                if CGRectContainsPoint(eventNode.calculateAccumulatedFrame(), positionInScene) {
+                    colorNodeIndex = eventNode.experienceNode.experience.colorIndex
                     timer = NSTimer.scheduledTimerWithTimeInterval(0.7, target: self, selector: #selector(GameSKScene.revolveColors), userInfo: nil, repeats: true)
-                    editNode = experienceNode
+                    editNode = eventNode.experienceNode
                     colorPopupNode = gameModel.createColorPopup()
-                    colorNodes = gameModel.createColorNodes(colorPopupNode!, experience: experienceNode.experience)
+                    colorNodes = gameModel.createColorNodes(colorPopupNode!, experience: eventNode.experienceNode.experience)
                     colorNodes.forEach({$0.lineWidth = 1})
                     colorNodes[colorNodeIndex].lineWidth = 6
                     cameraRelativeOriginNode.addChild(colorPopupNode!)
@@ -427,24 +441,26 @@ class GameSKScene: PositionedSKScene {
         
         gameSceneDelegate.playExperience(experience)
         
-        for node in experienceNodes {
-            if node.isObsolete(clock) {
-                node.removeFromParent()
-                experienceNodes.remove(node)
+        for clock in eventNodes.keys {
+            if clock < self.clock - gameModel.obsolescence {
+                eventNodes[clock]?.removeFromParent()
+                eventNodes.removeValueForKey(clock)
             } else {
-                node.runAction(gameModel.actionMoveTrace)
+                eventNodes[clock]?.runAction(gameModel.actionMoveTrace)
             }
         }
-        
-        let experienceNode = ExperienceSKNode(experience: experience, stepOfCreation: clock, gameModel: gameModel)
-        experienceNode.position = experimentNode.position 
-        addChild(experienceNode)
-        experienceNodes.insert(experienceNode)
+
+        let eventNode = EventSKNode(experience: experience, gameModel: gameModel)
+        eventNode.position = experimentNode.position
+        addChild(eventNode)
+        eventNodes.updateValue(eventNode, forKey: clock)
         
         let actionIntroduce = SKAction.moveBy(gameModel.moveByVect(experimentNode.position), duration: 0.3)
-
-        experienceNode.runAction(gameModel.actionScale)
-        experienceNode.runAction(actionIntroduce, completion: {experienceNode.addValenceNode()})
+        eventNode.experienceNode.runAction(gameModel.actionScale)
+        eventNode.runAction(actionIntroduce, completion: {eventNode.addValenceNode()})
+        
+        //let groupIntruduce = SKAction.group([actionIntroduce, gameModel.actionScale])
+        //eventNode.runAction(groupIntruduce, completion: {eventNode.addValenceNode()})
     }
     
     func animRobot(texture: [SKTexture]) {
@@ -536,8 +552,8 @@ class GameSKScene: PositionedSKScene {
         if let experimentNode = editNode as? ExperimentSKNode {
             experimentNode.experiment.shapeIndex = shapeIndex
             experimentNode.reshape()
-            for node in experienceNodes {
-                if node.experience.experimentNumber == experimentNode.experiment.number {
+            for node in eventNodes.values {
+                if node.experienceNode.experience.experimentNumber == experimentNode.experiment.number {
                     node.reshape()
                 }
             }
@@ -557,7 +573,7 @@ class GameSKScene: PositionedSKScene {
     func refillNodes(colorIndex: Int) {
         if let experienceNode = editNode as? ExperienceSKNode {
             experienceNode.experience.colorIndex = colorIndex
-            for node in experienceNodes {
+            for node in eventNodes.values {
                 node.refill()
             }
         }

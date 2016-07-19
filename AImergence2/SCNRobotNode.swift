@@ -38,7 +38,7 @@ class SCNRobotNode: SCNNode {
         }
         addChildNode(robotBaseNode.flattenedClone())
         
-        let robotScene = SCNScene(named: "art.scnassets/Robot8aaNew2.dae")!
+        let robotScene = SCNScene(named: "art.scnassets/Robot8aaNew.dae")!
         let bodyNodeArray = robotScene.rootNode.childNodes
         for childNode in bodyNodeArray {
             bodyNode.addChildNode(childNode as SCNNode)

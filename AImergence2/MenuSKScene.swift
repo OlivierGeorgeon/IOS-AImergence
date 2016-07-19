@@ -22,6 +22,7 @@ protocol MenuSceneDelegate: class
 class MenuSKScene: PositionedSKScene {
     
     let backgroundNode = SKSpriteNode(imageNamed: "niveaux.png")
+    let originNode = SKNode()
     let tipInviteNode = SKLabelNode()
     var tip0Node: TipSKNode?
     var tip1Node: TipSKNode?
@@ -44,31 +45,32 @@ class MenuSKScene: PositionedSKScene {
     {
         /* Setup your scene here */
 
+        addChild(originNode)
         backgroundColor = UIColor.whiteColor()
         backgroundNode.zPosition = -20
         backgroundNode.name = "background"
-        addChild(backgroundNode)
+        originNode.addChild(backgroundNode)
 
         buttonNodes = createButtons(view.frame.size)
         
         tipInviteNode.fontName = PositionedSKScene.bodyFont.fontName
         tipInviteNode.fontColor = UIColor.darkGrayColor()
         tipInviteNode.verticalAlignmentMode = .Center
-        addChild(tipInviteNode)
+        originNode.addChild(tipInviteNode)
 
         let products = userDelegate!.getProducts()
         
         if products.count > 0 {
             shortTipInvit =  products[0].localizedDescription
             tip0Node = TipSKNode(product: products[0], size: CGSize(width: 70, height: 70))
-            addChild(tip0Node!)
+            originNode.addChild(tip0Node!)
             if products.count > 1 {
                 longTipInvit =  products[1].localizedDescription
                 tip1Node = TipSKNode(product: products[1], size: CGSize(width: 80, height: 80))
-                addChild(tip1Node!)
+                originNode.addChild(tip1Node!)
                 if products.count > 2 {
                     tip2Node = TipSKNode(product: products[2], size: CGSize(width: 80, height: 80))
-                    addChild(tip2Node!)
+                    originNode.addChild(tip2Node!)
                 }
             }
         }
@@ -113,7 +115,7 @@ class MenuSKScene: PositionedSKScene {
             levelNode.userData = ["level": i]
             levelNode.position = level0Position + (i % 5) * levelXOffset + (i / 5) * levelYOffset
             buttonNodes.append(levelNode)
-            addChild(levelNode)
+            originNode.addChild(levelNode)
             
             var backgroundNode = SKShapeNode()
             switch userDelegate!.levelStatus(i) {
@@ -145,16 +147,29 @@ class MenuSKScene: PositionedSKScene {
         labelNode.verticalAlignmentMode = .Center
         return labelNode
     }
-    
+    /*
+    override func update(currentTime: NSTimeInterval) {
+        backgroundNode.position.x += (self.view! as! GameView).motionView.center.x
+        backgroundNode.position.y += (self.view! as! GameView).motionView.center.y
+    }
+    */
     override func pan(recognizer: UIPanGestureRecognizer) {
+        let translation  = recognizer.translationInView(self.view!)
         switch recognizer.state {
+        case .Changed:
+            originNode.position.y -= translation.y * 667 / self.view!.frame.height
         case .Ended:
             if recognizer.velocityInView(self.view!).y > 100 {
                 self.view!.presentScene(previousGameScene!, transition: PositionedSKScene.transitionDown)
+            } else {
+                let moveToOrigin = SKAction.moveTo(CGPointZero, duration: 0.2)
+                moveToOrigin.timingMode = .EaseInEaseOut
+                originNode.runAction(moveToOrigin)
             }
         default:
             break
         }
+        recognizer.setTranslation(CGPoint(x: 0,y: 0), inView: self.view!)
     }
 
     override func tap(recognizer: UITapGestureRecognizer)

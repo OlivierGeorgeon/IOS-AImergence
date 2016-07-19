@@ -48,23 +48,6 @@ class HelpViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         displayLevel(0)
-
-        /*
-        // Set vertical effect
-        let verticalMotionEffect = UIInterpolatingMotionEffect(keyPath: "test", type: .TiltAlongVerticalAxis)
-        verticalMotionEffect.minimumRelativeValue = -10
-        verticalMotionEffect.maximumRelativeValue = 10
-        
-        // Set horiztontal effect
-        let horizontalMotionEffect = UIInterpolatingMotionEffect(keyPath: "test", type: .TiltAlongHorizontalAxis)
-        horizontalMotionEffect.minimumRelativeValue = -10
-        horizontalMotionEffect.maximumRelativeValue = 10
-        
-        let group = UIMotionEffectGroup()
-        group.motionEffects = [horizontalMotionEffect, verticalMotionEffect]
-        //let helpView = view.subviews[0] as! HelpView
-        view.addMotionEffect(group)
- */
 }
     
     func displayLevel(level: Int) {
