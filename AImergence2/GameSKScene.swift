@@ -41,7 +41,10 @@ class GameSKScene: PositionedSKScene {
     
     var timer: NSTimer?
     
-    var activeEventNode: EventSKNode?
+    let actionMoveTrace = SKAction.moveBy(CGVector(dx:0, dy:50), duration: 0.3)
+    let actionDisappear = SKAction.scaleTo(0, duration: 0.2)
+    var nextExperimentNode: ExperimentSKNode?
+    var nextExperimentClock = 0
     
     var currentButton = BUTTON.NONE
     
@@ -58,7 +61,7 @@ class GameSKScene: PositionedSKScene {
     var colorPopupNode: SKNode?
     var colorNodes = Array<SKShapeNode>()
     var colorNodeIndex = 0
-    var editNode: ReshapableSKNode?
+    var editNode: SKNode?
     var won = false
     var score:Int = 0 {
         didSet {
@@ -172,6 +175,8 @@ class GameSKScene: PositionedSKScene {
         robotHappyFrames = loadFrames("happy", imageNumber: 6, by: 1)
         robotSadFrames = loadFrames("sad", imageNumber: 7, by: 1)
         robotBlinkFrames = loadFrames("blink", imageNumber: 9, by: 3)
+        
+        actionMoveTrace.timingMode = .EaseInEaseOut
     }
     
     override func update(currentTime: NSTimeInterval) {
@@ -302,7 +307,6 @@ class GameSKScene: PositionedSKScene {
     }
     
     override func tap(recognizer: UITapGestureRecognizer) {
-        activeEventNode?.removeActionForKey("active")
         let positionInScene = self.convertPointFromView(recognizer.locationInView(self.view))
         let positionInScreen = cameraRelativeOriginNode.convertPoint(positionInScene, fromNode: self)
         let positionInRobot = robotNode.convertPoint(positionInScene, fromNode: self)
@@ -311,14 +315,56 @@ class GameSKScene: PositionedSKScene {
             if experimentNode.containsPoint(positionInScene){
                 playExperience = true
                 play(experimentNode)
+                nextExperimentNode?.removeFromParent()
+                nextExperimentNode = nil
             }
         }
+        
+        if nextExperimentNode != nil {
+            if CGRectContainsPoint(CGRect(x: nextExperimentNode!.position.x - 30, y: nextExperimentNode!.position.y - 30, width: 60, height: 60), positionInScene) {
+                let experience = play(experimentNodes[nextExperimentNode!.experiment.number]!)
+                playExperience = true
+                animNextExperiment(experience, nextClock: nextExperimentClock + 1)
+
+                /*
+                nextExperimentClock += 1
+                
+                nextExperimentNode?.fillColor = gameModel.experienceColors[experience.colorIndex]
+                nextExperimentNode?.runAction(SKAction.sequence([actionDisappear, SKAction.removeFromParent()]))
+
+                let rect = CGRect(x: -30, y: -30, width: 60, height: 60)
+                let nextExperiment = eventNodes[nextExperimentClock]!.experienceNode.experience.experiment
+                nextExperimentNode = ExperimentSKNode(rect: rect, experiment: nextExperiment, gameModel: gameModel)
+                nextExperimentNode!.position = CGPoint(x: -100, y: 40 + CGFloat(self.clock - nextExperimentClock + 1) * 50.0)
+                nextExperimentNode!.hidden = true
+                nextExperimentNode!.zPosition = 2
+                addChild(nextExperimentNode!)
+                nextExperimentNode?.runAction(SKAction.sequence([SKAction.scaleTo(0, duration: 0.2), SKAction.unhide(), SKAction.scaleTo(1, duration: 0.1)]))
+ */
+            }
+        }
+        
         if !playExperience {
-            for eventNode in eventNodes.values {
-                if CGRectContainsPoint(eventNode.calculateAccumulatedFrame(), positionInScene) {
-                    //experienceNode.runAction(actionActive, withKey: "active")
-                    activeEventNode = eventNode
-                    play(experimentNodes[eventNode.experienceNode.experience.experiment.number]!)
+            for (clock, eventNode) in eventNodes {
+                if eventNode.containsPoint(positionInScene) {
+                    eventNode.runPressAction()
+                    let experience = play(experimentNodes[eventNode.experienceNode.experience.experiment.number]!)
+                    
+                    //nextExperimentClock = clock + 1
+
+                    animNextExperiment(experience, nextClock: clock + 1)
+                    
+                    /*
+                    nextExperimentNode?.removeFromParent()
+                    let rect = CGRect(x: -30, y: -30, width: 60, height: 60)
+                    let nextExperiment = eventNodes[nextExperimentClock]!.experienceNode.experience.experiment
+                    nextExperimentNode = ExperimentSKNode(rect: rect, experiment: nextExperiment, gameModel: gameModel)
+                    nextExperimentNode!.position = CGPoint(x: -100, y: 40 + CGFloat(self.clock - clock) * 50.0)
+                    nextExperimentNode!.zPosition = 2
+                    nextExperimentNode!.setScale(0)
+                    addChild(nextExperimentNode!)
+                    nextExperimentNode!.runAction(SKAction.scaleTo(1, duration: 0.1))
+ */
                 }
             }
         }
@@ -341,6 +387,34 @@ class GameSKScene: PositionedSKScene {
             gameSceneDelegate.showLevelWindow()
             levelButtonNode.unpulse()
         }
+    }
+    
+    func animNextExperiment(experience: Experience, nextClock: Int) {
+        
+        if nextExperimentNode != nil && nextExperimentClock != nextClock - 1 {
+            nextExperimentNode!.removeFromParent()
+            nextExperimentNode = nil
+        }
+        if nextExperimentNode == nil {
+            let rect = CGRect(x: -30, y: -30, width: 60, height: 60)
+            nextExperimentNode = ExperimentSKNode(rect: rect, experiment: experience.experiment, gameModel: gameModel)
+            nextExperimentNode!.zPosition = 2
+            addChild(nextExperimentNode!)
+        }
+        nextExperimentNode!.position = CGPoint(x: -100, y: 40 + CGFloat(self.clock - nextClock + 1) * 50.0)
+        nextExperimentNode!.fillColor = gameModel.experienceColors[experience.colorIndex]
+        nextExperimentNode!.runAction(SKAction.sequence([actionDisappear, SKAction.removeFromParent()]))
+        
+        nextExperimentClock = nextClock
+
+        let rect = CGRect(x: -30, y: -30, width: 60, height: 60)
+        let nextExperiment = eventNodes[nextClock]!.experienceNode.experience.experiment
+        nextExperimentNode = ExperimentSKNode(rect: rect, experiment: nextExperiment, gameModel: gameModel)
+        nextExperimentNode!.position = CGPoint(x: -100, y: 40 + CGFloat(self.clock - nextClock + 1) * 50.0)
+        nextExperimentNode!.hidden = true
+        nextExperimentNode!.zPosition = 2
+        addChild(nextExperimentNode!)
+        nextExperimentNode?.runAction(SKAction.sequence([SKAction.scaleTo(0, duration: 0.2), SKAction.unhide(), SKAction.scaleTo(1, duration: 0.1)]))
     }
     
     func shiftButton() {
@@ -388,12 +462,13 @@ class GameSKScene: PositionedSKScene {
                 if CGRectContainsPoint(eventNode.calculateAccumulatedFrame(), positionInScene) {
                     colorNodeIndex = eventNode.experienceNode.experience.colorIndex
                     timer = NSTimer.scheduledTimerWithTimeInterval(0.7, target: self, selector: #selector(GameSKScene.revolveColors), userInfo: nil, repeats: true)
-                    editNode = eventNode.experienceNode
+                    editNode = eventNode
                     colorPopupNode = gameModel.createColorPopup()
                     colorNodes = gameModel.createColorNodes(colorPopupNode!, experience: eventNode.experienceNode.experience)
                     colorNodes.forEach({$0.lineWidth = 1})
                     colorNodes[colorNodeIndex].lineWidth = 6
                     cameraRelativeOriginNode.addChild(colorPopupNode!)
+                    eventNode.frameNode.hidden = false
                 }
             }
         case .Changed:
@@ -413,13 +488,16 @@ class GameSKScene: PositionedSKScene {
             colorNodes = Array<SKShapeNode>()
             colorPopupNode?.removeFromParent()
             colorPopupNode = nil
+            if let eventNode = editNode as? EventSKNode{
+                eventNode.frameNode.hidden  = true
+            }
             editNode = nil
         default:
             break
         }
     }
     
-    func play(experimentNode: ExperimentSKNode) {
+    func play(experimentNode: ExperimentSKNode) -> Experience {
         
         clock += 1
         
@@ -446,7 +524,7 @@ class GameSKScene: PositionedSKScene {
                 eventNodes[clock]?.removeFromParent()
                 eventNodes.removeValueForKey(clock)
             } else {
-                eventNodes[clock]?.runAction(gameModel.actionMoveTrace)
+                eventNodes[clock]?.runAction(actionMoveTrace)
             }
         }
 
@@ -459,8 +537,7 @@ class GameSKScene: PositionedSKScene {
         eventNode.experienceNode.runAction(gameModel.actionScale)
         eventNode.runAction(actionIntroduce, completion: {eventNode.addValenceNode()})
         
-        //let groupIntruduce = SKAction.group([actionIntroduce, gameModel.actionScale])
-        //eventNode.runAction(groupIntruduce, completion: {eventNode.addValenceNode()})
+        return experience
     }
     
     func animRobot(texture: [SKTexture]) {
@@ -557,6 +634,7 @@ class GameSKScene: PositionedSKScene {
                     node.reshape()
                 }
             }
+            nextExperimentNode?.reshape()
         }
     }
     
@@ -571,8 +649,8 @@ class GameSKScene: PositionedSKScene {
     }
     
     func refillNodes(colorIndex: Int) {
-        if let experienceNode = editNode as? ExperienceSKNode {
-            experienceNode.experience.colorIndex = colorIndex
+        if let eventNode = editNode as? EventSKNode {
+            eventNode.experienceNode.experience.colorIndex = colorIndex
             for node in eventNodes.values {
                 node.refill()
             }

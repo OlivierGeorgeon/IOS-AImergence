@@ -10,7 +10,8 @@ import SpriteKit
 
 class EventSKNode: SKNode
 {
-    let frameNode =  SKShapeNode(rect: CGRect(origin: CGPointZero, size: CGSize(width: 200, height: 40)))
+    let frameNode =  SKShapeNode(rect: CGRect(origin: CGPoint(x:-40, y:-23), size: CGSize(width: 140, height: 46)), cornerRadius: 23)
+    let pressAction = SKAction.sequence([SKAction.unhide(), SKAction.waitForDuration(0.1), SKAction.hide()])
     let gameModel: GameModel
     let valence: Int
     let experienceNode: ExperienceSKNode
@@ -20,6 +21,11 @@ class EventSKNode: SKNode
         self.valence = experience.valence
         self.experienceNode = ExperienceSKNode(experience: experience, gameModel: gameModel)
         super.init()
+        self.frameNode.hidden = true
+        self.frameNode.fillColor = UIColor(red: 200 / 256, green: 150 / 256, blue: 200 / 256, alpha: 1) //UIColor(red: 114 / 256, green: 114 / 256, blue: 171 / 256, alpha: 1)
+        self.frameNode.lineWidth = 0
+        self.frameNode.zPosition = -2
+        addChild(self.frameNode)
         addChild(self.experienceNode)
     }
     
@@ -33,6 +39,10 @@ class EventSKNode: SKNode
 
     func refill() {
         experienceNode.refill()
+    }
+    
+    func runPressAction() {
+        self.frameNode.runAction(pressAction)
     }
     
     func addValenceNode()

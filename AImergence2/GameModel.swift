@@ -13,7 +13,6 @@ class GameModel
     let backgroundColor     = SKColor.lightGrayColor()
     let color               = UIColor.whiteColor()
     let titleFont           = UIFont.preferredFontForTextStyle(UIFontTextStyleTitle1)
-    let actionMoveTrace     = SKAction.moveBy(CGVector(dx:0, dy:50), duration: 0.3)
     let colorNodeRect       = CGRect(x: -30, y:-30, width: 60, height: 60)
     
     let experimentRect: CGRect

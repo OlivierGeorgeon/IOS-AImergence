@@ -21,12 +21,12 @@ class ExperienceSKNode: ReshapableSKNode
         lineWidth = 0
         refill()
         name = "experience_\(experience.hashValue)"
-        setScale(gameModel.initialScale)
         zPosition = 1
     }
     
     convenience init(experience:Experience, gameModel:GameModel2){
         self.init(rect: gameModel.experienceRect, experience: experience, gameModel: gameModel)
+        setScale(gameModel.initialScale)
     }
     
     required init?(coder aDecoder: NSCoder) {
