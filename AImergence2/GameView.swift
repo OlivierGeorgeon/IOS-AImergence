@@ -32,10 +32,13 @@ class GameView: SKView {
     
     func addBehavior (){
         let panGestureRecognizer = UIPanGestureRecognizer(target:self, action: #selector(GameView.pan(_:)))
+        panGestureRecognizer.cancelsTouchesInView = false
         addGestureRecognizer(panGestureRecognizer)
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(GameView.tap(_:)))
+        tapGestureRecognizer.cancelsTouchesInView = false
         addGestureRecognizer(tapGestureRecognizer)
         let longPressGestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(GameView.longPress(_:)))
+        longPressGestureRecognizer.cancelsTouchesInView = false
         addGestureRecognizer(longPressGestureRecognizer)
         
         /*

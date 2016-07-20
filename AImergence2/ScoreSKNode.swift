@@ -12,12 +12,16 @@ import SpriteKit
 class ScoreSKNode: SKNode
 {
     let titleFont = UIFont.preferredFontForTextStyle(UIFontTextStyleTitle1)
+    let bodyFont = UIFont.preferredFontForTextStyle(UIFontTextStyleBody)
     let labelNode = SKLabelNode(text: "0")
     let backgroundNode = SKShapeNode(rect: CGRect(x: -30, y: -30, width: 60, height: 60), cornerRadius: 20)
     let lineNode: SKShapeNode
+    let moveNode = SKNode()
+    let moveLabelNode = SKLabelNode(text: NSLocalizedString("0 moves", comment: "Init move count display"))
+    let moveBackgroundNode = SKShapeNode(rect: CGRect(x: -110, y: -20, width: 220, height: 40), cornerRadius: 20)
     let gaugeNode = SKNode()
-    
-    var won = false
+    let textWon = NSLocalizedString("Won in", comment: "You won in the main window");
+    let textMoves = NSLocalizedString("moves", comment: "Number of moves displayed in the main window");
 
     override init() {
         let pathToDraw:CGMutablePathRef = CGPathCreateMutable()
@@ -49,20 +53,33 @@ class ScoreSKNode: SKNode
         gaugeNode.position = CGPoint(x: -50, y: -40)
         addChild(gaugeNode)
         createGauge(0)
+        
+        moveNode.position = CGPoint(x: 150, y: 0)
+        moveNode.zPosition = 10
+        moveLabelNode.fontName = bodyFont.fontName
+        moveLabelNode.fontSize = bodyFont.pointSize
+        moveLabelNode.verticalAlignmentMode = .Center
+        moveLabelNode.fontColor = UIColor.darkGrayColor()
+        moveNode.addChild(moveLabelNode)
+        moveBackgroundNode.zPosition = -1
+        moveBackgroundNode.fillColor = UIColor.whiteColor()
+        moveBackgroundNode.lineWidth = 0
+        moveNode.hidden = true
+        moveNode.addChild(moveBackgroundNode)
+        addChild(moveNode)
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func updateScore(score: Int) {
+    func updateScore(score: Int, clock: Int, winMoves: Int) {
         labelNode.text = "\(score)"
         if score >= 10 {
             backgroundNode.fillColor = UIColor.greenColor()
             lineNode.strokeColor = UIColor.greenColor()
-            won = true
         } else {
-            if won {
+            if winMoves > 0 {
                 backgroundNode.fillColor = UIColor(red: 0.7, green: 1, blue: 0.7, alpha: 1)
                 lineNode.strokeColor = UIColor(red: 0.7, green: 1, blue: 0.7, alpha: 1)
             } else {
@@ -72,6 +89,13 @@ class ScoreSKNode: SKNode
         }
         gaugeNode.removeAllChildren()
         createGauge(score)
+        
+        moveBackgroundNode.fillColor = self.backgroundNode.fillColor
+        if winMoves > 0 {
+            moveLabelNode.text = "\(textWon) \(winMoves) \(textMoves)!"
+        } else {
+            moveLabelNode.text = "\(clock) \(textMoves)"
+        }
     }
 
     func createGauge(score: Int) {
@@ -106,34 +130,5 @@ class ScoreSKNode: SKNode
                 gaugeNode.addChild(dotNode)
             }
         }
-    }
-    
-    func createMoveNode(moves: Int, won: Bool) -> SKNode {
-        let moveNode = SKNode()
-        moveNode.position = CGPoint(x: -50, y: 502)
-        
-        let textWon = NSLocalizedString("Won in", comment: "You won in the main window");
-        let textMoves = NSLocalizedString("moves", comment: "Number of moves displayed in the main window");
-        
-        let labelNode = SKLabelNode()
-        if won {
-            labelNode.text = "\(textWon) \(moves) \(textMoves)!"
-        } else {
-            labelNode.text = "\(moves) \(textMoves)"
-        }
-        
-        labelNode.fontName = titleFont.fontName
-        labelNode.fontSize = titleFont.pointSize
-        labelNode.verticalAlignmentMode = .Center
-        labelNode.fontColor = UIColor.darkGrayColor()
-        moveNode.addChild(labelNode)
-        
-        let backgroundNode = SKShapeNode(rect: CGRect(x: -100, y: -30, width: 200, height: 60), cornerRadius: 20)
-        backgroundNode.zPosition = -1
-        backgroundNode.lineWidth = 0
-        backgroundNode.fillColor = self.backgroundNode.fillColor
-        moveNode.addChild(backgroundNode)
-        
-        return moveNode
     }
 }
