@@ -53,10 +53,8 @@ class GameSKScene: PositionedSKScene {
     var experimentNodes = Dictionary<Int, ExperimentSKNode>()
     var eventNodes = Dictionary<Int, EventSKNode>()
     var clock:Int = 0
-    var scoreLabel:SKLabelNode
     
     let scoreNode = ScoreSKNode()
-    //var moveNode: SKNode?
     
     var shapePopupNode:SKNode!
     var shapeNodes = Array<SKShapeNode>()
@@ -80,9 +78,9 @@ class GameSKScene: PositionedSKScene {
     {
         self.level = gameModel.level
         self.gameModel = gameModel
-        scoreLabel = gameModel.createScoreLabel()
-        //scoreBackground = gameModel.createScoreBackground()
+
         super.init(size:CGSize(width: 0 , height: 0))
+        
         self.camera = cameraNode
         self.addChild(cameraNode)
         cameraNode.addChild(cameraRelativeOriginNode)
@@ -93,8 +91,7 @@ class GameSKScene: PositionedSKScene {
     {
         self.level = Level0()
         self.gameModel = GameModel2()
-        scoreLabel = gameModel.createScoreLabel()
-        //scoreBackground = gameModel.createScoreBackground()
+
         super.init(coder: aDecoder)
         layoutScene()
     }
@@ -117,9 +114,9 @@ class GameSKScene: PositionedSKScene {
         scoreInOriginWindow.referenceNode = cameraNode
         let scoreAboveTenthEvent = SKConstraint.positionY(SKRange(upperLimit: 565))
         scoreNode.constraints = [scoreInOriginWindow, scoreAboveTenthEvent]
-        let moveOnTopOfScreen = SKConstraint.positionY(SKRange(lowerLimit: 270, upperLimit: 270))
-        moveOnTopOfScreen.referenceNode = cameraNode
-        scoreNode.moveNode.constraints = [moveOnTopOfScreen]
+        //let moveOnTopOfScreen = SKConstraint.positionY(SKRange(lowerLimit: 270, upperLimit: 270))
+        //moveOnTopOfScreen.referenceNode = cameraNode
+        //scoreNode.moveNode.constraints = [moveOnTopOfScreen]
 
         shapePopupNode = gameModel.createShapePopup()
         shapeNodes = gameModel.createShapeNodes(shapePopupNode)
@@ -228,6 +225,12 @@ class GameSKScene: PositionedSKScene {
         case .Began:
             for experimentNode in experimentNodes.values {
                 if experimentNode.containsPoint(positionInScene){
+                    recognizer.enabled = false
+                    recognizer.enabled = true
+                }
+            }
+            if nextExperimentNode != nil {
+                if nextExperimentNode!.containsPoint(positionInScene) {
                     recognizer.enabled = false
                     recognizer.enabled = true
                 }

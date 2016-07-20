@@ -32,26 +32,7 @@ class GameModel
     }
     
     func moveByVect(point: CGPoint) -> CGVector { return CGVector(dx: -20 - point.x, dy: 90 - point.y) }
-    
-    func createScoreLabel() -> SKLabelNode {
-        let scoreLabel = SKLabelNode(text: "0")
-        scoreLabel.fontName = titleFont.fontName
-        scoreLabel.fontSize = titleFont.pointSize
-        scoreLabel.verticalAlignmentMode = .Center
-        scoreLabel.fontColor = UIColor.darkGrayColor()// blackColor()
-        return scoreLabel
-    }
-    
-    func createScoreBackground() -> SKShapeNode {
-        let scoreBackground = SKShapeNode(rect: CGRect(x: -30, y: -30, width: 60, height: 60), cornerRadius: 20)
-        scoreBackground.position = CGPoint(x: -117, y: 502)
-        //scoreBackground.position = CGPoint(x: -117, y: 565)
-        scoreBackground.lineWidth = 0
-        scoreBackground.name = "scoreBackground"
-        scoreBackground.fillColor = UIColor.whiteColor()
-        return scoreBackground
-    }
-    
+
     func createShapePopup() -> SKShapeNode {
         let popupBackground = SKShapeNode(rect: CGRect(x: -165, y: -70, width: 330, height: 140), cornerRadius: 10)
         popupBackground.position = CGPoint(x: 0, y: 150)

@@ -29,6 +29,8 @@ class ScoreSKNode: SKNode
 
         super.init()
         
+        zPosition = -1
+        
         labelNode.fontName = titleFont.fontName
         labelNode.fontSize = titleFont.pointSize
         labelNode.verticalAlignmentMode = .Center

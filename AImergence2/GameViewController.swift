@@ -350,7 +350,7 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
         if let scene = sceneView.scene as? GameSKScene {
             scene.instructionButtonNode.disactivate()
             scene.instructionButtonNode.unpulse()
-            if scene.currentButton == BUTTON.INSTRUCTION {
+            if scene.currentButton == BUTTON.INSTRUCTION && scene.imagineButtonNode.active {
                 scene.shiftButton()
             }
         }
@@ -380,7 +380,9 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
                 if gcEnabled {
                     scene.gameCenterButtonNode.pulse()
                 }
-                scene.shiftButton()
+                if scene.gameCenterButtonNode.active {
+                    scene.shiftButton()
+                }
             }
         }
     }

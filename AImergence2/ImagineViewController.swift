@@ -74,12 +74,18 @@ class ImagineViewController: UIViewController {
         }
     }
     
-    /*
+    
     override func viewDidLoad() {
+        
+        // intercepts the tap gesture so it won't be transferred to the GameView
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(ImagineViewController.tap(_:)))
+        tapGestureRecognizer.cancelsTouchesInView = false
+        sceneView.addGestureRecognizer(tapGestureRecognizer)
+        
         // Fix the bug that prevents the localization of UITextView in the storyboard from working.
-        self.textView.text = NSLocalizedString("You must reach the score of 10", comment: "Message in the Imagine window when the user tries to see the imaginary model before reaching the score of 10.");
+        //self.textView.text = NSLocalizedString("You must reach the score of 10", comment: "Message in the Imagine window when the user tries to see the imaginary model before reaching the score of 10.");
     }
- */
+    func tap(gesture:UITapGestureRecognizer) {}
 
     func sceneViewSetup() {
         sceneView.scene = SCNScene()
