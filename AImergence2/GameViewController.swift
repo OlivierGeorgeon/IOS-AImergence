@@ -27,8 +27,6 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
     
     var smallPortraitConstraint: NSLayoutConstraint?
     
-    var score: Int = 0 // Stores the score
-    
     var gcEnabled = Bool() // Stores if the user has Game Center enabled
     let gcLoginMessage = NSLocalizedString("Please login to Game Center", comment: "Alert message that shows when the user tries to access the leaderboard without being logged in.")
 
@@ -295,17 +293,17 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
         }
     }
     
-    func unlockLevel(score: Int) {
+    func unlockLevel(moves: Int) {
         if gcEnabled {
             let sScore = GKScore(leaderboardIdentifier: "Level\(level)")
-            sScore.value = Int64(score)
+            sScore.value = Int64(moves)
             let sLevels = GKScore(leaderboardIdentifier: "Levels")
             sLevels.value = Int64(level)
             GKScore.reportScores([sLevels, sScore], withCompletionHandler: { (error: NSError?) -> Void in
                 if error != nil {
                     print(error!.localizedDescription)
                 } else {
-                    print("Score submitted: \(score)")
+                    print("Score submitted: \(moves) moves in Level \(self.level)")
                 }
             })
         }

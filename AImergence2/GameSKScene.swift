@@ -22,7 +22,8 @@ protocol GameSceneDelegate: class
     func showLevelWindow()
 }
 
-enum BUTTON: Int { case INSTRUCTION, IMAGINE, GAMECENTER, LEVEL, NONE}
+//enum BUTTON: Int { case INSTRUCTION, IMAGINE, GAMECENTER, LEVEL, NONE}
+enum BUTTON: Int { case INSTRUCTION, IMAGINE, GAMECENTER, NONE, LEVEL}
 
 class GameSKScene: PositionedSKScene {
     
@@ -53,27 +54,24 @@ class GameSKScene: PositionedSKScene {
     var eventNodes = Dictionary<Int, EventSKNode>()
     var clock:Int = 0
     var scoreLabel:SKLabelNode
-    var scoreBackground:SKShapeNode
+    
+    let scoreNode = ScoreSKNode()
+    
     var shapePopupNode:SKNode!
     var shapeNodes = Array<SKShapeNode>()
     var shapeNodeIndex = 0
-    var scoreLine:SKShapeNode?
     var colorPopupNode: SKNode?
     var colorNodes = Array<SKShapeNode>()
     var colorNodeIndex = 0
     var editNode: SKNode?
-    var won = false
+    var winMoves = 0
     var score:Int = 0 {
         didSet {
-            scoreLabel.text = "\(score)"
-            scoreLabel.removeAllChildren()
-            scoreLabel.addChild(gaugeNode(score))
+            scoreNode.updateScore(score)
             if score >= level.winScore {
-                scoreBackground.fillColor = UIColor.greenColor()
-                scoreLine?.strokeColor = UIColor.greenColor()
-                if !won {
+                if winMoves == 0 {
                     gameSceneDelegate.unlockLevel(clock)
-                    won = true
+                    winMoves = clock
                     if imagineButtonNode.active {
                         imagineButtonNode.pulse()
                     }
@@ -82,14 +80,6 @@ class GameSKScene: PositionedSKScene {
                     if currentButton == BUTTON.INSTRUCTION {
                         shiftButton()
                     }
-                }
-            } else {
-                if won {
-                    scoreBackground.fillColor = UIColor(red: 0.7, green: 1, blue: 0.7, alpha: 1)
-                    scoreLine?.strokeColor = UIColor(red: 0.7, green: 1, blue: 0.7, alpha: 1)
-                } else {
-                    scoreBackground.fillColor = UIColor.whiteColor()
-                    scoreLine?.strokeColor = UIColor.whiteColor()
                 }
             }
         }
@@ -108,7 +98,7 @@ class GameSKScene: PositionedSKScene {
         self.level = gameModel.level
         self.gameModel = gameModel
         scoreLabel = gameModel.createScoreLabel()
-        scoreBackground = gameModel.createScoreBackground()
+        //scoreBackground = gameModel.createScoreBackground()
         super.init(size:CGSize(width: 0 , height: 0))
         self.camera = cameraNode
         self.addChild(cameraNode)
@@ -121,7 +111,7 @@ class GameSKScene: PositionedSKScene {
         self.level = Level0()
         self.gameModel = GameModel2()
         scoreLabel = gameModel.createScoreLabel()
-        scoreBackground = gameModel.createScoreBackground()
+        //scoreBackground = gameModel.createScoreBackground()
         super.init(coder: aDecoder)
         layoutScene()
     }
@@ -136,25 +126,13 @@ class GameSKScene: PositionedSKScene {
         let actionRight = SKAction.moveBy(CGVector(dx: 20, dy: 0), duration: 0.5)
         let actionLeft = SKAction.moveBy(CGVector(dx: -20, dy: 0), duration: 0.5)
         levelButtonNode.actionPulse(SKAction.repeatActionForever(SKAction.sequence([actionRight, actionLeft])))
-        
-        self.addChild(scoreBackground)
-        scoreBackground.addChild(scoreLabel)
-        scoreLabel.addChild(gaugeNode(0))
+
+        self.addChild(scoreNode)
         let scoreInOriginWindow = SKConstraint.positionY(SKRange(lowerLimit: 270, upperLimit: 270))
         scoreInOriginWindow.referenceNode = cameraNode
         let scoreAboveTenthEvent = SKConstraint.positionY(SKRange(upperLimit: 565))
-        scoreBackground.constraints = [scoreInOriginWindow, scoreAboveTenthEvent]
-        
-        let pathToDraw:CGMutablePathRef = CGPathCreateMutable()
-        scoreLine = SKShapeNode(path:pathToDraw)
-        CGPathMoveToPoint(pathToDraw, nil, 0, 0)
-        CGPathAddLineToPoint(pathToDraw, nil, 178, 0)
-        scoreLine!.path = pathToDraw
-        scoreLine!.strokeColor = SKColor.whiteColor()
-        scoreLine!.zPosition = -1
-        scoreLine!.hidden = true
-        scoreBackground.addChild(scoreLine!)
-        
+        scoreNode.constraints = [scoreInOriginWindow, scoreAboveTenthEvent]
+
         shapePopupNode = gameModel.createShapePopup()
         shapeNodes = gameModel.createShapeNodes(shapePopupNode)
         
@@ -180,10 +158,10 @@ class GameSKScene: PositionedSKScene {
     }
     
     override func update(currentTime: NSTimeInterval) {
-        if scoreBackground.position.y == 565 {
-            scoreLine?.hidden = false
+        if scoreNode.position.y == 565 {
+            scoreNode.lineNode.hidden = false
         } else {
-            scoreLine?.hidden = true
+            scoreNode.lineNode.hidden = true
         }
     }
     
@@ -325,22 +303,6 @@ class GameSKScene: PositionedSKScene {
                 let experience = play(experimentNodes[nextExperimentNode!.experiment.number]!)
                 playExperience = true
                 animNextExperiment(experience, nextClock: nextExperimentClock + 1)
-
-                /*
-                nextExperimentClock += 1
-                
-                nextExperimentNode?.fillColor = gameModel.experienceColors[experience.colorIndex]
-                nextExperimentNode?.runAction(SKAction.sequence([actionDisappear, SKAction.removeFromParent()]))
-
-                let rect = CGRect(x: -30, y: -30, width: 60, height: 60)
-                let nextExperiment = eventNodes[nextExperimentClock]!.experienceNode.experience.experiment
-                nextExperimentNode = ExperimentSKNode(rect: rect, experiment: nextExperiment, gameModel: gameModel)
-                nextExperimentNode!.position = CGPoint(x: -100, y: 40 + CGFloat(self.clock - nextExperimentClock + 1) * 50.0)
-                nextExperimentNode!.hidden = true
-                nextExperimentNode!.zPosition = 2
-                addChild(nextExperimentNode!)
-                nextExperimentNode?.runAction(SKAction.sequence([SKAction.scaleTo(0, duration: 0.2), SKAction.unhide(), SKAction.scaleTo(1, duration: 0.1)]))
- */
             }
         }
         
@@ -349,22 +311,7 @@ class GameSKScene: PositionedSKScene {
                 if eventNode.containsPoint(positionInScene) {
                     eventNode.runPressAction()
                     let experience = play(experimentNodes[eventNode.experienceNode.experience.experiment.number]!)
-                    
-                    //nextExperimentClock = clock + 1
-
                     animNextExperiment(experience, nextClock: clock + 1)
-                    
-                    /*
-                    nextExperimentNode?.removeFromParent()
-                    let rect = CGRect(x: -30, y: -30, width: 60, height: 60)
-                    let nextExperiment = eventNodes[nextExperimentClock]!.experienceNode.experience.experiment
-                    nextExperimentNode = ExperimentSKNode(rect: rect, experiment: nextExperiment, gameModel: gameModel)
-                    nextExperimentNode!.position = CGPoint(x: -100, y: 40 + CGFloat(self.clock - clock) * 50.0)
-                    nextExperimentNode!.zPosition = 2
-                    nextExperimentNode!.setScale(0)
-                    addChild(nextExperimentNode!)
-                    nextExperimentNode!.runAction(SKAction.scaleTo(1, duration: 0.1))
- */
                 }
             }
         }
@@ -436,6 +383,7 @@ class GameSKScene: PositionedSKScene {
             gameCenterButtonNode.disappear()
             levelButtonNode.appear()
         default:
+            gameCenterButtonNode.disappear()
             levelButtonNode.disappear()
         }
     }
@@ -559,43 +507,7 @@ class GameSKScene: PositionedSKScene {
         frames.append(SKTexture(imageNamed: imageName + "1"))
         return frames
     }
-    
-    func gaugeNode(score: Int) -> SKNode {
-        let gaugeNode = SKNode()
-        gaugeNode.position = CGPoint(x: -50, y: -40)
-        var y = -70
-        var height = 140
-        if score < -10 {
-            y = score * 6 - 10
-            height = -score * 6 + 80
-        }
-        if score > 10 {
-            height = score * 6 + 80
-        }
-        let gaugeBackgroundNode = SKShapeNode(rect: CGRect(x: -3, y: y, width: 10, height: height), cornerRadius: 5)
-        gaugeBackgroundNode.zPosition = -1
-        //gaugeBackgroundNode.fillColor = UIColor.whiteColor()
-        gaugeBackgroundNode.lineWidth = 1
-        gaugeNode.addChild(gaugeBackgroundNode)
-        if score > 0 {
-            for i in 1...score {
-                let dotNode = SKShapeNode(rect: CGRect(x: -1, y: i * 6, width: 6, height: 4))
-                dotNode.fillColor = UIColor.greenColor()
-                dotNode.lineWidth = 0
-                gaugeNode.addChild(dotNode)
-            }
-        }
-        if score < 0 {
-            for i in 1...(-score) {
-                let dotNode = SKShapeNode(rect: CGRect(x: -1, y: -i * 6, width: 6, height: 4))
-                dotNode.fillColor = UIColor.redColor()
-                dotNode.lineWidth = 0
-                gaugeNode.addChild(dotNode)
-            }
-        }
-        return gaugeNode
-    }
-    
+ 
     func selectShapeNode(positionInShapePopup: CGPoint?) {
         for i in 0..<shapeNodes.count {
             if CGRectContainsPoint(shapeNodes[i].frame, positionInShapePopup!) {
