@@ -6,29 +6,32 @@
 //  Copyright © 2016 Olivier Georgeon. All rights reserved.
 //
 
-import Foundation
 import SpriteKit
+
+enum BUTTON: Int { case INSTRUCTION, IMAGINE, LEADERBOARD}
 
 class ButtonSKNode: SKSpriteNode
 {
+    let button: BUTTON
     let actionAppear: SKAction
-    var actionPulse: SKAction
+    let actionPulse: SKAction
     let actionDisappear: SKAction
+    let actionExpand: SKAction
+    let actionCollapse: SKAction
+    let actionReduce: SKAction
     
     let activatedTexture: SKTexture
     let disactivatedTexture: SKTexture
 
-    var visible = false
     var active = true
     var pulsing = false
     
-    init(activatedImageNamed: String, disactivatedImageNamed: String, active: Bool = true, pulsing: Bool = false)
+    init(_ button: BUTTON, activatedImageNamed: String, disactivatedImageNamed: String)
     {
+        self.button = button
         self.activatedTexture = SKTexture(imageNamed: activatedImageNamed)
         self.disactivatedTexture = SKTexture(imageNamed: disactivatedImageNamed)
-        self.active = active
-        self.pulsing = pulsing
-        let texture = active ? self.activatedTexture : self.disactivatedTexture
+        let texture = self.activatedTexture
         
         let appearPath = UIBezierPath()
         appearPath.addArcWithCenter(CGPoint(x: 0, y: 60), radius: 30, startAngle: -CGFloat(M_PI) / 2 , endAngle: CGFloat(M_PI) / 2, clockwise: true)
@@ -38,7 +41,8 @@ class ButtonSKNode: SKSpriteNode
         actionAppearScale.timingMode = .EaseOut
         actionAppear = SKAction.group([actionAppearScale, actionAppearPath])
 
-        let actionFirstPulseUp = SKAction.scaleTo(1.5, duration: 0.2)
+        let actionFirstPulseUp = SKAction.scaleTo(1.5, duration: 0.3)
+        actionFirstPulseUp.timingMode = .EaseInEaseOut
         let actionPulseDown = SKAction.scaleTo(0.9, duration: 0.3)
         actionPulseDown.timingMode = .EaseInEaseOut
         let actionPulseUp = SKAction.scaleTo(1, duration: 0.3)
@@ -52,7 +56,22 @@ class ButtonSKNode: SKSpriteNode
         let actionDisappearScale   = SKAction.scaleTo(0.0, duration: 0.2)
         actionDisappearScale.timingMode = .EaseIn
         actionDisappear = SKAction.group([actionDisappearPath, actionDisappearScale])
-
+        
+        let actionExpandUp : SKAction
+        switch button {
+        case .INSTRUCTION:
+            actionExpandUp = SKAction.moveTo(CGPoint(x: 0, y: 90 + 140), duration: 0.2)
+        case .IMAGINE:
+            actionExpandUp = SKAction.moveTo(CGPoint(x: 0, y: 90 + 70), duration: 0.2)
+        case .LEADERBOARD:
+            actionExpandUp = SKAction.moveTo(CGPoint(x: 0, y: 90), duration: 0.2)
+        }
+        actionExpand = SKAction.group([actionExpandUp, actionAppearScale])
+        
+        actionReduce = SKAction.moveTo(CGPoint(x: 0, y: 90), duration: 0.2)
+        
+        actionCollapse = SKAction.group([SKAction.moveTo(CGPointZero, duration: 0.2), actionDisappearScale])
+        
         super.init(texture: texture, color: UIColor.clearColor(), size: CGSize(width: 76, height: 76))
         
         setScale(0.0)
@@ -63,25 +82,38 @@ class ButtonSKNode: SKSpriteNode
         fatalError("init(coder:) has not been implemented")
     }
     
-    func appear() {
+    func expand() {
+        removeActionForKey("expand")
+        runAction(actionExpand, withKey: "expand")
+    }
+    
+    func collapse() {
+        removeActionForKey("pulsing")
+        removeActionForKey("expand")
         removeActionForKey("appearing")
-        if !visible {
-            if pulsing {
-                runAction(SKAction.sequence([actionAppear, actionPulse]), withKey: "appearing")
-            } else {
-                runAction(actionAppear, withKey: "appearing")
-            }
-            visible = true
+        runAction(actionCollapse)
+    }
+
+    func reduce() {
+        removeActionForKey("expand")
+        removeActionForKey("appearing")
+        runAction(actionReduce)
+    }
+    
+    func appear() {
+        removeActionForKey("expand")
+        removeActionForKey("appearing")
+        runAction(actionAppear, withKey: "appearing")
+        if pulsing {
+            runAction(SKAction.sequence([actionPulse]), withKey: "pulsing")
         }
     }
     
     func disappear() {
-        if visible {
-            removeActionForKey("pulsing")
-            removeActionForKey("appearing")
-            runAction(actionDisappear)
-            visible = false
-        }
+        removeActionForKey("expand")
+        removeActionForKey("pulsing")
+        removeActionForKey("appearing")
+        runAction(actionDisappear)
     }
     
     func activate() {
@@ -96,19 +128,11 @@ class ButtonSKNode: SKSpriteNode
     
     func pulse() {
         pulsing = true
-        if visible {
-            runAction(actionPulse, withKey: "pulsing")
-        }
+        runAction(actionPulse, withKey: "pulsing")
     }
     
     func unpulse() {
         pulsing = false
-        //removeAllActions()
         removeActionForKey("pulsing")
-        removeActionForKey("appearing")
-    }
-    
-    func actionPulse(action: SKAction) {
-        actionPulse = action
     }
 }

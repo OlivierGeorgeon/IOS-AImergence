@@ -6,7 +6,6 @@
 //  Copyright © 2016 Olivier Georgeon. All rights reserved.
 //
 
-import Foundation
 import SpriteKit
 import StoreKit
 

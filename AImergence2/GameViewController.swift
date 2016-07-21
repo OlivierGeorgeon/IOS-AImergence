@@ -264,9 +264,9 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
             alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: { (UIAlertAction) -> () in
                 if self.isLevelUnlocked() {
                     if let scene = self.sceneView.scene as? GameSKScene {
-                        scene.gameCenterButtonNode.unpulse()
-                        scene.levelButtonNode.pulse()
-                        scene.shiftButton()
+                        if scene.robotNode.recommendation == RECOMMEND.LEADERBOARD {
+                            scene.robotNode.nextRecommendation()
+                        }
                     }
                 }
             }))
@@ -348,10 +348,10 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
         interfaceLocks[level][GameViewController.instructionInterfaceIndex] = true
         userDefaults.setObject(interfaceLocks, forKey: unlockDefaultKey)
         if let scene = sceneView.scene as? GameSKScene {
-            scene.instructionButtonNode.disactivate()
-            scene.instructionButtonNode.unpulse()
-            if scene.currentButton == BUTTON.INSTRUCTION && scene.imagineButtonNode.active {
-                scene.shiftButton()
+            scene.robotNode.instructionButtonNode.disactivate()
+            scene.robotNode.instructionButtonNode.unpulse()
+            if scene.robotNode.recommendation == RECOMMEND.INSTRUCTION {
+                scene.robotNode.nextRecommendation()
             }
         }
     }
@@ -374,14 +374,14 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
         interfaceLocks[level][GameViewController.imagineInterfaceIndex] = true
         userDefaults.setObject(interfaceLocks, forKey: unlockDefaultKey)
         if let scene = sceneView.scene as? GameSKScene {
-            scene.imagineButtonNode.disactivate()
-            if scene.imagineButtonNode.pulsing {
-                scene.imagineButtonNode.unpulse()
+            scene.robotNode.imagineButtonNode.disactivate()
+            if scene.robotNode.imagineButtonNode.pulsing {
+                scene.robotNode.imagineButtonNode.unpulse()
                 if gcEnabled {
-                    scene.gameCenterButtonNode.pulse()
+                    scene.robotNode.gameCenterButtonNode.pulse()
                 }
-                if scene.gameCenterButtonNode.active {
-                    scene.shiftButton()
+                if scene.robotNode.recommendation == RECOMMEND.IMAGINE {
+                    scene.robotNode.nextRecommendation()
                 }
             }
         }
@@ -434,12 +434,10 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
         //print(gameCenterViewController.leaderboardIdentifier)
         if let scene = sceneView.scene as? GameSKScene {
             if isInterfaceUnlocked(2) {
-                scene.gameCenterButtonNode.disactivate()
+                scene.robotNode.gameCenterButtonNode.disactivate()
             }
-            if scene.gameCenterButtonNode.pulsing {
-                scene.gameCenterButtonNode.unpulse()
-                scene.levelButtonNode.pulse()
-                scene.shiftButton()
+            if scene.robotNode.recommendation == RECOMMEND.LEADERBOARD {
+                scene.robotNode.nextRecommendation()
             }
         }
     }

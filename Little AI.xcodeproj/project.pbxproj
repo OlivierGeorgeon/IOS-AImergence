@@ -57,6 +57,7 @@
 		0964BB151CEF501E00A4B40D /* ImagineModel11.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0964BB141CEF501E00A4B40D /* ImagineModel11.swift */; };
 		0964BB171CEF94D900A4B40D /* Level12.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0964BB161CEF94D900A4B40D /* Level12.swift */; };
 		0964BB191CEF95AA00A4B40D /* ImagineModel12.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0964BB181CEF95AA00A4B40D /* ImagineModel12.swift */; };
+		096BD2981D40A27B00C08BEC /* RobotSKNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096BD2971D40A27B00C08BEC /* RobotSKNode.swift */; };
 		096F5CB51C53F1C90041EA5F /* HelpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096F5CB41C53F1C90041EA5F /* HelpViewController.swift */; };
 		096F5CB91C56D7240041EA5F /* Level9.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096F5CB81C56D7240041EA5F /* Level9.swift */; };
 		097D70151D3F6AF7005D4C3A /* ScoreSKNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097D70141D3F6AF7005D4C3A /* ScoreSKNode.swift */; };
@@ -165,6 +166,7 @@
 		0964BB141CEF501E00A4B40D /* ImagineModel11.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagineModel11.swift; sourceTree = "<group>"; };
 		0964BB161CEF94D900A4B40D /* Level12.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Level12.swift; sourceTree = "<group>"; };
 		0964BB181CEF95AA00A4B40D /* ImagineModel12.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagineModel12.swift; sourceTree = "<group>"; };
+		096BD2971D40A27B00C08BEC /* RobotSKNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RobotSKNode.swift; sourceTree = "<group>"; };
 		096F5CB41C53F1C90041EA5F /* HelpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpViewController.swift; sourceTree = "<group>"; };
 		096F5CB81C56D7240041EA5F /* Level9.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Level9.swift; sourceTree = "<group>"; };
 		097D70141D3F6AF7005D4C3A /* ScoreSKNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScoreSKNode.swift; sourceTree = "<group>"; };
@@ -331,13 +333,13 @@
 				0911B7F11C731CF400DC3F69 /* PositionedSKScene.swift */,
 				0936813E1C417378008C6B5D /* GameSKScene.swift */,
 				0936817A1C4696AB008C6B5D /* MenuSKScene.swift */,
-				097D70121D3F6959005D4C3A /* NodeTypes */,
+				097D70121D3F6959005D4C3A /* Nodes */,
 				09D426481D0AFB4300B34CDF /* GameModels */,
 			);
 			name = Game;
 			sourceTree = "<group>";
 		};
-		097D70121D3F6959005D4C3A /* NodeTypes */ = {
+		097D70121D3F6959005D4C3A /* Nodes */ = {
 			isa = PBXGroup;
 			children = (
 				093000DF1C4FD3B700425BB1 /* ReshapableSKNode.swift */,
@@ -347,8 +349,9 @@
 				098203EF1D088818009303C5 /* ButtonSKNode.swift */,
 				097D70141D3F6AF7005D4C3A /* ScoreSKNode.swift */,
 				09246FC51D3145F80049CFA2 /* TipSKNode.swift */,
+				096BD2971D40A27B00C08BEC /* RobotSKNode.swift */,
 			);
-			name = NodeTypes;
+			name = Nodes;
 			sourceTree = "<group>";
 		};
 		09D426471D0AFB1E00B34CDF /* ImagineModels */ = {
@@ -583,6 +586,7 @@
 				0964BB0F1CEEFA9B00A4B40D /* Level11.swift in Sources */,
 				0936816F1C42708E008C6B5D /* Experiment.swift in Sources */,
 				0936813F1C417378008C6B5D /* GameSKScene.swift in Sources */,
+				096BD2981D40A27B00C08BEC /* RobotSKNode.swift in Sources */,
 				0994526E1C5F983400F0ABFF /* HelpView.swift in Sources */,
 				0914EA681D09BAD100E78D5F /* GameModel6.swift in Sources */,
 				09AC4D1B1C86E29200C149EC /* ImagineModel10.swift in Sources */,
