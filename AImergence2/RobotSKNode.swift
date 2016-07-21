@@ -74,58 +74,41 @@ class RobotSKNode: SKNode
         expanded = !expanded
     }
     
-    func setRecommendation(recommendation: RECOMMEND) {
+    func recommend(recommendation: RECOMMEND) {
         self.recommendation = recommendation
         switch recommendation {
         case .INSTRUCTION:
             instructionButtonNode.pulse()
-            instructionButtonNode.appear()
-        case .IMAGINE:
-            imagineButtonNode.pulse()
-            imagineButtonNode.appear()
-        case .LEADERBOARD:
-            gameCenterButtonNode.activate()
-            gameCenterButtonNode.pulse()
             if !expanded {
-                gameCenterButtonNode.appear()
+                instructionButtonNode.appear()
             }
-        default:
-            break
-        }
-    }
-    
-    func nextRecommendation() {
-        if recommendation.rawValue < RECOMMEND.DONE.rawValue {
-            recommendation = RECOMMEND(rawValue: recommendation.rawValue + 1)!
-        }
-        switch recommendation {
-        case .INSTRUCTION:
-            instructionButtonNode.pulse()
-            instructionButtonNode.appear()
         case .INSTRUCTION_OK:
             instructionButtonNode.unpulse()
-            if expanded {
-                toggleButton()
-            } else {
+            if !expanded {
                 instructionButtonNode.disappear()
             }
         case .IMAGINE:
+            if !imagineButtonNode.active {
+                self.recommendation = RECOMMEND.DONE
+                break
+            }
             imagineButtonNode.pulse()
             if !expanded {
                 imagineButtonNode.appear()
             }
         case .LEADERBOARD:
-            imagineButtonNode.unpulse()
-            gameCenterButtonNode.pulse()
+            //gameCenterButtonNode.pulse()
+            if !gameCenterButtonNode.active {
+                self.recommendation = RECOMMEND.DONE
+                break
+            }
             if !expanded {
                 imagineButtonNode.disappear()
                 gameCenterButtonNode.appear()
             }
         case .DONE:
             gameCenterButtonNode.unpulse()
-            if expanded {
-                toggleButton()
-            } else {
+            if !expanded {
                 gameCenterButtonNode.disappear()
             }
         }

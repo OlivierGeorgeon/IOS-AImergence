@@ -12,14 +12,12 @@ protocol GameSceneDelegate: class
 {
     func playExperience(experience: Experience)
     func unlockLevel(score: Int)
-    func isInstructionUnderstood() -> Bool
-    func isImagineUnderstood() -> Bool
-    func isLevelUnlocked() -> Bool
-    func isInterfaceUnlocked(interface: Int) -> Bool
+    func isInterfaceLocked(interface: INTERFACE) -> Bool
     func showInstructionWindow()
     func showImagineWindow()
     func showGameCenter()
     func showLevelWindow()
+    func isGameCenterEnabled() -> Bool
 }
 
 class GameSKScene: PositionedSKScene {
@@ -133,30 +131,33 @@ class GameSKScene: PositionedSKScene {
         super.didMoveToView(view)
 
         // The delegate is ready in didMoveToView
-        if !gameSceneDelegate.isInstructionUnderstood() {
-            robotNode.imagineButtonNode.disappear()
-            robotNode.gameCenterButtonNode.disappear()
-            //robotNode.levelButtonNode.disappear()
-            robotNode.setRecommendation(RECOMMEND.INSTRUCTION)
-            robotNode.instructionButtonNode.pulse()
-            robotNode.instructionButtonNode.appear()
-        } else if !gameSceneDelegate.isImagineUnderstood() {
-            robotNode.imagineButtonNode.disappear()
-            robotNode.gameCenterButtonNode.disappear()
-            //levelButtonNode.disappear()
-            robotNode.setRecommendation(RECOMMEND.IMAGINE)
-            robotNode.imagineButtonNode.pulse()
-            robotNode.imagineButtonNode.appear()
+        if gameSceneDelegate.isInterfaceLocked(INTERFACE.INSTRUCTION) {
+            //robotNode.imagineButtonNode.disappear()
+            //robotNode.gameCenterButtonNode.disappear()
+            robotNode.recommend(RECOMMEND.INSTRUCTION)
+            //robotNode.instructionButtonNode.pulse()
+            //robotNode.instructionButtonNode.appear()
+        } else {
+            if gameSceneDelegate.isInterfaceLocked(INTERFACE.IMAGINE) {
+                if gameSceneDelegate.isInterfaceLocked(INTERFACE.LEVEL) {
+                    robotNode.recommend(RECOMMEND.INSTRUCTION_OK)
+                } else {
+                    robotNode.recommend(RECOMMEND.IMAGINE)
+                }
+            } else if gameSceneDelegate.isInterfaceLocked(INTERFACE.LEADERBOARD) && gameSceneDelegate.isGameCenterEnabled() {
+                robotNode.recommend(RECOMMEND.LEADERBOARD)
+                robotNode.gameCenterButtonNode.pulse()
+            }
         }
-        if gameSceneDelegate.isInstructionUnderstood() {
+        
+        if !gameSceneDelegate.isInterfaceLocked(INTERFACE.INSTRUCTION) {
             robotNode.instructionButtonNode.disactivate()
         }
-        if gameSceneDelegate.isImagineUnderstood() {
+        if !gameSceneDelegate.isInterfaceLocked(INTERFACE.IMAGINE) {
             robotNode.imagineButtonNode.disactivate()
         }
-        if gameSceneDelegate.isInterfaceUnlocked(2) {
+        if !gameSceneDelegate.isInterfaceLocked(INTERFACE.LEADERBOARD) {
             robotNode.gameCenterButtonNode.disactivate()
-            //levelButtonNode.disactivate()
         }
     }
     
@@ -170,7 +171,7 @@ class GameSKScene: PositionedSKScene {
         } else {
             cameraNode.position =  CGPoint(x: size.width / 2 - 190, y: 233)
             backgroundNode.position.x = cameraNode.position.x // 400
-            robotNode.position = CGPoint(x: size.width * 0.6, y: 100) // 700
+            robotNode.position = CGPoint(x: size.width * 0.6, y: 70)
             robotNode.setScale(1.5)
         }      
         robotOrigin = robotNode.position.x
@@ -298,13 +299,9 @@ class GameSKScene: PositionedSKScene {
                 }
             }
         }
-        //if robotNode.containsPoint(positionInScreen) { // also includes the robotNode's child nodes
-        //    robotNode.imageNode.runAction(actionPress)
-        //}
         if CGRectContainsPoint(robotNode.imageNode.frame, positionInRobot) {
             robotNode.imageNode.runAction(actionPress)
             robotNode.toggleButton()
-            //robotNode.shiftButton()
         }
         if robotNode.instructionButtonNode.containsPoint(positionInRobot) {
             gameSceneDelegate.showInstructionWindow()
@@ -315,10 +312,6 @@ class GameSKScene: PositionedSKScene {
         if robotNode.gameCenterButtonNode.containsPoint(positionInRobot) {
             gameSceneDelegate.showGameCenter()
         }
-        /*if levelButtonNode.containsPoint(positionInRobot) {
-            gameSceneDelegate.showLevelWindow()
-            levelButtonNode.unpulse()
-        }*/
     }
     
     func animNextExperiment(experience: Experience, nextClock: Int) {
@@ -421,12 +414,10 @@ class GameSKScene: PositionedSKScene {
             if winMoves == 0 {
                 gameSceneDelegate.unlockLevel(clock)
                 winMoves = clock
-                if robotNode.recommendation == RECOMMEND.DONE {
-                    robotNode.setRecommendation(RECOMMEND.LEADERBOARD)
-                }
+                robotNode.gameCenterButtonNode.activate()
             }
             if robotNode.recommendation == RECOMMEND.INSTRUCTION_OK {
-                robotNode.nextRecommendation()
+                robotNode.recommend(RECOMMEND.IMAGINE)
             }
         }
         scoreNode.updateScore(score, clock: clock, winMoves: winMoves)

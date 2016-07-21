@@ -11,9 +11,10 @@
 "You must reach the score of 10" = "You must reach the score of 10 to reveal an imaginary representation of the world in this window.";
 "Excellent 0" = "Excellent! You have completed Level 0! Keep playing with this display on to show the imaginary 3D world. Next, see the leaderboard and then swipe the robot icon to the left to move on to Level 1.";
 "Excellent 1" = "Excellent! You have completed Level 1! To understand the game better, always play a little bit with this display on before moving on to the next level.";
-"You won!" = "Yahoo! You completed Little AI! Please leave a tip to help us create more levels.";
-"Drag the 3D scene to move the camera" = "Keep playing. You can move the 3D robot with your finger.";
-"Double tap to swap cameras." = "You can swap viewpoints by double-tapping on the 3D scene.";
+"Drag the 3D scene to move the camera" = "Drag the 3D scene to rotate the robot.";
+"Double tap to swap cameras." = "Double-tap on the 3D scene to swap viewpoint.";
+"Tap an event to replay its command" = "Tap an event in the background window to replay its command. Repeatedly tap the next command that appears to the righ of the event to replay an entire sequence.";
+"You won!" = "Yahoo! You completed Little AI! Watch for updates to get more levels!";
 "Please login to Game Center" = "To view the leaderboard, please log in into the Game Center application!";
 "Thank you!" = "Thank you very much for the tip!";
 "0 moves" = "0 moves";

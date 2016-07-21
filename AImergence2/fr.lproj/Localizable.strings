@@ -9,11 +9,12 @@
 "Level" = "Niveau";
 "Cancel" = "Retour";
 "You must reach the score of 10" = "Vous devez atteindre le score de 10 avant de pouvoir voir une représentation imaginaire du monde dans cette fenêtre.";
-"Excellent 0" = "Bravo ! Vous avez gagné le niveau 0 ! Continuez à jouer avec cette fenêtre ouverte pour observer le monde imaginaire 3D. Ensuite, regardez votre classement, puis glissez l'icone du robot vers la gauche pour passer au niveau 1.";
-"Excellent 1" = "Bravo ! Vous avez gagné le niveau 1 ! Pour mieux comprendre le jeu, jouez toujours un peu en observant le monde imaginaire 3D avant de passer au niveau suivant.";
-"You won!" = "Youpi ! Vous avez terminé Little AI ! S'il vous plaît, laissez un pourboire pour nous aider à créer d'autres niveaux!";
-"Drag the 3D scene to move the camera" = "Vous pouvez faire tourner le robot3D avec le doight.";
-"Double tap to swap cameras." = "Vous pouvez changer de point de vue en double-tappant sur la scène 3D.";
+"Excellent 0" = "Bravo ! Vous avez gagné le niveau 0 ! Appuyez sur les différentes commandes sans fermer cette fenêtre pour voir leurs effets sur le robot.";
+"Excellent 1" = "Bravo ! Vous avez gagné le niveau 1 ! Pour mieux comprendre le jeu, observez toujours les effets des commandes sur le robot dans cette fenêtre avant de passer au niveau suivant.";
+"Drag the 3D scene to move the camera" = "Presssez et glissez pour tourner le robot.";
+"Double tap to swap cameras." = "Appuyez deux fois pour changer de point de vue.";
+"Tap an event to replay its command" = "Appuyez sur un évènement dans la fenêtre d'arrière plan pour rejouer sa commande. Appuyez repetitivement sur la commande suivante qui apparait à la droite de l'évènement pour rejouer une séquence entière.";
+"You won!" = "Youpi ! Vous avez terminé Little AI ! Surveillez les mises à jour pour obtenir plus de niveaux !";
 "Please login to Game Center" = "Pour voir le classement, authentifiez-vous dans l'application Game Center !";
 "Thank you!" = "Merci beaucoup pour le pourboire !";
 "0 moves" = "0 coups";

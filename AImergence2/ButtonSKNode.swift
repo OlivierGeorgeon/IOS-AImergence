@@ -66,11 +66,15 @@ class ButtonSKNode: SKSpriteNode
         case .LEADERBOARD:
             actionExpandUp = SKAction.moveTo(CGPoint(x: 0, y: 90), duration: 0.2)
         }
+        actionExpandUp.timingMode = .EaseInEaseOut
         actionExpand = SKAction.group([actionExpandUp, actionAppearScale])
         
         actionReduce = SKAction.moveTo(CGPoint(x: 0, y: 90), duration: 0.2)
+        actionReduce.timingMode = .EaseInEaseOut
         
-        actionCollapse = SKAction.group([SKAction.moveTo(CGPointZero, duration: 0.2), actionDisappearScale])
+        let actionZero = SKAction.moveTo(CGPointZero, duration: 0.2)
+        actionZero.timingMode = .EaseIn
+        actionCollapse = SKAction.group([actionZero, actionDisappearScale])
         
         super.init(texture: texture, color: UIColor.clearColor(), size: CGSize(width: 76, height: 76))
         

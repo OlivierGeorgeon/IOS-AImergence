@@ -9,10 +9,10 @@
 import UIKit
 import SceneKit
 
-protocol WorldViewControllerDelegate: class
+protocol ImagineViewControllerDelegate: class
 {
     func hideImagineViewControllerContainer()
-    func isLevelUnlocked() -> Bool
+    func isInterfaceLocked(interface: INTERFACE) -> Bool
     func imagineOk()
     func getGameModel() -> GameModel2
 }
@@ -23,7 +23,7 @@ class ImagineViewController: UIViewController {
     @IBOutlet weak var textView: UITextView!
     @IBAction func closeButton(sender: UIButton) { delegate?.hideImagineViewControllerContainer() }
     @IBAction func understoodButton(sender: UIButton) {
-        if delegate!.isLevelUnlocked() { delegate?.imagineOk() }
+        if !delegate!.isInterfaceLocked(INTERFACE.LEVEL) { delegate?.imagineOk() }
         delegate?.hideImagineViewControllerContainer()
     }
 
@@ -34,10 +34,16 @@ class ImagineViewController: UIViewController {
     //let bundleName = NSBundle.mainBundle().infoDictionary!["CFBundleName"] as! String
 
     var imagineModel: ImagineModel!
-    weak var delegate: WorldViewControllerDelegate?
+    weak var delegate: ImagineViewControllerDelegate?
     
     func displayLevel(level: Int) {
-        if delegate!.isLevelUnlocked() {
+        if delegate!.isInterfaceLocked(INTERFACE.LEVEL) {
+            // Fix the bug that prevents the localization of UITextView in the storyboard from working.
+            self.textView.text = NSLocalizedString("You must reach the score of 10", comment: "Message in the Imagine window when the user tries to see the imaginary model before reaching the score of 10.");
+            textView.hidden = false
+            textView.font = UIFont.systemFontOfSize(15) // fix the bug that ignores the storyboard font when "Selectable" is unchecked in the storyboard.
+            sceneView.scene = nil
+        } else {
             switch level {
             case 0:
                 textView.text = NSLocalizedString("Excellent 0", comment: "Message in the Imagine window on Levels 0 and 1.");
@@ -48,9 +54,11 @@ class ImagineViewController: UIViewController {
             case 2, 3:
                 textView.text = NSLocalizedString("Drag the 3D scene to move the camera", comment: "Message in the Imagine window on Levels 2 and 3.");
                 textView.hidden = false
-            case 11, 12:
-                textView.text = NSLocalizedString("Double tap to swap cameras.", comment: "Message in the Imagine window on Levels 11 and 12.");
+            case 4, 5:
+                textView.text = NSLocalizedString("Double tap to swap cameras.", comment: "Message in the Imagine window on Levels 10 and 11.");
                 textView.hidden = false
+            case 12, 13:
+                textView.text = NSLocalizedString("Tap an event to replay its command", comment: "Message in the Imagine window on Levels 11 and 12.");
             case 17:
                 textView.text = NSLocalizedString("You won!", comment: "Message in the Imagine window on Levels 17 (last).");
                 textView.hidden = false
@@ -65,12 +73,6 @@ class ImagineViewController: UIViewController {
             else
                 { imagineModel = ImagineModel0(gameModel: delegate!.getGameModel()) }
             sceneViewSetup()
-        } else {
-            // Fix the bug that prevents the localization of UITextView in the storyboard from working.
-            self.textView.text = NSLocalizedString("You must reach the score of 10", comment: "Message in the Imagine window when the user tries to see the imaginary model before reaching the score of 10.");
-            textView.hidden = false
-            textView.font = UIFont.systemFontOfSize(15) // fix the bug that ignores the storyboard font when "Selectable" is unchecked in the storyboard.
-            sceneView.scene = nil
         }
     }
     
