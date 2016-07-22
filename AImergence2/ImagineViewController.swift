@@ -70,7 +70,7 @@ class ImagineViewController: UIViewController {
             case 2, 3:
                 textView.text = NSLocalizedString("Drag the 3D scene to move the camera", comment: "Message in the Imagine window on Levels 2 and 3.");
                 textView.hidden = false
-            case 4, 5:
+            case 11:
                 textView.text = NSLocalizedString("Double tap to swap cameras.", comment: "Message in the Imagine window on Levels 10 and 11.");
                 textView.hidden = false
             case 12, 13:

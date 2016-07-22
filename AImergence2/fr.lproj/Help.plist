@@ -11,13 +11,13 @@
 		</array>
 		<array>
 			<string>Les commandes produisent des &quot;évènements&quot; d&apos;interaction entre le robot et son environnement (petits symboles colorés qui montent).</string>
-			<string>A chaque niveau, atteignez le score de 10, puis suivez les recommandations de Little AI: bouton &quot;engrenages&quot; pour voir les effets des commandes, et bouton &quot;podium&quot; pour voir votre classement.</string>
+			<string>A chaque niveau, atteignez le score de 10. Ensuite, suivez les recommandations de Little AI: appuyez sur le bouton &quot;engrenages&quot; pour voir les effets des commandes, et sur le bouton &quot;podium&quot; pour voir votre classement.</string>
 			<string>Faites glisser le robot à gauche ou à droite pour changer de niveau.</string>
 		</array>
 		<array>
-			<string>Vous pouvez imaginer que le robot trouve agréable les évènements qui ont une valeur positive et désagréables ceux qui ont une valeur négative.</string>
+			<string>Imaginez que le robot trouve agréable les évènements qui ont une valeur positive et désagréables ceux qui ont une valeur négative.</string>
 			<string>Générez une séquence d&apos;évènements agréables.</string>
-			<string>Appuyez sur un évènement pour rejouer la même commande. Selon le context, cela peut produire un évènement du même type ou non. Pour rejouer une séquence entière, continuez à appuyer sur la &quot;prochaine commande&quot; (forme blanche qui apparait à gauche quand vous appuyez sur un évènement).</string>
+			<string>Appuyez sur un évènement pour rejouer la même commande. Selon le context, cela peut reproduire un évènement du même type ou non. Pour rejouer une séquence entière, continuez à appuyer sur la &quot;prochaine commande&quot; (forme blanche qui apparait à gauche quand vous appuyez sur un évènement).</string>
 		</array>
 		<array>
 			<string>Pressez et maintenez enfonçée une commande pour changer sa forme.</string>
@@ -71,7 +71,7 @@
 		</array>
 		<array>
 			<string>Le monde du niveau 14 est le même que celui du niveau 13.</string>
-			<string>Vous êtes dans le même situation qu&apos;un bébé qui ignore la signification de ses geste et de ses sens, ou de celle d&apos;un robot qui ignore la signification de ses actionneurs et de ses capteurs.</string>
+			<string>Vous êtes dans une situation analogue à celle d&apos;un nouveau-né qui ignore la signification de ses geste et de ses sens, ou de celle d&apos;un robot qui ignore la signification de ses actionneurs et de ses capteurs.</string>
 		</array>
 		<array>
 			<string>Le robot dispose de deux commandes persistantes supplémentaires qui lui permettent de sentir les bords de la boite autour de lui.</string>

@@ -7,22 +7,22 @@
 		<array>
 			<string>Welcome to Little AI!</string>
 			<string>Tap the &quot;commands&quot; (white circles at the bottom of the screen). You may keep this information window open at the same time.</string>
-			<string>Reach the score of 10 (displayed on the upper left of the game window). The score if the sum of the last ten values produced by your commands.</string>
+			<string>Reach the score of 10 (displayed on the upper left of the game window). Your score is the sum of the last ten values produced by your commands.</string>
 		</array>
 		<array>
 			<string>The commands generate &quot;events&quot; of interaction between the robot and its environment (small colored symbols that move up).</string>
-			<string>On each level, reach the score of ten, and then follow Little AI&apos;s recommendations: press the &quot;gears&quot; button to watch the effects of the commands, and the &quot;podium&quot; button to see the leaderboard. </string>
+			<string>On each level, reach the score of 10. Next, follow Little AI&apos;s recommendations: press the &quot;gears&quot; button to watch the effects of the commands, and the &quot;podium&quot; button to see the leaderboard. </string>
 			<string>Drag the robot to the left or to the right to shift levels.</string>
 		</array>
 		<array>
-			<string>You may imagine that the robot finds the events that have a positive value enjoyable, and those that have a negative value unpleasant.</string>
+			<string>Imagine that the robot finds the events that have a positive value enjoyable, and those that have a negative value unpleasant.</string>
 			<string>Generate a sequence of enjoyable events.</string>
-			<string>Tap an event to replay the same command. Depending on the context, this may produce an event of the same type or not. To replay an entire sequence, repeatedly tap the &quot;next command&quot; (white shape that appears on the left when you tap an event).</string>
+			<string>Tap an event to replay the same command. Depending on the context, this may reproduce an event of the same type or not. To replay an entire sequence, repeatedly tap the &quot;next command&quot; (white shape that appears on the left when you tap an event).</string>
 		</array>
 		<array>
 			<string>Press and hold a command to change its shape.</string>
 			<string>Press and hold an event to change its color.</string>
-			<string>Change the shapes of commands and the color of events to recognize them. Shapes and colors are purely descriptive. They don&apos;t change the robot.</string>
+			<string>Change the shapes of commands and the colors of events to recognize them. Shapes and colors are purely descriptive. They do not change the robot.</string>
 		</array>
 		<array>
 			<string>In the world of Level 4, the robot cannot always avoid unpleasant events.</string>
@@ -30,7 +30,7 @@
 			<string>Use different shapes for the commands, and display the enjoyable events in green and the unpleasant events in red to highlight regularities.</string>
 		</array>
 		<array>
-			<string>Experiment with each command individually several times in a raw. One of the commands always generate the same type of events in a given situation. It is a &quot;persistent&quot; command.</string>
+			<string>Experiment with each command individually several times in a raw. One of the commands always generates the same type of events in a given situation. It is a &quot;persistent&quot; command.</string>
 			<string>The persistent command allows you to observe the situation of the robot without modifying it.</string>
 			<string>Use the colors of events to identify the situations that afford enjoyable events.</string>
 		</array>
@@ -40,15 +40,15 @@
 		</array>
 		<array>
 			<string>In Level 7, the commands have the same effects as in Levels 5 and 6, but some events have different values.</string>
-			<string>Display the events that make you hope an enjoyable event on the next move in green.</string>
-			<string>Display the events that make you fear an unpleasant event on the next move in red.</string>
+			<string>Display the events that make you hope for an enjoyable event on the next move in green.</string>
+			<string>Display the events that make you fear for an unpleasant event on the next move in red.</string>
 		</array>
 		<array>
 			<string>On Level 8, events have the same effects and the same values as in Level 7.</string>
 			<string>One of the commands changes the robot&apos;s situation while always returning the same type of event. This command executes a &quot;non-informative action&quot;.</string>
 		</array>
 		<array>
-			<string>On level 9, the commands have the same immediate effects as in Levels 5, 6, 7, and 8, but they also change the environment on the long term.</string>
+			<string>On level 9, the commands have the same immediate effects as in Levels 5, 6, 7, and 8, but they also transform the environment on the long term.</string>
 			<string>The robot must transform its environment until it can enact an enjoyable event on every move.</string>
 		</array>
 		<array>
@@ -71,7 +71,7 @@
 		</array>
 		<array>
 			<string>Level 14&apos;s world is the same as Level 13&apos;s.</string>
-			<string>You are in the same situation as a newborn baby that ignores the effects of its gestures and the meaning of its senses, as well of a robot that ignores the signification of its actuators and sensors.</string>
+			<string>You are in an analogous situation as a newborn baby that ignores the signification of its gestures and of its senses, or of a robot that ignores the signification of its actuators and sensors.</string>
 		</array>
 		<array>
 			<string>The robot has two additional commands that it can use to feel the edges around it.</string>

@@ -9,7 +9,7 @@
 "Level" = "Level";
 "Cancel" = "Back";
 "You must reach the score of 10" = "You must reach the score of 10 to reveal the robot in this window.";
-"Excellent 0" = "Excellent! You have completed Level 0! With this display on, tap at least once on each command and observe the robot's behavior. Next, tap Ok, watch your ranking (requires Game Center), and move on to the next level.";
+"Excellent 0" = "Excellent! You have completed Level 0! With this display on, tap on each command at least once and observe the robot's behavior. Next, tap Ok, watch your ranking (requires Game Center), and move on to the next level.";
 "Excellent 1" = "Now you have completed Level 1! To understand the game better, always observe the effects of each command on the robot before moving on to the next level.";
 "Drag the 3D scene to move the camera" = "Drag the 3D scene to change the angle of view.";
 "Double tap to swap cameras." = "Double-tap on the 3D scene to swap viewpoints.";

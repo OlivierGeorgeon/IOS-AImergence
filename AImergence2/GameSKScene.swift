@@ -131,10 +131,11 @@ class GameSKScene: PositionedSKScene {
         super.didMoveToView(view)
 
         // The delegate is ready in didMoveToView
+        if robotNode.recommendation == RECOMMEND.DONE {
         if gameSceneDelegate.isInterfaceLocked(INTERFACE.INSTRUCTION) {
             //robotNode.imagineButtonNode.disappear()
             //robotNode.gameCenterButtonNode.disappear()
-            robotNode.recommend(RECOMMEND.INSTRUCTION)
+                robotNode.recommend(RECOMMEND.INSTRUCTION)
             //robotNode.instructionButtonNode.pulse()
             //robotNode.instructionButtonNode.appear()
         } else {
@@ -148,6 +149,7 @@ class GameSKScene: PositionedSKScene {
                 robotNode.recommend(RECOMMEND.LEADERBOARD)
                 robotNode.gameCenterButtonNode.pulse()
             }
+        }
         }
         
         if !gameSceneDelegate.isInterfaceLocked(INTERFACE.INSTRUCTION) {
