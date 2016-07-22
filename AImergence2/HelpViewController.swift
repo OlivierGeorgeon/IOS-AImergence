@@ -52,10 +52,10 @@ class HelpViewController: UIViewController {
     
     func displayLevel(level: Int) {
         labelView.text = levelString + " \(level)"
-        if level == 17 {
+        switch level {
+        case 16, 17:
             textView.selectable = true
-            //textView.dataDetectorTypes = .Link
-        } else {
+        default:
             textView.selectable = false
         }
         textView.text = helpBlobArray[level]

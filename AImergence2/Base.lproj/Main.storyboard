@@ -45,9 +45,6 @@
                                 <state key="normal" title="Imagine">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <connections>
-                                    <action selector="worldButton:" destination="BV1-FR-VrT" eventType="touchUpInside" id="7FI-Fj-E6g"/>
-                                </connections>
                             </button>
                             <containerView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" verticalHuggingPriority="249" horizontalCompressionResistancePriority="749" verticalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="1qa-vJ-nr5">
                                 <rect key="frame" x="180" y="53" width="400" height="400"/>
@@ -262,6 +259,7 @@
                         </connections>
                     </view>
                     <connections>
+                        <outlet property="okButton" destination="xY4-R3-8Ig" id="lEi-wy-ft3"/>
                         <outlet property="sceneView" destination="Oej-sS-MrJ" id="N9L-gz-PFx"/>
                         <outlet property="textView" destination="dPD-EN-VYk" id="ahi-nI-ev1"/>
                     </connections>

@@ -25,7 +25,7 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
     @IBOutlet weak var levelButton: UIButton!
     @IBAction func levelButton(sender: UIButton) { showLevelWindow() }
     @IBAction func hepButton(sender: UIButton)   { showInstructionWindow() }
-    @IBAction func worldButton(sender: UIButton) { showImagineWindow() }
+    //@IBAction func worldButton(sender: UIButton) { showImagineWindow() }
     
     var smallPortraitConstraint: NSLayoutConstraint?
     
@@ -39,7 +39,7 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
             levelButton.setTitle(NSLocalizedString("Level", comment: "") + " \(level)", forState: .Normal)
             //levelButton.setTitle("\(level)", forState: .Normal)
             if !helpViewControllerContainer.hidden { helpViewController?.displayLevel(level) }
-            if !imagineViewControllerContainer.hidden { imagineViewController?.displayLevel(level) }
+            //if !imagineViewControllerContainer.hidden { imagineViewController?.displayLevel(level) }
         }
     }
 
@@ -165,7 +165,7 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
             let gameModel = GameModel.createGameModel(level)
             nextGameScene = GameSKScene(gameModel: gameModel)
             nextGameScene!.gameSceneDelegate = self
-            hideImagineViewControllerContainer()
+            closeImagineWindow()
         }
         return nextGameScene
     }
@@ -177,7 +177,7 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
             let gameModel = GameModel.createGameModel(level)
             previousGameScene = GameSKScene(gameModel: gameModel)
             previousGameScene!.gameSceneDelegate = self
-            hideImagineViewControllerContainer()
+            closeImagineWindow()
         }
         return previousGameScene
     }
@@ -217,7 +217,9 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
     }
     
     func playExperience(experience: Experience) {
-        imagineViewController?.playExperience(experience)
+        if !imagineViewControllerContainer.hidden {
+            imagineViewController?.playExperience(experience)
+        }
     }
     
     func showInstructionWindow() {
@@ -231,15 +233,14 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
         return interfaceLocks[level][interface.rawValue]
     }
 
-    func showImagineWindow() {
+    func showImagineWindow(gameModel: GameModel2) {
         helpViewControllerContainer.hidden = true
-        if imagineViewControllerContainer.hidden {
-            imagineViewController?.displayLevel(level)
-            imagineViewControllerContainer.hidden = false
+        if isInterfaceLocked(INTERFACE.LEVEL) {
+            imagineViewController?.displayLevel(nil, okEnabled: true)
         } else {
-            imagineViewControllerContainer.hidden = true
-            imagineViewController?.sceneView.scene = nil
+            imagineViewController?.displayLevel(gameModel, okEnabled: !isInterfaceLocked(INTERFACE.IMAGINE))
         }
+        imagineViewControllerContainer.hidden = false
     }
     
     func showGameCenter() {
@@ -302,11 +303,10 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
         
         if isInterfaceLocked(INTERFACE.LEVEL) {
             interfaceLocks[level][INTERFACE.LEVEL.rawValue] = false
-            let defaults = NSUserDefaults.standardUserDefaults()
-            defaults.setObject(interfaceLocks, forKey: unlockDefaultKey)
-            if !imagineViewControllerContainer.hidden {
-                imagineViewController?.displayLevel(level)
-            }
+            userDefaults.setObject(interfaceLocks, forKey: unlockDefaultKey)
+            //if !imagineViewControllerContainer.hidden {
+            //    imagineViewController?.displayLevel(scene.gameModel)
+            //}
         }
     }
     
@@ -352,32 +352,35 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
     }
     
     // Implement WorldViewControllerDelegate
-    func hideImagineViewControllerContainer() {
+    func closeImagineWindow() {
         imagineViewControllerContainer.hidden = true
+        imagineViewController!.imagineModel = nil
         imagineViewController!.sceneView.scene = nil
     }
     
-    func getGameModel() -> GameModel2 {
+    /*func getGameModel() -> GameModel2 {
         var gameModel = GameModel2()
         if let scene = sceneView.scene as? GameSKScene {
             gameModel = scene.gameModel
         }
         return gameModel
-    }
+    }*/
     
-    func imagineOk() {
-        interfaceLocks[level][INTERFACE.IMAGINE.rawValue] = false
-        userDefaults.setObject(interfaceLocks, forKey: unlockDefaultKey)
-        if let scene = sceneView.scene as? GameSKScene {
-            scene.robotNode.imagineButtonNode.disactivate()
-            if scene.robotNode.imagineButtonNode.pulsing {
-                scene.robotNode.imagineButtonNode.unpulse()
-                if scene.robotNode.recommendation == RECOMMEND.IMAGINE {
-                    scene.robotNode.recommend(RECOMMEND.LEADERBOARD)
-                    if gcEnabled {
-                        scene.robotNode.gameCenterButtonNode.pulse()
+    func acknowledgeImagineWorld() {
+        if !isInterfaceLocked(INTERFACE.LEVEL) {
+            interfaceLocks[level][INTERFACE.IMAGINE.rawValue] = false
+            userDefaults.setObject(interfaceLocks, forKey: unlockDefaultKey)
+            if let scene = sceneView.scene as? GameSKScene {
+                scene.robotNode.imagineButtonNode.disactivate()
+                //if scene.robotNode.imagineButtonNode.pulsing {
+                    //scene.robotNode.imagineButtonNode.unpulse()
+                    if scene.robotNode.recommendation == RECOMMEND.IMAGINE {
+                        scene.robotNode.recommend(RECOMMEND.LEADERBOARD)
+                        if gcEnabled {
+                            scene.robotNode.gameCenterButtonNode.pulse()
+                        }
                     }
-                }
+                //}
             }
         }
     }

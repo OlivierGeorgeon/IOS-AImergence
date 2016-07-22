@@ -8,13 +8,13 @@
 
 "Level" = "Niveau";
 "Cancel" = "Retour";
-"You must reach the score of 10" = "Vous devez atteindre le score de 10 avant de pouvoir voir une représentation imaginaire du monde dans cette fenêtre.";
-"Excellent 0" = "Bravo ! Vous avez gagné le niveau 0 ! Appuyez sur les différentes commandes sans fermer cette fenêtre pour voir leurs effets sur le robot.";
-"Excellent 1" = "Bravo ! Vous avez gagné le niveau 1 ! Pour mieux comprendre le jeu, observez toujours les effets des commandes sur le robot dans cette fenêtre avant de passer au niveau suivant.";
-"Drag the 3D scene to move the camera" = "Presssez et glissez pour tourner le robot.";
-"Double tap to swap cameras." = "Appuyez deux fois pour changer de point de vue.";
-"Tap an event to replay its command" = "Appuyez sur un évènement dans la fenêtre d'arrière plan pour rejouer sa commande. Appuyez repetitivement sur la commande suivante qui apparait à la droite de l'évènement pour rejouer une séquence entière.";
-"You won!" = "Youpi ! Vous avez terminé Little AI ! Surveillez les mises à jour pour obtenir plus de niveaux !";
+"You must reach the score of 10" = "Vous devez atteindre le score de 10 avant de pouvoir voir le robot dans cette fenêtre.";
+"Excellent 0" = "Bravo ! Vous avez gagné le niveau 0 ! En gardant cette fenêtre ouverte, appuyez au moins une fois sur chaque commande pour voir le comportement du robot. Ensuite, appuyez sur Ok, regardez votre classement (nécessite Game Center), et passez au niveau suivant.";
+"Excellent 1" = "Vous avez maintenant gagné le niveau 1 ! Pour mieux comprendre le jeu, observez toujours les effets de chaque commande sur le robot avant de passer au niveau suivant.";
+"Drag the 3D scene to move the camera" = "Glissez la scène 3D pour changer l'angle de vue.";
+"Double tap to swap cameras." = "Appuyez deux fois sur la scène 3D pour passer d'un point de vue à un autre.";
+"Tap an event to replay its command" = "Faites glisser la fenêtre d'arrière plan pour revoir les évènements passés. Appuez sur les évènements passés pour les reproduire et observer leurs effets sur le robot 3D";
+"You won!" = "Youpi ! Vous avez terminé Little AI ! Surveillez les mises à jour pour obtenir des niveaux encore plus intéressants dans les mois à venir ! (Développés bénévolement ou financés par vos dons.)";
 "Please login to Game Center" = "Pour voir le classement, authentifiez-vous dans l'application Game Center !";
 "Thank you!" = "Merci beaucoup pour le pourboire !";
 "0 moves" = "0 coups";

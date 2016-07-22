@@ -11,20 +11,21 @@ import SceneKit
 
 protocol ImagineViewControllerDelegate: class
 {
-    func hideImagineViewControllerContainer()
-    func isInterfaceLocked(interface: INTERFACE) -> Bool
-    func imagineOk()
-    func getGameModel() -> GameModel2
+    func acknowledgeImagineWorld()
+    func closeImagineWindow()
 }
 
 class ImagineViewController: UIViewController {
 
     @IBOutlet weak var sceneView: SCNView!
     @IBOutlet weak var textView: UITextView!
-    @IBAction func closeButton(sender: UIButton) { delegate?.hideImagineViewControllerContainer() }
+    @IBAction func closeButton(sender: UIButton) {
+        delegate?.closeImagineWindow()
+    }
+    @IBOutlet weak var okButton: UIButton!
     @IBAction func understoodButton(sender: UIButton) {
-        if !delegate!.isInterfaceLocked(INTERFACE.LEVEL) { delegate?.imagineOk() }
-        delegate?.hideImagineViewControllerContainer()
+        delegate?.acknowledgeImagineWorld()
+        delegate?.closeImagineWindow()
     }
 
     @IBAction func elseButton(sender: UIButton)  {
@@ -33,18 +34,33 @@ class ImagineViewController: UIViewController {
     
     //let bundleName = NSBundle.mainBundle().infoDictionary!["CFBundleName"] as! String
 
-    var imagineModel: ImagineModel!
     weak var delegate: ImagineViewControllerDelegate?
+
+    var imagineModel: ImagineModel0!
+    var experimentTried = [false]
     
-    func displayLevel(level: Int) {
-        if delegate!.isInterfaceLocked(INTERFACE.LEVEL) {
+    override func viewDidLoad() {
+        // Called only once on startup. Then the sceneView remains loaded. Only the SceneView.scene is dismissed.
+        
+        // intercepts the tap gesture so it won't be transferred to the GameView
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(ImagineViewController.tap(_:)))
+        tapGestureRecognizer.cancelsTouchesInView = false
+        sceneView.addGestureRecognizer(tapGestureRecognizer)
+        
+        // Fix the bug that prevents the localization of UITextView in the storyboard from working.
+        //self.textView.text = NSLocalizedString("You must reach the score of 10", comment: "Message in the Imagine window when the user tries to see the imaginary model before reaching the score of 10.");
+    }
+    
+    func displayLevel(gameModel: GameModel2?, okEnabled: Bool) {
+        if gameModel == nil {
             // Fix the bug that prevents the localization of UITextView in the storyboard from working.
             self.textView.text = NSLocalizedString("You must reach the score of 10", comment: "Message in the Imagine window when the user tries to see the imaginary model before reaching the score of 10.");
             textView.hidden = false
             textView.font = UIFont.systemFontOfSize(15) // fix the bug that ignores the storyboard font when "Selectable" is unchecked in the storyboard.
             sceneView.scene = nil
         } else {
-            switch level {
+            let levelNumber = gameModel!.level.number
+            switch levelNumber {
             case 0:
                 textView.text = NSLocalizedString("Excellent 0", comment: "Message in the Imagine window on Levels 0 and 1.");
                 textView.hidden = false
@@ -67,26 +83,24 @@ class ImagineViewController: UIViewController {
             }
             textView.font = UIFont.systemFontOfSize(15)
 
-            let aClass:AnyClass? =  NSClassFromString("Little_AI.ImagineModel\(level)")
-            if let imagineModelType = aClass as? ImagineModel.Type
-                { imagineModel = imagineModelType.init(gameModel: delegate!.getGameModel()) }
+            let aClass:AnyClass? =  NSClassFromString("Little_AI.ImagineModel\(levelNumber)")
+            if let imagineModelType = aClass as? ImagineModel0.Type
+                { imagineModel = imagineModelType.init(gameModel: gameModel!) }
             else
-                { imagineModel = ImagineModel0(gameModel: delegate!.getGameModel()) }
+                { imagineModel = ImagineModel0(gameModel: gameModel!) }
+            
+            if okEnabled {
+                okButton.enabled = true
+                experimentTried = gameModel!.level.experiments.map({_ in true})
+            } else {
+                okButton.enabled = false
+                experimentTried = gameModel!.level.experiments.map({_ in false})
+            }
+            
             sceneViewSetup()
         }
     }
     
-    
-    override func viewDidLoad() {
-        
-        // intercepts the tap gesture so it won't be transferred to the GameView
-        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(ImagineViewController.tap(_:)))
-        tapGestureRecognizer.cancelsTouchesInView = false
-        sceneView.addGestureRecognizer(tapGestureRecognizer)
-        
-        // Fix the bug that prevents the localization of UITextView in the storyboard from working.
-        //self.textView.text = NSLocalizedString("You must reach the score of 10", comment: "Message in the Imagine window when the user tries to see the imaginary model before reaching the score of 10.");
-    }
     func tap(gesture:UITapGestureRecognizer) {}
 
     func sceneViewSetup() {
@@ -101,6 +115,8 @@ class ImagineViewController: UIViewController {
     func playExperience(experience: Experience) {
         if sceneView.scene != nil {
             imagineModel?.playExperience(experience)
+            experimentTried[experience.experimentNumber] = true
+            okButton.enabled = !experimentTried.contains(false)
         }
     }
 

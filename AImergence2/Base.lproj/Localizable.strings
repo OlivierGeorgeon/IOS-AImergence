@@ -8,13 +8,13 @@
 
 "Level" = "Level";
 "Cancel" = "Back";
-"You must reach the score of 10" = "You must reach the score of 10 to reveal an imaginary representation of the world in this window.";
-"Excellent 0" = "Excellent! You have completed Level 0! Keep playing with this display on to show the imaginary 3D world. Next, see the leaderboard and then swipe the robot icon to the left to move on to Level 1.";
-"Excellent 1" = "Excellent! You have completed Level 1! To understand the game better, always play a little bit with this display on before moving on to the next level.";
-"Drag the 3D scene to move the camera" = "Drag the 3D scene to rotate the robot.";
-"Double tap to swap cameras." = "Double-tap on the 3D scene to swap viewpoint.";
+"You must reach the score of 10" = "You must reach the score of 10 to reveal the robot in this window.";
+"Excellent 0" = "Excellent! You have completed Level 0! With this display on, tap at least once on each command and observe the robot's behavior. Next, tap Ok, watch your ranking (requires Game Center), and move on to the next level.";
+"Excellent 1" = "Now you have completed Level 1! To understand the game better, always observe the effects of each command on the robot before moving on to the next level.";
+"Drag the 3D scene to move the camera" = "Drag the 3D scene to change the angle of view.";
+"Double tap to swap cameras." = "Double-tap on the 3D scene to swap viewpoints.";
 "Tap an event to replay its command" = "Tap an event in the background window to replay its command. Repeatedly tap the next command that appears to the righ of the event to replay an entire sequence.";
-"You won!" = "Yahoo! You completed Little AI! Watch for updates to get more levels!";
+"You won!" = "Yahoo! You completed Little AI! Watch for updates to get even more exciting levels in the coming months! (Voluntarily developped or founded by your donations.)";
 "Please login to Game Center" = "To view the leaderboard, please log in into the Game Center application!";
 "Thank you!" = "Thank you very much for the tip!";
 "0 moves" = "0 moves";

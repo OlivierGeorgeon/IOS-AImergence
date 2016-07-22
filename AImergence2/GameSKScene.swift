@@ -14,7 +14,7 @@ protocol GameSceneDelegate: class
     func unlockLevel(score: Int)
     func isInterfaceLocked(interface: INTERFACE) -> Bool
     func showInstructionWindow()
-    func showImagineWindow()
+    func showImagineWindow(gameModel: GameModel2)
     func showGameCenter()
     func showLevelWindow()
     func isGameCenterEnabled() -> Bool
@@ -307,7 +307,7 @@ class GameSKScene: PositionedSKScene {
             gameSceneDelegate.showInstructionWindow()
         }
         if robotNode.imagineButtonNode.containsPoint(positionInRobot) {
-            gameSceneDelegate.showImagineWindow()
+            gameSceneDelegate.showImagineWindow(gameModel)
         }
         if robotNode.gameCenterButtonNode.containsPoint(positionInRobot) {
             gameSceneDelegate.showGameCenter()
