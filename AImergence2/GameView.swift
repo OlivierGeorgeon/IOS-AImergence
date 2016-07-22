@@ -19,6 +19,8 @@ class GameView: SKView {
     
     //let motionView = UIView()
     weak var delegate: GameViewDelegate?
+    
+    let doubleTapGesture = UITapGestureRecognizer()
 
     override init (frame : CGRect) {
         super.init(frame : frame)
@@ -40,6 +42,11 @@ class GameView: SKView {
         let longPressGestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(GameView.longPress(_:)))
         longPressGestureRecognizer.cancelsTouchesInView = false
         addGestureRecognizer(longPressGestureRecognizer)
+        
+        doubleTapGesture.addTarget(self, action: #selector(GameView.doubleTap(_:)))
+        doubleTapGesture.enabled = false
+        doubleTapGesture.numberOfTapsRequired = 2
+        addGestureRecognizer(doubleTapGesture)
         
         /*
         // Set vertical effect
@@ -87,6 +94,12 @@ class GameView: SKView {
     func previousLevel() {
         if let previousScene = delegate?.previousLevelScene() {
             presentScene(previousScene, transition: PositionedSKScene.transitionRight)
+        }
+    }
+    
+    func doubleTap(gesture:UITapGestureRecognizer) {
+        if let scene = scene as? GameSKScene {
+            scene.doubleTap(gesture)
         }
     }
 }

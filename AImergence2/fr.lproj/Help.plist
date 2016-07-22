@@ -26,8 +26,8 @@
 		</array>
 		<array>
 			<string>Dans le monde du niveau 4, le robot ne peut pas toujours éviter les évènements désagréables.</string>
-			<string>Générez une séquence qui contienne aussi peu d&apos;événements désagréables que possible.</string>
-			<string>Utilisez des formes différentes pour les commandes et affichez les événements agréables en vert et les désagréables en rouge pour voir apparaitre des régularités.</string>
+			<string>Générez une séquence qui contienne aussi peu d&apos;événements désagréables que possible. </string>
+			<string>Utilisez des formes différentes pour les commandes et affichez les événements agréables en vert et les désagréables en rouge. Ne réfléchissez pas trop, votre cerveau verra des régularités avant que vous en preniez conscience !</string>
 		</array>
 		<array>
 			<string>Expérimentez chaque commande seule plusieurs fois de suite. L&apos;une d&apos;entre elles produit toujours le même type d&apos;évènement dans une situation donnée. C&apos;est une commande &quot;persistante&quot;.</string>
@@ -61,7 +61,7 @@
 		</array>
 		<array>
 			<string>La boîte est encore plus petite.</string>
-			<string>Glissez les évènements vers le bas pour revoir les évènements passés. </string>
+			<string>Scrollez pour revoir les 100 derniers. Tappez deux fois sur une zone vide pour revenir à l&apos;origine.</string>
 			<string>Appuyez sur le score pour voir votre nombre de coups.</string>
 		</array>
 		<array>

@@ -26,8 +26,8 @@
 		</array>
 		<array>
 			<string>In the world of Level 4, the robot cannot always avoid unpleasant events.</string>
-			<string>Generate a sequence that contains as few unpleasant events as possible.</string>
-			<string>Use different shapes for the commands, and display the enjoyable events in green and the unpleasant events in red to highlight regularities.</string>
+			<string>Generate a sequence that contains as few unpleasant events as possible. </string>
+			<string>Use different shapes for the commands, and display the enjoyable events in green and the unpleasant events in red. Don&apos;t think too much, your brain will see the pattern before you know it!</string>
 		</array>
 		<array>
 			<string>Experiment with each command individually several times in a raw. One of the commands always generates the same type of events in a given situation. It is a &quot;persistent&quot; command.</string>
@@ -45,7 +45,7 @@
 		</array>
 		<array>
 			<string>On Level 8, events have the same effects and the same values as in Level 7.</string>
-			<string>One of the commands changes the robot&apos;s situation while always returning the same type of event. This command executes a &quot;non-informative action&quot;.</string>
+			<string>Now, however, one of the commands always returns the same type of event. This command executes a &quot;non-informative action&quot;.</string>
 		</array>
 		<array>
 			<string>On level 9, the commands have the same immediate effects as in Levels 5, 6, 7, and 8, but they also transform the environment on the long term.</string>
@@ -53,15 +53,15 @@
 		</array>
 		<array>
 			<string>Level 10&apos;s world is similar to Level 9&apos;s, and events have the same values.</string>
-			<string>As in Level 8, one of the commands changes the robot&apos;s situation while always returning the same type of event (non-informative action).</string>
+			<string>As in Level 8, one of the commands always returns the same type of event (non-informative action).</string>
 		</array>
 		<array>
 			<string>The robot can move forward and turn in a little box.</string>
-			<string>This robot loves moving forward but hates bumping into the edges.</string>
+			<string>This robot loves moving forward but hates bumping into the edges of the box.</string>
 		</array>
 		<array>
 			<string>The box is even smaller.</string>
-			<string>Scroll the events downwards to review past events.</string>
+			<string>Scroll to review the last 100 events. Double-tap on an empty area to return to origin.</string>
 			<string>Press the score to see your number of moves.</string>
 		</array>
 		<array>

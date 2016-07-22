@@ -34,6 +34,7 @@ class GameSKScene: PositionedSKScene {
     
     let actionMoveTrace = SKAction.moveBy(CGVector(dx:0, dy:50), duration: 0.3)
     let actionDisappear = SKAction.scaleTo(0, duration: 0.2)
+    
     var nextExperimentNode: ExperimentSKNode?
     var nextExperimentClock = 0
     
@@ -108,7 +109,6 @@ class GameSKScene: PositionedSKScene {
         experimentNodes = gameModel.createExperimentNodes(self)
         
         robotNode.position = CGPoint(x: 120, y: 180)
-        robotNode.zPosition = 1
         cameraRelativeOriginNode.addChild(robotNode)
         backgroundNode.zPosition = -20
         backgroundNode.name = "background"
@@ -122,6 +122,13 @@ class GameSKScene: PositionedSKScene {
             scoreNode.lineNode.hidden = false
         } else {
             scoreNode.lineNode.hidden = true
+        }
+        if let gameView = view as? GameView {
+            if cameraNode.position.y < 400 {
+                gameView.doubleTapGesture.enabled = false
+            } else {
+                gameView.doubleTapGesture.enabled = true
+            }
         }
     }
     
@@ -272,7 +279,6 @@ class GameSKScene: PositionedSKScene {
     
     override func tap(recognizer: UITapGestureRecognizer) {
         let positionInScene = self.convertPointFromView(recognizer.locationInView(self.view))
-        //let positionInScreen = cameraRelativeOriginNode.convertPoint(positionInScene, fromNode: self)
         let positionInRobot = robotNode.convertPoint(positionInScene, fromNode: self)
         var playExperience = false
         for experimentNode in experimentNodes.values {
@@ -402,6 +408,31 @@ class GameSKScene: PositionedSKScene {
         }
     }
     
+    func doubleTap(gesture:UITapGestureRecognizer) {
+        let positionInScene = self.convertPointFromView(gesture.locationInView(self.view))
+        let positionInScreen = cameraRelativeOriginNode.convertPoint(positionInScene, fromNode: self)
+        var enabled = true
+        if nextExperimentNode != nil {
+            if CGRectContainsPoint(CGRect(x: nextExperimentNode!.position.x - 30, y: nextExperimentNode!.position.y - 30, width: 60, height: 60), positionInScene) {
+                enabled = false
+            }
+        }
+        if CGRectContainsPoint(robotNode.calculateAccumulatedFrame(), positionInScreen) {
+            enabled = false
+        }
+        if positionInScene.x > -50 && positionInScene.x < 50 {
+            enabled = false
+        }
+
+        if enabled {
+            let actionScrollToOrigin = SKAction.moveBy(CGVector(dx: 0.0, dy: 233 - cameraNode.position.y), duration: NSTimeInterval( cameraNode.position.y / 2000))
+            actionScrollToOrigin.timingMode = .EaseInEaseOut
+            cameraNode.runAction(actionScrollToOrigin)
+        } else {
+            tap(gesture)
+        }
+    }
+
     func play(experimentNode: ExperimentSKNode) -> Experience {
         
         clock += 1
