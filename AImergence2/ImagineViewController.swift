@@ -75,6 +75,8 @@ class ImagineViewController: UIViewController {
                 textView.hidden = false
             case 12, 13:
                 textView.text = NSLocalizedString("Tap an event to replay its command", comment: "Message in the Imagine window on Levels 11 and 12.");
+            case 15, 16:
+                textView.text = NSLocalizedString("Explore your environment", comment: "Message in the Imagine window on Levels 15 and 16.");
             case 17:
                 textView.text = NSLocalizedString("You won!", comment: "Message in the Imagine window on Levels 17 (last).");
                 textView.hidden = false

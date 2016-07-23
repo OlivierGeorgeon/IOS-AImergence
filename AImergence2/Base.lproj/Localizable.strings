@@ -13,6 +13,7 @@
 "Excellent 1" = "Now you have completed Level 1! To understand the game better, always observe the effects of each command on the robot before moving on to the next level.";
 "Drag the 3D scene to move the camera" = "Drag the 3D scene to change the angle of view.";
 "Double tap to swap cameras." = "Double-tap on the 3D scene to swap viewpoints.";
+"Explore your environment" = "Explore your environment before moving on to the next level.";
 "Tap an event to replay its command" = "Tap an event in the background window to replay its command. Repeatedly tap the next command that appears to the righ of the event to replay an entire sequence.";
 "You won!" = "Yahoo! You completed Little AI! Watch for updates to get even more exciting levels in the coming months! (Voluntarily developped or founded by your donations.)";
 "Please login to Game Center" = "To view the leaderboard, please log in into the Game Center application!";

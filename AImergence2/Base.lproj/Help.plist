@@ -36,12 +36,13 @@
 		</array>
 		<array>
 			<string>In Level 6, the commands have the same effects as in Level 5, but they have been rearranged in a random order, and are all initially represented by circles.</string>
-			<string>It is left to you to attribute the green and red colors to events, and the square and triangle shapes to commands on the basis of the effects that they produce.</string>
+			<string>It is left to you to attribute shapes to commands and colors to events.</string>
+			<string>Display the events that make you hope for an enjoyable event on the next round in green, and those that let you fear for an unpleasant event in red.</string>
 		</array>
 		<array>
 			<string>In Level 7, the commands have the same effects as in Levels 5 and 6, but some events have different values.</string>
-			<string>Display the events that make you hope for an enjoyable event on the next move in green.</string>
-			<string>Display the events that make you fear for an unpleasant event on the next move in red.</string>
+			<string>Tap the events to reproduce enjoyable sequences in the context when it is possible.</string>
+			<string>Optimize your score by avoiding persistent commands as appropriate.</string>
 		</array>
 		<array>
 			<string>On Level 8, events have the same effects and the same values as in Level 7.</string>
@@ -72,20 +73,21 @@
 		<array>
 			<string>Level 14&apos;s world is the same as Level 13&apos;s.</string>
 			<string>You are in an analogous situation as a newborn baby that ignores the signification of its gestures and of its senses, or of a robot that ignores the signification of its actuators and sensors.</string>
+			<string>You must learn to know yourself and your environment to live a happy life!</string>
 		</array>
 		<array>
 			<string>The robot has two additional commands that it can use to feel the edges around it.</string>
-			<string>Use these two commands to evoid turning towards the edges.</string>
+			<string>Use these two commands to avoid turning towards the edges.</string>
 			<string>The box is getting even bigger.</string>
 		</array>
 		<array>
-			<string>The same world as in Level 15 with the same commands initially uninterpreted.</string>
-			<string>If you are curious to learn more about developmental artificial intelligence and how to program robots that can play Little AI and more, consider visiting http://little-ai.com.</string>
+			<string>You are in the same world as in Level 15 with the same commands initially uninterpreted.</string>
+			<string>If you wish to learn to program robots that can play Little AI and more, or if you are simply curious about developmental artificial intelligence, consider visiting http://little-ai.com.</string>
 		</array>
 		<array>
 			<string>You reached the last level ! Congratulations! It is similar to Level 16.</string>
 			<string>Little AI is a free open-source research and pedagogical project. To learn more, please visit http://little-ai.com.</string>
-			<string>If you found Little AI enjoyable or instructive, or both, please consider making a small donation. You will support reasearch in developmental AI that remains open-source and independant from commercial companies. You will also help us create more levels ! </string>
+			<string>If you found Little AI enjoyable or instructive, or both, please consider making a small donation. You will support reasearch in developmental artificial intelligence that remains open-source and independant from big companies. You will also help us create more levels!</string>
 		</array>
 	</array>
 </dict>

@@ -207,6 +207,7 @@ class GameSKScene: PositionedSKScene {
         let positionInScene = self.convertPointFromView(recognizer.locationInView(self.view))
         let positionInScreen = cameraRelativeOriginNode.convertPoint(positionInScene, fromNode: self)
         let translation  = recognizer.translationInView(self.view!)
+        let velocity = recognizer.velocityInView(self.view!)
 
         switch recognizer.state {
         case .Began:
@@ -223,7 +224,7 @@ class GameSKScene: PositionedSKScene {
                 }
             }
             cameraNode.removeActionForKey("scroll")
-            robotPan = robotNode.containsPoint(positionInScreen) && abs(translation.x) > abs(translation.y)
+            robotPan = robotNode.containsPoint(positionInScreen) && abs(velocity.x) > abs(velocity.y)
         case .Changed:
             if robotPan {
                 robotNode.position.x += translation.x * 667 / self.view!.frame.height
@@ -248,7 +249,6 @@ class GameSKScene: PositionedSKScene {
             } else {
                 let acceleration = CGFloat(-10000.0)
                     var scrollDuration = CGFloat(0.8)
-                    let velocity = recognizer.velocityInView(self.view!)
                     var translateY = velocity.y * CGFloat(scrollDuration) * 0.9 * 667 / self.view!.frame.height
                     if translateY > 667 { translateY = 667 }
                     if translateY < -667 { translateY = -667 }

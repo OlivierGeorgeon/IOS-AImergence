@@ -27,7 +27,7 @@
 		<array>
 			<string>Dans le monde du niveau 4, le robot ne peut pas toujours éviter les évènements désagréables.</string>
 			<string>Générez une séquence qui contienne aussi peu d&apos;événements désagréables que possible. </string>
-			<string>Utilisez des formes différentes pour les commandes et affichez les événements agréables en vert et les désagréables en rouge. Ne réfléchissez pas trop, votre cerveau verra des régularités avant que vous en preniez conscience !</string>
+			<string>Utilisez des formes différentes pour les commandes et affichez les événements agréables en vert et les désagréables en rouge. Ne réfléchissez pas trop, votre cerveau détectera des régularités avant même que vous en preniez conscience !</string>
 		</array>
 		<array>
 			<string>Expérimentez chaque commande seule plusieurs fois de suite. L&apos;une d&apos;entre elles produit toujours le même type d&apos;évènement dans une situation donnée. C&apos;est une commande &quot;persistante&quot;.</string>
@@ -36,12 +36,13 @@
 		</array>
 		<array>
 			<string>Au niveau 6, les commandes ont les mêmes effets qu&apos;au niveau 5, mais elles sont redisposées dans un ordre aléatoire et représentées initialement par des cercles identiques.</string>
-			<string>C&apos;est à vous d&apos;attribuer les couleurs vert et rouge aux évènements, et les formes carré et triangle aux commandes sur la base des évènements générés. </string>
+			<string>C&apos;est à vous d&apos;attribuer les formes aux commandes et les couleurs aux évènements.</string>
+			<string>Affichez en vert les évènements qui laissent espérer un évènement agréable au coup suivant, et en rouge ceux qui laissent craindre un évènement désagréable.</string>
 		</array>
 		<array>
 			<string>Au niveau 7, les commandes ont les mêmes effets qu&apos;aux niveaux 5 et 6, mais certains évènements ont des valeurs différentes.</string>
-			<string>Affichez en vert les évènements qui laissent espérer un évènement agréable au coup suivant.</string>
-			<string>Affichez en rouge les évènements qui laissent craindre un évènement désagréable au coup suivant.</string>
+			<string>Appuyez sur les évènements pour reproduire les séquences agréables dans les contextes ou c&apos;est possible.</string>
+			<string>Optimisez votre score en évitant les commandes persisantes inutiles.</string>
 		</array>
 		<array>
 			<string>Au niveau 8, les évènements ont les mêmes effets et les mêmes valeurs qu&apos;au niveau 7.</string>
@@ -61,17 +62,18 @@
 		</array>
 		<array>
 			<string>La boîte est encore plus petite.</string>
-			<string>Scrollez pour revoir les 100 derniers. Tappez deux fois sur une zone vide pour revenir à l&apos;origine.</string>
+			<string>Scrollez pour revoir les 100 derniers évènements. Tappez deux fois sur une zone vide pour revenir à l&apos;origine.</string>
 			<string>Appuyez sur le score pour voir votre nombre de coups.</string>
 		</array>
 		<array>
 			<string>Le niveau 13 offre les mêmes commandes que les niveaux 11 et 12 plus une commande qui permet au robot d&apos;observer sa situation sans la modifier (commande persistante).</string>
-			<string>Ce robot n&apos;aime pas tourner et déteste se cogner. Heureusement, la boîte devient plus grande.</string>
+			<string>Ce robot n&apos;aime pas tourner et déteste se cogner. Heureusement, la boîte devient plus grande !</string>
 			<string>Utilisez la commande persistante pour éviter de cogner les bords de la boite.</string>
 		</array>
 		<array>
 			<string>Le monde du niveau 14 est le même que celui du niveau 13.</string>
 			<string>Vous êtes dans une situation analogue à celle d&apos;un nouveau-né qui ignore la signification de ses geste et de ses sens, ou de celle d&apos;un robot qui ignore la signification de ses actionneurs et de ses capteurs.</string>
+			<string>Vous devez aprendre à vous connaitre vous-même et à connaitre votre environnement pour pouvoir mener une vie agréable !</string>
 		</array>
 		<array>
 			<string>Le robot dispose de deux commandes persistantes supplémentaires qui lui permettent de sentir les bords de la boite autour de lui.</string>
@@ -79,13 +81,13 @@
 			<string>La boîte devient encore plus grande.</string>
 		</array>
 		<array>
-			<string>Le même monde qu&apos;au niveau 15 avec les mêmes commandes redisposées aléatoirement.</string>
-			<string>Si vous êtes curieux d&apos;en savoir plus sur l&apos;intelligence artificielle développementale et sur comment programmer des robots qui peuvent jouer à Little AI et plus, songez à visiter http://little-ai.com.</string>
+			<string>Vous êtes dans le même monde qu&apos;au niveau 15, avec les mêmes commandes redisposées aléatoirement.</string>
+			<string>Si vous souhaitez apprendre à programmer des robots capables de jouer à Little AI et bien plus, ou si vous êtes simplement curieux à propos de l&apos;intelligence artficielle développementale, songez à visiter http://little-ai.com.</string>
 		</array>
 		<array>
 			<string>Vous avez atteint le dernier niveau ! Félicitations ! Il est similaire au niveau 16.</string>
 			<string>Little AI est un projet de recherche et de pédagogie open-source et sans but lucratif. Pour en savoir plus, visitez http://little-ai.com.</string>
-			<string>S&apos;il vous plaît, si Little AI vous a amusé ou instruit, ou les deux, songez à faire un petit don. Vous soutiendrez une recherch en intelligence artificielle développementale open-source et indépendante des compagnies commerciales. Vous nous aiderez aussi à créer d&apos;autres niveaux !</string>
+			<string>Si Little AI vous a amusé ou instruit, ou les deux, songez à faire un petit don s&apos;il vous plaît. Vous soutiendrez une recherch en intelligence artificielle développementale open-source et indépendante des compagnies commerciales. Vous nous aiderez aussi à créer d&apos;autres niveaux !</string>
 		</array>
 	</array>
 </dict>
