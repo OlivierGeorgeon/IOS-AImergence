@@ -16,8 +16,8 @@ class Level2 : Level0 {
     var previousExperiment:Experiment?
     
     convenience required init() {
-        let experiment0 = Experiment(number: 0)
-        let experiment1 = Experiment(number: 1)
+        let experiment0 = Experiment(number: 0, shapeIndex: 0)
+        let experiment1 = Experiment(number: 1, shapeIndex: 1)
         
         let experiments = [experiment0, experiment1]
         

@@ -14,7 +14,7 @@ class ExperienceSKNode: ReshapableSKNode
 
     override var shapeIndex:Int {return experience.shapeIndex }
 
-    init(rect: CGRect, experience: Experience, gameModel: GameModel) {
+    init(rect: CGRect, experience: Experience, gameModel: GameModel0) {
         self.experience = experience
         super.init(rect: rect, gameModel: gameModel)
         reshape()
@@ -24,7 +24,7 @@ class ExperienceSKNode: ReshapableSKNode
         zPosition = 1
     }
     
-    convenience init(experience:Experience, gameModel:GameModel2){
+    convenience init(experience:Experience, gameModel: GameModel0){
         self.init(rect: gameModel.experienceRect, experience: experience, gameModel: gameModel)
         setScale(gameModel.initialScale)
     }

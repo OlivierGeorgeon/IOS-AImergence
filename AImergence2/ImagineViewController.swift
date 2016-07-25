@@ -51,7 +51,7 @@ class ImagineViewController: UIViewController {
         //self.textView.text = NSLocalizedString("You must reach the score of 10", comment: "Message in the Imagine window when the user tries to see the imaginary model before reaching the score of 10.");
     }
     
-    func displayLevel(gameModel: GameModel2?, okEnabled: Bool) {
+    func displayLevel(gameModel: GameModel0?, okEnabled: Bool) {
         if gameModel == nil {
             // Fix the bug that prevents the localization of UITextView in the storyboard from working.
             self.textView.text = NSLocalizedString("You must reach the score of 10", comment: "Message in the Imagine window when the user tries to see the imaginary model before reaching the score of 10.");

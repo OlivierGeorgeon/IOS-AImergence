@@ -12,10 +12,10 @@ class ReshapableSKNode: SKShapeNode
 {
 
     let rect:CGRect
-    let gameModel: GameModel
+    let gameModel: GameModel0
     var shapeIndex:Int { return 0}
     
-    init(rect: CGRect = CGRect(), gameModel: GameModel) {
+    init(rect: CGRect = CGRect(), gameModel: GameModel0) {
         self.rect = rect
         self.gameModel = gameModel
         super.init()

@@ -21,7 +21,7 @@ class Level0 {
     var valenceTrace:[Int]
     
     var gameModelString: String {
-        var gameModelString = "GameModel2"
+        var gameModelString = "GameModel0"
         if experiments.count > 2 {
             gameModelString = "GameModel3"
         }

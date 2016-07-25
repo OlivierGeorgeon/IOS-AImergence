@@ -66,7 +66,7 @@
 		099452831C62007000F0ABFF /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 099452851C62007000F0ABFF /* InfoPlist.strings */; };
 		099452881C62007000F0ABFF /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0994528A1C62007000F0ABFF /* InfoPlist.strings */; };
 		099452981C620CF600F0ABFF /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0994529A1C620CF600F0ABFF /* Localizable.strings */; };
-		09AC4CBA1C7DD63700C149EC /* GameModel2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09AC4CB91C7DD63700C149EC /* GameModel2.swift */; };
+		09AC4CBA1C7DD63700C149EC /* GameModel0.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09AC4CB91C7DD63700C149EC /* GameModel0.swift */; };
 		09AC4CBC1C7DDBFC00C149EC /* GameModel3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09AC4CBB1C7DDBFC00C149EC /* GameModel3.swift */; };
 		09AC4D131C821BC000C149EC /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09AC4D121C821BC000C149EC /* GameView.swift */; };
 		09AC4D151C8491DA00C149EC /* Level1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09AC4D141C8491DA00C149EC /* Level1.swift */; };
@@ -88,6 +88,8 @@
 		09ED65871C6E36B7004A8CA7 /* ImagineModel4.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09ED65861C6E36B7004A8CA7 /* ImagineModel4.swift */; };
 		09F145131D02226300D0BDC7 /* Level14.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F145121D02226300D0BDC7 /* Level14.swift */; };
 		09F145151D02240B00D0BDC7 /* ImagineModel14.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F145141D02240B00D0BDC7 /* ImagineModel14.swift */; };
+		09F6D6ED1D45E76E00B38671 /* ShapePopupSKNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F6D6EC1D45E76E00B38671 /* ShapePopupSKNode.swift */; };
+		09F6D6EF1D45EC0500B38671 /* ColorPopupSKNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F6D6EE1D45EC0500B38671 /* ColorPopupSKNode.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -176,7 +178,7 @@
 		099452891C62007000F0ABFF /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		099452991C620CF600F0ABFF /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		099452A11C620DD300F0ABFF /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
-		09AC4CB91C7DD63700C149EC /* GameModel2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameModel2.swift; sourceTree = "<group>"; };
+		09AC4CB91C7DD63700C149EC /* GameModel0.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameModel0.swift; sourceTree = "<group>"; };
 		09AC4CBB1C7DDBFC00C149EC /* GameModel3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameModel3.swift; sourceTree = "<group>"; };
 		09AC4CBF1C7DF3BC00C149EC /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Main.strings; sourceTree = "<group>"; };
 		09AC4D121C821BC000C149EC /* GameView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
@@ -199,6 +201,8 @@
 		09ED65861C6E36B7004A8CA7 /* ImagineModel4.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagineModel4.swift; sourceTree = "<group>"; };
 		09F145121D02226300D0BDC7 /* Level14.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Level14.swift; sourceTree = "<group>"; };
 		09F145141D02240B00D0BDC7 /* ImagineModel14.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagineModel14.swift; sourceTree = "<group>"; };
+		09F6D6EC1D45E76E00B38671 /* ShapePopupSKNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShapePopupSKNode.swift; sourceTree = "<group>"; };
+		09F6D6EE1D45EC0500B38671 /* ColorPopupSKNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorPopupSKNode.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -350,6 +354,8 @@
 				097D70141D3F6AF7005D4C3A /* ScoreSKNode.swift */,
 				09246FC51D3145F80049CFA2 /* TipSKNode.swift */,
 				096BD2971D40A27B00C08BEC /* RobotSKNode.swift */,
+				09F6D6EC1D45E76E00B38671 /* ShapePopupSKNode.swift */,
+				09F6D6EE1D45EC0500B38671 /* ColorPopupSKNode.swift */,
 			);
 			name = Nodes;
 			sourceTree = "<group>";
@@ -384,7 +390,7 @@
 			isa = PBXGroup;
 			children = (
 				093681781C4677A6008C6B5D /* GameModel.swift */,
-				09AC4CB91C7DD63700C149EC /* GameModel2.swift */,
+				09AC4CB91C7DD63700C149EC /* GameModel0.swift */,
 				09AC4CBB1C7DDBFC00C149EC /* GameModel3.swift */,
 				0955F6F71CF2E65400473C03 /* GameModel4.swift */,
 				09AF841A1D01ABDD00C1E310 /* GameModel5.swift */,
@@ -575,6 +581,7 @@
 				093C3F681C6F8482000BC6FB /* ImagineModel3.swift in Sources */,
 				093681731C4523B1008C6B5D /* Level0.swift in Sources */,
 				093000E01C4FD3B700425BB1 /* ReshapableSKNode.swift in Sources */,
+				09F6D6ED1D45E76E00B38671 /* ShapePopupSKNode.swift in Sources */,
 				0914EA6A1D0AA7DE00E78D5F /* ImagineModel15.swift in Sources */,
 				09AF84171D01A3D900C1E310 /* Level13.swift in Sources */,
 				096F5CB51C53F1C90041EA5F /* HelpViewController.swift in Sources */,
@@ -594,7 +601,7 @@
 				0914EA661D09B82A00E78D5F /* Level15.swift in Sources */,
 				09ED65831C6D11A1004A8CA7 /* Geometries.swift in Sources */,
 				0961EBBB1C64961F00A4E55C /* Level6.swift in Sources */,
-				09AC4CBA1C7DD63700C149EC /* GameModel2.swift in Sources */,
+				09AC4CBA1C7DD63700C149EC /* GameModel0.swift in Sources */,
 				093681711C4270A5008C6B5D /* Level2.swift in Sources */,
 				09D426421D0AD44000B34CDF /* ImagineModel16.swift in Sources */,
 				0936813B1C417378008C6B5D /* AppDelegate.swift in Sources */,
@@ -605,6 +612,7 @@
 				0911B7F21C731CF400DC3F69 /* PositionedSKScene.swift in Sources */,
 				096F5CB91C56D7240041EA5F /* Level9.swift in Sources */,
 				0911B7F41C73A4B600DC3F69 /* ImagineModel5.swift in Sources */,
+				09F6D6EF1D45EC0500B38671 /* ColorPopupSKNode.swift in Sources */,
 				098203F01D088818009303C5 /* ButtonSKNode.swift in Sources */,
 				09D426441D0AE29D00B34CDF /* Level17.swift in Sources */,
 				0936816D1C42707B008C6B5D /* Experience.swift in Sources */,

@@ -14,7 +14,7 @@ class ExperimentSKNode: ReshapableSKNode
 
     override var shapeIndex:Int {return experiment.shapeIndex }
     
-    init(rect: CGRect, experiment: Experiment, gameModel: GameModel) {
+    init(rect: CGRect, experiment: Experiment, gameModel: GameModel0) {
         self.experiment = experiment
         super.init(rect: rect, gameModel: gameModel)
         reshape()
@@ -23,7 +23,7 @@ class ExperimentSKNode: ReshapableSKNode
         name = "experiment_\(experiment.number)"
     }
     
-    convenience init(gameModel:GameModel, experiment:Experiment){
+    convenience init(gameModel:GameModel0, experiment:Experiment){
         self.init(rect: gameModel.experimentRect, experiment: experiment, gameModel: gameModel)
     }
 

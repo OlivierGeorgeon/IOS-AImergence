@@ -25,7 +25,7 @@ class GameModel5: GameModel4
 
         self.init(experimentRect: experimentRect, experimentPositions: experimentPositions, experienceRect: experienceRect, initialScale: initialScale, valencePosition: valencePosition, obsolescence: obsolescence, actionScale: actionScale, experimentPaths: experimentPaths, experienceColors: experienceColors)
     }
-
+/*
     override func createExperimentNodes(scene: SKScene) -> Dictionary<Int, ExperimentSKNode> {
         var experimentNodes = Dictionary<Int, ExperimentSKNode>()
         for i in 0...3 {
@@ -35,5 +35,5 @@ class GameModel5: GameModel4
             experimentNodes.updateValue(experimentNode, forKey: experimentNode.experiment.number)
         }
         return experimentNodes
-    }
+    }*/
 }

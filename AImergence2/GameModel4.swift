@@ -10,6 +10,11 @@ import SpriteKit
 
 class GameModel4: GameModel3
 {
+    override var shapePopupRect: CGRect {  return CGRect(x: -165, y: -70, width: 330, height: 140)}
+    override var shapeRect: CGRect { return CGRect(x: -30, y: -30, width: 60, height: 60)}
+    override var shapeOrigin: CGPoint { return CGPoint(x: -120, y: -100)}
+    override var shapeOffset: CGVector { return CGVector(dx: 80, dy: 100)}
+    override var shapePopupPosition: CGPoint { return CGPoint(x: 0, y: 220)}
     
     required convenience init()
     {
@@ -25,7 +30,7 @@ class GameModel4: GameModel3
 
         self.init(experimentRect: experimentRect, experimentPositions: experimentPositions, experienceRect: experienceRect, initialScale: initialScale, valencePosition: valencePosition, obsolescence: obsolescence, actionScale: actionScale, experimentPaths: experimentPaths, experienceColors: experienceColors)
     }
-
+/*
     override func createShapePopup() -> SKShapeNode {
         let popupBackground = SKShapeNode(rect: CGRect(x: -165, y: -150, width: 330, height: 200), cornerRadius: 10)
         popupBackground.position = CGPoint(x: 0, y: 220)
@@ -49,8 +54,8 @@ class GameModel4: GameModel3
         }
         return shapeNodes
     }
+     */
 }
-
 func triangleUp(rect: CGRect) -> UIBezierPath {
     let path = UIBezierPath()
     path.moveToPoint(CGPoint(x: rect.minX, y: rect.minY))

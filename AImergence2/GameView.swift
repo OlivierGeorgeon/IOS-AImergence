@@ -15,12 +15,15 @@ protocol GameViewDelegate: class
     func previousLevelScene() -> GameSKScene?
 }
 
-class GameView: SKView {
+class GameView: SKView, UIGestureRecognizerDelegate {
     
     //let motionView = UIView()
     weak var delegate: GameViewDelegate?
     
     let doubleTapGesture = UITapGestureRecognizer()
+    let panGestureRecognizer = UIPanGestureRecognizer()
+    
+    var verticalPan = false
 
     override init (frame : CGRect) {
         super.init(frame : frame)
@@ -33,8 +36,9 @@ class GameView: SKView {
     }
     
     func addBehavior (){
-        let panGestureRecognizer = UIPanGestureRecognizer(target:self, action: #selector(GameView.pan(_:)))
+        panGestureRecognizer.addTarget(self, action: #selector(GameView.pan(_:)))
         panGestureRecognizer.cancelsTouchesInView = false
+        panGestureRecognizer.delegate = self
         addGestureRecognizer(panGestureRecognizer)
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(GameView.tap(_:)))
         tapGestureRecognizer.cancelsTouchesInView = false
@@ -44,7 +48,7 @@ class GameView: SKView {
         addGestureRecognizer(longPressGestureRecognizer)
         
         doubleTapGesture.addTarget(self, action: #selector(GameView.doubleTap(_:)))
-        doubleTapGesture.enabled = false
+        doubleTapGesture.enabled = true
         doubleTapGesture.numberOfTapsRequired = 2
         addGestureRecognizer(doubleTapGesture)
         
@@ -100,6 +104,44 @@ class GameView: SKView {
     func doubleTap(gesture:UITapGestureRecognizer) {
         if let scene = scene as? GameSKScene {
             scene.doubleTap(gesture)
+        }
+    }
+    
+    override func gestureRecognizerShouldBegin(gestureRecognizer: UIGestureRecognizer) -> Bool {
+        if gestureRecognizer == panGestureRecognizer {
+            let velocity = panGestureRecognizer.velocityInView(self)
+            verticalPan = abs(velocity.x) < abs(velocity.y)
+            if let scene = scene as? GameSKScene {
+                let positionInScene = scene.convertPointFromView(gestureRecognizer.locationInView(self))
+                if verticalPan {
+                    for experimentNode in scene.experimentNodes.values {
+                        if experimentNode.containsPoint(positionInScene){
+                            return false
+                        }
+                    }
+                    if scene.nextExperimentNode != nil {
+                        if scene.nextExperimentNode!.containsPoint(positionInScene) {
+                            return false
+                        }
+                    }
+                    return true
+                } else {
+                    let positionInScreen = scene.cameraRelativeOriginNode.convertPoint(positionInScene, fromNode: scene)
+                    if scene.robotNode.containsPoint(positionInScreen) {
+                        return true
+                    } else {
+                        return false
+                    }
+                }
+            } else {
+                if verticalPan {
+                    return true
+                } else {
+                    return false
+                }
+            }
+        } else {
+            return true
         }
     }
 }

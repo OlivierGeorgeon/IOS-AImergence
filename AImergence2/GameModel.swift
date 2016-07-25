@@ -14,13 +14,17 @@ class GameModel
     let color               = UIColor.whiteColor()
     let titleFont           = UIFont.preferredFontForTextStyle(UIFontTextStyleTitle1)
     let colorNodeRect       = CGRect(x: -30, y:-30, width: 60, height: 60)
-    
     let experimentRect: CGRect
     let experimentPaths: [(CGRect) -> UIBezierPath]
     let initialScale: CGFloat
     let valencePosition: CGPoint
     let obsolescence: Int
     let experienceColors: [UIColor]
+    var shapePopupRect: CGRect {  return CGRect(x: -165, y: -70, width: 330, height: 140)}
+    var shapeRect: CGRect { return CGRect(x: -40, y: -40, width: 80, height: 80)}
+    var shapeOrigin: CGPoint { return CGPoint(x: -100, y: 0)}
+    var shapeOffset: CGVector { return CGVector(dx: 100, dy: 0)}
+    var shapePopupPosition: CGPoint { return CGPoint(x: 0, y: 150)}
     
     init(experimentRect: CGRect, experimentPaths: [(CGRect) -> UIBezierPath], initialScale: CGFloat, valencePosition: CGPoint, obsolescence: Int, experienceColors: [UIColor]) {
         self.experimentRect = experimentRect
@@ -33,6 +37,7 @@ class GameModel
     
     func moveByVect(point: CGPoint) -> CGVector { return CGVector(dx: -20 - point.x, dy: 90 - point.y) }
 
+    /*
     func createShapePopup() -> SKShapeNode {
         let popupBackground = SKShapeNode(rect: CGRect(x: -165, y: -70, width: 330, height: 140), cornerRadius: 10)
         popupBackground.position = CGPoint(x: 0, y: 150)
@@ -81,7 +86,7 @@ class GameModel
         }
         return colorNodes
     }
-    
+
     class func createGameModel(levelNumber: Int) -> GameModel2 {
         var level = Level0()
         
@@ -101,4 +106,5 @@ class GameModel
         gameModel.level = level
         return gameModel
     }
+    */
 }

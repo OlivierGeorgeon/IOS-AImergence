@@ -12,7 +12,7 @@ class ImagineModel
 {
     let actionLiftExperience = SCNAction.moveByX( 0.0, y: 5.0 * 10, z: 0.0, duration: 3.0)
 
-    let gameModel: GameModel2
+    let gameModel: GameModel0
     let actions = Actions()
     let scale = Float(10)
     //var cameraNodes = [SCNNode]()
@@ -24,7 +24,7 @@ class ImagineModel
     var constraint: SCNLookAtConstraint!
     let tileYOffset = SCNVector3(0, -5, 0)
 
-    required init(gameModel: GameModel2) {
+    required init(gameModel: GameModel0) {
         self.gameModel = gameModel
     }
     

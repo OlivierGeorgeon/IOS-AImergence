@@ -35,7 +35,7 @@ class MenuSKScene: PositionedSKScene {
     let levelXOffset        = CGVector( dx: 60, dy: 0)
     let levelYOffset        = CGVector( dx:  0, dy: -80)
 
-    let gameModel = GameModel2()
+    let gameModel = GameModel0()
 
     weak var userDelegate: MenuSceneDelegate?
     var buttonNodes = [SKNode]()
@@ -178,11 +178,11 @@ class MenuSKScene: PositionedSKScene {
         for levelNode in buttonNodes {
             if levelNode.containsPoint(positionInScene){
                 levelNode.runAction(actionPress)
-                if let ln = levelNode.userData?["level"] as! Int? {
-                    if userDelegate?.levelStatus(ln) > 0 {
-                        userDelegate?.updateLevel(ln)
-                        let gameModel = GameModel.createGameModel(ln)
-                        let gameScene = GameSKScene(gameModel: gameModel)
+                if let levelNumber = levelNode.userData?["level"] as! Int? {
+                    if userDelegate?.levelStatus(levelNumber) > 0 {
+                        userDelegate?.updateLevel(levelNumber)
+                        //let gameModel = GameModel.createGameModel(ln)
+                        let gameScene = GameSKScene(levelNumber: levelNumber)
                         gameScene.gameSceneDelegate = previousGameScene?.gameSceneDelegate
                         self.view?.presentScene(gameScene, transition: PositionedSKScene.transitionDown)
                     }

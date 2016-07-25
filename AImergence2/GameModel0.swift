@@ -8,8 +8,23 @@
 
 import SpriteKit
 
-class GameModel2: GameModel
+class GameModel0
 {
+    let backgroundColor     = SKColor.lightGrayColor()
+    let color               = UIColor.whiteColor()
+    let titleFont           = UIFont.preferredFontForTextStyle(UIFontTextStyleTitle1)
+    let colorNodeRect       = CGRect(x: -30, y:-30, width: 60, height: 60)
+    let experimentRect: CGRect
+    let experimentPaths: [(CGRect) -> UIBezierPath]
+    let initialScale: CGFloat
+    let valencePosition: CGPoint
+    let obsolescence: Int
+    let experienceColors: [UIColor]
+    var shapePopupRect: CGRect {  return CGRect(x: -165, y: -70, width: 330, height: 140)}
+    var shapeRect: CGRect { return CGRect(x: -40, y: -40, width: 80, height: 80)}
+    var shapeOrigin: CGPoint { return CGPoint(x: -100, y: 0)}
+    var shapeOffset: CGVector { return CGVector(dx: 100, dy: 0)}
+    var shapePopupPosition: CGPoint { return CGPoint(x: 0, y: 150)}
 
     let experimentPositions: [CGPoint]
     let experienceRect: CGRect
@@ -18,10 +33,17 @@ class GameModel2: GameModel
     var level: Level0!
     
     init(experimentRect: CGRect, experimentPositions: [CGPoint], experienceRect: CGRect, initialScale: CGFloat, valencePosition: CGPoint, obsolescence: Int, actionScale: SKAction, experimentPaths: [(CGRect) -> UIBezierPath], experienceColors: [UIColor]) {
+        self.experimentRect = experimentRect
+        self.experimentPaths = experimentPaths
+        self.initialScale = initialScale
+        self.valencePosition = valencePosition
+        self.obsolescence = obsolescence
+        self.experienceColors = experienceColors
+
         self.experimentPositions = experimentPositions
         self.experienceRect = experienceRect
         self.actionScale = actionScale
-        super.init(experimentRect: experimentRect, experimentPaths: experimentPaths, initialScale: initialScale, valencePosition: valencePosition, obsolescence: obsolescence, experienceColors: experienceColors)
+        //super.init(experimentRect: experimentRect, experimentPaths: experimentPaths, initialScale: initialScale, valencePosition: valencePosition, obsolescence: obsolescence, experienceColors: experienceColors)
     }
     
     required convenience init()
@@ -39,6 +61,9 @@ class GameModel2: GameModel
         self.init(experimentRect: experimentRect, experimentPositions: experimentPositions, experienceRect: experienceRect, initialScale: initialScale, valencePosition: valencePosition, obsolescence: obsolescence, actionScale: actionScale, experimentPaths: experimentPaths, experienceColors: experienceColors)
     }    
 
+    func moveByVect(point: CGPoint) -> CGVector { return CGVector(dx: -20 - point.x, dy: 90 - point.y) }
+    
+    /*
     func createExperimentNodes(scene: SKScene) -> Dictionary<Int, ExperimentSKNode> {
         var experimentNodes = Dictionary<Int, ExperimentSKNode>()
         for i in 0...1 {
@@ -48,7 +73,7 @@ class GameModel2: GameModel
             experimentNodes.updateValue(experimentNode, forKey: experimentNode.experiment.number)
         }
         return experimentNodes
-    }
+    }*/
 }
 
 func triangle(rect: CGRect) -> UIBezierPath {

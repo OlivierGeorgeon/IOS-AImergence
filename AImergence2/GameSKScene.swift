@@ -14,7 +14,7 @@ protocol GameSceneDelegate: class
     func unlockLevel(score: Int)
     func isInterfaceLocked(interface: INTERFACE) -> Bool
     func showInstructionWindow()
-    func showImagineWindow(gameModel: GameModel2)
+    func showImagineWindow(gameModel: GameModel0)
     func showGameCenter()
     func showLevelWindow()
     func isGameCenterEnabled() -> Bool
@@ -22,47 +22,52 @@ protocol GameSceneDelegate: class
 
 class GameSKScene: PositionedSKScene {
     
-    let gameModel:GameModel2
+    let gameModel:GameModel0
     let level:Level0
-    
     let backgroundNode = SKSpriteNode(imageNamed: "fond.png")
     let robotNode = RobotSKNode()
     let cameraNode = SKCameraNode()
     let cameraRelativeOriginNode = SKNode()
-    
-    var timer: NSTimer?
-    
     let actionMoveTrace = SKAction.moveBy(CGVector(dx:0, dy:50), duration: 0.3)
     let actionDisappear = SKAction.scaleTo(0, duration: 0.2)
-    
-    var nextExperimentNode: ExperimentSKNode?
-    var nextExperimentClock = 0
+    let scoreNode = ScoreSKNode()
     
     weak var gameSceneDelegate: GameSceneDelegate!
+
+    var timer: NSTimer?
+    var nextExperimentNode: ExperimentSKNode?
+    var nextExperimentClock = 0
     var experimentNodes = Dictionary<Int, ExperimentSKNode>()
     var eventNodes = Dictionary<Int, EventSKNode>()
     var clock:Int = 0
-    
-    let scoreNode = ScoreSKNode()
-    
-    var shapePopupNode:SKNode!
-    var shapeNodes = Array<SKShapeNode>()
-    var shapeNodeIndex = 0
-    var colorPopupNode: SKNode?
-    var colorNodes = Array<SKShapeNode>()
-    var colorNodeIndex = 0
+    let shapePopupNode: ShapePopupSKNode
+    //var shapeNodes = Array<SKShapeNode>()
+    //var shapeNodeIndex = 0
+    var colorPopupNode = ColorPopupSKNode()
     var editNode: SKNode?
     var winMoves = 0
     var score = 0
-    
-    var robotPan = false
     var robotOrigin = CGFloat(0.0)
-    var horizontalPan = false
     
-    init(gameModel: GameModel2)
+    init(levelNumber: Int)
     {
-        self.level = gameModel.level
-        self.gameModel = gameModel
+        //let bundleName = NSBundle.mainBundle().infoDictionary!["CFBundleName"] as! String
+        let aClass:AnyClass? =  NSClassFromString("Little_AI.Level\(levelNumber)")
+        if let levelType = aClass as? Level0.Type {
+            level = levelType.init()
+        } else {
+            level = Level0()
+        }
+        let gameModelString = level.gameModelString
+        let aClass2:AnyClass? =  NSClassFromString("Little_AI." + gameModelString)
+        if let gameModelType = aClass2 as? GameModel0.Type {
+            gameModel = gameModelType.init()
+        } else {
+            gameModel = GameModel0()
+        }
+        
+        gameModel.level = level
+        self.shapePopupNode = ShapePopupSKNode(gameModel: gameModel)
 
         super.init(size:CGSize(width: 0 , height: 0))
         
@@ -75,7 +80,8 @@ class GameSKScene: PositionedSKScene {
     required init?(coder aDecoder: NSCoder)
     {
         self.level = Level0()
-        self.gameModel = GameModel2()
+        self.gameModel = GameModel0()
+        self.shapePopupNode = ShapePopupSKNode(gameModel: gameModel)
 
         super.init(coder: aDecoder)
         layoutScene()
@@ -88,12 +94,9 @@ class GameSKScene: PositionedSKScene {
         name = "gameScene"
         
         backgroundColor = gameModel.backgroundColor
-        //let actionRight = SKAction.moveBy(CGVector(dx: 20, dy: 0), duration: 0.5)
-        //let actionLeft = SKAction.moveBy(CGVector(dx: -20, dy: 0), duration: 0.5)
-        //levelButtonNode.actionPulse(SKAction.repeatActionForever(SKAction.sequence([actionRight, actionLeft])))
 
         self.addChild(scoreNode)
-        cameraRelativeOriginNode
+        //cameraRelativeOriginNode
         
         let scoreInOriginWindow = SKConstraint.positionY(SKRange(lowerLimit: 270, upperLimit: 270))
         scoreInOriginWindow.referenceNode = cameraNode
@@ -103,10 +106,14 @@ class GameSKScene: PositionedSKScene {
         //moveOnTopOfScreen.referenceNode = cameraNode
         //scoreNode.moveNode.constraints = [moveOnTopOfScreen]
 
-        shapePopupNode = gameModel.createShapePopup()
-        shapeNodes = gameModel.createShapeNodes(shapePopupNode)
+        //shapePopupNode = gameModel.createShapePopup()
+        //shapeNodes = gameModel.createShapeNodes(shapePopupNode)
+        shapePopupNode.hidden = true
+        addChild(shapePopupNode)
+        colorPopupNode.hidden = true
+        cameraRelativeOriginNode.addChild(colorPopupNode)
         
-        experimentNodes = gameModel.createExperimentNodes(self)
+        experimentNodes = createExperimentNodes()
         
         robotNode.position = CGPoint(x: 120, y: 180)
         cameraRelativeOriginNode.addChild(robotNode)
@@ -123,13 +130,6 @@ class GameSKScene: PositionedSKScene {
         } else {
             scoreNode.lineNode.hidden = true
         }
-        if let gameView = view as? GameView {
-            if cameraNode.position.y < 400 {
-                gameView.doubleTapGesture.enabled = false
-            } else {
-                gameView.doubleTapGesture.enabled = true
-            }
-        }
     }
     
     override func didMoveToView(view: SKView)
@@ -139,24 +139,20 @@ class GameSKScene: PositionedSKScene {
 
         // The delegate is ready in didMoveToView
         if robotNode.recommendation == RECOMMEND.DONE {
-        if gameSceneDelegate.isInterfaceLocked(INTERFACE.INSTRUCTION) {
-            //robotNode.imagineButtonNode.disappear()
-            //robotNode.gameCenterButtonNode.disappear()
+            if gameSceneDelegate.isInterfaceLocked(INTERFACE.INSTRUCTION) {
                 robotNode.recommend(RECOMMEND.INSTRUCTION)
-            //robotNode.instructionButtonNode.pulse()
-            //robotNode.instructionButtonNode.appear()
-        } else {
-            if gameSceneDelegate.isInterfaceLocked(INTERFACE.IMAGINE) {
-                if gameSceneDelegate.isInterfaceLocked(INTERFACE.LEVEL) {
-                    robotNode.recommend(RECOMMEND.INSTRUCTION_OK)
-                } else {
-                    robotNode.recommend(RECOMMEND.IMAGINE)
+            } else {
+                if gameSceneDelegate.isInterfaceLocked(INTERFACE.IMAGINE) {
+                    if gameSceneDelegate.isInterfaceLocked(INTERFACE.LEVEL) {
+                        robotNode.recommend(RECOMMEND.INSTRUCTION_OK)
+                    } else {
+                        robotNode.recommend(RECOMMEND.IMAGINE)
+                    }
+                } else if gameSceneDelegate.isInterfaceLocked(INTERFACE.LEADERBOARD) && gameSceneDelegate.isGameCenterEnabled() {
+                    robotNode.recommend(RECOMMEND.LEADERBOARD)
+                    robotNode.gameCenterButtonNode.pulse()
                 }
-            } else if gameSceneDelegate.isInterfaceLocked(INTERFACE.LEADERBOARD) && gameSceneDelegate.isGameCenterEnabled() {
-                robotNode.recommend(RECOMMEND.LEADERBOARD)
-                robotNode.gameCenterButtonNode.pulse()
             }
-        }
         }
         
         if !gameSceneDelegate.isInterfaceLocked(INTERFACE.INSTRUCTION) {
@@ -204,29 +200,16 @@ class GameSKScene: PositionedSKScene {
     }
     
     override func pan(recognizer: UIPanGestureRecognizer) {
-        let positionInScene = self.convertPointFromView(recognizer.locationInView(self.view))
-        let positionInScreen = cameraRelativeOriginNode.convertPoint(positionInScene, fromNode: self)
         let translation  = recognizer.translationInView(self.view!)
         let velocity = recognizer.velocityInView(self.view!)
 
         switch recognizer.state {
         case .Began:
-            for experimentNode in experimentNodes.values {
-                if experimentNode.containsPoint(positionInScene){
-                    recognizer.enabled = false
-                    recognizer.enabled = true
-                }
-            }
-            if nextExperimentNode != nil {
-                if nextExperimentNode!.containsPoint(positionInScene) {
-                    recognizer.enabled = false
-                    recognizer.enabled = true
-                }
-            }
             cameraNode.removeActionForKey("scroll")
-            robotPan = robotNode.containsPoint(positionInScreen) && abs(velocity.x) > abs(velocity.y)
         case .Changed:
-            if robotPan {
+            if (view as! GameView).verticalPan {
+                cameraNode.position.y += translation.y * 667 / self.view!.frame.height
+            } else {
                 robotNode.position.x += translation.x * 667 / self.view!.frame.height
                 if robotNode.position.x <  robotOrigin * 0.9 {
                     robotNode.runAction(SKAction.moveToX(robotOrigin, duration: 0.2))
@@ -240,36 +223,36 @@ class GameSKScene: PositionedSKScene {
                     recognizer.enabled = false
                     recognizer.enabled = true
                 }
-            } else {
-                cameraNode.position.y += translation.y * 667 / self.view!.frame.height
             }
         case .Ended:
-            if robotPan {
-                robotNode.runAction(SKAction.moveToX(robotOrigin, duration: 0.2))
-            } else {
+            if (view as! GameView).verticalPan {
                 let acceleration = CGFloat(-10000.0)
-                    var scrollDuration = CGFloat(0.8)
-                    var translateY = velocity.y * CGFloat(scrollDuration) * 0.9 * 667 / self.view!.frame.height
-                    if translateY > 667 { translateY = 667 }
-                    if translateY < -667 { translateY = -667 }
+                var scrollDuration = CGFloat(0.8)
+                var translateY = velocity.y * CGFloat(scrollDuration) * 0.9 * 667 / self.view!.frame.height
+                if translateY > 667 { translateY = 667 }
+                if translateY < -667 { translateY = -667 }
 
-                    if cameraNode.position.y + translateY > 233 {
-                        let actionMoveCameraUp = SKAction.moveBy(CGVector(dx: 0, dy: translateY), duration: Double(scrollDuration))
-                        actionMoveCameraUp.timingMode = .EaseOut
-                        cameraNode.runAction(actionMoveCameraUp, withKey: "scroll")
-                    } else {
-                        scrollDuration  =  abs(velocity.y / acceleration)
-                        translateY = velocity.y * scrollDuration + acceleration * scrollDuration * scrollDuration / 2
-                        if cameraNode.position.y > 233 {
-                            translateY -= cameraNode.position.y - 233
-                            scrollDuration += (cameraNode.position.y - 233) / abs(velocity.y)
-                        }
-                        let actionMoveCameraUp = SKAction.moveBy(CGVector(dx: 0, dy: translateY), duration: Double(scrollDuration))
-                        actionMoveCameraUp.timingMode = .EaseOut
-                        let moveToOrigin = SKAction.moveToY(233, duration: 0.3)
-                        moveToOrigin.timingMode = .EaseInEaseOut
-                        cameraNode.runAction(SKAction.sequence([actionMoveCameraUp, moveToOrigin]), withKey: "scroll")
+                if cameraNode.position.y + translateY > 233 {
+                    let actionMoveCameraUp = SKAction.moveBy(CGVector(dx: 0, dy: translateY), duration: Double(scrollDuration))
+                    actionMoveCameraUp.timingMode = .EaseOut
+                    cameraNode.runAction(actionMoveCameraUp, withKey: "scroll")
+                } else {
+                    scrollDuration  =  abs(velocity.y / acceleration)
+                    translateY = velocity.y * scrollDuration + acceleration * scrollDuration * scrollDuration / 2
+                    if cameraNode.position.y > 233 {
+                        translateY -= cameraNode.position.y - 233
+                        scrollDuration += (cameraNode.position.y - 233) / abs(velocity.y)
                     }
+                    let actionMoveCameraUp = SKAction.moveBy(CGVector(dx: 0, dy: translateY), duration: Double(scrollDuration))
+                    actionMoveCameraUp.timingMode = .EaseOut
+                    let moveToOrigin = SKAction.moveToY(233, duration: 0.3)
+                    moveToOrigin.timingMode = .EaseInEaseOut
+                    cameraNode.runAction(SKAction.sequence([actionMoveCameraUp, moveToOrigin]), withKey: "scroll")
+                }
+            } else {
+                let moveRobotToOrigin = SKAction.moveToX(robotOrigin, duration: 0.2)
+                moveRobotToOrigin.timingMode = .EaseInEaseOut
+                robotNode.runAction(moveRobotToOrigin)
             }
         default:
             break
@@ -281,12 +264,14 @@ class GameSKScene: PositionedSKScene {
         let positionInScene = self.convertPointFromView(recognizer.locationInView(self.view))
         let positionInRobot = robotNode.convertPoint(positionInScene, fromNode: self)
         var playExperience = false
+        var handlingTap = false
         for experimentNode in experimentNodes.values {
             if experimentNode.containsPoint(positionInScene){
                 playExperience = true
                 play(experimentNode)
                 nextExperimentNode?.removeFromParent()
                 nextExperimentNode = nil
+                handlingTap = true
             }
         }
         
@@ -295,6 +280,7 @@ class GameSKScene: PositionedSKScene {
                 let experience = play(experimentNodes[nextExperimentNode!.experiment.number]!)
                 playExperience = true
                 animNextExperiment(experience, nextClock: nextExperimentClock + 1)
+                handlingTap = true
             }
         }
         
@@ -304,21 +290,30 @@ class GameSKScene: PositionedSKScene {
                     eventNode.runPressAction()
                     let experience = play(experimentNodes[eventNode.experienceNode.experience.experiment.number]!)
                     animNextExperiment(experience, nextClock: clock + 1)
+                    handlingTap = true
                 }
             }
         }
         if CGRectContainsPoint(robotNode.imageNode.frame, positionInRobot) {
             robotNode.imageNode.runAction(actionPress)
             robotNode.toggleButton()
+            handlingTap = true
         }
         if robotNode.instructionButtonNode.containsPoint(positionInRobot) {
             gameSceneDelegate.showInstructionWindow()
+            handlingTap = true
         }
         if robotNode.imagineButtonNode.containsPoint(positionInRobot) {
             gameSceneDelegate.showImagineWindow(gameModel)
+            handlingTap = true
         }
         if robotNode.gameCenterButtonNode.containsPoint(positionInRobot) {
             gameSceneDelegate.showGameCenter()
+            handlingTap = true
+        }
+        if handlingTap {
+            (view as! GameView).doubleTapGesture.enabled = false
+            (view as! GameView).doubleTapGesture.enabled = true
         }
     }
     
@@ -354,31 +349,38 @@ class GameSKScene: PositionedSKScene {
     override func longPress(recognizer: UILongPressGestureRecognizer)
     {
         let positionInScene = self.convertPointFromView(recognizer.locationInView(self.view))
-        let positionInShapePopup = shapePopupNode?.convertPoint(positionInScene, fromNode: self)
-        let positionInColorPopup = colorPopupNode?.convertPoint(positionInScene, fromNode: self)
+        let positionInShapePopup = shapePopupNode.convertPoint(positionInScene, fromNode: self)
+        let positionInColorPopup = colorPopupNode.convertPoint(positionInScene, fromNode: self)
 
         switch recognizer.state {
         case .Began:
             for experimentNode in experimentNodes.values {
                 if CGRectContainsPoint(experimentNode.frame, positionInScene) {
-                    shapeNodeIndex = experimentNode.experiment.shapeIndex
+                    let shapeNodeIndex = experimentNode.experiment.shapeIndex
                     timer = NSTimer.scheduledTimerWithTimeInterval(0.7, target: self, selector: #selector(GameSKScene.revolveShapes), userInfo: nil, repeats: true)
                     editNode = experimentNode
-                    shapeNodes.forEach({$0.lineWidth = 3})
-                    shapeNodes[shapeNodeIndex].lineWidth = 6
-                    addChild(shapePopupNode!)
+                    //shapeNodes.forEach({$0.lineWidth = 3})
+                    //shapeNodes[shapeNodeIndex].lineWidth = 6
+                    //addChild(shapePopupNode!)
+                    shapePopupNode.position = experimentNode.position
+                    shapePopupNode.update(shapeNodeIndex)
+                    shapePopupNode.appear()
                 }
             }
             for eventNode in eventNodes.values {
                 if CGRectContainsPoint(eventNode.calculateAccumulatedFrame(), positionInScene) {
-                    colorNodeIndex = eventNode.experienceNode.experience.colorIndex
+                    let colorIndex = eventNode.experienceNode.experience.colorIndex
                     timer = NSTimer.scheduledTimerWithTimeInterval(0.7, target: self, selector: #selector(GameSKScene.revolveColors), userInfo: nil, repeats: true)
                     editNode = eventNode
-                    colorPopupNode = gameModel.createColorPopup()
-                    colorNodes = gameModel.createColorNodes(colorPopupNode!, experience: eventNode.experienceNode.experience)
-                    colorNodes.forEach({$0.lineWidth = 1})
-                    colorNodes[colorNodeIndex].lineWidth = 6
-                    cameraRelativeOriginNode.addChild(colorPopupNode!)
+                    //colorPopupNode = gameModel.createColorPopup()
+                    let pathFunc = gameModel.experimentPaths[eventNode.experienceNode.experience.experiment.shapeIndex]
+                    colorPopupNode.createColorNodes(pathFunc, experienceColors: gameModel.experienceColors, colorIndex: colorIndex)
+                    
+                    //colorNodes = gameModel.createColorNodes(colorPopupNode!, experience: eventNode.experienceNode.experience)
+                    //colorNodes.forEach({$0.lineWidth = 1})
+                    //cameraRelativeOriginNode.addChild(colorPopupNode!)
+                    colorPopupNode.position = self.convertPoint(eventNode.position, toNode: cameraRelativeOriginNode)
+                    colorPopupNode.appear()
                     eventNode.frameNode.hidden = false
                 }
             }
@@ -394,12 +396,16 @@ class GameSKScene: PositionedSKScene {
         case .Ended:
             timer?.invalidate()
             selectShapeNode(positionInShapePopup)
-            shapePopupNode?.removeFromParent()
+            //shapePopupNode.removeFromParent()
+            if let experimentNode = editNode as? ExperimentSKNode {
+                shapePopupNode.disappear(experimentNode.position)
+            }
             selectColorNode(positionInColorPopup)
-            colorNodes = Array<SKShapeNode>()
-            colorPopupNode?.removeFromParent()
-            colorPopupNode = nil
+            //colorNodes = Array<SKShapeNode>()
+            //colorPopupNode?.removeFromParent()
+            //colorPopupNode = nil
             if let eventNode = editNode as? EventSKNode{
+                colorPopupNode.disappear(self.convertPoint(eventNode.position, toNode: cameraRelativeOriginNode))
                 eventNode.frameNode.hidden  = true
             }
             editNode = nil
@@ -409,28 +415,10 @@ class GameSKScene: PositionedSKScene {
     }
     
     func doubleTap(gesture:UITapGestureRecognizer) {
-        let positionInScene = self.convertPointFromView(gesture.locationInView(self.view))
-        let positionInScreen = cameraRelativeOriginNode.convertPoint(positionInScene, fromNode: self)
-        var enabled = true
-        if nextExperimentNode != nil {
-            if CGRectContainsPoint(CGRect(x: nextExperimentNode!.position.x - 30, y: nextExperimentNode!.position.y - 30, width: 60, height: 60), positionInScene) {
-                enabled = false
-            }
-        }
-        if CGRectContainsPoint(robotNode.calculateAccumulatedFrame(), positionInScreen) {
-            enabled = false
-        }
-        if positionInScene.x > -50 && positionInScene.x < 50 {
-            enabled = false
-        }
-
-        if enabled {
-            let actionScrollToOrigin = SKAction.moveBy(CGVector(dx: 0.0, dy: 233 - cameraNode.position.y), duration: NSTimeInterval( cameraNode.position.y / 2000))
-            actionScrollToOrigin.timingMode = .EaseInEaseOut
-            cameraNode.runAction(actionScrollToOrigin)
-        } else {
-            tap(gesture)
-        }
+        // The doubeTapGesture is disabled if the tapGesture handles the tap.
+        let actionScrollToOrigin = SKAction.moveBy(CGVector(dx: 0.0, dy: 233 - cameraNode.position.y), duration: NSTimeInterval( cameraNode.position.y / 2000))
+        actionScrollToOrigin.timingMode = .EaseInEaseOut
+        cameraNode.runAction(actionScrollToOrigin)
     }
 
     func play(experimentNode: ExperimentSKNode) -> Experience {
@@ -480,32 +468,34 @@ class GameSKScene: PositionedSKScene {
     }
     
     func selectShapeNode(positionInShapePopup: CGPoint?) {
-        for i in 0..<shapeNodes.count {
-            if CGRectContainsPoint(shapeNodes[i].frame, positionInShapePopup!) {
-                shapeNodes.forEach({$0.lineWidth = 3})
-                shapeNodes[i].lineWidth = 6
+        for i in 0..<shapePopupNode.shapeNodes.count {
+            if CGRectContainsPoint(shapePopupNode.shapeNodes[i].frame, positionInShapePopup!) {
+                shapePopupNode.shapeNodes.forEach({$0.lineWidth = 3})
+                shapePopupNode.shapeNodes[i].lineWidth = 6
                 reshapeNodes(i)
             }
         }
     }
     func selectColorNode(positionInColorPopup: CGPoint?) {
-        for i in 0..<colorNodes.count {
-            if CGRectContainsPoint(colorNodes[i].frame, positionInColorPopup!) {
-                colorNodes.forEach({$0.lineWidth = 1})
-                colorNodes[i].lineWidth = 6
+        for i in 0..<colorPopupNode.colorNodes.count {
+            if CGRectContainsPoint(colorPopupNode.colorNodes[i].frame, positionInColorPopup!) {
+                colorPopupNode.colorNodes.forEach({$0.lineWidth = 1})
+                colorPopupNode.colorNodes[i].lineWidth = 6
                 refillNodes(i)
             }
         }
     }
     
     func revolveShapes() {
-        shapeNodes[shapeNodeIndex].lineWidth = 3
+/*        shapeNodes[shapeNodeIndex].lineWidth = 3
         shapeNodeIndex += 1
         if shapeNodeIndex >= shapeNodes.count {
             shapeNodeIndex = 0
         }
         shapeNodes[shapeNodeIndex].lineWidth = 6
-        reshapeNodes(shapeNodeIndex)
+ */
+        shapePopupNode.revolve()
+        reshapeNodes(shapePopupNode.shapeIndex)
     }
     
     func reshapeNodes(shapeIndex: Int) {
@@ -520,17 +510,12 @@ class GameSKScene: PositionedSKScene {
             nextExperimentNode?.reshape()
         }
     }
-    
+
     func revolveColors() {
-        colorNodes[colorNodeIndex].lineWidth = 1
-        colorNodeIndex += 1
-        if colorNodeIndex >= colorNodes.count {
-            colorNodeIndex = 0
-        }
-        colorNodes[colorNodeIndex].lineWidth = 6
-        refillNodes(colorNodeIndex)
+        colorPopupNode.revolve()
+        refillNodes(colorPopupNode.colorIndex)
     }
-    
+
     func refillNodes(colorIndex: Int) {
         if let eventNode = editNode as? EventSKNode {
             eventNode.experienceNode.experience.colorIndex = colorIndex
@@ -538,6 +523,16 @@ class GameSKScene: PositionedSKScene {
                 node.refill()
             }
         }
+    }
+    func createExperimentNodes() -> Dictionary<Int, ExperimentSKNode> {
+        var experimentNodes = Dictionary<Int, ExperimentSKNode>()
+        for i in 0..<level.experiments.count {
+            let experimentNode = ExperimentSKNode(gameModel: gameModel, experiment: level.experiments[i])
+            experimentNode.position = gameModel.experimentPositions[i]
+            self.addChild(experimentNode)
+            experimentNodes.updateValue(experimentNode, forKey: experimentNode.experiment.number)
+        }
+        return experimentNodes
     }
 }
 

@@ -76,8 +76,8 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
             }
         }
         
-        let gameModel = GameModel.createGameModel(0)
-        let gameScene = GameSKScene(gameModel: gameModel)
+        //let gameModel = GameModel.createGameModel(0)
+        let gameScene = GameSKScene(levelNumber: 0)
         gameScene.gameSceneDelegate = self
         gameScene.scaleMode = SKSceneScaleMode.AspectFill
         sceneView.delegate = self
@@ -162,8 +162,8 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
         var nextGameScene:GameSKScene? = nil
         if !interfaceLocks[level][INTERFACE.LEVEL.rawValue] && level < GameViewController.maxLevelNumber {
             level += 1
-            let gameModel = GameModel.createGameModel(level)
-            nextGameScene = GameSKScene(gameModel: gameModel)
+            //let gameModel = GameModel.createGameModel(level)
+            nextGameScene = GameSKScene(levelNumber: level)
             nextGameScene!.gameSceneDelegate = self
             closeImagineWindow()
         }
@@ -174,8 +174,8 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
         var previousGameScene:GameSKScene? = nil
         if level > 0 {
             level -= 1
-            let gameModel = GameModel.createGameModel(level)
-            previousGameScene = GameSKScene(gameModel: gameModel)
+            //let gameModel = GameModel.createGameModel(level)
+            previousGameScene = GameSKScene(levelNumber: level)
             previousGameScene!.gameSceneDelegate = self
             closeImagineWindow()
         }
@@ -233,7 +233,7 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
         return interfaceLocks[level][interface.rawValue]
     }
 
-    func showImagineWindow(gameModel: GameModel2) {
+    func showImagineWindow(gameModel: GameModel0) {
         helpViewControllerContainer.hidden = true
         if isInterfaceLocked(INTERFACE.LEVEL) {
             imagineViewController?.displayLevel(nil, okEnabled: true)

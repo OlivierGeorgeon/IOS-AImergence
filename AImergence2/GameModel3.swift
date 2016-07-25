@@ -8,7 +8,7 @@
 
 import SpriteKit
 
-class GameModel3: GameModel2
+class GameModel3: GameModel0
 {
     
     required convenience init()
@@ -25,7 +25,7 @@ class GameModel3: GameModel2
 
         self.init(experimentRect: experimentRect, experimentPositions: experimentPositions, experienceRect: experienceRect, initialScale: initialScale, valencePosition: valencePosition, obsolescence: obsolescence, actionScale: actionScale, experimentPaths: experimentPaths, experienceColors: experienceColors)
     }
-    
+    /*
     override func createExperimentNodes(scene: SKScene) -> Dictionary<Int, ExperimentSKNode> {
         var experimentNodes = Dictionary<Int, ExperimentSKNode>()
         for i in 0...2 {
@@ -35,5 +35,5 @@ class GameModel3: GameModel2
             experimentNodes.updateValue(experimentNode, forKey: experimentNode.experiment.number)
         }
         return experimentNodes
-    }
+    }*/
 }

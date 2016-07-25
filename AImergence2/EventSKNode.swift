@@ -12,11 +12,11 @@ class EventSKNode: SKNode
 {
     let frameNode =  SKShapeNode(rect: CGRect(origin: CGPoint(x:-40, y:-23), size: CGSize(width: 140, height: 46)), cornerRadius: 23)
     let pressAction = SKAction.sequence([SKAction.unhide(), SKAction.waitForDuration(0.1), SKAction.hide()])
-    let gameModel: GameModel
+    let gameModel: GameModel0
     let valence: Int
     let experienceNode: ExperienceSKNode
     
-    init(experience:Experience, gameModel:GameModel2) {
+    init(experience:Experience, gameModel: GameModel0) {
         self.gameModel = gameModel
         self.valence = experience.valence
         self.experienceNode = ExperienceSKNode(experience: experience, gameModel: gameModel)
