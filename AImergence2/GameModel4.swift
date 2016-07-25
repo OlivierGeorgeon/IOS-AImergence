@@ -10,7 +10,7 @@ import SpriteKit
 
 class GameModel4: GameModel3
 {
-    override var shapePopupRect: CGRect {  return CGRect(x: -165, y: -70, width: 330, height: 140)}
+    override var shapePopupRect: CGRect {  return CGRect(x: -165, y: -150, width: 330, height: 200)}
     override var shapeRect: CGRect { return CGRect(x: -30, y: -30, width: 60, height: 60)}
     override var shapeOrigin: CGPoint { return CGPoint(x: -120, y: -100)}
     override var shapeOffset: CGVector { return CGVector(dx: 80, dy: 100)}

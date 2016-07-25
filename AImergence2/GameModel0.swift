@@ -61,7 +61,9 @@ class GameModel0
         self.init(experimentRect: experimentRect, experimentPositions: experimentPositions, experienceRect: experienceRect, initialScale: initialScale, valencePosition: valencePosition, obsolescence: obsolescence, actionScale: actionScale, experimentPaths: experimentPaths, experienceColors: experienceColors)
     }    
 
-    func moveByVect(point: CGPoint) -> CGVector { return CGVector(dx: -20 - point.x, dy: 90 - point.y) }
+    func moveByVect(point: CGPoint) -> CGVector {
+        return CGVector(dx: -20 - point.x, dy: 90 - point.y)
+    }
     
     /*
     func createExperimentNodes(scene: SKScene) -> Dictionary<Int, ExperimentSKNode> {

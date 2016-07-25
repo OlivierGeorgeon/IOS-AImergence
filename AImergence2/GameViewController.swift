@@ -76,6 +76,9 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
             }
         }
         
+        //let longPressButtonGestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(GameViewController.longPressLevel(_:)))
+        //levelButton.addGestureRecognizer(longPressButtonGestureRecognizer)
+        
         //let gameModel = GameModel.createGameModel(0)
         let gameScene = GameSKScene(levelNumber: 0)
         gameScene.gameSceneDelegate = self
@@ -265,6 +268,10 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
             }))
             self.presentViewController(alert, animated: true, completion: nil)
         }
+    }
+    
+    func levelButtonRect() -> CGRect {
+        return levelButton.frame
     }
     
     func showLevelWindow() {

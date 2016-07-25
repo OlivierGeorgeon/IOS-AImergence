@@ -16,7 +16,6 @@ class RobotSKNode: SKNode
     let instructionButtonNode = ButtonSKNode(.INSTRUCTION, activatedImageNamed: "instructions-color", disactivatedImageNamed: "instructions-black")
     let imagineButtonNode = ButtonSKNode(.IMAGINE, activatedImageNamed: "imagine-color", disactivatedImageNamed: "imagine-black")
     let gameCenterButtonNode = ButtonSKNode(.LEADERBOARD, activatedImageNamed: "gamecenter-color", disactivatedImageNamed: "gamecenter-black")
-    //let levelButtonNode = ButtonSKNode(activatedImageNamed: "levels-color", disactivatedImageNamed: "levels-black")
 
     var robotHappyFrames = [SKTexture]()
     var robotSadFrames = [SKTexture]()

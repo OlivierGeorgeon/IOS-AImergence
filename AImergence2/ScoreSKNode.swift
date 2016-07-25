@@ -21,7 +21,7 @@ class ScoreSKNode: SKNode
     let gaugeNode = SKNode()
     let textWon = NSLocalizedString("Won in", comment: "You won in the main window");
     let textMoves = NSLocalizedString("moves", comment: "Number of moves displayed in the main window");
-
+    
     override init() {
         let pathToDraw:CGMutablePathRef = CGPathCreateMutable()
         self.lineNode = SKShapeNode(path:pathToDraw)
@@ -132,4 +132,5 @@ class ScoreSKNode: SKNode
             }
         }
     }
+    
 }

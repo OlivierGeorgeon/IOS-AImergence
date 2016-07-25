@@ -23,6 +23,7 @@
 		093000DA1C4FB39000425BB1 /* ExperimentSKNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093000D91C4FB39000425BB1 /* ExperimentSKNode.swift */; };
 		093000DE1C4FC77700425BB1 /* ExperienceSKNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093000DD1C4FC77700425BB1 /* ExperienceSKNode.swift */; };
 		093000E01C4FD3B700425BB1 /* ReshapableSKNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093000DF1C4FD3B700425BB1 /* ReshapableSKNode.swift */; };
+		0930E0701D46A53300E56524 /* TraceSKNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0930E06F1D46A53300E56524 /* TraceSKNode.swift */; };
 		0936813B1C417378008C6B5D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0936813A1C417378008C6B5D /* AppDelegate.swift */; };
 		0936813F1C417378008C6B5D /* GameSKScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0936813E1C417378008C6B5D /* GameSKScene.swift */; };
 		093681411C417378008C6B5D /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093681401C417378008C6B5D /* GameViewController.swift */; };
@@ -127,6 +128,7 @@
 		093000D91C4FB39000425BB1 /* ExperimentSKNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExperimentSKNode.swift; sourceTree = "<group>"; };
 		093000DD1C4FC77700425BB1 /* ExperienceSKNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExperienceSKNode.swift; sourceTree = "<group>"; };
 		093000DF1C4FD3B700425BB1 /* ReshapableSKNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReshapableSKNode.swift; sourceTree = "<group>"; };
+		0930E06F1D46A53300E56524 /* TraceSKNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TraceSKNode.swift; sourceTree = "<group>"; };
 		093681371C417378008C6B5D /* Little AI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Little AI.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0936813A1C417378008C6B5D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0936813E1C417378008C6B5D /* GameSKScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSKScene.swift; sourceTree = "<group>"; };
@@ -356,6 +358,7 @@
 				096BD2971D40A27B00C08BEC /* RobotSKNode.swift */,
 				09F6D6EC1D45E76E00B38671 /* ShapePopupSKNode.swift */,
 				09F6D6EE1D45EC0500B38671 /* ColorPopupSKNode.swift */,
+				0930E06F1D46A53300E56524 /* TraceSKNode.swift */,
 			);
 			name = Nodes;
 			sourceTree = "<group>";
@@ -624,6 +627,7 @@
 				09ED65871C6E36B7004A8CA7 /* ImagineModel4.swift in Sources */,
 				090AD9E81C77488000F2FE8C /* ImagineModel.swift in Sources */,
 				09AF84191D01A82800C1E310 /* ImagineModel13.swift in Sources */,
+				0930E0701D46A53300E56524 /* TraceSKNode.swift in Sources */,
 				090AD9EA1C7A5EEE00F2FE8C /* ImagineModel6.swift in Sources */,
 				09ED657D1C6C87D2004A8CA7 /* Level7.swift in Sources */,
 				093681791C4677A6008C6B5D /* GameModel.swift in Sources */,

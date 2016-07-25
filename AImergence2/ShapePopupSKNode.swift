@@ -30,6 +30,7 @@ class ShapePopupSKNode: SKNode {
         super.init()
 
         zPosition = 10
+        setScale(0)
 
         popupBackground.lineWidth = 0
         popupBackground.fillColor = UIColor.whiteColor()
@@ -64,7 +65,7 @@ class ShapePopupSKNode: SKNode {
     }
     
     func revolve() {
-        shapeNodes[shapeIndex].lineWidth = 1
+        shapeNodes[shapeIndex].lineWidth = 3
         shapeIndex += 1
         if shapeIndex >= shapeNodes.count {
             shapeIndex = 0
