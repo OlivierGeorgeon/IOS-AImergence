@@ -79,6 +79,8 @@
 		09AF841B1D01ABDD00C1E310 /* GameModel5.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09AF841A1D01ABDD00C1E310 /* GameModel5.swift */; };
 		09B12C7D1C75D53F000FBEF6 /* Actions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B12C7C1C75D53F000FBEF6 /* Actions.swift */; };
 		09C16D551D15534A006ADB5C /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09C16D541D15534A006ADB5C /* GameKit.framework */; };
+		09C3A10B1D474F0B007D602C /* MatchSKNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C3A10A1D474F0B007D602C /* MatchSKNode.swift */; };
+		09C3A10D1D477D02007D602C /* TutorSKNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C3A10C1D477D02007D602C /* TutorSKNode.swift */; };
 		09D426421D0AD44000B34CDF /* ImagineModel16.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D426411D0AD44000B34CDF /* ImagineModel16.swift */; };
 		09D426441D0AE29D00B34CDF /* Level17.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D426431D0AE29D00B34CDF /* Level17.swift */; };
 		09D426461D0AE30200B34CDF /* ImagineModel17.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D426451D0AE30200B34CDF /* ImagineModel17.swift */; };
@@ -193,6 +195,8 @@
 		09AF841A1D01ABDD00C1E310 /* GameModel5.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameModel5.swift; sourceTree = "<group>"; };
 		09B12C7C1C75D53F000FBEF6 /* Actions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Actions.swift; sourceTree = "<group>"; };
 		09C16D541D15534A006ADB5C /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
+		09C3A10A1D474F0B007D602C /* MatchSKNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatchSKNode.swift; sourceTree = "<group>"; };
+		09C3A10C1D477D02007D602C /* TutorSKNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorSKNode.swift; sourceTree = "<group>"; };
 		09D426411D0AD44000B34CDF /* ImagineModel16.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagineModel16.swift; sourceTree = "<group>"; };
 		09D426431D0AE29D00B34CDF /* Level17.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Level17.swift; sourceTree = "<group>"; };
 		09D426451D0AE30200B34CDF /* ImagineModel17.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagineModel17.swift; sourceTree = "<group>"; };
@@ -359,6 +363,8 @@
 				09F6D6EC1D45E76E00B38671 /* ShapePopupSKNode.swift */,
 				09F6D6EE1D45EC0500B38671 /* ColorPopupSKNode.swift */,
 				0930E06F1D46A53300E56524 /* TraceSKNode.swift */,
+				09C3A10A1D474F0B007D602C /* MatchSKNode.swift */,
+				09C3A10C1D477D02007D602C /* TutorSKNode.swift */,
 			);
 			name = Nodes;
 			sourceTree = "<group>";
@@ -634,6 +640,7 @@
 				093C3F661C6F68B9000BC6FB /* ImagineModel2.swift in Sources */,
 				0914EA6C1D0AAD6300E78D5F /* Level16.swift in Sources */,
 				09AC4D191C86E0D600C149EC /* Level10.swift in Sources */,
+				09C3A10B1D474F0B007D602C /* MatchSKNode.swift in Sources */,
 				09ED657F1C6D0EE6004A8CA7 /* ImagineViewController.swift in Sources */,
 				090AD9F21C7A628C00F2FE8C /* ImagineModel8.swift in Sources */,
 				097D70151D3F6AF7005D4C3A /* ScoreSKNode.swift in Sources */,
@@ -643,6 +650,7 @@
 				09AC4D131C821BC000C149EC /* GameView.swift in Sources */,
 				0961EBB91C63EE2200A4E55C /* Level3.swift in Sources */,
 				09D426461D0AE30200B34CDF /* ImagineModel17.swift in Sources */,
+				09C3A10D1D477D02007D602C /* TutorSKNode.swift in Sources */,
 				0955F6F81CF2E65400473C03 /* GameModel4.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

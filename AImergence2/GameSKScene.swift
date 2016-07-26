@@ -34,6 +34,7 @@ class GameSKScene: PositionedSKScene {
     let shapePopupNode: ShapePopupSKNode
     let colorPopupNode = ColorPopupSKNode()
     let traceNode = TraceSKNode()
+    let tutorNode = TutorSKNode()
     
     weak var gameSceneDelegate: GameSceneDelegate!
     
@@ -41,7 +42,6 @@ class GameSKScene: PositionedSKScene {
     var nextExperimentNode: ExperimentSKNode?
     var nextExperimentClock = 0
     var experimentNodes = Dictionary<Int, ExperimentSKNode>()
-    //var eventNodes = Dictionary<Int, EventSKNode>()
     var clock:Int = 0
     var editNode: SKNode?
     var winMoves = 0
@@ -67,7 +67,7 @@ class GameSKScene: PositionedSKScene {
         
         gameModel.level = level
         self.shapePopupNode = ShapePopupSKNode(gameModel: gameModel)
-
+        
         super.init(size:CGSize(width: 0 , height: 0))
         
         self.camera = cameraNode
@@ -96,7 +96,17 @@ class GameSKScene: PositionedSKScene {
 
         self.addChild(traceNode)
         self.addChild(scoreNode)
-        //cameraRelativeOriginNode
+        tutorNode.level = level.number
+        switch self.level.number {
+        case 0:
+            tutorNode.tip(0, parentNode: scene!)
+        case 1:
+            tutorNode.tip(2, parentNode: robotNode.instructionButtonNode)
+        case 3:
+            tutorNode.tip(8, parentNode: scene!)
+        default:
+            break
+        }
         
         let scoreInOriginWindow = SKConstraint.positionY(SKRange(lowerLimit: 270, upperLimit: 270))
         scoreInOriginWindow.referenceNode = cameraNode
@@ -164,6 +174,7 @@ class GameSKScene: PositionedSKScene {
         if !gameSceneDelegate.isInterfaceLocked(INTERFACE.LEADERBOARD) {
             robotNode.gameCenterButtonNode.disactivate()
         }
+        tutorNode.arrive()
     }
     
     override func positionInFrame(frameSize: CGSize) {
@@ -183,22 +194,7 @@ class GameSKScene: PositionedSKScene {
         backgroundNode.size.width = size.width
         cameraRelativeOriginNode.position = -cameraNode.position
     }
-    /*
-    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
-        super.touchesBegan(touches, withEvent: event)
-        for touch: AnyObject in touches {
-            let locationInScoreNode = touch.locationInNode(scoreNode)
-            if scoreNode.backgroundNode.containsPoint(locationInScoreNode) {
-                scoreNode.moveNode.hidden = false
-            }
-        }
-    }
-    
-    override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
-        super.touchesEnded(touches, withEvent: event)
-        scoreNode.moveNode.hidden = true
-    }
-    */
+
     override func pan(recognizer: UIPanGestureRecognizer) {
         let translation  = recognizer.translationInView(self.view!)
         let velocity = recognizer.velocityInView(self.view!)
@@ -293,12 +289,14 @@ class GameSKScene: PositionedSKScene {
                     let experience = play(experimentNodes[eventNode.experienceNode.experience.experiment.number]!)
                     animNextExperiment(experience, nextClock: clock + 1)
                     handlingTap = true
+                    tutorNode.tapEvent(scene!)
                 }
             }
         }
         if CGRectContainsPoint(robotNode.imageNode.frame, positionInRobot) {
             robotNode.imageNode.runAction(actionPress)
             robotNode.toggleButton()
+            tutorNode.tapRobot(robotNode)
             handlingTap = true
         }
         if robotNode.instructionButtonNode.containsPoint(positionInRobot) {
@@ -407,11 +405,13 @@ class GameSKScene: PositionedSKScene {
             selectShapeNode(positionInShapePopup)
             if let experimentNode = editNode as? ExperimentSKNode {
                 shapePopupNode.disappear(experimentNode.position)
+                tutorNode.longpressExperiment()
             }
             selectColorNode(positionInColorPopup)
             if let eventNode = editNode as? EventSKNode{
                 colorPopupNode.disappear(traceNode.convertPoint(eventNode.position, toNode: cameraRelativeOriginNode))
                 eventNode.frameNode.hidden  = true
+                tutorNode.longpressEvent()
             }
             editNode = nil
         default:
@@ -437,6 +437,7 @@ class GameSKScene: PositionedSKScene {
         let(experience, score) = level.play(experiment)
         self.score = score
         if score >= level.winScore {
+            tutorNode.reachTen(robotNode.instructionButtonNode)
             if winMoves == 0 {
                 gameSceneDelegate.unlockLevel(clock)
                 winMoves = clock
@@ -454,24 +455,9 @@ class GameSKScene: PositionedSKScene {
         let eventNode = EventSKNode(experience: experience, gameModel: gameModel)
         eventNode.position = traceNode.convertPoint(experimentNode.position, fromNode: scene!)
         traceNode.addEvent(clock, eventNode: eventNode)
-        
-/*        for clock in eventNodes.keys {
-            if clock < self.clock - gameModel.obsolescence {
-                eventNodes[clock]?.removeFromParent()
-                eventNodes.removeValueForKey(clock)
-            } else {
-                eventNodes[clock]?.runAction(actionMoveTrace)
-            }
-        }
 
-        eventNode.position = experimentNode.position
-        addChild(eventNode)
-        eventNodes.updateValue(eventNode, forKey: clock)
+        tutorNode.tapCommand(experience.experimentNumber, nextParentNode: scoreNode)
         
-        let actionIntroduce = SKAction.moveBy(gameModel.moveByVect(experimentNode.position), duration: 0.3)
-        eventNode.experienceNode.runAction(gameModel.actionScale)
-        eventNode.runAction(actionIntroduce, completion: {eventNode.addValenceNode()})
-*/
         return experience
     }
     

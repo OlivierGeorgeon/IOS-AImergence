@@ -13,7 +13,7 @@ import StoreKit
 
 enum INTERFACE: Int { case INSTRUCTION, IMAGINE, LEADERBOARD, LEVEL}
 
-class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate, HelpViewControllerDelegate, ImagineViewControllerDelegate, GKGameCenterControllerDelegate, SKProductsRequestDelegate, SKPaymentTransactionObserver, GameViewDelegate
+class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate, HelpViewControllerDelegate, ImagineViewControllerDelegate, GKGameCenterControllerDelegate, SKProductsRequestDelegate, SKPaymentTransactionObserver, GameViewDelegate //, GKMatchmakerViewControllerDelegate,  GKMatchDelegate
 {
     static let maxLevelNumber = 17
     let unlockDefaultKey = "unlockDefaultKey"
@@ -50,7 +50,7 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
     
     let product_id = "com.oliviergeorgeon.little_ai.tip1"
     var validProducts = [SKProduct]()
-    
+    var match: GKMatch?
     override func viewDidLoad()
     {
         super.viewDidLoad()
@@ -270,10 +270,6 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
         }
     }
     
-    func levelButtonRect() -> CGRect {
-        return levelButton.frame
-    }
-    
     func showLevelWindow() {
         helpViewControllerContainer.hidden = true
         imagineViewControllerContainer.hidden = true
@@ -292,7 +288,45 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
             sceneView.presentScene(menuScene.previousGameScene!, transition: PositionedSKScene.transitionDown)
         }
     }
+    /*
+    func presentMatchMakingViewController(mmvc: GKMatchmakerViewController) {
+        mmvc.matchmakerDelegate = self
+        self.presentViewController(mmvc, animated: true, completion: nil)
+    }
+
+    optional func matchmakerViewController(_ viewController: GKMatchmakerViewController,
+                                             didFindMatch match: GKMatch) {
+        viewController.dismissViewControllerAnimated(true, completion: nil)
+        match.delegate = self
+        self.match = match
+    }
     
+    func matchmakerViewControllerWasCancelled(viewController: GKMatchmakerViewController) {
+        viewController.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    func matchmakerViewController(viewController: GKMatchmakerViewController,
+                                    didFailWithError error: NSError) {
+        viewController.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    optional func match(_ match: GKMatch, didReceiveData data: NSData, fromRemotePlayer player: GKPlayer) {
+        if self.match != match  {
+            return
+        }
+        let p = data.bytes
+
+        // Handle a position message.
+    }
+    
+    optional func match(_ match: GKMatch, player player: GKPlayer, didChangeConnectionState state: GKPlayerConnectionState) {
+        
+    }
+    
+    optional func match(_ match: GKMatch, shouldReinviteDisconnectedPlayer player: GKPlayer) -> Bool {
+        
+    }
+    */
     func unlockLevel(moves: Int) {
         if gcEnabled {
             let sScore = GKScore(leaderboardIdentifier: "Level\(level)")
@@ -347,6 +381,7 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
         interfaceLocks[level][INTERFACE.INSTRUCTION.rawValue] = false
         userDefaults.setObject(interfaceLocks, forKey: unlockDefaultKey)
         if let scene = sceneView.scene as? GameSKScene {
+            scene.tutorNode.instructionOk(scene.robotNode.imagineButtonNode)
             scene.robotNode.instructionButtonNode.disactivate()
             scene.robotNode.instructionButtonNode.unpulse()
             if scene.robotNode.recommendation == RECOMMEND.INSTRUCTION {
@@ -378,6 +413,7 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
             interfaceLocks[level][INTERFACE.IMAGINE.rawValue] = false
             userDefaults.setObject(interfaceLocks, forKey: unlockDefaultKey)
             if let scene = sceneView.scene as? GameSKScene {
+                scene.tutorNode.robotOk(scene.robotNode)
                 scene.robotNode.imagineButtonNode.disactivate()
                 //if scene.robotNode.imagineButtonNode.pulsing {
                     //scene.robotNode.imagineButtonNode.unpulse()

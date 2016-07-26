@@ -8,12 +8,13 @@
 
 import Foundation
 import SpriteKit
+import GameKit
 
 protocol GameViewDelegate: class
 {
-    func nextLevelScene() -> GameSKScene?
+    func nextLevelScene() -> GameSKScene? 
     func previousLevelScene() -> GameSKScene?
-    func levelButtonRect() -> CGRect
+    //func presentMatchMakingViewController(mmvc: GKMatchmakerViewController)
 }
 
 class GameView: SKView, UIGestureRecognizerDelegate {
@@ -112,7 +113,6 @@ class GameView: SKView, UIGestureRecognizerDelegate {
     
     override func gestureRecognizerShouldBegin(gestureRecognizer: UIGestureRecognizer) -> Bool
     {
-        //let inLevelButton = delegate!.levelButtonRect().contains(gestureRecognizer.locationInView(self))
         var inGameScene = false
         var inRobotNode = false
         var inExperimentNode =  false
@@ -129,7 +129,8 @@ class GameView: SKView, UIGestureRecognizerDelegate {
                 }
             }
             if scene.nextExperimentNode != nil {
-                if scene.nextExperimentNode!.containsPoint(positionInScene) {
+                if CGRectContainsPoint(CGRect(x: scene.nextExperimentNode!.position.x - 30, y: scene.nextExperimentNode!.position.y - 30, width: 60, height: 60), positionInScene) {
+                //if scene.nextExperimentNode!.containsPoint(positionInScene) {
                     inNextExperimentNode = true
                 }
             }

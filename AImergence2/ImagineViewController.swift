@@ -46,6 +46,9 @@ class ImagineViewController: UIViewController {
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(ImagineViewController.tap(_:)))
         tapGestureRecognizer.cancelsTouchesInView = false
         sceneView.addGestureRecognizer(tapGestureRecognizer)
+        let longPressGestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(ImagineViewController.longPress(_:)))
+        longPressGestureRecognizer.cancelsTouchesInView = false
+        sceneView.addGestureRecognizer(longPressGestureRecognizer)
         
         // Fix the bug that prevents the localization of UITextView in the storyboard from working.
         //self.textView.text = NSLocalizedString("You must reach the score of 10", comment: "Message in the Imagine window when the user tries to see the imaginary model before reaching the score of 10.");
@@ -75,8 +78,10 @@ class ImagineViewController: UIViewController {
                 textView.hidden = false
             case 12, 13:
                 textView.text = NSLocalizedString("Tap an event to replay its command", comment: "Message in the Imagine window on Levels 11 and 12.");
+                textView.hidden = false
             case 15, 16:
                 textView.text = NSLocalizedString("Explore your environment", comment: "Message in the Imagine window on Levels 15 and 16.");
+                textView.hidden = false
             case 17:
                 textView.text = NSLocalizedString("You won!", comment: "Message in the Imagine window on Levels 17 (last).");
                 textView.hidden = false
@@ -104,6 +109,7 @@ class ImagineViewController: UIViewController {
     }
     
     func tap(gesture:UITapGestureRecognizer) {}
+    func longPress(gesture:UILongPressGestureRecognizer) {}
 
     func sceneViewSetup() {
         sceneView.scene = SCNScene()

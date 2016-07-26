@@ -13,10 +13,10 @@ class Level9: Level5 {
     
     override var number:Int { return 9 }
 
-    var env = [false, true, false, true, false, true, true, false, true, false]
+    var env = [false, true, false, true, false, true, false, true, false, true]
     var p = 0
     
-   convenience required init() {
+    convenience required init() {
         let experiment0 = Experiment(number: 0, shapeIndex: 1)
         let experiment1 = Experiment(number: 1, shapeIndex: 2)
         let experiment2 = Experiment(number: 2, shapeIndex: 0)

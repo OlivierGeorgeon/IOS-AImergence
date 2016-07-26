@@ -10,8 +10,8 @@
 			<string>Reach the score of 10 (displayed on the upper left of the game window). Your score is the sum of the last ten values produced by your commands.</string>
 		</array>
 		<array>
-			<string>The commands generate &quot;events&quot; of interaction between the robot and its environment (small colored symbols that move up).</string>
-			<string>On each level, reach the score of 10. Next, follow Little AI&apos;s recommendations: press the &quot;gears&quot; button to watch the effects of the commands, and the &quot;podium&quot; button to see the leaderboard. </string>
+			<string>The commands generate &quot;events&quot; of interaction between the robot and its environment (small shapes that move up).</string>
+			<string>On each level, reach the score of 10. Next, follow Little AI&apos;s recommendations: press the &quot;gears&quot; button to watch the effects of the commands, and &quot;podium&quot; to see the leaderboard. </string>
 			<string>Drag the robot to the left or to the right to shift levels.</string>
 		</array>
 		<array>
