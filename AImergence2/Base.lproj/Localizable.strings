@@ -9,12 +9,12 @@
 "Level" = "Level";
 "Cancel" = "Back";
 "You must reach the score of 10" = "You must reach the score of 10 to reveal the robot in this window.";
-"Excellent 0" = "Excellent! You have completed Level 0! With this display on, tap on each command at least once and observe the robot's behavior. Next, tap Ok, watch your ranking (requires Game Center), and move on to the next level.";
+"Excellent 0" = "Excellent! You have completed Level 0! With this display on, tap on each command at least once to enable the Ok button. Watch the effects of the commands before tapping Ok.";
 "Excellent 1" = "Now you have completed Level 1! To understand the game better, always observe the effects of each command on the robot before moving on to the next level.";
 "Drag the 3D scene to move the camera" = "Drag the 3D scene to change the angle of view.";
 "Double tap to swap cameras." = "Double-tap on the 3D scene to swap viewpoints.";
 "Explore your environment" = "Explore your environment before moving on to the next level.";
-"Tap an event to replay its command" = "Tap an event in the background window to replay its command. Repeatedly tap the next command that appears to the righ of the event to replay an entire sequence.";
+"Tap an event to replay its command" = "Drag the background window to review the past events. Tap the past events to reproduce them and observe their effects on the robot";
 "You won!" = "Yahoo! You completed Little AI! Watch for updates to get even more exciting levels in the coming months! (Voluntarily developped or founded by your donations.)";
 "Please login to Game Center" = "To view the leaderboard, please log in into the Game Center application!";
 "Thank you!" = "Thank you very much for the tip!";
@@ -25,9 +25,9 @@
 "Tip1" = "Reach the/score of 10";
 "Tip2" = "Read the instructions";
 "Tip3" = "Watch the effects/of the commands";
-"Tip4" = "Watch your ranking";
-"Tip5" = "Press to see the menu";
-"Tip6" = "Drag left to/shift levels";
+"Tip4" = "Watch your ranking/in Game Center";
+"Tip5" = "Tap to expand the menu";
+"Tip6" = "Drag horizontally/to shift levels";
 "Tip7" = "Tap an event to/replay its command";
 "Tip8" = "Press and hold/to change shapes";
 "Tip9" = "Press and hold/to change colors";

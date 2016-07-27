@@ -55,24 +55,27 @@ class EventSKNode: SKNode
         addChild(valenceNode)
         
         let absValence = abs(valence)
-        let gaugeBackgroundNode = SKShapeNode(rect: CGRect(x: -2, y: 2, width: 10, height: absValence * 6 + 6), cornerRadius: 5)
-        gaugeBackgroundNode.zPosition = -1
-        gaugeBackgroundNode.lineWidth = 1
-        let dotBackgroundNode = SKNode()
-        dotBackgroundNode.zPosition = -1
-        dotBackgroundNode.position = CGPoint(x: 73, y: -5 - 3 * absValence)
-        addChild(dotBackgroundNode)
+        let dotColor: UIColor
+        if valence > 0 {
+            dotColor = UIColor.greenColor()
+        } else {
+            dotColor = UIColor.redColor()
+        }
         if absValence > 0 {
-            dotBackgroundNode.addChild(gaugeBackgroundNode)
-            for i in 1...absValence {
-                let dotNode = SKShapeNode(rect: CGRect(x: 0, y: i * 6, width: 6, height: 4))
-                if valence > 0 {
-                    dotNode.fillColor = UIColor.greenColor()
-                } else {
-                    dotNode.fillColor = UIColor.redColor()
-                }
+            let dotlines = min(absValence, 5)
+            let maxDotIndex = absValence - 1
+            let gaugeWidth = maxDotIndex / 5 * 8 + 10
+            let gaugeHight = dotlines * 6 + 6
+            let gaugeNode = SKShapeNode(rect: CGRect(x: -5, y: -gaugeHight / 2, width: gaugeWidth, height: gaugeHight), cornerRadius: 5)
+            gaugeNode.position = CGPoint(x: 77, y: 0)
+            gaugeNode.zPosition = -1
+            gaugeNode.lineWidth = 1
+            addChild(gaugeNode)
+            for i in 0...maxDotIndex {
+                let dotNode = SKShapeNode(rect: CGRect(x: i / 5 * 8 - 3, y: 6 * (dotlines / 2 - i % 5) - 2, width: 6, height: 4))
+                dotNode.fillColor = dotColor
                 dotNode.lineWidth = 0
-                dotBackgroundNode.addChild(dotNode)
+                gaugeNode.addChild(dotNode)
             }
         }
     }

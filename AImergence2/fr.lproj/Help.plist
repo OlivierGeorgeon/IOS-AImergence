@@ -7,7 +7,7 @@
 		<array>
 			<string>Bienvenue dans Little AI !</string>
 			<string>Appuyez sur les &quot;commandes&quot; (cercles blancs en bas de l&apos;écran). Vous pouvez garder cette fenêtre d&apos;information ouverte en même temps.</string>
-			<string>Atteignez le score de 10 (affiché en haut à gauche de le fenêtre de jeu). Le score est la somme des dix dernières valeurs produites par vos commandes.</string>
+			<string>Atteignez le score de 10 (affiché en haut à gauche de le fenêtre de jeu). Le score est la somme des valeurs produites par vos dix dernières commandes.</string>
 		</array>
 		<array>
 			<string>Les commandes produisent des &quot;évènements&quot; d&apos;interaction entre le robot et son environnement (petites formes qui montent).</string>

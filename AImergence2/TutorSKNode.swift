@@ -28,17 +28,17 @@ class TutorSKNode: SKNode {
                 NSLocalizedString("Tip9", comment: ""),
                 NSLocalizedString("Tip10", comment: "")]
     
-    let tipRects = [CGRect(x: -100, y: -30, width: 200, height: 60),
+    let tipRects = [CGRect(x: -110, y: -30, width: 220, height: 60),
                     CGRect(x: -80, y: -30, width: 160, height: 60),
                     CGRect(x: -100, y: -30, width: 200, height: 60),
                     CGRect(x: -100, y: -30, width: 200, height: 60),
                     CGRect(x: -100, y: -30, width: 200, height: 60),
                     CGRect(x: -100, y: -30, width: 200, height: 60),
                     CGRect(x: -100, y: -30, width: 200, height: 60),
-                    CGRect(x: -110, y: -30, width: 220, height: 60),
+                    CGRect(x: -120, y: -30, width: 240, height: 60),
                     CGRect(x: -100, y: -30, width: 200, height: 60),
-                    CGRect(x: -110, y: -30, width: 220, height: 60),
-                    CGRect(x: -100, y: -30, width: 200, height: 60)]
+                    CGRect(x: -116, y: -30, width: 232, height: 60),
+                    CGRect(x: -116, y: -30, width: 232, height: 60)]
     
     let tipPositions = [CGPoint(x: -50, y: 230),
                         CGPoint(x: 150, y: -50),
@@ -124,7 +124,7 @@ class TutorSKNode: SKNode {
         }
         if level == 3 {
             if step == 10 {
-                tip(10, parentNode: nextParentNode)
+                tip(10, parentNode: nextParentNode.parent!)
             }
         }
     }
@@ -140,6 +140,11 @@ class TutorSKNode: SKNode {
     }
     func robotOk(nextParentNode: SKNode) {
         if step == 3 {
+            tip(4, parentNode: nextParentNode)
+        }
+    }
+    func gameCenterOk(nextParentNode: SKNode) {
+        if step == 4 {
             tip(6, parentNode: nextParentNode)
         }
     }
