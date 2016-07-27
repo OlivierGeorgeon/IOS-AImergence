@@ -111,7 +111,6 @@ class ScoreSKNode: SKNode
         }
         let gaugeBackgroundNode = SKShapeNode(rect: CGRect(x: -3, y: y, width: 10, height: height), cornerRadius: 5)
         gaugeBackgroundNode.zPosition = -1
-        //gaugeBackgroundNode.fillColor = UIColor.whiteColor()
         gaugeBackgroundNode.lineWidth = 1
         gaugeNode.addChild(gaugeBackgroundNode)
         

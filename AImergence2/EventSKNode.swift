@@ -72,7 +72,7 @@ class EventSKNode: SKNode
             gaugeNode.lineWidth = 1
             addChild(gaugeNode)
             for i in 0...maxDotIndex {
-                let dotNode = SKShapeNode(rect: CGRect(x: i / 5 * 8 - 3, y: 6 * (dotlines / 2 - i % 5) - 2, width: 6, height: 4))
+                let dotNode = SKShapeNode(rect: CGRect(x: i / 5 * 8 - 3, y: 3 * dotlines - i % 5 * 6 - 5, width: 6, height: 4))
                 dotNode.fillColor = dotColor
                 dotNode.lineWidth = 0
                 gaugeNode.addChild(dotNode)
