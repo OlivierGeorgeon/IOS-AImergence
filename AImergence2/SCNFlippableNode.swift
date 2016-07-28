@@ -20,11 +20,22 @@ class SCNFlippableNode: SCNNode {
         super.init()
         
         let pawnNode = SCNNode()
-        let cylinder = SCNNode(geometry: Geometries.halfCylinder())
-        cylinder.position = SCNVector3(0, -2.5 , 0)
-        pawnNode.addChildNode(cylinder)
-        let sphere = SCNNode(geometry: Geometries.sphere())
+
+        let blueMaterial = SCNMaterial()
+        blueMaterial.diffuse.contents = UIColor(red: 140/256, green: 133/256, blue: 190/256, alpha: 1)
+        blueMaterial.specular.contents = UIColor.whiteColor()
+
+        let sphereGeometry = SCNSphere(radius: 0.5 * 10)
+        sphereGeometry.materials = [blueMaterial]
+        let sphere = SCNNode(geometry: sphereGeometry)
         pawnNode.addChildNode(sphere)
+
+        let halfCylinderGeometry = SCNCylinder(radius: 0.5 * 10, height: 0.5 * 10)
+        halfCylinderGeometry.materials = [blueMaterial]
+        let halfCylinder = SCNNode(geometry: halfCylinderGeometry)
+        halfCylinder.position = SCNVector3(0, -2.5 , 0)
+        pawnNode.addChildNode(halfCylinder)
+        
         pawnNode.pivot = SCNMatrix4MakeRotation(Float(M_PI/2), 0, 0, 1)
         addChildNode(pawnNode.flattenedClone())
         hidden = true

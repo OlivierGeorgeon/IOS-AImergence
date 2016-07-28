@@ -11,6 +11,8 @@ import StoreKit
 
 class TipSKNode: SKSpriteNode
 {
+    let titleFont = UIFont.preferredFontForTextStyle(UIFontTextStyleTitle1)
+    let bodyFont = UIFont.preferredFontForTextStyle(UIFontTextStyleBody)
     let product: SKProduct
     
     init(product: SKProduct, size: CGSize) {
@@ -20,8 +22,8 @@ class TipSKNode: SKSpriteNode
         super.init(texture: texture, color: UIColor.clearColor(), size: size)
 
         let priceNode = SKLabelNode(text: localizedPrice(product))
-        priceNode.fontName = PositionedSKScene.bodyFont.fontName
-        priceNode.fontSize = PositionedSKScene.titleFont.pointSize
+        priceNode.fontName = bodyFont.fontName
+        priceNode.fontSize = titleFont.pointSize
         priceNode.fontColor = UIColor.darkGrayColor()
         priceNode.verticalAlignmentMode = .Center
         priceNode.position.x = self.size.width * -0.03

@@ -11,7 +11,7 @@ import StoreKit
 
 protocol MenuSceneDelegate: class
 {
-    func currentlevel() -> Int
+    func currentLevel() -> Int
     func updateLevel(level: Int)
     func levelStatus(level: Int) -> Int
     func leaveTip(product: SKProduct)
@@ -21,23 +21,22 @@ protocol MenuSceneDelegate: class
 
 class MenuSKScene: PositionedSKScene {
     
+    //let gameModel = GameModel0()
     let backgroundNode = SKSpriteNode(imageNamed: "niveaux.png")
     let originNode = SKNode()
     let tipInviteNode = SKLabelNode()
-    var tip0Node: TipSKNode?
-    var tip1Node: TipSKNode?
-    var tip2Node: TipSKNode?
-    
-    var shortTipInvit = ""
-    var longTipInvit = ""
-    
+    let tutorNode = TutorSKNode()
     let level0Position      = CGPoint(x: 60, y: 550)
     let levelXOffset        = CGVector( dx: 60, dy: 0)
     let levelYOffset        = CGVector( dx:  0, dy: -80)
 
-    let gameModel = GameModel0()
-
     weak var userDelegate: MenuSceneDelegate?
+
+    var tip0Node: TipSKNode?
+    var tip1Node: TipSKNode?
+    var tip2Node: TipSKNode?
+    var shortTipInvit = ""
+    var longTipInvit = ""
     var buttonNodes = [SKNode]()
     var previousGameScene:GameSKScene?
 
@@ -46,6 +45,9 @@ class MenuSKScene: PositionedSKScene {
         /* Setup your scene here */
 
         addChild(originNode)
+        if userDelegate!.currentLevel() == 3 {
+            tutorNode.tip(12, parentNode: tipInviteNode)
+        }
         backgroundColor = UIColor.whiteColor()
         backgroundNode.zPosition = -20
         backgroundNode.name = "background"
@@ -53,7 +55,7 @@ class MenuSKScene: PositionedSKScene {
 
         buttonNodes = createButtons(view.frame.size)
         
-        tipInviteNode.fontName = PositionedSKScene.bodyFont.fontName
+        tipInviteNode.fontName = bodyFont.fontName
         tipInviteNode.fontColor = UIColor.darkGrayColor()
         tipInviteNode.verticalAlignmentMode = .Center
         originNode.addChild(tipInviteNode)
@@ -100,7 +102,7 @@ class MenuSKScene: PositionedSKScene {
         }
         
         tipInviteNode.position = CGPoint(x: self.size.width / 2, y: 210)
-        tipInviteNode.fontSize = PositionedSKScene.titleFont.pointSize
+        tipInviteNode.fontSize = titleFont.pointSize
         while tipInviteNode.frame.size.width >= self.size.width {
             tipInviteNode.fontSize -= 1.0
         }
@@ -127,7 +129,7 @@ class MenuSKScene: PositionedSKScene {
                 backgroundNode = SKShapeNode(path: UIBezierPath(ovalInRect: CGRect(x: -25, y: -25, width: 50, height: 50)).CGPath)
             }
             
-            if i == userDelegate?.currentlevel() {
+            if i == userDelegate?.currentLevel() {
                 backgroundNode.fillColor = UIColor(red: 114 / 256, green: 114 / 256, blue: 171 / 256, alpha: 1)
             } else  {
                 backgroundNode.fillColor = UIColor(red: 150 / 256, green: 100 / 256, blue: 150 / 256, alpha: 1)
@@ -141,18 +143,13 @@ class MenuSKScene: PositionedSKScene {
     
     func createLabelNode(text: String) -> SKLabelNode {
         let labelNode = SKLabelNode(text: text)
-        labelNode.fontName = PositionedSKScene.titleFont.fontName
-        labelNode.fontSize = PositionedSKScene.titleFont.pointSize
+        labelNode.fontName = titleFont.fontName
+        labelNode.fontSize = titleFont.pointSize
         labelNode.fontColor = UIColor.whiteColor()
         labelNode.verticalAlignmentMode = .Center
         return labelNode
     }
-    /*
-    override func update(currentTime: NSTimeInterval) {
-        backgroundNode.position.x += (self.view! as! GameView).motionView.center.x
-        backgroundNode.position.y += (self.view! as! GameView).motionView.center.y
-    }
-    */
+
     override func pan(recognizer: UIPanGestureRecognizer) {
         let translation  = recognizer.translationInView(self.view!)
         switch recognizer.state {
@@ -160,7 +157,7 @@ class MenuSKScene: PositionedSKScene {
             originNode.position.y -= translation.y * 667 / self.view!.frame.height
         case .Ended:
             if recognizer.velocityInView(self.view!).y > 100 {
-                self.view!.presentScene(previousGameScene!, transition: PositionedSKScene.transitionDown)
+                self.view!.presentScene(previousGameScene!, transition: transitionDown)
             } else {
                 let moveToOrigin = SKAction.moveTo(CGPointZero, duration: 0.2)
                 moveToOrigin.timingMode = .EaseInEaseOut
@@ -184,10 +181,10 @@ class MenuSKScene: PositionedSKScene {
                         //let gameModel = GameModel.createGameModel(ln)
                         let gameScene = GameSKScene(levelNumber: levelNumber)
                         gameScene.gameSceneDelegate = previousGameScene?.gameSceneDelegate
-                        self.view?.presentScene(gameScene, transition: PositionedSKScene.transitionDown)
+                        self.view?.presentScene(gameScene, transition: transitionDown)
                     }
                 } else {
-                    self.view?.presentScene(previousGameScene!, transition: PositionedSKScene.transitionDown)
+                    self.view?.presentScene(previousGameScene!, transition: transitionDown)
                 }
             }
         }

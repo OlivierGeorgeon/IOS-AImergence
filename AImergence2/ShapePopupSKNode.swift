@@ -21,7 +21,7 @@ class ShapePopupSKNode: SKNode {
     init(gameModel: GameModel0) {
     //init(popupRect: CGRect, experimentPaths: [(CGRect) -> UIBezierPath], shapeRect: CGRect, shapeOrigin: CGPoint, shapeOffset: CGVector) {
 
-        popupBackground = SKShapeNode(rect: gameModel.shapePopupRect, cornerRadius: 10)
+        popupBackground = SKShapeNode(rect: gameModel.shapePopupRect, cornerRadius: 0)
         let appearMove = SKAction.moveTo(gameModel.shapePopupPosition, duration: 0.1)
         let appearScale = SKAction.scaleTo(1, duration: 0.1)
         actionAppear = SKAction.sequence([SKAction.unhide(), SKAction.group([appearMove, appearScale])])
@@ -33,14 +33,15 @@ class ShapePopupSKNode: SKNode {
         setScale(0)
 
         popupBackground.lineWidth = 0
-        popupBackground.fillColor = UIColor.whiteColor()
+        popupBackground.fillColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.5)
         popupBackground.name = "shapePopup"
         addChild(popupBackground)
-
+        
         for i in 0..<gameModel.experimentPaths.count {
             let shapeNode = SKShapeNode(path: gameModel.experimentPaths[i](gameModel.shapeRect).CGPath)
             shapeNode.lineWidth = 3
             shapeNode.zPosition = 1
+            shapeNode.lineJoin = .Round
             shapeNode.strokeColor = UIColor.grayColor()
             shapeNode.fillColor = UIColor.whiteColor()
             //shapeNode.position = CGPoint(x: i % 4 * 80 - 120 , y: i / 4 * 100 - 100)

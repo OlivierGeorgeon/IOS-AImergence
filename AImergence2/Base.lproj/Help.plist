@@ -17,7 +17,7 @@
 		<array>
 			<string>Imagine that the robot finds the events that have a positive value enjoyable, and those that have a negative value unpleasant.</string>
 			<string>Generate a sequence of enjoyable events.</string>
-			<string>Tap an event to replay the same command. Depending on the context, this may reproduce an event of the same type or not. To replay an entire sequence, repeatedly tap the &quot;next command&quot; (white shape that appears on the left when you tap an event).</string>
+			<string>Tap an event to replay the same command. Depending on the context, this may reproduce the same event or not. To replay an entire sequence, repeatedly tap the &quot;next command&quot; (white shape that appears on the left when you tap an event).</string>
 		</array>
 		<array>
 			<string>Press and hold a command to change its shape.</string>
@@ -87,7 +87,7 @@
 		<array>
 			<string>You reached the last level ! Congratulations! It is similar to Level 16.</string>
 			<string>Little AI is a free open-source research and pedagogical project. To learn more, please visit http://little-ai.com.</string>
-			<string>If you found Little AI enjoyable or instructive, or both, please consider making a small donation. You will support reasearch in developmental artificial intelligence that remains open-source and independant from big companies. You will also help us create more levels!</string>
+			<string>If you found Little AI enjoyable or instructive, or both, please consider making a small donation. You will support reasearch in developmental artificial intelligence that remains free and independant from big companies. You will also help us create more levels!</string>
 		</array>
 	</array>
 </dict>

@@ -12,6 +12,8 @@ class ImagineModel5: ImagineModel4
 {
     let moveUp = SCNAction.sequence([SCNAction.waitForDuration(0.5), SCNAction.moveByX(0.0, y: 1.5 * 10, z: 0.0, duration: 0.2)])
     let positionNextBodyNode = SCNVector3(0.0, -1.5 * 10, 0.0)
+    let waitAndRemove =  SCNAction.sequence([SCNAction.waitForDuration(1), SCNAction.removeFromParentNode()])
+    let turnover = SCNAction.rotateByX(0.0, y: 0.0, z: CGFloat(M_PI) , duration: 0.2)
     
     var nextBodyNodeDirection: Compass!
     var canKnowNextBodyNode = false
@@ -56,24 +58,24 @@ class ImagineModel5: ImagineModel4
             createOrRetrieveBodyNodeAndRunAction(direction: Compass.WEST)
             spawnExperienceNode(experience, position: SCNVector3( -0.5 * scale, 0.0, 0.0), delay: 0.1)
         case 10:  // eat
-            createOrRetrieveBodyNodeAndRunAction(action: actions.waitAndRemove())
+            createOrRetrieveBodyNodeAndRunAction(action: waitAndRemove)
             robotNode.bump()
             spawnExperienceNode(experience, position: SCNVector3( -0.5 * scale, 0.0, 0.0), delay: 0.1)
             bodyNode.childNodes[0].runAction(SCNAction.sequence([SCNAction.waitForDuration(0.1),SCNAction.removeFromParentNode()]), completionHandler: explode)
             canKnowNextBodyNode = true
             nextBodyNode?.runAction(moveUp)
         case 11:
-            createOrRetrieveBodyNodeAndRunAction(direction: Compass.WEST, action: actions.waitAndRemove())
+            createOrRetrieveBodyNodeAndRunAction(direction: Compass.WEST, action: waitAndRemove)
             robotNode.bump()
             spawnExperienceNode(experience, position: SCNVector3( -0.5 * scale, 0.0, 0.0), delay: 0.1)
             bodyNode.childNodes[0].runAction(SCNAction.sequence([SCNAction.waitForDuration(0.1),SCNAction.removeFromParentNode()]), completionHandler: explode)
             canKnowNextBodyNode = true
             nextBodyNode?.runAction(moveUp)
         case 20: // swap
-            createOrRetrieveBodyNodeAndRunAction(direction: Compass.WEST, action: actions.turnover())
+            createOrRetrieveBodyNodeAndRunAction(direction: Compass.WEST, action: turnover)
             spawnExperienceNode(experience, position: SCNVector3( 0.0, 0.0, 0.0))
         case 21:
-            createOrRetrieveBodyNodeAndRunAction(action: actions.turnover())
+            createOrRetrieveBodyNodeAndRunAction(action: turnover)
             spawnExperienceNode(experience, position: SCNVector3( 0.0, 0.0, 0.0))
         default:
             break

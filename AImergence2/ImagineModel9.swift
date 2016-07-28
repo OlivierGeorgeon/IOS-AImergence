@@ -52,10 +52,10 @@ class ImagineModel9: ImagineModel5
             bodyNode = nil
             rotateCarrousel()
         case 20: // swap
-            createOrRetrieveBodyNodeAndRunAction(positionInCarroussel, direction: Compass.WEST, action: actions.turnover())
+            createOrRetrieveBodyNodeAndRunAction(positionInCarroussel, direction: Compass.WEST, action: turnover)
             spawnExperienceNode(experience, position: SCNVector3( 0.0, 0.0, 0.0))
         case 21:
-            createOrRetrieveBodyNodeAndRunAction(positionInCarroussel, action: actions.turnover())
+            createOrRetrieveBodyNodeAndRunAction(positionInCarroussel, action: turnover)
             spawnExperienceNode(experience, position: SCNVector3( 0.0, 0.0, 0.0))
         default:
             break
@@ -73,8 +73,8 @@ class ImagineModel9: ImagineModel5
                 bodyNode.position = position
                 carrouselNode.addChildNode(bodyNode)
                 if direction == Compass.WEST {
-                    bodyNode.runAction(SCNAction.sequence([SCNAction.rotateByX(0.0, y: 0.0, z: carrouselAngle, duration: delay), actions.unhide, action])) }
-                else { bodyNode.runAction(SCNAction.sequence([SCNAction.rotateByX(0.0, y: 0.0, z: carrouselAngle - CGFloat(M_PI), duration: delay), actions.unhide, action])) }
+                    bodyNode.runAction(SCNAction.sequence([SCNAction.rotateByX(0.0, y: 0.0, z: carrouselAngle, duration: delay), SCNAction.unhide(), action])) }
+                else { bodyNode.runAction(SCNAction.sequence([SCNAction.rotateByX(0.0, y: 0.0, z: carrouselAngle - CGFloat(M_PI), duration: delay), SCNAction.unhide(), action])) }
             }
         } else {
             bodyNode.runAction(action)
@@ -84,7 +84,7 @@ class ImagineModel9: ImagineModel5
 
     func rotateCarrousel() {
         carrouselAngle = CGFloat(M_PI) / 5.0 + carrouselAngle
-        carrouselNode.runAction(SCNAction.sequence([actions.wait,actionRotateCarrousel]) )
+        carrouselNode.runAction(SCNAction.sequence([SCNAction.waitForDuration(0.1),actionRotateCarrousel]) )
         carrouselIndex += 1
         if carrouselIndex >= nbSlotsInCarroussel { carrouselIndex = 0 }
     }    

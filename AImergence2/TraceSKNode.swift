@@ -10,8 +10,10 @@ import SpriteKit
 
 class TraceSKNode: SKNode {
     
+    let bodyFont = UIFont.preferredFontForTextStyle(UIFontTextStyleBody)
     let actionMoveTrace = SKAction.moveBy(CGVector(dx:0, dy:50), duration: 0.3)
     let actionScale = SKAction.scaleTo(1, duration: 0.2)
+    let disposedNode = SKLabelNode(text: NSLocalizedString("Disposed from memory", comment: "On top of the trace"))
     
     var eventNodes = Dictionary<Int, EventSKNode>()
     var bottomPosition = CGPointZero
@@ -22,6 +24,13 @@ class TraceSKNode: SKNode {
         
         position = CGPoint(x: -20, y: 40)
         actionMoveTrace.timingMode = .EaseInEaseOut
+        
+        disposedNode.fontName = bodyFont.fontName
+        disposedNode.fontSize = bodyFont.pointSize
+        disposedNode.verticalAlignmentMode = .Center
+        disposedNode.fontColor = UIColor.whiteColor()
+        disposedNode.hidden = true
+        addChild(disposedNode)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -30,13 +39,6 @@ class TraceSKNode: SKNode {
     
     func addEvent(clock: Int, eventNode: EventSKNode)
     {
-        for eventClock in eventNodes.keys {
-            if eventClock < clock - eventNode.gameModel.obsolescence {
-                eventNodes[clock]?.removeFromParent()
-                eventNodes.removeValueForKey(eventClock)
-            }
-        }
-        
         addChild(eventNode)
         eventNodes.updateValue(eventNode, forKey: clock)
         
@@ -45,6 +47,31 @@ class TraceSKNode: SKNode {
         eventNode.experienceNode.runAction(actionScale)
         eventNode.runAction(actionIntroduce, completion: {eventNode.addValenceNode()})
         runAction(actionMoveTrace)
+
+        let removedEventNode = eventNodes.removeValueForKey(clock - eventNode.gameModel.obsolescence)
+        if removedEventNode != nil {
+            disposedNode.position = removedEventNode!.position
+            removedEventNode!.removeFromParent()
+            disposedNode.hidden = false
+        }
+        
         bottomPosition = bottomPosition + CGVector(dx: 0, dy: -50)
+    }
+
+    func dispose(clock: Int) {
+        var lastPosition = CGPointZero
+        for eventClock in eventNodes.keys {
+            if eventClock < clock - 10 {
+                let removedEventNode = eventNodes.removeValueForKey(eventClock)
+                removedEventNode!.removeFromParent()
+                if removedEventNode!.position.y < lastPosition.y {
+                    lastPosition = removedEventNode!.position
+                }
+            }
+        }
+        if lastPosition.y < 0 {
+            disposedNode.position = lastPosition
+            disposedNode.hidden = false
+        }
     }
 }

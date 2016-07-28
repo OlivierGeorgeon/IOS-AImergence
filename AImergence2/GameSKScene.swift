@@ -28,13 +28,13 @@ class GameSKScene: PositionedSKScene {
     let robotNode = RobotSKNode()
     let cameraNode = SKCameraNode()
     let cameraRelativeOriginNode = SKNode()
-    //let actionMoveTrace = SKAction.moveBy(CGVector(dx:0, dy:50), duration: 0.3)
     let actionDisappear = SKAction.scaleTo(0, duration: 0.2)
     let scoreNode = ScoreSKNode()
     let shapePopupNode: ShapePopupSKNode
     let colorPopupNode = ColorPopupSKNode()
     let traceNode = TraceSKNode()
     let tutorNode = TutorSKNode()
+    let topRightNode = SKNode()
     
     weak var gameSceneDelegate: GameSceneDelegate!
     
@@ -93,9 +93,9 @@ class GameSKScene: PositionedSKScene {
         name = "gameScene"
         
         backgroundColor = gameModel.backgroundColor
-
         self.addChild(traceNode)
         self.addChild(scoreNode)
+        cameraNode.addChild(topRightNode)
         tutorNode.level = level.number
         switch self.level.number {
         case 0:
@@ -116,8 +116,6 @@ class GameSKScene: PositionedSKScene {
         //moveOnTopOfScreen.referenceNode = cameraNode
         //scoreNode.moveNode.constraints = [moveOnTopOfScreen]
 
-        //shapePopupNode = gameModel.createShapePopup()
-        //shapeNodes = gameModel.createShapeNodes(shapePopupNode)
         shapePopupNode.hidden = true
         addChild(shapePopupNode)
         colorPopupNode.hidden = true
@@ -130,8 +128,6 @@ class GameSKScene: PositionedSKScene {
         backgroundNode.zPosition = -20
         backgroundNode.name = "background"
         cameraRelativeOriginNode.addChild(backgroundNode)
-        
-        //actionMoveTrace.timingMode = .EaseInEaseOut
     }
     
     override func update(currentTime: NSTimeInterval) {
@@ -193,6 +189,9 @@ class GameSKScene: PositionedSKScene {
         robotOrigin = robotNode.position.x
         backgroundNode.size.width = size.width
         cameraRelativeOriginNode.position = -cameraNode.position
+        //topRightNode.position = CGPoint(x: size.width - 375 / 2, y: size.height - 100)
+        //topRightNode.position = CGPoint(x: size.width / 2 - cameraNode.position.x, y: size.height - 100)
+        topRightNode.position = CGPoint(x: size.width / 2, y: size.height / 2)
     }
 
     override func pan(recognizer: UIPanGestureRecognizer) {
@@ -279,6 +278,7 @@ class GameSKScene: PositionedSKScene {
                 playExperience = true
                 animNextExperiment(experience, nextClock: nextExperimentClock + 1)
                 handlingTap = true
+                tutorNode.tapNextExperience()
             }
         }
         
@@ -289,7 +289,7 @@ class GameSKScene: PositionedSKScene {
                     let experience = play(experimentNodes[eventNode.experienceNode.experience.experiment.number]!)
                     animNextExperiment(experience, nextClock: clock + 1)
                     handlingTap = true
-                    tutorNode.tapEvent(scene!)
+                    tutorNode.tapEvent(nextExperimentNode!)
                 }
             }
         }
@@ -366,9 +366,6 @@ class GameSKScene: PositionedSKScene {
                     let shapeNodeIndex = experimentNode.experiment.shapeIndex
                     timer = NSTimer.scheduledTimerWithTimeInterval(0.7, target: self, selector: #selector(GameSKScene.revolveShapes), userInfo: nil, repeats: true)
                     editNode = experimentNode
-                    //shapeNodes.forEach({$0.lineWidth = 3})
-                    //shapeNodes[shapeNodeIndex].lineWidth = 6
-                    //addChild(shapePopupNode!)
                     shapePopupNode.position = experimentNode.position
                     shapePopupNode.update(shapeNodeIndex)
                     shapePopupNode.appear()
@@ -379,13 +376,8 @@ class GameSKScene: PositionedSKScene {
                     let colorIndex = eventNode.experienceNode.experience.colorIndex
                     timer = NSTimer.scheduledTimerWithTimeInterval(0.7, target: self, selector: #selector(GameSKScene.revolveColors), userInfo: nil, repeats: true)
                     editNode = eventNode
-                    //colorPopupNode = gameModel.createColorPopup()
                     let pathFunc = gameModel.experimentPaths[eventNode.experienceNode.experience.experiment.shapeIndex]
                     colorPopupNode.createColorNodes(pathFunc, experienceColors: gameModel.experienceColors, colorIndex: colorIndex)
-                    
-                    //colorNodes = gameModel.createColorNodes(colorPopupNode!, experience: eventNode.experienceNode.experience)
-                    //colorNodes.forEach({$0.lineWidth = 1})
-                    //cameraRelativeOriginNode.addChild(colorPopupNode!)
                     colorPopupNode.position = traceNode.convertPoint(eventNode.position, toNode: cameraRelativeOriginNode)
                     colorPopupNode.appear()
                     eventNode.frameNode.hidden = false
@@ -394,7 +386,7 @@ class GameSKScene: PositionedSKScene {
         case .Changed:
             if editNode != nil {
                 if !CGRectContainsPoint(editNode!.calculateAccumulatedFrame(), positionInScene) {
-                    timer?.invalidate()
+                    //timer?.invalidate()
                 }
                 selectShapeNode(positionInShapePopup)
                 selectColorNode(positionInColorPopup)
@@ -433,11 +425,16 @@ class GameSKScene: PositionedSKScene {
         experimentNode.runAction(actionPress)
         
         let experiment = experimentNode.experiment
-        
         let(experience, score) = level.play(experiment)
+        
+        let eventNode = EventSKNode(experience: experience, gameModel: gameModel)
+        eventNode.position = traceNode.convertPoint(experimentNode.position, fromNode: scene!)
+        traceNode.addEvent(clock, eventNode: eventNode)
+        robotNode.animRobot(experience.valence)
+        
         self.score = score
         if score >= level.winScore {
-            tutorNode.reachTen(robotNode.instructionButtonNode)
+            tutorNode.reachTen(robotNode.instructionButtonNode, level3ParentNode: topRightNode)
             if winMoves == 0 {
                 gameSceneDelegate.unlockLevel(clock)
                 winMoves = clock
@@ -448,14 +445,9 @@ class GameSKScene: PositionedSKScene {
             }
         }
         scoreNode.updateScore(score, clock: clock, winMoves: winMoves)
-        robotNode.animRobot(experience.valence)
         
         gameSceneDelegate.playExperience(experience)
         
-        let eventNode = EventSKNode(experience: experience, gameModel: gameModel)
-        eventNode.position = traceNode.convertPoint(experimentNode.position, fromNode: scene!)
-        traceNode.addEvent(clock, eventNode: eventNode)
-
         tutorNode.tapCommand(experience.experimentNumber, nextParentNode: scoreNode)
         
         return experience
@@ -467,6 +459,7 @@ class GameSKScene: PositionedSKScene {
                 shapePopupNode.shapeNodes.forEach({$0.lineWidth = 3})
                 shapePopupNode.shapeNodes[i].lineWidth = 6
                 reshapeNodes(i)
+                timer?.invalidate()
             }
         }
     }
@@ -476,6 +469,7 @@ class GameSKScene: PositionedSKScene {
                 colorPopupNode.colorNodes.forEach({$0.lineWidth = 1})
                 colorPopupNode.colorNodes[i].lineWidth = 6
                 refillNodes(i)
+                timer?.invalidate()
             }
         }
     }

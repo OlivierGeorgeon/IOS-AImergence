@@ -14,7 +14,7 @@ class TutorSKNode: SKNode {
     static var test = 0
     
     let bodyFont = UIFont.preferredFontForTextStyle(UIFontTextStyleBody)
-    let shapeFuncs = [arrowRight, arrowLeft, arrowRight, arrowRight, arrowRight, arrowRight, arrowRight, arrowRight, arrowRight, arrowRight, arrowRight]
+    let shapeFuncs = [arrowRight, arrowLeft, arrowRight, arrowRight, arrowRight, arrowRight, arrowRight, arrowRight, arrowRight, arrowRight, arrowRight, arrowLeft, arrowLeft, arrowRight]
 
     let tips = [NSLocalizedString("Tip0", comment: ""),
                 NSLocalizedString("Tip1", comment: ""),
@@ -26,33 +26,42 @@ class TutorSKNode: SKNode {
                 NSLocalizedString("Tip7", comment: ""),
                 NSLocalizedString("Tip8", comment: ""),
                 NSLocalizedString("Tip9", comment: ""),
-                NSLocalizedString("Tip10", comment: "")]
+                NSLocalizedString("Tip10", comment: ""),
+                NSLocalizedString("Tip11", comment: ""),
+                NSLocalizedString("Tip12", comment: ""),
+                NSLocalizedString("Tip13", comment: "")]
     
-    let tipRects = [CGRect(x: -110, y: -30, width: 220, height: 60),
+    let tipRects = [CGRect(x: -120, y: -30, width: 240, height: 60),
                     CGRect(x: -80, y: -30, width: 160, height: 60),
                     CGRect(x: -100, y: -30, width: 200, height: 60),
                     CGRect(x: -100, y: -30, width: 200, height: 60),
                     CGRect(x: -100, y: -30, width: 200, height: 60),
                     CGRect(x: -100, y: -30, width: 200, height: 60),
                     CGRect(x: -100, y: -30, width: 200, height: 60),
+                    CGRect(x: -110, y: -30, width: 220, height: 60),
                     CGRect(x: -120, y: -30, width: 240, height: 60),
-                    CGRect(x: -100, y: -30, width: 200, height: 60),
-                    CGRect(x: -116, y: -30, width: 232, height: 60),
-                    CGRect(x: -116, y: -30, width: 232, height: 60)]
+                    CGRect(x: -110, y: -30, width: 220, height: 60),
+                    CGRect(x: -110, y: -30, width: 220, height: 60),
+                    CGRect(x: -110, y: -30, width: 220, height: 60),
+                    CGRect(x: -110, y: -30, width: 220, height: 60),
+                    CGRect(x: -110, y: -30, width: 220, height: 60)]
     
     let tipPositions = [CGPoint(x: -50, y: 230),
                         CGPoint(x: 150, y: -50),
-                        CGPoint(x: -170, y: 0),
-                        CGPoint(x: -170, y: 0),
-                        CGPoint(x: -170, y: 0),
-                        CGPoint(x: -170, y: 0),
-                        CGPoint(x: -170, y: 0),
-                        CGPoint(x: -100, y: 280),
-                        CGPoint(x: -70, y: 150),
-                        CGPoint(x: -100, y: 280),
-                        CGPoint(x: -50, y: 200)]
+                        CGPoint(x: -160, y: 0),
+                        CGPoint(x: -160, y: 0),
+                        CGPoint(x: -160, y: 0),
+                        CGPoint(x: -160, y: 0),
+                        CGPoint(x: -160, y: 0),
+                        CGPoint(x: -90, y: 300),
+                        CGPoint(x: -70, y: 190),
+                        CGPoint(x: -90, y: 300),
+                        CGPoint(x: -150, y: -150),
+                        CGPoint(x: 145, y: 48),
+                        CGPoint(x: 0, y: 150),
+                        CGPoint(x: -150, y: -150)]
     
-    let tipzRotations = [CGFloat(-1.2), CGFloat(-0.3), CGFloat(0), CGFloat(0), CGFloat(0), CGFloat(0), CGFloat(0), CGFloat(-1), CGFloat(-0.7), CGFloat(-1), CGFloat(0.9)]
+    let tipzRotations = [CGFloat(-1.2), CGFloat(-0.3), CGFloat(0), CGFloat(0), CGFloat(0), CGFloat(0), CGFloat(0), CGFloat(-1), CGFloat(-1.2), CGFloat(-1), CGFloat(0.9), CGFloat(0.3), CGFloat(M_PI / 2), CGFloat(0.9)]
     
     var backgroundNode = SKShapeNode()
     var step = 0
@@ -77,10 +86,15 @@ class TutorSKNode: SKNode {
         position = tipPositions[i]
         zRotation = tipzRotations[i]
         
-        backgroundNode = SKShapeNode(path: shapeFuncs[i](tipRects[i]).CGPath)
-        backgroundNode.lineWidth = 3
-        backgroundNode.strokeColor = UIColor(colorLiteralRed: 0, green: 0.5, blue: 0, alpha: 1)
-        backgroundNode.fillColor = UIColor(colorLiteralRed: 0.5, green: 1.0, blue: 0.5, alpha: 0.5)
+        backgroundNode = SKShapeNode(path: shapeFuncs[i](tipRects[i]))
+        backgroundNode.lineWidth = 0 // 20 // 3
+        //backgroundNode.lineJoin = .Round
+        let backgroundColor = UIColor(colorLiteralRed: 0.2, green: 0.7, blue: 0, alpha: 0.8)
+        //backgroundNode.strokeColor = UIColor(colorLiteralRed: 0, green: 0.5, blue: 0, alpha: 1)
+        //backgroundNode.strokeColor = backgroundColor
+        backgroundNode.fillColor = backgroundColor
+        //backgroundNode.alpha = 0.5
+        //backgroundNode.setScale(0.8)
         addChild(backgroundNode)
         
         let texts = tips[i].componentsSeparatedByString("/")
@@ -91,7 +105,7 @@ class TutorSKNode: SKNode {
             labelNode.fontName = bodyFont.fontName
             labelNode.fontSize = bodyFont.pointSize
             labelNode.verticalAlignmentMode = .Center
-            labelNode.fontColor = UIColor.blackColor()
+            labelNode.fontColor = UIColor.whiteColor()
             labelNode.zPosition = 1
             labelNode.position = CGPoint(x: 0, y: lineInterval * (CGFloat(lines) / 2 - CGFloat(line)))
             addChild(labelNode)
@@ -116,7 +130,7 @@ class TutorSKNode: SKNode {
         }
     }
     
-    func reachTen(nextParentNode: SKNode) {
+    func reachTen(nextParentNode: SKNode, level3ParentNode: SKNode) {
         if level == 0 {
             if step == 1 || step == 0 {
                 tip(2, parentNode: nextParentNode)
@@ -124,7 +138,7 @@ class TutorSKNode: SKNode {
         }
         if level == 3 {
             if step == 10 {
-                tip(10, parentNode: nextParentNode.parent!)
+                tip(10, parentNode: level3ParentNode)
             }
         }
     }
@@ -143,9 +157,12 @@ class TutorSKNode: SKNode {
             tip(4, parentNode: nextParentNode)
         }
     }
-    func gameCenterOk(nextParentNode: SKNode) {
+    func gameCenterOk(nextParentNode: SKNode, level17ParentNode: SKNode) {
         if step == 4 {
             tip(6, parentNode: nextParentNode)
+        }
+        if level == 17 {
+            tip(13, parentNode: level17ParentNode)
         }
     }
     
@@ -158,6 +175,12 @@ class TutorSKNode: SKNode {
     
     func tapEvent(nextParentNode: SKNode) {
         if level == 2 && step == 7 {
+            tip(11, parentNode: nextParentNode)
+        }
+    }
+    
+    func tapNextExperience() {
+        if level == 2 && step == 11 {
             step = 100
             removeFromParent()
         }
@@ -184,27 +207,30 @@ class TutorSKNode: SKNode {
         }
     }
 }
-
-func arrowLeft(rect: CGRect) -> UIBezierPath {
+func arrowLeft(rect: CGRect) -> CGPath {
     let offset = CGFloat(20)
-    let path = UIBezierPath()
-    path.moveToPoint(CGPoint(x: rect.maxX, y: rect.minY))
-    path.addLineToPoint(CGPoint(x: rect.maxX, y: rect.maxY))
-    path.addLineToPoint(CGPoint(x: rect.minX , y: rect.maxY))
-    path.addLineToPoint(CGPoint(x: rect.minX - offset, y: 0))
-    path.addLineToPoint(CGPoint(x: rect.minX, y: rect.minY))
-    path.closePath()
+    let radius = CGFloat (10)
+    let path = CGPathCreateMutable()
+    CGPathMoveToPoint(path, nil, rect.maxX, rect.minY + radius)
+    CGPathAddArcToPoint(path, nil, rect.maxX, rect.maxY, rect.minX, rect.maxY, radius);
+    CGPathAddArcToPoint(path, nil, rect.minX, rect.maxY, rect.minX - offset, 0, radius);
+    CGPathAddArcToPoint(path, nil, rect.minX - offset, 0, rect.minX, rect.minY, radius);
+    CGPathAddArcToPoint(path, nil, rect.minX, rect.minY, rect.maxX, rect.minY, radius);
+    CGPathAddArcToPoint(path, nil, rect.maxX, rect.minY, rect.maxX, rect.maxY, radius);
+    CGPathCloseSubpath(path);
     return path
 }
 
-func arrowRight(rect: CGRect) -> UIBezierPath {
+func arrowRight(rect: CGRect) -> CGPath {
     let offset = CGFloat(20)
-    let path = UIBezierPath()
-    path.moveToPoint(CGPoint(x: rect.minX, y: rect.minY))
-    path.addLineToPoint(CGPoint(x: rect.minX, y: rect.maxY))
-    path.addLineToPoint(CGPoint(x: rect.maxX, y: rect.maxY))
-    path.addLineToPoint(CGPoint(x: rect.maxX + offset, y: 0))
-    path.addLineToPoint(CGPoint(x: rect.maxX, y: rect.minY))
-    path.closePath()
+    let radius = CGFloat (10)
+    let path = CGPathCreateMutable()
+    CGPathMoveToPoint(path, nil, rect.minX, rect.minY + radius)
+    CGPathAddArcToPoint(path, nil, rect.minX, rect.maxY, rect.maxX, rect.maxY, radius);
+    CGPathAddArcToPoint(path, nil, rect.maxX, rect.maxY, rect.maxX + offset, 0, radius);
+    CGPathAddArcToPoint(path, nil, rect.maxX + offset, 0, rect.maxX, rect.minY, radius);
+    CGPathAddArcToPoint(path, nil, rect.maxX, rect.minY, rect.minX, rect.minY, radius);
+    CGPathAddArcToPoint(path, nil, rect.minX, rect.minY, rect.minX, rect.maxY, radius);
+    CGPathCloseSubpath(path);
     return path
 }

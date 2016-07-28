@@ -95,13 +95,13 @@ class GameView: SKView, UIGestureRecognizerDelegate {
     
     func nextLevel() {
         if let nextScene = delegate?.nextLevelScene() {
-            presentScene(nextScene, transition: PositionedSKScene.transitionLeft)
+            presentScene(nextScene, transition: nextScene.transitionLeft)
         }
     }
 
     func previousLevel() {
         if let previousScene = delegate?.previousLevelScene() {
-            presentScene(previousScene, transition: PositionedSKScene.transitionRight)
+            presentScene(previousScene, transition: previousScene.transitionRight)
         }
     }
     

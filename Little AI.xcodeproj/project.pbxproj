@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		090AD9E81C77488000F2FE8C /* ImagineModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090AD9E71C77488000F2FE8C /* ImagineModel.swift */; };
 		090AD9EA1C7A5EEE00F2FE8C /* ImagineModel6.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090AD9E91C7A5EEE00F2FE8C /* ImagineModel6.swift */; };
 		090AD9EC1C7A5F2400F2FE8C /* ImagineModel7.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090AD9EB1C7A5F2400F2FE8C /* ImagineModel7.swift */; };
 		090AD9F01C7A618500F2FE8C /* Level8.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090AD9EF1C7A618500F2FE8C /* Level8.swift */; };
@@ -38,7 +37,6 @@
 		093681731C4523B1008C6B5D /* Level0.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093681721C4523B1008C6B5D /* Level0.swift */; };
 		093681751C45455F008C6B5D /* Level4.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093681741C45455F008C6B5D /* Level4.swift */; };
 		093681771C4549CB008C6B5D /* Level5.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093681761C4549CB008C6B5D /* Level5.swift */; };
-		093681791C4677A6008C6B5D /* GameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093681781C4677A6008C6B5D /* GameModel.swift */; };
 		0936817B1C4696AB008C6B5D /* MenuSKScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0936817A1C4696AB008C6B5D /* MenuSKScene.swift */; };
 		093C3F661C6F68B9000BC6FB /* ImagineModel2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093C3F651C6F68B9000BC6FB /* ImagineModel2.swift */; };
 		093C3F681C6F8482000BC6FB /* ImagineModel3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093C3F671C6F8482000BC6FB /* ImagineModel3.swift */; };
@@ -77,7 +75,6 @@
 		09AF84171D01A3D900C1E310 /* Level13.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09AF84161D01A3D900C1E310 /* Level13.swift */; };
 		09AF84191D01A82800C1E310 /* ImagineModel13.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09AF84181D01A82800C1E310 /* ImagineModel13.swift */; };
 		09AF841B1D01ABDD00C1E310 /* GameModel5.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09AF841A1D01ABDD00C1E310 /* GameModel5.swift */; };
-		09B12C7D1C75D53F000FBEF6 /* Actions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B12C7C1C75D53F000FBEF6 /* Actions.swift */; };
 		09C16D551D15534A006ADB5C /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09C16D541D15534A006ADB5C /* GameKit.framework */; };
 		09C3A10B1D474F0B007D602C /* MatchSKNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C3A10A1D474F0B007D602C /* MatchSKNode.swift */; };
 		09C3A10D1D477D02007D602C /* TutorSKNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C3A10C1D477D02007D602C /* TutorSKNode.swift */; };
@@ -86,7 +83,6 @@
 		09D426461D0AE30200B34CDF /* ImagineModel17.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D426451D0AE30200B34CDF /* ImagineModel17.swift */; };
 		09ED657D1C6C87D2004A8CA7 /* Level7.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09ED657C1C6C87D2004A8CA7 /* Level7.swift */; };
 		09ED657F1C6D0EE6004A8CA7 /* ImagineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09ED657E1C6D0EE6004A8CA7 /* ImagineViewController.swift */; };
-		09ED65831C6D11A1004A8CA7 /* Geometries.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09ED65821C6D11A1004A8CA7 /* Geometries.swift */; };
 		09ED65851C6D1400004A8CA7 /* ImagineModel0.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09ED65841C6D1400004A8CA7 /* ImagineModel0.swift */; };
 		09ED65871C6E36B7004A8CA7 /* ImagineModel4.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09ED65861C6E36B7004A8CA7 /* ImagineModel4.swift */; };
 		09F145131D02226300D0BDC7 /* Level14.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F145121D02226300D0BDC7 /* Level14.swift */; };
@@ -113,7 +109,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		090AD9E71C77488000F2FE8C /* ImagineModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagineModel.swift; sourceTree = "<group>"; };
 		090AD9E91C7A5EEE00F2FE8C /* ImagineModel6.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagineModel6.swift; sourceTree = "<group>"; };
 		090AD9EB1C7A5F2400F2FE8C /* ImagineModel7.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagineModel7.swift; sourceTree = "<group>"; };
 		090AD9EF1C7A618500F2FE8C /* Level8.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Level8.swift; sourceTree = "<group>"; };
@@ -151,7 +146,6 @@
 		093681721C4523B1008C6B5D /* Level0.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Level0.swift; sourceTree = "<group>"; };
 		093681741C45455F008C6B5D /* Level4.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Level4.swift; sourceTree = "<group>"; };
 		093681761C4549CB008C6B5D /* Level5.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Level5.swift; sourceTree = "<group>"; };
-		093681781C4677A6008C6B5D /* GameModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameModel.swift; sourceTree = "<group>"; };
 		0936817A1C4696AB008C6B5D /* MenuSKScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuSKScene.swift; sourceTree = "<group>"; };
 		093C3F651C6F68B9000BC6FB /* ImagineModel2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagineModel2.swift; sourceTree = "<group>"; };
 		093C3F671C6F8482000BC6FB /* ImagineModel3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagineModel3.swift; sourceTree = "<group>"; };
@@ -193,7 +187,6 @@
 		09AF84161D01A3D900C1E310 /* Level13.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Level13.swift; sourceTree = "<group>"; };
 		09AF84181D01A82800C1E310 /* ImagineModel13.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagineModel13.swift; sourceTree = "<group>"; };
 		09AF841A1D01ABDD00C1E310 /* GameModel5.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameModel5.swift; sourceTree = "<group>"; };
-		09B12C7C1C75D53F000FBEF6 /* Actions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Actions.swift; sourceTree = "<group>"; };
 		09C16D541D15534A006ADB5C /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		09C3A10A1D474F0B007D602C /* MatchSKNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatchSKNode.swift; sourceTree = "<group>"; };
 		09C3A10C1D477D02007D602C /* TutorSKNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorSKNode.swift; sourceTree = "<group>"; };
@@ -202,7 +195,6 @@
 		09D426451D0AE30200B34CDF /* ImagineModel17.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagineModel17.swift; sourceTree = "<group>"; };
 		09ED657C1C6C87D2004A8CA7 /* Level7.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Level7.swift; sourceTree = "<group>"; };
 		09ED657E1C6D0EE6004A8CA7 /* ImagineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagineViewController.swift; sourceTree = "<group>"; };
-		09ED65821C6D11A1004A8CA7 /* Geometries.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Geometries.swift; sourceTree = "<group>"; };
 		09ED65841C6D1400004A8CA7 /* ImagineModel0.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagineModel0.swift; sourceTree = "<group>"; };
 		09ED65861C6E36B7004A8CA7 /* ImagineModel4.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagineModel4.swift; sourceTree = "<group>"; };
 		09F145121D02226300D0BDC7 /* Level14.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Level14.swift; sourceTree = "<group>"; };
@@ -372,7 +364,6 @@
 		09D426471D0AFB1E00B34CDF /* ImagineModels */ = {
 			isa = PBXGroup;
 			children = (
-				090AD9E71C77488000F2FE8C /* ImagineModel.swift */,
 				09ED65841C6D1400004A8CA7 /* ImagineModel0.swift */,
 				09AC4D161C84D36100C149EC /* ImagineModel1.swift */,
 				093C3F651C6F68B9000BC6FB /* ImagineModel2.swift */,
@@ -398,7 +389,6 @@
 		09D426481D0AFB4300B34CDF /* GameModels */ = {
 			isa = PBXGroup;
 			children = (
-				093681781C4677A6008C6B5D /* GameModel.swift */,
 				09AC4CB91C7DD63700C149EC /* GameModel0.swift */,
 				09AC4CBB1C7DDBFC00C149EC /* GameModel3.swift */,
 				0955F6F71CF2E65400473C03 /* GameModel4.swift */,
@@ -424,8 +414,6 @@
 				09D426471D0AFB1E00B34CDF /* ImagineModels */,
 				0914EA6D1D0AC03B00E78D5F /* Particles */,
 				09ED657E1C6D0EE6004A8CA7 /* ImagineViewController.swift */,
-				09ED65821C6D11A1004A8CA7 /* Geometries.swift */,
-				09B12C7C1C75D53F000FBEF6 /* Actions.swift */,
 				0964BB121CEF488300A4B40D /* SCNRobotNode.swift */,
 				095991391D2693DD00C2D3E9 /* SCNFlippableNode.swift */,
 			);
@@ -586,7 +574,6 @@
 				090AD9F01C7A618500F2FE8C /* Level8.swift in Sources */,
 				09AF841B1D01ABDD00C1E310 /* GameModel5.swift in Sources */,
 				09AC4D171C84D36100C149EC /* ImagineModel1.swift in Sources */,
-				09B12C7D1C75D53F000FBEF6 /* Actions.swift in Sources */,
 				093C3F681C6F8482000BC6FB /* ImagineModel3.swift in Sources */,
 				093681731C4523B1008C6B5D /* Level0.swift in Sources */,
 				093000E01C4FD3B700425BB1 /* ReshapableSKNode.swift in Sources */,
@@ -608,7 +595,6 @@
 				09AC4D1B1C86E29200C149EC /* ImagineModel10.swift in Sources */,
 				093681411C417378008C6B5D /* GameViewController.swift in Sources */,
 				0914EA661D09B82A00E78D5F /* Level15.swift in Sources */,
-				09ED65831C6D11A1004A8CA7 /* Geometries.swift in Sources */,
 				0961EBBB1C64961F00A4E55C /* Level6.swift in Sources */,
 				09AC4CBA1C7DD63700C149EC /* GameModel0.swift in Sources */,
 				093681711C4270A5008C6B5D /* Level2.swift in Sources */,
@@ -631,12 +617,10 @@
 				093000DE1C4FC77700425BB1 /* ExperienceSKNode.swift in Sources */,
 				0959913A1D2693DD00C2D3E9 /* SCNFlippableNode.swift in Sources */,
 				09ED65871C6E36B7004A8CA7 /* ImagineModel4.swift in Sources */,
-				090AD9E81C77488000F2FE8C /* ImagineModel.swift in Sources */,
 				09AF84191D01A82800C1E310 /* ImagineModel13.swift in Sources */,
 				0930E0701D46A53300E56524 /* TraceSKNode.swift in Sources */,
 				090AD9EA1C7A5EEE00F2FE8C /* ImagineModel6.swift in Sources */,
 				09ED657D1C6C87D2004A8CA7 /* Level7.swift in Sources */,
-				093681791C4677A6008C6B5D /* GameModel.swift in Sources */,
 				093C3F661C6F68B9000BC6FB /* ImagineModel2.swift in Sources */,
 				0914EA6C1D0AAD6300E78D5F /* Level16.swift in Sources */,
 				09AC4D191C86E0D600C149EC /* Level10.swift in Sources */,

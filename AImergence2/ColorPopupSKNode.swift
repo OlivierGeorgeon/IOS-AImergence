@@ -30,11 +30,11 @@ class ColorPopupSKNode: SKNode {
         setScale(0)
         addChild(colorsNode)
 
-        let popupBackground = SKShapeNode(rect: CGRect(x: -50, y: -225, width: 100, height: 460), cornerRadius: 10)
-        popupBackground.lineWidth = 0
-        popupBackground.fillColor = UIColor.whiteColor()
-        popupBackground.name = "colorPopup"
-        addChild(popupBackground)
+        let backgroundNode = SKShapeNode(rect: CGRect(x: -45, y: -205, width: 90, height: 410), cornerRadius: 0)
+        backgroundNode.lineWidth = 0
+        backgroundNode.fillColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.7)
+        backgroundNode.name = "colorPopup"
+        addChild(backgroundNode)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -65,6 +65,7 @@ class ColorPopupSKNode: SKNode {
             } else {
                 colorNode.lineWidth = 1
             }
+            colorNode.lineJoin = .Round
             colorNode.zPosition = 1
             colorNode.position = CGPoint(x:0, y: i * 80 - 160)
             colorsNode.addChild(colorNode)

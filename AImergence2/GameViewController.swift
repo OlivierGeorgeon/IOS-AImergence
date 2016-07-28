@@ -37,9 +37,9 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
     var level = 0 {
         didSet {
             levelButton.setTitle(NSLocalizedString("Level", comment: "") + " \(level)", forState: .Normal)
-            //levelButton.setTitle("\(level)", forState: .Normal)
-            if !helpViewControllerContainer.hidden { helpViewController?.displayLevel(level) }
-            //if !imagineViewControllerContainer.hidden { imagineViewController?.displayLevel(level) }
+            if !helpViewControllerContainer.hidden {
+                helpViewController?.displayLevel(level)
+            }
         }
     }
 
@@ -48,7 +48,7 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
     var interfaceLocks = [[Bool]](count: GameViewController.maxLevelNumber + 1, repeatedValue: [true, true, true, true])
     var paidTip = false
     
-    let product_id = "com.oliviergeorgeon.little_ai.tip1"
+    //let product_id = "com.oliviergeorgeon.little_ai.tip1"
     var validProducts = [SKProduct]()
     var match: GKMatch?
     override func viewDidLoad()
@@ -75,11 +75,6 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
                 interfaceLocks = [[Bool]](count: GameViewController.maxLevelNumber + 1, repeatedValue: [true, true, true, true])
             }
         }
-        
-        //let longPressButtonGestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(GameViewController.longPressLevel(_:)))
-        //levelButton.addGestureRecognizer(longPressButtonGestureRecognizer)
-        
-        //let gameModel = GameModel.createGameModel(0)
         let gameScene = GameSKScene(levelNumber: 0)
         gameScene.gameSceneDelegate = self
         gameScene.scaleMode = SKSceneScaleMode.AspectFill
@@ -165,7 +160,6 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
         var nextGameScene:GameSKScene? = nil
         if !interfaceLocks[level][INTERFACE.LEVEL.rawValue] && level < GameViewController.maxLevelNumber {
             level += 1
-            //let gameModel = GameModel.createGameModel(level)
             nextGameScene = GameSKScene(levelNumber: level)
             nextGameScene!.gameSceneDelegate = self
             closeImagineWindow()
@@ -177,7 +171,6 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
         var previousGameScene:GameSKScene? = nil
         if level > 0 {
             level -= 1
-            //let gameModel = GameModel.createGameModel(level)
             previousGameScene = GameSKScene(levelNumber: level)
             previousGameScene!.gameSceneDelegate = self
             closeImagineWindow()
@@ -260,7 +253,7 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
             alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: { (UIAlertAction) -> () in
                 if !self.isInterfaceLocked(INTERFACE.LEVEL) {
                     if let scene = self.sceneView.scene as? GameSKScene {
-                        scene.tutorNode.gameCenterOk(scene.robotNode)
+                        scene.tutorNode.gameCenterOk(scene.robotNode, level17ParentNode: scene.topRightNode)
                         if scene.robotNode.recommendation == RECOMMEND.LEADERBOARD {
                             scene.robotNode.recommend(RECOMMEND.DONE)
                         }
@@ -273,8 +266,7 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
     
     func showLevelWindow() {
         helpViewControllerContainer.hidden = true
-        imagineViewControllerContainer.hidden = true
-        imagineViewController?.sceneView.scene = nil
+        closeImagineWindow()
         if let scene  = sceneView.scene as? GameSKScene {
             if validProducts.count == 0 {
                 requestProducts()
@@ -283,10 +275,10 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
             menuScene.previousGameScene = scene
             menuScene.userDelegate = self
             menuScene.scaleMode = SKSceneScaleMode.AspectFill
-            sceneView.presentScene(menuScene, transition: PositionedSKScene.transitionUp)
+            sceneView.presentScene(menuScene, transition: scene.transitionUp)
         }
         if let menuScene  = sceneView.scene as? MenuSKScene {
-            sceneView.presentScene(menuScene.previousGameScene!, transition: PositionedSKScene.transitionDown)
+            sceneView.presentScene(menuScene.previousGameScene!, transition: menuScene.transitionDown)
         }
     }
     /*
@@ -353,7 +345,7 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
     }
     
     //Implement MenuSceneDelegate
-    func currentlevel() -> Int {
+    func currentLevel() -> Int {
         return level
     }
     
@@ -468,7 +460,7 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
         //print(gameCenterViewController.leaderboardIdentifier)
         if let scene = sceneView.scene as? GameSKScene {
             scene.robotNode.gameCenterButtonNode.disactivate()
-            scene.tutorNode.gameCenterOk(scene.robotNode)
+            scene.tutorNode.gameCenterOk(scene.robotNode, level17ParentNode: scene.topRightNode)
             if isInterfaceLocked(INTERFACE.LEADERBOARD) {
                 interfaceLocks[level][INTERFACE.LEADERBOARD.rawValue] = false
                 let defaults = NSUserDefaults.standardUserDefaults()
@@ -477,6 +469,14 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
             if scene.robotNode.recommendation == RECOMMEND.LEADERBOARD {
                 scene.robotNode.recommend(RECOMMEND.DONE)
             }
+        }
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated
+        if let scene = sceneView.scene as? GameSKScene {
+            scene.traceNode.dispose(scene.clock)
         }
     }
 }

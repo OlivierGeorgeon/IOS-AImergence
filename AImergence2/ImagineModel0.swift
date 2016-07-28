@@ -11,19 +11,24 @@ import SceneKit
 class ImagineModel0
 {    
     let actionLiftExperience = SCNAction.moveByX( 0.0, y: 5.0 * 10, z: 0.0, duration: 3.0)
-    
+    let experienceRect = CGRect(x: CGFloat(-20), y: CGFloat(-20), width: CGFloat(40), height: CGFloat(40))
+    let tileGeometry = SCNBox(width: 1.0 * 10, height: 0.2 * 10, length: 1.0 * 10, chamferRadius: 0.1 * 10)
+    let blueMaterial = SCNMaterial()
     let gameModel: GameModel0
-    let actions = Actions()
     let scale = Float(10)
-    var worldNode = SCNNode()
+    let worldNode = SCNNode()
+    let tileYOffset = SCNVector3(0, -5, 0)
+
     var bodyNode: SCNFlippableNode!
-    
     var robotNode: SCNRobotNode!
     var constraint: SCNLookAtConstraint!
-    let tileYOffset = SCNVector3(0, -5, 0)
 
     required init(gameModel: GameModel0) {
         self.gameModel = gameModel
+
+        blueMaterial.diffuse.contents = UIColor(red: 140/256, green: 133/256, blue: 190/256, alpha: 1)
+        blueMaterial.specular.contents = UIColor.whiteColor()
+        tileGeometry.materials = [blueMaterial]
     }
 
     func setup(scene: SCNScene) {
@@ -77,7 +82,7 @@ class ImagineModel0
     }
     
     func createTileNode(position: SCNVector3, delay: NSTimeInterval) -> SCNNode {
-        let node = SCNNode(geometry: Geometries.tile())
+        let node = SCNNode(geometry: tileGeometry)
         node.position = position
         node.hidden = true
         worldNode.addChildNode(node)
@@ -87,13 +92,16 @@ class ImagineModel0
     }
     
     func spawnExperienceNode(experience: Experience, position: SCNVector3, delay:NSTimeInterval = 0.0) {
-        let rect = CGRect(x: CGFloat(-2 * scale), y: CGFloat(-2 * scale), width: CGFloat(4 * scale), height: CGFloat(4 * scale))
-        let path = gameModel.experimentPaths[experience.experiment.shapeIndex](rect)
-        let geometry = SCNShape(path: path, extrusionDepth: CGFloat(1 * scale))
-        geometry.materials = [Geometries.defaultExperienceMaterial()]
-        if experience.colorIndex > 0 {
-            geometry.firstMaterial?.diffuse.contents = gameModel.experienceColors[experience.colorIndex]
+        let path = gameModel.experimentPaths[experience.experiment.shapeIndex](experienceRect)
+        let geometry = SCNShape(path: path, extrusionDepth: CGFloat(10))
+        let experienceMaterial = SCNMaterial()
+        experienceMaterial.specular.contents = UIColor.whiteColor()
+        if experience.colorIndex == 0 {
+            experienceMaterial.diffuse.contents = UIColor(red: 162/256, green: 191/256, blue: 214/256, alpha: 1)
+        } else {
+            experienceMaterial.diffuse.contents = gameModel.experienceColors[experience.colorIndex]
         }
+        geometry.materials = [experienceMaterial]
         let experienceNode = SCNNode(geometry: geometry)
         experienceNode.scale = SCNVector3(0.1, 0.1, 0.1)
         experienceNode.position = position

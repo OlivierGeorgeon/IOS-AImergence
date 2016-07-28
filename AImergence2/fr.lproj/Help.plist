@@ -17,7 +17,7 @@
 		<array>
 			<string>Imaginez que le robot trouve agréable les évènements qui ont une valeur positive et désagréables ceux qui ont une valeur négative.</string>
 			<string>Générez une séquence d&apos;évènements agréables.</string>
-			<string>Appuyez sur un évènement pour rejouer la même commande. Selon le context, cela peut reproduire un évènement du même type ou non. Pour rejouer une séquence entière, appuyez répétitivement sur la &quot;prochaine commande&quot; (forme blanche qui apparait à gauche quand vous appuyez sur un évènement).</string>
+			<string>Pressez un évènement pour rejouer la même commande. Selon le contexte, cela peut reproduire le même évènement ou un autre. Pour rejouer une séquence entière, pressez répétitivement la &quot;prochaine commande&quot; (forme blanche qui apparait à gauche quand vous pressez un évènement).</string>
 		</array>
 		<array>
 			<string>Pressez et maintenez enfonçée une commande pour changer sa forme.</string>
@@ -87,7 +87,7 @@
 		<array>
 			<string>Vous avez atteint le dernier niveau ! Félicitations ! Il est similaire au niveau 16.</string>
 			<string>Little AI est un projet de recherche et de pédagogie open-source et sans but lucratif. Pour en savoir plus, visitez http://little-ai.com.</string>
-			<string>Si Little AI vous a amusé ou instruit, ou les deux, songez à faire un petit don s&apos;il vous plaît. Vous soutiendrez une recherch en intelligence artificielle développementale open-source et indépendante des compagnies commerciales. Vous nous aiderez aussi à créer d&apos;autres niveaux !</string>
+			<string>Si Little AI vous a amusé ou instruit, ou les deux, songez à faire un petit don s&apos;il vous plaît. Vous soutiendrez une recherch en intelligence artificielle ouverte et indépendante des compagnies commerciales. Vous nous aiderez aussi à créer d&apos;autres niveaux !</string>
 		</array>
 	</array>
 </dict>

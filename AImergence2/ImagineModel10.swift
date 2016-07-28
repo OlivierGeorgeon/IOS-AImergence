@@ -38,7 +38,7 @@ class ImagineModel10: ImagineModel9
                     bodyNode = carrouselNode.childNodes[carrouselIndex] as! SCNFlippableNode
                 }
             }
-            if bodyNode != nil { bodyNode.runAction(actions.turnover()) }
+            if bodyNode != nil { bodyNode.runAction(turnover) }
             spawnExperienceNode(experience, position: SCNVector3( 0.0, 0.0, 0.0))
 
         default:

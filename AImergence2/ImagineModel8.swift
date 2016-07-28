@@ -9,7 +9,9 @@
 import SceneKit
 
 class ImagineModel8: ImagineModel5
-{    
+{
+    //let waitAndToss = SCNAction.sequence([SCNAction.waitForDuration(0.1), SCNAction.moveByX( 5.0 * 10, y: 0.0, z: 0.0, duration: 0.3), SCNAction.removeFromParentNode()])
+    
     override func playExperience(experience: Experience) {
         switch experience.hashValue {
         case 00: // Touch
@@ -23,14 +25,14 @@ class ImagineModel8: ImagineModel5
             spawnExperienceNode(experience, position: SCNVector3( -0.5 * scale, 0.0, 0.0), delay: 0.1)
         case 10:  // eat
             robotNode.bump()
-            createOrRetrieveBodyNodeAndRunAction(action: actions.waitAndToss())
+            createOrRetrieveBodyNodeAndRunAction(action: waitAndRemove)
             spawnExperienceNode(experience, position: SCNVector3( -0.5 * scale, 0.0, 0.0), delay: 0.1)
             bodyNode.childNodes[0].runAction(SCNAction.sequence([SCNAction.waitForDuration(0.1),SCNAction.removeFromParentNode()]), completionHandler: explode)
             canKnowNextBodyNode = true
             nextBodyNode?.runAction(moveUp)
         case 11:
             robotNode.bump()
-            createOrRetrieveBodyNodeAndRunAction(direction: Compass.WEST, action: actions.waitAndToss())
+            createOrRetrieveBodyNodeAndRunAction(direction: Compass.WEST, action: waitAndRemove)
             spawnExperienceNode(experience, position: SCNVector3( -0.5 * scale, 0.0, 0.0), delay: 0.1)
             bodyNode.childNodes[0].runAction(SCNAction.sequence([SCNAction.waitForDuration(0.1),SCNAction.removeFromParentNode()]), completionHandler: explode)
             canKnowNextBodyNode = true
@@ -38,7 +40,7 @@ class ImagineModel8: ImagineModel5
         case 20: // swap
             if nextBodyNode == nil { canKnowNextBodyNode = false }
             if bodyNode == nil { bodyNode = nextBodyNode; nextBodyNode = nil }
-            if bodyNode != nil { bodyNode.runAction(actions.turnover()) }
+            if bodyNode != nil { bodyNode.runAction(turnover) }
             spawnExperienceNode(experience, position: SCNVector3( 0.0, 0.0, 0.0))
         default:
             break

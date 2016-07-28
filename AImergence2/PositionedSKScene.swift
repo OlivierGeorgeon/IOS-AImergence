@@ -11,23 +11,17 @@ import SpriteKit
 
 class PositionedSKScene: SKScene {
     
+    // Portrait:  scene width:  375, hight: 667
+    // Landscape: scene width: 1186, hight: 667
+    
     let sceneHeight = CGFloat(667)
-    
-    static let actionMoveCameraUp        = SKAction.moveBy(CGVector(dx:0, dy:667), duration: 0.3)
-    static let actionMoveCameraDown      = SKAction.moveBy(CGVector(dx:0, dy:-667), duration: 0.3)
-    static let actionMoveCameraLeftRight = SKAction.sequence([SKAction.moveBy(CGVector(dx:-50, dy:0), duration: 0.1), SKAction.moveBy(CGVector(dx:50, dy:0), duration: 0.1)])
-    static let actionMoveCameraRightLeft = SKAction.sequence([SKAction.moveBy(CGVector(dx:50, dy:0), duration: 0.1), SKAction.moveBy(CGVector(dx:-50, dy:0), duration: 0.1)])
-    
     let actionPress = SKAction.sequence([SKAction.scaleBy(0.909, duration: 0.1),SKAction.scaleBy(1.1, duration: 0.1)])
-    let actionActive = SKAction.repeatActionForever(SKAction.sequence([SKAction.scaleBy(0.8333, duration: 0.1),SKAction.scaleBy(1.2, duration: 0.1)]))
-
-    static let transitionUp    = SKTransition.moveInWithDirection(SKTransitionDirection.Down, duration: 0.3)
-    static let transitionDown  = SKTransition.revealWithDirection(SKTransitionDirection.Down, duration: 0.3)
-    static let transitionLeft  = SKTransition.pushWithDirection(SKTransitionDirection.Left, duration: 0.5)
-    static let transitionRight = SKTransition.pushWithDirection(SKTransitionDirection.Right, duration: 0.5)
-    
-    static let titleFont      = UIFont.preferredFontForTextStyle(UIFontTextStyleTitle1)
-    static let bodyFont       = UIFont.preferredFontForTextStyle(UIFontTextStyleBody)
+    let transitionUp    = SKTransition.moveInWithDirection(SKTransitionDirection.Down, duration: 0.3)
+    let transitionDown  = SKTransition.revealWithDirection(SKTransitionDirection.Down, duration: 0.3)
+    let transitionLeft  = SKTransition.pushWithDirection(SKTransitionDirection.Left, duration: 0.5)
+    let transitionRight = SKTransition.pushWithDirection(SKTransitionDirection.Right, duration: 0.5)
+    let titleFont = UIFont.preferredFontForTextStyle(UIFontTextStyleTitle1)
+    let bodyFont = UIFont.preferredFontForTextStyle(UIFontTextStyleBody)
     
     override func didMoveToView(view: SKView) {
         super.didMoveToView(view)
@@ -38,15 +32,11 @@ class PositionedSKScene: SKScene {
         self.size = CGSize(width: sceneHeight * frameSize.width / frameSize.height, height: sceneHeight)
     }
     
-    func tap(recognizer: UITapGestureRecognizer) {
-    }
+    func tap(recognizer: UITapGestureRecognizer) {}
     
-    func longPress(recognizer: UILongPressGestureRecognizer) {
-    }
+    func longPress(recognizer: UILongPressGestureRecognizer) {}
 
-    func pan(recognizer: UIPanGestureRecognizer) {
-    }
-
+    func pan(recognizer: UIPanGestureRecognizer) {}
 }
 
 func + (left: CGPoint, right: CGVector) -> CGPoint {
