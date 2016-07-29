@@ -133,15 +133,19 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
             if let trans:SKPaymentTransaction = transaction as? SKPaymentTransaction {
                 switch trans.transactionState {
                 case .Purchased:
-                    print("Product purchased")
+                    //print("Product purchased")
                     paidTip = true
                     userDefaults.setBool(true, forKey: paidTipKey)
                     SKPaymentQueue.defaultQueue().finishTransaction(transaction as! SKPaymentTransaction)
+                    if let scene = sceneView.scene as? MenuSKScene {
+                        scene.shortTipInvit = scene.thankYou
+                        scene.tipInviteNode.text = scene.shortTipInvit
+                    }
                 case .Failed:
-                    print("Purchased failed")
+                    //print("Purchased failed")
                     SKPaymentQueue.defaultQueue().finishTransaction(transaction as! SKPaymentTransaction)
                 case .Restored:
-                    print("Already purchased")
+                    //print("Already purchased")
                     paidTip = true
                     userDefaults.setBool(true, forKey: paidTipKey)
                     SKPaymentQueue.defaultQueue().restoreCompletedTransactions()

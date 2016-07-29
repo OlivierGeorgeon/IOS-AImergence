@@ -53,7 +53,7 @@ class HelpViewController: UIViewController {
     func displayLevel(level: Int) {
         labelView.text = levelString + " \(level)"
         switch level {
-        case 16, 17:
+        case 16:
             textView.selectable = true
         default:
             textView.selectable = false

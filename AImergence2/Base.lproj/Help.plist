@@ -17,7 +17,7 @@
 		<array>
 			<string>Imagine that the robot finds the events that have a positive value enjoyable, and those that have a negative value unpleasant.</string>
 			<string>Generate a sequence of enjoyable events.</string>
-			<string>Tap an event to replay the same command. Depending on the context, this may reproduce the same event or not. To replay an entire sequence, repeatedly tap the &quot;next command&quot; (white shape that appears on the left when you tap an event).</string>
+			<string>Tap an event to replay the same command. The same command replayed in the same context yields the same event. To replay an entire sequence, repeatedly tap the &quot;next command&quot; (white shape that appears on the left when you tap an event).</string>
 		</array>
 		<array>
 			<string>Press and hold a command to change its shape.</string>
@@ -27,7 +27,7 @@
 		<array>
 			<string>In the world of Level 4, the robot cannot always avoid unpleasant events.</string>
 			<string>Generate a sequence that contains as few unpleasant events as possible. </string>
-			<string>Use different shapes for the commands, and display the enjoyable events in green and the unpleasant events in red. Don&apos;t think too much, your brain will see the pattern before you know it!</string>
+			<string>Use different shapes for the commands. Display the enjoyable events in green and the unpleasant events in red. Don&apos;t think too much, your brain will see the pattern before you know it!</string>
 		</array>
 		<array>
 			<string>Experiment with each command individually several times in a raw. One of the commands always generates the same type of events in a given situation. It is a &quot;persistent&quot; command.</string>
@@ -41,12 +41,13 @@
 		</array>
 		<array>
 			<string>In Level 7, the commands have the same effects as in Levels 5 and 6, but some events have different values.</string>
-			<string>Tap the events to reproduce enjoyable sequences in the context when it is possible.</string>
-			<string>Optimize your score by avoiding persistent commands as appropriate.</string>
+			<string>Tap the events to replay enjoyable sequences in the context when it is possible.</string>
+			<string>When you replay a sequence, skip the persistent commands to maximize your score.</string>
 		</array>
 		<array>
-			<string>On Level 8, events have the same effects and the same values as in Level 7.</string>
-			<string>Now, however, one of the commands always returns the same type of event. This command executes a &quot;non-informative action&quot;.</string>
+			<string>On Level 8, the commands have the same effects as in Levels 5 to 7.</string>
+			<string>Now, however, one of the commands always yields the same events. This command executes a &quot;non-informative action&quot;.</string>
+			<string>Although non-informative actions always yield the same events, do not mistake them for persistent commands.</string>
 		</array>
 		<array>
 			<string>On level 9, the commands have the same immediate effects as in Levels 5, 6, 7, and 8, but they also transform the environment on the long term.</string>
@@ -62,7 +63,7 @@
 		</array>
 		<array>
 			<string>The box is even smaller.</string>
-			<string>Scroll to review the last 100 events. Double-tap on an empty area to return to origin.</string>
+			<string>Scroll to review the last 100 events. Double-tap on an empty area to scroll back to origin.</string>
 			<string>Press the score to see your number of moves.</string>
 		</array>
 		<array>
@@ -82,12 +83,13 @@
 		</array>
 		<array>
 			<string>You are in the same world as in Level 15 with the same commands initially uninterpreted.</string>
-			<string>If you wish to learn to program robots that can play Little AI and more, or if you are simply curious about developmental artificial intelligence, consider visiting http://little-ai.com.</string>
+			<string>Little AI is a free open-source research and pedagogical project driven by passionate volonteers in collaboration with academia.</string>
+			<string>If you wish to learn more about us and about research in developmental artificial intelligence, consider visiting http://little-ai.com.</string>
 		</array>
 		<array>
 			<string>You reached the last level ! Congratulations! It is similar to Level 16.</string>
-			<string>Little AI is a free open-source research and pedagogical project. To learn more, please visit http://little-ai.com.</string>
-			<string>If you found Little AI enjoyable or instructive, or both, please consider making a small donation. You will support reasearch in developmental artificial intelligence that remains free and independant from big companies. You will also help us create more levels!</string>
+			<string>If you found Little AI enjoyable or instructive, or both, please consider making a small donation.</string>
+			<string>Your donations will contribute to progress in artificial intelligence and help us spread this progress freely. You will also help us create more levels!</string>
 		</array>
 	</array>
 </dict>

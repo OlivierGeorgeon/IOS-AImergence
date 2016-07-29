@@ -17,7 +17,7 @@
 		<array>
 			<string>Imaginez que le robot trouve agréable les évènements qui ont une valeur positive et désagréables ceux qui ont une valeur négative.</string>
 			<string>Générez une séquence d&apos;évènements agréables.</string>
-			<string>Pressez un évènement pour rejouer la même commande. Selon le contexte, cela peut reproduire le même évènement ou un autre. Pour rejouer une séquence entière, pressez répétitivement la &quot;prochaine commande&quot; (forme blanche qui apparait à gauche quand vous pressez un évènement).</string>
+			<string>Pressez un évènement pour rejouer la même commande. La même commande rejouée dans le même contexte produit le même évènement. Pour rejouer une séquence entière, pressez répétitivement la &quot;prochaine commande&quot; (forme blanche qui apparait à gauche quand vous pressez un évènement).</string>
 		</array>
 		<array>
 			<string>Pressez et maintenez enfonçée une commande pour changer sa forme.</string>
@@ -41,12 +41,13 @@
 		</array>
 		<array>
 			<string>Au niveau 7, les commandes ont les mêmes effets qu&apos;aux niveaux 5 et 6, mais certains évènements ont des valeurs différentes.</string>
-			<string>Appuyez sur les évènements pour reproduire les séquences agréables dans les contextes ou c&apos;est possible.</string>
-			<string>Optimisez votre score en évitant les commandes persisantes inutiles.</string>
+			<string>Appuyez sur les évènements pour rejouer les séquences agréables dans les contextes ou c&apos;est possible.</string>
+			<string>Quand vous rejouez une séquence, sautez les commandes persistantes pour maximiser votre score.</string>
 		</array>
 		<array>
-			<string>Au niveau 8, les évènements ont les mêmes effets et les mêmes valeurs qu&apos;au niveau 7.</string>
-			<string>L&apos;une des commandes change la situation du robot mais produit toujours le même type d&apos;évènement. Cette commande effectue une &quot;action non informative&quot;.</string>
+			<string>Au niveau 8, les commandes ont les mêmes effets qu&apos;aux niveaux 5 à 7.</string>
+			<string>Cependant, maintenant, l&apos;une des commandes produit toujours les mêmes évènements. Cette commande effectue une &quot;action non informative&quot;.</string>
+			<string>Bien que les actions non informatives produisent toujours les mêmes évènements, ne les prenez pas pour des commandes persistantes.</string>
 		</array>
 		<array>
 			<string>Au niveau 9, les commandes ont les mêmes effets immédiats qu&apos;aux niveaux 5, 6, 7, et 8, mais elles transforment aussi l&apos;environnement sur le long terme.</string>
@@ -82,12 +83,13 @@
 		</array>
 		<array>
 			<string>Vous êtes dans le même monde qu&apos;au niveau 15, avec les mêmes commandes redisposées aléatoirement.</string>
-			<string>Si vous souhaitez apprendre à programmer des robots capables de jouer à Little AI et bien plus, ou si vous êtes simplement curieux à propos de l&apos;intelligence artificielle développementale, songez à visiter http://little-ai.com.</string>
+			<string>Little AI est un projet indépendant et open-source mené par des volontaires passionnés en collaboration avec le monde académique. </string>
+			<string>Si vous souhaitez en apprendre davantage sur nous et sur la recherche en intelligence artificielle développementale, songez à visiter http://little-ai.com.</string>
 		</array>
 		<array>
 			<string>Vous avez atteint le dernier niveau ! Félicitations ! Il est similaire au niveau 16.</string>
-			<string>Little AI est un projet de recherche et de pédagogie open-source et sans but lucratif. Pour en savoir plus, visitez http://little-ai.com.</string>
-			<string>Si Little AI vous a amusé ou instruit, ou les deux, songez à faire un petit don s&apos;il vous plaît. Vous soutiendrez une recherch en intelligence artificielle ouverte et indépendante des compagnies commerciales. Vous nous aiderez aussi à créer d&apos;autres niveaux !</string>
+			<string>Si Little AI vous a amusé ou instruit, ou les deux, songez à faire un petit don s&apos;il vous plaît.</string>
+			<string>Vos dons feront progresser les connaissances en intelligence artificielle et nous aideront à les diffuser gratuitement. Vous nous aiderez aussi à créer d&apos;autres niveaux !</string>
 		</array>
 	</array>
 </dict>

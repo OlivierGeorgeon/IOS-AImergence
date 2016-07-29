@@ -14,7 +14,7 @@ class TutorSKNode: SKNode {
     static var test = 0
     
     let bodyFont = UIFont.preferredFontForTextStyle(UIFontTextStyleBody)
-    let shapeFuncs = [arrowRight, arrowLeft, arrowRight, arrowRight, arrowRight, arrowRight, arrowRight, arrowRight, arrowRight, arrowRight, arrowRight, arrowLeft, arrowLeft, arrowRight]
+    let shapeFuncs = [arrowRight, arrowLeft, arrowRight, arrowRight, arrowRight, arrowRight, arrowLeft, arrowRight, arrowRight, arrowRight, arrowRight, arrowLeft, arrowLeft, arrowRight]
 
     let tips = [NSLocalizedString("Tip0", comment: ""),
                 NSLocalizedString("Tip1", comment: ""),
@@ -47,12 +47,12 @@ class TutorSKNode: SKNode {
                     CGRect(x: -110, y: -30, width: 220, height: 60)]
     
     let tipPositions = [CGPoint(x: -50, y: 230),
-                        CGPoint(x: 150, y: -50),
+                        CGPoint(x: 140, y: -50),
                         CGPoint(x: -160, y: 0),
                         CGPoint(x: -160, y: 0),
                         CGPoint(x: -160, y: 0),
                         CGPoint(x: -160, y: 0),
-                        CGPoint(x: -160, y: 0),
+                        CGPoint(x: -140, y: 0),
                         CGPoint(x: -90, y: 300),
                         CGPoint(x: -70, y: 190),
                         CGPoint(x: -90, y: 300),
@@ -201,7 +201,7 @@ class TutorSKNode: SKNode {
     }
     
     func arrive() {
-        if level == 3 && step == 10 {
+        if (level == 3 && step == 10) || (level == 17 && step == 13) {
             step = 100
             removeFromParent()
         }

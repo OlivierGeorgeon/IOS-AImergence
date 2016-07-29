@@ -14,10 +14,10 @@
 "Drag the 3D scene to move the camera" = "Glissez la scène 3D pour changer l'angle de vue.";
 "Double tap to swap cameras." = "Appuyez deux fois sur la scène 3D pour passer d'un point de vue à un autre.";
 "Explore your environment" = "Explorez votre environnement avant de passer au niveau suivant.";
-"Tap an event to replay its command" = "Scrollez la fenêtre d'arrière plan pour revoir les évènements passés. Appuyez sur les évènements passés pour les reproduire et observer leurs effets sur le robot.";
+"Tap an event to replay its command" = "Scrollez la fenêtre d'arrière plan pour revoir les évènements passés. Appuyez sur les évènements passés pour les rejouer et observez leurs effets sur le robot.";
 "You won!" = "Youpi ! Vous avez terminé Little AI ! Surveillez les mises à jour pour obtenir des niveaux encore plus intéressants dans les mois à venir ! (Développés bénévolement ou financés par vos dons.)";
 "Please login to Game Center" = "Pour voir le classement, authentifiez-vous dans l'application Game Center !";
-"Thank you!" = "Merci beaucoup de votre soutien de Little AI !";
+"Thank you!" = "Merci beaucoup pour votre soutien !";
 "0 moves" = "0 coups";
 "Won in" = "Gagné en";
 "moves" = "coups ";
@@ -27,7 +27,7 @@
 "Tip3" = "Observez les effets/ des  commandes";
 "Tip4" = "Regardez le classement/dans Game Center";
 "Tip5" = "Appuyez pour/déployer le menu";
-"Tip6" = "Glissez pour/changer de niveau";
+"Tip6" = "Glissez le robot pour/changer de niveau";
 "Tip7" = "Pressez un évènement/pour rejouer sa commande";
 "Tip8" = "Pressez et maintenez/pour changer les formes";
 "Tip9" = "Pressez et maintenez/pour changer les couleurs";

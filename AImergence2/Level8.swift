@@ -14,9 +14,9 @@ class Level8: Level5 {
     override var number:Int { return 8 }
 
     convenience required init() {
-        let experiment0 = Experiment(number: 0, shapeIndex: 1)
-        let experiment1 = Experiment(number: 1, shapeIndex: 2)
-        let experiment2 = Experiment(number: 2, shapeIndex: 0)
+        let experiment0 = Experiment(number: 0)
+        let experiment1 = Experiment(number: 1)
+        let experiment2 = Experiment(number: 2)
         let experiments = GKRandomSource.sharedRandom().arrayByShufflingObjectsInArray([experiment0, experiment1, experiment2]) as! [Experiment]
 
         let experience00 = Experience(experiment: experiment0, resultNumber: 0, valence:0, colorIndex: 2)

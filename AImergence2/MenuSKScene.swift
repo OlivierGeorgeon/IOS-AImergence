@@ -21,14 +21,14 @@ protocol MenuSceneDelegate: class
 
 class MenuSKScene: PositionedSKScene {
     
-    //let gameModel = GameModel0()
     let backgroundNode = SKSpriteNode(imageNamed: "niveaux.png")
     let originNode = SKNode()
     let tipInviteNode = SKLabelNode()
     let tutorNode = TutorSKNode()
-    let level0Position      = CGPoint(x: 60, y: 550)
-    let levelXOffset        = CGVector( dx: 60, dy: 0)
-    let levelYOffset        = CGVector( dx:  0, dy: -80)
+    let level0Position = CGPoint(x: 60, y: 550)
+    let levelXOffset = CGVector( dx: 60, dy: 0)
+    let levelYOffset = CGVector( dx:  0, dy: -80)
+    let thankYou = NSLocalizedString("Thank you!", comment: "In the level window when the user has paid a tip.")
 
     weak var userDelegate: MenuSceneDelegate?
 
@@ -78,7 +78,7 @@ class MenuSKScene: PositionedSKScene {
         }
         
         if userDelegate!.isPaidTip() {
-            shortTipInvit = NSLocalizedString("Thank you!", comment: "In the level window when the user has paid a tip.");
+            shortTipInvit = thankYou
             longTipInvit = shortTipInvit
         }
         
@@ -133,7 +133,6 @@ class MenuSKScene: PositionedSKScene {
                 backgroundNode.fillColor = UIColor(red: 114 / 256, green: 114 / 256, blue: 171 / 256, alpha: 1)
             } else  {
                 backgroundNode.fillColor = UIColor(red: 150 / 256, green: 100 / 256, blue: 150 / 256, alpha: 1)
-                //backgroundNode.fillColor = UIColor(red: 204 / 256, green: 153 / 256, blue: 04 / 256, alpha: 1)
             }
             backgroundNode.lineWidth = 0
             levelNode.addChild(backgroundNode)
