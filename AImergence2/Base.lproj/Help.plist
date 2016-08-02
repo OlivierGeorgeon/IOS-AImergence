@@ -30,7 +30,7 @@
 			<string>Use different shapes for the commands. Display the enjoyable events in green and the unpleasant events in red. Don&apos;t think too much, your brain will see the pattern before you know it!</string>
 		</array>
 		<array>
-			<string>Experiment with each command individually several times in a raw. One of the commands always generates the same type of events in a given situation. It is a &quot;persistent&quot; command.</string>
+			<string>Experiment with each command individually several times in a raw. One of the commands always yields the same events in a given situation. It is a &quot;persistent&quot; command.</string>
 			<string>The persistent command allows you to observe the situation of the robot without modifying it.</string>
 			<string>Use the colors of events to identify the situations that afford enjoyable events.</string>
 		</array>
@@ -83,7 +83,7 @@
 		</array>
 		<array>
 			<string>You are in the same world as in Level 15 with the same commands initially uninterpreted.</string>
-			<string>Little AI is a free open-source research and pedagogical project driven by passionate volonteers in collaboration with academia.</string>
+			<string>Little AI is a free open-source research and pedagogical project driven by passionate volunteers in collaboration with academia.</string>
 			<string>If you wish to learn more about us and about research in developmental artificial intelligence, consider visiting http://little-ai.com.</string>
 		</array>
 		<array>

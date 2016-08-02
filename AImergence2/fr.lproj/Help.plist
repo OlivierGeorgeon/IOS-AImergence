@@ -20,17 +20,17 @@
 			<string>Pressez un évènement pour rejouer la même commande. La même commande rejouée dans le même contexte produit le même évènement. Pour rejouer une séquence entière, pressez répétitivement la &quot;prochaine commande&quot; (forme blanche qui apparait à gauche quand vous pressez un évènement).</string>
 		</array>
 		<array>
-			<string>Pressez et maintenez enfonçée une commande pour changer sa forme.</string>
+			<string>Pressez et maintenez enfoncée une commande pour changer sa forme.</string>
 			<string>Pressez et maintenez enfoncé un évènement pour changer sa couleur.</string>
 			<string>Changez les formes des commandes et les couleurs des évènements pour pouvoir les reconnaitre. Les formes et les couleurs sont purement descriptives et ne changent pas le robot.</string>
 		</array>
 		<array>
 			<string>Dans le monde du niveau 4, le robot ne peut pas toujours éviter les évènements désagréables.</string>
 			<string>Générez une séquence qui contienne aussi peu d&apos;événements désagréables que possible. </string>
-			<string>Utilisez des formes différentes pour les commandes et affichez les événements agréables en vert et les désagréables en rouge. Ne réfléchissez pas trop, votre cerveau détectera des régularités avant même que vous en preniez conscience !</string>
+			<string>Utilisez des formes différentes pour les commandes. Affichez les événements agréables en vert et les désagréables en rouge. Ne réfléchissez pas trop, votre cerveau détectera des régularités avant même que vous en preniez conscience !</string>
 		</array>
 		<array>
-			<string>Expérimentez chaque commande seule plusieurs fois de suite. L&apos;une d&apos;entre elles produit toujours le même type d&apos;évènement dans une situation donnée. C&apos;est une commande &quot;persistante&quot;.</string>
+			<string>Expérimentez chaque commande seule plusieurs fois de suite. L&apos;une d&apos;entre elles produit toujours le même évènement dans une situation donnée. C&apos;est une commande &quot;persistante&quot;.</string>
 			<string>La commande persistante permet &quot;d&apos;observer&quot; la situation du robot sans la modifier.</string>
 			<string>Basez-vous sur les couleurs des évènements pour repérer les situations qui permettent d&apos;obtenir des évènements agréables.</string>
 		</array>
@@ -41,7 +41,7 @@
 		</array>
 		<array>
 			<string>Au niveau 7, les commandes ont les mêmes effets qu&apos;aux niveaux 5 et 6, mais certains évènements ont des valeurs différentes.</string>
-			<string>Appuyez sur les évènements pour rejouer les séquences agréables dans les contextes ou c&apos;est possible.</string>
+			<string>Appuyez sur les évènements pour rejouer les séquences agréables dans les contextes où c&apos;est possible.</string>
 			<string>Quand vous rejouez une séquence, sautez les commandes persistantes pour maximiser votre score.</string>
 		</array>
 		<array>
@@ -55,7 +55,7 @@
 		</array>
 		<array>
 			<string>Le monde du niveau 10 est identique au monde du niveau 9, et les évènements ont les mêmes valeurs.</string>
-			<string>Comme au niveau 8, une des commandes change la situation du robot en produsant toujours le même type d&apos;évènement (action non-informative).</string>
+			<string>Comme au niveau 8, une des commandes change la situation du robot en produisant toujours le même type d&apos;évènement (action non-informative).</string>
 		</array>
 		<array>
 			<string>Le robot peut avancer et tourner dans une petite boîte.</string>
@@ -63,7 +63,7 @@
 		</array>
 		<array>
 			<string>La boîte est encore plus petite.</string>
-			<string>Scrollez pour revoir les 100 derniers évènements. Tappez deux fois sur une zone vide pour revenir à l&apos;origine.</string>
+			<string>Scrollez pour revoir les 100 derniers évènements. Tapez deux fois sur une zone vide pour revenir à l&apos;origine.</string>
 			<string>Appuyez sur le score pour voir votre nombre de coups.</string>
 		</array>
 		<array>
@@ -74,7 +74,7 @@
 		<array>
 			<string>Le monde du niveau 14 est le même que celui du niveau 13.</string>
 			<string>Vous êtes dans une situation analogue à celle d&apos;un nouveau-né qui ignore la signification de ses geste et de ses sens, ou de celle d&apos;un robot qui ignore la signification de ses actionneurs et de ses capteurs.</string>
-			<string>Vous devez aprendre à vous connaitre vous-même et à connaitre votre environnement pour pouvoir mener une vie agréable !</string>
+			<string>Vous devez apprendre à vous connaitre vous-même et à connaitre votre environnement pour pouvoir mener une vie agréable !</string>
 		</array>
 		<array>
 			<string>Le robot dispose de deux commandes persistantes supplémentaires qui lui permettent de sentir les bords de la boite autour de lui.</string>

@@ -35,15 +35,12 @@ class ButtonSKNode: SKNode
         self.activatedTexture = SKTexture(imageNamed: activatedImageNamed)
         self.disactivatedTexture = SKTexture(imageNamed: disactivatedImageNamed)
         self.backgroundNode = SKSpriteNode(texture: self.activatedTexture, color: UIColor.clearColor(), size: CGSize(width: 76, height: 76))
-        //let texture = self.activatedTexture
         
         let appearPath = UIBezierPath()
         appearPath.addArcWithCenter(CGPoint(x: 0, y: 60), radius: 30, startAngle: -CGFloat(M_PI) / 2 , endAngle: CGFloat(M_PI) / 2, clockwise: true)
         actionAppear = SKAction.followPath(appearPath.CGPath, asOffset: false, orientToPath: false, duration: 0.2)
         actionAppear.timingMode = .EaseOut
-        //let actionAppearScale   = SKAction.scaleTo(0.9, duration: 0.2)
         actionAppearScale.timingMode = .EaseOut
-        //actionAppear = SKAction.group([actionAppearScale, actionAppearPath])
 
         let actionFirstPulseUp = SKAction.scaleTo(1.5, duration: 0.3)
         actionFirstPulseUp.timingMode = .EaseInEaseOut
@@ -57,11 +54,8 @@ class ButtonSKNode: SKNode
         disappearPath.addArcWithCenter(CGPoint(x: 0, y: 60), radius: 30, startAngle: CGFloat(M_PI) / 2 , endAngle: -CGFloat(M_PI) / 2, clockwise: true)
         actionDisappear = SKAction.followPath(disappearPath.CGPath, asOffset: false, orientToPath: false, duration: 0.2)
         actionDisappear.timingMode = .EaseIn
-        //let actionDisappearScale   = SKAction.scaleTo(0.0, duration: 0.2)
         actionDisappearScale.timingMode = .EaseIn
-        //actionDisappear = SKAction.group([actionDisappearPath, actionDisappearScale])
         
-        //let actionExpandUp : SKAction
         switch button {
         case .INSTRUCTION:
             actionExpand = SKAction.moveTo(CGPoint(x: 0, y: 90 + 140), duration: 0.2)
@@ -71,14 +65,12 @@ class ButtonSKNode: SKNode
             actionExpand = SKAction.moveTo(CGPoint(x: 0, y: 90), duration: 0.2)
         }
         actionExpand.timingMode = .EaseInEaseOut
-        //actionExpand = SKAction.group([actionExpandUp, actionAppearScale])
         
         actionReduce = SKAction.moveTo(CGPoint(x: 0, y: 90), duration: 0.2)
         actionReduce.timingMode = .EaseInEaseOut
         
         actionCollapse = SKAction.moveTo(CGPointZero, duration: 0.2)
         actionCollapse.timingMode = .EaseIn
-        //actionCollapse = SKAction.group([actionZero, actionDisappearScale])
         
         super.init()
         
@@ -94,7 +86,9 @@ class ButtonSKNode: SKNode
     func expand() {
         removeActionForKey("expand")
         runAction(actionExpand, withKey: "expand")
-        backgroundNode.runAction(actionAppearScale)
+        if position.y <= 0 {
+            backgroundNode.runAction(actionAppearScale)
+        }
     }
     
     func collapse() {

@@ -10,6 +10,7 @@ import UIKit
 import SpriteKit
 import GameKit
 import StoreKit
+import AVFoundation
 
 enum INTERFACE: Int { case INSTRUCTION, IMAGINE, LEADERBOARD, LEVEL}
 
@@ -139,6 +140,7 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
                     SKPaymentQueue.defaultQueue().finishTransaction(transaction as! SKPaymentTransaction)
                     if let scene = sceneView.scene as? MenuSKScene {
                         scene.shortTipInvit = scene.thankYou
+                        scene.longTipInvit = scene.thankYou
                         scene.tipInviteNode.text = scene.shortTipInvit
                     }
                 case .Failed:
@@ -149,6 +151,7 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
                     paidTip = true
                     userDefaults.setBool(true, forKey: paidTipKey)
                     SKPaymentQueue.defaultQueue().restoreCompletedTransactions()
+                    //SKPaymentQueue.defaultQueue().finishTransaction(transaction as! SKPaymentTransaction)
                 default:
                     break
                 }

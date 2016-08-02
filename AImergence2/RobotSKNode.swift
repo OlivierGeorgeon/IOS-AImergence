@@ -16,11 +16,15 @@ class RobotSKNode: SKNode
     let instructionButtonNode = ButtonSKNode(.INSTRUCTION, activatedImageNamed: "instructions-color", disactivatedImageNamed: "instructions-black")
     let imagineButtonNode = ButtonSKNode(.IMAGINE, activatedImageNamed: "imagine-color", disactivatedImageNamed: "imagine-black")
     let gameCenterButtonNode = ButtonSKNode(.LEADERBOARD, activatedImageNamed: "gamecenter-color", disactivatedImageNamed: "gamecenter-black")
+    let saltoAction = SKAction.rotateByAngle(CGFloat(-2 * M_PI), duration: 0.4)
 
+    var jumpAction = SKAction()
+    var winAction = SKAction()
     var robotHappyFrames = [SKTexture]()
     var robotSadFrames = [SKTexture]()
     var robotBlinkFrames = [SKTexture]()
-    
+    var robotCryFrames = [SKTexture]()
+    var robotJumpFrames = [SKTexture]()
     var expanded = false
     var recommendation = RECOMMEND.DONE
     
@@ -40,6 +44,16 @@ class RobotSKNode: SKNode
         robotHappyFrames = loadFrames("happy", imageNumber: 6, by: 1)
         robotSadFrames = loadFrames("sad", imageNumber: 7, by: 1)
         robotBlinkFrames = loadFrames("blink", imageNumber: 9, by: 3)
+        robotCryFrames = loadFrames("cry", imageNumber: 7, by: 1)
+        robotJumpFrames = loadFrames("jump", imageNumber: 7, by: 1)
+        let upAction = SKAction.moveBy(CGVector(dx: 0, dy: 50), duration: 0.25)
+        let downAction = SKAction.moveBy(CGVector(dx: 0, dy: -50), duration: 0.25)
+        upAction.timingMode = .EaseOut
+        downAction.timingMode = .EaseIn
+        let jumpMoveAction = SKAction.sequence([upAction, downAction])
+        let jumpAnimAction =  SKAction.animateWithTextures(robotJumpFrames, timePerFrame: 0.05, resize: false, restore: false)
+        jumpAction = SKAction.group([jumpMoveAction, jumpAnimAction])
+        winAction = SKAction.sequence([jumpAction, SKAction.group([jumpAction, saltoAction])])
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -116,16 +130,20 @@ class RobotSKNode: SKNode
     }
     
     func animRobot(valence: Int) {
-        let texture: [SKTexture]
         switch valence {
+        case 10:
+            imageNode.runAction(winAction)
+        case 3, 4:
+            imageNode.runAction(jumpAction)
         case let x where x > 0 :
-            texture = robotHappyFrames
+            imageNode.runAction(SKAction.animateWithTextures(robotHappyFrames, timePerFrame: 0.05, resize: false, restore: false))
+        case -10:
+            imageNode.runAction(SKAction.animateWithTextures(robotCryFrames, timePerFrame: 0.05, resize: false, restore: false))
         case let x where x < 0:
-            texture = robotSadFrames
+            imageNode.runAction(SKAction.animateWithTextures(robotSadFrames, timePerFrame: 0.05, resize: false, restore: false))
         default:
-            texture = robotBlinkFrames
+            imageNode.runAction(SKAction.animateWithTextures(robotBlinkFrames, timePerFrame: 0.05, resize: false, restore: false))
         }
-        imageNode.runAction(SKAction.animateWithTextures(texture, timePerFrame: 0.05, resize: false, restore: false))
     }
     
     func loadFrames(imageName: String, imageNumber: Int, by: Int) -> [SKTexture] {
