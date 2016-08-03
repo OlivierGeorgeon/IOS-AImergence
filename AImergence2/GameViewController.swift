@@ -48,10 +48,10 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
     
     var interfaceLocks = [[Bool]](count: GameViewController.maxLevelNumber + 1, repeatedValue: [true, true, true, true])
     var paidTip = false
-    
-    //let product_id = "com.oliviergeorgeon.little_ai.tip1"
     var validProducts = [SKProduct]()
     var match: GKMatch?
+    var soundEnabled = true
+    
     override func viewDidLoad()
     {
         super.viewDidLoad()
@@ -477,6 +477,15 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
                 scene.robotNode.recommend(RECOMMEND.DONE)
             }
         }
+    }
+    
+    func isSoundEnabled() -> Bool {
+        return soundEnabled
+    }
+    
+    func toggleSound() -> Bool {
+        soundEnabled = !soundEnabled
+        return soundEnabled
     }
     
     override func didReceiveMemoryWarning() {

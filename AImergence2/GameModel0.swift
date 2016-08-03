@@ -14,25 +14,27 @@ class GameModel0
     let color               = UIColor.whiteColor()
     let titleFont           = UIFont.preferredFontForTextStyle(UIFontTextStyleTitle1)
     let colorNodeRect       = CGRect(x: -30, y:-30, width: 60, height: 60)
+    
     let experimentRect: CGRect
     let experimentPaths: [(CGRect) -> UIBezierPath]
     let initialScale: CGFloat
     let valencePosition: CGPoint
     let obsolescence: Int
     let experienceColors: [UIColor]
+    let experimentPositions: [CGPoint]
+    let experienceRect: CGRect
+    let actionScale: SKAction
+    let sounds: [[SKAction]]
+    
     var shapePopupRect: CGRect {  return CGRect(x: -165, y: -70, width: 330, height: 140)}
     var shapeRect: CGRect { return CGRect(x: -40, y: -40, width: 80, height: 80)}
     var shapeOrigin: CGPoint { return CGPoint(x: -100, y: 0)}
     var shapeOffset: CGVector { return CGVector(dx: 100, dy: 0)}
     var shapePopupPosition: CGPoint { return CGPoint(x: 0, y: 150)}
 
-    let experimentPositions: [CGPoint]
-    let experienceRect: CGRect
-    let actionScale: SKAction
-    
     var level: Level0!
     
-    init(experimentRect: CGRect, experimentPositions: [CGPoint], experienceRect: CGRect, initialScale: CGFloat, valencePosition: CGPoint, obsolescence: Int, actionScale: SKAction, experimentPaths: [(CGRect) -> UIBezierPath], experienceColors: [UIColor]) {
+    init(experimentRect: CGRect, experimentPositions: [CGPoint], experienceRect: CGRect, initialScale: CGFloat, valencePosition: CGPoint, obsolescence: Int, actionScale: SKAction, experimentPaths: [(CGRect) -> UIBezierPath], experienceColors: [UIColor],sounds: [[SKAction]]) {
         self.experimentRect = experimentRect
         self.experimentPaths = experimentPaths
         self.initialScale = initialScale
@@ -43,7 +45,8 @@ class GameModel0
         self.experimentPositions = experimentPositions
         self.experienceRect = experienceRect
         self.actionScale = actionScale
-        //super.init(experimentRect: experimentRect, experimentPaths: experimentPaths, initialScale: initialScale, valencePosition: valencePosition, obsolescence: obsolescence, experienceColors: experienceColors)
+        
+        self.sounds = sounds
     }
     
     required convenience init()
@@ -58,24 +61,27 @@ class GameModel0
         let experimentPaths = [{UIBezierPath(ovalInRect: $0)},{UIBezierPath(rect: $0)}, triangle]
         let experienceColors = [UIColor.whiteColor(), UIColor(red: 0, green: 0.9, blue: 0, alpha: 1), UIColor.redColor(), UIColor.blueColor(), UIColor.orangeColor()]
 
-        self.init(experimentRect: experimentRect, experimentPositions: experimentPositions, experienceRect: experienceRect, initialScale: initialScale, valencePosition: valencePosition, obsolescence: obsolescence, actionScale: actionScale, experimentPaths: experimentPaths, experienceColors: experienceColors)
+//        let sound1 = SKAction.playSoundFileNamed("baby1.wav", waitForCompletion: false)
+        let sound2 = SKAction.playSoundFileNamed("baby2.wav", waitForCompletion: false)
+//        let sound3 = SKAction.playSoundFileNamed("baby3.wav", waitForCompletion: false)
+ //       let sound4 = SKAction.playSoundFileNamed("baby4.wav", waitForCompletion: false)
+//        let sound5 = SKAction.playSoundFileNamed("baby5.wav", waitForCompletion: false)
+ //        let sound6 = SKAction.playSoundFileNamed("baby6.wav", waitForCompletion: false)
+        let sound7 = SKAction.playSoundFileNamed("baby7.wav", waitForCompletion: false)
+        let sound8 = SKAction.playSoundFileNamed("baby8.wav", waitForCompletion: false)
+        let sound9 = SKAction.playSoundFileNamed("baby9.wav", waitForCompletion: false)
+        let sound10 = SKAction.playSoundFileNamed("baby10.wav", waitForCompletion: false)
+//        let sound11 = SKAction.playSoundFileNamed("baby11.wav", waitForCompletion: false)
+//        let sound12 = SKAction.playSoundFileNamed("baby12.wav", waitForCompletion: false)
+        
+        let sounds = [[sound7, sound10], [sound9, sound8], [sound2, sound2]]
+
+        self.init(experimentRect: experimentRect, experimentPositions: experimentPositions, experienceRect: experienceRect, initialScale: initialScale, valencePosition: valencePosition, obsolescence: obsolescence, actionScale: actionScale, experimentPaths: experimentPaths, experienceColors: experienceColors, sounds: sounds)
     }    
 
     func moveByVect(point: CGPoint) -> CGVector {
         return CGVector(dx: -20 - point.x, dy: 90 - point.y)
     }
-    
-    /*
-    func createExperimentNodes(scene: SKScene) -> Dictionary<Int, ExperimentSKNode> {
-        var experimentNodes = Dictionary<Int, ExperimentSKNode>()
-        for i in 0...1 {
-            let experimentNode = ExperimentSKNode(gameModel: self, experiment: level.experiments[i])
-            experimentNode.position = experimentPositions[i]
-            scene.addChild(experimentNode)
-            experimentNodes.updateValue(experimentNode, forKey: experimentNode.experiment.number)
-        }
-        return experimentNodes
-    }*/
 }
 
 func triangle(rect: CGRect) -> UIBezierPath {

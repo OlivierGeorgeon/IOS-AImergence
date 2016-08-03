@@ -19,14 +19,7 @@ class Level0 {
     
     var number:Int { return 0 }
     var valenceTrace:[Int]
-    
-    var gameModelString: String {
-        var gameModelString = "GameModel0"
-        if experiments.count > 2 {
-            gameModelString = "GameModel3"
-        }
-        return gameModelString
-    }
+    var gameModelString: String { return "GameModel0" }
 
     init(winScore: Int, historicalDepth: Int, experiments:[Experiment], experiences:[[Experience]]) {
         self.winScore = winScore

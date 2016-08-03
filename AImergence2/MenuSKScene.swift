@@ -17,6 +17,8 @@ protocol MenuSceneDelegate: class
     func leaveTip(product: SKProduct)
     func getProducts() -> [SKProduct]
     func isPaidTip() -> Bool
+    func isSoundEnabled() -> Bool
+    func toggleSound() -> Bool
 }
 
 class MenuSKScene: PositionedSKScene {
@@ -25,6 +27,7 @@ class MenuSKScene: PositionedSKScene {
     let originNode = SKNode()
     let tipInviteNode = SKLabelNode()
     let tutorNode = TutorSKNode()
+    let soundNode = SoundSKNode()
     let level0Position = CGPoint(x: 60, y: 550)
     let levelXOffset = CGVector( dx: 60, dy: 0)
     let levelYOffset = CGVector( dx:  0, dy: -80)
@@ -45,13 +48,17 @@ class MenuSKScene: PositionedSKScene {
         /* Setup your scene here */
 
         addChild(originNode)
-        if userDelegate!.currentLevel() == 3 {
-            tutorNode.tip(12, parentNode: tipInviteNode)
+        tutorNode.level = userDelegate!.currentLevel()
+        if userDelegate!.currentLevel() == 3 && userDelegate!.isSoundEnabled() {
+            tutorNode.tip(14, parentNode: soundNode)
         }
         backgroundColor = UIColor.whiteColor()
         backgroundNode.zPosition = -20
         backgroundNode.name = "background"
         originNode.addChild(backgroundNode)
+        
+        soundNode.toggle(userDelegate!.isSoundEnabled())
+        addChild(soundNode)
 
         buttonNodes = createButtons(view.frame.size)
         
@@ -187,6 +194,12 @@ class MenuSKScene: PositionedSKScene {
                 }
             }
         }
+        if soundNode.containsPoint(positionInScene) {
+            soundNode.runAction(actionPress)
+            soundNode.toggle(userDelegate!.toggleSound())
+            tutorNode.tapSound(tipInviteNode)
+        }
+        
         if tip0Node != nil {
             if tip0Node!.containsPoint(positionInScene) {
                 tip0Node!.runAction(actionPress)

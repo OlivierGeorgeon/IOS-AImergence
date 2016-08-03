@@ -12,6 +12,7 @@ import GameplayKit
 class Level5 : Level0 {
     
     override var number:Int { return 5 }
+    override var gameModelString: String { return "GameModel5" }
 
     var nextPhenomenon = true
     var currentPhenomenon = false

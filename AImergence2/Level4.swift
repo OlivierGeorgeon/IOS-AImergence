@@ -11,6 +11,7 @@ import Foundation
 class Level4: Level2 {
     
     override var number:Int { return 4 }
+    override var gameModelString: String { return "GameModel4" }
     
     var previousPreviousExperiment:Experiment?
     

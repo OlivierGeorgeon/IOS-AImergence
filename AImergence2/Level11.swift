@@ -12,7 +12,7 @@ import GameplayKit
 class Level11 : Level0 {
     
     override var number:Int { return 11 }
-    override var gameModelString: String { return "GameModel4"}
+    override var gameModelString: String { return "GameModel11"}
     
     var board: [[Int]] { return [[1, 1, 1, 1],
                                  [1, 0, 0, 1],

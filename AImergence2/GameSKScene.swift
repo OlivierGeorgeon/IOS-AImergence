@@ -20,20 +20,10 @@ protocol GameSceneDelegate: class
     func showGameCenter()
     func showLevelWindow()
     func isGameCenterEnabled() -> Bool
+    func isSoundEnabled() -> Bool
 }
 
 class GameSKScene: PositionedSKScene {
-    
-    let playSound1 = SKAction.playSoundFileNamed("1.wav", waitForCompletion: false)
-    let playSound2 = SKAction.playSoundFileNamed("2.wav", waitForCompletion: false)
-    let playSound3 = SKAction.playSoundFileNamed("3.wav", waitForCompletion: false)
-    let playSound4 = SKAction.playSoundFileNamed("4.wav", waitForCompletion: false)
-    let playSound5 = SKAction.playSoundFileNamed("5.wav", waitForCompletion: false)
-    let playSound6 = SKAction.playSoundFileNamed("6.wav", waitForCompletion: false)
-    let playSound7 = SKAction.playSoundFileNamed("7.wav", waitForCompletion: false)
-    let playSound8 = SKAction.playSoundFileNamed("8.wav", waitForCompletion: false)
-    let playSound9 = SKAction.playSoundFileNamed("9.wav", waitForCompletion: false)
-    let playSound10 = SKAction.playSoundFileNamed("10.wav", waitForCompletion: false)
     
     let gameModel:GameModel0
     let level:Level0
@@ -443,27 +433,42 @@ class GameSKScene: PositionedSKScene {
         let eventNode = EventSKNode(experience: experience, gameModel: gameModel)
         eventNode.position = traceNode.convertPoint(experimentNode.position, fromNode: scene!)
         traceNode.addEvent(clock, eventNode: eventNode)
-        switch experience.valence {
-        case 0:
-            runAction(playSound3)
-        case 1, 4:
-            runAction(playSound2)
-        case 2:
-            runAction(playSound1)
-        case 3:
-            runAction(playSound7) // 7 10
-        case -1:
-            runAction(playSound4)
-        case -2:
-            runAction(playSound5)
-        case -3:
-            runAction(playSound8)
-        case -4:
-            runAction(playSound4) // 5
-        case -10:
-            runAction(playSound6) //10
-        default:
-            runAction(playSound5)
+        
+        if gameSceneDelegate.isSoundEnabled() {
+            runAction(gameModel.sounds[experience.experimentNumber][experience.resultNumber])
+            /*
+            switch experience.valence {
+            case 0:
+                runAction(playSound1) // 3
+            case 1, 4:
+                runAction(playSound1) // 2
+            case 2:
+                runAction(playSound1)
+            case 3:
+                runAction(playSound7) // 7 10
+            case -1:
+                runAction(playSound4)
+            case -2:
+                runAction(playSound5)
+            case -3:
+                runAction(playSound8)
+            case -4:
+                runAction(playSound4) // 5
+            case -10:
+                runAction(playSound6) //10
+            default:
+                runAction(playSound5)
+            }
+            switch experience.hashValue {
+            case 10:
+                runAction(playSound6)
+            case 01, 11:
+                runAction(playSound8)
+            case 20, 21:
+                runAction(playSound2)
+            default:
+                runAction(playSound9)
+            }*/
         }
         
         self.score = score

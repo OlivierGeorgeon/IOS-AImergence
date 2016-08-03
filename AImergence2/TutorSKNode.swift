@@ -6,15 +6,13 @@
 //  Copyright © 2016 Olivier Georgeon. All rights reserved.
 //
 
-import Foundation
+//import Foundation
 import SpriteKit
 
 class TutorSKNode: SKNode {
     
-    static var test = 0
-    
     let bodyFont = UIFont.preferredFontForTextStyle(UIFontTextStyleBody)
-    let shapeFuncs = [arrowRight, arrowLeft, arrowRight, arrowRight, arrowRight, arrowRight, arrowLeft, arrowRight, arrowRight, arrowRight, arrowRight, arrowLeft, arrowLeft, arrowRight]
+    let shapeFuncs = [arrowRight, arrowLeft, arrowRight, arrowRight, arrowRight, arrowRight, arrowLeft, arrowRight, arrowRight, arrowRight, arrowRight, arrowLeft, arrowLeft, arrowRight, arrowLeft]
 
     let tips = [NSLocalizedString("Tip0", comment: ""),
                 NSLocalizedString("Tip1", comment: ""),
@@ -29,7 +27,8 @@ class TutorSKNode: SKNode {
                 NSLocalizedString("Tip10", comment: ""),
                 NSLocalizedString("Tip11", comment: ""),
                 NSLocalizedString("Tip12", comment: ""),
-                NSLocalizedString("Tip13", comment: "")]
+                NSLocalizedString("Tip13", comment: ""),
+                NSLocalizedString("Tip14", comment: "")]
     
     let tipRects = [CGRect(x: -120, y: -30, width: 240, height: 60),
                     CGRect(x: -80, y: -30, width: 160, height: 60),
@@ -40,6 +39,7 @@ class TutorSKNode: SKNode {
                     CGRect(x: -100, y: -30, width: 200, height: 60),
                     CGRect(x: -110, y: -30, width: 220, height: 60),
                     CGRect(x: -120, y: -30, width: 240, height: 60),
+                    CGRect(x: -110, y: -30, width: 220, height: 60),
                     CGRect(x: -110, y: -30, width: 220, height: 60),
                     CGRect(x: -110, y: -30, width: 220, height: 60),
                     CGRect(x: -110, y: -30, width: 220, height: 60),
@@ -59,9 +59,10 @@ class TutorSKNode: SKNode {
                         CGPoint(x: -150, y: -150),
                         CGPoint(x: 145, y: 48),
                         CGPoint(x: 0, y: 150),
-                        CGPoint(x: -150, y: -150)]
+                        CGPoint(x: -150, y: -150),
+                        CGPoint(x: 150, y: -20)]
     
-    let tipzRotations = [CGFloat(-1.2), CGFloat(-0.3), CGFloat(0), CGFloat(0), CGFloat(0), CGFloat(0), CGFloat(0), CGFloat(-1), CGFloat(-1.2), CGFloat(-1), CGFloat(0.9), CGFloat(0.3), CGFloat(M_PI / 2), CGFloat(0.9)]
+    let tipzRotations = [CGFloat(-1.2), CGFloat(-0.3), CGFloat(0), CGFloat(0), CGFloat(0), CGFloat(0), CGFloat(0), CGFloat(-1), CGFloat(-1.2), CGFloat(-1), CGFloat(0.9), CGFloat(0.3), CGFloat(M_PI / 2), CGFloat(0.9), CGFloat(-0.1)]
     
     var backgroundNode = SKShapeNode()
     var step = 0
@@ -87,14 +88,9 @@ class TutorSKNode: SKNode {
         zRotation = tipzRotations[i]
         
         backgroundNode = SKShapeNode(path: shapeFuncs[i](tipRects[i]))
-        backgroundNode.lineWidth = 0 // 20 // 3
-        //backgroundNode.lineJoin = .Round
+        backgroundNode.lineWidth = 0
         let backgroundColor = UIColor(colorLiteralRed: 0.2, green: 0.7, blue: 0, alpha: 0.8)
-        //backgroundNode.strokeColor = UIColor(colorLiteralRed: 0, green: 0.5, blue: 0, alpha: 1)
-        //backgroundNode.strokeColor = backgroundColor
         backgroundNode.fillColor = backgroundColor
-        //backgroundNode.alpha = 0.5
-        //backgroundNode.setScale(0.8)
         addChild(backgroundNode)
         
         let texts = tips[i].componentsSeparatedByString("/")
@@ -204,6 +200,12 @@ class TutorSKNode: SKNode {
         if (level == 3 && step == 10) || (level == 17 && step == 13) {
             step = 100
             removeFromParent()
+        }
+    }
+    
+    func tapSound(nextParentNode: SKNode) {
+        if (level == 3 && step == 14) {
+            tip(12, parentNode: nextParentNode)
         }
     }
 }
