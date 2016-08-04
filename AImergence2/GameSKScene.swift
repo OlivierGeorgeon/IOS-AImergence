@@ -22,7 +22,7 @@ protocol GameSceneDelegate: class
     func showLevelWindow()
     func isGameCenterEnabled() -> Bool
     func isSoundEnabled() -> Bool
-    func soundAction(soundIndex: Int) -> SKAction?
+    func soundAction(soundIndex: Int) -> SKAction
 }
 
 class GameSKScene: PositionedSKScene {
@@ -437,8 +437,7 @@ class GameSKScene: PositionedSKScene {
         traceNode.addEvent(clock, eventNode: eventNode)
         
         if gameSceneDelegate.isSoundEnabled() {
-            runAction(gameSceneDelegate.soundAction(gameModel.sounds[experience.experimentNumber][experience.resultNumber])!)
-            //runAction(gameModel.sounds[experience.experimentNumber][experience.resultNumber])
+            runAction(gameSceneDelegate.soundAction(gameModel.sounds[experience.experimentNumber][experience.resultNumber]))
         }
         
         self.score = score

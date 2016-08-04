@@ -6,16 +6,16 @@
 	<array>
 		<array>
 			<string>Bienvenue dans Little AI !</string>
-			<string>Appuyez sur les &quot;commandes&quot; du bébé robot (cercles blancs en bas de l&apos;écran). Vous pouvez garder cette fenêtre d&apos;information ouverte en même temps.</string>
+			<string>Appuyez sur les &quot;commandes&quot; de votre bébé robot (cercles blancs en bas de l&apos;écran). Vous pouvez garder cette fenêtre d&apos;information ouverte en même temps.</string>
 			<string>Atteignez le score de 10 (affiché en haut à gauche de le fenêtre de jeu). Le score est la somme des valeurs produites par vos dix dernières commandes.</string>
 		</array>
 		<array>
-			<string>Les commandes produisent des &quot;évènements&quot; d&apos;interaction entre le robot et son environnement (petites formes qui montent).</string>
+			<string>Les commandes produisent des &quot;évènements&quot; d&apos;interaction entre votre robot et son environnement (petites formes qui montent).</string>
 			<string>A chaque niveau, atteignez le score de 10. Ensuite, suivez les recommandations de Little AI: appuyez sur le bouton &quot;engrenages&quot; pour voir les effets des commandes, et &quot;podium&quot; pour voir votre classement.</string>
 			<string>Faites glisser le robot à gauche ou à droite pour changer de niveau.</string>
 		</array>
 		<array>
-			<string>Imaginez que le robot trouve agréable les évènements qui ont une valeur positive et désagréables ceux qui ont une valeur négative.</string>
+			<string>Imaginez que votre bébé robot trouve agréable les évènements qui ont une valeur positive et désagréables ceux qui ont une valeur négative.</string>
 			<string>Générez une séquence d&apos;évènements agréables.</string>
 			<string>Pressez un évènement pour rejouer la même commande. La même commande rejouée dans le même contexte produit le même évènement. Pour rejouer une séquence entière, pressez répétitivement la &quot;prochaine commande&quot; (forme blanche qui apparait à gauche quand vous pressez un évènement).</string>
 		</array>
@@ -25,13 +25,13 @@
 			<string>Changez les formes des commandes et les couleurs des évènements pour pouvoir les reconnaitre. Les formes et les couleurs sont purement descriptives et ne changent pas le robot.</string>
 		</array>
 		<array>
-			<string>Dans le monde du niveau 4, le robot ne peut pas toujours éviter les évènements désagréables.</string>
+			<string>Dans le monde du niveau 4, votre robot ne peut pas toujours éviter les évènements désagréables.</string>
 			<string>Générez une séquence qui contienne aussi peu d&apos;événements désagréables que possible. </string>
 			<string>Utilisez des formes différentes pour les commandes. Affichez les événements agréables en vert et les désagréables en rouge. Ne réfléchissez pas trop, votre cerveau détectera des régularités avant même que vous en preniez conscience !</string>
 		</array>
 		<array>
 			<string>Expérimentez chaque commande seule plusieurs fois de suite. L&apos;une d&apos;entre elles produit toujours le même évènement dans une situation donnée. C&apos;est une commande &quot;persistante&quot;.</string>
-			<string>La commande persistante permet &quot;d&apos;observer&quot; la situation du robot sans la modifier.</string>
+			<string>La commande persistante permet &quot;d&apos;observer&quot; la situation de votre robot sans la modifier.</string>
 			<string>Basez-vous sur les couleurs des évènements pour repérer les situations qui permettent d&apos;obtenir des évènements agréables.</string>
 		</array>
 		<array>
@@ -47,18 +47,18 @@
 		<array>
 			<string>Au niveau 8, les commandes ont les mêmes effets qu&apos;aux niveaux 5 à 7.</string>
 			<string>Cependant, maintenant, l&apos;une des commandes produit toujours les mêmes évènements. Cette commande effectue une &quot;action non informative&quot;.</string>
-			<string>Bien que les actions non informatives produisent toujours les mêmes évènements, ne les prenez pas pour des commandes persistantes.</string>
+			<string>Bien que les actions non informatives produisent toujours les mêmes évènements, ne les confondez pas avec des commandes persistantes.</string>
 		</array>
 		<array>
 			<string>Au niveau 9, les commandes ont les mêmes effets immédiats qu&apos;aux niveaux 5, 6, 7, et 8, mais elles transforment aussi l&apos;environnement sur le long terme.</string>
-			<string>Le robot doit transformer son environnement jusqu&apos;à ce qu&apos;il puisse obtenir un évènement agréable à chaque coup.</string>
+			<string>Votre bébé robot doit transformer son environnement jusqu&apos;à ce qu&apos;il puisse obtenir un évènement agréable à chaque coup.</string>
 		</array>
 		<array>
 			<string>Le monde du niveau 10 est identique au monde du niveau 9, et les évènements ont les mêmes valeurs.</string>
-			<string>Comme au niveau 8, une des commandes change la situation du robot en produisant toujours le même type d&apos;évènement (action non-informative).</string>
+			<string>Comme au niveau 8, une des commandes change la situation de votre robot en produisant toujours le même type d&apos;évènement (action non-informative).</string>
 		</array>
 		<array>
-			<string>Le robot peut avancer et tourner dans une petite boîte.</string>
+			<string>Votre bébé robot peut avancer et tourner dans une petite boîte.</string>
 			<string>Il adore avancer mais déteste se cogner sur les bords de la boite.</string>
 		</array>
 		<array>
@@ -67,29 +67,29 @@
 			<string>Appuyez sur le score pour voir votre nombre de coups.</string>
 		</array>
 		<array>
-			<string>Le niveau 13 offre les mêmes commandes que les niveaux 11 et 12 plus une commande qui permet au robot d&apos;observer sa situation sans la modifier (commande persistante).</string>
+			<string>Le niveau 13 offre les mêmes commandes que les niveaux 11 et 12 plus une commande qui permet à votre robot d&apos;observer sa situation sans la modifier (commande persistante).</string>
 			<string>Ce bébé robot n&apos;aime pas tourner et déteste se cogner. Heureusement, la boîte devient plus grande !</string>
 			<string>Utilisez la commande persistante pour éviter de cogner les bords de la boite.</string>
 		</array>
 		<array>
 			<string>Le monde du niveau 14 est le même que celui du niveau 13.</string>
-			<string>Vous êtes dans une situation analogue à celle d&apos;un nouveau-né qui ignore la signification de ses geste et de ses sens, ou de celle d&apos;un robot qui ignore la signification de ses actionneurs et de ses capteurs.</string>
+			<string>En tant que joueur, vous êtes dans une situation analogue à celle d&apos;un nouveau-né qui ignore la signification de ses geste et de ses sens, ou de celle d&apos;un robot qui ignore la signification de ses actionneurs et de ses capteurs.</string>
 			<string>Vous devez apprendre à vous connaitre vous-même et à connaitre votre environnement pour pouvoir mener une vie agréable !</string>
 		</array>
 		<array>
-			<string>Le robot dispose de deux commandes persistantes supplémentaires qui lui permettent de sentir les bords de la boite autour de lui.</string>
+			<string>Votre bébé robot dispose de deux commandes persistantes supplémentaires qui lui permettent de sentir les bords de la boite autour de lui.</string>
 			<string>Utilisez ces deux commandes supplémentaires pour éviter de tourner vers un bord de la boite.</string>
 			<string>La boîte devient encore plus grande.</string>
 		</array>
 		<array>
 			<string>Vous êtes dans le même monde qu&apos;au niveau 15, avec les mêmes commandes redisposées aléatoirement.</string>
-			<string>Little AI est un projet indépendant et open-source mené par des volontaires passionnés en collaboration avec le monde académique. </string>
+			<string>Little AI est un projet indépendant et open-source mené par des volontaires passionnés, en collaboration avec le monde académique. </string>
 			<string>Si vous souhaitez en apprendre davantage sur nous et sur la recherche en intelligence artificielle développementale, songez à visiter http://little-ai.com.</string>
 		</array>
 		<array>
 			<string>Vous avez atteint le dernier niveau ! Félicitations ! Il est similaire au niveau 16.</string>
 			<string>Si Little AI vous a amusé ou instruit, ou les deux, songez à faire un petit don s&apos;il vous plaît.</string>
-			<string>Vos dons feront progresser les connaissances en intelligence artificielle et nous aideront à les diffuser gratuitement. Vous nous aiderez aussi à créer d&apos;autres niveaux !</string>
+			<string>Vos dons contribueront à faire progresser les connaissances en intelligence artificielle tout en gardant ce projet open-source. Vous nous aiderez aussi à créer d&apos;autres niveaux !</string>
 		</array>
 	</array>
 </dict>

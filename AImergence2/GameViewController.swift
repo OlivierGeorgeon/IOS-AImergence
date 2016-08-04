@@ -253,8 +253,10 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
     }
     
     func updateImagineWindow(gameModel: GameModel0) {
-        if !imagineViewControllerContainer.hidden && imagineViewController!.imagineModel == nil {
-            imagineViewController?.displayLevel(gameModel, okEnabled: !isInterfaceLocked(INTERFACE.IMAGINE))
+        if imagineViewController != nil {
+            if !imagineViewControllerContainer.hidden && imagineViewController!.imagineModel == nil {
+                imagineViewController!.displayLevel(gameModel, okEnabled: !isInterfaceLocked(INTERFACE.IMAGINE))
+            }
         }
      }
     
@@ -263,8 +265,6 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
             let gcVC: GKGameCenterViewController = GKGameCenterViewController()
             gcVC.gameCenterDelegate = self
             gcVC.viewState = GKGameCenterViewControllerState.Leaderboards
-            //gcVC.leaderboardTimeScope = GKLeaderboardTimeScope.Today
-            //gcVC.leaderboardIdentifier = "Levels"
             gcVC.leaderboardIdentifier = "Level\(level)" // GameCenter bug: it must be repeted in completion otherwise it is not working
             self.presentViewController(gcVC, animated: true, completion: {gcVC.leaderboardIdentifier = "Levels";gcVC.leaderboardIdentifier = "Level\(self.level)"})
         } else {
@@ -515,17 +515,17 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
     func toggleSound() -> Bool {
         soundDisabled = !soundDisabled
         userDefaults.setBool(soundDisabled, forKey: soundKey)
-        if !soundDisabled {
+        if !soundDisabled && sounds.count < 13 {
             loadSounds()
         }
         return !soundDisabled
     }
     
-    func soundAction(soundIndex: Int) -> SKAction? {
-        if soundDisabled {
-            return nil
-        } else {
+    func soundAction(soundIndex: Int) -> SKAction {
+        if soundIndex <= sounds.count {
             return sounds[soundIndex - 1]
+        } else {
+            return SKAction.runBlock({})
         }
     }
     

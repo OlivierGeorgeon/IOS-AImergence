@@ -6,16 +6,16 @@
 	<array>
 		<array>
 			<string>Welcome to Little AI!</string>
-			<string>Tap the &quot;commands&quot; of the baby robot (white circles at the bottom of the screen). You may keep this information window open at the same time.</string>
+			<string>Tap the &quot;commands&quot; of your baby robot (white circles at the bottom of the screen). You may keep this information window open at the same time.</string>
 			<string>Reach the score of 10 (displayed on the upper left of the game window). Your score is the sum of the values produced by your last ten commands.</string>
 		</array>
 		<array>
-			<string>The commands generate &quot;events&quot; of interaction between the robot and its environment (small shapes that move up).</string>
+			<string>The commands generate &quot;events&quot; of interaction between your robot and its environment (small shapes that move up).</string>
 			<string>On each level, reach the score of 10. Next, follow Little AI&apos;s recommendations: press the &quot;gears&quot; to watch the effects of the commands, and the &quot;podium&quot; to see the leaderboard. </string>
 			<string>Drag the robot to the left or to the right to shift levels.</string>
 		</array>
 		<array>
-			<string>Imagine that the robot finds the events that have a positive value enjoyable, and those that have a negative value unpleasant.</string>
+			<string>Imagine that your baby robot finds the events that have a positive value enjoyable, and those that have a negative value unpleasant.</string>
 			<string>Generate a sequence of enjoyable events.</string>
 			<string>Tap an event to replay the same command. The same command replayed in the same context yields the same event. To replay an entire sequence, repeatedly tap the &quot;next command&quot; (white shape that appears on the left when you tap an event).</string>
 		</array>
@@ -25,13 +25,13 @@
 			<string>Change the shapes of commands and the colors of events to recognize them. Shapes and colors are purely descriptive. They do not change the robot.</string>
 		</array>
 		<array>
-			<string>In the world of Level 4, the robot cannot always avoid unpleasant events.</string>
+			<string>In the world of Level 4, your robot cannot always avoid unpleasant events.</string>
 			<string>Generate a sequence that contains as few unpleasant events as possible. </string>
 			<string>Use different shapes for the commands. Display the enjoyable events in green and the unpleasant events in red. Don&apos;t think too much, your brain will see the pattern before you know it!</string>
 		</array>
 		<array>
 			<string>Experiment with each command individually several times in a raw. One of the commands always yields the same events in a given situation. It is a &quot;persistent&quot; command.</string>
-			<string>The persistent command allows you to observe the situation of the robot without modifying it.</string>
+			<string>The persistent command allows your robot to observe its situation without modifying it.</string>
 			<string>Use the colors of events to identify the situations that afford enjoyable events.</string>
 		</array>
 		<array>
@@ -51,15 +51,15 @@
 		</array>
 		<array>
 			<string>On level 9, the commands have the same immediate effects as in Levels 5, 6, 7, and 8, but they also transform the environment on the long term.</string>
-			<string>The robot must transform its environment until it can enact an enjoyable event on every move.</string>
+			<string>Your baby robot must transform its environment until it can enact an enjoyable event on every move.</string>
 		</array>
 		<array>
 			<string>Level 10&apos;s world is similar to Level 9&apos;s, and events have the same values.</string>
 			<string>As in Level 8, one of the commands always returns the same type of event (non-informative action).</string>
 		</array>
 		<array>
-			<string>The robot can move forward and turn in a little box.</string>
-			<string>This baby robot loves moving forward but hates bumping into the edges of the box.</string>
+			<string>Your baby robot can move forward and turn in a little box.</string>
+			<string>It loves moving forward but hates bumping into the edges of the box.</string>
 		</array>
 		<array>
 			<string>The box is even smaller.</string>
@@ -67,17 +67,17 @@
 			<string>Press the score to see your number of moves.</string>
 		</array>
 		<array>
-			<string>Level 13 offers the same commands as Levels 11 and 12 plus a command that allows the robot to observe its situation without modifying it (persistent command).</string>
+			<string>Level 13 offers the same commands as Levels 11 and 12 plus a command that allows your robot to observe its situation without modifying it (persistent command).</string>
 			<string>This baby robot hates bumping, and quite dislikes turning. Fortunately, the box is getting bigger!</string>
 			<string>Use the persistent experiment to avoid bumping into the edges.</string>
 		</array>
 		<array>
 			<string>Level 14&apos;s world is the same as Level 13&apos;s.</string>
-			<string>You are in an analogous situation as a newborn baby that ignores the signification of its gestures and of its senses, or of a robot that ignores the signification of its actuators and sensors.</string>
+			<string>As a player, you are in an analogous situation as a newborn baby that ignores the signification of its gestures and of its senses, or of a robot that ignores the signification of its actuators and sensors.</string>
 			<string>You must learn to know yourself and your environment to live a happy life!</string>
 		</array>
 		<array>
-			<string>The robot has two additional commands that it can use to feel the edges around it.</string>
+			<string>Your robot has two additional commands that it can use to feel the edges around it.</string>
 			<string>Use these two commands to avoid turning towards the edges.</string>
 			<string>The box is getting even bigger.</string>
 		</array>
