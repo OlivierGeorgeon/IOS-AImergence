@@ -17,10 +17,12 @@ protocol GameSceneDelegate: class
     func isInterfaceLocked(interface: INTERFACE) -> Bool
     func showInstructionWindow()
     func showImagineWindow(gameModel: GameModel0)
+    func updateImagineWindow(gameModel: GameModel0)
     func showGameCenter()
     func showLevelWindow()
     func isGameCenterEnabled() -> Bool
     func isSoundEnabled() -> Bool
+    func soundAction(soundIndex: Int) -> SKAction?
 }
 
 class GameSKScene: PositionedSKScene {
@@ -435,40 +437,8 @@ class GameSKScene: PositionedSKScene {
         traceNode.addEvent(clock, eventNode: eventNode)
         
         if gameSceneDelegate.isSoundEnabled() {
-            runAction(gameModel.sounds[experience.experimentNumber][experience.resultNumber])
-            /*
-            switch experience.valence {
-            case 0:
-                runAction(playSound1) // 3
-            case 1, 4:
-                runAction(playSound1) // 2
-            case 2:
-                runAction(playSound1)
-            case 3:
-                runAction(playSound7) // 7 10
-            case -1:
-                runAction(playSound4)
-            case -2:
-                runAction(playSound5)
-            case -3:
-                runAction(playSound8)
-            case -4:
-                runAction(playSound4) // 5
-            case -10:
-                runAction(playSound6) //10
-            default:
-                runAction(playSound5)
-            }
-            switch experience.hashValue {
-            case 10:
-                runAction(playSound6)
-            case 01, 11:
-                runAction(playSound8)
-            case 20, 21:
-                runAction(playSound2)
-            default:
-                runAction(playSound9)
-            }*/
+            runAction(gameSceneDelegate.soundAction(gameModel.sounds[experience.experimentNumber][experience.resultNumber])!)
+            //runAction(gameModel.sounds[experience.experimentNumber][experience.resultNumber])
         }
         
         self.score = score
@@ -478,6 +448,7 @@ class GameSKScene: PositionedSKScene {
                 gameSceneDelegate.unlockLevel(clock)
                 winMoves = clock
                 robotNode.gameCenterButtonNode.activate()
+                gameSceneDelegate.updateImagineWindow(gameModel)
             }
             if robotNode.recommendation == RECOMMEND.INSTRUCTION_OK {
                 robotNode.recommend(RECOMMEND.IMAGINE)

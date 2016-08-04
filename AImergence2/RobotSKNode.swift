@@ -43,7 +43,7 @@ class RobotSKNode: SKNode
         addChild(gameCenterButtonNode)
         robotHappyFrames = loadFrames("happy", imageNumber: 6, by: 1)
         robotSadFrames = loadFrames("sad", imageNumber: 7, by: 1)
-        robotBlinkFrames = loadFrames("blink", imageNumber: 9, by: 3)
+        robotBlinkFrames = loadFrames("blink", imageNumber: 4, by: 1)
         robotCryFrames = loadFrames("cry", imageNumber: 7, by: 1)
         robotJumpFrames = loadFrames("jump", imageNumber: 7, by: 1)
         let upAction = SKAction.moveBy(CGVector(dx: 0, dy: 50), duration: 0.25)

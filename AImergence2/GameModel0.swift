@@ -24,7 +24,7 @@ class GameModel0
     let experimentPositions: [CGPoint]
     let experienceRect: CGRect
     let actionScale: SKAction
-    let sounds: [[SKAction]]
+    let sounds: [[Int]]
     
     var shapePopupRect: CGRect {  return CGRect(x: -165, y: -70, width: 330, height: 140)}
     var shapeRect: CGRect { return CGRect(x: -40, y: -40, width: 80, height: 80)}
@@ -34,7 +34,7 @@ class GameModel0
 
     var level: Level0!
     
-    init(experimentRect: CGRect, experimentPositions: [CGPoint], experienceRect: CGRect, initialScale: CGFloat, valencePosition: CGPoint, obsolescence: Int, actionScale: SKAction, experimentPaths: [(CGRect) -> UIBezierPath], experienceColors: [UIColor],sounds: [[SKAction]]) {
+    init(experimentRect: CGRect, experimentPositions: [CGPoint], experienceRect: CGRect, initialScale: CGFloat, valencePosition: CGPoint, obsolescence: Int, actionScale: SKAction, experimentPaths: [(CGRect) -> UIBezierPath], experienceColors: [UIColor],sounds: [[Int]]) {
         self.experimentRect = experimentRect
         self.experimentPaths = experimentPaths
         self.initialScale = initialScale
@@ -61,20 +61,7 @@ class GameModel0
         let experimentPaths = [{UIBezierPath(ovalInRect: $0)},{UIBezierPath(rect: $0)}, triangle]
         let experienceColors = [UIColor.whiteColor(), UIColor(red: 0, green: 0.9, blue: 0, alpha: 1), UIColor.redColor(), UIColor.blueColor(), UIColor.orangeColor()]
 
-//        let sound1 = SKAction.playSoundFileNamed("baby1.wav", waitForCompletion: false)
-        let sound2 = SKAction.playSoundFileNamed("baby2.wav", waitForCompletion: false)
-//        let sound3 = SKAction.playSoundFileNamed("baby3.wav", waitForCompletion: false)
- //       let sound4 = SKAction.playSoundFileNamed("baby4.wav", waitForCompletion: false)
-//        let sound5 = SKAction.playSoundFileNamed("baby5.wav", waitForCompletion: false)
- //        let sound6 = SKAction.playSoundFileNamed("baby6.wav", waitForCompletion: false)
-        let sound7 = SKAction.playSoundFileNamed("baby7.wav", waitForCompletion: false)
-        let sound8 = SKAction.playSoundFileNamed("baby8.wav", waitForCompletion: false)
-        let sound9 = SKAction.playSoundFileNamed("baby9.wav", waitForCompletion: false)
-        let sound10 = SKAction.playSoundFileNamed("baby10.wav", waitForCompletion: false)
-//        let sound11 = SKAction.playSoundFileNamed("baby11.wav", waitForCompletion: false)
-//        let sound12 = SKAction.playSoundFileNamed("baby12.wav", waitForCompletion: false)
-        
-        let sounds = [[sound7, sound10], [sound9, sound8], [sound2, sound2]]
+        let sounds = [[7, 10], [9, 8], [2, 2]]
 
         self.init(experimentRect: experimentRect, experimentPositions: experimentPositions, experienceRect: experienceRect, initialScale: initialScale, valencePosition: valencePosition, obsolescence: obsolescence, actionScale: actionScale, experimentPaths: experimentPaths, experienceColors: experienceColors, sounds: sounds)
     }    

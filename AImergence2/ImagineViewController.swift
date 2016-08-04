@@ -32,8 +32,6 @@ class ImagineViewController: UIViewController {
         //sceneView.pointOfView = imagineModel.cameraNodes[1]
     }
     
-    //let bundleName = NSBundle.mainBundle().infoDictionary!["CFBundleName"] as! String
-
     weak var delegate: ImagineViewControllerDelegate?
 
     var imagineModel: ImagineModel0!
@@ -60,6 +58,7 @@ class ImagineViewController: UIViewController {
             self.textView.text = NSLocalizedString("You must reach the score of 10", comment: "Message in the Imagine window when the user tries to see the imaginary model before reaching the score of 10.");
             textView.hidden = false
             textView.font = UIFont.systemFontOfSize(15) // fix the bug that ignores the storyboard font when "Selectable" is unchecked in the storyboard.
+            imagineModel = nil
             sceneView.scene = nil
         } else {
             let levelNumber = gameModel!.level.number

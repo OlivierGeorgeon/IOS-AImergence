@@ -19,6 +19,7 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
     static let maxLevelNumber = 17
     let unlockDefaultKey = "unlockDefaultKey"
     let paidTipKey = "paidTipKey"
+    let soundKey = "soundKey"
     
     @IBOutlet weak var sceneView: GameView!
     @IBOutlet weak var helpViewControllerContainer: UIView!
@@ -50,7 +51,8 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
     var paidTip = false
     var validProducts = [SKProduct]()
     var match: GKMatch?
-    var soundEnabled = true
+    var soundDisabled = false
+    var sounds = [SKAction]()
     
     override func viewDidLoad()
     {
@@ -59,6 +61,10 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
         self.authenticateLocalPlayer()
  
         paidTip = userDefaults.boolForKey(paidTipKey)
+        soundDisabled = userDefaults.boolForKey(soundKey)
+        if !soundDisabled {
+            loadSounds()
+        }
         
         let userInterfaceLocksWrapped = userDefaults.arrayForKey(unlockDefaultKey)
         if let userInterfaceLocks = userInterfaceLocksWrapped as? [[Bool]] {
@@ -245,6 +251,12 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
         }
         imagineViewControllerContainer.hidden = false
     }
+    
+    func updateImagineWindow(gameModel: GameModel0) {
+        if !imagineViewControllerContainer.hidden && imagineViewController!.imagineModel == nil {
+            imagineViewController?.displayLevel(gameModel, okEnabled: !isInterfaceLocked(INTERFACE.IMAGINE))
+        }
+     }
     
     func showGameCenter() {
         if gcEnabled {
@@ -468,7 +480,7 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
         if let scene = sceneView.scene as? GameSKScene {
             scene.robotNode.gameCenterButtonNode.disactivate()
             scene.tutorNode.gameCenterOk(scene.robotNode, level17ParentNode: scene.topRightNode)
-            if isInterfaceLocked(INTERFACE.LEADERBOARD) {
+            if isInterfaceLocked(INTERFACE.LEADERBOARD) && !isInterfaceLocked(INTERFACE.LEVEL) {
                 interfaceLocks[level][INTERFACE.LEADERBOARD.rawValue] = false
                 let defaults = NSUserDefaults.standardUserDefaults()
                 defaults.setObject(interfaceLocks, forKey: unlockDefaultKey)
@@ -479,13 +491,42 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
         }
     }
     
+    func loadSounds() {
+        let sound1 = SKAction.playSoundFileNamed("baby1.wav", waitForCompletion: false)
+        let sound2 = SKAction.playSoundFileNamed("baby2.wav", waitForCompletion: false)
+        let sound3 = SKAction.playSoundFileNamed("baby3.wav", waitForCompletion: false)
+        let sound4 = SKAction.playSoundFileNamed("baby4.wav", waitForCompletion: false)
+        let sound5 = SKAction.playSoundFileNamed("baby5.wav", waitForCompletion: false)
+        let sound6 = SKAction.playSoundFileNamed("baby6.wav", waitForCompletion: false)
+        let sound7 = SKAction.playSoundFileNamed("baby7.wav", waitForCompletion: false)
+        let sound8 = SKAction.playSoundFileNamed("baby8.wav", waitForCompletion: false)
+        let sound9 = SKAction.playSoundFileNamed("baby9.wav", waitForCompletion: false)
+        let sound10 = SKAction.playSoundFileNamed("baby10.wav", waitForCompletion: false)
+        let sound11 = SKAction.playSoundFileNamed("baby11.wav", waitForCompletion: false)
+        let sound12 = SKAction.playSoundFileNamed("baby12.wav", waitForCompletion: false)
+        let sound13 = SKAction.playSoundFileNamed("baby13.wav", waitForCompletion: false)
+        sounds = [sound1, sound2, sound3, sound4, sound5, sound6, sound7, sound8, sound9, sound10, sound11, sound12, sound13]
+    }
+    
     func isSoundEnabled() -> Bool {
-        return soundEnabled
+        return !soundDisabled
     }
     
     func toggleSound() -> Bool {
-        soundEnabled = !soundEnabled
-        return soundEnabled
+        soundDisabled = !soundDisabled
+        userDefaults.setBool(soundDisabled, forKey: soundKey)
+        if !soundDisabled {
+            loadSounds()
+        }
+        return !soundDisabled
+    }
+    
+    func soundAction(soundIndex: Int) -> SKAction? {
+        if soundDisabled {
+            return nil
+        } else {
+            return sounds[soundIndex - 1]
+        }
     }
     
     override func didReceiveMemoryWarning() {

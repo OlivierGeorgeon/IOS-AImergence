@@ -6,7 +6,7 @@
 	<array>
 		<array>
 			<string>Welcome to Little AI!</string>
-			<string>Tap the &quot;commands&quot; (white circles at the bottom of the screen). You may keep this information window open at the same time.</string>
+			<string>Tap the &quot;commands&quot; of the baby robot (white circles at the bottom of the screen). You may keep this information window open at the same time.</string>
 			<string>Reach the score of 10 (displayed on the upper left of the game window). Your score is the sum of the values produced by your last ten commands.</string>
 		</array>
 		<array>
@@ -59,7 +59,7 @@
 		</array>
 		<array>
 			<string>The robot can move forward and turn in a little box.</string>
-			<string>This robot loves moving forward but hates bumping into the edges of the box.</string>
+			<string>This baby robot loves moving forward but hates bumping into the edges of the box.</string>
 		</array>
 		<array>
 			<string>The box is even smaller.</string>
@@ -68,7 +68,7 @@
 		</array>
 		<array>
 			<string>Level 13 offers the same commands as Levels 11 and 12 plus a command that allows the robot to observe its situation without modifying it (persistent command).</string>
-			<string>This robot hates bumping, and quite dislikes turning. Fortunately, the box is getting bigger!</string>
+			<string>This baby robot hates bumping, and quite dislikes turning. Fortunately, the box is getting bigger!</string>
 			<string>Use the persistent experiment to avoid bumping into the edges.</string>
 		</array>
 		<array>

@@ -26,6 +26,7 @@ class ButtonSKNode: SKNode
     let activatedTexture: SKTexture
     let disactivatedTexture: SKTexture
 
+    var visible = false
     var active = true
     var pulsing = false
     
@@ -86,41 +87,43 @@ class ButtonSKNode: SKNode
     func expand() {
         removeActionForKey("expand")
         runAction(actionExpand, withKey: "expand")
-        if position.y <= 0 {
+        if !visible { // avoids saccade when already expanded
             backgroundNode.runAction(actionAppearScale)
         }
+        visible = true
     }
     
     func collapse() {
-        //removeActionForKey("pulsing")
         removeActionForKey("expand")
         removeActionForKey("appearing")
         runAction(actionCollapse)
         backgroundNode.runAction(actionDisappearScale)
+        visible = false
     }
 
     func reduce() {
         removeActionForKey("expand")
         removeActionForKey("appearing")
         runAction(actionReduce)
+        visible = true
     }
     
     func appear() {
         removeActionForKey("expand")
         removeActionForKey("appearing")
         runAction(actionAppear, withKey: "appearing")
-        backgroundNode.runAction(actionAppearScale)
-        //if pulsing {
-        //    backgroundNode.runAction(SKAction.sequence([actionPulse]), withKey: "pulsing")
-        //}
+        if !visible {
+            backgroundNode.runAction(actionAppearScale)
+        }
+        visible = true
     }
     
     func disappear() {
         removeActionForKey("expand")
-        //removeActionForKey("pulsing")
         removeActionForKey("appearing")
         runAction(actionDisappear)
         backgroundNode.runAction(actionDisappearScale)
+        visible = false
     }
     
     func activate() {
