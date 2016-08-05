@@ -69,7 +69,7 @@
 		<array>
 			<string>Level 13 offers the same commands as Levels 11 and 12 plus a command that allows your robot to observe its situation without modifying it (persistent command).</string>
 			<string>This baby robot hates bumping, and quite dislikes turning. Fortunately, the box is getting bigger!</string>
-			<string>Use the persistent experiment to avoid bumping into the edges.</string>
+			<string>Use the persistent command to avoid bumping into the edges.</string>
 		</array>
 		<array>
 			<string>Level 14&apos;s world is the same as Level 13&apos;s.</string>
