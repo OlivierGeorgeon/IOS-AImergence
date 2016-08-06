@@ -6,56 +6,57 @@
 	<array>
 		<array>
 			<string>Welcome to Little AI!</string>
-			<string>Tap the &quot;commands&quot; of your baby robot (white circles at the bottom of the screen). You may keep this information window open at the same time.</string>
-			<string>Reach the score of 10 (displayed on the upper left of the game window). Your score is the sum of the values produced by your last ten commands.</string>
+			<string>You control a baby robot with buttons at the bottom of the screen. The goal is to reach the score of 10.</string>
+			<string>As you control the robot, it carries out &quot;interactions&quot; with its environment represented by the little circles that move up the screen. You can see what the interactions correspond to when you have reached 10.</string>
+			<string>The score is the sum of the values of the last ten interactions. Yes, only the last ten!</string>
 		</array>
 		<array>
-			<string>The commands generate &quot;events&quot; of interaction between your robot and its environment (small shapes that move up).</string>
+			<string>An interaction is the association of a command with a result. Commands are represented by different shapes and results by different colors.</string>
 			<string>On each level, reach the score of 10. Next, follow Little AI&apos;s recommendations: press the &quot;gears&quot; to watch the effects of the commands, and the &quot;podium&quot; to see the leaderboard. </string>
-			<string>Drag the robot to the left or to the right to shift levels.</string>
+			<string>Drag the robot to the left or to the right to shift to the previous or next level.</string>
 		</array>
 		<array>
-			<string>Imagine that your baby robot finds the events that have a positive value enjoyable, and those that have a negative value unpleasant.</string>
-			<string>Generate a sequence of enjoyable events.</string>
-			<string>Tap an event to replay the same command. The same command replayed in the same context yields the same event. To replay an entire sequence, repeatedly tap the &quot;next command&quot; (white shape that appears on the left when you tap an event).</string>
+			<string>Imagine that your baby robot finds the interactions that have a positive value enjoyable, and those that have a negative value unpleasant.</string>
+			<string>Generate a pattern of enjoyable interactions.</string>
+			<string>Tap an interaction to replay the same command. The same command replayed in the same situation yields the same interaction. To replay an entire pattern of interactions, tap the &quot;next command&quot; several times (white shape that appears on the left when you tap an interaction).</string>
 		</array>
 		<array>
 			<string>Press and hold a command to change its shape.</string>
-			<string>Press and hold an event to change its color.</string>
-			<string>Change the shapes of commands and the colors of events to recognize them. Shapes and colors are purely descriptive. They do not change the robot.</string>
+			<string>Press and hold an interaction to change its color.</string>
+			<string>Change the shapes of commands and the colors of interactions to recognize them. Shapes and colors are purely descriptive. They do not change the robot.</string>
 		</array>
 		<array>
-			<string>In the world of Level 4, your robot cannot always avoid unpleasant events.</string>
-			<string>Generate a sequence that contains as few unpleasant events as possible. </string>
-			<string>Use different shapes for the commands. Display the enjoyable events in green and the unpleasant events in red. Don&apos;t think too much, your brain will see the pattern before you know it!</string>
+			<string>In the world of Level 4, your robot cannot always avoid unpleasant interactions.</string>
+			<string>Generate a sequence that contains as few unpleasant interactions as possible. </string>
+			<string>Use different shapes for the commands. Display the enjoyable interactions in green and the unpleasant events in red. Don&apos;t think too much, your brain will see the pattern before you know it!</string>
 		</array>
 		<array>
-			<string>Experiment with each command individually several times in a raw. One of the commands always yields the same events in a given situation. It is a &quot;persistent&quot; command.</string>
+			<string>Experiment with each command individually several times in a raw. One of the commands always yields the same interactions in a given situation. It is a &quot;persistent&quot; command.</string>
 			<string>The persistent command allows your robot to observe its situation without modifying it.</string>
-			<string>Use the colors of events to identify the situations that afford enjoyable events.</string>
+			<string>Use the colors of events to identify the situations that afford enjoyable interactions.</string>
 		</array>
 		<array>
 			<string>In Level 6, the commands have the same effects as in Level 5, but they have been rearranged in a random order, and are all initially represented by circles.</string>
-			<string>It is left to you to attribute shapes to commands and colors to events.</string>
-			<string>Display the events that make you hope for an enjoyable event on the next round in green, and those that let you fear for an unpleasant event in red.</string>
+			<string>It is left to you to attribute shapes to commands and colors to interactions.</string>
+			<string>Display the interactions that make you hope for an enjoyable interaction on the next round in green, and those that let you fear for an unpleasant interaction in red.</string>
 		</array>
 		<array>
-			<string>In Level 7, the commands have the same effects as in Levels 5 and 6, but some events have different values.</string>
-			<string>Tap the events to replay enjoyable sequences in the context when it is possible.</string>
-			<string>When you replay a sequence, skip the persistent commands to maximize your score.</string>
+			<string>In Level 7, the commands have the same effects as in Levels 5 and 6, but some interactions have different values.</string>
+			<string>Tap the interactions to replay enjoyable patterns in the context when it is possible.</string>
+			<string>When you replay a pattern, skip the persistent commands to maximize your score.</string>
 		</array>
 		<array>
 			<string>On Level 8, the commands have the same effects as in Levels 5 to 7.</string>
-			<string>Now, however, one of the commands always yields the same events. This command executes a &quot;non-informative action&quot;.</string>
-			<string>Although non-informative actions always yield the same events, do not mistake them for persistent commands.</string>
+			<string>Now, however, one of the commands always yields the same interaction. This command executes a &quot;non-informative action&quot;.</string>
+			<string>Although non-informative actions always yield the same interactions, do not mistake them for persistent commands.</string>
 		</array>
 		<array>
 			<string>On level 9, the commands have the same immediate effects as in Levels 5, 6, 7, and 8, but they also transform the environment on the long term.</string>
-			<string>Your baby robot must transform its environment until it can enact an enjoyable event on every move.</string>
+			<string>Your baby robot must transform its environment until it can enact an enjoyable interaction on every move.</string>
 		</array>
 		<array>
 			<string>Level 10&apos;s world is similar to Level 9&apos;s, and events have the same values.</string>
-			<string>As in Level 8, one of the commands always returns the same type of event (non-informative action).</string>
+			<string>As in Level 8, one of the commands always returns the same type of interaction (non-informative action).</string>
 		</array>
 		<array>
 			<string>Your baby robot can move forward and turn in a little box.</string>
@@ -63,7 +64,7 @@
 		</array>
 		<array>
 			<string>The box is even smaller.</string>
-			<string>Scroll to review the last 100 events. Double-tap on an empty area to scroll back to origin.</string>
+			<string>Scroll to review the last 100 interactions. Double-tap on an empty area to scroll back to origin.</string>
 			<string>Press the score to see your number of moves.</string>
 		</array>
 		<array>

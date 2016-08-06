@@ -6,56 +6,57 @@
 	<array>
 		<array>
 			<string>Bienvenue dans Little AI !</string>
-			<string>Appuyez sur les &quot;commandes&quot; de votre bébé robot (cercles blancs en bas de l&apos;écran). Vous pouvez garder cette fenêtre d&apos;information ouverte en même temps.</string>
-			<string>Atteignez le score de 10 (affiché en haut à gauche de le fenêtre de jeu). Le score est la somme des valeurs produites par vos dix dernières commandes.</string>
+			<string>Vous commandez un bébé robot grace aux boutons en bas de l&apos;écran. Le but du jeu est d&apos;atteindre le score de 10. </string>
+			<string>Quand vous commandez le robot, il réalise des &quot;interactions&quot; avec son environnement qui sont représentées par les petits cercles blancs qui montent. Vous pouvez voir à quoi les interactions correspondent quand vous avez atteint le score de 10.</string>
+			<string>Le score est la somme des valeurs des dix derinères interactions. Oui, uniquement les dix dernieres !</string>
 		</array>
 		<array>
-			<string>Les commandes produisent des &quot;évènements&quot; d&apos;interaction entre votre robot et son environnement (petites formes qui montent).</string>
-			<string>A chaque niveau, atteignez le score de 10. Ensuite, suivez les recommandations de Little AI: appuyez sur le bouton &quot;engrenages&quot; pour voir les effets des commandes, et &quot;podium&quot; pour voir votre classement.</string>
-			<string>Faites glisser le robot à gauche ou à droite pour changer de niveau.</string>
+			<string>Une interaction est l&apos;association d&apos;une commande et d&apos;un résultat obtenu. Les commandes sont représentées par des formes différentes et les résultats par des couleurs différentes.</string>
+			<string>A chaque niveau, atteignez le score de 10. Ensuite, appuyez sur les boutons qui apparaissent: &quot;engrenages&quot; pour voir les comportements de votre bébé robot, et &quot;podium&quot; pour voir votre classement.</string>
+			<string>Faites glisser le robot à gauche ou à droite pour passer au niveau suivant ou précédent.</string>
 		</array>
 		<array>
-			<string>Imaginez que votre bébé robot trouve agréable les évènements qui ont une valeur positive et désagréables ceux qui ont une valeur négative.</string>
-			<string>Générez une séquence d&apos;évènements agréables.</string>
-			<string>Pressez un évènement pour rejouer la même commande. La même commande rejouée dans le même contexte produit le même évènement. Pour rejouer une séquence entière, pressez répétitivement la &quot;prochaine commande&quot; (forme blanche qui apparait à gauche quand vous pressez un évènement).</string>
+			<string>Imaginez que votre bébé robot trouve agréable les interactions qui ont une valeur positive et désagréables celles qui ont une valeur négative.</string>
+			<string>Générez une suite d&apos;interactions agréables.</string>
+			<string>Appuyez sur les interactions pour rejouer la même commande. Une commande rejouée dans la même situation reproduit la mêmes interaction. Pour rejouer une suite d&apos;interactions, pressez plusieurs fois de suite la &quot;prochaine commande&quot; (forme blanche qui apparait à gauche quand vous appuyez sur une interaction).</string>
 		</array>
 		<array>
 			<string>Pressez et maintenez enfoncée une commande pour changer sa forme.</string>
-			<string>Pressez et maintenez enfoncé un évènement pour changer sa couleur.</string>
-			<string>Changez les formes des commandes et les couleurs des évènements pour pouvoir les reconnaitre. Les formes et les couleurs sont purement descriptives et ne changent pas le robot.</string>
+			<string>Pressez et maintenez enfoncé une interaction pour changer sa couleur.</string>
+			<string>Changez les formes des commandes et les couleurs des interactions pour pouvoir les reconnaitre. Les formes et les couleurs sont purement descriptives et ne changent pas les interactions réelles.</string>
 		</array>
 		<array>
-			<string>Dans le monde du niveau 4, votre robot ne peut pas toujours éviter les évènements désagréables.</string>
-			<string>Générez une séquence qui contienne aussi peu d&apos;événements désagréables que possible. </string>
-			<string>Utilisez des formes différentes pour les commandes. Affichez les événements agréables en vert et les désagréables en rouge. Ne réfléchissez pas trop, votre cerveau détectera des régularités avant même que vous en preniez conscience !</string>
+			<string>Dans le monde du niveau 4, votre robot ne peut pas toujours éviter les interactions désagréables.</string>
+			<string>Générez une suite d&apos;interactions qui contienne aussi peu d&apos;interactions désagréables que possible. </string>
+			<string>Utilisez des formes différentes pour les commandes. Affichez les interactions agréables en vert et les désagréables en rouge. Ne réfléchissez pas trop, votre cerveau détectera des régularités avant même que vous en preniez conscience !</string>
 		</array>
 		<array>
-			<string>Expérimentez chaque commande seule plusieurs fois de suite. L&apos;une d&apos;entre elles produit toujours le même évènement dans une situation donnée. C&apos;est une commande &quot;persistante&quot;.</string>
-			<string>La commande persistante permet &quot;d&apos;observer&quot; la situation de votre robot sans la modifier.</string>
-			<string>Basez-vous sur les couleurs des évènements pour repérer les situations qui permettent d&apos;obtenir des évènements agréables.</string>
+			<string>Expérimentez chaque commande seule plusieurs fois de suite. L&apos;une d&apos;entre elles produit toujours la même interaction dans une situation donnée. C&apos;est une commande &quot;persistante&quot;.</string>
+			<string>La commande persistante produit une &quot;interaction d&apos;observation&quot; qui donne une information sur la situation du robot sans la modifier.</string>
+			<string>Basez-vous sur les couleurs des interactions pour repérer les situations qui permettent de réaliser des interactions agréables.</string>
 		</array>
 		<array>
 			<string>Au niveau 6, les commandes ont les mêmes effets qu&apos;au niveau 5, mais elles sont redisposées dans un ordre aléatoire et représentées initialement par des cercles identiques.</string>
-			<string>C&apos;est à vous d&apos;attribuer les formes aux commandes et les couleurs aux évènements.</string>
-			<string>Affichez en vert les évènements qui laissent espérer un évènement agréable au coup suivant, et en rouge ceux qui laissent craindre un évènement désagréable.</string>
+			<string>C&apos;est à vous d&apos;attribuer les formes aux commandes et les couleurs aux interactions.</string>
+			<string>Affichez en vert les interactions qui laissent espérer une interaction agréable au coup suivant, et en rouge celles qui laissent craindre une interaction désagréable.</string>
 		</array>
 		<array>
-			<string>Au niveau 7, les commandes ont les mêmes effets qu&apos;aux niveaux 5 et 6, mais certains évènements ont des valeurs différentes.</string>
-			<string>Appuyez sur les évènements pour rejouer les séquences agréables dans les contextes où c&apos;est possible.</string>
-			<string>Quand vous rejouez une séquence, sautez les commandes persistantes pour maximiser votre score.</string>
+			<string>Au niveau 7, les commandes ont les mêmes effets qu&apos;aux niveaux 5 et 6, mais certaines interactions ont des valeurs différentes.</string>
+			<string>Appuyez sur les interactions pour rejouer des séries d&apos;interactions dans les situations où c&apos;est possible.</string>
+			<string>Quand vous rejouez une série d&apos;interactions, sautez les commandes persistantes pour maximiser votre score.</string>
 		</array>
 		<array>
 			<string>Au niveau 8, les commandes ont les mêmes effets qu&apos;aux niveaux 5 à 7.</string>
-			<string>Cependant, maintenant, l&apos;une des commandes produit toujours les mêmes évènements. Cette commande effectue une &quot;action non informative&quot;.</string>
-			<string>Bien que les actions non informatives produisent toujours les mêmes évènements, ne les confondez pas avec des commandes persistantes.</string>
+			<string>Cependant, maintenant, l&apos;une des commandes produit toujours les mêmes interactions. Cette commande effectue une &quot;action non informative&quot;.</string>
+			<string>Bien que les actions non informatives produisent toujours les mêmes interactions, ne les confondez pas avec des commandes persistantes.</string>
 		</array>
 		<array>
 			<string>Au niveau 9, les commandes ont les mêmes effets immédiats qu&apos;aux niveaux 5, 6, 7, et 8, mais elles transforment aussi l&apos;environnement sur le long terme.</string>
-			<string>Votre bébé robot doit transformer son environnement jusqu&apos;à ce qu&apos;il puisse obtenir un évènement agréable à chaque coup.</string>
+			<string>Votre bébé robot doit transformer son environnement jusqu&apos;à ce qu&apos;il puisse obtenir une interaction agréable à chaque coup.</string>
 		</array>
 		<array>
-			<string>Le monde du niveau 10 est identique au monde du niveau 9, et les évènements ont les mêmes valeurs.</string>
-			<string>Comme au niveau 8, une des commandes change la situation de votre robot en produisant toujours le même type d&apos;évènement (action non-informative).</string>
+			<string>Le monde du niveau 10 est identique au monde du niveau 9, et les interactions ont les mêmes valeurs.</string>
+			<string>Comme au niveau 8, une des commandes change la situation de votre robot en produisant toujours les même interactions (action non-informative).</string>
 		</array>
 		<array>
 			<string>Votre bébé robot peut avancer et tourner dans une petite boîte.</string>
@@ -63,11 +64,11 @@
 		</array>
 		<array>
 			<string>La boîte est encore plus petite.</string>
-			<string>Scrollez pour revoir les 100 derniers évènements. Tapez deux fois sur une zone vide pour revenir à l&apos;origine.</string>
+			<string>Scrollez pour revoir les 100 derniéres interactions. Tapez deux fois sur une zone vide pour revenir à l&apos;origine.</string>
 			<string>Appuyez sur le score pour voir votre nombre de coups.</string>
 		</array>
 		<array>
-			<string>Le niveau 13 offre les mêmes commandes que les niveaux 11 et 12 plus une commande qui permet à votre robot d&apos;observer sa situation sans la modifier (commande persistante).</string>
+			<string>Le niveau 13 offre les mêmes commandes que les niveaux 11 et 12 plus une commande persistante qui permet d&apos;effectuer une interaction d&apos;observation.</string>
 			<string>Ce bébé robot n&apos;aime pas tourner et déteste se cogner. Heureusement, la boîte devient plus grande !</string>
 			<string>Utilisez la commande persistante pour éviter de cogner les bords de la boite.</string>
 		</array>
