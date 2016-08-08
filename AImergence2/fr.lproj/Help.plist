@@ -8,22 +8,22 @@
 			<string>Bienvenue dans Little AI !</string>
 			<string>Vous commandez un bébé robot grace aux boutons en bas de l&apos;écran. Le but du jeu est d&apos;atteindre le score de 10. </string>
 			<string>Quand vous commandez le robot, il réalise des &quot;interactions&quot; avec son environnement qui sont représentées par les petits cercles blancs qui montent. Vous pouvez voir à quoi les interactions correspondent quand vous avez atteint le score de 10.</string>
-			<string>Le score est la somme des valeurs des dix derinères interactions. Oui, uniquement les dix dernieres !</string>
+			<string>Le score est la somme des valeurs des dix dernières interactions. Oui, uniquement les dix dernieres !</string>
 		</array>
 		<array>
-			<string>Une interaction est l&apos;association d&apos;une commande et d&apos;un résultat obtenu. Les commandes sont représentées par des formes différentes et les résultats par des couleurs différentes.</string>
+			<string>Une interaction est l&apos;association d&apos;une commande et d&apos;une information obtenue en retour. Les commandes sont représentées par des formes différentes, et les informations par des couleurs différentes.</string>
 			<string>A chaque niveau, atteignez le score de 10. Ensuite, appuyez sur les boutons qui apparaissent: &quot;engrenages&quot; pour voir les comportements de votre bébé robot, et &quot;podium&quot; pour voir votre classement.</string>
-			<string>Faites glisser le robot à gauche ou à droite pour passer au niveau suivant ou précédent.</string>
+			<string>Faites glisser le robot 2D à gauche ou à droite pour passer au niveau suivant ou précédent.</string>
 		</array>
 		<array>
 			<string>Imaginez que votre bébé robot trouve agréable les interactions qui ont une valeur positive et désagréables celles qui ont une valeur négative.</string>
 			<string>Générez une suite d&apos;interactions agréables.</string>
-			<string>Appuyez sur les interactions pour rejouer la même commande. Une commande rejouée dans la même situation reproduit la mêmes interaction. Pour rejouer une suite d&apos;interactions, pressez plusieurs fois de suite la &quot;prochaine commande&quot; (forme blanche qui apparait à gauche quand vous appuyez sur une interaction).</string>
+			<string>Appuyez sur les interactions pour rejouer la même commande. Une commande rejouée dans la même situation reproduit la mêmes interaction. Pour rejouer une suite d&apos;interactions, pressez plusieurs fois la &quot;prochaine commande&quot; (forme blanche qui apparait à gauche quand vous appuyez sur une interaction).</string>
 		</array>
 		<array>
 			<string>Pressez et maintenez enfoncée une commande pour changer sa forme.</string>
-			<string>Pressez et maintenez enfoncé une interaction pour changer sa couleur.</string>
-			<string>Changez les formes des commandes et les couleurs des interactions pour pouvoir les reconnaitre. Les formes et les couleurs sont purement descriptives et ne changent pas les interactions réelles.</string>
+			<string>Pressez et maintenez enfoncée une interaction pour changer sa couleur.</string>
+			<string>Changez les formes des commandes et les couleurs des interactions pour pouvoir les reconnaitre. Les formes et les couleurs sont purement descriptives et ne changent pas les comportements du robot.</string>
 		</array>
 		<array>
 			<string>Dans le monde du niveau 4, votre robot ne peut pas toujours éviter les interactions désagréables.</string>
@@ -32,7 +32,7 @@
 		</array>
 		<array>
 			<string>Expérimentez chaque commande seule plusieurs fois de suite. L&apos;une d&apos;entre elles produit toujours la même interaction dans une situation donnée. C&apos;est une commande &quot;persistante&quot;.</string>
-			<string>La commande persistante produit une &quot;interaction d&apos;observation&quot; qui donne une information sur la situation du robot sans la modifier.</string>
+			<string>La commande persistante produit une &quot;interaction d&apos;observation&quot; qui apporte une information sur la situation du robot sans la modifier.</string>
 			<string>Basez-vous sur les couleurs des interactions pour repérer les situations qui permettent de réaliser des interactions agréables.</string>
 		</array>
 		<array>
@@ -41,14 +41,14 @@
 			<string>Affichez en vert les interactions qui laissent espérer une interaction agréable au coup suivant, et en rouge celles qui laissent craindre une interaction désagréable.</string>
 		</array>
 		<array>
-			<string>Au niveau 7, les commandes ont les mêmes effets qu&apos;aux niveaux 5 et 6, mais certaines interactions ont des valeurs différentes.</string>
+			<string>Au niveau 7, les commandes ont les mêmes effets qu&apos;aux niveaux 5 et 6, mais les valeurs des interactions ont changé.</string>
 			<string>Appuyez sur les interactions pour rejouer des séries d&apos;interactions dans les situations où c&apos;est possible.</string>
-			<string>Quand vous rejouez une série d&apos;interactions, sautez les commandes persistantes pour maximiser votre score.</string>
+			<string>Quand vous rejouez une série d&apos;interactions, sautez les &quot;interactions d&apos;observation&quot; pour maximiser votre score.</string>
 		</array>
 		<array>
 			<string>Au niveau 8, les commandes ont les mêmes effets qu&apos;aux niveaux 5 à 7.</string>
-			<string>Cependant, maintenant, l&apos;une des commandes produit toujours les mêmes interactions. Cette commande effectue une &quot;action non informative&quot;.</string>
-			<string>Bien que les actions non informatives produisent toujours les mêmes interactions, ne les confondez pas avec des commandes persistantes.</string>
+			<string>Cependant, maintenant, l&apos;une des commandes produit toujours les mêmes interactions. Cette commande est une &quot;commande non informative&quot;.</string>
+			<string>Bien que les commandes non informatives produisent toujours les mêmes interactions, ne les confondez pas avec des commandes persistantes.</string>
 		</array>
 		<array>
 			<string>Au niveau 9, les commandes ont les mêmes effets immédiats qu&apos;aux niveaux 5, 6, 7, et 8, mais elles transforment aussi l&apos;environnement sur le long terme.</string>
@@ -56,7 +56,7 @@
 		</array>
 		<array>
 			<string>Le monde du niveau 10 est identique au monde du niveau 9, et les interactions ont les mêmes valeurs.</string>
-			<string>Comme au niveau 8, une des commandes change la situation de votre robot en produisant toujours les même interactions (action non-informative).</string>
+			<string>Comme au niveau 8, une des commandes change la situation de votre robot en produisant toujours les même interactions (commande non-informative).</string>
 		</array>
 		<array>
 			<string>Votre bébé robot peut avancer et tourner dans une petite boîte.</string>
@@ -70,7 +70,7 @@
 		<array>
 			<string>Le niveau 13 offre les mêmes commandes que les niveaux 11 et 12 plus une commande persistante qui permet d&apos;effectuer une interaction d&apos;observation.</string>
 			<string>Ce bébé robot n&apos;aime pas tourner et déteste se cogner. Heureusement, la boîte devient plus grande !</string>
-			<string>Utilisez la commande persistante pour éviter de cogner les bords de la boite.</string>
+			<string>Utilisez l&apos;interaction d&apos;observation pour éviter de cogner les bords de la boite.</string>
 		</array>
 		<array>
 			<string>Le monde du niveau 14 est le même que celui du niveau 13.</string>
@@ -84,13 +84,13 @@
 		</array>
 		<array>
 			<string>Vous êtes dans le même monde qu&apos;au niveau 15, avec les mêmes commandes redisposées aléatoirement.</string>
-			<string>Little AI est un projet indépendant et open-source mené par des volontaires passionnés, en collaboration avec le monde académique. </string>
 			<string>Si vous souhaitez en apprendre davantage sur nous et sur la recherche en intelligence artificielle développementale, songez à visiter http://little-ai.com.</string>
+			<string>Little AI est un projet indépendant et open-source mené par des volontaires passionnés, en collaboration avec le monde académique. </string>
 		</array>
 		<array>
 			<string>Vous avez atteint le dernier niveau ! Félicitations ! Il est similaire au niveau 16.</string>
 			<string>Si Little AI vous a amusé ou instruit, ou les deux, songez à faire un petit don s&apos;il vous plaît.</string>
-			<string>Vos dons contribueront à faire progresser les connaissances en intelligence artificielle tout en gardant ce projet open-source. Vous nous aiderez aussi à créer d&apos;autres niveaux !</string>
+			<string>Vos dons nous aideront à développer d&apos;autres niveaux. Ils contribueront aussi à faire progresser les connaissances en intelligence artificielle et à diffuser les résultats en open-source.</string>
 		</array>
 	</array>
 </dict>

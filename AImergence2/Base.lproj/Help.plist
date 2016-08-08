@@ -6,14 +6,14 @@
 	<array>
 		<array>
 			<string>Welcome to Little AI!</string>
-			<string>You control a baby robot with buttons at the bottom of the screen. The goal is to reach the score of 10.</string>
+			<string>With the buttons at the bottom of the screen, you are controlling a baby robot. The goal is to reach the score of 10.</string>
 			<string>As you control the robot, it carries out &quot;interactions&quot; with its environment represented by the little circles that move up the screen. You can see what the interactions correspond to when you have reached 10.</string>
 			<string>The score is the sum of the values of the last ten interactions. Yes, only the last ten!</string>
 		</array>
 		<array>
-			<string>An interaction is the association of a command with a result. Commands are represented by different shapes and results by different colors.</string>
-			<string>On each level, reach the score of 10. Next, follow Little AI&apos;s recommendations: press the &quot;gears&quot; to watch the effects of the commands, and the &quot;podium&quot; to see the leaderboard. </string>
-			<string>Drag the robot to the left or to the right to shift to the previous or next level.</string>
+			<string>An interaction is the association of a command with a feedback information. Commands are represented by different shapes and feedback information by different colors.</string>
+			<string>On each level, reach the score of 10. Next, press the buttons that pop up:  the &quot;gears&quot; to watch the effects of the commands, and the &quot;podium&quot; to see the leaderboard. </string>
+			<string>Drag the 2D robot to the right or to the left to shift to the previous or to the next level.</string>
 		</array>
 		<array>
 			<string>Imagine that your baby robot finds the interactions that have a positive value enjoyable, and those that have a negative value unpleasant.</string>
@@ -27,12 +27,12 @@
 		</array>
 		<array>
 			<string>In the world of Level 4, your robot cannot always avoid unpleasant interactions.</string>
-			<string>Generate a sequence that contains as few unpleasant interactions as possible. </string>
-			<string>Use different shapes for the commands. Display the enjoyable interactions in green and the unpleasant events in red. Don&apos;t think too much, your brain will see the pattern before you know it!</string>
+			<string>Generate a pattern of interaction that contains as few unpleasant interactions as possible. </string>
+			<string>Use different shapes for the commands. Display the enjoyable interactions in green and the unpleasant interactions in red. Don&apos;t think too much, your brain will see the pattern before you know it!</string>
 		</array>
 		<array>
 			<string>Experiment with each command individually several times in a raw. One of the commands always yields the same interactions in a given situation. It is a &quot;persistent&quot; command.</string>
-			<string>The persistent command allows your robot to observe its situation without modifying it.</string>
+			<string>The persistent command produces an &quot;observational interaction&quot; that allows your robot to observe its situation without modifying it.</string>
 			<string>Use the colors of events to identify the situations that afford enjoyable interactions.</string>
 		</array>
 		<array>
@@ -41,14 +41,14 @@
 			<string>Display the interactions that make you hope for an enjoyable interaction on the next round in green, and those that let you fear for an unpleasant interaction in red.</string>
 		</array>
 		<array>
-			<string>In Level 7, the commands have the same effects as in Levels 5 and 6, but some interactions have different values.</string>
-			<string>Tap the interactions to replay enjoyable patterns in the context when it is possible.</string>
-			<string>When you replay a pattern, skip the persistent commands to maximize your score.</string>
+			<string>In Level 7, the commands have the same effects as in Levels 5 and 6, but the values of interactions are different.</string>
+			<string>Tap the interactions to replay enjoyable patterns of intreaction in the context when it is possible.</string>
+			<string>When you replay a pattern, skip the observational interactions to maximize your score.</string>
 		</array>
 		<array>
 			<string>On Level 8, the commands have the same effects as in Levels 5 to 7.</string>
-			<string>Now, however, one of the commands always yields the same interaction. This command executes a &quot;non-informative action&quot;.</string>
-			<string>Although non-informative actions always yield the same interactions, do not mistake them for persistent commands.</string>
+			<string>Now, however, one of the commands always yields the same interaction. This is a &quot;non-informative command&quot;.</string>
+			<string>Although non-informative commands always yield the same interaction, do not mistake them for persistent commands.</string>
 		</array>
 		<array>
 			<string>On level 9, the commands have the same immediate effects as in Levels 5, 6, 7, and 8, but they also transform the environment on the long term.</string>
@@ -56,7 +56,7 @@
 		</array>
 		<array>
 			<string>Level 10&apos;s world is similar to Level 9&apos;s, and events have the same values.</string>
-			<string>As in Level 8, one of the commands always returns the same type of interaction (non-informative action).</string>
+			<string>As in Level 8, one of the commands always yields the same interaction (non-informative command).</string>
 		</array>
 		<array>
 			<string>Your baby robot can move forward and turn in a little box.</string>
@@ -68,9 +68,9 @@
 			<string>Press the score to see your number of moves.</string>
 		</array>
 		<array>
-			<string>Level 13 offers the same commands as Levels 11 and 12 plus a command that allows your robot to observe its situation without modifying it (persistent command).</string>
+			<string>Level 13 offers the same commands as Levels 11 and 12 plus a persistent command that allows your robot to observe its situation without modifying it (observational interaction).</string>
 			<string>This baby robot hates bumping, and quite dislikes turning. Fortunately, the box is getting bigger!</string>
-			<string>Use the persistent command to avoid bumping into the edges.</string>
+			<string>Use the observational interactions produced by the persistent command to avoid bumping into the edges.</string>
 		</array>
 		<array>
 			<string>Level 14&apos;s world is the same as Level 13&apos;s.</string>
@@ -78,19 +78,19 @@
 			<string>You must learn to know yourself and your environment to live a happy life!</string>
 		</array>
 		<array>
-			<string>Your robot has two additional commands that it can use to feel the edges around it.</string>
-			<string>Use these two commands to avoid turning towards the edges.</string>
+			<string>Your robot has two additional persistant commands that it can use to feel the edges around it.</string>
+			<string>Use the observational interactions produced by these commands to avoid turning towards the edges.</string>
 			<string>The box is getting even bigger.</string>
 		</array>
 		<array>
 			<string>You are in the same world as in Level 15 with the same commands initially uninterpreted.</string>
-			<string>Little AI is a free open-source research and pedagogical project driven by passionate volunteers in collaboration with academia.</string>
 			<string>If you wish to learn more about us and about research in developmental artificial intelligence, consider visiting http://little-ai.com.</string>
+			<string>Little AI is a free open-source research and pedagogical project driven by passionate volunteers in collaboration with academia.</string>
 		</array>
 		<array>
 			<string>You reached the last level ! Congratulations! It is similar to Level 16.</string>
 			<string>If you found Little AI enjoyable or instructive, or both, please consider making a small donation.</string>
-			<string>Your donations will contribute to progress in artificial intelligence and help us spread this progress freely. You will also help us create more levels!</string>
+			<string>Your donations will help us create more levels. They will also contribute to progress in artificial intelligence and help keep the results open-sourced.</string>
 		</array>
 	</array>
 </dict>
