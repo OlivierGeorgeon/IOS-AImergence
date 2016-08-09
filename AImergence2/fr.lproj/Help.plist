@@ -6,9 +6,9 @@
 	<array>
 		<array>
 			<string>Bienvenue dans Little AI !</string>
-			<string>Vous commandez un bébé robot grace aux boutons en bas de l&apos;écran. Le but du jeu est d&apos;atteindre le score de 10. </string>
+			<string>Vous commandez un bébé robot grâce aux boutons en bas de l&apos;écran. Le but du jeu est d&apos;atteindre le score de 10. </string>
 			<string>Quand vous commandez le robot, il réalise des &quot;interactions&quot; avec son environnement qui sont représentées par les petits cercles blancs qui montent. Vous pouvez voir à quoi les interactions correspondent quand vous avez atteint le score de 10.</string>
-			<string>Le score est la somme des valeurs des dix dernières interactions. Oui, uniquement les dix dernieres !</string>
+			<string>Le score est la somme des valeurs des dix dernières interactions. Oui, uniquement les dix dernières !</string>
 		</array>
 		<array>
 			<string>Une interaction est l&apos;association d&apos;une commande et d&apos;une information obtenue en retour. Les commandes sont représentées par des formes différentes, et les informations par des couleurs différentes.</string>
@@ -18,7 +18,7 @@
 		<array>
 			<string>Imaginez que votre bébé robot trouve agréable les interactions qui ont une valeur positive et désagréables celles qui ont une valeur négative.</string>
 			<string>Générez une suite d&apos;interactions agréables.</string>
-			<string>Appuyez sur les interactions pour rejouer la même commande. Une commande rejouée dans la même situation reproduit la mêmes interaction. Pour rejouer une suite d&apos;interactions, pressez plusieurs fois la &quot;prochaine commande&quot; (forme blanche qui apparait à gauche quand vous appuyez sur une interaction).</string>
+			<string>Appuyez sur les interactions pour rejouer la même commande. Une commande rejouée dans la même situation reproduit la même interaction. Pour rejouer une suite d&apos;interactions, pressez plusieurs fois la &quot;prochaine commande&quot; (forme blanche qui apparait à gauche quand vous appuyez sur une interaction).</string>
 		</array>
 		<array>
 			<string>Pressez et maintenez enfoncée une commande pour changer sa forme.</string>
@@ -64,7 +64,7 @@
 		</array>
 		<array>
 			<string>La boîte est encore plus petite.</string>
-			<string>Scrollez pour revoir les 100 derniéres interactions. Tapez deux fois sur une zone vide pour revenir à l&apos;origine.</string>
+			<string>Scrollez pour revoir les 100 dernières interactions. Tapez deux fois sur une zone vide pour revenir à l&apos;origine.</string>
 			<string>Appuyez sur le score pour voir votre nombre de coups.</string>
 		</array>
 		<array>
