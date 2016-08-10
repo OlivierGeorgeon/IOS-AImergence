@@ -17,7 +17,7 @@ class SoundSKNode: SKNode {
     override init() {
         super.init()
         
-        position = CGPoint(x: 30, y: 640)
+        position = CGPoint(x: 60, y: 1280)
         addChild(backgroundNode)
     }
     

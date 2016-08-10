@@ -19,8 +19,6 @@ class ShapePopupSKNode: SKNode {
     var shapeIndex = 0
 
     init(gameModel: GameModel0) {
-    //init(popupRect: CGRect, experimentPaths: [(CGRect) -> UIBezierPath], shapeRect: CGRect, shapeOrigin: CGPoint, shapeOffset: CGVector) {
-
         popupBackground = SKShapeNode(rect: gameModel.shapePopupRect, cornerRadius: 0)
         let appearMove = SKAction.moveTo(gameModel.shapePopupPosition, duration: 0.1)
         let appearScale = SKAction.scaleTo(1, duration: 0.1)
@@ -39,12 +37,11 @@ class ShapePopupSKNode: SKNode {
         
         for i in 0..<gameModel.experimentPaths.count {
             let shapeNode = SKShapeNode(path: gameModel.experimentPaths[i](gameModel.shapeRect).CGPath)
-            shapeNode.lineWidth = 3
+            shapeNode.lineWidth = 6
             shapeNode.zPosition = 1
             shapeNode.lineJoin = .Round
             shapeNode.strokeColor = UIColor.grayColor()
             shapeNode.fillColor = UIColor.whiteColor()
-            //shapeNode.position = CGPoint(x: i % 4 * 80 - 120 , y: i / 4 * 100 - 100)
             if gameModel.shapeOffset.dy == 0 {
                 shapeNode.position = CGPoint(x: Int(gameModel.shapeOrigin.x) + i * Int(gameModel.shapeOffset.dx), y: 0)
             } else {
@@ -61,17 +58,17 @@ class ShapePopupSKNode: SKNode {
     
     func update(shapeIndex: Int) {
         self.shapeIndex = shapeIndex
-        shapeNodes.forEach({$0.lineWidth = 3})
-        shapeNodes[shapeIndex].lineWidth = 6
+        shapeNodes.forEach({$0.lineWidth = 6})
+        shapeNodes[shapeIndex].lineWidth = 12
     }
     
     func revolve() {
-        shapeNodes[shapeIndex].lineWidth = 3
+        shapeNodes[shapeIndex].lineWidth = 6
         shapeIndex += 1
         if shapeIndex >= shapeNodes.count {
             shapeIndex = 0
         }
-        shapeNodes[shapeIndex].lineWidth = 6
+        shapeNodes[shapeIndex].lineWidth = 12
     }
 
     func appear() {

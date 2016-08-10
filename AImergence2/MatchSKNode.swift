@@ -12,13 +12,13 @@ import GameKit
 
 class MatchSKNode: SKNode
 {
-    let backgroundNode = SKShapeNode(rect: CGRect(x: -50, y: -50, width: 100, height: 100), cornerRadius: 5)
+    let backgroundNode = SKShapeNode(rect: CGRect(x: -100, y: -100, width: 200, height: 200), cornerRadius: 10)
     
     override init() {
         
         super.init()
         
-        position = CGPoint(x: -50, y: 100)
+        position = CGPoint(x: -100, y: 200)
         addChild(backgroundNode)
     }
     

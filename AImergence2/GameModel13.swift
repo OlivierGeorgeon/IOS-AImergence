@@ -13,11 +13,11 @@ class GameModel13: GameModel11
     
     required convenience init()
     {
-        let experimentRect = CGRect(x: -30, y: -30, width: 60, height: 60)
-        let experimentPositions = [CGPoint(x: -120, y: 0), CGPoint(x: -40, y: 0), CGPoint(x: 40, y: 0), CGPoint(x: 120, y: 0)]
-        let experienceRect = CGRect(x: -20, y: -20, width: 40, height: 40)
+        let experimentRect = CGRect(x: -60, y: -60, width: 120, height: 120)
+        let experimentPositions = [CGPoint(x: -240, y: 0), CGPoint(x: -80, y: 0), CGPoint(x: 80, y: 0), CGPoint(x: 240, y: 0)]
+        let experienceRect = CGRect(x: -40, y: -40, width: 80, height: 80)
         let initialScale = CGFloat(60)/40
-        let valencePosition = CGPoint(x: 50, y: -10)
+        let valencePosition = CGPoint(x: 100, y: -20)
         let obsolescence = 100
         let actionScale = SKAction.scaleTo(1, duration: 0.2)
         let experimentPaths = [{UIBezierPath(ovalInRect: $0)}, halfCircleLeft, triangle, halfCircleRight, triangleUp, trapezoidLeft, {UIBezierPath(rect: $0)}, trapezoidRight]

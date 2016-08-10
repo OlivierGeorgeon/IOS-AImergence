@@ -28,9 +28,9 @@ class MenuSKScene: PositionedSKScene {
     let tipInviteNode = SKLabelNode()
     let tutorNode = TutorSKNode()
     let soundNode = SoundSKNode()
-    let level0Position = CGPoint(x: 60, y: 550)
-    let levelXOffset = CGVector( dx: 60, dy: 0)
-    let levelYOffset = CGVector( dx:  0, dy: -80)
+    let level0Position = CGPoint(x: 120, y: 1100)
+    let levelXOffset = CGVector( dx: 120, dy: 0)
+    let levelYOffset = CGVector( dx:  0, dy: -160)
     let thankYou = NSLocalizedString("Thank you!", comment: "In the level window when the user has paid a tip.")
 
     weak var userDelegate: MenuSceneDelegate?
@@ -53,6 +53,7 @@ class MenuSKScene: PositionedSKScene {
             tutorNode.tip(14, parentNode: soundNode)
         }
         backgroundColor = UIColor.whiteColor()
+        backgroundNode.size = CGSize(width: 1334, height: 1334)
         backgroundNode.zPosition = -20
         backgroundNode.name = "background"
         originNode.addChild(backgroundNode)
@@ -71,14 +72,14 @@ class MenuSKScene: PositionedSKScene {
         
         if products.count > 0 {
             shortTipInvit =  products[0].localizedDescription
-            tip0Node = TipSKNode(product: products[0], size: CGSize(width: 70, height: 70))
+            tip0Node = TipSKNode(product: products[0], size: CGSize(width: 140, height: 140))
             originNode.addChild(tip0Node!)
             if products.count > 1 {
                 longTipInvit =  products[1].localizedDescription
-                tip1Node = TipSKNode(product: products[1], size: CGSize(width: 80, height: 80))
+                tip1Node = TipSKNode(product: products[1], size: CGSize(width: 160, height: 160))
                 originNode.addChild(tip1Node!)
                 if products.count > 2 {
-                    tip2Node = TipSKNode(product: products[2], size: CGSize(width: 80, height: 80))
+                    tip2Node = TipSKNode(product: products[2], size: CGSize(width: 160, height: 160))
                     originNode.addChild(tip2Node!)
                 }
             }
@@ -95,21 +96,21 @@ class MenuSKScene: PositionedSKScene {
     override func positionInFrame(frameSize: CGSize) {
         super.positionInFrame(frameSize)
         if frameSize.height > frameSize.width {
-            backgroundNode.position = CGPoint(x: 300, y: 300)
+            backgroundNode.position = CGPoint(x: 600, y: 600)
             tipInviteNode.text = shortTipInvit
-            tip0Node?.position = CGPoint(x: size.width / 2 - 100, y: 130)
-            tip1Node?.position = CGPoint(x: size.width / 2 - 10, y: 70)
-            tip2Node?.position = CGPoint(x: size.width / 2 + 100, y: 105)
+            tip0Node?.position = CGPoint(x: size.width / 2 - 200, y: 260)
+            tip1Node?.position = CGPoint(x: size.width / 2 - 20, y: 140)
+            tip2Node?.position = CGPoint(x: size.width / 2 + 200, y: 210)
         } else {
             backgroundNode.position = CGPoint(x: size.width / 2, y: size.height / 2)
             tipInviteNode.text = longTipInvit
-            tip0Node?.position = CGPoint(x: size.width / 2 - 170, y: 130)
-            tip1Node?.position = CGPoint(x: size.width / 2, y: 70)
-            tip2Node?.position = CGPoint(x: size.width / 2 + 170, y: 105)
+            tip0Node?.position = CGPoint(x: size.width / 2 - 340, y: 260)
+            tip1Node?.position = CGPoint(x: size.width / 2, y: 140)
+            tip2Node?.position = CGPoint(x: size.width / 2 + 340, y: 210)
         }
         
-        tipInviteNode.position = CGPoint(x: self.size.width / 2, y: 210)
-        tipInviteNode.fontSize = titleFont.pointSize
+        tipInviteNode.position = CGPoint(x: self.size.width / 2, y: 420)
+        tipInviteNode.fontSize = titleFont.pointSize * 2
         while tipInviteNode.frame.size.width >= self.size.width {
             tipInviteNode.fontSize -= 1.0
         }
@@ -129,11 +130,11 @@ class MenuSKScene: PositionedSKScene {
             var backgroundNode = SKShapeNode()
             switch userDelegate!.levelStatus(i) {
             case 1:
-                backgroundNode = SKShapeNode(rect: CGRect(x: -25, y: -25, width: 50, height: 50), cornerRadius: 15)
+                backgroundNode = SKShapeNode(rect: CGRect(x: -50, y: -50, width: 100, height: 100), cornerRadius: 30)
             case 2:
-                backgroundNode = SKShapeNode(rect: CGRect(x: -25, y: -25, width: 50, height: 50))
+                backgroundNode = SKShapeNode(rect: CGRect(x: -50, y: -50, width: 100, height: 100))
             default:
-                backgroundNode = SKShapeNode(path: UIBezierPath(ovalInRect: CGRect(x: -25, y: -25, width: 50, height: 50)).CGPath)
+                backgroundNode = SKShapeNode(path: UIBezierPath(ovalInRect: CGRect(x: -50, y: -50, width: 100, height: 100)).CGPath)
             }
             
             if i == userDelegate?.currentLevel() {
@@ -150,7 +151,7 @@ class MenuSKScene: PositionedSKScene {
     func createLabelNode(text: String) -> SKLabelNode {
         let labelNode = SKLabelNode(text: text)
         labelNode.fontName = titleFont.fontName
-        labelNode.fontSize = titleFont.pointSize
+        labelNode.fontSize = titleFont.pointSize * 2
         labelNode.fontColor = UIColor.whiteColor()
         labelNode.verticalAlignmentMode = .Center
         return labelNode
@@ -160,9 +161,9 @@ class MenuSKScene: PositionedSKScene {
         let translation  = recognizer.translationInView(self.view!)
         switch recognizer.state {
         case .Changed:
-            originNode.position.y -= translation.y * 667 / self.view!.frame.height
+            originNode.position.y -= translation.y * sceneHeight / self.view!.frame.height
         case .Ended:
-            if recognizer.velocityInView(self.view!).y > 100 {
+            if recognizer.velocityInView(self.view!).y > 200 {
                 self.view!.presentScene(previousGameScene!, transition: transitionDown)
             } else {
                 let moveToOrigin = SKAction.moveTo(CGPointZero, duration: 0.2)
@@ -184,7 +185,6 @@ class MenuSKScene: PositionedSKScene {
                 if let levelNumber = levelNode.userData?["level"] as! Int? {
                     if userDelegate?.levelStatus(levelNumber) > 0 {
                         userDelegate?.updateLevel(levelNumber)
-                        //let gameModel = GameModel.createGameModel(ln)
                         let gameScene = GameSKScene(levelNumber: levelNumber)
                         gameScene.gameSceneDelegate = previousGameScene?.gameSceneDelegate
                         self.view?.presentScene(gameScene, transition: transitionDown)

@@ -35,10 +35,10 @@ class ButtonSKNode: SKNode
         self.button = button
         self.activatedTexture = SKTexture(imageNamed: activatedImageNamed)
         self.disactivatedTexture = SKTexture(imageNamed: disactivatedImageNamed)
-        self.backgroundNode = SKSpriteNode(texture: self.activatedTexture, color: UIColor.clearColor(), size: CGSize(width: 76, height: 76))
+        self.backgroundNode = SKSpriteNode(texture: self.activatedTexture)
         
         let appearPath = UIBezierPath()
-        appearPath.addArcWithCenter(CGPoint(x: 0, y: 60), radius: 30, startAngle: -CGFloat(M_PI) / 2 , endAngle: CGFloat(M_PI) / 2, clockwise: true)
+        appearPath.addArcWithCenter(CGPoint(x: 0, y: 120), radius: 60, startAngle: -CGFloat(M_PI) / 2 , endAngle: CGFloat(M_PI) / 2, clockwise: true)
         actionAppear = SKAction.followPath(appearPath.CGPath, asOffset: false, orientToPath: false, duration: 0.2)
         actionAppear.timingMode = .EaseOut
         actionAppearScale.timingMode = .EaseOut
@@ -52,22 +52,22 @@ class ButtonSKNode: SKNode
         actionPulse = SKAction.sequence([actionFirstPulseUp, SKAction.repeatActionForever(SKAction.sequence([actionPulseDown, actionPulseUp]))])
 
         let disappearPath = UIBezierPath()
-        disappearPath.addArcWithCenter(CGPoint(x: 0, y: 60), radius: 30, startAngle: CGFloat(M_PI) / 2 , endAngle: -CGFloat(M_PI) / 2, clockwise: true)
+        disappearPath.addArcWithCenter(CGPoint(x: 0, y: 120), radius: 60, startAngle: CGFloat(M_PI) / 2 , endAngle: -CGFloat(M_PI) / 2, clockwise: true)
         actionDisappear = SKAction.followPath(disappearPath.CGPath, asOffset: false, orientToPath: false, duration: 0.2)
         actionDisappear.timingMode = .EaseIn
         actionDisappearScale.timingMode = .EaseIn
         
         switch button {
         case .INSTRUCTION:
-            actionExpand = SKAction.moveTo(CGPoint(x: 0, y: 90 + 140), duration: 0.2)
+            actionExpand = SKAction.moveTo(CGPoint(x: 0, y: 180 + 280), duration: 0.2)
         case .IMAGINE:
-            actionExpand = SKAction.moveTo(CGPoint(x: 0, y: 90 + 70), duration: 0.2)
+            actionExpand = SKAction.moveTo(CGPoint(x: 0, y: 180 + 140), duration: 0.2)
         case .LEADERBOARD:
-            actionExpand = SKAction.moveTo(CGPoint(x: 0, y: 90), duration: 0.2)
+            actionExpand = SKAction.moveTo(CGPoint(x: 0, y: 180), duration: 0.2)
         }
         actionExpand.timingMode = .EaseInEaseOut
         
-        actionReduce = SKAction.moveTo(CGPoint(x: 0, y: 90), duration: 0.2)
+        actionReduce = SKAction.moveTo(CGPoint(x: 0, y: 180), duration: 0.2)
         actionReduce.timingMode = .EaseInEaseOut
         
         actionCollapse = SKAction.moveTo(CGPointZero, duration: 0.2)

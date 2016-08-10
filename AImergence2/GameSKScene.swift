@@ -113,13 +113,10 @@ class GameSKScene: PositionedSKScene {
             break
         }
         
-        let scoreInOriginWindow = SKConstraint.positionY(SKRange(lowerLimit: 270, upperLimit: 270))
+        let scoreInOriginWindow = SKConstraint.positionY(SKRange(lowerLimit: 540, upperLimit: 540))
         scoreInOriginWindow.referenceNode = cameraNode
-        let scoreAboveTenthEvent = SKConstraint.positionY(SKRange(upperLimit: 565))
+        let scoreAboveTenthEvent = SKConstraint.positionY(SKRange(upperLimit: 1130))
         scoreNode.constraints = [scoreInOriginWindow, scoreAboveTenthEvent]
-        //let moveOnTopOfScreen = SKConstraint.positionY(SKRange(lowerLimit: 270, upperLimit: 270))
-        //moveOnTopOfScreen.referenceNode = cameraNode
-        //scoreNode.moveNode.constraints = [moveOnTopOfScreen]
 
         shapePopupNode.hidden = true
         addChild(shapePopupNode)
@@ -128,15 +125,16 @@ class GameSKScene: PositionedSKScene {
         
         experimentNodes = createExperimentNodes()
         
-        robotNode.position = CGPoint(x: 120, y: 180)
+        robotNode.position = CGPoint(x: 240, y: 360)
         cameraRelativeOriginNode.addChild(robotNode)
+        backgroundNode.size.height = 2376
         backgroundNode.zPosition = -20
         backgroundNode.name = "background"
         cameraRelativeOriginNode.addChild(backgroundNode)
     }
     
     override func update(currentTime: NSTimeInterval) {
-        if scoreNode.position.y == 565 {
+        if scoreNode.position.y == 1130 {
             scoreNode.lineNode.hidden = false
         } else {
             scoreNode.lineNode.hidden = true
@@ -181,21 +179,20 @@ class GameSKScene: PositionedSKScene {
     override func positionInFrame(frameSize: CGSize) {
         super.positionInFrame(frameSize)
         if frameSize.height > frameSize.width {
-            cameraNode.position =  CGPoint(x: 0, y: 233)
+            cameraNode.position =  CGPoint(x: 0, y: 466)
             backgroundNode.position.x = 0
-            robotNode.position = CGPoint(x: max(120,size.width * 0.3) , y: 180)
+            robotNode.position = CGPoint(x: max(240,size.width * 0.3) , y: 360)
             robotNode.setScale(1)
         } else {
-            cameraNode.position =  CGPoint(x: size.width / 2 - 190, y: 233)
-            backgroundNode.position.x = cameraNode.position.x // 400
-            robotNode.position = CGPoint(x: size.width * 0.6, y: 70)
+            cameraNode.position =  CGPoint(x: size.width / 2 - 380, y: 466)
+            backgroundNode.position.x = cameraNode.position.x
+            robotNode.position = CGPoint(x: size.width * 0.6, y: 140)
             robotNode.setScale(1.5)
         }      
         robotOrigin = robotNode.position.x
         backgroundNode.size.width = size.width
+        //backgroundNode.size = size
         cameraRelativeOriginNode.position = -cameraNode.position
-        //topRightNode.position = CGPoint(x: size.width - 375 / 2, y: size.height - 100)
-        //topRightNode.position = CGPoint(x: size.width / 2 - cameraNode.position.x, y: size.height - 100)
         topRightNode.position = CGPoint(x: size.width / 2, y: size.height / 2)
     }
 
@@ -208,9 +205,9 @@ class GameSKScene: PositionedSKScene {
             cameraNode.removeActionForKey("scroll")
         case .Changed:
             if (view as! GameView).verticalPan {
-                cameraNode.position.y += translation.y * 667 / self.view!.frame.height
+                cameraNode.position.y += translation.y * sceneHeight / self.view!.frame.height
             } else {
-                robotNode.position.x += translation.x * 667 / self.view!.frame.height
+                robotNode.position.x += translation.x * sceneHeight / self.view!.frame.height
                 if robotNode.position.x <  robotOrigin * 0.9 {
                     robotNode.runAction(SKAction.moveToX(robotOrigin, duration: 0.2))
                     (self.view! as! GameView).nextLevel()
@@ -228,24 +225,24 @@ class GameSKScene: PositionedSKScene {
             if (view as! GameView).verticalPan {
                 let acceleration = CGFloat(-10000.0)
                 var scrollDuration = CGFloat(0.8)
-                var translateY = velocity.y * CGFloat(scrollDuration) * 0.9 * 667 / self.view!.frame.height
-                if translateY > 667 { translateY = 667 }
-                if translateY < -667 { translateY = -667 }
+                var translateY = velocity.y * CGFloat(scrollDuration) * 0.9 * sceneHeight / self.view!.frame.height
+                if translateY > sceneHeight { translateY = sceneHeight }
+                if translateY < -sceneHeight { translateY = -sceneHeight }
 
-                if cameraNode.position.y + translateY > 233 {
+                if cameraNode.position.y + translateY > 466 {
                     let actionMoveCameraUp = SKAction.moveBy(CGVector(dx: 0, dy: translateY), duration: Double(scrollDuration))
                     actionMoveCameraUp.timingMode = .EaseOut
                     cameraNode.runAction(actionMoveCameraUp, withKey: "scroll")
                 } else {
                     scrollDuration  =  abs(velocity.y / acceleration)
                     translateY = velocity.y * scrollDuration + acceleration * scrollDuration * scrollDuration / 2
-                    if cameraNode.position.y > 233 {
-                        translateY -= cameraNode.position.y - 233
-                        scrollDuration += (cameraNode.position.y - 233) / abs(velocity.y)
+                    if cameraNode.position.y > 466 {
+                        translateY -= cameraNode.position.y - 466
+                        scrollDuration += (cameraNode.position.y - 466) / abs(velocity.y)
                     }
                     let actionMoveCameraUp = SKAction.moveBy(CGVector(dx: 0, dy: translateY), duration: Double(scrollDuration))
                     actionMoveCameraUp.timingMode = .EaseOut
-                    let moveToOrigin = SKAction.moveToY(233, duration: 0.3)
+                    let moveToOrigin = SKAction.moveToY(466, duration: 0.3)
                     moveToOrigin.timingMode = .EaseInEaseOut
                     cameraNode.runAction(SKAction.sequence([actionMoveCameraUp, moveToOrigin]), withKey: "scroll")
                 }
@@ -278,7 +275,7 @@ class GameSKScene: PositionedSKScene {
         }
         
         if nextExperimentNode != nil {
-            if CGRectContainsPoint(CGRect(x: nextExperimentNode!.position.x - 30, y: nextExperimentNode!.position.y - 30, width: 60, height: 60), positionInScene) {
+            if CGRectContainsPoint(CGRect(x: nextExperimentNode!.position.x - 60, y: nextExperimentNode!.position.y - 60, width: 120, height: 120), positionInScene) {
                 let experience = play(experimentNodes[nextExperimentNode!.experiment.number]!)
                 playExperience = true
                 animNextExperiment(experience, nextClock: nextExperimentClock + 1)
@@ -335,21 +332,21 @@ class GameSKScene: PositionedSKScene {
             nextExperimentNode = nil
         }
         if nextExperimentNode == nil {
-            let rect = CGRect(x: -30, y: -30, width: 60, height: 60)
+            let rect = CGRect(x: -60, y: -60, width: 120, height: 120)
             nextExperimentNode = ExperimentSKNode(rect: rect, experiment: experience.experiment, gameModel: gameModel)
             nextExperimentNode!.zPosition = 2
             addChild(nextExperimentNode!)
         }
-        nextExperimentNode!.position = CGPoint(x: -100, y: 40 + CGFloat(self.clock - nextClock + 1) * 50.0)
+        nextExperimentNode!.position = CGPoint(x: -200, y: 80 + CGFloat(self.clock - nextClock + 1) * 100)
         nextExperimentNode!.fillColor = gameModel.experienceColors[experience.colorIndex]
         nextExperimentNode!.runAction(SKAction.sequence([actionDisappear, SKAction.removeFromParent()]))
         
         nextExperimentClock = nextClock
 
-        let rect = CGRect(x: -30, y: -30, width: 60, height: 60)
+        let rect = CGRect(x: -60, y: -60, width: 120, height: 120)
         let nextExperiment = traceNode.eventNodes[nextClock]!.experienceNode.experience.experiment
         nextExperimentNode = ExperimentSKNode(rect: rect, experiment: nextExperiment, gameModel: gameModel)
-        nextExperimentNode!.position = CGPoint(x: -100, y: 40 + CGFloat(self.clock - nextClock + 1) * 50.0)
+        nextExperimentNode!.position = CGPoint(x: -200, y: 80 + CGFloat(self.clock - nextClock + 1) * 100)
         nextExperimentNode!.hidden = true
         nextExperimentNode!.zPosition = 2
         addChild(nextExperimentNode!)
@@ -418,7 +415,7 @@ class GameSKScene: PositionedSKScene {
     
     func doubleTap(gesture:UITapGestureRecognizer) {
         // The doubeTapGesture is disabled if the tapGesture handles the tap.
-        let actionScrollToOrigin = SKAction.moveBy(CGVector(dx: 0.0, dy: 233 - cameraNode.position.y), duration: NSTimeInterval( cameraNode.position.y / 2000))
+        let actionScrollToOrigin = SKAction.moveBy(CGVector(dx: 0.0, dy: 466 - cameraNode.position.y), duration: NSTimeInterval( cameraNode.position.y / 4000))
         actionScrollToOrigin.timingMode = .EaseInEaseOut
         cameraNode.runAction(actionScrollToOrigin)
     }
@@ -471,8 +468,8 @@ class GameSKScene: PositionedSKScene {
     func selectShapeNode(positionInShapePopup: CGPoint?) {
         for i in 0..<shapePopupNode.shapeNodes.count {
             if CGRectContainsPoint(shapePopupNode.shapeNodes[i].frame, positionInShapePopup!) {
-                shapePopupNode.shapeNodes.forEach({$0.lineWidth = 3})
-                shapePopupNode.shapeNodes[i].lineWidth = 6
+                shapePopupNode.shapeNodes.forEach({$0.lineWidth = 6})
+                shapePopupNode.shapeNodes[i].lineWidth = 12
                 reshapeNodes(i)
                 timer?.invalidate()
             }
@@ -481,8 +478,8 @@ class GameSKScene: PositionedSKScene {
     func selectColorNode(positionInColorPopup: CGPoint?) {
         for i in 0..<colorPopupNode.colorNodes.count {
             if CGRectContainsPoint(colorPopupNode.colorNodes[i].frame, positionInColorPopup!) {
-                colorPopupNode.colorNodes.forEach({$0.lineWidth = 1})
-                colorPopupNode.colorNodes[i].lineWidth = 6
+                colorPopupNode.colorNodes.forEach({$0.lineWidth = 2})
+                colorPopupNode.colorNodes[i].lineWidth = 12
                 refillNodes(i)
                 timer?.invalidate()
             }

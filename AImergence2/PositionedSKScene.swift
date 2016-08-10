@@ -14,8 +14,8 @@ class PositionedSKScene: SKScene {
     // Portrait:  scene width:  375, hight: 667
     // Landscape: scene width: 1186, hight: 667
     
-    let sceneHeight = CGFloat(667)
-    //let sceneHeight = CGFloat(1334)
+    //let sceneHeight = CGFloat(667)
+    let sceneHeight = CGFloat(1334)
     let actionPress = SKAction.sequence([SKAction.scaleBy(0.909, duration: 0.1),SKAction.scaleBy(1.1, duration: 0.1)])
     let transitionUp    = SKTransition.moveInWithDirection(SKTransitionDirection.Down, duration: 0.3)
     let transitionDown  = SKTransition.revealWithDirection(SKTransitionDirection.Down, duration: 0.3)

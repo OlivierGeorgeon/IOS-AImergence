@@ -22,7 +22,7 @@ class EventSKNode: SKNode
         self.experienceNode = ExperienceSKNode(experience: experience, gameModel: gameModel)
         super.init()
         self.frameNode.hidden = true
-        self.frameNode.fillColor = UIColor(red: 200 / 256, green: 150 / 256, blue: 200 / 256, alpha: 1) //UIColor(red: 114 / 256, green: 114 / 256, blue: 171 / 256, alpha: 1)
+        self.frameNode.fillColor = UIColor(red: 200 / 256, green: 150 / 256, blue: 200 / 256, alpha: 1)
         self.frameNode.lineWidth = 0
         self.frameNode.zPosition = -2
         addChild(self.frameNode)
@@ -49,7 +49,7 @@ class EventSKNode: SKNode
     {
         let valenceNode = SKLabelNode()
         valenceNode.fontName = gameModel.titleFont.fontName
-        valenceNode.fontSize = gameModel.titleFont.pointSize
+        valenceNode.fontSize = gameModel.titleFont.pointSize * 2
         valenceNode.position = gameModel.valencePosition
         valenceNode.text = "\(valence)"
         addChild(valenceNode)
@@ -64,15 +64,15 @@ class EventSKNode: SKNode
         if absValence > 0 {
             let dotlines = min(absValence, 5)
             let maxDotIndex = absValence - 1
-            let gaugeWidth = maxDotIndex / 5 * 8 + 10
-            let gaugeHight = dotlines * 6 + 6
-            let gaugeNode = SKShapeNode(rect: CGRect(x: -5, y: -gaugeHight / 2, width: gaugeWidth, height: gaugeHight), cornerRadius: 5)
-            gaugeNode.position = CGPoint(x: 77, y: 0)
+            let gaugeWidth = maxDotIndex / 5 * 16 + 20
+            let gaugeHight = dotlines * 12 + 12
+            let gaugeNode = SKShapeNode(rect: CGRect(x: -10, y: -gaugeHight / 2, width: gaugeWidth, height: gaugeHight), cornerRadius: 10)
+            gaugeNode.position = CGPoint(x: 154, y: 0)
             gaugeNode.zPosition = -1
-            gaugeNode.lineWidth = 1
+            gaugeNode.lineWidth = 2
             addChild(gaugeNode)
             for i in 0...maxDotIndex {
-                let dotNode = SKShapeNode(rect: CGRect(x: i / 5 * 8 - 3, y: 3 * dotlines - i % 5 * 6 - 5, width: 6, height: 4))
+                let dotNode = SKShapeNode(rect: CGRect(x: i / 5 * 16 - 6, y: 6 * dotlines - i % 5 * 12 - 10, width: 12, height: 8))
                 dotNode.fillColor = dotColor
                 dotNode.lineWidth = 0
                 gaugeNode.addChild(dotNode)

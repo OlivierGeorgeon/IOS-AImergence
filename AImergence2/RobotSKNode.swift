@@ -33,7 +33,7 @@ class RobotSKNode: SKNode
         super.init()
         
         zPosition = 5
-        imageNode.size = CGSize(width: 100, height: 100)
+        imageNode.size = CGSize(width: 202, height: 210)
         addChild(imageNode)
         instructionButtonNode.zPosition = -3
         addChild(instructionButtonNode)
@@ -46,8 +46,8 @@ class RobotSKNode: SKNode
         robotBlinkFrames = loadFrames("blink", imageNumber: 4, by: 1)
         robotCryFrames = loadFrames("cry", imageNumber: 7, by: 1)
         robotJumpFrames = loadFrames("jump", imageNumber: 7, by: 1)
-        let upAction = SKAction.moveBy(CGVector(dx: 0, dy: 50), duration: 0.25)
-        let downAction = SKAction.moveBy(CGVector(dx: 0, dy: -50), duration: 0.25)
+        let upAction = SKAction.moveBy(CGVector(dx: 0, dy: 100), duration: 0.25)
+        let downAction = SKAction.moveBy(CGVector(dx: 0, dy: -100), duration: 0.25)
         upAction.timingMode = .EaseOut
         downAction.timingMode = .EaseIn
         let jumpMoveAction = SKAction.sequence([upAction, downAction])

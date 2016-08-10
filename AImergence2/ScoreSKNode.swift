@@ -13,11 +13,11 @@ class ScoreSKNode: SKNode
     let titleFont = UIFont.preferredFontForTextStyle(UIFontTextStyleTitle1)
     let bodyFont = UIFont.preferredFontForTextStyle(UIFontTextStyleBody)
     let labelNode = SKLabelNode(text: "0")
-    let backgroundNode = SKShapeNode(rect: CGRect(x: -30, y: -30, width: 60, height: 60), cornerRadius: 20)
+    let backgroundNode = SKShapeNode(rect: CGRect(x: -60, y: -60, width: 120, height: 120), cornerRadius: 40)
     let lineNode: SKShapeNode
     let moveNode = SKNode()
     let moveLabelNode = SKLabelNode(text: NSLocalizedString("0 moves", comment: "Init move count display"))
-    let moveBackgroundNode = SKShapeNode(rect: CGRect(x: -110, y: -20, width: 220, height: 40), cornerRadius: 20)
+    let moveBackgroundNode = SKShapeNode(rect: CGRect(x: -220, y: -40, width: 440, height: 80), cornerRadius: 40)
     let gaugeNode = SKNode()
     let textWon = NSLocalizedString("Won in", comment: "You won in the main window");
     let textMoves = NSLocalizedString("moves", comment: "Number of moves displayed in the main window");
@@ -31,12 +31,12 @@ class ScoreSKNode: SKNode
         zPosition = -1
         
         labelNode.fontName = titleFont.fontName
-        labelNode.fontSize = titleFont.pointSize
+        labelNode.fontSize = titleFont.pointSize * 2
         labelNode.verticalAlignmentMode = .Center
-        labelNode.fontColor = UIColor.darkGrayColor()// blackColor()
+        labelNode.fontColor = UIColor.darkGrayColor()
         addChild(labelNode)
 
-        self.position = CGPoint(x: -117, y: 502)
+        self.position = CGPoint(x: -234, y: 1004)
         backgroundNode.zPosition = -1
         backgroundNode.lineWidth = 0
         backgroundNode.name = "scoreBackground"
@@ -44,18 +44,19 @@ class ScoreSKNode: SKNode
         addChild(backgroundNode)
         
         CGPathMoveToPoint(pathToDraw, nil, 0, 0)
-        CGPathAddLineToPoint(pathToDraw, nil, 178, 0)
+        CGPathAddLineToPoint(pathToDraw, nil, 356, 0)
         self.lineNode.path = pathToDraw
         self.lineNode.strokeColor = SKColor.whiteColor()
         self.lineNode.zPosition = -2
         self.lineNode.hidden = true
+        self.lineNode.lineWidth = 2
         addChild(self.lineNode)
         
-        gaugeNode.position = CGPoint(x: -50, y: -40)
+        gaugeNode.position = CGPoint(x: -100, y: -80)
         addChild(gaugeNode)
         createGauge(0)
         
-        moveNode.position = CGPoint(x: 150, y: 0)
+        moveNode.position = CGPoint(x: 300, y: 0)
         moveNode.zPosition = 10
         moveLabelNode.fontName = bodyFont.fontName
         moveLabelNode.fontSize = bodyFont.pointSize
@@ -100,23 +101,23 @@ class ScoreSKNode: SKNode
     }
 
     func createGauge(score: Int) {
-        var y = -70
-        var height = 140
+        var y = -140
+        var height = 280
         if score < -10 {
-            y = score * 6 - 10
-            height = -score * 6 + 80
+            y = score * 12 - 20
+            height = -score * 12 + 160
         }
         if score > 10 {
-            height = score * 6 + 80
+            height = score * 12 + 160
         }
-        let gaugeBackgroundNode = SKShapeNode(rect: CGRect(x: -3, y: y, width: 10, height: height), cornerRadius: 5)
+        let gaugeBackgroundNode = SKShapeNode(rect: CGRect(x: -6, y: y, width: 20, height: height), cornerRadius: 10)
         gaugeBackgroundNode.zPosition = -1
-        gaugeBackgroundNode.lineWidth = 1
+        gaugeBackgroundNode.lineWidth = 2
         gaugeNode.addChild(gaugeBackgroundNode)
         
         if score > 0 {
             for i in 1...score {
-                let dotNode = SKShapeNode(rect: CGRect(x: -1, y: i * 6, width: 6, height: 4))
+                let dotNode = SKShapeNode(rect: CGRect(x: -2, y: i * 12, width: 12, height: 8))
                 dotNode.fillColor = UIColor.greenColor()
                 dotNode.lineWidth = 0
                 gaugeNode.addChild(dotNode)
@@ -124,7 +125,7 @@ class ScoreSKNode: SKNode
         }
         if score < 0 {
             for i in 1...(-score) {
-                let dotNode = SKShapeNode(rect: CGRect(x: -1, y: -i * 6, width: 6, height: 4))
+                let dotNode = SKShapeNode(rect: CGRect(x: -2, y: -i * 12, width: 12, height: 8))
                 dotNode.fillColor = UIColor.redColor()
                 dotNode.lineWidth = 0
                 gaugeNode.addChild(dotNode)

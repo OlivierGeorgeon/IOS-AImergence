@@ -23,10 +23,10 @@ class TipSKNode: SKSpriteNode
 
         let priceNode = SKLabelNode(text: localizedPrice(product))
         priceNode.fontName = bodyFont.fontName
-        priceNode.fontSize = titleFont.pointSize
+        priceNode.fontSize = titleFont.pointSize * 2
         priceNode.fontColor = UIColor.darkGrayColor()
         priceNode.verticalAlignmentMode = .Center
-        priceNode.position.x = self.size.width * -0.03
+        priceNode.position.x = self.size.width * -0.06
         priceNode.zPosition = 1
         while priceNode.frame.size.width >= self.size.width * 0.9 {
             priceNode.fontSize -= 1.0

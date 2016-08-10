@@ -13,7 +13,7 @@ class GameModel0
     let backgroundColor     = SKColor.lightGrayColor()
     let color               = UIColor.whiteColor()
     let titleFont           = UIFont.preferredFontForTextStyle(UIFontTextStyleTitle1)
-    let colorNodeRect       = CGRect(x: -30, y:-30, width: 60, height: 60)
+    let colorNodeRect       = CGRect(x: -60, y:-60, width: 120, height: 120)
     
     let experimentRect: CGRect
     let experimentPaths: [(CGRect) -> UIBezierPath]
@@ -26,11 +26,11 @@ class GameModel0
     let actionScale: SKAction
     let sounds: [[Int]]
     
-    var shapePopupRect: CGRect {  return CGRect(x: -165, y: -70, width: 330, height: 140)}
-    var shapeRect: CGRect { return CGRect(x: -40, y: -40, width: 80, height: 80)}
-    var shapeOrigin: CGPoint { return CGPoint(x: -100, y: 0)}
-    var shapeOffset: CGVector { return CGVector(dx: 100, dy: 0)}
-    var shapePopupPosition: CGPoint { return CGPoint(x: 0, y: 150)}
+    var shapePopupRect: CGRect {  return CGRect(x: -330, y: -140, width: 660, height: 280)}
+    var shapeRect: CGRect { return CGRect(x: -80, y: -80, width: 160, height: 160)}
+    var shapeOrigin: CGPoint { return CGPoint(x: -200, y: 0)}
+    var shapeOffset: CGVector { return CGVector(dx: 200, dy: 0)}
+    var shapePopupPosition: CGPoint { return CGPoint(x: 0, y: 300)}
 
     var level: Level0!
     
@@ -51,11 +51,11 @@ class GameModel0
     
     required convenience init()
     {
-        let experimentRect = CGRect(x: -60, y: -60, width: 120, height: 120)
-        let experimentPositions = [CGPoint(x: -90, y: 0), CGPoint(x: 90, y: 0), CGPoint(x: 0, y: 0)]
-        let experienceRect = CGRect(x: -20, y: -20, width: 40, height: 40)
+        let experimentRect = CGRect(x: -120, y: -120, width: 240, height: 240)
+        let experimentPositions = [CGPoint(x: -180, y: 0), CGPoint(x: 180, y: 0), CGPoint(x: 0, y: 0)]
+        let experienceRect = CGRect(x: -40, y: -40, width: 80, height: 80)
         let initialScale = CGFloat(120)/40
-        let valencePosition = CGPoint(x: 50, y: -10)
+        let valencePosition = CGPoint(x: 100, y: -20)
         let obsolescence = 100
         let actionScale = SKAction.scaleTo(1, duration: 0.2)
         let experimentPaths = [{UIBezierPath(ovalInRect: $0)},{UIBezierPath(rect: $0)}, triangle]
@@ -67,7 +67,7 @@ class GameModel0
     }    
 
     func moveByVect(point: CGPoint) -> CGVector {
-        return CGVector(dx: -20 - point.x, dy: 90 - point.y)
+        return CGVector(dx: -40 - point.x, dy: 180 - point.y)
     }
 }
 

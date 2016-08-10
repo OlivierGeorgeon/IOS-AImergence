@@ -30,37 +30,37 @@ class TutorSKNode: SKNode {
                 NSLocalizedString("Tip13", comment: ""),
                 NSLocalizedString("Tip14", comment: "")]
     
-    let tipRects = [CGRect(x: -120, y: -30, width: 240, height: 60),
-                    CGRect(x: -80, y: -30, width: 160, height: 60),
-                    CGRect(x: -100, y: -30, width: 200, height: 60),
-                    CGRect(x: -100, y: -30, width: 200, height: 60),
-                    CGRect(x: -100, y: -30, width: 200, height: 60),
-                    CGRect(x: -100, y: -30, width: 200, height: 60),
-                    CGRect(x: -100, y: -30, width: 200, height: 60),
-                    CGRect(x: -110, y: -30, width: 220, height: 60),
-                    CGRect(x: -120, y: -30, width: 240, height: 60),
-                    CGRect(x: -110, y: -30, width: 220, height: 60),
-                    CGRect(x: -110, y: -30, width: 220, height: 60),
-                    CGRect(x: -110, y: -30, width: 220, height: 60),
-                    CGRect(x: -110, y: -30, width: 220, height: 60),
-                    CGRect(x: -110, y: -30, width: 220, height: 60),
-                    CGRect(x: -110, y: -30, width: 220, height: 60)]
+    let tipRects = [CGRect(x: -240, y: -60, width: 480, height: 120),
+                    CGRect(x: -160, y: -60, width: 320, height: 120),
+                    CGRect(x: -200, y: -60, width: 400, height: 120),
+                    CGRect(x: -200, y: -60, width: 400, height: 120),
+                    CGRect(x: -200, y: -60, width: 400, height: 120),
+                    CGRect(x: -200, y: -60, width: 400, height: 120),
+                    CGRect(x: -200, y: -60, width: 400, height: 120),
+                    CGRect(x: -220, y: -60, width: 440, height: 120),
+                    CGRect(x: -240, y: -60, width: 480, height: 120),
+                    CGRect(x: -220, y: -60, width: 440, height: 120),
+                    CGRect(x: -220, y: -60, width: 440, height: 120),
+                    CGRect(x: -220, y: -60, width: 440, height: 120),
+                    CGRect(x: -220, y: -60, width: 440, height: 120),
+                    CGRect(x: -220, y: -60, width: 440, height: 120),
+                    CGRect(x: -220, y: -60, width: 440, height: 120)]
     
-    let tipPositions = [CGPoint(x: -50, y: 230),
-                        CGPoint(x: 140, y: -50),
-                        CGPoint(x: -160, y: 0),
-                        CGPoint(x: -160, y: 0),
-                        CGPoint(x: -160, y: 0),
-                        CGPoint(x: -160, y: 0),
-                        CGPoint(x: -140, y: 0),
-                        CGPoint(x: -90, y: 300),
-                        CGPoint(x: -70, y: 190),
-                        CGPoint(x: -90, y: 300),
-                        CGPoint(x: -150, y: -150),
-                        CGPoint(x: 145, y: 48),
-                        CGPoint(x: 0, y: 150),
-                        CGPoint(x: -150, y: -150),
-                        CGPoint(x: 150, y: -20)]
+    let tipPositions = [CGPoint(x: -100, y: 460),
+                        CGPoint(x: 280, y: -100),
+                        CGPoint(x: -320, y: 0),
+                        CGPoint(x: -320, y: 0),
+                        CGPoint(x: -320, y: 0),
+                        CGPoint(x: -320, y: 0),
+                        CGPoint(x: -280, y: 0),
+                        CGPoint(x: -180, y: 600),
+                        CGPoint(x: -140, y: 380),
+                        CGPoint(x: -180, y: 600),
+                        CGPoint(x: -300, y: -300),
+                        CGPoint(x: 290, y: 96),
+                        CGPoint(x: 0, y: 300),
+                        CGPoint(x: -300, y: -300),
+                        CGPoint(x: 300, y: -40)]
     
     let tipzRotations = [CGFloat(-1.2), CGFloat(-0.3), CGFloat(0), CGFloat(0), CGFloat(0), CGFloat(0), CGFloat(0), CGFloat(-1), CGFloat(-1.2), CGFloat(-1), CGFloat(0.9), CGFloat(0.3), CGFloat(M_PI / 2), CGFloat(0.9), CGFloat(-0.1)]
     
@@ -95,11 +95,11 @@ class TutorSKNode: SKNode {
         
         let texts = tips[i].componentsSeparatedByString("/")
         let lines = texts.count - 1
-        let lineInterval = bodyFont.pointSize * 1.5
+        let lineInterval = bodyFont.pointSize * 3
         for line in 0...lines {
             let labelNode = SKLabelNode(text: texts[line])
             labelNode.fontName = bodyFont.fontName
-            labelNode.fontSize = bodyFont.pointSize
+            labelNode.fontSize = bodyFont.pointSize * 2
             labelNode.verticalAlignmentMode = .Center
             labelNode.fontColor = UIColor.whiteColor()
             labelNode.zPosition = 1
@@ -210,8 +210,8 @@ class TutorSKNode: SKNode {
     }
 }
 func arrowLeft(rect: CGRect) -> CGPath {
-    let offset = CGFloat(20)
-    let radius = CGFloat (10)
+    let offset = CGFloat(40)
+    let radius = CGFloat (20)
     let path = CGPathCreateMutable()
     CGPathMoveToPoint(path, nil, rect.maxX, rect.minY + radius)
     CGPathAddArcToPoint(path, nil, rect.maxX, rect.maxY, rect.minX, rect.maxY, radius);
@@ -224,8 +224,8 @@ func arrowLeft(rect: CGRect) -> CGPath {
 }
 
 func arrowRight(rect: CGRect) -> CGPath {
-    let offset = CGFloat(20)
-    let radius = CGFloat (10)
+    let offset = CGFloat(40)
+    let radius = CGFloat (20)
     let path = CGPathCreateMutable()
     CGPathMoveToPoint(path, nil, rect.minX, rect.minY + radius)
     CGPathAddArcToPoint(path, nil, rect.minX, rect.maxY, rect.maxX, rect.maxY, radius);

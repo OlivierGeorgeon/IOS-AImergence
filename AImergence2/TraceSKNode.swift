@@ -11,7 +11,7 @@ import SpriteKit
 class TraceSKNode: SKNode {
     
     let bodyFont = UIFont.preferredFontForTextStyle(UIFontTextStyleBody)
-    let actionMoveTrace = SKAction.moveBy(CGVector(dx:0, dy:50), duration: 0.3)
+    let actionMoveTrace = SKAction.moveBy(CGVector(dx:0, dy:100), duration: 0.3)
     let actionScale = SKAction.scaleTo(1, duration: 0.2)
     let disposedNode = SKLabelNode(text: NSLocalizedString("Disposed from memory", comment: "On top of the trace"))
     
@@ -22,7 +22,7 @@ class TraceSKNode: SKNode {
         
         super.init()
         
-        position = CGPoint(x: -20, y: 40)
+        position = CGPoint(x: -40, y: 80)
         actionMoveTrace.timingMode = .EaseInEaseOut
         
         disposedNode.fontName = bodyFont.fontName
@@ -55,7 +55,7 @@ class TraceSKNode: SKNode {
             disposedNode.hidden = false
         }
         
-        bottomPosition = bottomPosition + CGVector(dx: 0, dy: -50)
+        bottomPosition = bottomPosition + CGVector(dx: 0, dy: -100)
     }
 
     func dispose(clock: Int) {
