@@ -12,7 +12,7 @@ enum RECOMMEND: Int { case INSTRUCTION, INSTRUCTION_OK, IMAGINE, LEADERBOARD, DO
 
 class RobotSKNode: SKNode
 {
-    let imageNode = SKSpriteNode(imageNamed: "happy1")
+    let imageNode = SKSpriteNode(imageNamed: "robot")
     let instructionButtonNode = ButtonSKNode(.INSTRUCTION, activatedImageNamed: "instructions-color", disactivatedImageNamed: "instructions-black")
     let imagineButtonNode = ButtonSKNode(.IMAGINE, activatedImageNamed: "imagine-color", disactivatedImageNamed: "imagine-black")
     let gameCenterButtonNode = ButtonSKNode(.LEADERBOARD, activatedImageNamed: "gamecenter-color", disactivatedImageNamed: "gamecenter-black")
@@ -33,7 +33,7 @@ class RobotSKNode: SKNode
         super.init()
         
         zPosition = 5
-        imageNode.size = CGSize(width: 202, height: 210)
+        //imageNode.size = CGSize(width: 202, height: 210)
         addChild(imageNode)
         instructionButtonNode.zPosition = -3
         addChild(instructionButtonNode)
@@ -41,11 +41,11 @@ class RobotSKNode: SKNode
         addChild(imagineButtonNode)
         gameCenterButtonNode.zPosition = -1
         addChild(gameCenterButtonNode)
-        robotHappyFrames = loadFrames("happy", imageNumber: 6, by: 1)
-        robotSadFrames = loadFrames("sad", imageNumber: 7, by: 1)
-        robotBlinkFrames = loadFrames("blink", imageNumber: 4, by: 1)
-        robotCryFrames = loadFrames("cry", imageNumber: 7, by: 1)
-        robotJumpFrames = loadFrames("jump", imageNumber: 7, by: 1)
+        robotHappyFrames = loadFrames("happy", imageNumber: 5, by: 1)
+        robotSadFrames = loadFrames("sad", imageNumber: 6, by: 1)
+        robotBlinkFrames = loadFrames("blink", imageNumber: 3, by: 1)
+        robotCryFrames = loadFrames("cry", imageNumber: 6, by: 1)
+        robotJumpFrames = loadFrames("jump", imageNumber: 6, by: 1)
         let upAction = SKAction.moveBy(CGVector(dx: 0, dy: 100), duration: 0.25)
         let downAction = SKAction.moveBy(CGVector(dx: 0, dy: -100), duration: 0.25)
         upAction.timingMode = .EaseOut
@@ -148,15 +148,15 @@ class RobotSKNode: SKNode
     
     func loadFrames(imageName: String, imageNumber: Int, by: Int) -> [SKTexture] {
         var frames = [SKTexture]()
-        for i in 1.stride(to: imageNumber, by: by) {
+        for i in 0.stride(to: imageNumber, by: by) {
             let textureName = imageName + "\(i)"
             frames.append(SKTexture(imageNamed: textureName))
         }
-        for i in imageNumber.stride(to: 0, by: -by) {
+        for i in (imageNumber - 1).stride(to: -1, by: -by) {
             let textureName = imageName + "\(i)"
             frames.append(SKTexture(imageNamed: textureName))
         }
-        frames.append(SKTexture(imageNamed: imageName + "1"))
+        frames.append(SKTexture(imageNamed: "robot"))
         return frames
     }
 }

@@ -38,7 +38,7 @@ class ScoreSKNode: SKNode
 
         self.position = CGPoint(x: -234, y: 1004)
         backgroundNode.zPosition = -1
-        backgroundNode.lineWidth = 0
+        backgroundNode.lineWidth = 1
         backgroundNode.name = "scoreBackground"
         backgroundNode.fillColor = UIColor.whiteColor()
         addChild(backgroundNode)

@@ -2,11 +2,12 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "blink4.png",
+      "filename" : "blink2.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
+      "filename" : "blink2@2x.png",
       "scale" : "2x"
     },
     {

@@ -18,7 +18,7 @@ class ExperienceSKNode: ReshapableSKNode
         self.experience = experience
         super.init(rect: rect, gameModel: gameModel)
         reshape()
-        lineWidth = 0
+        //lineWidth = 0
         refill()
         name = "experience_\(experience.hashValue)"
         zPosition = 1
@@ -35,6 +35,6 @@ class ExperienceSKNode: ReshapableSKNode
     
     func refill() {
         fillColor = gameModel.experienceColors[experience.colorIndex]
-    }
-    
+        strokeColor = gameModel.experienceColors[experience.colorIndex]
+    }    
 }

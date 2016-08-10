@@ -127,10 +127,10 @@ class GameSKScene: PositionedSKScene {
         
         robotNode.position = CGPoint(x: 240, y: 360)
         cameraRelativeOriginNode.addChild(robotNode)
-        backgroundNode.size.height = 2376
+        //backgroundNode.size.height = 2376
         backgroundNode.zPosition = -20
         backgroundNode.name = "background"
-        cameraRelativeOriginNode.addChild(backgroundNode)
+        cameraNode.addChild(backgroundNode)
     }
     
     override func update(currentTime: NSTimeInterval) {
@@ -180,12 +180,12 @@ class GameSKScene: PositionedSKScene {
         super.positionInFrame(frameSize)
         if frameSize.height > frameSize.width {
             cameraNode.position =  CGPoint(x: 0, y: 466)
-            backgroundNode.position.x = 0
+            //backgroundNode.position.x = 0
             robotNode.position = CGPoint(x: max(240,size.width * 0.3) , y: 360)
             robotNode.setScale(1)
         } else {
             cameraNode.position =  CGPoint(x: size.width / 2 - 380, y: 466)
-            backgroundNode.position.x = cameraNode.position.x
+            //backgroundNode.position.x = cameraNode.position.x
             robotNode.position = CGPoint(x: size.width * 0.6, y: 140)
             robotNode.setScale(1.5)
         }      

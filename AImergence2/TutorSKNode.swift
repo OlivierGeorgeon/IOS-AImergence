@@ -88,9 +88,9 @@ class TutorSKNode: SKNode {
         zRotation = tipzRotations[i]
         
         backgroundNode = SKShapeNode(path: shapeFuncs[i](tipRects[i]))
-        backgroundNode.lineWidth = 0
-        let backgroundColor = UIColor(colorLiteralRed: 0.2, green: 0.7, blue: 0, alpha: 0.8)
-        backgroundNode.fillColor = backgroundColor
+        //backgroundNode.lineWidth = 0
+        backgroundNode.fillColor = UIColor(colorLiteralRed: 0.2, green: 0.7, blue: 0, alpha: 0.8)
+        backgroundNode.strokeColor = UIColor(colorLiteralRed: 0.2, green: 0.7, blue: 0, alpha: 0.5)
         addChild(backgroundNode)
         
         let texts = tips[i].componentsSeparatedByString("/")

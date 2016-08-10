@@ -19,7 +19,7 @@ class ExperimentSKNode: ReshapableSKNode
         super.init(rect: rect, gameModel: gameModel)
         reshape()
         fillColor = gameModel.color
-        lineWidth = 0
+        //lineWidth = 0
         name = "experiment_\(experiment.number)"
     }
     

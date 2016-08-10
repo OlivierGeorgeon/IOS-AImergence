@@ -10,7 +10,7 @@ import SpriteKit
 
 class EventSKNode: SKNode
 {
-    let frameNode =  SKShapeNode(rect: CGRect(origin: CGPoint(x:-40, y:-23), size: CGSize(width: 140, height: 46)), cornerRadius: 23)
+    let frameNode =  SKShapeNode(rect: CGRect(origin: CGPoint(x:-80, y:-46), size: CGSize(width: 280, height: 92)), cornerRadius: 46)
     let pressAction = SKAction.sequence([SKAction.unhide(), SKAction.waitForDuration(0.1), SKAction.hide()])
     let gameModel: GameModel0
     let valence: Int
@@ -23,7 +23,8 @@ class EventSKNode: SKNode
         super.init()
         self.frameNode.hidden = true
         self.frameNode.fillColor = UIColor(red: 200 / 256, green: 150 / 256, blue: 200 / 256, alpha: 1)
-        self.frameNode.lineWidth = 0
+        //self.frameNode.lineWidth = 0
+        self.frameNode.strokeColor = UIColor(red: 200 / 256, green: 150 / 256, blue: 200 / 256, alpha: 1)
         self.frameNode.zPosition = -2
         addChild(self.frameNode)
         addChild(self.experienceNode)
