@@ -30,11 +30,11 @@
 "Tip5" = "Appuyez pour/déployer le menu";
 "Tip6" = "Glissez le robot pour/changer de niveau";
 "Tip7" = "Pressez une interaction/pour rejouer sa commande";
-"Tip8" = "Pressez et maintenez/pour changer les formes";
-"Tip9" = "Pressez et maintenez/pour changer les couleurs";
-"Tip10" = "Regardez le tableau/des niveaux";
-"Tip11" = "Pressez plusieurs fois/pour rejouer une série";
+"Tip8" = "Maintenez pressé/pour changer les formes";
+"Tip9" = "Maintenez pressé/pour changer les couleurs";
+"Tip10" = "Appuyez pour voir le/tableau des niveaux";
+"Tip11" = "Appuyez plusieurs fois/pour rejouer une série";
 "Tip12" = "Glissez pour/reprendre le jeu";
 "Tip13" = "Soutenez Little AI";
-"Tip14" = "Pressez pour désactiver/les sons";
+"Tip14" = "Appuyez pour activer/ou désactiver les sons";
 "Disposed from memory" = "Effacé de la mémoire";

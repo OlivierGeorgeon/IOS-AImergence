@@ -2,11 +2,12 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "son2.png",
+      "filename" : "speaker-black.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
+      "filename" : "speaker-black@2x.png",
       "scale" : "2x"
     },
     {

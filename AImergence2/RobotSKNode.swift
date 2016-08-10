@@ -112,7 +112,7 @@ class RobotSKNode: SKNode
             }
         case .LEADERBOARD:
             imagineButtonNode.unpulse()
-            //gameCenterButtonNode.pulse() done by GameViewController only if GameCenter is anabled
+            //gameCenterButtonNode.pulse() done by GameViewController only if GameCenter is enabled
             if !gameCenterButtonNode.active {
                 self.recommendation = RECOMMEND.DONE
                 break

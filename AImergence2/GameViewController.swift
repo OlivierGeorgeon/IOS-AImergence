@@ -419,15 +419,12 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
             if let scene = sceneView.scene as? GameSKScene {
                 scene.tutorNode.robotOk(scene.robotNode.gameCenterButtonNode)
                 scene.robotNode.imagineButtonNode.disactivate()
-                //if scene.robotNode.imagineButtonNode.pulsing {
-                    //scene.robotNode.imagineButtonNode.unpulse()
-                    if scene.robotNode.recommendation == RECOMMEND.IMAGINE {
-                        scene.robotNode.recommend(RECOMMEND.LEADERBOARD)
-                        if gcEnabled {
-                            scene.robotNode.gameCenterButtonNode.pulse()
-                        }
-                    }
-                //}
+                if scene.robotNode.recommendation == RECOMMEND.IMAGINE {
+                    scene.robotNode.recommend(RECOMMEND.LEADERBOARD)
+                }
+                if scene.robotNode.recommendation == RECOMMEND.LEADERBOARD && gcEnabled {
+                    scene.robotNode.gameCenterButtonNode.pulse()
+                }
             }
         }
     }

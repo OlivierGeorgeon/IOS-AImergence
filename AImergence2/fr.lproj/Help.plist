@@ -7,7 +7,7 @@
 		<array>
 			<string>Bienvenue dans Little AI !</string>
 			<string>Vous commandez un bébé robot grâce aux boutons en bas de l&apos;écran. Le but du jeu est d&apos;atteindre le score de 10. </string>
-			<string>Quand vous commandez le robot, il réalise des &quot;interactions&quot; avec son environnement qui sont représentées par les petits cercles blancs qui montent. Vous pouvez voir à quoi les interactions correspondent quand vous avez atteint le score de 10.</string>
+			<string>Quand vous commandez le robot, il réalise des &quot;interactions&quot; avec son environnement qui sont représentées par les petits cercles blancs qui montent. Vous pouvez voir à quoi les interactions correspondent après avoir atteint le score de 10.</string>
 			<string>Le score est la somme des valeurs des dix dernières interactions. Oui, uniquement les dix dernières !</string>
 		</array>
 		<array>
@@ -21,9 +21,9 @@
 			<string>Appuyez sur les interactions pour rejouer la même commande. Une commande rejouée dans la même situation reproduit la même interaction. Pour rejouer une suite d&apos;interactions, pressez plusieurs fois la &quot;prochaine commande&quot; (forme blanche qui apparait à gauche quand vous appuyez sur une interaction).</string>
 		</array>
 		<array>
-			<string>Pressez et maintenez enfoncée une commande pour changer sa forme.</string>
-			<string>Pressez et maintenez enfoncée une interaction pour changer sa couleur.</string>
+			<string>Maintenez pressée une commande pour changer sa forme. Maintenez pressée une interaction pour changer sa couleur.</string>
 			<string>Changez les formes des commandes et les couleurs des interactions pour pouvoir les reconnaitre. Les formes et les couleurs sont purement descriptives et ne changent pas les comportements du robot.</string>
+			<string>Les interactions se reconnaissent aussi par les cris de votre bébé robot. Dans ce jeu, vos oreilles peuvent aussi vous aider !</string>
 		</array>
 		<array>
 			<string>Dans le monde du niveau 4, votre robot ne peut pas toujours éviter les interactions désagréables.</string>
@@ -78,19 +78,19 @@
 			<string>Vous devez apprendre à vous connaitre vous-même et à connaitre votre environnement pour pouvoir mener une vie agréable !</string>
 		</array>
 		<array>
-			<string>Votre bébé robot dispose de deux commandes persistantes supplémentaires qui lui permettent de sentir les bords de la boite autour de lui.</string>
-			<string>Utilisez ces deux commandes supplémentaires pour éviter de tourner vers un bord de la boite.</string>
+			<string>Votre bébé robot dispose de deux commandes persistantes supplémentaires qui lui permettent d&apos;observer les bords de la boite à sa droite et à sa gauche.</string>
+			<string>Utilisez les possibilités d&apos;observation offertes par ses deux commandes supplémentaires pour éviter de tourner vers un bord de la boite.</string>
 			<string>La boîte devient encore plus grande.</string>
 		</array>
 		<array>
 			<string>Vous êtes dans le même monde qu&apos;au niveau 15, avec les mêmes commandes redisposées aléatoirement.</string>
-			<string>Si vous souhaitez en apprendre davantage sur nous et sur la recherche en intelligence artificielle développementale, songez à visiter http://little-ai.com.</string>
-			<string>Little AI est un projet indépendant et open-source mené par des volontaires passionnés, en collaboration avec le monde académique. </string>
+			<string>Little AI est un projet indépendant et ouvert mené par des volontaires passionnés, en collaboration avec le monde académique. </string>
+			<string>Si vous souhaitez en apprendre davantage sur la recherche en intelligence artificielle développementale et sur nous, songez à visiter http://little-ai.com.</string>
 		</array>
 		<array>
 			<string>Vous avez atteint le dernier niveau ! Félicitations ! Il est similaire au niveau 16.</string>
 			<string>Si Little AI vous a amusé ou instruit, ou les deux, songez à faire un petit don s&apos;il vous plaît.</string>
-			<string>Vos dons nous aideront à développer d&apos;autres niveaux. Ils contribueront aussi à faire progresser les connaissances en intelligence artificielle et à diffuser les résultats en open-source.</string>
+			<string>Vos dons nous aideront à développer d&apos;autres niveaux. Ils contribueront aussi à faire progresser la recherche libre en intelligence artificielle développementale.</string>
 		</array>
 	</array>
 </dict>

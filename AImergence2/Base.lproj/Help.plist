@@ -7,7 +7,7 @@
 		<array>
 			<string>Welcome to Little AI!</string>
 			<string>With the buttons at the bottom of the screen, you are controlling a baby robot. The goal is to reach the score of 10.</string>
-			<string>As you control the robot, it carries out &quot;interactions&quot; with its environment represented by the little circles that move up the screen. You can see what the interactions correspond to when you have reached 10.</string>
+			<string>As you control the robot, it carries out &quot;interactions&quot; with its environment represented by the little circles that move up the screen. You can see what the interactions correspond to after having reached the score of 10.</string>
 			<string>The score is the sum of the values of the last ten interactions. Yes, only the last ten!</string>
 		</array>
 		<array>
@@ -21,9 +21,9 @@
 			<string>Tap an interaction to replay the same command. The same command replayed in the same situation yields the same interaction. To replay an entire pattern of interactions, tap the &quot;next command&quot; several times (white shape that appears on the left when you tap an interaction).</string>
 		</array>
 		<array>
-			<string>Press and hold a command to change its shape.</string>
-			<string>Press and hold an interaction to change its color.</string>
+			<string>Press and hold a command to change its shape. Press and hold an interaction to change its color.</string>
 			<string>Change the shapes of commands and the colors of interactions to recognize them. Shapes and colors are purely descriptive. They do not change the robot.</string>
+			<string>You can also recognize interactions by the cries of your baby robot. In this game, your ears can also help you!</string>
 		</array>
 		<array>
 			<string>In the world of Level 4, your robot cannot always avoid unpleasant interactions.</string>
@@ -31,9 +31,9 @@
 			<string>Use different shapes for the commands. Display the enjoyable interactions in green and the unpleasant interactions in red. Don&apos;t think too much, your brain will see the pattern before you know it!</string>
 		</array>
 		<array>
-			<string>Experiment with each command individually several times in a raw. One of the commands always yields the same interactions in a given situation. It is a &quot;persistent&quot; command.</string>
+			<string>Experiment with each command individually several times in a raw. One of the commands always yields the same interaction in a given situation. It is a &quot;persistent&quot; command.</string>
 			<string>The persistent command produces an &quot;observational interaction&quot; that allows your robot to observe its situation without modifying it.</string>
-			<string>Use the colors of events to identify the situations that afford enjoyable interactions.</string>
+			<string>Use the colors of interactions to identify the situations that afford enjoyable interactions.</string>
 		</array>
 		<array>
 			<string>In Level 6, the commands have the same effects as in Level 5, but they have been rearranged in a random order, and are all initially represented by circles.</string>
@@ -55,7 +55,7 @@
 			<string>Your baby robot must transform its environment until it can enact an enjoyable interaction on every move.</string>
 		</array>
 		<array>
-			<string>Level 10&apos;s world is similar to Level 9&apos;s, and events have the same values.</string>
+			<string>Level 10&apos;s world is similar to Level 9&apos;s, and interactions have the same values.</string>
 			<string>As in Level 8, one of the commands always yields the same interaction (non-informative command).</string>
 		</array>
 		<array>
@@ -78,19 +78,19 @@
 			<string>You must learn to know yourself and your environment to live a happy life!</string>
 		</array>
 		<array>
-			<string>Your robot has two additional persistant commands that it can use to feel the edges around it.</string>
-			<string>Use the observational interactions produced by these commands to avoid turning towards the edges.</string>
+			<string>Your baby robot has two additional persistent commands that it can use to observe the edges of the box on its right and on its left.</string>
+			<string>Use the possibilities of observation offered by these commands to avoid turning towards the edges of the box.</string>
 			<string>The box is getting even bigger.</string>
 		</array>
 		<array>
 			<string>You are in the same world as in Level 15 with the same commands initially uninterpreted.</string>
-			<string>If you wish to learn more about us and about research in developmental artificial intelligence, consider visiting http://little-ai.com.</string>
-			<string>Little AI is a free open-source research and pedagogical project driven by passionate volunteers in collaboration with academia.</string>
+			<string>Little AI is a free open-source research and pedagogical project driven by enthousiast volunteers in collaboration with academia.</string>
+			<string>If you wish to learn more about research in developmental artificial intelligence and about us, consider visiting http://little-ai.com.</string>
 		</array>
 		<array>
 			<string>You reached the last level ! Congratulations! It is similar to Level 16.</string>
 			<string>If you found Little AI enjoyable or instructive, or both, please consider making a small donation.</string>
-			<string>Your donations will help us create more levels. They will also contribute to progress in artificial intelligence and help keep the results open-sourced.</string>
+			<string>Your donations will help us create more levels. They will also support independant and open-source research in developmental artificial intelligence.</string>
 		</array>
 	</array>
 </dict>
