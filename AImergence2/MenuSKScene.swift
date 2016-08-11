@@ -137,12 +137,15 @@ class MenuSKScene: PositionedSKScene {
                 backgroundNode = SKShapeNode(path: UIBezierPath(ovalInRect: CGRect(x: -50, y: -50, width: 100, height: 100)).CGPath)
             }
             
+            let buttonColor: UIColor
             if i == userDelegate?.currentLevel() {
-                backgroundNode.fillColor = UIColor(red: 114 / 256, green: 114 / 256, blue: 171 / 256, alpha: 1)
+                buttonColor = UIColor(red: 114 / 256, green: 114 / 256, blue: 171 / 256, alpha: 1)
             } else  {
-                backgroundNode.fillColor = UIColor(red: 150 / 256, green: 100 / 256, blue: 150 / 256, alpha: 1)
+                buttonColor = UIColor(red: 150 / 256, green: 100 / 256, blue: 150 / 256, alpha: 1)
             }
-            backgroundNode.lineWidth = 0
+            backgroundNode.fillColor = buttonColor
+            backgroundNode.strokeColor = buttonColor
+            //backgroundNode.lineWidth = 0
             levelNode.addChild(backgroundNode)
         }
         return buttonNodes

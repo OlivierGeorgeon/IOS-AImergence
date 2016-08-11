@@ -26,9 +26,9 @@ class TipSKNode: SKSpriteNode
         priceNode.fontSize = titleFont.pointSize * 2
         priceNode.fontColor = UIColor.darkGrayColor()
         priceNode.verticalAlignmentMode = .Center
-        priceNode.position.x = self.size.width * -0.06
+        priceNode.position.x = self.size.width * -0.05
         priceNode.zPosition = 1
-        while priceNode.frame.size.width >= self.size.width * 0.9 {
+        while priceNode.frame.size.width >= self.size.width * 0.8 {
             priceNode.fontSize -= 1.0
         }
         addChild(priceNode)

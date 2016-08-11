@@ -59,13 +59,13 @@ class ScoreSKNode: SKNode
         moveNode.position = CGPoint(x: 300, y: 0)
         moveNode.zPosition = 10
         moveLabelNode.fontName = bodyFont.fontName
-        moveLabelNode.fontSize = bodyFont.pointSize
+        moveLabelNode.fontSize = bodyFont.pointSize * 2
         moveLabelNode.verticalAlignmentMode = .Center
         moveLabelNode.fontColor = UIColor.darkGrayColor()
         moveNode.addChild(moveLabelNode)
         moveBackgroundNode.zPosition = -1
         moveBackgroundNode.fillColor = UIColor.whiteColor()
-        moveBackgroundNode.lineWidth = 0
+        //moveBackgroundNode.lineWidth = 0
         moveNode.hidden = true
         moveNode.addChild(moveBackgroundNode)
         addChild(moveNode)
@@ -77,22 +77,24 @@ class ScoreSKNode: SKNode
     
     func updateScore(score: Int, clock: Int, winMoves: Int) {
         labelNode.text = "\(score)"
+        let scoreColor: UIColor
         if score >= 10 {
-            backgroundNode.fillColor = UIColor.greenColor()
-            lineNode.strokeColor = UIColor.greenColor()
+            scoreColor = UIColor.greenColor()
         } else {
             if winMoves > 0 {
-                backgroundNode.fillColor = UIColor(red: 0.7, green: 1, blue: 0.7, alpha: 1)
-                lineNode.strokeColor = UIColor(red: 0.7, green: 1, blue: 0.7, alpha: 1)
+                scoreColor = UIColor(red: 0.7, green: 1, blue: 0.7, alpha: 1)
             } else {
-                backgroundNode.fillColor = UIColor.whiteColor()
-                lineNode.strokeColor = UIColor.whiteColor()
+                scoreColor = UIColor.whiteColor()
             }
         }
+        backgroundNode.fillColor = scoreColor
+        backgroundNode.strokeColor = scoreColor
+        lineNode.strokeColor = scoreColor
         gaugeNode.removeAllChildren()
         createGauge(score)
         
-        moveBackgroundNode.fillColor = self.backgroundNode.fillColor
+        moveBackgroundNode.fillColor = scoreColor
+        moveBackgroundNode.strokeColor = scoreColor
         if winMoves > 0 {
             moveLabelNode.text = "\(textWon) \(winMoves) \(textMoves)!"
         } else {

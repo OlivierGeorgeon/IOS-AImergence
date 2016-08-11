@@ -73,7 +73,7 @@ class TutorSKNode: SKNode {
         
         super.init()
     
-        self.zPosition = 5
+        self.zPosition = 8
     }
 
     required init?(coder aDecoder: NSCoder) {

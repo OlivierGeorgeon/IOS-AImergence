@@ -223,7 +223,7 @@ class GameSKScene: PositionedSKScene {
             }
         case .Ended:
             if (view as! GameView).verticalPan {
-                let acceleration = CGFloat(-10000.0)
+                let acceleration = CGFloat(-20000.0)
                 var scrollDuration = CGFloat(0.8)
                 var translateY = velocity.y * CGFloat(scrollDuration) * 0.9 * sceneHeight / self.view!.frame.height
                 if translateY > sceneHeight { translateY = sceneHeight }

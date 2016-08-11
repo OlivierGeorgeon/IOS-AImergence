@@ -26,7 +26,7 @@ class TraceSKNode: SKNode {
         actionMoveTrace.timingMode = .EaseInEaseOut
         
         disposedNode.fontName = bodyFont.fontName
-        disposedNode.fontSize = bodyFont.pointSize
+        disposedNode.fontSize = bodyFont.pointSize * 2
         disposedNode.verticalAlignmentMode = .Center
         disposedNode.fontColor = UIColor.whiteColor()
         disposedNode.hidden = true
