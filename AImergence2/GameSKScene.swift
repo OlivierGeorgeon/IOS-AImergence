@@ -180,18 +180,15 @@ class GameSKScene: PositionedSKScene {
         super.positionInFrame(frameSize)
         if frameSize.height > frameSize.width {
             cameraNode.position =  CGPoint(x: 0, y: 466)
-            //backgroundNode.position.x = 0
-            robotNode.position = CGPoint(x: max(240,size.width * 0.3) , y: 360)
+            robotNode.position = CGPoint(x: max(240,size.width * 0.3) , y: 365)
             robotNode.setScale(1)
         } else {
             cameraNode.position =  CGPoint(x: size.width / 2 - 380, y: 466)
-            //backgroundNode.position.x = cameraNode.position.x
             robotNode.position = CGPoint(x: size.width * 0.6, y: 140)
             robotNode.setScale(1.5)
         }      
         robotOrigin = robotNode.position.x
         backgroundNode.size.width = size.width
-        //backgroundNode.size = size
         cameraRelativeOriginNode.position = -cameraNode.position
         topRightNode.position = CGPoint(x: size.width / 2, y: size.height / 2)
     }
