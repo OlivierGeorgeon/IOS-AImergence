@@ -10,15 +10,14 @@ import SceneKit
 
 class ImagineModel0
 {    
+    let gameModel: GameModel0
     let actionLiftExperience = SCNAction.moveByX( 0.0, y: 5.0 * 10, z: 0.0, duration: 3.0)
     let experienceRect = CGRect(x: CGFloat(-20), y: CGFloat(-20), width: CGFloat(40), height: CGFloat(40))
-    let tileGeometry = SCNBox(width: 1.0 * 10, height: 0.2 * 10, length: 1.0 * 10, chamferRadius: 0.1 * 10)
-    let blueMaterial = SCNMaterial()
-    let gameModel: GameModel0
     let scale = Float(10)
     let worldNode = SCNNode()
     let tileYOffset = SCNVector3(0, -5, 0)
 
+    var tileGeometries = [SCNBox]()
     var bodyNode: SCNFlippableNode!
     var robotNode: SCNRobotNode!
     var constraint: SCNLookAtConstraint!
@@ -26,9 +25,21 @@ class ImagineModel0
     required init(gameModel: GameModel0) {
         self.gameModel = gameModel
 
+        for color in gameModel.experienceColors {
+            let tileGeometry = SCNBox(width: 1.0 * 10, height: 0.2 * 10, length: 1.0 * 10, chamferRadius: 0.1 * 10)
+            let material = SCNMaterial()
+            material.diffuse.contents = color
+            material.specular.contents = UIColor.whiteColor()
+            tileGeometry.materials = [material]
+            tileGeometries.append(tileGeometry)
+        }
+        
+        let blueMaterial = SCNMaterial()
         blueMaterial.diffuse.contents = UIColor(red: 140/256, green: 133/256, blue: 190/256, alpha: 1)
         blueMaterial.specular.contents = UIColor.whiteColor()
+        let tileGeometry = SCNBox(width: 1.0 * 10, height: 0.2 * 10, length: 1.0 * 10, chamferRadius: 0.1 * 10)
         tileGeometry.materials = [blueMaterial]
+        tileGeometries[0] = tileGeometry
     }
 
     func setup(scene: SCNScene) {
@@ -71,23 +82,26 @@ class ImagineModel0
         switch experience.experiment.number {
         case 1:
             robotNode.bump()
-            spawnExperienceNode(experience, position: robotNode.position + robotNode.forwardVector(), delay: 0.1)
+            if robotNode.knownCells.updateValue(Phenomenon.TILE, forKey: robotNode.robot.cellFront()) == nil  {
+                createTileNode(experience.colorIndex, position:robotNode.positionCell(robotNode.robot.cellFront()) + SCNVector3(3, -5, 0), delay: 0.1)
+                //robotNode.knownCells.updateValue(tileNode, forKey: robotNode.robot.cellFront())
+            }
+            spawnExperienceNode(experience, position: robotNode.positionCell(robotNode.robot.cellFront()) + tileYOffset, delay: 0.1)
         default:
             robotNode.bumpBack()
             if robotNode.knownCells.updateValue(Phenomenon.TILE, forKey: robotNode.robot.cellBack()) == nil  {
-                createTileNode(robotNode.positionCell(robotNode.robot.cellBack()) + SCNVector3(-0.5 * scale, -0.5 * scale, 0), delay: 0.1)
+                createTileNode(experience.colorIndex, position:robotNode.positionCell(robotNode.robot.cellBack()) + SCNVector3(-0.5 * scale, -0.5 * scale, 0), delay: 0.1)
             }
             spawnExperienceNode(experience, position: robotNode.positionCell(robotNode.robot.cellBack()) + tileYOffset, delay: 0.1)
         }
     }
     
-    func createTileNode(position: SCNVector3, delay: NSTimeInterval) -> SCNNode {
-        let node = SCNNode(geometry: tileGeometry)
+    func createTileNode(colorIndex: Int, position: SCNVector3, delay: NSTimeInterval) -> SCNPhenomenonNode {
+        let node = SCNPhenomenonNode(geometry: tileGeometries[colorIndex])
         node.position = position
         node.hidden = true
         worldNode.addChildNode(node)
-        let actionWait = SCNAction.waitForDuration(delay)
-        node.runAction(SCNAction.sequence([actionWait, SCNAction.waitForDuration(0.1), SCNAction.unhide()]))
+        node.runAction(SCNAction.sequence([SCNAction.waitForDuration(delay), SCNAction.unhide()]))
         return node
     }
     

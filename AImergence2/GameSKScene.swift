@@ -104,7 +104,7 @@ class GameSKScene: PositionedSKScene {
         tutorNode.level = level.number
         switch self.level.number {
         case 0:
-            tutorNode.tip(0, parentNode: scene!)
+            tutorNode.tip(2, parentNode: robotNode.instructionButtonNode)
         case 1:
             tutorNode.tip(2, parentNode: robotNode.instructionButtonNode)
         case 3:
@@ -336,6 +336,7 @@ class GameSKScene: PositionedSKScene {
         }
         nextExperimentNode!.position = CGPoint(x: -200, y: 80 + CGFloat(self.clock - nextClock + 1) * 100)
         nextExperimentNode!.fillColor = gameModel.experienceColors[experience.colorIndex]
+        nextExperimentNode!.strokeColor = gameModel.experienceColors[experience.colorIndex]
         nextExperimentNode!.runAction(SKAction.sequence([actionDisappear, SKAction.removeFromParent()]))
         
         nextExperimentClock = nextClock
@@ -436,7 +437,7 @@ class GameSKScene: PositionedSKScene {
         
         self.score = score
         if score >= level.winScore {
-            tutorNode.reachTen(robotNode.instructionButtonNode, level3ParentNode: topRightNode)
+            tutorNode.reachTen(robotNode.imagineButtonNode, level3ParentNode: topRightNode)
             if winMoves == 0 {
                 gameSceneDelegate.unlockLevel(clock)
                 winMoves = clock

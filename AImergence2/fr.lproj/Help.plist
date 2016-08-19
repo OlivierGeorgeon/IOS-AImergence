@@ -7,7 +7,7 @@
 		<array>
 			<string>Bienvenue dans Little AI !</string>
 			<string>Vous commandez un bébé robot grâce aux boutons en bas de l&apos;écran. Le but du jeu est d&apos;atteindre le score de 10. </string>
-			<string>Quand vous commandez le robot, il réalise des &quot;interactions&quot; avec son environnement qui sont représentées par les petits cercles blancs qui montent. Vous pouvez voir à quoi les interactions correspondent après avoir atteint le score de 10.</string>
+			<string>Quand vous commandez le robot, il réalise des &quot;interactions&quot; avec son environnement qui sont représentées par des cercles et carrés colorés qui montent. Vous pouvez voir à quoi les interactions correspondent après avoir atteint le score de 10.</string>
 			<string>Le score est la somme des valeurs des dix dernières interactions. Oui, uniquement les dix dernières !</string>
 		</array>
 		<array>

@@ -18,7 +18,7 @@ class ImagineModel3: ImagineModel1
         case 00:
             robotNode.feelLeft()
             if robotNode.knownCells.updateValue(Phenomenon.TILE, forKey: robotNode.robot.cellLeft()) == nil  {
-                tileNode = createTileNode(robotNode.positionCell(robotNode.robot.cellLeft()) + tileYOffset, delay: 0.1)
+                tileNode = createTileNode(experience.colorIndex, position: robotNode.positionCell(robotNode.robot.cellLeft()) + tileYOffset, delay: 0.1)
             }
             spawnExperienceNode(experience, position: robotNode.positionCell(robotNode.robot.cellLeft()) + tileYOffset, delay: 0.1)
         case 01:
@@ -27,7 +27,7 @@ class ImagineModel3: ImagineModel1
         case 10:
             robotNode.feelRight()
             if robotNode.knownCells.updateValue(Phenomenon.TILE, forKey: robotNode.robot.cellRight()) == nil  {
-                tileNode = createTileNode(robotNode.positionCell(robotNode.robot.cellRight()) + tileYOffset, delay: 0.1)
+                tileNode = createTileNode(experience.colorIndex, position: robotNode.positionCell(robotNode.robot.cellRight()) + tileYOffset, delay: 0.1)
             }
             spawnExperienceNode(experience, position: robotNode.positionCell(robotNode.robot.cellRight()) + tileYOffset, delay: 0.1)
         case 11:

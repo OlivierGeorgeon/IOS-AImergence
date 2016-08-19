@@ -393,7 +393,7 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
         interfaceLocks[level][INTERFACE.INSTRUCTION.rawValue] = false
         userDefaults.setObject(interfaceLocks, forKey: unlockDefaultKey)
         if let scene = sceneView.scene as? GameSKScene {
-            scene.tutorNode.instructionOk(scene.robotNode.imagineButtonNode)
+            scene.tutorNode.instructionOk(scene, level1parentNode: scene.robotNode)
             scene.robotNode.instructionButtonNode.disactivate()
             scene.robotNode.instructionButtonNode.unpulse()
             if scene.robotNode.recommendation == RECOMMEND.INSTRUCTION {

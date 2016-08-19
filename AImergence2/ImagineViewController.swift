@@ -64,12 +64,21 @@ class ImagineViewController: UIViewController {
             let levelNumber = gameModel!.level.number
             switch levelNumber {
             case 0:
-                textView.text = NSLocalizedString("Excellent 0", comment: "Message in the Imagine window on Levels 0 and 1.");
+                textView.text = NSLocalizedString("Excellent 0", comment: "Message in the Imagine window on Levels 0.");
                 textView.hidden = false
             case 1:
-                textView.text = NSLocalizedString("Excellent 1", comment: "Message in the Imagine window on Levels 0 and 1.");
+                textView.text = NSLocalizedString("Excellent 1", comment: "Message in the Imagine window on Levels 1.");
                 textView.hidden = false
-            case 2, 3:
+            case 2:
+                textView.text = NSLocalizedString("Excellent 2", comment: "Message in the Imagine window on Levels 2.");
+                textView.hidden = false
+            case 3:
+                textView.text = NSLocalizedString("Excellent 3", comment: "Message in the Imagine window on Levels 3.");
+                textView.hidden = false
+            case 4:
+                textView.text = NSLocalizedString("Excellent 4", comment: "Message in the Imagine window on Levels 4.");
+                textView.hidden = false
+            case 5:
                 textView.text = NSLocalizedString("Drag the 3D scene to move the camera", comment: "Message in the Imagine window on Levels 2 and 3.");
                 textView.hidden = false
             case 7:

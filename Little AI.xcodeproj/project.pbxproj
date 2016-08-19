@@ -57,6 +57,7 @@
 		093C3F661C6F68B9000BC6FB /* ImagineModel2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093C3F651C6F68B9000BC6FB /* ImagineModel2.swift */; };
 		093C3F681C6F8482000BC6FB /* ImagineModel3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093C3F671C6F8482000BC6FB /* ImagineModel3.swift */; };
 		094304191D3E194800882B75 /* EventSKNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094304181D3E194800882B75 /* EventSKNode.swift */; };
+		0947C3D71D67571000212A0B /* SCNPhenomenonNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0947C3D61D67571000212A0B /* SCNPhenomenonNode.swift */; };
 		0955F6F81CF2E65400473C03 /* GameModel11.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0955F6F71CF2E65400473C03 /* GameModel11.swift */; };
 		0955F6FA1CF349BD00473C03 /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 0955F6F91CF349BD00473C03 /* art.scnassets */; };
 		095856711D0AC50B002BD7D7 /* Confetti.scnp in Resources */ = {isa = PBXBuildFile; fileRef = 0958566F1D0AC50B002BD7D7 /* Confetti.scnp */; };
@@ -182,6 +183,7 @@
 		093C3F651C6F68B9000BC6FB /* ImagineModel2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagineModel2.swift; sourceTree = "<group>"; };
 		093C3F671C6F8482000BC6FB /* ImagineModel3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagineModel3.swift; sourceTree = "<group>"; };
 		094304181D3E194800882B75 /* EventSKNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventSKNode.swift; sourceTree = "<group>"; };
+		0947C3D61D67571000212A0B /* SCNPhenomenonNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCNPhenomenonNode.swift; sourceTree = "<group>"; };
 		0955F6F71CF2E65400473C03 /* GameModel11.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameModel11.swift; sourceTree = "<group>"; };
 		0955F6F91CF349BD00473C03 /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
 		0958566F1D0AC50B002BD7D7 /* Confetti.scnp */ = {isa = PBXFileReference; lastKnownFileType = file.scp; path = Confetti.scnp; sourceTree = "<group>"; };
@@ -471,6 +473,7 @@
 				0914EA6D1D0AC03B00E78D5F /* Particles */,
 				09ED657E1C6D0EE6004A8CA7 /* ImagineViewController.swift */,
 				0964BB121CEF488300A4B40D /* SCNRobotNode.swift */,
+				0947C3D61D67571000212A0B /* SCNPhenomenonNode.swift */,
 				095991391D2693DD00C2D3E9 /* SCNFlippableNode.swift */,
 			);
 			name = Imagine;
@@ -638,6 +641,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				09F145131D02226300D0BDC7 /* Level14.swift in Sources */,
+				0947C3D71D67571000212A0B /* SCNPhenomenonNode.swift in Sources */,
 				093681771C4549CB008C6B5D /* Level5.swift in Sources */,
 				09AC4D151C8491DA00C149EC /* Level1.swift in Sources */,
 				090AD9F01C7A618500F2FE8C /* Level8.swift in Sources */,

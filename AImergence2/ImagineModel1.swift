@@ -48,20 +48,26 @@ class ImagineModel1: ImagineModel0
         case 00: // Left
             robotNode.feelLeft()
             if robotNode.knownCells.updateValue(Phenomenon.TILE, forKey: robotNode.robot.cellLeft()) == nil  {
-                createTileNode(robotNode.positionCell(robotNode.robot.cellLeft()) + tileYOffset, delay: 0.1)
+                createTileNode(experience.colorIndex, position: robotNode.positionCell(robotNode.robot.cellLeft()) + tileYOffset, delay: 0.1)
             }
             spawnExperienceNode(experience, position: robotNode.positionCell(robotNode.robot.cellLeft()) + tileYOffset, delay: 0.2)
         case 01:
             robotNode.feelLeft()
+            if robotNode.knownCells.updateValue(Phenomenon.TILE, forKey: robotNode.robot.cellLeft()) == nil  {
+                createTileNode(experience.colorIndex, position: robotNode.positionCell(robotNode.robot.cellLeft()) + tileYOffset, delay: 0.1)
+            }
             spawnExperienceNode(experience, position: robotNode.positionCell(robotNode.robot.cellLeft()) + tileYOffset, delay: 0.2)
         case 10: // Right
             robotNode.feelRight()
             if robotNode.knownCells.updateValue(Phenomenon.TILE, forKey: robotNode.robot.cellRight()) == nil  {
-                createTileNode(robotNode.positionCell(robotNode.robot.cellRight()) + tileYOffset, delay: 0.1)
+                createTileNode(experience.colorIndex, position: robotNode.positionCell(robotNode.robot.cellRight()) + tileYOffset, delay: 0.1)
             }
             spawnExperienceNode(experience, position: robotNode.positionCell(robotNode.robot.cellRight()) + tileYOffset, delay: 0.2)
         case 11:
             robotNode.feelRight()
+            if robotNode.knownCells.updateValue(Phenomenon.TILE, forKey: robotNode.robot.cellRight()) == nil  {
+                createTileNode(experience.colorIndex, position: robotNode.positionCell(robotNode.robot.cellRight()) + tileYOffset, delay: 0.1)
+            }
             spawnExperienceNode(experience, position: robotNode.positionCell(robotNode.robot.cellRight()) + tileYOffset, delay: 0.2)
         case 20, 21: // swap
             robotNode.turnOver()
@@ -70,12 +76,4 @@ class ImagineModel1: ImagineModel0
             break
         }
     }
-
-    /*
-    func createSwitchNode(position: SCNVector3) -> SCNNode {
-        let node = SCNNode(geometry: Geometries.cube())
-        node.position = position
-        worldNode.addChildNode(node)
-        return node
-    }*/
 }

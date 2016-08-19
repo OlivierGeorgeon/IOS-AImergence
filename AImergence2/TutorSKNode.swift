@@ -129,7 +129,7 @@ class TutorSKNode: SKNode {
     func reachTen(nextParentNode: SKNode, level3ParentNode: SKNode) {
         if level == 0 {
             if step == 1 || step == 0 {
-                tip(2, parentNode: nextParentNode)
+                tip(3, parentNode: nextParentNode)
             }
         }
         if level == 3 {
@@ -139,12 +139,12 @@ class TutorSKNode: SKNode {
         }
     }
     
-    func instructionOk(nextParentNode: SKNode) {
+    func instructionOk(nextParentNode: SKNode, level1parentNode: SKNode) {
         if step == 2 {
             if level == 0 {
-                tip(3, parentNode: nextParentNode)
+                tip(0, parentNode: nextParentNode)
             } else {
-                tip(5, parentNode: nextParentNode.parent!)
+                tip(5, parentNode: level1parentNode)
             }
         }
     }
