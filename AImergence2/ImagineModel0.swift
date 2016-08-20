@@ -18,7 +18,7 @@ class ImagineModel0
     let tileYOffset = SCNVector3(0, -5, 0)
 
     var tileGeometries = [SCNBox]()
-    var bodyNode: SCNFlippableNode!
+    var bodyNode: SCNFlipTileNode?
     var robotNode: SCNRobotNode!
     var constraint: SCNLookAtConstraint!
 
@@ -35,7 +35,8 @@ class ImagineModel0
         }
         
         let blueMaterial = SCNMaterial()
-        blueMaterial.diffuse.contents = UIColor(red: 140/256, green: 133/256, blue: 190/256, alpha: 1)
+        //blueMaterial.diffuse.contents = UIColor(red: 140/256, green: 133/256, blue: 190/256, alpha: 1)
+        blueMaterial.diffuse.contents = UIColor(red: 150/256, green: 150/256, blue: 150/256, alpha: 1)
         blueMaterial.specular.contents = UIColor.whiteColor()
         let tileGeometry = SCNBox(width: 1.0 * 10, height: 0.2 * 10, length: 1.0 * 10, chamferRadius: 0.1 * 10)
         tileGeometry.materials = [blueMaterial]
@@ -83,21 +84,29 @@ class ImagineModel0
         case 1:
             robotNode.bump()
             if robotNode.knownCells.updateValue(Phenomenon.TILE, forKey: robotNode.robot.cellFront()) == nil  {
-                createTileNode(experience.colorIndex, position:robotNode.positionCell(robotNode.robot.cellFront()) + SCNVector3(3, -5, 0), delay: 0.1)
+                createTileNode(tileColor(experience), position:robotNode.positionCell(robotNode.robot.cellFront()) + SCNVector3(3, -5, 0), delay: 0.1)
                 //robotNode.knownCells.updateValue(tileNode, forKey: robotNode.robot.cellFront())
             }
             spawnExperienceNode(experience, position: robotNode.positionCell(robotNode.robot.cellFront()) + tileYOffset, delay: 0.1)
         default:
             robotNode.bumpBack()
             if robotNode.knownCells.updateValue(Phenomenon.TILE, forKey: robotNode.robot.cellBack()) == nil  {
-                createTileNode(experience.colorIndex, position:robotNode.positionCell(robotNode.robot.cellBack()) + SCNVector3(-0.5 * scale, -0.5 * scale, 0), delay: 0.1)
+                createTileNode(tileColor(experience), position:robotNode.positionCell(robotNode.robot.cellBack()) + SCNVector3(-0.5 * scale, -0.5 * scale, 0), delay: 0.1)
             }
             spawnExperienceNode(experience, position: robotNode.positionCell(robotNode.robot.cellBack()) + tileYOffset, delay: 0.1)
         }
     }
     
-    func createTileNode(colorIndex: Int, position: SCNVector3, delay: NSTimeInterval) -> SCNPhenomenonNode {
-        let node = SCNPhenomenonNode(geometry: tileGeometries[colorIndex])
+    func tileColor(experience: Experience) -> UIColor {
+        if experience.colorIndex == 0 {
+            return UIColor(red: 150/256, green: 150/256, blue: 150/256, alpha: 1)
+        } else {
+            return gameModel.experienceColors[experience.colorIndex]
+        }
+    }
+    
+    func createTileNode(color: UIColor, position: SCNVector3, delay: NSTimeInterval) -> SCNPhenomenonNode {
+        let node = SCNPhenomenonNode(color: color)
         node.position = position
         node.hidden = true
         worldNode.addChildNode(node)
@@ -109,12 +118,8 @@ class ImagineModel0
         let path = gameModel.experimentPaths[experience.experiment.shapeIndex](experienceRect)
         let geometry = SCNShape(path: path, extrusionDepth: CGFloat(10))
         let experienceMaterial = SCNMaterial()
+        experienceMaterial.diffuse.contents = tileColor(experience)
         experienceMaterial.specular.contents = UIColor.whiteColor()
-        if experience.colorIndex == 0 {
-            experienceMaterial.diffuse.contents = UIColor(red: 162/256, green: 191/256, blue: 214/256, alpha: 1)
-        } else {
-            experienceMaterial.diffuse.contents = gameModel.experienceColors[experience.colorIndex]
-        }
         geometry.materials = [experienceMaterial]
         let experienceNode = SCNNode(geometry: geometry)
         experienceNode.scale = SCNVector3(0.1, 0.1, 0.1)

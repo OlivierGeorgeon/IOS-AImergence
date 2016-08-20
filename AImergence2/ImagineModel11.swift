@@ -57,7 +57,7 @@ class ImagineModel11: ImagineModel0
                 constraint.influenceFactor = 0
                 robotNode.bump()
                 if robotNode.knownCells.updateValue(Phenomenon.TILE, forKey: robotNode.robot.cellFront()) == nil {
-                    createTileNode(experience.colorIndex, position: robotNode.positionForward() + tileYOffset, delay: 0.1)
+                    createTileNode(tileColor(experience), position: robotNode.positionForward() + tileYOffset, delay: 0.1)
                 }
                 spawnExperienceNode(experience, position: robotNode.position + robotNode.forwardVector() / 2, delay: 0.1)
             }

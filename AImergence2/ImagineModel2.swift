@@ -11,28 +11,57 @@ import SceneKit
 class ImagineModel2: ImagineModel1
 {
     
+    var leftFlippableNode: SCNFlipTileNode?
+    var rightFlippableNode: SCNFlipTileNode?
+    
     override func playExperience(experience: Experience) {
         switch experience.hashValue {
         case 00:
             robotNode.feelLeft()
-            if robotNode.knownCells.updateValue(Phenomenon.TILE, forKey: robotNode.robot.cellLeft()) == nil  {
-                createTileNode(experience.colorIndex, position: robotNode.positionCell(robotNode.robot.cellLeft()) + tileYOffset, delay: 0.1)
+            if leftFlippableNode == nil  {
+                leftFlippableNode = createFlipTileNode(tileColor(experience), position: robotNode.positionCell(robotNode.robot.cellLeft())  + tileYOffset, direction: .SOUTH, delay: 0.2)
+            } else {
+                leftFlippableNode?.colorize(tileColor(experience), delay: 0.2)
             }
-            spawnExperienceNode(experience, position: robotNode.positionCell(robotNode.robot.cellLeft()) + tileYOffset, delay: 0.1)
+            spawnExperienceNode(experience, position: robotNode.positionCell(robotNode.robot.cellLeft()) + tileYOffset, delay: 0.2)
         case 01:
-            spawnExperienceNode(experience, position: robotNode.positionCell(robotNode.robot.cellLeft()) + tileYOffset, delay: 0.1)
-            robotNode.feelLeftAndTurnOver()
+            robotNode.feelLeft()
+            if leftFlippableNode == nil  {
+                leftFlippableNode = createFlipTileNode(tileColor(experience), position: robotNode.positionCell(robotNode.robot.cellLeft())  + tileYOffset, delay: 0.2)
+            } else {
+                leftFlippableNode?.colorize(tileColor(experience), delay: 0.2)
+            }
+            leftFlippableNode?.flipLeft(0.2)
+            rightFlippableNode?.flipRight(0.2)
+            spawnExperienceNode(experience, position: robotNode.positionCell(robotNode.robot.cellLeft()) + tileYOffset, delay: 0.2)
         case 10:
             robotNode.feelRight()
-            if robotNode.knownCells.updateValue(Phenomenon.TILE, forKey: robotNode.robot.cellRight()) == nil  {
-                createTileNode(experience.colorIndex, position: robotNode.positionCell(robotNode.robot.cellRight()) + tileYOffset, delay: 0.1)
+            if rightFlippableNode == nil  {
+                rightFlippableNode = createFlipTileNode(tileColor(experience), position: robotNode.positionCell(robotNode.robot.cellRight())  + tileYOffset, direction: .SOUTH, delay: 0.2)
+            } else {
+                rightFlippableNode?.colorize(tileColor(experience), delay: 0.2)
             }
-            spawnExperienceNode(experience, position: robotNode.positionCell(robotNode.robot.cellRight()) + tileYOffset, delay: 0.1)
+            spawnExperienceNode(experience, position: robotNode.positionCell(robotNode.robot.cellRight()) + tileYOffset, delay: 0.2)
         case 11:
-            spawnExperienceNode(experience, position: robotNode.positionCell(robotNode.robot.cellRight()) + tileYOffset, delay: 0.1)
-            robotNode.feelRightAndTurnOver()
+            robotNode.feelRight()
+            if rightFlippableNode == nil  {
+                rightFlippableNode = createFlipTileNode(tileColor(experience), position: robotNode.positionCell(robotNode.robot.cellRight())  + tileYOffset, delay: 0.2)
+            } else {
+                rightFlippableNode?.colorize(tileColor(experience), delay: 0.2)
+            }
+            leftFlippableNode?.flipLeft(0.2)
+            rightFlippableNode?.flipRight(0.2)
+            spawnExperienceNode(experience, position: robotNode.positionCell(robotNode.robot.cellRight()) + tileYOffset, delay: 0.2)
         default:
             break
         }
-    } 
+    }
+    
+    func createFlipTileNode(color: UIColor, position: SCNVector3, direction:Compass = .NORTH, delay: NSTimeInterval = 0) -> SCNFlipTileNode {
+        let node = SCNFlipTileNode(color: color, direction: direction)
+        node.position = position
+        worldNode.addChildNode(node)
+        node.appear(delay)
+        return node
+    }    
 }

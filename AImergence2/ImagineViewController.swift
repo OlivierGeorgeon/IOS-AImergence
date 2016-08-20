@@ -79,6 +79,9 @@ class ImagineViewController: UIViewController {
                 textView.text = NSLocalizedString("Excellent 4", comment: "Message in the Imagine window on Levels 4.");
                 textView.hidden = false
             case 5:
+                textView.text = NSLocalizedString("Excellent 5", comment: "Message in the Imagine window on Levels 5.");
+                textView.hidden = false
+            case 6:
                 textView.text = NSLocalizedString("Drag the 3D scene to move the camera", comment: "Message in the Imagine window on Levels 2 and 3.");
                 textView.hidden = false
             case 7:

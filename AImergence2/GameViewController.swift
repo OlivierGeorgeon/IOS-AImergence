@@ -16,7 +16,7 @@ enum INTERFACE: Int { case INSTRUCTION, IMAGINE, LEADERBOARD, LEVEL}
 
 class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate, HelpViewControllerDelegate, ImagineViewControllerDelegate, GKGameCenterControllerDelegate, SKProductsRequestDelegate, SKPaymentTransactionObserver, GameViewDelegate //, GKMatchmakerViewControllerDelegate,  GKMatchDelegate
 {
-    static let maxLevelNumber = 17
+    static let maxLevelNumber = 17 
     let unlockDefaultKey = "unlockDefaultKey"
     let paidTipKey = "paidTipKey"
     let soundKey = "soundKey"

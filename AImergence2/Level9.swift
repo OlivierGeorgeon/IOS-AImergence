@@ -26,7 +26,7 @@ class Level9: Level5 {
         let experience01 = Experience(experiment: experiment0, resultNumber: 1, valence:0, colorIndex: 1)
         let experience10 = Experience(experiment: experiment1, resultNumber: 0, valence:0, colorIndex: 2)
         let experience11 = Experience(experiment: experiment1, resultNumber: 1, valence:1, colorIndex: 1)
-        let experience20 = Experience(experiment: experiment2, resultNumber: 0, valence:0, colorIndex: 2)
+        let experience20 = Experience(experiment: experiment2, resultNumber: 0, valence:0, colorIndex: 4)//2)
         let experience21 = Experience(experiment: experiment2, resultNumber: 1, valence:0, colorIndex: 1)
         let experiences = [[experience00, experience01], [experience10, experience11], [experience20, experience21]]
         
@@ -47,7 +47,7 @@ class Level9: Level5 {
             currentPhenomenon = env[p]
         case 2: //swap
             currentPhenomenon = !currentPhenomenon
-            if currentPhenomenon { result = 1 }
+            //if currentPhenomenon { result = 1 }
         default:
             break
         }

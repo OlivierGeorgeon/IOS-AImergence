@@ -33,53 +33,53 @@ class ImagineModel9: ImagineModel5
         switch experience.hashValue {
         case 00: // Touch
             robotNode.feelFront()
-            createOrRetrieveBodyNodeAndRunAction(positionInCarroussel, delay: 0.2)
+            createOrRetrieveBodyNode(tileColor(experience), position: positionInCarroussel, direction: .SOUTH, delay: 0.2)
             spawnExperienceNode(experience, position: SCNVector3( -0.5 * scale, 0.0, 0.0), delay: 0.2)
         case 01:
             robotNode.feelFront()
-            createOrRetrieveBodyNodeAndRunAction(positionInCarroussel, direction: Compass.WEST, delay: 0.2)
+            createOrRetrieveBodyNode(tileColor(experience), position: positionInCarroussel, delay: 0.2)
             spawnExperienceNode(experience, position: SCNVector3( -0.5 * scale, 0.0, 0.0), delay: 0.2)
         case 10:  // eat
             robotNode.bump()
-            createOrRetrieveBodyNodeAndRunAction(positionInCarroussel, delay: 0.1)
+            createOrRetrieveBodyNode(tileColor(experience), position: positionInCarroussel, direction: .SOUTH)
             spawnExperienceNode(experience, position: SCNVector3( -0.5 * scale, 0.0, 0.0), delay: 0.1)
             bodyNode = nil
             rotateCarrousel()
         case 11:
             robotNode.bump()
-            createOrRetrieveBodyNodeAndRunAction(positionInCarroussel, direction: Compass.WEST, delay: 0.1)
+            createOrRetrieveBodyNode(tileColor(experience), position: positionInCarroussel)
             spawnExperienceNode(experience, position: SCNVector3( -0.5 * scale, 0.0, 0.0), delay: 0.1)
             bodyNode = nil
             rotateCarrousel()
         case 20: // swap
-            createOrRetrieveBodyNodeAndRunAction(positionInCarroussel, direction: Compass.WEST, action: turnover)
+            createOrRetrieveBodyNode(tileColor(experience), position: positionInCarroussel, direction: .SOUTH)
+            bodyNode?.flipRight()
             spawnExperienceNode(experience, position: SCNVector3( 0.0, 0.0, 0.0))
         case 21:
-            createOrRetrieveBodyNodeAndRunAction(positionInCarroussel, action: turnover)
+            createOrRetrieveBodyNode(tileColor(experience), position: positionInCarroussel)
+            bodyNode?.flipRight()
             spawnExperienceNode(experience, position: SCNVector3( 0.0, 0.0, 0.0))
         default:
             break
         }
     }
     
-    override func createOrRetrieveBodyNodeAndRunAction(position: SCNVector3 = SCNVector3(), direction: Compass = Compass.EAST, action: SCNAction = SCNAction.unhide(), delay: NSTimeInterval = 0.0) -> SCNFlippableNode
+    override func createOrRetrieveBodyNode(color: UIColor?, position: SCNVector3 = SCNVector3(), direction: Compass = Compass.NORTH, delay: NSTimeInterval = 0.0) -> SCNFlipTileNode
     {
         if bodyNode == nil {
             if carrouselNode.childNodes.count >= 10 {
-                bodyNode = carrouselNode.childNodes[carrouselIndex] as! SCNFlippableNode
-                bodyNode.runAction(action)
+                bodyNode = carrouselNode.childNodes[carrouselIndex] as? SCNFlipTileNode
+                //bodyNode?.runAction(action)
             } else {
-                bodyNode = SCNFlippableNode()
-                bodyNode.position = position
-                carrouselNode.addChildNode(bodyNode)
+                bodyNode = SCNFlipTileNode(color: color, direction: direction)
+                bodyNode?.position = position
+                carrouselNode.addChildNode(bodyNode!)
                 if direction == Compass.WEST {
-                    bodyNode.runAction(SCNAction.sequence([SCNAction.rotateByX(0.0, y: 0.0, z: carrouselAngle, duration: delay), SCNAction.unhide(), action])) }
-                else { bodyNode.runAction(SCNAction.sequence([SCNAction.rotateByX(0.0, y: 0.0, z: carrouselAngle - CGFloat(M_PI), duration: delay), SCNAction.unhide(), action])) }
+                    bodyNode?.runAction(SCNAction.sequence([SCNAction.rotateByX(0.0, y: 0.0, z: carrouselAngle, duration: delay), SCNAction.unhide()])) }
+                else { bodyNode?.runAction(SCNAction.sequence([SCNAction.rotateByX(0.0, y: 0.0, z: carrouselAngle - CGFloat(M_PI), duration: delay), SCNAction.unhide()])) }
             }
-        } else {
-            bodyNode.runAction(action)
         }
-        return bodyNode
+        return bodyNode!
     }
 
     func rotateCarrousel() {

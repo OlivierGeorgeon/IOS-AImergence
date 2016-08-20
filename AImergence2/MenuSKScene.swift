@@ -23,7 +23,7 @@ protocol MenuSceneDelegate: class
 
 class MenuSKScene: PositionedSKScene {
     
-    let backgroundNode = SKSpriteNode(imageNamed: "niveaux.png")
+    let backgroundNode = SKSpriteNode(imageNamed: "niveaux.png") 
     let originNode = SKNode()
     let tipInviteNode = SKLabelNode()
     let tutorNode = TutorSKNode()

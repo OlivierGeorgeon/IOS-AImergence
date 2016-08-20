@@ -6,8 +6,8 @@
 	<array>
 		<array>
 			<string>Welcome to Little AI!</string>
-			<string>With the buttons at the bottom of the screen, you are controlling a baby robot. The goal is to reach the score of 10 within 10 turns.</string>
-			<string>As you control the robot, it carries out &quot;interactions&quot; with its environment represented by colored circles and squares. After having reached the score of 10, you will be able to see what the interactions correspond to in an exploratory mode.</string>
+			<string>With the buttons at the bottom of the screen, you are controlling a baby robot called Little AI. The goal is to reach the score of 10 within 10 turns.</string>
+			<string>As you control Little AI, it carries out &quot;interactions&quot; represented by colored circles and squares. After having reached the score of 10, you will be able to see what objects Little AI has been interacting with.</string>
 			<string>The score is the sum of the values of the last ten interactions. Yes, only the last ten!</string>
 		</array>
 		<array>
@@ -16,9 +16,9 @@
 			<string>Drag the 2D robot to the right or to the left to shift to the previous or to the next level.</string>
 		</array>
 		<array>
-			<string>Your baby robot finds some interactions enjoyable and some unpleasant; positive and negative values indicate enjoyable and unpleasant interactions, with higher values indicating greater levels of each.</string>
+			<string>Little AI finds some interactions enjoyable and some unpleasant; positive and negative values indicate more or less enjoyable or unpleasant interactions.</string>
 			<string>Generate a pattern of enjoyable interactions.</string>
-			<string>Tap an interaction in the trace to replay a previous command. The same command replayed in the same situation yields the same interaction. To replay an entire pattern of interactions, tap the &quot;next command&quot; several times (white shape that appears on the left when you tap an interaction).</string>
+			<string>Tap an interaction in the trace to replay a previous command. The same command replayed upon the same object yields the same interaction. To replay an entire pattern of interactions, tap the &quot;next command&quot; several times (white shape that appears on the left when you tap an interaction).</string>
 		</array>
 		<array>
 			<string>Press and hold a command to change its shape. Press and hold an interaction in the trace to change its color.</string>
@@ -26,14 +26,14 @@
 			<string>You can also recognize interactions by the cries your baby robot makes. In this game, your ears can also help you!</string>
 		</array>
 		<array>
-			<string>In Level 4, your robot cannot always avoid unpleasant interactions.</string>
+			<string>In Level 4, Little AI cannot always avoid unpleasant interactions.</string>
 			<string>Generate a pattern of interaction that contains as few unpleasant interactions as possible. </string>
 			<string>Use different shapes for the commands. Display the enjoyable interactions in green and the unpleasant interactions in red. Don&apos;t think too much, your brain will see the pattern before you know it!</string>
 		</array>
 		<array>
 			<string>Experiment with each command individually several times in a row. In the trace, you will see that one command aways yields the same interaction within a given situation (same shape and same color).</string>
-			<string>This command allows you to observe the world without changing it. We call this command a &quot;persistent&quot; command, and the resulting interaction an &quot;observational interaction&quot;.</string>
-			<string>Use the colors of interactions to identify the situations that afford enjoyable interactions.</string>
+			<string>This command allows you to observe the world without changing it. We call this command an &quot;observational&quot; command, and the resulting interaction an &quot;observational interaction&quot;.</string>
+			<string>Use the the color of observational interactions to identify the object with which Little AI is interacting.</string>
 		</array>
 		<array>
 			<string>In Level 6, the commands have the same effects as in Level 5, but they have been rearranged in a random order, and are all initially represented by circles.</string>
@@ -65,7 +65,7 @@
 		<array>
 			<string>The box is even smaller.</string>
 			<string>Scroll to review the last 100 interactions. Double-tap on an empty area to scroll back to origin.</string>
-			<string>Press the score to see your number of moves.</string>
+			<string>Press the score to see your number of turns.</string>
 		</array>
 		<array>
 			<string>Level 13 offers the same commands as Levels 11 and 12 plus a persistent command that allows your robot to observe its situation without modifying it (observational interaction).</string>

@@ -8,77 +8,77 @@
 
 import SceneKit
 
-class ImagineModel3: ImagineModel1
+class ImagineModel3: ImagineModel2
 {
     
-    var tileNode: SCNNode?
-        
     override func playExperience(experience: Experience) {
         switch experience.hashValue {
         case 00:
             robotNode.feelLeft()
-            if robotNode.knownCells.updateValue(Phenomenon.TILE, forKey: robotNode.robot.cellLeft()) == nil  {
-                tileNode = createTileNode(experience.colorIndex, position: robotNode.positionCell(robotNode.robot.cellLeft()) + tileYOffset, delay: 0.1)
+            if leftFlippableNode == nil  {
+                leftFlippableNode = createFlipTileNode(tileColor(experience), position: robotNode.positionCell(robotNode.robot.cellLeft())  + tileYOffset, direction: .SOUTH, delay: 0.2)
+            } else {
+                leftFlippableNode?.colorize(tileColor(experience), delay: 0.2)
             }
-            spawnExperienceNode(experience, position: robotNode.positionCell(robotNode.robot.cellLeft()) + tileYOffset, delay: 0.1)
+            spawnExperienceNode(experience, position: robotNode.positionCell(robotNode.robot.cellLeft()) + tileYOffset, delay: 0.2)
         case 01:
-            spawnExperienceNode(experience, position: robotNode.positionCell(robotNode.robot.cellLeft()) + tileYOffset, delay: 0.1)
-            robotNode.feelLeftAndTurnOver()
+            robotNode.feelLeft()
+            if leftFlippableNode == nil  {
+                leftFlippableNode = createFlipTileNode(tileColor(experience), position: robotNode.positionCell(robotNode.robot.cellLeft())  + tileYOffset, delay: 0.2)
+            } else {
+                leftFlippableNode?.colorize(tileColor(experience), delay: 0.2)
+            }
+            leftFlippableNode?.flipLeft(0.2)
+            rightFlippableNode?.flipRight(0.2)
+            spawnExperienceNode(experience, position: robotNode.positionCell(robotNode.robot.cellLeft()) + tileYOffset, delay: 0.2)
         case 10:
             robotNode.feelRight()
-            if robotNode.knownCells.updateValue(Phenomenon.TILE, forKey: robotNode.robot.cellRight()) == nil  {
-                tileNode = createTileNode(experience.colorIndex, position: robotNode.positionCell(robotNode.robot.cellRight()) + tileYOffset, delay: 0.1)
+            if rightFlippableNode == nil  {
+                rightFlippableNode = createFlipTileNode(tileColor(experience), position: robotNode.positionCell(robotNode.robot.cellRight())  + tileYOffset, direction: .SOUTH, delay: 0.2)
+            } else {
+                rightFlippableNode?.colorize(tileColor(experience), delay: 0.2)
             }
-            spawnExperienceNode(experience, position: robotNode.positionCell(robotNode.robot.cellRight()) + tileYOffset, delay: 0.1)
+            spawnExperienceNode(experience, position: robotNode.positionCell(robotNode.robot.cellRight()) + tileYOffset, delay: 0.2)
         case 11:
-            spawnExperienceNode(experience, position: robotNode.positionCell(robotNode.robot.cellRight()) + tileYOffset, delay: 0.1)
-            robotNode.feelRightAndTurnOver()
+            robotNode.feelRight()
+            if rightFlippableNode == nil  {
+                rightFlippableNode = createFlipTileNode(tileColor(experience), position: robotNode.positionCell(robotNode.robot.cellRight())  + tileYOffset, delay: 0.2)
+            } else {
+                rightFlippableNode?.colorize(tileColor(experience), delay: 0.2)
+            }
+            leftFlippableNode?.flipLeft(0.2)
+            rightFlippableNode?.flipRight(0.2)
+            spawnExperienceNode(experience, position: robotNode.positionCell(robotNode.robot.cellRight()) + tileYOffset, delay: 0.2)
         default:
             robotNode.jumpi()
-            if tileNode == nil {
-                spawnExperienceNode(experience, position: robotNode.position)
-            } else {
-                spawnExperienceNode(experience, position: tileNode!.position)
-                robotNode.knownCells.removeAll()
-                let placeNode = SCNNode()
-                placeNode.position = tileNode!.position
-                worldNode.addChildNode(placeNode)
-                tileNode?.runAction(SCNAction.sequence([SCNAction.waitForDuration(0.2), SCNAction.removeFromParentNode()]))
-                tileNode = nil
-                
-                func explode() {
-                    if let particles = SCNParticleSystem(named: "Confetti.scnp", inDirectory: nil) {
-                        placeNode.addParticleSystem(particles)
-                    }
-                }
-                
-                placeNode.runAction(SCNAction.waitForDuration(0.2), completionHandler: explode)
-                placeNode.runAction(SCNAction.sequence([SCNAction.waitForDuration(0.4), SCNAction.removeFromParentNode()]))
+            spawnExperienceNode(experience, position: robotNode.position , delay: 0.1)
+            if leftFlippableNode != nil {
+                explodeNode(leftFlippableNode!)
+                leftFlippableNode = nil
+            }
+            if rightFlippableNode != nil {
+                explodeNode(rightFlippableNode!)
+                rightFlippableNode = nil
             }
         }
     }
-
-
     
- /*
-    let rotateToUp    = SCNAction.rotateToX(0, y: 0, z: CGFloat(M_PI_2), duration: 0.2)
-    let rotateToRight = SCNAction.rotateToX(0, y: 0, z: 0, duration: 0.2)
-    let rotateToLeft  = SCNAction.rotateToX(0, y: 0, z: CGFloat(M_PI), duration: 0.2)
-    
-    let moveHalfLeft  = SCNAction.moveByX(-0.5 * 10, y: 0.0, z: 0.0, duration: 0.1)
-    let moveHalfRight = SCNAction.moveByX( 0.5 * 10, y: 0.0, z: 0.0, duration: 0.1)
-
-    var rotateToLeftBumpLeftRotateToRight:SCNAction {return SCNAction.sequence([SCNAction.group([moveHalfLeft, rotateToLeft]), SCNAction.group([moveHalfRight, rotateToRight])]) }
-    var rotateToRightBumpLeft:SCNAction {return SCNAction.sequence([SCNAction.group([moveHalfLeft, rotateToRight]), moveHalfRight]) }
-    var rotateToRightbumpRightRotateToLeft:SCNAction {return SCNAction.sequence([SCNAction.group([moveHalfRight, rotateToRight]), SCNAction.group([moveHalfLeft, rotateToLeft])]) }
-    var rotateToLeftbumpRight:SCNAction {return SCNAction.sequence([SCNAction.group([moveHalfRight, rotateToLeft]), moveHalfLeft]) }
-
-    let moveHalfUp   = SCNAction.moveByX(0.0, y:  0.5 * 10, z: 0.0, duration: 0.1)
-    let moveHalfDown = SCNAction.moveByX(0.0, y: -0.5 * 10, z: 0.0, duration: 0.1)
-    
-    var jump:SCNAction { return SCNAction.sequence([moveHalfUp, moveHalfDown]) }
-*/    
-    //var leftAndBumpAndTurnover: SCNAction { return SCNAction.sequence([rotateToLeft, actions.bumpAndTurnover()]) }
-    //var RightAndBumpAndTurnover: SCNAction { return SCNAction.sequence([rotateToRight, actions.bumpAndTurnover()]) }
-    
+    func explodeNode(node: SCNPhenomenonNode, delay: NSTimeInterval = 0) {
+        let placeNode = SCNNode()
+        placeNode.position = node.position
+        worldNode.addChildNode(placeNode)
+        node.runAction(SCNAction.sequence([SCNAction.waitForDuration(delay), SCNAction.removeFromParentNode()]))
+        
+        func explode() {
+            if let particles = SCNParticleSystem(named: "Confetti.scnp", inDirectory: nil) {
+                particles.particleColor = node.color()
+                placeNode.addParticleSystem(particles)
+            }
+        }
+        
+        placeNode.runAction(SCNAction.waitForDuration(delay), completionHandler: explode)
+        placeNode.runAction(SCNAction.sequence([SCNAction.waitForDuration(delay + 0.2), SCNAction.removeFromParentNode()]))
+    }
 }
+
+

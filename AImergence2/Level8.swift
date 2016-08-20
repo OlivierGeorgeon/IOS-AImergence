@@ -19,12 +19,12 @@ class Level8: Level5 {
         let experiment2 = Experiment(number: 2)
         let experiments = GKRandomSource.sharedRandom().arrayByShufflingObjectsInArray([experiment0, experiment1, experiment2]) as! [Experiment]
 
-        let experience00 = Experience(experiment: experiment0, resultNumber: 0, valence:0, colorIndex: 2)
-        let experience01 = Experience(experiment: experiment0, resultNumber: 1, valence:0, colorIndex: 1)
-        let experience10 = Experience(experiment: experiment1, resultNumber: 0, valence:-10, colorIndex: 2)
-        let experience11 = Experience(experiment: experiment1, resultNumber: 1, valence:2, colorIndex: 1)
-        let experience20 = Experience(experiment: experiment2, resultNumber: 0, valence:0, colorIndex: 4)
-        let experience21 = Experience(experiment: experiment2, resultNumber: 1, valence:0, colorIndex: 4)
+        let experience00 = Experience(experiment: experiment0, resultNumber: 0, valence:0, colorIndex: 0)//2)
+        let experience01 = Experience(experiment: experiment0, resultNumber: 1, valence:0, colorIndex: 0)//1)
+        let experience10 = Experience(experiment: experiment1, resultNumber: 0, valence:-10, colorIndex: 0)//2)
+        let experience11 = Experience(experiment: experiment1, resultNumber: 1, valence:2, colorIndex: 0)//1)
+        let experience20 = Experience(experiment: experiment2, resultNumber: 0, valence:0, colorIndex: 0)//4)
+        let experience21 = Experience(experiment: experiment2, resultNumber: 1, valence:0, colorIndex: 0)//4)
         let experiences = [[experience00, experience01], [experience10, experience11], [experience20, experience21]]
 
         self.init(winScore: 10, historicalDepth: 10, experiments: experiments, experiences: experiences)

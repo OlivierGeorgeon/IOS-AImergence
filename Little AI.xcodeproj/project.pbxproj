@@ -78,6 +78,7 @@
 		096F5CB91C56D7240041EA5F /* Level9.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096F5CB81C56D7240041EA5F /* Level9.swift */; };
 		097D70151D3F6AF7005D4C3A /* ScoreSKNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097D70141D3F6AF7005D4C3A /* ScoreSKNode.swift */; };
 		098203F01D088818009303C5 /* ButtonSKNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 098203EF1D088818009303C5 /* ButtonSKNode.swift */; };
+		0984BC041D6881D8001D70ED /* SCNFlipTileNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0984BC031D6881D8001D70ED /* SCNFlipTileNode.swift */; };
 		0994526E1C5F983400F0ABFF /* HelpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0994526D1C5F983400F0ABFF /* HelpView.swift */; };
 		099452831C62007000F0ABFF /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 099452851C62007000F0ABFF /* InfoPlist.strings */; };
 		099452881C62007000F0ABFF /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0994528A1C62007000F0ABFF /* InfoPlist.strings */; };
@@ -205,6 +206,7 @@
 		096F5CB81C56D7240041EA5F /* Level9.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Level9.swift; sourceTree = "<group>"; };
 		097D70141D3F6AF7005D4C3A /* ScoreSKNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScoreSKNode.swift; sourceTree = "<group>"; };
 		098203EF1D088818009303C5 /* ButtonSKNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonSKNode.swift; sourceTree = "<group>"; };
+		0984BC031D6881D8001D70ED /* SCNFlipTileNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCNFlipTileNode.swift; sourceTree = "<group>"; };
 		0994526D1C5F983400F0ABFF /* HelpView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpView.swift; sourceTree = "<group>"; };
 		099452841C62007000F0ABFF /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		099452891C62007000F0ABFF /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -474,6 +476,7 @@
 				09ED657E1C6D0EE6004A8CA7 /* ImagineViewController.swift */,
 				0964BB121CEF488300A4B40D /* SCNRobotNode.swift */,
 				0947C3D61D67571000212A0B /* SCNPhenomenonNode.swift */,
+				0984BC031D6881D8001D70ED /* SCNFlipTileNode.swift */,
 				095991391D2693DD00C2D3E9 /* SCNFlippableNode.swift */,
 			);
 			name = Imagine;
@@ -645,6 +648,7 @@
 				093681771C4549CB008C6B5D /* Level5.swift in Sources */,
 				09AC4D151C8491DA00C149EC /* Level1.swift in Sources */,
 				090AD9F01C7A618500F2FE8C /* Level8.swift in Sources */,
+				0984BC041D6881D8001D70ED /* SCNFlipTileNode.swift in Sources */,
 				09AF841B1D01ABDD00C1E310 /* GameModel13.swift in Sources */,
 				09AC4D171C84D36100C149EC /* ImagineModel1.swift in Sources */,
 				093C3F681C6F8482000BC6FB /* ImagineModel3.swift in Sources */,

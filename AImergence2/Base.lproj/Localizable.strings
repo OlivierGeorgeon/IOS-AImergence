@@ -14,6 +14,7 @@
 "Excellent 2" = "Excellent! You completed Level 2! To discover patterns of interaction while playing, we encourage you to use the trace. Try to replay a command by tapping in the trace to replicate a successful pattern.";
 "Excellent 3" = "Bravo! You completed Level 3! Notice that little AI will suggest the next command when you tap an interaction in the trace. This may or may not be correct, but the trace helps you more efficiently identify successful patterns. This will become more important as the patterns become more complicated.";
 "Excellent 4" = "Congratulations, you completed Level 4! Tap a successful sequence of four interactions in the trace to see why unpleasant interactions were necessary for enjoyable payoffs. This is much easier if you differentiate the commands with different shapes, and if you color-code the interactions.";
+"Excellent 5" = "Here you can see more clearly that the observational command (by default the square) alows you to identify the tile whith which Little AI is interacting, whereas the other two commands change the state of the world.";
 "Drag the 3D scene to move the camera" = "Drag the 3D scene to change the angle of view.";
 "Double tap to swap cameras." = "Double-tap on the 3D scene to swap viewpoints.";
 "Explore your environment" = "Explore your environment before moving on to the next level.";
@@ -22,7 +23,7 @@
 "You won!" = "Yahoo! You have completed Little AI! Watch for updates to get even more exciting levels in the coming months! (Voluntarily developed or founded by your donations.)";
 "Please login to Game Center" = "To view the leaderboard, please log in into the Game Center application!";
 "Thank you!" = "Thank you very much for your support!";
-"0 moves" = "0 moves";
+"0 moves" = "0 turns";
 "Won in" = "Won in";
 "moves" = "turns";
 "Tip0" = "Tap the commands/to start playing";
@@ -40,4 +41,4 @@
 "Tip12" = "Drag to resume/the game";
 "Tip13" = "Support Little AI";
 "Tip14" = "Tap to turn sound/on and off";
-"Disposed from memory" = "Disposed from memory";
+"Disposed from memory" = "Removed from memory";

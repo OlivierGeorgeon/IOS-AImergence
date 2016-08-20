@@ -12,9 +12,6 @@ class ImagineModel4: ImagineModel3
 {
     var bodyCell = 0
     
-    var leftFlippableNode: SCNFlippableNode?
-    var rightFlippableNode: SCNFlippableNode?
-    
     override func setup(scene: SCNScene) {
         lightsAndCameras(scene)
         robotNode = SCNRobotNode()
@@ -45,53 +42,78 @@ class ImagineModel4: ImagineModel3
     }
     
     override func playExperience(experience: Experience) {
+        if experience.hashValue == 11 {
+            bodyCell = 1
+        }
         switch (experience.hashValue, bodyCell) {
         case (00, 0):
             robotNode.bumpBack()
-            spawnExperienceNode(experience, position: robotNode.positionCell(robotNode.robot.cellBack()), delay: 0.1)
+            spawnExperienceNode(experience, position: robotNode.positionCell(robotNode.robot.cellBack()) + tileYOffset, delay: 0.1)
             if leftFlippableNode == nil  {
-                leftFlippableNode = createFlippableNode(robotNode.positionCell(robotNode.robot.cellBack())  + SCNVector3(-0.5 * scale, -0.2 * scale, 0), direction: Compass.EAST)
+                leftFlippableNode = createFlipTileNode(tileColor(experience), position: robotNode.positionCell(robotNode.robot.cellBack())  + SCNVector3(-5, -5, 0), direction: .SOUTH, delay: 0.2)
+            } else {
+                leftFlippableNode?.colorize(tileColor(experience), delay: 0.1)
             }
+            //if leftFlippableNode == nil  {
+            //    leftFlippableNode = createFlippableNode(robotNode.positionCell(robotNode.robot.cellBack())  + SCNVector3(-0.5 * scale, -0.2 * scale, 0), direction: Compass.EAST)
+            //}
         case (00, 1):
-            spawnExperienceNode(experience, position: robotNode.position + tileYOffset, delay: 0.1)
+            spawnExperienceNode(experience, position: robotNode.position, delay: 0.1)
             robotNode.moveBackward()
-            rightFlippableNode?.flipToWest()
+            //rightFlippableNode?.flipToWest()
+            if rightFlippableNode?.direction == .SOUTH {
+                rightFlippableNode?.flipRight()
+            }
             bodyCell = 0
         case (01, 0):
             robotNode.bumpBack()
-            spawnExperienceNode(experience, position: robotNode.positionCell(robotNode.robot.cellBack()), delay: 0.1)
+            spawnExperienceNode(experience, position: robotNode.positionCell(robotNode.robot.cellBack()) + tileYOffset, delay: 0.1)
             if leftFlippableNode == nil  {
-                leftFlippableNode = createFlippableNode(robotNode.positionCell(robotNode.robot.cellBack())  + SCNVector3(-0.5 * scale, -0.2 * scale, 0))
+                leftFlippableNode = createFlipTileNode(tileColor(experience), position: robotNode.positionCell(robotNode.robot.cellBack())  + SCNVector3(-5, -5, 0), delay: 0.2)
+            } else {
+                leftFlippableNode?.colorize(tileColor(experience), delay: 0.1)
             }
-            leftFlippableNode?.flip(0.2)
+            leftFlippableNode?.flipLeft(0.2)
+            //rightFlippableNode?.flipRight(0.2)
+            //if leftFlippableNode == nil  {
+            //    leftFlippableNode = createFlippableNode(robotNode.positionCell(robotNode.robot.cellBack())  + SCNVector3(-0.5 * scale, -0.2 * scale, 0))
+            //}
+            //leftFlippableNode?.flipRight(0.2)
         case (10, 0):
-            spawnExperienceNode(experience, position: robotNode.position + tileYOffset, delay: 0.1)
+            spawnExperienceNode(experience, position: robotNode.position, delay: 0.1)
             robotNode.moveForward()
-            leftFlippableNode?.flipToEast()
+            //leftFlippableNode?.flipToEast()
+            if leftFlippableNode?.direction == .SOUTH {
+                leftFlippableNode?.flipLeft()
+            }
             bodyCell = 1
         case (10, 1):
             robotNode.bump()
-            spawnExperienceNode(experience, position: robotNode.positionCell(robotNode.robot.cellFront()), delay: 0.1)
+            spawnExperienceNode(experience, position: robotNode.positionCell(robotNode.robot.cellFront()) + tileYOffset, delay: 0.1)
             if rightFlippableNode == nil  {
-                rightFlippableNode = createFlippableNode(robotNode.positionCell(robotNode.robot.cellFront())  + SCNVector3(0.5 * scale, -0.2 * scale, 0))
+                rightFlippableNode = createFlipTileNode(tileColor(experience), position: robotNode.positionCell(robotNode.robot.cellFront())  + SCNVector3(5, -5, 0), direction: .SOUTH, delay: 0.2)
+            } else {
+                rightFlippableNode?.colorize(tileColor(experience), delay: 0.1)
             }
+            //if rightFlippableNode == nil  {
+            //    rightFlippableNode = createFlippableNode(robotNode.positionCell(robotNode.robot.cellFront())  + SCNVector3(0.5 * scale, -0.2 * scale, 0))
+            //}
         case (11, 1):
             robotNode.bump()
-            spawnExperienceNode(experience, position: robotNode.positionCell(robotNode.robot.cellFront()), delay: 0.1)
+            spawnExperienceNode(experience, position: robotNode.positionCell(robotNode.robot.cellFront()) + tileYOffset, delay: 0.1)
             if rightFlippableNode == nil  {
-                rightFlippableNode = createFlippableNode(robotNode.positionCell(robotNode.robot.cellFront())  + SCNVector3(0.5 * scale, -0.2 * scale, 0), direction: Compass.WEST)
+                rightFlippableNode = createFlipTileNode(tileColor(experience), position: robotNode.positionCell(robotNode.robot.cellFront()) + SCNVector3(5, -5, 0), delay: 0.2)
+            } else {
+                rightFlippableNode?.colorize(tileColor(experience), delay: 0.1)
             }
-            rightFlippableNode?.flip(0.2)
+            //leftFlippableNode?.flipLeft(0.2)
+            rightFlippableNode?.flipRight(0.2)
+            //if rightFlippableNode == nil  {
+            //    rightFlippableNode = createFlippableNode(robotNode.positionCell(robotNode.robot.cellFront())  + SCNVector3(0.5 * scale, -0.2 * scale, 0), direction: Compass.WEST)
+            //}
+            //rightFlippableNode?.flipLeft(0.2)
         default:
             break
         }
-    }
-    
-    func createFlippableNode(position: SCNVector3 = SCNVector3(), direction:Compass = Compass.EAST) -> SCNFlippableNode {
-        bodyNode = SCNFlippableNode()
-        bodyNode.position = position
-        worldNode.addChildNode(bodyNode)
-        bodyNode.appear(direction: direction)
-        return bodyNode
     }
 }

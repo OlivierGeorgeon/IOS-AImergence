@@ -20,7 +20,7 @@ class Level2 : Level0 {
         let experiment0 = Experiment(number: 0, shapeIndex: 0)
         let experiment1 = Experiment(number: 1, shapeIndex: 1)
         
-        let experiments = [experiment0, experiment1]
+        let experiments = [experiment1, experiment0]
         
         let experience00 = Experience(experiment: experiment0, resultNumber: 0, valence:-1, colorIndex: 2)
         let experience01 = Experience(experiment: experiment0, resultNumber: 1, valence: 1, colorIndex: 1)
