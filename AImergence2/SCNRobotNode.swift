@@ -19,6 +19,9 @@ class SCNRobotNode: SCNNode {
     let bendRight = SCNAction.rotateByX(0, y: 0, z: -CGFloat(M_PI) / 2, duration: 0.2)
     let actionUp = SCNAction.moveBy(SCNVector3(0, 7, 0), duration: 0.1)
     let actionDown = SCNAction.moveBy(SCNVector3(0, -7, 0), duration: 0.1)
+    let actionTurnLeft = SCNAction.rotateByX(0.0, y: CGFloat(M_PI) / 2, z: 0.0, duration: 0.2)
+    let actionTurnRight = SCNAction.rotateByX(0.0, y: -CGFloat(M_PI) / 2, z: 0.0, duration: 0.2)
+    let actionTurnOver = SCNAction.rotateByX(0, y: -CGFloat(M_PI) , z: 0, duration: 0.3)
     
     let robot = Robot(i: 0, j: 0, direction: Compass.EAST)
     var knownCells = [Cell: Phenomenon]()
@@ -48,6 +51,16 @@ class SCNRobotNode: SCNNode {
         
         pivot = SCNMatrix4MakeRotation(Float(-M_PI/2), 0, 1, 0)
         scale = SCNVector3(3 , 3, 3)
+        
+        bendFront.timingMode = .EaseInEaseOut
+        bendBack.timingMode = .EaseInEaseOut
+        bendRight.timingMode = .EaseInEaseOut
+        bendLeft.timingMode = .EaseInEaseOut
+        actionUp.timingMode = .EaseOut
+        actionDown.timingMode = .EaseIn
+        actionTurnLeft.timingMode = .EaseInEaseOut
+        actionTurnRight.timingMode = .EaseInEaseOut
+        actionTurnOver.timingMode = .EaseInEaseOut
 
         bodyCamera.camera = SCNCamera()
         bodyCamera.position = SCNVector3Make(0.0, 15, -15)
@@ -64,35 +77,43 @@ class SCNRobotNode: SCNNode {
         robot.turnRight()
     }
     
-    func turnLeft(duration: NSTimeInterval = 0.2){
-        self.runAction(SCNAction.rotateByX(0.0, y: CGFloat(M_PI) / 2, z: 0.0, duration: duration))
+    func turnLeft(){
+        self.runAction(actionTurnLeft)
         robot.turnLeft()
     }
     
-    func turnRight(duration: NSTimeInterval = 0.2) {
-        self.runAction(SCNAction.rotateByX(0.0, y: -CGFloat(M_PI) / 2, z: 0.0, duration: duration))
+    func turnRight() {
+        self.runAction(actionTurnRight)
         robot.turnRight()
     }
     
     func moveForward() {
-        self.runAction(SCNAction.moveBy(forwardVector(), duration: 0.2))
+        let actionForward = SCNAction.moveBy(forwardVector(), duration: 0.2)
+        actionForward.timingMode = .EaseInEaseOut
+        self.runAction(actionForward)
         robot.moveForward()
     }
     
     func moveBackward() {
-        self.runAction(SCNAction.moveBy(-forwardVector(), duration: 0.2))
+        let actionBackward = SCNAction.moveBy(-forwardVector(), duration: 0.2)
+        actionBackward.timingMode = .EaseInEaseOut
+        self.runAction(actionBackward)
         robot.moveBackward()
     }
     
     func bump() {
         let moveHalfFront = SCNAction.moveBy(forwardVector() / 2, duration: 0.1)
+        moveHalfFront.timingMode = .EaseIn
         let moveHalfBack  = SCNAction.moveBy(-forwardVector() / 2, duration: 0.1)
+        moveHalfBack.timingMode = .EaseOut
         self.runAction(SCNAction.sequence([moveHalfFront, moveHalfBack]))
     }
     
     func bumpBack() {
         let moveHalfBack  = SCNAction.moveBy(-forwardVector() / 2, duration: 0.1)
+        moveHalfBack.timingMode = .EaseIn
         let moveHalfFront = SCNAction.moveBy(forwardVector() / 2, duration: 0.1)
+        moveHalfFront.timingMode = .EaseOut
         self.runAction(SCNAction.sequence([moveHalfBack, moveHalfFront]))
     }
     
@@ -108,12 +129,12 @@ class SCNRobotNode: SCNNode {
         bodyNode.runAction(SCNAction.sequence([bendLeft, bendRight]))
     }
     
-    func turnOver(duration: NSTimeInterval = 0.3) {
-        self.runAction(SCNAction.rotateByX(0.0, y: -CGFloat(M_PI) , z: 0.0, duration: duration))
+    func turnOver() {
+        self.runAction(actionTurnOver)
         robot.turnRight()
         robot.turnRight()
     }
-    
+    /*
     func feelLeftAndTurnOver(duration: NSTimeInterval = 0.3) {
         feelLeft()
         let turnOver = SCNAction.rotateByX(0.0, y: -CGFloat(M_PI) , z: 0.0, duration: duration)
@@ -129,7 +150,7 @@ class SCNRobotNode: SCNNode {
         robot.turnRight()
         robot.turnRight()
     }
-    
+    */
     func jumpi() {
         print("jumpi")
         self.runAction(SCNAction.sequence([actionUp, actionDown]))
@@ -158,13 +179,13 @@ class SCNRobotNode: SCNNode {
     func forwardVector() -> SCNVector3 {
         switch robot.direction {
         case .EAST:
-            return SCNVector3(1.0 * 10, 0.0, 0.0)
+            return SCNVector3(10, 0, 0)
         case .NORTH:
-            return SCNVector3(0.0, 0.0, -1.0 * 10)
+            return SCNVector3(0, 0, -10)
         case .WEST:
-            return SCNVector3(-1.0 * 10, 0.0, 0.0)
+            return SCNVector3(-10, 0, 0)
         case .SOUTH:
-            return SCNVector3(0.0, 0.0, 1.0 * 10)
+            return SCNVector3(0, 0, 10)
         }
     }
 }

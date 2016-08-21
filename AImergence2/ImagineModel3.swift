@@ -53,11 +53,11 @@ class ImagineModel3: ImagineModel2
             robotNode.jumpi()
             spawnExperienceNode(experience, position: robotNode.position , delay: 0.1)
             if leftFlippableNode != nil {
-                explodeNode(leftFlippableNode!)
+                explodeNode(leftFlippableNode!, delay: 0.2)
                 leftFlippableNode = nil
             }
             if rightFlippableNode != nil {
-                explodeNode(rightFlippableNode!)
+                explodeNode(rightFlippableNode!, delay: 0.2)
                 rightFlippableNode = nil
             }
         }

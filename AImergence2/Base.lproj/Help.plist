@@ -32,34 +32,34 @@
 		</array>
 		<array>
 			<string>Experiment with each command individually several times in a row. In the trace, you will see that one command aways yields the same interaction within a given situation (same shape and same color).</string>
-			<string>This command allows you to observe the world without changing it. We call this command an &quot;observational&quot; command, and the resulting interaction an &quot;observational interaction&quot;.</string>
-			<string>Use the the color of observational interactions to identify the object with which Little AI is interacting.</string>
+			<string>This command allows you to observe the world without changing it; we call it an &quot;observational&quot; command.</string>
+			<string>Use the the color of the interactions produced by the observational command to identify the object with which Little AI is interacting.</string>
 		</array>
 		<array>
 			<string>In Level 6, the commands have the same effects as in Level 5, but they have been rearranged in a random order, and are all initially represented by circles.</string>
 			<string>It is left to you to attribute shapes to commands and colors to interactions.</string>
-			<string>Display the interactions that make you hope for an enjoyable interaction on the next round in green, and those that let you fear for an unpleasant interaction in red.</string>
+			<string>Display in green the interactions that are enjoyable or premonitory of an enjoyable interaction on the next turn, and in red those that are strongly unpleasant or premonitory of a strongly unpleasant interaction in the next turn.</string>
 		</array>
 		<array>
 			<string>In Level 7, the commands have the same effects as in Levels 5 and 6, but the values of interactions are different.</string>
-			<string>Tap the interactions to replay enjoyable patterns of intreaction in the context when it is possible.</string>
-			<string>When you replay a pattern, skip the observational interactions to maximize your score.</string>
+			<string>Tap the interactions in the trace to replay enjoyable patterns of interaction in the context when it is possible.</string>
+			<string>When you replay a pattern, skip the observational commands to maximize your score.</string>
 		</array>
 		<array>
 			<string>On Level 8, the commands have the same effects as in Levels 5 to 7.</string>
 			<string>Now, however, one of the commands always yields the same interaction. This is a &quot;non-informative command&quot;.</string>
-			<string>Although non-informative commands always yield the same interaction, do not mistake them for persistent commands.</string>
+			<string>Although non-informative commands always yield the same interaction, do not mistake them for observational commands.</string>
 		</array>
 		<array>
-			<string>On level 9, the commands have the same immediate effects as in Levels 5, 6, 7, and 8, but they also transform the environment on the long term.</string>
-			<string>Your baby robot must transform its environment until it can enact an enjoyable interaction on every move.</string>
+			<string>The commands have similar effects as in the previous levels, but they also transform the environment on the long term.</string>
+			<string>Little AI must transform its environment until it can enact an enjoyable interaction on every turn.</string>
 		</array>
 		<array>
-			<string>Level 10&apos;s world is similar to Level 9&apos;s, and interactions have the same values.</string>
-			<string>As in Level 8, one of the commands always yields the same interaction (non-informative command).</string>
+			<string>Level 10&apos;s world is the same as Level 9&apos;s.</string>
+			<string>Let&apos;s see if you can tell the observational command and the non-informative command apart.</string>
 		</array>
 		<array>
-			<string>Your baby robot can move forward and turn in a little box.</string>
+			<string>In Level 11, Little AI can move forward and turn in a little box.</string>
 			<string>It loves moving forward but hates bumping into the edges of the box.</string>
 		</array>
 		<array>
@@ -68,9 +68,9 @@
 			<string>Press the score to see your number of turns.</string>
 		</array>
 		<array>
-			<string>Level 13 offers the same commands as Levels 11 and 12 plus a persistent command that allows your robot to observe its situation without modifying it (observational interaction).</string>
-			<string>This baby robot hates bumping, and quite dislikes turning. Fortunately, the box is getting bigger!</string>
-			<string>Use the observational interactions produced by the persistent command to avoid bumping into the edges.</string>
+			<string>Level 13 offers the same commands as Levels 11 and 12 plus an observational command.</string>
+			<string>Now Little AI really hates bumping, and quite dislikes turning. Fortunately, the box is getting bigger!</string>
+			<string>Use the observational command to avoid bumping into the edges.</string>
 		</array>
 		<array>
 			<string>Level 14&apos;s world is the same as Level 13&apos;s.</string>
@@ -78,7 +78,7 @@
 			<string>You must learn to know yourself and your environment to live a happy life!</string>
 		</array>
 		<array>
-			<string>Your baby robot has two additional persistent commands that it can use to observe the edges of the box on its right and on its left.</string>
+			<string>Little AI now has two additional observational commands that it can use to observe the edges of the box on its right and on its left.</string>
 			<string>Use the possibilities of observation offered by these commands to avoid turning towards the edges of the box.</string>
 			<string>The box is getting even bigger.</string>
 		</array>

@@ -10,55 +10,60 @@ import SceneKit
 
 class ImagineModel9: ImagineModel5
 {
-    let actionRotateCarrousel = SCNAction.rotateByX(0.0, y: 0.0, z: CGFloat(-M_PI) / 5.0, duration: 0.5)
-    
-    let carrouselDiameter = CGFloat(2.2 * 10)
+    let actionRotateCarrousel = SCNAction.rotateByX(0.0, y: CGFloat(-M_PI) / 5, z: 0, duration: 0.5)
+    let carrouselDiameter = CGFloat(22)
     let nbSlotsInCarroussel = 10
+    let carrouselNode = SCNNode()
     
-    var carrouselNode = SCNNode()
-    
-    var carrouselAngle = CGFloat(M_PI)
-    
-    var positionInCarroussel:SCNVector3 { return SCNVector3(carrouselDiameter * cos(carrouselAngle), carrouselDiameter * sin(carrouselAngle), 0)}
-
     var carrouselIndex = 0
-    
+    var slotNodes = [SCNNode]()
+
     override func setup(scene: SCNScene) {
         super.setup(scene)
-        carrouselNode.position = SCNVector3( carrouselDiameter, 0.0, 0.0)
+        moveUp.timingMode = .EaseInEaseOut
+        carrouselNode.position = SCNVector3( carrouselDiameter, -5, 0)
         worldNode.addChildNode(carrouselNode)
+        actionRotateCarrousel.timingMode = .EaseInEaseOut
+        for i in 0..<nbSlotsInCarroussel {
+            let slotNode = SCNNode()
+            let angle = CGFloat(i) * CGFloat(M_PI) / 5 - CGFloat(M_PI)
+            slotNode.position = SCNVector3(carrouselDiameter * cos(angle), 0, -carrouselDiameter * sin(angle))
+            slotNode.rotation = SCNVector4(0, 1, 0, angle)
+            carrouselNode.addChildNode(slotNode)
+            slotNodes.append(slotNode)
+        }
     }
     
     override func playExperience(experience: Experience) {
         switch experience.hashValue {
         case 00: // Touch
             robotNode.feelFront()
-            createOrRetrieveBodyNode(tileColor(experience), position: positionInCarroussel, direction: .SOUTH, delay: 0.2)
-            spawnExperienceNode(experience, position: SCNVector3( -0.5 * scale, 0.0, 0.0), delay: 0.2)
+            createOrRetrieveBodyNode(tileColor(experience), direction: .SOUTH, delay: 0.2)
+            spawnExperienceNode(experience, position: SCNVector3( -5, -5, 0), delay: 0.2)
         case 01:
             robotNode.feelFront()
-            createOrRetrieveBodyNode(tileColor(experience), position: positionInCarroussel, delay: 0.2)
-            spawnExperienceNode(experience, position: SCNVector3( -0.5 * scale, 0.0, 0.0), delay: 0.2)
+            createOrRetrieveBodyNode(tileColor(experience), delay: 0.2)
+            spawnExperienceNode(experience, position: SCNVector3( -5, -5, 0), delay: 0.2)
         case 10:  // eat
             robotNode.bump()
-            createOrRetrieveBodyNode(tileColor(experience), position: positionInCarroussel, direction: .SOUTH)
-            spawnExperienceNode(experience, position: SCNVector3( -0.5 * scale, 0.0, 0.0), delay: 0.1)
+            createOrRetrieveBodyNode(tileColor(experience), direction: .SOUTH, delay: 0.1)
+            spawnExperienceNode(experience, position: SCNVector3( -5, -5, 0), delay: 0.1)
             bodyNode = nil
             rotateCarrousel()
         case 11:
             robotNode.bump()
-            createOrRetrieveBodyNode(tileColor(experience), position: positionInCarroussel)
-            spawnExperienceNode(experience, position: SCNVector3( -0.5 * scale, 0.0, 0.0), delay: 0.1)
+            createOrRetrieveBodyNode(tileColor(experience), delay: 0.1)
+            spawnExperienceNode(experience, position: SCNVector3( -5, -5, 0), delay: 0.1)
             bodyNode = nil
             rotateCarrousel()
         case 20: // swap
-            createOrRetrieveBodyNode(tileColor(experience), position: positionInCarroussel, direction: .SOUTH)
+            if bodyNode == nil {
+                if slotNodes[carrouselIndex].childNodes.count > 0 {
+                    bodyNode = slotNodes[carrouselIndex].childNodes[0] as? SCNFlipTileNode
+                }
+            }
+            spawnExperienceNode(experience, position: tileYOffset)
             bodyNode?.flipRight()
-            spawnExperienceNode(experience, position: SCNVector3( 0.0, 0.0, 0.0))
-        case 21:
-            createOrRetrieveBodyNode(tileColor(experience), position: positionInCarroussel)
-            bodyNode?.flipRight()
-            spawnExperienceNode(experience, position: SCNVector3( 0.0, 0.0, 0.0))
         default:
             break
         }
@@ -67,24 +72,22 @@ class ImagineModel9: ImagineModel5
     override func createOrRetrieveBodyNode(color: UIColor?, position: SCNVector3 = SCNVector3(), direction: Compass = Compass.NORTH, delay: NSTimeInterval = 0.0) -> SCNFlipTileNode
     {
         if bodyNode == nil {
-            if carrouselNode.childNodes.count >= 10 {
-                bodyNode = carrouselNode.childNodes[carrouselIndex] as? SCNFlipTileNode
-                //bodyNode?.runAction(action)
+            if slotNodes[carrouselIndex].childNodes.count > 0 {
+                bodyNode = slotNodes[carrouselIndex].childNodes[0] as? SCNFlipTileNode
             } else {
                 bodyNode = SCNFlipTileNode(color: color, direction: direction)
-                bodyNode?.position = position
-                carrouselNode.addChildNode(bodyNode!)
-                if direction == Compass.WEST {
-                    bodyNode?.runAction(SCNAction.sequence([SCNAction.rotateByX(0.0, y: 0.0, z: carrouselAngle, duration: delay), SCNAction.unhide()])) }
-                else { bodyNode?.runAction(SCNAction.sequence([SCNAction.rotateByX(0.0, y: 0.0, z: carrouselAngle - CGFloat(M_PI), duration: delay), SCNAction.unhide()])) }
+                slotNodes[carrouselIndex].addChildNode(bodyNode!)
+                bodyNode?.appear(delay)
             }
+        }
+        if color != nil {
+            bodyNode?.colorize(color!, delay: delay)
         }
         return bodyNode!
     }
 
     func rotateCarrousel() {
-        carrouselAngle = CGFloat(M_PI) / 5.0 + carrouselAngle
-        carrouselNode.runAction(SCNAction.sequence([SCNAction.waitForDuration(0.1),actionRotateCarrousel]) )
+        carrouselNode.runAction(SCNAction.sequence([SCNAction.waitForDuration(0.1), actionRotateCarrousel]) )
         carrouselIndex += 1
         if carrouselIndex >= nbSlotsInCarroussel { carrouselIndex = 0 }
     }    

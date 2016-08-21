@@ -11,8 +11,6 @@ import SceneKit
 
 class SCNFlipTileNode: SCNPhenomenonNode {
  
-    let actionFlipLeft = SCNAction.rotateByX(0.0, y: 0.0, z: CGFloat(M_PI) , duration: 0.2)
-    let actionFlipRight = SCNAction.rotateByX(0.0, y: 0.0, z: -CGFloat(M_PI) , duration: 0.2)
     let headNode = SCNNode()
     let tailNode = SCNNode()
 
@@ -69,25 +67,25 @@ class SCNFlipTileNode: SCNPhenomenonNode {
     }
     
     override func colorize(color: UIColor, delay: NSTimeInterval = 0) {
-        let colorizeBloc: (SCNNode) -> Void
-        
+        let colorizeBlock: (SCNNode) -> Void
         switch direction {
         case .NORTH:
-            colorizeBloc = {
+            colorizeBlock = {
                 ($0 as! SCNFlipTileNode).headNode.geometry!.firstMaterial!.diffuse.contents = color
             }
         default:
-            colorizeBloc = {
+            colorizeBlock = {
                 ($0 as! SCNFlipTileNode).tailNode.geometry!.firstMaterial!.diffuse.contents = color
             }
         }
         
         let actionWait = SCNAction.waitForDuration(delay)
-        let actionColorize = SCNAction.runBlock(colorizeBloc)
+        let actionColorize = SCNAction.runBlock(colorizeBlock)
         runAction(SCNAction.sequence([actionWait, actionColorize]))
     }
     
-    func flipLeft(delay: NSTimeInterval = 0.0) {
+    func flipLeft(delay: NSTimeInterval = 0) {
+        let actionFlipLeft = SCNAction.rotateByX(0, y: 0, z: CGFloat(M_PI) , duration: 0.2)
         runAction(SCNAction.sequence([SCNAction.waitForDuration(delay),actionFlipLeft]))
         switch direction {
         case .NORTH:
@@ -97,7 +95,8 @@ class SCNFlipTileNode: SCNPhenomenonNode {
         }
     }
     
-    func flipRight(delay: NSTimeInterval = 0.0) {
+    func flipRight(delay: NSTimeInterval = 0) {
+        let actionFlipRight = SCNAction.rotateByX(0, y: 0, z: -CGFloat(M_PI) , duration: 0.2)
         runAction(SCNAction.sequence([SCNAction.waitForDuration(delay),actionFlipRight]))
         switch direction {
         case .NORTH:
@@ -107,7 +106,7 @@ class SCNFlipTileNode: SCNPhenomenonNode {
         }
     }
     
-    func appear(delay: NSTimeInterval = 0.0) {
+    func appear(delay: NSTimeInterval = 0) {
         runAction(SCNAction.sequence([SCNAction.waitForDuration(delay), SCNAction.unhide()]))
     }
     

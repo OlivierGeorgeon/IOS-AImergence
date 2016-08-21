@@ -14,7 +14,10 @@
 "Excellent 2" = "Excellent! You completed Level 2! To discover patterns of interaction while playing, we encourage you to use the trace. Try to replay a command by tapping in the trace to replicate a successful pattern.";
 "Excellent 3" = "Bravo! You completed Level 3! Notice that little AI will suggest the next command when you tap an interaction in the trace. This may or may not be correct, but the trace helps you more efficiently identify successful patterns. This will become more important as the patterns become more complicated.";
 "Excellent 4" = "Congratulations, you completed Level 4! Tap a successful sequence of four interactions in the trace to see why unpleasant interactions were necessary for enjoyable payoffs. This is much easier if you differentiate the commands with different shapes, and if you color-code the interactions.";
-"Excellent 5" = "Here you can see more clearly that the observational command (by default the square) alows you to identify the tile whith which Little AI is interacting, whereas the other two commands change the state of the world.";
+"Excellent 5" = "Here you can see more clearly that the observational command (by default the square) alows you to observe the tile whith which Little AI is interacting without changing the state of the world, as opposed to the other two commands.";
+"Excellent 6" = "Make sure that, when Little AI performs a command upon a tile, if the top face has rounded edges, it becomes green, if the top fase has squared edges, it becomes red. By color-coding the interactions, Little AI is learning to recognize physical properties of the world that are useful to live a happy life.";
+"Excellent 7" = "Wonderful! Now you know how Little AI can program itself! Replay sequences of interactions by tapping them in the trace to see how a self-programming robot can re-execute a program that it has previously learned.";
+"Excellent 8" = "Here you can see that the non-informative command flips the tile without informing you on what side the tile ends up (contrarily to the previous levels). Leave the interaction produced by the flip command in white because coloring it in green or red would be missleading.";
 "Drag the 3D scene to move the camera" = "Drag the 3D scene to change the angle of view.";
 "Double tap to swap cameras." = "Double-tap on the 3D scene to swap viewpoints.";
 "Explore your environment" = "Explore your environment before moving on to the next level.";
@@ -29,7 +32,7 @@
 "Tip0" = "Tap the commands/to start playing";
 "Tip1" = "Reach the/score of 10";
 "Tip2" = "Tap to read/the instructions";
-"Tip3" = "Tap to watch/the baby robot";
+"Tip3" = "Tap to watch/your baby robot";
 "Tip4" = "Tap to see/your ranking";
 "Tip5" = "Tap to see or/hide the menu";
 "Tip6" = "Drag the robot/to shift levels";
@@ -37,7 +40,7 @@
 "Tip8" = "Press and hold/to change shapes";
 "Tip9" = "Press and hold/to change colors";
 "Tip10" = "Tap to see/the level board";
-"Tip11" = "Tap to replay a/sequence of commands";
+"Tip11" = "Tap to replay/the next command";
 "Tip12" = "Drag to resume/the game";
 "Tip13" = "Support Little AI";
 "Tip14" = "Tap to turn sound/on and off";
