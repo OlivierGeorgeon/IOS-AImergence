@@ -20,7 +20,6 @@ class ImagineModel9: ImagineModel5
 
     override func setup(scene: SCNScene) {
         super.setup(scene)
-        moveUp.timingMode = .EaseInEaseOut
         carrouselNode.position = SCNVector3( carrouselDiameter, -5, 0)
         worldNode.addChildNode(carrouselNode)
         actionRotateCarrousel.timingMode = .EaseInEaseOut

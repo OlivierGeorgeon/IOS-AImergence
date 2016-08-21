@@ -10,8 +10,9 @@ import SceneKit
 
 class ImagineModel5: ImagineModel4
 {
-    let moveUp = SCNAction.sequence([SCNAction.waitForDuration(0.5), SCNAction.moveByX(-20, y: 0, z: 0, duration: 0.2)])
-    let positionNextBodyNode = SCNVector3(20, -5, 0)
+    let moveLeft = SCNAction.moveByX(-20, y: 0, z: 0, duration: 0.35)
+    let waitAndMoveLeft = SCNAction.sequence([SCNAction.waitForDuration(0.25), SCNAction.moveByX(-20, y: 0, z: 0, duration: 0.3)])
+    let positionNextBodyNode = SCNVector3(40, -5, 0)
     let waitAndRemove =  SCNAction.sequence([SCNAction.waitForDuration(1), SCNAction.removeFromParentNode()])
     let turnover = SCNAction.rotateByX(0.0, y: 0.0, z: CGFloat(M_PI) , duration: 0.2)
     
@@ -24,7 +25,8 @@ class ImagineModel5: ImagineModel4
         robotNode = SCNRobotNode()
         robotNode.position = SCNVector3(-1.5  * scale, 0, 0)
         worldNode.addChildNode(robotNode)
-        moveUp.timingMode = .EaseInEaseOut
+        waitAndMoveLeft.timingMode = .EaseInEaseOut
+        moveLeft.timingMode = .EaseOut
     }
     
     override func lightsAndCameras(scene: SCNScene) {
@@ -65,7 +67,7 @@ class ImagineModel5: ImagineModel4
             explodeNode(bodyNode!, delay: 0.1)
             bodyNode = nil
             canKnowNextBodyNode = true
-            nextBodyNode?.runAction(moveUp)
+            nextBodyNode?.runAction(waitAndMoveLeft)
         case 11:
             robotNode.bump()
             createOrRetrieveBodyNode(tileColor(experience), position: tileYOffset)
@@ -73,7 +75,7 @@ class ImagineModel5: ImagineModel4
             explodeNode(bodyNode!, delay: 0.1)
             bodyNode = nil
             canKnowNextBodyNode = true
-            nextBodyNode?.runAction(moveUp)
+            nextBodyNode?.runAction(waitAndMoveLeft)
         case 20: // swap
             createOrRetrieveBodyNode(nil, position: tileYOffset)
             bodyNode?.flipRight()
@@ -126,7 +128,9 @@ class ImagineModel5: ImagineModel4
             nextBodyNode = SCNFlipTileNode(color: nil, direction: nextBodyNodeDirection!)
             nextBodyNode.position = positionNextBodyNode
             worldNode.addChildNode(nextBodyNode)
-            nextBodyNode.appear(delay)
+            //nextBodyNode.appear(delay)
+            nextBodyNode.appear()
+            nextBodyNode.runAction(moveLeft)
             if nextBodyNodeDirection == .NORTH {
                 nextBodyNodeDirection = .SOUTH
             } else {

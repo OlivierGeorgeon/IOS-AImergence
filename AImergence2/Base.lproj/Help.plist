@@ -12,11 +12,11 @@
 		</array>
 		<array>
 			<string>An interaction is the association of a command with feedback information. Commands are represented by different shapes and feedback information by different colors. The stream of interactions is called the &quot;trace&quot;.</string>
-			<string>To complete each level, reach the score of 10 within the last ten turns. Next, press the buttons that pop up:  the &quot;gears&quot; to enter exploratory mode, and the &quot;podium&quot; to see the leaderboard. </string>
+			<string>To complete a level, obtain 10 points within ten consecutive turns. Next, press the buttons that pop up:  the &quot;gears&quot; to enter exploratory mode, and the &quot;podium&quot; to see the leaderboard. </string>
 			<string>Drag the 2D robot to the right or to the left to shift to the previous or to the next level.</string>
 		</array>
 		<array>
-			<string>Little AI finds some interactions enjoyable and some unpleasant; positive and negative values indicate more or less enjoyable or unpleasant interactions.</string>
+			<string>Little AI finds some interactions enjoyable and some unpleasant. The values indicate the intensity of these feelings.</string>
 			<string>Generate a pattern of enjoyable interactions.</string>
 			<string>Tap an interaction in the trace to replay a previous command. The same command replayed upon the same object yields the same interaction. To replay an entire pattern of interactions, tap the &quot;next command&quot; several times (white shape that appears on the left when you tap an interaction).</string>
 		</array>
@@ -31,9 +31,9 @@
 			<string>Use different shapes for the commands. Display the enjoyable interactions in green and the unpleasant interactions in red. Don&apos;t think too much, your brain will see the pattern before you know it!</string>
 		</array>
 		<array>
-			<string>Experiment with each command individually several times in a row. In the trace, you will see that one command aways yields the same interaction within a given situation (same shape and same color).</string>
-			<string>This command allows you to observe the world without changing it; we call it an &quot;observational&quot; command.</string>
-			<string>Use the the color of the interactions produced by the observational command to identify the object with which Little AI is interacting.</string>
+			<string>Experiment with each command alone several times in a row. In the trace, you will see that one command always yields the same interaction within a given situation (same shape and same color).</string>
+			<string>This command allows you to observe the world without changing it; we call it an &quot;observational command&quot;.</string>
+			<string>Use the color of the interactions produced by the observational command to identify the object with which Little AI is interacting.</string>
 		</array>
 		<array>
 			<string>In Level 6, the commands have the same effects as in Level 5, but they have been rearranged in a random order, and are all initially represented by circles.</string>
@@ -84,13 +84,13 @@
 		</array>
 		<array>
 			<string>You are in the same world as in Level 15 with the same commands initially uninterpreted.</string>
-			<string>Little AI is a free open-source research and pedagogical project driven by enthousiast volunteers in collaboration with academia.</string>
+			<string>Little AI is a free open-source research and pedagogical project driven by enthusiast volunteers in collaboration with academia.</string>
 			<string>If you wish to learn more about research in developmental artificial intelligence and about us, consider visiting http://little-ai.com.</string>
 		</array>
 		<array>
 			<string>You reached the last level ! Congratulations! It is similar to Level 16.</string>
 			<string>If you found Little AI enjoyable or instructive, or both, please consider making a small donation.</string>
-			<string>Your donations will help us create more levels. They will also support independant and open-source research in developmental artificial intelligence.</string>
+			<string>Your donations will help us create more levels. They will also support independent and open-source research in developmental artificial intelligence.</string>
 		</array>
 	</array>
 </dict>

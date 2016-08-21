@@ -9,8 +9,15 @@
 "Level" = "Niveau";
 "Cancel" = "Retour";
 "You must reach the score of 10" = "Vous devez atteindre le score de 10 avant de pouvoir voir le robot dans cette fenêtre.";
-"Excellent 0" = "Bravo ! Vous avez gagné le niveau 0 ! En gardant cette fenêtre ouverte, appuyez au moins une fois sur chaque commande pour activer le bouton Ok. Observez les effets des commandes avant d'appuyer sur Ok.";
-"Excellent 1" = "Vous avez maintenant gagné le niveau 1 ! Pour mieux comprendre le jeu, observez toujours les effets de chaque commande sur le robot avant de passer au niveau suivant.";
+"Excellent 0" = "Bravo ! Vous avez gagné le niveau 0 ! Vous avez maintenant accès au mode exploratoire de ce niveau. Il vous permet de voir ce que vous avez fait et découvrir de nouveaux comportements. En gardant cette fenêtre ouverte, appuyez au moins une fois sur chaque commande pour activer le bouton Ok. Quand vous en avez terminé avec le mode exploratoire, appuyez sur Ok.";
+"Excellent 1" = "Vous avez passé le niveau 1 ! Il y a deux comportements qui vous permettent de gagner ce niveau. Essayez différentes séquences de commandes pour voir si vous pouvez trouver ces deux comportements.";
+"Excellent 2" = "Excellent ! Vous avez terminé le niveau 2 ! Pour découvrir des nouveaux comportements en jouant, nous vous encourageons à utiliser la trace. Essayez de rejouer une suite de commandes gagnante en appuyant sur les interactions dans la trace.";
+"Excellent 3" = "Félicitations! Vous avez gagné le niveau 3 ! Remarquez que Little AI suggère la prochaine commande quand vous appuyez dans la trace. Elle peut être correcte ou pas, mais la trace vous aide à trouver des comportements gagnants plus facilement. Cela deviendra plus important quand les comportements deviendront plus compliqués.";
+"Excellent 4" = "Oui ! Vous avez gagné le niveau 4 ! Appuyez successivement sur quatre interactions consécutives formant une séquence gagnante dans la trace pour voir pourquoi les interactions désagréables sont nécessaires pour obtenir des interactions agréables. C'est plus facile si vous différentiez les commandes par leurs formes et les interactions par leurs couleurs.";
+"Excellent 5" = "Maintenant, vous pouvez voir plus clairement que la commande observationnelle (par défaut le carré) vous permet d'observer l'objet avec lequel Little AI est en train d'interagir sans le changer, contrairement aux deux autres commandes.";
+"Excellent 6" = "Assurez-vous que le fait d'interagir avec un objet colorie sa face supérieure en vert si elle est arrondie ou en rouge si elle est plate. Les couleurs des interactions que vous avez choisies reflètent ces propriétés physiques du monde. Little AI exploite ce savoir pour vivre une vie heureuse !";
+"Excellent 7" = "Merveilleux! Quand vous rejouez des séquences d'interaction en appuyant dessus dans la trace, vous ré-exécutez un programme que vous avez précédemment appris. C'est comme ça qu'un bébé robot peut se programmer lui-même!";
+"Excellent 8" = "Dans ce niveau, vous pouvez voir que la commande non informative bascule l'objet sans vous informer du sens dans lequel il est. Laissez l'interaction produite par cette commande en blanc car elle ne transmet aucune information sur l'état physique du monde.";
 "Drag the 3D scene to move the camera" = "Glissez la scène 3D pour changer l'angle de vue.";
 "Double tap to swap cameras." = "Appuyez deux fois sur la scène 3D pour passer d'un point de vue à un autre.";
 "Explore your environment" = "Explorez votre environnement avant de passer au niveau suivant.";
@@ -27,7 +34,7 @@
 "Tip2" = "Appuyez pour/lire les instructions";
 "Tip3" = "Appuyez pour/voir le bébé robot";
 "Tip4" = "Appuyez pour voir/ votre classement";
-"Tip5" = "Appuyez pour/déployer le menu";
+"Tip5" = "Appuyez pour déployer/ou masquer le menu";
 "Tip6" = "Glissez le robot pour/changer de niveau";
 "Tip7" = "Pressez une interaction/pour rejouer sa commande";
 "Tip8" = "Maintenez pressé/pour changer les formes";

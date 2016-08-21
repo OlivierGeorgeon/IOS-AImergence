@@ -27,7 +27,7 @@ class ImagineModel8: ImagineModel5
             explodeNode(bodyNode!, delay: 0.1)
             bodyNode = nil
             canKnowNextBodyNode = true
-            nextBodyNode?.runAction(moveUp)
+            nextBodyNode?.runAction(waitAndMoveLeft)
         case 11:
             robotNode.bump()
             createOrRetrieveBodyNode(tileColor(experience), position: tileYOffset)
@@ -35,7 +35,7 @@ class ImagineModel8: ImagineModel5
             explodeNode(bodyNode!, delay: 0.1)
             bodyNode = nil
             canKnowNextBodyNode = true
-            nextBodyNode?.runAction(moveUp)
+            nextBodyNode?.runAction(waitAndMoveLeft)
         case 20: // swap
             if nextBodyNode == nil { canKnowNextBodyNode = false }
             if bodyNode == nil { bodyNode = nextBodyNode; nextBodyNode = nil }
