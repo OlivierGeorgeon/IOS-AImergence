@@ -220,7 +220,7 @@ class GameSKScene: PositionedSKScene {
             }
         case .Ended:
             if (view as! GameView).verticalPan {
-                let acceleration = CGFloat(-20000.0)
+                let acceleration = CGFloat(-20000)
                 var scrollDuration = CGFloat(0.8)
                 var translateY = velocity.y * CGFloat(scrollDuration) * 0.9 * sceneHeight / self.view!.frame.height
                 if translateY > sceneHeight { translateY = sceneHeight }
@@ -229,7 +229,9 @@ class GameSKScene: PositionedSKScene {
                 if cameraNode.position.y + translateY > 466 {
                     let actionMoveCameraUp = SKAction.moveBy(CGVector(dx: 0, dy: translateY), duration: Double(scrollDuration))
                     actionMoveCameraUp.timingMode = .EaseOut
-                    cameraNode.runAction(actionMoveCameraUp, withKey: "scroll")
+                    if abs(velocity.y) > 100 {
+                        cameraNode.runAction(actionMoveCameraUp, withKey: "scroll")
+                    }
                 } else {
                     scrollDuration  =  abs(velocity.y / acceleration)
                     translateY = velocity.y * scrollDuration + acceleration * scrollDuration * scrollDuration / 2
@@ -261,6 +263,9 @@ class GameSKScene: PositionedSKScene {
         let positionInTrace = traceNode.convertPoint(positionInScene, fromNode: self)
         var playExperience = false
         var handlingTap = false
+        
+        cameraNode.removeActionForKey("scroll")
+
         for experimentNode in experimentNodes.values {
             if experimentNode.containsPoint(positionInScene){
                 playExperience = true
@@ -358,6 +363,8 @@ class GameSKScene: PositionedSKScene {
         let positionInShapePopup = shapePopupNode.convertPoint(positionInScene, fromNode: self)
         let positionInColorPopup = colorPopupNode.convertPoint(positionInScene, fromNode: self)
         let positionInTrace = traceNode.convertPoint(positionInScene, fromNode: self)
+
+        cameraNode.removeActionForKey("scroll")
 
         switch recognizer.state {
         case .Began:

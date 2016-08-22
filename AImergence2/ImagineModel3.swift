@@ -50,7 +50,7 @@ class ImagineModel3: ImagineModel2
             rightFlippableNode?.flipRight(0.2)
             spawnExperienceNode(experience, position: robotNode.positionCell(robotNode.robot.cellRight()) + tileYOffset, delay: 0.2)
         default:
-            robotNode.jumpi()
+            robotNode.jump()
             spawnExperienceNode(experience, position: robotNode.position , delay: 0.1)
             if leftFlippableNode != nil {
                 explodeNode(leftFlippableNode!, delay: 0.2)
@@ -64,6 +64,7 @@ class ImagineModel3: ImagineModel2
     }
     
     func explodeNode(node: SCNPhenomenonNode, delay: NSTimeInterval = 0) {
+        print("exploding")
         let placeNode = SCNNode()
         placeNode.position = node.position
         worldNode.addChildNode(placeNode)

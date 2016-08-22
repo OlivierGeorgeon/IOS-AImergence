@@ -7,23 +7,23 @@
 		<array>
 			<string>Bienvenue dans Little AI !</string>
 			<string>Avec les boutons en bas de l&apos;écran, vous pilotez un bébé robot appelé Little AI. Le but du jeu est d&apos;atteindre le score de 10 en dix coups. </string>
-			<string>Quand vous pilotez le robot, il réalise des &quot;interactions&quot; avec son environnement qui sont représentées par des cercles et carrés colorés qui montent. Après avoir atteint le score de 10, vous pourrez voir avec quels objets Little AI interagissait.</string>
+			<string>Quand vous pilotez Little AI, il réalise des &quot;interactions&quot; avec son environnement qui sont représentées par des cercles et des carrés colorés qui montent. Après avoir atteint le score de 10, vous pourrez voir avec quels objets Little AI interagissait.</string>
 			<string>Le score est la somme des valeurs des dix dernières interactions. Oui, uniquement les dix dernières !</string>
 		</array>
 		<array>
-			<string>Une interaction est l&apos;association d&apos;une commande et d&apos;une information obtenue en retour. Les commandes sont représentées par des formes différentes, et les informations par des couleurs différentes. Le flux des interactions est appelé la &quot;trace&quot;.</string>
-			<string>Pour gagner un niveau, obtenez 10 points en dix coups consécutifs. Ensuite, appuyez sur les boutons qui apparaissent: &quot;engrenages&quot; pour passer en &quot;mode exploratoire&quot;, et &quot;podium&quot; pour voir votre classement.</string>
+			<string>Une interaction est l&apos;association d&apos;une commande et d&apos;une information obtenue en retour. Les commandes sont représentées par des formes, et les informations par des couleurs. Le flux des interactions est appelé &quot;trace&quot;.</string>
+			<string>A chaque niveau, lisez les instructions, puis obtenez 10 points en dix coups consécutifs, puis appuyez sur le bouton &quot;engrenages&quot; pour passer en &quot;mode exploratoire&quot;, et &quot;podium&quot; pour voir votre classement.</string>
 			<string>Faites glisser le robot 2D à gauche ou à droite pour passer au niveau suivant ou précédent.</string>
 		</array>
 		<array>
-			<string>Little AI trouve les interactions positives agréables et les négatives désagréables. Les valeurs indiquent l&apos;intensité de ces ressentis.</string>
+			<string>Little AI trouve les interactions plus ou moins agréables ou désagréables. Les valeurs indiquent l&apos;intensité de ces sensations.</string>
 			<string>Générez une suite d&apos;interactions agréables.</string>
 			<string>Appuyez sur les interactions dans la trace pour rejouer la même commande. Une commande rejouée face au même objet reproduit la même interaction. Pour rejouer une série de commandes, pressez plusieurs fois la &quot;prochaine commande&quot; (forme blanche qui apparait à gauche quand vous appuyez sur une interaction).</string>
 		</array>
 		<array>
 			<string>Maintenez pressée une commande pour changer sa forme. Maintenez pressée une interaction dans la trace pour changer sa couleur.</string>
 			<string>Changez les formes des commandes et les couleurs des interactions pour les reconnaitre. Les formes et les couleurs sont purement descriptives, elles ne changent pas les comportements du robot.</string>
-			<string>Les interactions se reconnaissent aussi par les cris de votre bébé robot. Dans ce jeu, votre oreille peuvent aussi vous aider !</string>
+			<string>Les interactions se reconnaissent aussi par les cris de votre bébé robot. Dans ce jeu, votre oreille peut aussi vous aider !</string>
 		</array>
 		<array>
 			<string>Au niveau 4, Little AI ne peut pas toujours éviter les interactions désagréables.</string>
@@ -32,13 +32,13 @@
 		</array>
 		<array>
 			<string>Expérimentez chaque commande seule plusieurs fois de suite. Vous verrez que l&apos;une d&apos;entre elles produit toujours la même interaction dans une situation donnée (même forme et même couleur).</string>
-			<string>Cette commande vous permet d&apos;observer le monde sans le modifier; nous l&apos;appelons &quot;commande observationnelle&quot;.</string>
-			<string>Utilisez les couleurs des interactions produites par la commande observationnelle pour identifier l&apos;objet avec lequel Little AI est en train d&apos;interagir.</string>
+			<string>Cette commande vous permet d&apos;observer le monde sans le modifier. Nous l&apos;appelons &quot;commande observationnelle&quot;, et les interactions qui en découlent &quot;interactions observationnelles&quot;.</string>
+			<string>Utilisez les couleurs des interactions observationnelles pour éviter d&apos;effectuer une interaction fortement désagréable au coup suivant.</string>
 		</array>
 		<array>
-			<string>Les commandes ont les mêmes effets qu&apos;au niveau précédent, mais elles sont redisposées dans un ordre aléatoire et toute représentées par des cercles.</string>
+			<string>Les commandes ont les mêmes effets qu&apos;au niveau précédent, mais elles sont redisposées dans un ordre aléatoire et toutes représentées par des cercles.</string>
 			<string>C&apos;est à vous d&apos;attribuer les formes aux commandes et les couleurs aux interactions.</string>
-			<string>Affichez en vert les interactions qui sont agréables oui annonciatrices d&apos;une interaction agréable au coup suivant, et en rouge celles qui sont fortement désagréables ou annonciatrices d&apos;une interaction fortement désagréable au coup suivant.</string>
+			<string>Affichez en vert les interactions qui sont agréables ou annonciatrices d&apos;une interaction agréable au coup suivant, et en rouge celles qui sont fortement désagréables ou annonciatrices d&apos;une interaction fortement désagréable au coup suivant.</string>
 		</array>
 		<array>
 			<string>Au niveau 7, les commandes ont les mêmes effets qu&apos;aux niveaux 5 et 6, mais les valeurs des interactions sont différentes.</string>
@@ -47,7 +47,7 @@
 		</array>
 		<array>
 			<string>Au niveau 8, les commandes ont les mêmes effets qu&apos;aux niveaux 5 à 7.</string>
-			<string>Cependant, maintenant, l&apos;une des commandes produit toujours les mêmes interactions, c&apos;est une &quot;commande non informative&quot;.</string>
+			<string>Cependant, maintenant, l&apos;une des commandes produit toujours la même interaction, c&apos;est une &quot;commande non informative&quot;.</string>
 			<string>Bien que les commandes non informatives produisent toujours les mêmes interactions, ne les confondez pas avec des commandes observationnelles.</string>
 		</array>
 		<array>

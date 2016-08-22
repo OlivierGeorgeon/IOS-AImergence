@@ -50,17 +50,13 @@ class ImagineModel4: ImagineModel3
             robotNode.bumpBack()
             spawnExperienceNode(experience, position: robotNode.positionCell(robotNode.robot.cellBack()) + tileYOffset, delay: 0.1)
             if leftFlippableNode == nil  {
-                leftFlippableNode = createFlipTileNode(tileColor(experience), position: robotNode.positionCell(robotNode.robot.cellBack())  + SCNVector3(-5, -5, 0), direction: .SOUTH, delay: 0.2)
+                leftFlippableNode = createFlipTileNode(tileColor(experience), position: robotNode.positionCell(robotNode.robot.cellBack())  + SCNVector3(-5, -5, 0), direction: .SOUTH, delay: 0.1)
             } else {
                 leftFlippableNode?.colorize(tileColor(experience), delay: 0.1)
             }
-            //if leftFlippableNode == nil  {
-            //    leftFlippableNode = createFlippableNode(robotNode.positionCell(robotNode.robot.cellBack())  + SCNVector3(-0.5 * scale, -0.2 * scale, 0), direction: Compass.EAST)
-            //}
         case (00, 1):
-            spawnExperienceNode(experience, position: robotNode.position, delay: 0.1)
+            spawnExperienceNode(experience, position: robotNode.position)
             robotNode.moveBackward()
-            //rightFlippableNode?.flipToWest()
             if rightFlippableNode?.direction == .SOUTH {
                 rightFlippableNode?.flipRight()
             }
@@ -69,20 +65,14 @@ class ImagineModel4: ImagineModel3
             robotNode.bumpBack()
             spawnExperienceNode(experience, position: robotNode.positionCell(robotNode.robot.cellBack()) + tileYOffset, delay: 0.1)
             if leftFlippableNode == nil  {
-                leftFlippableNode = createFlipTileNode(tileColor(experience), position: robotNode.positionCell(robotNode.robot.cellBack())  + SCNVector3(-5, -5, 0), delay: 0.2)
+                leftFlippableNode = createFlipTileNode(tileColor(experience), position: robotNode.positionCell(robotNode.robot.cellBack())  + SCNVector3(-5, -5, 0), delay: 0.1)
             } else {
                 leftFlippableNode?.colorize(tileColor(experience), delay: 0.1)
             }
-            leftFlippableNode?.flipLeft(0.2)
-            //rightFlippableNode?.flipRight(0.2)
-            //if leftFlippableNode == nil  {
-            //    leftFlippableNode = createFlippableNode(robotNode.positionCell(robotNode.robot.cellBack())  + SCNVector3(-0.5 * scale, -0.2 * scale, 0))
-            //}
-            //leftFlippableNode?.flipRight(0.2)
+            leftFlippableNode?.flipRight(0.1)
         case (10, 0):
-            spawnExperienceNode(experience, position: robotNode.position, delay: 0.1)
+            spawnExperienceNode(experience, position: robotNode.position)
             robotNode.moveForward()
-            //leftFlippableNode?.flipToEast()
             if leftFlippableNode?.direction == .SOUTH {
                 leftFlippableNode?.flipLeft()
             }
@@ -91,27 +81,19 @@ class ImagineModel4: ImagineModel3
             robotNode.bump()
             spawnExperienceNode(experience, position: robotNode.positionCell(robotNode.robot.cellFront()) + tileYOffset, delay: 0.1)
             if rightFlippableNode == nil  {
-                rightFlippableNode = createFlipTileNode(tileColor(experience), position: robotNode.positionCell(robotNode.robot.cellFront())  + SCNVector3(5, -5, 0), direction: .SOUTH, delay: 0.2)
+                rightFlippableNode = createFlipTileNode(tileColor(experience), position: robotNode.positionCell(robotNode.robot.cellFront())  + SCNVector3(5, -5, 0), direction: .SOUTH, delay: 0.1)
             } else {
                 rightFlippableNode?.colorize(tileColor(experience), delay: 0.1)
             }
-            //if rightFlippableNode == nil  {
-            //    rightFlippableNode = createFlippableNode(robotNode.positionCell(robotNode.robot.cellFront())  + SCNVector3(0.5 * scale, -0.2 * scale, 0))
-            //}
         case (11, 1):
             robotNode.bump()
             spawnExperienceNode(experience, position: robotNode.positionCell(robotNode.robot.cellFront()) + tileYOffset, delay: 0.1)
             if rightFlippableNode == nil  {
-                rightFlippableNode = createFlipTileNode(tileColor(experience), position: robotNode.positionCell(robotNode.robot.cellFront()) + SCNVector3(5, -5, 0), delay: 0.2)
+                rightFlippableNode = createFlipTileNode(tileColor(experience), position: robotNode.positionCell(robotNode.robot.cellFront()) + SCNVector3(5, -5, 0), delay: 0.1)
             } else {
                 rightFlippableNode?.colorize(tileColor(experience), delay: 0.1)
             }
-            //leftFlippableNode?.flipLeft(0.2)
-            rightFlippableNode?.flipRight(0.2)
-            //if rightFlippableNode == nil  {
-            //    rightFlippableNode = createFlippableNode(robotNode.positionCell(robotNode.robot.cellFront())  + SCNVector3(0.5 * scale, -0.2 * scale, 0), direction: Compass.WEST)
-            //}
-            //rightFlippableNode?.flipLeft(0.2)
+            rightFlippableNode?.flipLeft(0.1)
         default:
             break
         }

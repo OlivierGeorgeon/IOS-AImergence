@@ -16,7 +16,7 @@
 			<string>Drag the 2D robot to the right or to the left to shift to the previous or to the next level.</string>
 		</array>
 		<array>
-			<string>Little AI finds some interactions enjoyable and some unpleasant. The values indicate the intensity of these feelings.</string>
+			<string>Little AI finds the interactions more or less enjoyable or unpleasant. The values indicate the intensity of these feelings.</string>
 			<string>Generate a pattern of enjoyable interactions.</string>
 			<string>Tap an interaction in the trace to replay a previous command. The same command replayed upon the same object yields the same interaction. To replay an entire pattern of interactions, tap the &quot;next command&quot; several times (white shape that appears on the left when you tap an interaction).</string>
 		</array>
@@ -32,8 +32,8 @@
 		</array>
 		<array>
 			<string>Experiment with each command alone several times in a row. In the trace, you will see that one command always yields the same interaction within a given situation (same shape and same color).</string>
-			<string>This command allows you to observe the world without changing it; we call it an &quot;observational command&quot;.</string>
-			<string>Use the color of the interactions produced by the observational command to identify the object with which Little AI is interacting.</string>
+			<string>This command allows you to observe the world without changing it. We call it an &quot;observational command&quot;, and its resulting interactions &quot;observational interactions&quot;.</string>
+			<string>Use the color of observational intractions to avoid performing a strongly unpleasant interaction on the next turn.</string>
 		</array>
 		<array>
 			<string>In Level 6, the commands have the same effects as in Level 5, but they have been rearranged in a random order, and are all initially represented by circles.</string>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BV1-FR-VrT">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BV1-FR-VrT">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
@@ -121,22 +121,25 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mdg-Na-z8E" customClass="HelpView" customModule="Little_AI" customModuleProvider="target">
                                 <rect key="frame" x="20" y="0.0" width="360" height="400"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" Level 0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LU5-OA-XkX">
+                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" Level 0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LU5-OA-XkX">
                                         <rect key="frame" x="20" y="20" width="53" height="18"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <color key="highlightedColor" red="0.40000000596046448" green="0.80000001192092896" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     </label>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Help" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="waE-OD-fCN">
-                                        <rect key="frame" x="20" y="46" width="320" height="304"/>
+                                        <rect key="frame" x="20" y="20" width="320" height="320"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                         <dataDetectorType key="dataDetectorTypes" link="YES"/>
                                     </textView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IWI-lU-vxl">
-                                        <rect key="frame" x="165" y="350" width="30" height="30"/>
-                                        <state key="normal" title="Ok"/>
+                                        <rect key="frame" x="140" y="340" width="80" height="40"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <state key="normal" title="Ok" backgroundImage="Ok">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
                                         <connections>
                                             <action selector="UnderstoodButton:" destination="1A5-gt-hTc" eventType="touchUpInside" id="cVH-UX-2fJ"/>
                                         </connections>
@@ -147,11 +150,11 @@
                                     <constraint firstAttribute="bottom" secondItem="IWI-lU-vxl" secondAttribute="bottom" constant="20" symbolic="YES" id="5tl-O3-tNt"/>
                                     <constraint firstItem="waE-OD-fCN" firstAttribute="bottom" secondItem="IWI-lU-vxl" secondAttribute="top" id="EnG-L8-knW"/>
                                     <constraint firstAttribute="trailing" secondItem="waE-OD-fCN" secondAttribute="trailing" constant="20" symbolic="YES" id="Q22-gv-mFj"/>
-                                    <constraint firstItem="waE-OD-fCN" firstAttribute="top" secondItem="LU5-OA-XkX" secondAttribute="bottom" constant="8" symbolic="YES" id="Qaz-bS-z0h"/>
                                     <constraint firstItem="IWI-lU-vxl" firstAttribute="centerX" secondItem="waE-OD-fCN" secondAttribute="centerX" id="anN-4A-INM"/>
                                     <constraint firstItem="waE-OD-fCN" firstAttribute="leading" secondItem="mdg-Na-z8E" secondAttribute="leading" constant="20" symbolic="YES" id="f5w-Vl-qsZ"/>
                                     <constraint firstItem="LU5-OA-XkX" firstAttribute="leading" secondItem="mdg-Na-z8E" secondAttribute="leading" constant="20" symbolic="YES" id="r8V-0J-uY7"/>
                                     <constraint firstItem="LU5-OA-XkX" firstAttribute="top" secondItem="mdg-Na-z8E" secondAttribute="top" constant="20" symbolic="YES" id="ydO-xo-oQm"/>
+                                    <constraint firstItem="waE-OD-fCN" firstAttribute="top" secondItem="mdg-Na-z8E" secondAttribute="top" constant="20" symbolic="YES" id="zfA-gz-xo0"/>
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3UZ-lq-r3k">
@@ -206,7 +209,7 @@
                                 </connections>
                             </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="You must reach the sore of 10 to be able to see an imaginary representation of the world in this window." textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dPD-EN-VYk">
-                                <rect key="frame" x="28" y="38" width="344" height="342"/>
+                                <rect key="frame" x="28" y="20" width="344" height="360"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <accessibility key="accessibilityConfiguration">
                                     <accessibilityTraits key="traits" notEnabled="YES"/>
@@ -215,8 +218,11 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xY4-R3-8Ig">
-                                <rect key="frame" x="185" y="350" width="30" height="30"/>
-                                <state key="normal" title="Ok"/>
+                                <rect key="frame" x="160" y="340" width="80" height="40"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <state key="normal" title="Ok" backgroundImage="Ok">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
                                 <connections>
                                     <action selector="understoodButton:" destination="S9v-w3-pyN" eventType="touchUpInside" id="xam-B9-YWb"/>
                                 </connections>
@@ -237,8 +243,8 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
                         <constraints>
+                            <constraint firstItem="dPD-EN-VYk" firstAttribute="top" secondItem="VEL-m5-zKm" secondAttribute="bottom" constant="20" id="6cK-cX-gbm"/>
                             <constraint firstAttribute="trailingMargin" secondItem="T1U-Yf-6NB" secondAttribute="trailing" id="8Tb-Z1-q82"/>
-                            <constraint firstItem="dPD-EN-VYk" firstAttribute="top" secondItem="ceU-MJ-Rek" secondAttribute="bottom" constant="8" symbolic="YES" id="CQh-no-mRG"/>
                             <constraint firstItem="ceU-MJ-Rek" firstAttribute="leading" secondItem="Oej-sS-MrJ" secondAttribute="leadingMargin" constant="8" id="Lro-KH-J8c"/>
                             <constraint firstItem="ceU-MJ-Rek" firstAttribute="top" secondItem="VEL-m5-zKm" secondAttribute="bottom" id="RSb-Xg-exH"/>
                             <constraint firstItem="T1U-Yf-6NB" firstAttribute="centerY" secondItem="Oej-sS-MrJ" secondAttribute="topMargin" constant="10" id="jWi-cq-msQ"/>
@@ -271,6 +277,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Ok" width="80" height="40"/>
         <image name="close" width="40" height="40"/>
     </resources>
 </document>

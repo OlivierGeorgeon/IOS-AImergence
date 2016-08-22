@@ -13,8 +13,6 @@ class ImagineModel5: ImagineModel4
     let moveLeft = SCNAction.moveByX(-20, y: 0, z: 0, duration: 0.35)
     let waitAndMoveLeft = SCNAction.sequence([SCNAction.waitForDuration(0.25), SCNAction.moveByX(-20, y: 0, z: 0, duration: 0.3)])
     let positionNextBodyNode = SCNVector3(40, -5, 0)
-    let waitAndRemove =  SCNAction.sequence([SCNAction.waitForDuration(1), SCNAction.removeFromParentNode()])
-    let turnover = SCNAction.rotateByX(0.0, y: 0.0, z: CGFloat(M_PI) , duration: 0.2)
     
     var nextBodyNodeDirection: Compass?
     var canKnowNextBodyNode = false
@@ -77,15 +75,17 @@ class ImagineModel5: ImagineModel4
             canKnowNextBodyNode = true
             nextBodyNode?.runAction(waitAndMoveLeft)
         case 20: // swap
-            createOrRetrieveBodyNode(nil, position: tileYOffset)
-            bodyNode?.flipRight()
-            bodyNode?.colorize(tileColor(experience))
-            spawnExperienceNode(experience, position: tileYOffset)
+            robotNode.jump()
+            createOrRetrieveBodyNode(nil, position: tileYOffset, delay: 0.2)
+            bodyNode?.flipLeft(0.2)
+            bodyNode?.colorize(tileColor(experience), delay: 0.2)
+            spawnExperienceNode(experience, position: tileYOffset, delay: 0.2)
         case 21:
-            createOrRetrieveBodyNode(nil, position: tileYOffset, direction: .SOUTH)
-            bodyNode?.flipRight()
-            bodyNode?.colorize(tileColor(experience))
-            spawnExperienceNode(experience, position: tileYOffset)
+            robotNode.jump()
+            createOrRetrieveBodyNode(nil, position: tileYOffset, direction: .SOUTH, delay: 0.2)
+            bodyNode?.flipLeft(0.2)
+            bodyNode?.colorize(tileColor(experience), delay: 0.2)
+            spawnExperienceNode(experience, position: tileYOffset, delay: 0.2)
         default:
             break
         }

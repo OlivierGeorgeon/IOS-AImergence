@@ -19,7 +19,6 @@ protocol GameViewDelegate: class
 
 class GameView: SKView, UIGestureRecognizerDelegate {
     
-    //let motionView = UIView()
     weak var delegate: GameViewDelegate?
     
     let doubleTapGesture = UITapGestureRecognizer()
@@ -38,16 +37,15 @@ class GameView: SKView, UIGestureRecognizerDelegate {
         addBehavior()
     }
     
-    func addBehavior (){
+    func addBehavior() {
         panGestureRecognizer.addTarget(self, action: #selector(GameView.pan(_:)))
-        //panGestureRecognizer.cancelsTouchesInView = false
         panGestureRecognizer.delegate = self
         addGestureRecognizer(panGestureRecognizer)
+
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(GameView.tap(_:)))
-        //tapGestureRecognizer.cancelsTouchesInView = false
         addGestureRecognizer(tapGestureRecognizer)
+
         longPressGestureRecognizer.addTarget(self, action: #selector(GameView.longPress(_:)))
-        //longPressGestureRecognizer.cancelsTouchesInView = false
         longPressGestureRecognizer.delegate = self
         addGestureRecognizer(longPressGestureRecognizer)
         
@@ -55,24 +53,6 @@ class GameView: SKView, UIGestureRecognizerDelegate {
         doubleTapGesture.enabled = true
         doubleTapGesture.numberOfTapsRequired = 2
         addGestureRecognizer(doubleTapGesture)
-        
-        /*
-        // Set vertical effect
-        let value = 200
-        let verticalMotionEffect = UIInterpolatingMotionEffect(keyPath: "center.y", type: .TiltAlongVerticalAxis)
-        verticalMotionEffect.minimumRelativeValue = -value
-        verticalMotionEffect.maximumRelativeValue = value
-        
-        // Set vertical effect
-        let horizontalMotionEffect = UIInterpolatingMotionEffect(keyPath: "center.x", type: .TiltAlongHorizontalAxis)
-        verticalMotionEffect.minimumRelativeValue = -value
-        verticalMotionEffect.maximumRelativeValue = value
-        
-        let group = UIMotionEffectGroup()
-        group.motionEffects = [horizontalMotionEffect, verticalMotionEffect]
-        addSubview(motionView)
-        motionView.addMotionEffect(group)
- */
     }
     
     func pan(gesture: UIPanGestureRecognizer) {

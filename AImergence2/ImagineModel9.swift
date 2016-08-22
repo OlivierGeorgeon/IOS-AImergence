@@ -56,13 +56,14 @@ class ImagineModel9: ImagineModel5
             bodyNode = nil
             rotateCarrousel()
         case 20: // swap
+            robotNode.jump()
             if bodyNode == nil {
                 if slotNodes[carrouselIndex].childNodes.count > 0 {
                     bodyNode = slotNodes[carrouselIndex].childNodes[0] as? SCNFlipTileNode
                 }
             }
-            spawnExperienceNode(experience, position: tileYOffset)
-            bodyNode?.flipRight()
+            spawnExperienceNode(experience, position: tileYOffset, delay: 0.2)
+            bodyNode?.flipRight(0.2)
         default:
             break
         }

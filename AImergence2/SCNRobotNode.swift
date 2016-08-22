@@ -134,25 +134,8 @@ class SCNRobotNode: SCNNode {
         robot.turnRight()
         robot.turnRight()
     }
-    /*
-    func feelLeftAndTurnOver(duration: NSTimeInterval = 0.3) {
-        feelLeft()
-        let turnOver = SCNAction.rotateByX(0.0, y: -CGFloat(M_PI) , z: 0.0, duration: duration)
-        self.runAction(SCNAction.sequence([SCNAction.waitForDuration(0.2), turnOver]))
-        robot.turnRight()
-        robot.turnRight()
-    }
-    
-    func feelRightAndTurnOver(duration: NSTimeInterval = 0.3) {
-        feelRight()
-        let turnOver = SCNAction.rotateByX(0.0, y: -CGFloat(M_PI) , z: 0.0, duration: duration)
-        self.runAction(SCNAction.sequence([SCNAction.waitForDuration(0.2), turnOver]))
-        robot.turnRight()
-        robot.turnRight()
-    }
-    */
-    func jumpi() {
-        print("jumpi")
+
+    func jump() {
         self.runAction(SCNAction.sequence([actionUp, actionDown]))
     }
     

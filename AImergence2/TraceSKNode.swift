@@ -59,6 +59,7 @@ class TraceSKNode: SKNode {
     }
 
     func dispose(clock: Int) {
+        print("disposing SKnodes due to memory warning")
         var lastPosition = CGPointZero
         for eventClock in eventNodes.keys {
             if eventClock < clock - 10 {

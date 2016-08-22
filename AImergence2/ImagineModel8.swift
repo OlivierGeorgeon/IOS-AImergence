@@ -37,10 +37,11 @@ class ImagineModel8: ImagineModel5
             canKnowNextBodyNode = true
             nextBodyNode?.runAction(waitAndMoveLeft)
         case 20: // swap
+            robotNode.jump()
             if nextBodyNode == nil { canKnowNextBodyNode = false }
             if bodyNode == nil { bodyNode = nextBodyNode; nextBodyNode = nil }
-            bodyNode?.flipRight()
-            spawnExperienceNode(experience, position: tileYOffset)
+            bodyNode?.flipLeft(0.2)
+            spawnExperienceNode(experience, position: tileYOffset, delay: 0.2)
         default:
             break
         }

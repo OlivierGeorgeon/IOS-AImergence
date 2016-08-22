@@ -21,9 +21,9 @@ class GameModel5: GameModel0
         let actionScale = SKAction.scaleTo(1, duration: 0.2)
         let experimentPaths = [{UIBezierPath(ovalInRect: $0)},{UIBezierPath(rect: $0)}, triangle]
         let experienceColors = [UIColor.whiteColor(), UIColor(red: 0, green: 0.9, blue: 0, alpha: 1), UIColor.redColor(), UIColor.blueColor(), UIColor.orangeColor()]
-        let sounds = [[11, 10], [13, 3], [2, 1]]
+        //let sounds = [[11, 10], [13, 3], [2, 1]]
+        let sounds = [[11, 10], [13, 3], [1, 2]]
         
         self.init(experimentRect: experimentRect, experimentPositions: experimentPositions, experienceRect: experienceRect, initialScale: initialScale, valencePosition: valencePosition, obsolescence: obsolescence, actionScale: actionScale, experimentPaths: experimentPaths, experienceColors: experienceColors, sounds: sounds)
     }
-
 }
