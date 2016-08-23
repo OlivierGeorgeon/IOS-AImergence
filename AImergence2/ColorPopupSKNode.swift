@@ -63,7 +63,7 @@ class ColorPopupSKNode: SKNode {
             if i == colorIndex {
                 colorNode.lineWidth = 12
             } else {
-                colorNode.lineWidth = 2
+                colorNode.lineWidth = 4
             }
             colorNode.lineJoin = .Round
             colorNode.zPosition = 1
@@ -74,7 +74,7 @@ class ColorPopupSKNode: SKNode {
     }
     
     func revolve() {
-        colorNodes[colorIndex].lineWidth = 2
+        colorNodes[colorIndex].lineWidth = 4
         colorIndex += 1
         if colorIndex >= colorNodes.count {
             colorIndex = 0

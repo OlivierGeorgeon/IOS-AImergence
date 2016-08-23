@@ -64,21 +64,19 @@ class ImagineModel3: ImagineModel2
     }
     
     func explodeNode(node: SCNPhenomenonNode, delay: NSTimeInterval = 0) {
-        print("exploding")
         let placeNode = SCNNode()
         placeNode.position = node.position
+        placeNode.setValue(node.color(), forKey: "color")
         worldNode.addChildNode(placeNode)
         node.runAction(SCNAction.sequence([SCNAction.waitForDuration(delay), SCNAction.removeFromParentNode()]))
-        
-        func explode() {
-            if let particles = SCNParticleSystem(named: "Confetti.scnp", inDirectory: nil) {
-                particles.particleColor = node.color()
-                placeNode.addParticleSystem(particles)
-            }
+        placeNode.runAction(SCNAction.sequence([SCNAction.waitForDuration(delay), SCNAction.runBlock(explode), SCNAction.waitForDuration(2), SCNAction.removeFromParentNode()]))
+    }
+    
+    func explode(placeNode: SCNNode) {
+        if let particles = SCNParticleSystem(named: "Confetti.scnp", inDirectory: nil) {
+            particles.particleColor = placeNode.valueForKey("color") as! UIColor
+            placeNode.addParticleSystem(particles)
         }
-        
-        placeNode.runAction(SCNAction.waitForDuration(delay), completionHandler: explode)
-        placeNode.runAction(SCNAction.sequence([SCNAction.waitForDuration(delay + 0.2), SCNAction.removeFromParentNode()]))
     }
 }
 

@@ -483,7 +483,7 @@ class GameSKScene: PositionedSKScene {
     func selectColorNode(positionInColorPopup: CGPoint?) {
         for i in 0..<colorPopupNode.colorNodes.count {
             if CGRectContainsPoint(colorPopupNode.colorNodes[i].frame, positionInColorPopup!) {
-                colorPopupNode.colorNodes.forEach({$0.lineWidth = 2})
+                colorPopupNode.colorNodes.forEach({$0.lineWidth = 4})
                 colorPopupNode.colorNodes[i].lineWidth = 12
                 refillNodes(i)
                 timer?.invalidate()

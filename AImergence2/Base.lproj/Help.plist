@@ -11,7 +11,7 @@
 			<string>The score is the sum of the values of the last ten interactions. Yes, only the last ten!</string>
 		</array>
 		<array>
-			<string>An interaction is the association of a command with feedback information. Commands are represented by different shapes and feedback information by different colors. The stream of interactions is called the &quot;trace&quot;.</string>
+			<string>An interaction is the association of a command with feedback information. Commands are differentiated by their shapes and feedback information by their colors. The stream of interactions is called the &quot;trace&quot;.</string>
 			<string>To complete a level, obtain 10 points within ten consecutive turns. Next, press the buttons that pop up:  the &quot;gears&quot; to enter exploratory mode, and the &quot;podium&quot; to see the leaderboard. </string>
 			<string>Drag the 2D robot to the right or to the left to shift to the previous or to the next level.</string>
 		</array>
@@ -38,7 +38,7 @@
 		<array>
 			<string>In Level 6, the commands have the same effects as in Level 5, but they have been rearranged in a random order, and are all initially represented by circles.</string>
 			<string>It is left to you to attribute shapes to commands and colors to interactions.</string>
-			<string>Display in green the interactions that are enjoyable or premonitory of an enjoyable interaction on the next turn, and in red those that are strongly unpleasant or premonitory of a strongly unpleasant interaction in the next turn.</string>
+			<string>Display in green the interactions that are enjoyable or premonitory of an enjoyable interaction in the next turn, and in red those that are strongly unpleasant or premonitory of a strongly unpleasant interaction in the next turn.</string>
 		</array>
 		<array>
 			<string>In Level 7, the commands have the same effects as in Levels 5 and 6, but the values of interactions are different.</string>
