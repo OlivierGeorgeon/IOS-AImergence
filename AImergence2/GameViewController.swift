@@ -16,26 +16,34 @@ enum INTERFACE: Int { case INSTRUCTION, IMAGINE, LEADERBOARD, LEVEL}
 
 class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate, HelpViewControllerDelegate, ImagineViewControllerDelegate, GKGameCenterControllerDelegate, SKProductsRequestDelegate, SKPaymentTransactionObserver, GameViewDelegate //, GKMatchmakerViewControllerDelegate,  GKMatchDelegate
 {
-    static let maxLevelNumber = 17 
-    let unlockDefaultKey = "unlockDefaultKey"
-    let paidTipKey = "paidTipKey"
-    let soundKey = "soundKey"
-    
     @IBOutlet weak var sceneView: GameView!
     @IBOutlet weak var helpViewControllerContainer: UIView!
     @IBOutlet weak var imagineViewControllerContainer: UIView!
     @IBOutlet weak var levelButton: UIButton!
     @IBAction func levelButton(sender: UIButton) { showLevelWindow() }
-    @IBAction func hepButton(sender: UIButton)   { showInstructionWindow() }
+    //@IBAction func hepButton(sender: UIButton)   { showInstructionWindow() }
     //@IBAction func worldButton(sender: UIButton) { showImagineWindow() }
     
-    var smallPortraitConstraint: NSLayoutConstraint?
+    static let maxLevelNumber = 17
     
-    var gcEnabled = Bool() // Stores if the user has Game Center enabled
+    let unlockDefaultKey = "unlockDefaultKey"
+    let paidTipKey = "paidTipKey"
+    let soundKey = "soundKey"
+    let userDefaults = NSUserDefaults.standardUserDefaults()
     let gcLoginMessage = NSLocalizedString("Please login to Game Center", comment: "Alert message that shows when the user tries to access the leaderboard without being logged in.")
-
+    
+    var instructionPortraitBottomConstraint = NSLayoutConstraint()
+    var imaginePortraitBottomConstraint = NSLayoutConstraint()
+    var gcEnabled = Bool() // Stores if the user has Game Center enabled
     var helpViewController:  HelpViewController?
     var imagineViewController: ImagineViewController?
+    var interfaceLocks = [[Bool]](count: GameViewController.maxLevelNumber + 1, repeatedValue: [true, true, true, true])
+    var paidTip = false
+    var validProducts = [SKProduct]()
+    var match: GKMatch?
+    var soundDisabled = false
+    var sounds = [SKAction]()
+    
     var level = 0 {
         didSet {
             levelButton.setTitle(NSLocalizedString("Level", comment: "") + " \(level)", forState: .Normal)
@@ -44,15 +52,6 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
             }
         }
     }
-
-    let userDefaults = NSUserDefaults.standardUserDefaults()
-    
-    var interfaceLocks = [[Bool]](count: GameViewController.maxLevelNumber + 1, repeatedValue: [true, true, true, true])
-    var paidTip = false
-    var validProducts = [SKProduct]()
-    var match: GKMatch?
-    var soundDisabled = false
-    var sounds = [SKAction]()
     
     override func viewDidLoad()
     {
@@ -90,11 +89,16 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
         sceneView.showsNodeCount = false
         sceneView.ignoresSiblingOrder = true
         sceneView.presentScene(gameScene)
-        
-        smallPortraitConstraint = NSLayoutConstraint(item: imagineViewControllerContainer, attribute: NSLayoutAttribute.Bottom, relatedBy: NSLayoutRelation.LessThanOrEqual, toItem: bottomLayoutGuide, attribute: NSLayoutAttribute.Bottom, multiplier: 1, constant: -120)
-        smallPortraitConstraint?.active = false
-        view.addConstraint(smallPortraitConstraint!)
+    
+        //instructionPortraitBottomConstraint = NSLayoutConstraint(item: helpViewControllerContainer, attribute: NSLayoutAttribute.Bottom, relatedBy: NSLayoutRelation.LessThanOrEqual, toItem: bottomLayoutGuide, attribute: NSLayoutAttribute.Bottom, multiplier: 1, constant: -230)
+        instructionPortraitBottomConstraint = NSLayoutConstraint(item: helpViewControllerContainer, attribute: NSLayoutAttribute.Bottom, relatedBy: NSLayoutRelation.LessThanOrEqual, toItem: bottomLayoutGuide, attribute: NSLayoutAttribute.Bottom, multiplier: 0.67, constant: 0)
+        instructionPortraitBottomConstraint.active = false
+        view.addConstraint(instructionPortraitBottomConstraint)
 
+        imaginePortraitBottomConstraint = NSLayoutConstraint(item: imagineViewControllerContainer, attribute: NSLayoutAttribute.Bottom, relatedBy: NSLayoutRelation.LessThanOrEqual, toItem: bottomLayoutGuide, attribute: NSLayoutAttribute.Bottom, multiplier: 0.67, constant: 0) // 120
+        imaginePortraitBottomConstraint.active = false
+        view.addConstraint(imaginePortraitBottomConstraint)
+        
         SKPaymentQueue.defaultQueue().addTransactionObserver(self)
         requestProducts()
     }
@@ -212,9 +216,11 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
         }
         
         if size.width < size.height {
-            smallPortraitConstraint?.active = true
+            instructionPortraitBottomConstraint.active = true
+            imaginePortraitBottomConstraint.active = true
         } else {
-            smallPortraitConstraint?.active = false
+            instructionPortraitBottomConstraint.active = false
+            imaginePortraitBottomConstraint.active = false
         }
         
         super.viewWillTransitionToSize(size, withTransitionCoordinator: coordinator)

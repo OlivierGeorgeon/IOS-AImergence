@@ -108,7 +108,8 @@ class ImagineViewController: UIViewController {
             default:
                 textView.hidden = true
             }
-            textView.font = UIFont.systemFontOfSize(15)
+            //textView.font = UIFont.systemFontOfSize(15)
+            textView.font = UIFont.preferredFontForTextStyle(UIFontTextStyleBody)
 
             let aClass:AnyClass? =  NSClassFromString("Little_AI.ImagineModel\(levelNumber)")
             if let imagineModelType = aClass as? ImagineModel0.Type

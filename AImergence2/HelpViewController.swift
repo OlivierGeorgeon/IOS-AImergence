@@ -59,7 +59,8 @@ class HelpViewController: UIViewController {
             textView.selectable = false
         }
         textView.text = helpBlobArray[level]
-        textView.font = UIFont.systemFontOfSize(15)
+        //textView.font = UIFont.systemFontOfSize(15)
+        textView.font = UIFont.preferredFontForTextStyle(UIFontTextStyleCallout)
     }
     
     override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
@@ -68,7 +69,7 @@ class HelpViewController: UIViewController {
             //let temp = self.textView.text
             //self.textView.text = ""
             //self.textView.text = temp
-            self.textView.font = UIFont.systemFontOfSize(15)
+            //self.textView.font = UIFont.systemFontOfSize(15)
         })
     }
   

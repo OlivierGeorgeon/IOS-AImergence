@@ -10,8 +10,8 @@ import SpriteKit
 
 class ScoreSKNode: SKNode
 {
-    let titleFont = UIFont.preferredFontForTextStyle(UIFontTextStyleTitle1)
-    let bodyFont = UIFont.preferredFontForTextStyle(UIFontTextStyleBody)
+    //let titleFont = UIFont.preferredFontForTextStyle(UIFontTextStyleTitle1)
+    //let bodyFont = UIFont.preferredFontForTextStyle(UIFontTextStyleBody)
     let labelNode = SKLabelNode(text: "0")
     let backgroundNode = SKShapeNode(rect: CGRect(x: -60, y: -60, width: 120, height: 120), cornerRadius: 40)
     let lineNode: SKShapeNode
@@ -30,8 +30,8 @@ class ScoreSKNode: SKNode
         
         zPosition = -1
         
-        labelNode.fontName = titleFont.fontName
-        labelNode.fontSize = titleFont.pointSize * 2
+        labelNode.fontName = UIFont.preferredFontForTextStyle(UIFontTextStyleTitle1).fontName
+        labelNode.fontSize = 60 //titleFont.pointSize * 2
         labelNode.verticalAlignmentMode = .Center
         labelNode.fontColor = UIColor.darkGrayColor()
         addChild(labelNode)
@@ -58,8 +58,8 @@ class ScoreSKNode: SKNode
         
         moveNode.position = CGPoint(x: 300, y: 0)
         moveNode.zPosition = 10
-        moveLabelNode.fontName = bodyFont.fontName
-        moveLabelNode.fontSize = bodyFont.pointSize * 2
+        moveLabelNode.fontName = UIFont.preferredFontForTextStyle(UIFontTextStyleBody).fontName
+        moveLabelNode.fontSize = 34
         moveLabelNode.verticalAlignmentMode = .Center
         moveLabelNode.fontColor = UIColor.darkGrayColor()
         moveNode.addChild(moveLabelNode)

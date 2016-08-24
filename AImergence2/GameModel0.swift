@@ -18,7 +18,6 @@ class GameModel0
     let experimentRect: CGRect
     let experimentPaths: [(CGRect) -> UIBezierPath]
     let initialScale: CGFloat
-    let valencePosition: CGPoint
     let obsolescence: Int
     let experienceColors: [UIColor]
     let experimentPositions: [CGPoint]
@@ -34,11 +33,10 @@ class GameModel0
 
     var level: Level0!
     
-    init(experimentRect: CGRect, experimentPositions: [CGPoint], experienceRect: CGRect, initialScale: CGFloat, valencePosition: CGPoint, obsolescence: Int, actionScale: SKAction, experimentPaths: [(CGRect) -> UIBezierPath], experienceColors: [UIColor],sounds: [[Int]]) {
+    init(experimentRect: CGRect, experimentPositions: [CGPoint], experienceRect: CGRect, initialScale: CGFloat, obsolescence: Int, actionScale: SKAction, experimentPaths: [(CGRect) -> UIBezierPath], experienceColors: [UIColor],sounds: [[Int]]) {
         self.experimentRect = experimentRect
         self.experimentPaths = experimentPaths
         self.initialScale = initialScale
-        self.valencePosition = valencePosition
         self.obsolescence = obsolescence
         self.experienceColors = experienceColors
 
@@ -55,7 +53,6 @@ class GameModel0
         let experimentPositions = [CGPoint(x: -180, y: 0), CGPoint(x: 180, y: 0), CGPoint(x: 0, y: 0)]
         let experienceRect = CGRect(x: -40, y: -40, width: 80, height: 80)
         let initialScale = CGFloat(120)/40
-        let valencePosition = CGPoint(x: 100, y: -20)
         let obsolescence = 100
         let actionScale = SKAction.scaleTo(1, duration: 0.2)
         let experimentPaths = [{UIBezierPath(ovalInRect: $0)},{UIBezierPath(rect: $0)}, triangle]
@@ -63,7 +60,7 @@ class GameModel0
 
         let sounds = [[7, 10], [9, 8], [2, 2]]
 
-        self.init(experimentRect: experimentRect, experimentPositions: experimentPositions, experienceRect: experienceRect, initialScale: initialScale, valencePosition: valencePosition, obsolescence: obsolescence, actionScale: actionScale, experimentPaths: experimentPaths, experienceColors: experienceColors, sounds: sounds)
+        self.init(experimentRect: experimentRect, experimentPositions: experimentPositions, experienceRect: experienceRect, initialScale: initialScale, obsolescence: obsolescence, actionScale: actionScale, experimentPaths: experimentPaths, experienceColors: experienceColors, sounds: sounds)
     }    
 
     func moveByVect(point: CGPoint) -> CGVector {

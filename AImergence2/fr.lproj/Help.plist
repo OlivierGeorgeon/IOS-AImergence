@@ -7,7 +7,7 @@
 		<array>
 			<string>Bienvenue dans Little AI !</string>
 			<string>Avec les boutons en bas de l&apos;écran, vous pilotez un bébé robot appelé Little AI. Le but du jeu est d&apos;atteindre le score de 10 en dix coups. </string>
-			<string>Quand vous pilotez Little AI, il réalise des &quot;interactions&quot; avec son environnement qui sont représentées par des cercles et des carrés colorés qui montent. Après avoir atteint le score de 10, vous pourrez voir avec quels objets Little AI interagissait.</string>
+			<string>Little AI effectue des &quot;interactions&quot; avec son environnement qui sont représentées par des cercles et des carrés colorés qui montent. Après avoir atteint le score de 10, vous pourrez voir avec quels objets Little AI interagissait.</string>
 			<string>Le score est la somme des valeurs des dix dernières interactions. Oui, uniquement les dix dernières !</string>
 		</array>
 		<array>

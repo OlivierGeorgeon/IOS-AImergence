@@ -22,14 +22,13 @@ class GameModel11: GameModel1
         let experimentPositions = [CGPoint(x: -230, y: 0), CGPoint(x: 0, y: 0), CGPoint(x: 230, y: 0)]
         let experienceRect = CGRect(x: -40, y: -40, width: 80, height: 80)
         let initialScale = CGFloat(100)/40
-        let valencePosition = CGPoint(x: 100, y: -20)
         let obsolescence = 100
         let actionScale = SKAction.scaleTo(1, duration: 0.2)
         let experimentPaths = [{UIBezierPath(ovalInRect: $0)}, halfCircleLeft, triangle, halfCircleRight, triangleUp, trapezoidLeft, {UIBezierPath(rect: $0)}, trapezoidRight]
         let experienceColors = [UIColor.whiteColor(), UIColor(red: 0, green: 0.9, blue: 0, alpha: 1), UIColor.redColor(), UIColor.blueColor(), UIColor.orangeColor()]
         let sounds = [[11, 8], [12, 8], [10, 2], [6 ,1]]
         
-        self.init(experimentRect: experimentRect, experimentPositions: experimentPositions, experienceRect: experienceRect, initialScale: initialScale, valencePosition: valencePosition, obsolescence: obsolescence, actionScale: actionScale, experimentPaths: experimentPaths, experienceColors: experienceColors, sounds: sounds)
+        self.init(experimentRect: experimentRect, experimentPositions: experimentPositions, experienceRect: experienceRect, initialScale: initialScale, obsolescence: obsolescence, actionScale: actionScale, experimentPaths: experimentPaths, experienceColors: experienceColors, sounds: sounds)
     }
 }
 func triangleUp(rect: CGRect) -> UIBezierPath {

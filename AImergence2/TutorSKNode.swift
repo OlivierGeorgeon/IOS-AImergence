@@ -11,7 +11,7 @@ import SpriteKit
 
 class TutorSKNode: SKNode {
     
-    let bodyFont = UIFont.preferredFontForTextStyle(UIFontTextStyleBody)
+    //let bodyFont = UIFont.preferredFontForTextStyle(UIFontTextStyleBody)
     let shapeFuncs = [arrowRight, arrowLeft, arrowRight, arrowRight, arrowRight, arrowRight, arrowLeft, arrowRight, arrowRight, arrowRight, arrowRight, arrowLeft, arrowLeft, arrowRight, arrowLeft]
 
     let tips = [NSLocalizedString("Tip0", comment: ""),
@@ -72,7 +72,6 @@ class TutorSKNode: SKNode {
     override init() {
         
         super.init()
-    
         self.zPosition = 8
     }
 
@@ -95,11 +94,12 @@ class TutorSKNode: SKNode {
         
         let texts = tips[i].componentsSeparatedByString("/")
         let lines = texts.count - 1
-        let lineInterval = bodyFont.pointSize * 3
+        let lineInterval = CGFloat(17 * 3)
         for line in 0...lines {
             let labelNode = SKLabelNode(text: texts[line])
-            labelNode.fontName = bodyFont.fontName
-            labelNode.fontSize = bodyFont.pointSize * 2
+            //labelNode.fontName = bodyFont.fontName
+            labelNode.fontName = UIFont.preferredFontForTextStyle(UIFontTextStyleBody).fontName
+            labelNode.fontSize = 34 // bodyFont.pointSize * 2
             labelNode.verticalAlignmentMode = .Center
             labelNode.fontColor = UIColor.whiteColor()
             labelNode.zPosition = 1

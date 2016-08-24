@@ -49,9 +49,11 @@ class EventSKNode: SKNode
     func addValenceNode()
     {
         let valenceNode = SKLabelNode()
-        valenceNode.fontName = gameModel.titleFont.fontName
-        valenceNode.fontSize = gameModel.titleFont.pointSize * 2
-        valenceNode.position = gameModel.valencePosition
+        //valenceNode.fontName = gameModel.titleFont.fontName
+        //valenceNode.fontSize = gameModel.titleFont.pointSize * 2
+        valenceNode.fontName = UIFont.preferredFontForTextStyle(UIFontTextStyleTitle1).fontName
+        valenceNode.fontSize = 54
+        valenceNode.position = CGPoint(x: 95, y: -20)
         valenceNode.text = "\(valence)"
         addChild(valenceNode)
         
