@@ -33,7 +33,7 @@
 		<array>
 			<string>Expérimentez chaque commande seule plusieurs fois de suite. Vous verrez que l&apos;une d&apos;entre elles produit toujours la même interaction dans une situation donnée (même forme et même couleur).</string>
 			<string>Cette commande vous permet d&apos;observer le monde sans le modifier. Nous l&apos;appelons &quot;commande observationnelle&quot;, et les interactions qui en découlent &quot;interactions observationnelles&quot;.</string>
-			<string>Utilisez les couleurs des interactions observationnelles pour éviter d&apos;effectuer une interaction fortement désagréable au coup suivant.</string>
+			<string>Basez vous sur les couleurs des interactions observationnelles pour éviter d&apos;effectuer une interaction fortement désagréable au coup suivant.</string>
 		</array>
 		<array>
 			<string>Les commandes ont les mêmes effets qu&apos;au niveau précédent, mais elles sont redisposées dans un ordre aléatoire et toutes représentées par des cercles.</string>

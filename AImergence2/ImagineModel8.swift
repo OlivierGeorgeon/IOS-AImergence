@@ -14,34 +14,90 @@ class ImagineModel8: ImagineModel5
         switch experience.hashValue {
         case 00: // Touch
             robotNode.feelFront()
-            createOrRetrieveBodyNode(tileColor(experience), position: tileYOffset, direction: Compass.SOUTH, delay: 0.2)
-            spawnExperienceNode(experience, position:  SCNVector3( -5, -5, 0), delay: 0.2)
+            if currentTileNode == nil {
+                if nextTileNode == nil {
+                    currentTileNode = createFlipTileNode(tileColor(experience), position: tileYOffset, direction: .SOUTH)
+                    currentTileNode?.appear(0.2)
+                    nextBodyNodeDirection = .NORTH
+                } else {
+                    currentTileNode = nextTileNode
+                    currentTileNode?.colorize(tileColor(experience), delay: 0.2)
+                    nextTileNode = nil
+                }
+            } else {
+                currentTileNode?.colorize(tileColor(experience), delay: 0.2)
+            }
+            createNextTileNode()
+            //createOrRetrieveBodyNode(tileColor(experience), position: tileYOffset, direction: .SOUTH, delay: 0.2)
+            spawnExperienceNode(experience, position: SCNVector3( -5, -5, 0.0), delay: 0.2)
         case 01:
             robotNode.feelFront()
-            createOrRetrieveBodyNode(tileColor(experience), position: tileYOffset, delay: 0.2)
-            spawnExperienceNode(experience, position:  SCNVector3( -5, -5, 0), delay: 0.2)
+            if currentTileNode == nil {
+                if nextTileNode == nil {
+                    currentTileNode = createFlipTileNode(tileColor(experience), position: tileYOffset)
+                    currentTileNode?.appear(0.2)
+                    nextBodyNodeDirection = .SOUTH
+                } else {
+                    currentTileNode = nextTileNode
+                    currentTileNode?.colorize(tileColor(experience), delay: 0.2)
+                    nextTileNode = nil
+                }
+            } else {
+                currentTileNode?.colorize(tileColor(experience), delay: 0.2)
+            }
+            createNextTileNode()
+            //createOrRetrieveBodyNode(tileColor(experience), position: tileYOffset, delay: 0.2)
+            spawnExperienceNode(experience, position: SCNVector3( -5, -5, 0.0), delay: 0.2)
         case 10:  // eat
             robotNode.bump()
-            createOrRetrieveBodyNode(tileColor(experience), position: tileYOffset, direction: .SOUTH)
-            spawnExperienceNode(experience, position: SCNVector3( -5, -5, 0), delay: 0.1)
-            explodeNode(bodyNode!, delay: 0.1)
-            bodyNode = nil
+            if currentTileNode == nil {
+                if nextTileNode == nil {
+                    currentTileNode = createFlipTileNode(tileColor(experience), position: tileYOffset, direction: .SOUTH)
+                    currentTileNode?.appear()
+                    nextBodyNodeDirection = .NORTH
+                } else {
+                    currentTileNode = nextTileNode
+                    currentTileNode?.colorize(tileColor(experience))
+                    nextTileNode = nil
+                }
+            } else {
+                currentTileNode?.colorize(tileColor(experience))
+            }
+            createNextTileNode()
+            //createOrRetrieveBodyNode(tileColor(experience), position: tileYOffset, direction: .SOUTH)
+            spawnExperienceNode(experience, position: SCNVector3( -5, -5, 0.0), delay: 0.1)
+            explodeNode(currentTileNode!, delay: 0.1)
+            currentTileNode = nil
             canKnowNextBodyNode = true
-            nextBodyNode?.runAction(waitAndMoveLeft)
+            nextTileNode?.runAction(waitAndMoveLeft)
         case 11:
             robotNode.bump()
-            createOrRetrieveBodyNode(tileColor(experience), position: tileYOffset)
+            if currentTileNode == nil {
+                if nextTileNode == nil {
+                    currentTileNode = createFlipTileNode(tileColor(experience), position: tileYOffset)
+                    currentTileNode?.appear()
+                    nextBodyNodeDirection = .SOUTH
+                } else {
+                    currentTileNode = nextTileNode
+                    currentTileNode?.colorize(tileColor(experience))
+                    nextTileNode = nil
+                }
+            } else {
+                currentTileNode?.colorize(tileColor(experience))
+            }
+            createNextTileNode()
+            //createOrRetrieveBodyNode(tileColor(experience), position: tileYOffset)
             spawnExperienceNode(experience, position: SCNVector3( -5, -5, 0.0), delay: 0.1)
-            explodeNode(bodyNode!, delay: 0.1)
-            bodyNode = nil
+            explodeNode(currentTileNode!, delay: 0.1)
+            currentTileNode = nil
             canKnowNextBodyNode = true
-            nextBodyNode?.runAction(waitAndMoveLeft)
+            nextTileNode?.runAction(waitAndMoveLeft)
         case 20: // swap
             robotNode.jump()
-            if nextBodyNode == nil { canKnowNextBodyNode = false }
-            if bodyNode == nil { bodyNode = nextBodyNode; nextBodyNode = nil }
-            bodyNode?.flipLeft(0.2)
-            spawnExperienceNode(experience, position: tileYOffset, delay: 0.2)
+            if nextTileNode == nil { canKnowNextBodyNode = false }
+            if currentTileNode == nil { currentTileNode = nextTileNode; nextTileNode = nil }
+            currentTileNode?.flip(false, delay: 0.2)
+            spawnExperienceNode(experience, position: tileYOffset, delay: 0.3)
         default:
             break
         }

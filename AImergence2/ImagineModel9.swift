@@ -47,43 +47,43 @@ class ImagineModel9: ImagineModel5
             robotNode.bump()
             createOrRetrieveBodyNode(tileColor(experience), direction: .SOUTH, delay: 0.1)
             spawnExperienceNode(experience, position: SCNVector3( -5, -5, 0), delay: 0.1)
-            bodyNode = nil
+            currentTileNode = nil
             rotateCarrousel()
         case 11:
             robotNode.bump()
             createOrRetrieveBodyNode(tileColor(experience), delay: 0.1)
             spawnExperienceNode(experience, position: SCNVector3( -5, -5, 0), delay: 0.1)
-            bodyNode = nil
+            currentTileNode = nil
             rotateCarrousel()
         case 20: // swap
             robotNode.jump()
-            if bodyNode == nil {
+            if currentTileNode == nil {
                 if slotNodes[carrouselIndex].childNodes.count > 0 {
-                    bodyNode = slotNodes[carrouselIndex].childNodes[0] as? SCNFlipTileNode
+                    currentTileNode = slotNodes[carrouselIndex].childNodes[0] as? SCNFlipTileNode
                 }
             }
-            spawnExperienceNode(experience, position: tileYOffset, delay: 0.2)
-            bodyNode?.flipRight(0.2)
+            spawnExperienceNode(experience, position: tileYOffset, delay: 0.3)
+            currentTileNode?.flip(delay: 0.2)
         default:
             break
         }
     }
     
-    override func createOrRetrieveBodyNode(color: UIColor?, position: SCNVector3 = SCNVector3(), direction: Compass = Compass.NORTH, delay: NSTimeInterval = 0.0) -> SCNFlipTileNode
+    func createOrRetrieveBodyNode(color: UIColor?, position: SCNVector3 = SCNVector3(), direction: Compass = Compass.NORTH, delay: NSTimeInterval = 0.0) -> SCNFlipTileNode
     {
-        if bodyNode == nil {
+        if currentTileNode == nil {
             if slotNodes[carrouselIndex].childNodes.count > 0 {
-                bodyNode = slotNodes[carrouselIndex].childNodes[0] as? SCNFlipTileNode
+                currentTileNode = slotNodes[carrouselIndex].childNodes[0] as? SCNFlipTileNode
             } else {
-                bodyNode = SCNFlipTileNode(color: color, direction: direction)
-                slotNodes[carrouselIndex].addChildNode(bodyNode!)
-                bodyNode?.appear(delay)
+                currentTileNode = SCNFlipTileNode(color: color, direction: direction)
+                slotNodes[carrouselIndex].addChildNode(currentTileNode!)
+                currentTileNode?.appear(delay)
             }
         }
         if color != nil {
-            bodyNode?.colorize(color!, delay: delay)
+            currentTileNode?.colorize(color!, delay: delay)
         }
-        return bodyNode!
+        return currentTileNode!
     }
 
     func rotateCarrousel() {

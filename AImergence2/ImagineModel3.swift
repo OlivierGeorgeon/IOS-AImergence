@@ -16,7 +16,8 @@ class ImagineModel3: ImagineModel2
         case 00:
             robotNode.feelLeft()
             if leftFlippableNode == nil  {
-                leftFlippableNode = createFlipTileNode(tileColor(experience), position: robotNode.positionCell(robotNode.robot.cellLeft())  + tileYOffset, direction: .SOUTH, delay: 0.2)
+                leftFlippableNode = createFlipTileNode(tileColor(experience), position: robotNode.positionCell(robotNode.robot.cellLeft())  + tileYOffset, direction: .SOUTH)
+                leftFlippableNode?.appear(0.2)
             } else {
                 leftFlippableNode?.colorize(tileColor(experience), delay: 0.2)
             }
@@ -24,17 +25,18 @@ class ImagineModel3: ImagineModel2
         case 01:
             robotNode.feelLeft()
             if leftFlippableNode == nil  {
-                leftFlippableNode = createFlipTileNode(tileColor(experience), position: robotNode.positionCell(robotNode.robot.cellLeft())  + tileYOffset, delay: 0.2)
+                leftFlippableNode = createFlipTileNode(tileColor(experience), position: robotNode.positionCell(robotNode.robot.cellLeft())  + tileYOffset)
+                leftFlippableNode?.appearAndFlip(false, delay: 0.2)
             } else {
-                leftFlippableNode?.colorize(tileColor(experience), delay: 0.2)
+                leftFlippableNode?.colorizeAndFlip(tileColor(experience), clockwise: false, delay: 0.2)
             }
-            leftFlippableNode?.flipLeft(0.2)
-            rightFlippableNode?.flipRight(0.2)
+            rightFlippableNode?.flip(delay: 0.2)
             spawnExperienceNode(experience, position: robotNode.positionCell(robotNode.robot.cellLeft()) + tileYOffset, delay: 0.2)
         case 10:
             robotNode.feelRight()
             if rightFlippableNode == nil  {
-                rightFlippableNode = createFlipTileNode(tileColor(experience), position: robotNode.positionCell(robotNode.robot.cellRight())  + tileYOffset, direction: .SOUTH, delay: 0.2)
+                rightFlippableNode = createFlipTileNode(tileColor(experience), position: robotNode.positionCell(robotNode.robot.cellRight())  + tileYOffset, direction: .SOUTH)
+                rightFlippableNode?.appear(0.2)
             } else {
                 rightFlippableNode?.colorize(tileColor(experience), delay: 0.2)
             }
@@ -42,12 +44,12 @@ class ImagineModel3: ImagineModel2
         case 11:
             robotNode.feelRight()
             if rightFlippableNode == nil  {
-                rightFlippableNode = createFlipTileNode(tileColor(experience), position: robotNode.positionCell(robotNode.robot.cellRight())  + tileYOffset, delay: 0.2)
+                rightFlippableNode = createFlipTileNode(tileColor(experience), position: robotNode.positionCell(robotNode.robot.cellRight())  + tileYOffset)
+                rightFlippableNode?.appearAndFlip(delay: 0.2)
             } else {
-                rightFlippableNode?.colorize(tileColor(experience), delay: 0.2)
+                rightFlippableNode?.colorizeAndFlip(tileColor(experience), delay: 0.2)
             }
-            leftFlippableNode?.flipLeft(0.2)
-            rightFlippableNode?.flipRight(0.2)
+            leftFlippableNode?.flip(false, delay: 0.2)
             spawnExperienceNode(experience, position: robotNode.positionCell(robotNode.robot.cellRight()) + tileYOffset, delay: 0.2)
         default:
             robotNode.jump()
@@ -64,19 +66,7 @@ class ImagineModel3: ImagineModel2
     }
     
     func explodeNode(node: SCNPhenomenonNode, delay: NSTimeInterval = 0) {
-        let placeNode = SCNNode()
-        placeNode.position = node.position
-        placeNode.setValue(node.color(), forKey: "color")
-        worldNode.addChildNode(placeNode)
-        node.runAction(SCNAction.sequence([SCNAction.waitForDuration(delay), SCNAction.removeFromParentNode()]))
-        placeNode.runAction(SCNAction.sequence([SCNAction.waitForDuration(delay), SCNAction.runBlock(explode), SCNAction.waitForDuration(2), SCNAction.removeFromParentNode()]))
-    }
-    
-    func explode(placeNode: SCNNode) {
-        if let particles = SCNParticleSystem(named: "Confetti.scnp", inDirectory: nil) {
-            particles.particleColor = placeNode.valueForKey("color") as! UIColor
-            placeNode.addParticleSystem(particles)
-        }
+        node.runAction(SCNAction.sequence([SCNAction.waitForDuration(delay), SCNAction.runBlock(node.explode), SCNAction.waitForDuration(2), SCNAction.removeFromParentNode()]))
     }
 }
 

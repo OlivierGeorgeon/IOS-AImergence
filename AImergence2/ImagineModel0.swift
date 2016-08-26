@@ -18,7 +18,6 @@ class ImagineModel0
     let tileYOffset = SCNVector3(0, -5, 0)
 
     var tileGeometries = [SCNBox]()
-    var bodyNode: SCNFlipTileNode?
     var robotNode: SCNRobotNode!
     var constraint: SCNLookAtConstraint!
 
@@ -110,7 +109,8 @@ class ImagineModel0
         node.position = position
         node.hidden = true
         worldNode.addChildNode(node)
-        node.runAction(SCNAction.sequence([SCNAction.waitForDuration(delay), SCNAction.unhide()]))
+        //node.runAction(SCNAction.sequence([SCNAction.waitForDuration(delay), SCNAction.unhide()]))
+        node.appear(delay)
         return node
     }
     

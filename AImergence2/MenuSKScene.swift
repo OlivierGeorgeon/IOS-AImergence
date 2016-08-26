@@ -104,6 +104,7 @@ class MenuSKScene: PositionedSKScene {
         } else {
             backgroundNode.position = CGPoint(x: size.width / 2, y: size.height / 2)
             tipInviteNode.text = longTipInvit
+            //tipInviteNode.text = "We need your help to develop Little AI! Please consider making a small donatio"
             tip0Node?.position = CGPoint(x: size.width / 2 - 340, y: 260)
             tip1Node?.position = CGPoint(x: size.width / 2, y: 140)
             tip2Node?.position = CGPoint(x: size.width / 2 + 340, y: 210)
@@ -114,6 +115,7 @@ class MenuSKScene: PositionedSKScene {
         while tipInviteNode.frame.size.width >= self.size.width {
             tipInviteNode.fontSize -= 1.0
         }
+        //print("tipInviteNode fontSize: \(tipInviteNode.fontSize), Text: " + tipInviteNode.text!)
     }
     
     func createButtons(frameSize: CGSize) -> [SKNode]

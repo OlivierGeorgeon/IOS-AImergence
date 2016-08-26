@@ -11,8 +11,13 @@ import SceneKit
 
 class SCNPhenomenonNode: SCNNode {
     
+    let headNode = SCNNode()
+
+    var headColor = UIColor(red: 150/256, green: 150/256, blue: 150/256, alpha: 1)
+    
     override init() {
         super.init()
+        self.hidden = true
     }
     
     convenience init(color: UIColor) {
@@ -24,30 +29,50 @@ class SCNPhenomenonNode: SCNNode {
         material.specular.contents = UIColor.whiteColor()
         tileGeometry.materials = [material]
 
-        self.geometry = tileGeometry
-        self.hidden = true
+        headNode.geometry = tileGeometry
+        addChildNode(headNode)
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
-    func colorize(color: UIColor, delay: NSTimeInterval = 0.0) {
-        func colorizeBloc(node: SCNNode) {
-            node.geometry!.firstMaterial!.diffuse.contents = color
+    func appear(delay: NSTimeInterval = 0) {
+        runAction(SCNAction.sequence([SCNAction.waitForDuration(delay), SCNAction.unhide()]))
+    }
+    
+    func colorizeHeadBloc(node: SCNNode) {
+        if let phenomenonNode  = node as? SCNPhenomenonNode {
+            phenomenonNode.headNode.geometry!.firstMaterial!.diffuse.contents = phenomenonNode.headColor
         }
-        
+    }
+
+    func colorize(color: UIColor, delay: NSTimeInterval = 0.0) {
+        headColor = color
         let actionWait = SCNAction.waitForDuration(delay)
-        let actionColorize = SCNAction.runBlock(colorizeBloc)
+        let actionColorize = SCNAction.runBlock(colorizeHeadBloc)
         runAction(SCNAction.sequence([actionWait, actionColorize]))
-        //geometry!.firstMaterial!.diffuse.contents = color
     }
     
     func color() -> UIColor {
-        if let color = geometry?.firstMaterial?.diffuse.contents as? UIColor {
+        if let color = headNode.geometry?.firstMaterial?.diffuse.contents as? UIColor {
             return color
         } else {
             return UIColor(red: 150/256, green: 150/256, blue: 150/256, alpha: 1)
         }
+    }
+    
+    func explode(node: SCNNode) {
+        if let phenomenonNode = node as? SCNPhenomenonNode {
+            phenomenonNode.hideChildren()
+            if let particles = SCNParticleSystem(named: "Confetti.scnp", inDirectory: nil) {
+                particles.particleColor = phenomenonNode.color()
+                phenomenonNode.addParticleSystem(particles)
+            }
+        }
+    }
+    
+    func hideChildren() {
+        headNode.hidden = true
     }
 }
