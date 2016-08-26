@@ -53,11 +53,10 @@ class ImagineViewController: UIViewController {
     }
     
     func displayLevel(gameModel: GameModel0?, okEnabled: Bool) {
+        var textViewHidden = false
         if gameModel == nil {
             // Fix the bug that prevents the localization of UITextView in the storyboard from working.
             self.textView.text = NSLocalizedString("You must reach the score of 10", comment: "Message in the Imagine window when the user tries to see the imaginary model before reaching the score of 10.");
-            textView.hidden = false
-            textView.font = UIFont.systemFontOfSize(15) // fix the bug that ignores the storyboard font when "Selectable" is unchecked in the storyboard.
             imagineModel = nil
             sceneView.scene = nil
         } else {
@@ -65,51 +64,35 @@ class ImagineViewController: UIViewController {
             switch levelNumber {
             case 0:
                 textView.text = NSLocalizedString("Excellent 0", comment: "Message in the Imagine window on Levels 0.");
-                textView.hidden = false
             case 1:
                 textView.text = NSLocalizedString("Excellent 1", comment: "Message in the Imagine window on Levels 1.");
-                textView.hidden = false
             case 2:
                 textView.text = NSLocalizedString("Excellent 2", comment: "Message in the Imagine window on Levels 2.");
-                textView.hidden = false
             case 3:
                 textView.text = NSLocalizedString("Excellent 3", comment: "Message in the Imagine window on Levels 3.");
-                textView.hidden = false
             case 4:
                 textView.text = NSLocalizedString("Excellent 4", comment: "Message in the Imagine window on Levels 4.");
-                textView.hidden = false
             case 5:
                 textView.text = NSLocalizedString("Excellent 5", comment: "Message in the Imagine window on Levels 5.");
-                textView.hidden = false
             case 6:
                 textView.text = NSLocalizedString("Excellent 6", comment: "Message in the Imagine window on Levels 6.");
-                textView.hidden = false
             case 7:
                 textView.text = NSLocalizedString("Excellent 7", comment: "Message in the Imagine window on Levels 7.");
-                textView.hidden = false
             case 8:
                 textView.text = NSLocalizedString("Excellent 8", comment: "Message in the Imagine window on Levels 8.");
-                textView.hidden = false
             case 9, 10:
                 textView.text = NSLocalizedString("Drag the 3D scene to move the camera", comment: "Message in the Imagine window on Levels 9.");
-                textView.hidden = false
             case 11:
                 textView.text = NSLocalizedString("Double tap to swap cameras.", comment: "Message in the Imagine window on Levels 10 and 11.");
-                textView.hidden = false
             //case 12:
             //    textView.text = NSLocalizedString("Replay without bumping", comment: "Message in the Imagine window on Level 12.");
-            //    textView.hidden = false
             case 12, 13:
                 textView.text = NSLocalizedString("Explore your environment", comment: "Message in the Imagine window on Levels 15 and 16.");
-                textView.hidden = false
             case 17:
                 textView.text = NSLocalizedString("You won!", comment: "Message in the Imagine window on Levels 17 (last).");
-                textView.hidden = false
             default:
-                textView.hidden = true
+                textViewHidden = true
             }
-            //textView.font = UIFont.systemFontOfSize(15)
-            textView.font = UIFont.preferredFontForTextStyle(UIFontTextStyleBody)
 
             let aClass:AnyClass? =  NSClassFromString("Little_AI.ImagineModel\(levelNumber)")
             if let imagineModelType = aClass as? ImagineModel0.Type
@@ -123,10 +106,12 @@ class ImagineViewController: UIViewController {
             } else {
                 okButton.enabled = false
                 experimentTried = gameModel!.level.experiments.map({_ in false})
-            }
-            
+            }            
             sceneViewSetup()
         }
+        textView.hidden = textViewHidden
+        textView.font = UIFont.preferredFontForTextStyle(UIFontTextStyleBody)
+        textView.scrollRangeToVisible(NSMakeRange(0, 0))
     }
     
     func tap(gesture:UITapGestureRecognizer) {}
@@ -150,8 +135,13 @@ class ImagineViewController: UIViewController {
     }
 
     override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
-        super.viewWillTransitionToSize(size, withTransitionCoordinator: coordinator)
+        //super.viewWillTransitionToSize(size, withTransitionCoordinator: coordinator)
         sceneView.stop(nil)
         sceneView.play(nil)
+        coordinator.animateAlongsideTransition({ (UIViewControllerTransitionCoordinatorContext) -> Void in }, completion: { (UIViewControllerTransitionCoordinatorContext) -> Void in
+            // Seems to fix a Swift bug that does not refresh the textview properly:
+            self.textView.font = UIFont.preferredFontForTextStyle(UIFontTextStyleBody)
+            self.textView.scrollRangeToVisible(NSMakeRange(0, 0))
+        })
     }
 }

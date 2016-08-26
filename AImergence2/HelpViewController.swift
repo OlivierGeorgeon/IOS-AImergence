@@ -59,18 +59,16 @@ class HelpViewController: UIViewController {
             textView.selectable = false
         }
         textView.text = helpBlobArray[level]
-        //textView.font = UIFont.systemFontOfSize(15)
-        textView.font = UIFont.preferredFontForTextStyle(UIFontTextStyleCallout)
+        textView.font = UIFont.preferredFontForTextStyle(UIFontTextStyleBody)
+        textView.scrollRangeToVisible(NSMakeRange(0, 0))
     }
     
     override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
-        // seems to fix a bug that the textview won't display entirely
+        super.viewWillTransitionToSize(size, withTransitionCoordinator: coordinator)
         coordinator.animateAlongsideTransition({ (UIViewControllerTransitionCoordinatorContext) -> Void in }, completion: { (UIViewControllerTransitionCoordinatorContext) -> Void in
-            //let temp = self.textView.text
-            //self.textView.text = ""
-            //self.textView.text = temp
-            //self.textView.font = UIFont.systemFontOfSize(15)
+            // Seems to fix a Swift bug that does not refresh the textview properly
+            self.textView.font = UIFont.preferredFontForTextStyle(UIFontTextStyleBody)
+            self.textView.scrollRangeToVisible(NSMakeRange(0, 0))
         })
     }
-  
 }

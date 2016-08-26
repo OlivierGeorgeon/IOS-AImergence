@@ -176,37 +176,11 @@ class ImagineModel5: ImagineModel4
         }
     }
     
-    /*
-    func createOrRetrieveBodyNode(color: UIColor?, position: SCNVector3 = SCNVector3(), direction:Compass = .NORTH, delay: NSTimeInterval = 0.0) -> SCNFlipTileNode {
-        if bodyNode == nil {
-            if nextBodyNode == nil {
-                bodyNode = SCNFlipTileNode(color: color, direction: direction)
-                bodyNode?.position = position
-                bodyNode?.appear(delay)
-                worldNode.addChildNode(bodyNode!)
-                if direction == .NORTH {
-                    nextBodyNodeDirection = .SOUTH
-                } else {
-                    nextBodyNodeDirection = .NORTH
-                }
-            } else {
-                bodyNode = nextBodyNode
-                nextBodyNode = nil
-            }
-        }
-        if color != nil {
-            bodyNode?.colorize(color!, delay: delay)
-        }
-        createNextBodyNode(delay)
-        return bodyNode!
-    }*/
-    
     func createNextTileNode() {
         if nextTileNode == nil && nextBodyNodeDirection != nil && canKnowNextBodyNode {
             nextTileNode = SCNFlipTileNode(color: nil, direction: nextBodyNodeDirection!)
             nextTileNode.position = positionNextBodyNode
             worldNode.addChildNode(nextTileNode)
-            //nextBodyNode.appear(delay)
             nextTileNode.appear()
             nextTileNode.runAction(moveLeft)
             if nextBodyNodeDirection == .NORTH {
