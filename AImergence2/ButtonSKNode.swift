@@ -14,10 +14,10 @@ class ButtonSKNode: SKNode
 {
     let button: BUTTON
     let actionAppear: SKAction
-    let actionAppearScale   = SKAction.scaleTo(0.9, duration: 0.2)
+    let actionAppearScale   = SKAction.scaleTo(0.9, duration: 0.3)
     let actionPulse: SKAction
     let actionDisappear: SKAction
-    let actionDisappearScale   = SKAction.scaleTo(0.0, duration: 0.2)
+    let actionDisappearScale   = SKAction.scaleTo(0.0, duration: 0.3)
     let actionExpand: SKAction
     let actionCollapse: SKAction
     let actionReduce: SKAction
@@ -38,8 +38,8 @@ class ButtonSKNode: SKNode
         self.backgroundNode = SKSpriteNode(texture: self.activatedTexture)
         
         let appearPath = UIBezierPath()
-        appearPath.addArcWithCenter(CGPoint(x: 0, y: 120), radius: 60, startAngle: -CGFloat(M_PI) / 2 , endAngle: CGFloat(M_PI) / 2, clockwise: true)
-        actionAppear = SKAction.followPath(appearPath.CGPath, asOffset: false, orientToPath: false, duration: 0.2)
+        appearPath.addArcWithCenter(CGPoint(x: 0, y: 90), radius: 90, startAngle: -CGFloat(M_PI) / 2 , endAngle: CGFloat(M_PI) / 2, clockwise: true)
+        actionAppear = SKAction.followPath(appearPath.CGPath, asOffset: false, orientToPath: false, duration: 0.3)
         actionAppear.timingMode = .EaseOut
         actionAppearScale.timingMode = .EaseOut
 
@@ -52,8 +52,8 @@ class ButtonSKNode: SKNode
         actionPulse = SKAction.sequence([actionFirstPulseUp, SKAction.repeatActionForever(SKAction.sequence([actionPulseDown, actionPulseUp]))])
 
         let disappearPath = UIBezierPath()
-        disappearPath.addArcWithCenter(CGPoint(x: 0, y: 120), radius: 60, startAngle: CGFloat(M_PI) / 2 , endAngle: -CGFloat(M_PI) / 2, clockwise: true)
-        actionDisappear = SKAction.followPath(disappearPath.CGPath, asOffset: false, orientToPath: false, duration: 0.2)
+        disappearPath.addArcWithCenter(CGPoint(x: 0, y: 90), radius: 90, startAngle: CGFloat(M_PI) / 2 , endAngle: -CGFloat(M_PI) / 2, clockwise: true)
+        actionDisappear = SKAction.followPath(disappearPath.CGPath, asOffset: false, orientToPath: false, duration: 0.3)
         actionDisappear.timingMode = .EaseIn
         actionDisappearScale.timingMode = .EaseIn
         
@@ -77,7 +77,6 @@ class ButtonSKNode: SKNode
         
         addChild(backgroundNode)
         backgroundNode.setScale(0.0)
-        zPosition = -1
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -112,7 +111,7 @@ class ButtonSKNode: SKNode
         removeActionForKey("expand")
         removeActionForKey("appearing")
         runAction(actionAppear, withKey: "appearing")
-        if !visible {
+        if !visible && !pulsing {
             backgroundNode.runAction(actionAppearScale)
         }
         visible = true

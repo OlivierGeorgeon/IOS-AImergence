@@ -33,9 +33,9 @@ class RobotSKNode: SKNode
         super.init()
         
         zPosition = 5
-        //imageNode.size = CGSize(width: 202, height: 210)
         addChild(imageNode)
         instructionButtonNode.zPosition = -3
+        //instructionButtonNode.position = CGPoint(x: 0, y: 180)
         addChild(instructionButtonNode)
         imagineButtonNode.zPosition = -2
         addChild(imagineButtonNode)
