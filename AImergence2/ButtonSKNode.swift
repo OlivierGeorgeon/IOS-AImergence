@@ -86,7 +86,7 @@ class ButtonSKNode: SKNode
     func expand() {
         removeActionForKey("expand")
         runAction(actionExpand, withKey: "expand")
-        if !visible { // avoids saccade when already expanded
+        if !visible && !pulsing  { // avoids saccade when already expanded
             backgroundNode.runAction(actionAppearScale)
         }
         visible = true

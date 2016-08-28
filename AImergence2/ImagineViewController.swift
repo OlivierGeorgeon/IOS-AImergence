@@ -88,6 +88,10 @@ class ImagineViewController: UIViewController {
             //    textView.text = NSLocalizedString("Replay without bumping", comment: "Message in the Imagine window on Level 12.");
             case 12, 13:
                 textView.text = NSLocalizedString("Explore your environment", comment: "Message in the Imagine window on Levels 15 and 16.");
+            case 14:
+                textView.text = NSLocalizedString("Excellent 14", comment: "Message in the Imagine window on Levels 14.");
+            case 16:
+                textView.text = NSLocalizedString("Excellent 16", comment: "Message in the Imagine window on Levels 16.");
             case 17:
                 textView.text = NSLocalizedString("You won!", comment: "Message in the Imagine window on Levels 17 (last).");
             default:

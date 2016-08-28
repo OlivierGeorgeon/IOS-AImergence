@@ -18,6 +18,8 @@
 "Excellent 6" = "Vérifiez que les couleurs des interactions correspondent à la géométrie de l'objet avec lequel Little AI interagit: vert pour les faces arrondies et rouge pour les faces plates. Les couleurs que vous avez choisies devraient reflèter ces propriétés physiques du monde. Little AI exploite ce savoir pour vivre une vie heureuse !";
 "Excellent 7" = "Merveilleux! Quand vous rejouez des séquences d'interaction en appuyant dessus dans la trace, vous ré-exécutez un programme que vous avez précédemment appris. C'est comme ça qu'un robot autonome peut se programmer lui-même !";
 "Excellent 8" = "Dans ce niveau, vous pouvez voir que la commande non informative bascule l'objet sans vous informer du sens dans lequel il est. Laissez l'interaction produite par cette commande en blanc car elle ne transmet aucune information sur l'état physique du monde.";
+"Excellent 14" = "Vous avez une chance sur deux que les sens de rotation (droite ou gauche) correspondent à ce que vous croyiez avant d'ouvir le mode exploratoire, mais ça n'a pas d'importance. Le monde réel, s'il existe, est peut-être entièrement inversé par rapport à ce que vous croyez !";
+"Excellent 16" = "Vous pouvez gagner le niveau 16 avant de comprendre la signification de chaque commande et interaction. La représentation spatiale offerte par le mode exploratoire vous aide à corriger les contradictions dans ce que vous croyiez avoir compris.";
 "Drag the 3D scene to move the camera" = "Glissez la scène 3D pour changer l'angle de vue.";
 "Double tap to swap cameras." = "Appuyez deux fois sur la scène 3D pour passer d'un point de vue à un autre.";
 "Explore your environment" = "Explorez votre environnement avant de passer au niveau suivant.";
