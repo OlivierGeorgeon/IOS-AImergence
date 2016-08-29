@@ -139,13 +139,13 @@ class ImagineViewController: UIViewController {
     }
 
     override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
-        //super.viewWillTransitionToSize(size, withTransitionCoordinator: coordinator)
-        sceneView.stop(nil)
-        sceneView.play(nil)
+        super.viewWillTransitionToSize(size, withTransitionCoordinator: coordinator)
         coordinator.animateAlongsideTransition({ (UIViewControllerTransitionCoordinatorContext) -> Void in }, completion: { (UIViewControllerTransitionCoordinatorContext) -> Void in
             // Seems to fix a Swift bug that does not refresh the textview properly:
             self.textView.font = UIFont.preferredFontForTextStyle(UIFontTextStyleBody)
             self.textView.scrollRangeToVisible(NSMakeRange(0, 0))
+            self.sceneView.stop(nil)
+            self.sceneView.play(nil)
         })
     }
 }

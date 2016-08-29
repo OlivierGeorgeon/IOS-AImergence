@@ -33,7 +33,7 @@
 		<array>
 			<string>Experiment with each command alone several times in a row. In the trace, you will see that one command always yields the same interaction within a given situation (same shape and same color).</string>
 			<string>This command allows you to observe the world without changing it. We call it an &quot;observational command&quot;, and its resulting interactions &quot;observational interactions&quot;.</string>
-			<string>Use the color of observational intractions to avoid performing a strongly unpleasant interaction on the next turn.</string>
+			<string>Use the color of observational interactions to avoid performing a strongly unpleasant interaction on the next turn.</string>
 		</array>
 		<array>
 			<string>In Level 6, the commands have the same effects as in Level 5, but they have been rearranged in a random order, and are all initially represented by circles.</string>
