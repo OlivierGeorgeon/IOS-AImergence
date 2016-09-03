@@ -32,14 +32,14 @@ class MenuSKScene: PositionedSKScene {
     let levelXOffset = CGVector( dx: 120, dy: 0)
     let levelYOffset = CGVector( dx:  0, dy: -160)
     let thankYou = NSLocalizedString("Thank you!", comment: "In the level window when the user has paid a tip.")
+    let tip0Node = TipSKNode(size: CGSize(width: 140, height: 140))
+    let tip1Node = TipSKNode(size: CGSize(width: 160, height: 160))
+    let tip2Node = TipSKNode(size: CGSize(width: 160, height: 160))
 
     weak var userDelegate: MenuSceneDelegate?
 
-    var tip0Node: TipSKNode?
-    var tip1Node: TipSKNode?
-    var tip2Node: TipSKNode?
-    var shortTipInvit = ""
-    var longTipInvit = ""
+    var shortTipInvit = NSLocalizedString("Connect", comment: "In the level window when there is no network connection.")
+    var longTipInvit = NSLocalizedString("Connect", comment: "In the level window when there is no network connection.")
     var buttonNodes = [SKNode]()
     var previousGameScene:GameSKScene?
 
@@ -69,7 +69,25 @@ class MenuSKScene: PositionedSKScene {
         originNode.addChild(tipInviteNode)
 
         let products = userDelegate!.getProducts()
-        
+
+        originNode.addChild(tip0Node)
+        originNode.addChild(tip1Node)
+        originNode.addChild(tip2Node)
+
+
+        if products.count > 0 {
+            shortTipInvit =  products[0].localizedDescription
+            tip0Node.product(products[0])
+            if products.count > 1 {
+                longTipInvit =  products[1].localizedDescription
+                tip1Node.product(products[1])
+                if products.count > 2 {
+                    tip2Node.product(products[2])
+                }
+            }
+        }
+
+        /*
         if products.count > 0 {
             shortTipInvit =  products[0].localizedDescription
             tip0Node = TipSKNode(product: products[0], size: CGSize(width: 140, height: 140))
@@ -84,6 +102,7 @@ class MenuSKScene: PositionedSKScene {
                 }
             }
         }
+         */
         
         if userDelegate!.isPaidTip() {
             shortTipInvit = thankYou
@@ -98,16 +117,16 @@ class MenuSKScene: PositionedSKScene {
         if frameSize.height > frameSize.width {
             backgroundNode.position = CGPoint(x: 600, y: 600)
             tipInviteNode.text = shortTipInvit
-            tip0Node?.position = CGPoint(x: size.width / 2 - 200, y: 260)
-            tip1Node?.position = CGPoint(x: size.width / 2 - 20, y: 140)
-            tip2Node?.position = CGPoint(x: size.width / 2 + 200, y: 210)
+            tip0Node.position = CGPoint(x: size.width / 2 - 200, y: 260)
+            tip1Node.position = CGPoint(x: size.width / 2 - 20, y: 140)
+            tip2Node.position = CGPoint(x: size.width / 2 + 200, y: 210)
         } else {
             backgroundNode.position = CGPoint(x: size.width / 2, y: size.height / 2)
             tipInviteNode.text = longTipInvit
             //tipInviteNode.text = "We need your help to develop Little AI! Please consider making a small donatio"
-            tip0Node?.position = CGPoint(x: size.width / 2 - 340, y: 260)
-            tip1Node?.position = CGPoint(x: size.width / 2, y: 140)
-            tip2Node?.position = CGPoint(x: size.width / 2 + 340, y: 210)
+            tip0Node.position = CGPoint(x: size.width / 2 - 340, y: 260)
+            tip1Node.position = CGPoint(x: size.width / 2, y: 140)
+            tip2Node.position = CGPoint(x: size.width / 2 + 340, y: 210)
         }
         
         tipInviteNode.position = CGPoint(x: self.size.width / 2, y: 420)
@@ -205,22 +224,22 @@ class MenuSKScene: PositionedSKScene {
             tutorNode.tapSound(tipInviteNode)
         }
         
-        if tip0Node != nil {
-            if tip0Node!.containsPoint(positionInScene) {
-                tip0Node!.runAction(actionPress)
-                userDelegate?.leaveTip(tip0Node!.product)
+        if tip0Node.containsPoint(positionInScene) {
+            tip0Node.runAction(actionPress)
+            if tip0Node.product != nil {
+                userDelegate?.leaveTip(tip0Node.product!)
             }
         }
-        if tip1Node != nil {
-            if tip1Node!.containsPoint(positionInScene) {
-                tip1Node!.runAction(actionPress)
-                userDelegate?.leaveTip(tip1Node!.product)
+        if tip1Node.containsPoint(positionInScene) {
+            tip1Node.runAction(actionPress)
+            if tip1Node.product != nil {
+                userDelegate?.leaveTip(tip1Node.product!)
             }
         }
-        if tip2Node != nil {
-            if tip2Node!.containsPoint(positionInScene) {
-                tip2Node!.runAction(actionPress)
-                userDelegate?.leaveTip(tip2Node!.product)
+        if tip2Node.containsPoint(positionInScene) {
+            tip2Node.runAction(actionPress)
+            if tip2Node.product != nil {
+                userDelegate?.leaveTip(tip2Node.product!)
             }
         }
     }

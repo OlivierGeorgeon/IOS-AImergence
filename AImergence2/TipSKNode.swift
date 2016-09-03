@@ -13,29 +13,43 @@ class TipSKNode: SKSpriteNode
 {
     let titleFont = UIFont.preferredFontForTextStyle(UIFontTextStyleTitle1)
     let bodyFont = UIFont.preferredFontForTextStyle(UIFontTextStyleBody)
-    let product: SKProduct
+    let priceNode = SKLabelNode()
     
-    init(product: SKProduct, size: CGSize) {
-        self.product = product
-        
+    var product: SKProduct?
+    
+    init(size: CGSize) {
         let texture = SKTexture(imageNamed: "tip")
         super.init(texture: texture, color: UIColor.clearColor(), size: size)
 
-        let priceNode = SKLabelNode(text: localizedPrice(product))
         priceNode.fontName = bodyFont.fontName
-        priceNode.fontSize = titleFont.pointSize * 2
         priceNode.fontColor = UIColor.darkGrayColor()
         priceNode.verticalAlignmentMode = .Center
         priceNode.position.x = self.size.width * -0.05
         priceNode.zPosition = 1
-        while priceNode.frame.size.width >= self.size.width * 0.8 {
-            priceNode.fontSize -= 1.0
-        }
+        priceNode.fontSize = titleFont.pointSize * 2
         addChild(priceNode)
+    }
+    
+    convenience init(product: SKProduct, size: CGSize) {
+        self.init(size: size)
+
+        self.product = product
+        priceNode.text = localizedPrice(product)
+        while priceNode.frame.size.width >= self.size.width * 0.8 {
+            priceNode.fontSize -= 1
+        }
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    func product(product: SKProduct) {
+        self.product = product
+        priceNode.text = localizedPrice(product)
+        while priceNode.frame.size.width >= self.size.width * 0.8 {
+            priceNode.fontSize -= 1
+        }
     }
     
     func localizedPrice(product: SKProduct) -> String {
