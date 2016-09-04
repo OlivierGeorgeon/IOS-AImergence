@@ -15,8 +15,6 @@ protocol MenuSceneDelegate: class
     func updateLevel(level: Int)
     func levelStatus(level: Int) -> Int
     func leaveTip(product: SKProduct)
-    func getProducts() -> [SKProduct]
-    func isPaidTip() -> Bool
     func isSoundEnabled() -> Bool
     func toggleSound() -> Bool
 }
@@ -64,17 +62,19 @@ class MenuSKScene: PositionedSKScene {
         buttonNodes = createButtons(view.frame.size)
         
         tipInviteNode.fontName = bodyFont.fontName
+        tipInviteNode.fontSize = 56
         tipInviteNode.fontColor = UIColor.darkGrayColor()
         tipInviteNode.verticalAlignmentMode = .Center
         originNode.addChild(tipInviteNode)
-
-        let products = userDelegate!.getProducts()
 
         originNode.addChild(tip0Node)
         originNode.addChild(tip1Node)
         originNode.addChild(tip2Node)
 
-
+        //let products = userDelegate!.getProducts()
+        //displayProducts(products, isPaidTip: userDelegate!.isPaidTip())
+        
+        /*
         if products.count > 0 {
             shortTipInvit =  products[0].localizedDescription
             tip0Node.product(products[0])
@@ -87,29 +87,40 @@ class MenuSKScene: PositionedSKScene {
             }
         }
 
-        /*
-        if products.count > 0 {
-            shortTipInvit =  products[0].localizedDescription
-            tip0Node = TipSKNode(product: products[0], size: CGSize(width: 140, height: 140))
-            originNode.addChild(tip0Node!)
-            if products.count > 1 {
-                longTipInvit =  products[1].localizedDescription
-                tip1Node = TipSKNode(product: products[1], size: CGSize(width: 160, height: 160))
-                originNode.addChild(tip1Node!)
-                if products.count > 2 {
-                    tip2Node = TipSKNode(product: products[2], size: CGSize(width: 160, height: 160))
-                    originNode.addChild(tip2Node!)
-                }
-            }
-        }
-         */
-        
         if userDelegate!.isPaidTip() {
             shortTipInvit = thankYou
             longTipInvit = shortTipInvit
         }
-        
+        */
         super.didMoveToView(view)
+    }
+    
+    func displayProducts(products: [SKProduct], isPaidTip: Bool) {
+        if products.count > 0 {
+            shortTipInvit =  products[0].localizedDescription
+            tip0Node.product(products[0])
+            if products.count > 1 {
+                longTipInvit =  products[1].localizedDescription
+                tip1Node.product(products[1])
+                if products.count > 2 {
+                    tip2Node.product(products[2])
+                }
+            }
+        }
+        if isPaidTip {
+            shortTipInvit = thankYou
+            longTipInvit = shortTipInvit
+        }
+        if self.size.height >= self.size.width {
+            tipInviteNode.text = shortTipInvit
+        } else {
+            tipInviteNode.text = longTipInvit
+        }
+        tipInviteNode.fontSize = 56
+        // May be called before self.size is initialized. In that case it will be reset by positionInFrame.
+        while tipInviteNode.frame.size.width >= self.size.width - 10 && tipInviteNode.fontSize > 10 {
+            tipInviteNode.fontSize -= 1.0
+        }
     }
     
     override func positionInFrame(frameSize: CGSize) {
@@ -123,18 +134,16 @@ class MenuSKScene: PositionedSKScene {
         } else {
             backgroundNode.position = CGPoint(x: size.width / 2, y: size.height / 2)
             tipInviteNode.text = longTipInvit
-            //tipInviteNode.text = "We need your help to develop Little AI! Please consider making a small donatio"
             tip0Node.position = CGPoint(x: size.width / 2 - 340, y: 260)
             tip1Node.position = CGPoint(x: size.width / 2, y: 140)
             tip2Node.position = CGPoint(x: size.width / 2 + 340, y: 210)
         }
         
         tipInviteNode.position = CGPoint(x: self.size.width / 2, y: 420)
-        tipInviteNode.fontSize = titleFont.pointSize * 2
-        while tipInviteNode.frame.size.width >= self.size.width {
+        tipInviteNode.fontSize = 56 // titleFont.pointSize * 2
+        while tipInviteNode.frame.size.width >= self.size.width - 10 && tipInviteNode.fontSize > 10  {
             tipInviteNode.fontSize -= 1.0
         }
-        //print("tipInviteNode fontSize: \(tipInviteNode.fontSize), Text: " + tipInviteNode.text!)
     }
     
     func createButtons(frameSize: CGSize) -> [SKNode]

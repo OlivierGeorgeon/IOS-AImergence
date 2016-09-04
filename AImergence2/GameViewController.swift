@@ -21,8 +21,6 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
     @IBOutlet weak var imagineViewControllerContainer: UIView!
     @IBOutlet weak var levelButton: UIButton!
     @IBAction func levelButton(sender: UIButton) { showLevelWindow() }
-    //@IBAction func hepButton(sender: UIButton)   { showInstructionWindow() }
-    //@IBAction func worldButton(sender: UIButton) { showImagineWindow() }
     
     static let maxLevelNumber = 17
     
@@ -90,7 +88,6 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
         sceneView.ignoresSiblingOrder = true
         sceneView.presentScene(gameScene)
     
-        //instructionPortraitBottomConstraint = NSLayoutConstraint(item: helpViewControllerContainer, attribute: NSLayoutAttribute.Bottom, relatedBy: NSLayoutRelation.LessThanOrEqual, toItem: bottomLayoutGuide, attribute: NSLayoutAttribute.Bottom, multiplier: 1, constant: -230)
         instructionPortraitBottomConstraint = NSLayoutConstraint(item: helpViewControllerContainer, attribute: NSLayoutAttribute.Bottom, relatedBy: NSLayoutRelation.LessThanOrEqual, toItem: bottomLayoutGuide, attribute: NSLayoutAttribute.Bottom, multiplier: 0.67, constant: 0)
         instructionPortraitBottomConstraint.active = false
         view.addConstraint(instructionPortraitBottomConstraint)
@@ -127,13 +124,16 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
     
     func productsRequest(request: SKProductsRequest, didReceiveResponse response: SKProductsResponse) {
         validProducts = response.products
+        if let scene  = sceneView.scene as? MenuSKScene {
+            scene.displayProducts(validProducts, isPaidTip: paidTip)
+        }
         print("Recieved \(validProducts.count) products from Apple.")
     }
-    
+    /*
     func getProducts() -> [SKProduct] {
         return validProducts
     }
-    
+    */
     func request(request: SKRequest, didFailWithError error: NSError) {
         print("Error fetching product information")
     }
@@ -168,11 +168,11 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
             }
         }
     }
-
+/*
     func isPaidTip() -> Bool {
         return paidTip
     }
-    
+  */
     func nextLevelScene() -> GameSKScene? {
         var nextGameScene:GameSKScene? = nil
         if !interfaceLocks[level][INTERFACE.LEVEL.rawValue] && level < GameViewController.maxLevelNumber {
@@ -300,6 +300,7 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
             menuScene.previousGameScene = scene
             menuScene.userDelegate = self
             menuScene.scaleMode = SKSceneScaleMode.AspectFill
+            menuScene.displayProducts(validProducts, isPaidTip: paidTip)
             sceneView.presentScene(menuScene, transition: scene.transitionUp)
         }
         if let menuScene  = sceneView.scene as? MenuSKScene {
