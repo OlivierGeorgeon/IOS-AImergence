@@ -10,9 +10,9 @@ import SpriteKit
 
 class GameModel0
 {
-    let backgroundColor     = SKColor.lightGrayColor()
-    let color               = UIColor.whiteColor()
-    let titleFont           = UIFont.preferredFontForTextStyle(UIFontTextStyleTitle1)
+    let backgroundColor     = SKColor.lightGray
+    let color               = UIColor.white
+    let titleFont           = UIFont.preferredFont(forTextStyle: UIFontTextStyle.title1)
     let colorNodeRect       = CGRect(x: -60, y:-60, width: 120, height: 120)
     
     let experimentRect: CGRect
@@ -54,26 +54,26 @@ class GameModel0
         let experienceRect = CGRect(x: -40, y: -40, width: 80, height: 80)
         let initialScale = CGFloat(120)/40
         let obsolescence = 100
-        let actionScale = SKAction.scaleTo(1, duration: 0.2)
-        let experimentPaths = [{UIBezierPath(ovalInRect: $0)},{UIBezierPath(rect: $0)}, triangle]
-        let experienceColors = [UIColor.whiteColor(), UIColor(red: 0, green: 0.9, blue: 0, alpha: 1), UIColor.redColor(), UIColor.blueColor(), UIColor.orangeColor()]
+        let actionScale = SKAction.scale(to: 1, duration: 0.2)
+        let experimentPaths = [{UIBezierPath(ovalIn: $0)},{UIBezierPath(rect: $0)}, triangle]
+        let experienceColors = [UIColor.white, UIColor(red: 0, green: 0.9, blue: 0, alpha: 1), UIColor.red, UIColor.blue, UIColor.orange]
 
         let sounds = [[7, 10], [9, 8], [2, 2]]
 
         self.init(experimentRect: experimentRect, experimentPositions: experimentPositions, experienceRect: experienceRect, initialScale: initialScale, obsolescence: obsolescence, actionScale: actionScale, experimentPaths: experimentPaths, experienceColors: experienceColors, sounds: sounds)
     }    
 
-    func moveByVect(point: CGPoint) -> CGVector {
+    func moveByVect(_ point: CGPoint) -> CGVector {
         return CGVector(dx: -40 - point.x, dy: 180 - point.y)
     }
 }
 
-func triangle(rect: CGRect) -> UIBezierPath {
+func triangle(_ rect: CGRect) -> UIBezierPath {
     let path = UIBezierPath()
-    path.moveToPoint(CGPoint(x: rect.minX, y: rect.maxY))
-    path.addLineToPoint(CGPoint(x: rect.maxX, y: rect.maxY))
-    path.addLineToPoint(CGPoint(x:0, y: rect.minY))
-    path.closePath()
+    path.move(to: CGPoint(x: rect.minX, y: rect.maxY))
+    path.addLine(to: CGPoint(x: rect.maxX, y: rect.maxY))
+    path.addLine(to: CGPoint(x:0, y: rect.minY))
+    path.close()
     return path
 }
 

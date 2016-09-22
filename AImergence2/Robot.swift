@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum Compass: Int { case EAST, NORTH, WEST, SOUTH }
+enum Compass: Int { case east, north, west, south }
 
 func ==(lhs: Cell, rhs: Cell) -> Bool {
     return lhs.hashValue == rhs.hashValue
@@ -35,98 +35,98 @@ class Robot {
     }
     
     convenience init() {
-        self.init(i: 1, j: 1, direction: Compass.EAST)
+        self.init(i: 1, j: 1, direction: Compass.east)
     }
  
     func turnLeft() {
         switch direction {
-        case .EAST, .NORTH, .WEST:
+        case .east, .north, .west:
             direction = Compass(rawValue: direction.rawValue + 1)!
-        case .SOUTH:
-            direction = Compass.EAST
+        case .south:
+            direction = Compass.east
         }
     }
         
     func turnRight() {
         switch direction {
-        case .NORTH, .WEST, .SOUTH:
+        case .north, .west, .south:
             direction = Compass(rawValue: direction.rawValue - 1)!
-        case .EAST:
-            direction = Compass.SOUTH
+        case .east:
+            direction = Compass.south
         }
     }
     
     func moveForward() {
         switch direction {
-        case .EAST:
+        case .east:
             cell.i  += 1
-        case .NORTH:
+        case .north:
             cell.j  += 1
-        case .WEST:
+        case .west:
             cell.i  -= 1
-        case .SOUTH:
+        case .south:
             cell.j  -= 1
         }
     }
     
     func moveBackward() {
         switch direction {
-        case .EAST:
+        case .east:
             cell.i  -= 1
-        case .NORTH:
+        case .north:
             cell.j  -= 1
-        case .WEST:
+        case .west:
             cell.i  += 1
-        case .SOUTH:
+        case .south:
             cell.j  += 1
         }
     }
     
     func cellFront() -> Cell {
         switch direction {
-        case .EAST:
+        case .east:
             return Cell(i: cell.i + 1, j: cell.j)
-        case .NORTH:
+        case .north:
             return Cell(i: cell.i, j: cell.j + 1)
-        case .WEST:
+        case .west:
             return Cell(i: cell.i - 1, j: cell.j)
-        case .SOUTH:
+        case .south:
             return Cell(i: cell.i, j: cell.j - 1)
         }
     }
     func cellBack() -> Cell {
         switch direction {
-        case .EAST:
+        case .east:
             return Cell(i: cell.i - 1, j: cell.j)
-        case .NORTH:
+        case .north:
             return Cell(i: cell.i, j: cell.j - 1)
-        case .WEST:
+        case .west:
             return Cell(i: cell.i + 1, j: cell.j)
-        case .SOUTH:
+        case .south:
             return Cell(i: cell.i, j: cell.j + 1)
         }
     }
     func cellLeft() -> Cell {
         switch direction {
-        case .EAST:
+        case .east:
             return Cell(i: cell.i, j: cell.j + 1)
-        case .NORTH:
+        case .north:
             return Cell(i: cell.i - 1, j: cell.j)
-        case .WEST:
+        case .west:
             return Cell(i: cell.i, j: cell.j - 1)
-        case .SOUTH:
+        case .south:
             return Cell(i: cell.i + 1, j: cell.j)
         }
     }
     func cellRight() -> Cell {
         switch direction {
-        case .EAST:
+        case .east:
             return Cell(i: cell.i, j: cell.j - 1)
-        case .NORTH:
+        case .north:
             return Cell(i: cell.i + 1, j: cell.j)
-        case .WEST:
+        case .west:
             return Cell(i: cell.i, j: cell.j + 1)
-        case .SOUTH:
+        case .south:
             return Cell(i: cell.i - 1, j: cell.j)
         }
     }

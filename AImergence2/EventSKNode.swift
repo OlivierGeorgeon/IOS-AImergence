@@ -11,7 +11,7 @@ import SpriteKit
 class EventSKNode: SKNode
 {
     let frameNode =  SKShapeNode(rect: CGRect(origin: CGPoint(x:-80, y:-46), size: CGSize(width: 280, height: 92)), cornerRadius: 46)
-    let pressAction = SKAction.sequence([SKAction.unhide(), SKAction.waitForDuration(0.1), SKAction.hide()])
+    let pressAction = SKAction.sequence([SKAction.unhide(), SKAction.wait(forDuration: 0.1), SKAction.hide()])
     let gameModel: GameModel0
     let valence: Int
     let experienceNode: ExperienceSKNode
@@ -21,7 +21,7 @@ class EventSKNode: SKNode
         self.valence = experience.valence
         self.experienceNode = ExperienceSKNode(experience: experience, gameModel: gameModel)
         super.init()
-        self.frameNode.hidden = true
+        self.frameNode.isHidden = true
         self.frameNode.fillColor = UIColor(red: 200 / 256, green: 150 / 256, blue: 200 / 256, alpha: 1)
         //self.frameNode.lineWidth = 0
         self.frameNode.strokeColor = UIColor(red: 200 / 256, green: 150 / 256, blue: 200 / 256, alpha: 1)
@@ -43,7 +43,7 @@ class EventSKNode: SKNode
     }
     
     func runPressAction() {
-        self.frameNode.runAction(pressAction)
+        self.frameNode.run(pressAction)
     }
     
     func addValenceNode()
@@ -51,7 +51,7 @@ class EventSKNode: SKNode
         let valenceNode = SKLabelNode()
         //valenceNode.fontName = gameModel.titleFont.fontName
         //valenceNode.fontSize = gameModel.titleFont.pointSize * 2
-        valenceNode.fontName = UIFont.preferredFontForTextStyle(UIFontTextStyleTitle1).fontName
+        valenceNode.fontName = UIFont.preferredFont(forTextStyle: UIFontTextStyle.title1).fontName
         valenceNode.fontSize = 54
         valenceNode.position = CGPoint(x: 95, y: -20)
         valenceNode.text = "\(valence)"
@@ -60,9 +60,9 @@ class EventSKNode: SKNode
         let absValence = abs(valence)
         let dotColor: UIColor
         if valence > 0 {
-            dotColor = UIColor.greenColor()
+            dotColor = UIColor.green
         } else {
-            dotColor = UIColor.redColor()
+            dotColor = UIColor.red
         }
         if absValence > 0 {
             let dotlines = min(absValence, 5)

@@ -23,57 +23,57 @@ class GameModel11: GameModel1
         let experienceRect = CGRect(x: -40, y: -40, width: 80, height: 80)
         let initialScale = CGFloat(100)/40
         let obsolescence = 100
-        let actionScale = SKAction.scaleTo(1, duration: 0.2)
-        let experimentPaths = [{UIBezierPath(ovalInRect: $0)}, halfCircleLeft, triangle, halfCircleRight, triangleUp, trapezoidLeft, {UIBezierPath(rect: $0)}, trapezoidRight]
-        let experienceColors = [UIColor.whiteColor(), UIColor(red: 0, green: 0.9, blue: 0, alpha: 1), UIColor.redColor(), UIColor.blueColor(), UIColor.orangeColor()]
+        let actionScale = SKAction.scale(to: 1, duration: 0.2)
+        let experimentPaths = [{UIBezierPath(ovalIn: $0)}, halfCircleLeft, triangle, halfCircleRight, triangleUp, trapezoidLeft, {UIBezierPath(rect: $0)}, trapezoidRight]
+        let experienceColors = [UIColor.white, UIColor(red: 0, green: 0.9, blue: 0, alpha: 1), UIColor.red, UIColor.blue, UIColor.orange]
         let sounds = [[11, 8], [12, 8], [10, 2], [6 ,1]]
         
         self.init(experimentRect: experimentRect, experimentPositions: experimentPositions, experienceRect: experienceRect, initialScale: initialScale, obsolescence: obsolescence, actionScale: actionScale, experimentPaths: experimentPaths, experienceColors: experienceColors, sounds: sounds)
     }
 }
-func triangleUp(rect: CGRect) -> UIBezierPath {
+func triangleUp(_ rect: CGRect) -> UIBezierPath {
     let path = UIBezierPath()
-    path.moveToPoint(CGPoint(x: rect.minX, y: rect.minY))
-    path.addLineToPoint(CGPoint(x: rect.maxX, y: rect.minY))
-    path.addLineToPoint(CGPoint(x:0, y: rect.maxY))
-    path.closePath()
+    path.move(to: CGPoint(x: rect.minX, y: rect.minY))
+    path.addLine(to: CGPoint(x: rect.maxX, y: rect.minY))
+    path.addLine(to: CGPoint(x:0, y: rect.maxY))
+    path.close()
     return path
 }
 
-func trapezoidLeft(rect: CGRect) -> UIBezierPath {
+func trapezoidLeft(_ rect: CGRect) -> UIBezierPath {
     let path = UIBezierPath()
-    path.moveToPoint(CGPoint(x: rect.minX, y: rect.maxY))
-    path.addLineToPoint(CGPoint(x: rect.maxX, y: rect.maxY * 0.7))
-    path.addLineToPoint(CGPoint(x: rect.maxX, y: rect.minY * 0.7))
-    path.addLineToPoint(CGPoint(x: rect.minX, y: rect.minY))
-    path.closePath()
+    path.move(to: CGPoint(x: rect.minX, y: rect.maxY))
+    path.addLine(to: CGPoint(x: rect.maxX, y: rect.maxY * 0.7))
+    path.addLine(to: CGPoint(x: rect.maxX, y: rect.minY * 0.7))
+    path.addLine(to: CGPoint(x: rect.minX, y: rect.minY))
+    path.close()
     return path
 }
 
-func trapezoidRight(rect: CGRect) -> UIBezierPath {
+func trapezoidRight(_ rect: CGRect) -> UIBezierPath {
     let path = UIBezierPath()
-    path.moveToPoint(CGPoint(x: rect.maxX, y: rect.maxY))
-    path.addLineToPoint(CGPoint(x: rect.minX, y: rect.maxY * 0.7))
-    path.addLineToPoint(CGPoint(x: rect.minX, y: rect.minY * 0.7))
-    path.addLineToPoint(CGPoint(x: rect.maxX, y: rect.minY))
-    path.closePath()
+    path.move(to: CGPoint(x: rect.maxX, y: rect.maxY))
+    path.addLine(to: CGPoint(x: rect.minX, y: rect.maxY * 0.7))
+    path.addLine(to: CGPoint(x: rect.minX, y: rect.minY * 0.7))
+    path.addLine(to: CGPoint(x: rect.maxX, y: rect.minY))
+    path.close()
     return path
 }
 
-func halfCircleLeft(rect: CGRect) -> UIBezierPath {
+func halfCircleLeft(_ rect: CGRect) -> UIBezierPath {
     let path = UIBezierPath()
-    path.addArcWithCenter(CGPoint(), radius: rect.maxX, startAngle: CGFloat(M_PI) / 2 , endAngle: -CGFloat(M_PI) / 2, clockwise: true)
-    path.addLineToPoint(CGPoint(x: rect.maxX, y: rect.minY))
-    path.addLineToPoint(CGPoint(x: rect.maxX, y: rect.maxY))
-    path.closePath()
+    path.addArc(withCenter: CGPoint(), radius: rect.maxX, startAngle: CGFloat(M_PI) / 2 , endAngle: -CGFloat(M_PI) / 2, clockwise: true)
+    path.addLine(to: CGPoint(x: rect.maxX, y: rect.minY))
+    path.addLine(to: CGPoint(x: rect.maxX, y: rect.maxY))
+    path.close()
     return path
 }
 
-func halfCircleRight(rect: CGRect) -> UIBezierPath {
+func halfCircleRight(_ rect: CGRect) -> UIBezierPath {
     let path = UIBezierPath()
-    path.addArcWithCenter(CGPoint(), radius: rect.maxX, startAngle: CGFloat(M_PI) / 2 , endAngle: -CGFloat(M_PI) / 2, clockwise: false)
-    path.addLineToPoint(CGPoint(x: rect.minX, y: rect.minY))
-    path.addLineToPoint(CGPoint(x: rect.minX, y: rect.maxY))
-    path.closePath()
+    path.addArc(withCenter: CGPoint(), radius: rect.maxX, startAngle: CGFloat(M_PI) / 2 , endAngle: -CGFloat(M_PI) / 2, clockwise: false)
+    path.addLine(to: CGPoint(x: rect.minX, y: rect.minY))
+    path.addLine(to: CGPoint(x: rect.minX, y: rect.maxY))
+    path.close()
     return path
 }

@@ -13,17 +13,17 @@ class ShapePopupSKNode: SKNode {
 
     let popupBackground: SKShapeNode
     let actionAppear: SKAction
-    let disappearScale = SKAction.scaleTo(0, duration: 0.1)
+    let disappearScale = SKAction.scale(to: 0, duration: 0.1)
 
     var shapeNodes = [SKShapeNode]()
     var shapeIndex = 0
 
     init(gameModel: GameModel0) {
         popupBackground = SKShapeNode(rect: gameModel.shapePopupRect, cornerRadius: 0)
-        let appearMove = SKAction.moveTo(gameModel.shapePopupPosition, duration: 0.1)
-        let appearScale = SKAction.scaleTo(1, duration: 0.1)
+        let appearMove = SKAction.move(to: gameModel.shapePopupPosition, duration: 0.1)
+        let appearScale = SKAction.scale(to: 1, duration: 0.1)
         actionAppear = SKAction.sequence([SKAction.unhide(), SKAction.group([appearMove, appearScale])])
-        actionAppear.timingMode = .EaseOut
+        actionAppear.timingMode = .easeOut
 
         super.init()
 
@@ -36,12 +36,12 @@ class ShapePopupSKNode: SKNode {
         addChild(popupBackground)
         
         for i in 0..<gameModel.experimentPaths.count {
-            let shapeNode = SKShapeNode(path: gameModel.experimentPaths[i](gameModel.shapeRect).CGPath)
+            let shapeNode = SKShapeNode(path: gameModel.experimentPaths[i](gameModel.shapeRect).cgPath)
             shapeNode.lineWidth = 6
             shapeNode.zPosition = 1
-            shapeNode.lineJoin = .Round
-            shapeNode.strokeColor = UIColor.grayColor()
-            shapeNode.fillColor = UIColor.whiteColor()
+            shapeNode.lineJoin = .round
+            shapeNode.strokeColor = UIColor.gray
+            shapeNode.fillColor = UIColor.white
             if gameModel.shapeOffset.dy == 0 {
                 shapeNode.position = CGPoint(x: Int(gameModel.shapeOrigin.x) + i * Int(gameModel.shapeOffset.dx), y: 0)
             } else {
@@ -56,7 +56,7 @@ class ShapePopupSKNode: SKNode {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func update(shapeIndex: Int) {
+    func update(_ shapeIndex: Int) {
         self.shapeIndex = shapeIndex
         shapeNodes.forEach({$0.lineWidth = 6})
         shapeNodes[shapeIndex].lineWidth = 12
@@ -72,13 +72,13 @@ class ShapePopupSKNode: SKNode {
     }
 
     func appear() {
-        runAction(actionAppear)
+        run(actionAppear)
     }
     
-    func disappear(position: CGPoint) {
-        let disappearMove = SKAction.moveTo(position, duration: 0.1)
+    func disappear(_ position: CGPoint) {
+        let disappearMove = SKAction.move(to: position, duration: 0.1)
         let actionDisappear = SKAction.sequence([SKAction.group([disappearMove, disappearScale]), SKAction.hide()])
-        actionDisappear.timingMode = .EaseIn
-        runAction(actionDisappear)
+        actionDisappear.timingMode = .easeIn
+        run(actionDisappear)
     }
 }

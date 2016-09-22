@@ -26,7 +26,7 @@ class ReshapableSKNode: SKShapeNode
     }
 
     func reshape() {
-        self.path = gameModel.experimentPaths[shapeIndex](rect).CGPath
+        self.path = gameModel.experimentPaths[shapeIndex](rect).cgPath
     }
 }
 

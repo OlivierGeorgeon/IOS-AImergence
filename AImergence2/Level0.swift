@@ -24,7 +24,7 @@ class Level0 {
     init(winScore: Int, historicalDepth: Int, experiments:[Experiment], experiences:[[Experience]]) {
         self.winScore = winScore
         self.historicalDepth = historicalDepth
-        self.valenceTrace = [Int](count:historicalDepth, repeatedValue: 0)
+        self.valenceTrace = [Int](repeating: 0, count: historicalDepth)
         self.experiments = experiments
         self.experiences = experiences
     }
@@ -33,7 +33,7 @@ class Level0 {
         let experiment0 = Experiment(number: 0)
         let experiment1 = Experiment(number: 1, shapeIndex: 1)
         
-        let experiments = GKRandomSource.sharedRandom().arrayByShufflingObjectsInArray([experiment0, experiment1]) as! [Experiment]
+        let experiments = GKRandomSource.sharedRandom().arrayByShufflingObjects(in: [experiment0, experiment1]) as! [Experiment]
 
         let experience00 = Experience(experiment: experiment0, resultNumber: 0, valence:0, colorIndex: 4)
         let experience01 = Experience(experiment: experiment0, resultNumber: 1, valence:1)
@@ -44,7 +44,7 @@ class Level0 {
         self.init(winScore: 10, historicalDepth: 10, experiments: experiments, experiences: experiences)
     }
     
-    func play(experiment: Experiment) -> (Experience, Int) {
+    func play(_ experiment: Experiment) -> (Experience, Int) {
         
         var result:Int
         
@@ -59,9 +59,9 @@ class Level0 {
         return (experience, score(experience))
     }
     
-    func score(experience: Experience) -> Int {
-        valenceTrace.removeAtIndex(0)
+    func score(_ experience: Experience) -> Int {
+        valenceTrace.remove(at: 0)
         valenceTrace.append(experience.valence)
-        return valenceTrace.reduce(0, combine: +)
+        return valenceTrace.reduce(0, +)
     }
 }

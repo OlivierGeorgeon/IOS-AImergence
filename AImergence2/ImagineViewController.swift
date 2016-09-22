@@ -19,16 +19,16 @@ class ImagineViewController: UIViewController {
 
     @IBOutlet weak var sceneView: SCNView!
     @IBOutlet weak var textView: UITextView!
-    @IBAction func closeButton(sender: UIButton) {
+    @IBAction func closeButton(_ sender: UIButton) {
         delegate?.closeImagineWindow()
     }
     @IBOutlet weak var okButton: UIButton!
-    @IBAction func understoodButton(sender: UIButton) {
+    @IBAction func understoodButton(_ sender: UIButton) {
         delegate?.acknowledgeImagineWorld()
         delegate?.closeImagineWindow()
     }
 
-    @IBAction func elseButton(sender: UIButton)  {
+    @IBAction func elseButton(_ sender: UIButton)  {
         //sceneView.pointOfView = imagineModel.cameraNodes[1]
     }
     
@@ -52,7 +52,7 @@ class ImagineViewController: UIViewController {
         //self.textView.text = NSLocalizedString("You must reach the score of 10", comment: "Message in the Imagine window when the user tries to see the imaginary model before reaching the score of 10.");
     }
     
-    func displayLevel(gameModel: GameModel0?, okEnabled: Bool) {
+    func displayLevel(_ gameModel: GameModel0?, okEnabled: Bool) {
         var textViewHidden = false
         if gameModel == nil {
             // Fix the bug that prevents the localization of UITextView in the storyboard from working.
@@ -105,44 +105,44 @@ class ImagineViewController: UIViewController {
                 { imagineModel = ImagineModel0(gameModel: gameModel!) }
             
             if okEnabled {
-                okButton.enabled = true
+                okButton.isEnabled = true
                 experimentTried = gameModel!.level.experiments.map({_ in true})
             } else {
-                okButton.enabled = false
+                okButton.isEnabled = false
                 experimentTried = gameModel!.level.experiments.map({_ in false})
             }            
             sceneViewSetup()
         }
-        textView.hidden = textViewHidden
-        textView.font = UIFont.preferredFontForTextStyle(UIFontTextStyleBody)
+        textView.isHidden = textViewHidden
+        textView.font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.body)
         textView.scrollRangeToVisible(NSMakeRange(0, 0))
     }
     
-    func tap(gesture:UITapGestureRecognizer) {}
-    func longPress(gesture:UILongPressGestureRecognizer) {}
+    func tap(_ gesture:UITapGestureRecognizer) {}
+    func longPress(_ gesture:UILongPressGestureRecognizer) {}
 
     func sceneViewSetup() {
         sceneView.scene = SCNScene()
         sceneView.allowsCameraControl = true
-        sceneView.jitteringEnabled = true
+        sceneView.isJitteringEnabled = true
         sceneView.showsStatistics = false
         sceneView.autoenablesDefaultLighting = false
         imagineModel.setup(sceneView.scene!)
     }
     
-    func playExperience(experience: Experience) {
+    func playExperience(_ experience: Experience) {
         if sceneView.scene != nil {
             imagineModel?.playExperience(experience)
             experimentTried[experience.experimentNumber] = true
-            okButton.enabled = !experimentTried.contains(false)
+            okButton.isEnabled = !experimentTried.contains(false)
         }
     }
 
-    override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
-        super.viewWillTransitionToSize(size, withTransitionCoordinator: coordinator)
-        coordinator.animateAlongsideTransition({ (UIViewControllerTransitionCoordinatorContext) -> Void in }, completion: { (UIViewControllerTransitionCoordinatorContext) -> Void in
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        coordinator.animate(alongsideTransition: { (UIViewControllerTransitionCoordinatorContext) -> Void in }, completion: { (UIViewControllerTransitionCoordinatorContext) -> Void in
             // Seems to fix a Swift bug that does not refresh the textview properly:
-            self.textView.font = UIFont.preferredFontForTextStyle(UIFontTextStyleBody)
+            self.textView.font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.body)
             self.textView.scrollRangeToVisible(NSMakeRange(0, 0))
             self.sceneView.stop(nil)
             self.sceneView.play(nil)

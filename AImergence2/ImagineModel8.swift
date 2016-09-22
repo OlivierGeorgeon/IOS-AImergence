@@ -10,15 +10,15 @@ import SceneKit
 
 class ImagineModel8: ImagineModel5
 {
-    override func playExperience(experience: Experience) {
+    override func playExperience(_ experience: Experience) {
         switch experience.hashValue {
         case 00: // Touch
             robotNode.feelFront()
             if currentTileNode == nil {
                 if nextTileNode == nil {
-                    currentTileNode = createFlipTileNode(tileColor(experience), position: tileYOffset, direction: .SOUTH)
+                    currentTileNode = createFlipTileNode(tileColor(experience), position: tileYOffset, direction: .south)
                     currentTileNode?.appear(0.2)
-                    nextBodyNodeDirection = .NORTH
+                    nextBodyNodeDirection = .north
                 } else {
                     currentTileNode = nextTileNode
                     currentTileNode?.colorize(tileColor(experience), delay: 0.2)
@@ -36,7 +36,7 @@ class ImagineModel8: ImagineModel5
                 if nextTileNode == nil {
                     currentTileNode = createFlipTileNode(tileColor(experience), position: tileYOffset)
                     currentTileNode?.appear(0.2)
-                    nextBodyNodeDirection = .SOUTH
+                    nextBodyNodeDirection = .south
                 } else {
                     currentTileNode = nextTileNode
                     currentTileNode?.colorize(tileColor(experience), delay: 0.2)
@@ -52,9 +52,9 @@ class ImagineModel8: ImagineModel5
             robotNode.bump()
             if currentTileNode == nil {
                 if nextTileNode == nil {
-                    currentTileNode = createFlipTileNode(tileColor(experience), position: tileYOffset, direction: .SOUTH)
+                    currentTileNode = createFlipTileNode(tileColor(experience), position: tileYOffset, direction: .south)
                     currentTileNode?.appear()
-                    nextBodyNodeDirection = .NORTH
+                    nextBodyNodeDirection = .north
                 } else {
                     currentTileNode = nextTileNode
                     currentTileNode?.colorize(tileColor(experience))
@@ -76,7 +76,7 @@ class ImagineModel8: ImagineModel5
                 if nextTileNode == nil {
                     currentTileNode = createFlipTileNode(tileColor(experience), position: tileYOffset)
                     currentTileNode?.appear()
-                    nextBodyNodeDirection = .SOUTH
+                    nextBodyNodeDirection = .south
                 } else {
                     currentTileNode = nextTileNode
                     currentTileNode?.colorize(tileColor(experience))

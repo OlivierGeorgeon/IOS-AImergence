@@ -19,7 +19,7 @@ class Level14 : Level13 {
         let experiment2 = Experiment(number: 2)
         let experiment3 = Experiment(number: 3)
         
-        let experiments = GKRandomSource.sharedRandom().arrayByShufflingObjectsInArray([experiment0, experiment1, experiment2, experiment3]) as! [Experiment]
+        let experiments = GKRandomSource.sharedRandom().arrayByShufflingObjects(in: [experiment0, experiment1, experiment2, experiment3]) as! [Experiment]
         
         let experience00 = Experience(experiment: experiment0, resultNumber: 0, valence:-4)
         let experience10 = Experience(experiment: experiment1, resultNumber: 0, valence:-10)

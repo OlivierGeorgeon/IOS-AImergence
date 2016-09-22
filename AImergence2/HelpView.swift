@@ -34,12 +34,12 @@ class HelpView: UIView {
         addGestureRecognizer(longPressGestureRecognizer)
     }
 
-    func pan(gesture: UIPanGestureRecognizer) {}
-    func tap(gesture:UITapGestureRecognizer) {}
-    func longPress(gesture:UILongPressGestureRecognizer) {}
+    func pan(_ gesture: UIPanGestureRecognizer) {}
+    func tap(_ gesture:UITapGestureRecognizer) {}
+    func longPress(_ gesture:UILongPressGestureRecognizer) {}
     
-    override func drawRect(rect: CGRect) {
-        UIColor.whiteColor().set()
+    override func draw(_ rect: CGRect) {
+        UIColor.white.set()
         UIBezierPath(roundedRect: rect, cornerRadius: 10).fill()
     }
 }

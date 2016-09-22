@@ -12,7 +12,7 @@ import GameKit
 import StoreKit
 import AVFoundation
 
-enum INTERFACE: Int { case INSTRUCTION, IMAGINE, LEADERBOARD, LEVEL}
+enum INTERFACE: Int { case instruction, imagine, leaderboard, level}
 
 class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate, HelpViewControllerDelegate, ImagineViewControllerDelegate, GKGameCenterControllerDelegate, SKProductsRequestDelegate, SKPaymentTransactionObserver, GameViewDelegate //, GKMatchmakerViewControllerDelegate,  GKMatchDelegate
 {
@@ -20,14 +20,14 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
     @IBOutlet weak var helpViewControllerContainer: UIView!
     @IBOutlet weak var imagineViewControllerContainer: UIView!
     @IBOutlet weak var levelButton: UIButton!
-    @IBAction func levelButton(sender: UIButton) { showLevelWindow() }
+    @IBAction func levelButton(_ sender: UIButton) { showLevelWindow() }
     
     static let maxLevelNumber = 17
     
     let unlockDefaultKey = "unlockDefaultKey"
     let paidTipKey = "paidTipKey"
     let soundKey = "soundKey"
-    let userDefaults = NSUserDefaults.standardUserDefaults()
+    let userDefaults = UserDefaults.standard
     let gcLoginMessage = NSLocalizedString("Please login to Game Center", comment: "Alert message that shows when the user tries to access the leaderboard without being logged in.")
     
     var instructionPortraitBottomConstraint = NSLayoutConstraint()
@@ -35,7 +35,7 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
     var gcEnabled = Bool() // Stores if the user has Game Center enabled
     var helpViewController:  HelpViewController?
     var imagineViewController: ImagineViewController?
-    var interfaceLocks = [[Bool]](count: GameViewController.maxLevelNumber + 1, repeatedValue: [true, true, true, true])
+    var interfaceLocks = [[Bool]](repeating: [true, true, true, true], count: GameViewController.maxLevelNumber + 1)
     var paidTip = false
     var validProducts = [SKProduct]()
     var match: GKMatch?
@@ -44,8 +44,8 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
     
     var level = 0 {
         didSet {
-            levelButton.setTitle(NSLocalizedString("Level", comment: "") + " \(level)", forState: .Normal)
-            if !helpViewControllerContainer.hidden {
+            levelButton.setTitle(NSLocalizedString("Level", comment: "") + " \(level)", for: UIControlState())
+            if !helpViewControllerContainer.isHidden {
                 helpViewController?.displayLevel(level)
             }
         }
@@ -57,13 +57,13 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
         
         self.authenticateLocalPlayer()
  
-        paidTip = userDefaults.boolForKey(paidTipKey)
-        soundDisabled = userDefaults.boolForKey(soundKey)
+        paidTip = userDefaults.bool(forKey: paidTipKey)
+        soundDisabled = userDefaults.bool(forKey: soundKey)
         if !soundDisabled {
             loadSounds()
         }
         
-        let userInterfaceLocksWrapped = userDefaults.arrayForKey(unlockDefaultKey)
+        let userInterfaceLocksWrapped = userDefaults.array(forKey: unlockDefaultKey)
         if let userInterfaceLocks = userInterfaceLocksWrapped as? [[Bool]] {
             for i in 0...(userInterfaceLocks.count - 1) {
                 if interfaceLocks[i].count == userInterfaceLocks[i].count {
@@ -71,36 +71,36 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
                 }
             }
         }
-        if Process.arguments.count > 1 {
-            if Process.arguments[1] == "unlocked" {
-                interfaceLocks = [[Bool]](count: GameViewController.maxLevelNumber + 1, repeatedValue: [false, false, false, false])
+        if CommandLine.arguments.count > 1 {
+            if CommandLine.arguments[1] == "unlocked" {
+                interfaceLocks = [[Bool]](repeating: [false, false, false, false], count: GameViewController.maxLevelNumber + 1)
             }
-            if Process.arguments[1] == "locked" {
-                interfaceLocks = [[Bool]](count: GameViewController.maxLevelNumber + 1, repeatedValue: [true, true, true, true])
+            if CommandLine.arguments[1] == "locked" {
+                interfaceLocks = [[Bool]](repeating: [true, true, true, true], count: GameViewController.maxLevelNumber + 1)
             }
         }
         let gameScene = GameSKScene(levelNumber: 0)
         gameScene.gameSceneDelegate = self
-        gameScene.scaleMode = SKSceneScaleMode.AspectFill
-        sceneView.delegate = self
+        gameScene.scaleMode = SKSceneScaleMode.aspectFill
+        sceneView.gameViewDelegate = self //Swift 3
         sceneView.showsFPS = false
         sceneView.showsNodeCount = false
         sceneView.ignoresSiblingOrder = true
         sceneView.presentScene(gameScene)
     
-        instructionPortraitBottomConstraint = NSLayoutConstraint(item: helpViewControllerContainer, attribute: NSLayoutAttribute.Bottom, relatedBy: NSLayoutRelation.LessThanOrEqual, toItem: bottomLayoutGuide, attribute: NSLayoutAttribute.Bottom, multiplier: 0.67, constant: 0)
-        instructionPortraitBottomConstraint.active = false
+        instructionPortraitBottomConstraint = NSLayoutConstraint(item: helpViewControllerContainer, attribute: NSLayoutAttribute.bottom, relatedBy: NSLayoutRelation.lessThanOrEqual, toItem: bottomLayoutGuide, attribute: NSLayoutAttribute.bottom, multiplier: 0.67, constant: 0)
+        instructionPortraitBottomConstraint.isActive = false
         view.addConstraint(instructionPortraitBottomConstraint)
 
-        imaginePortraitBottomConstraint = NSLayoutConstraint(item: imagineViewControllerContainer, attribute: NSLayoutAttribute.Bottom, relatedBy: NSLayoutRelation.LessThanOrEqual, toItem: bottomLayoutGuide, attribute: NSLayoutAttribute.Bottom, multiplier: 0.67, constant: 0) // 120
-        imaginePortraitBottomConstraint.active = false
+        imaginePortraitBottomConstraint = NSLayoutConstraint(item: imagineViewControllerContainer, attribute: NSLayoutAttribute.bottom, relatedBy: NSLayoutRelation.lessThanOrEqual, toItem: bottomLayoutGuide, attribute: NSLayoutAttribute.bottom, multiplier: 0.67, constant: 0) // 120
+        imaginePortraitBottomConstraint.isActive = false
         view.addConstraint(imaginePortraitBottomConstraint)
         
-        SKPaymentQueue.defaultQueue().addTransactionObserver(self)
+        SKPaymentQueue.default().add(self)
         requestProducts()
     }
     
-    func leaveTip(product: SKProduct) {
+    func leaveTip(_ product: SKProduct) {
         buyProduct(product);
     }
 
@@ -116,13 +116,13 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
         }
     }
     
-    func buyProduct(product: SKProduct) {
+    func buyProduct(_ product: SKProduct) {
         print("sending the payment request to Apple")
         let payment = SKPayment(product: product)
-        SKPaymentQueue.defaultQueue().addPayment(payment)
+        SKPaymentQueue.default().add(payment)
     }
     
-    func productsRequest(request: SKProductsRequest, didReceiveResponse response: SKProductsResponse) {
+    func productsRequest(_ request: SKProductsRequest, didReceive response: SKProductsResponse) {
         validProducts = response.products
         if let scene  = sceneView.scene as? MenuSKScene {
             scene.displayProducts(validProducts, isPaidTip: paidTip)
@@ -134,33 +134,33 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
         return validProducts
     }
     */
-    func request(request: SKRequest, didFailWithError error: NSError) {
+    func request(_ request: SKRequest, didFailWithError error: Error) {
         print("Error fetching product information")
     }
     
-    func paymentQueue(queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
+    func paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
         print("Received payment transaction reponse from apple")
         for transaction:AnyObject in transactions {
             if let trans:SKPaymentTransaction = transaction as? SKPaymentTransaction {
                 switch trans.transactionState {
-                case .Purchased:
+                case .purchased:
                     //print("Product purchased")
                     paidTip = true
-                    userDefaults.setBool(true, forKey: paidTipKey)
-                    SKPaymentQueue.defaultQueue().finishTransaction(transaction as! SKPaymentTransaction)
+                    userDefaults.set(true, forKey: paidTipKey)
+                    SKPaymentQueue.default().finishTransaction(transaction as! SKPaymentTransaction)
                     if let scene = sceneView.scene as? MenuSKScene {
                         scene.shortTipInvit = scene.thankYou
                         scene.longTipInvit = scene.thankYou
                         scene.tipInviteNode.text = scene.shortTipInvit
                     }
-                case .Failed:
+                case .failed:
                     //print("Purchased failed")
-                    SKPaymentQueue.defaultQueue().finishTransaction(transaction as! SKPaymentTransaction)
-                case .Restored:
+                    SKPaymentQueue.default().finishTransaction(transaction as! SKPaymentTransaction)
+                case .restored:
                     //print("Already purchased")
                     paidTip = true
-                    userDefaults.setBool(true, forKey: paidTipKey)
-                    SKPaymentQueue.defaultQueue().restoreCompletedTransactions()
+                    userDefaults.set(true, forKey: paidTipKey)
+                    SKPaymentQueue.default().restoreCompletedTransactions()
                     //SKPaymentQueue.defaultQueue().finishTransaction(transaction as! SKPaymentTransaction)
                 default:
                     break
@@ -175,7 +175,7 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
   */
     func nextLevelScene() -> GameSKScene? {
         var nextGameScene:GameSKScene? = nil
-        if !interfaceLocks[level][INTERFACE.LEVEL.rawValue] && level < GameViewController.maxLevelNumber {
+        if !interfaceLocks[level][INTERFACE.level.rawValue] && level < GameViewController.maxLevelNumber {
             level += 1
             nextGameScene = GameSKScene(levelNumber: level)
             nextGameScene!.gameSceneDelegate = self
@@ -195,14 +195,14 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
         return previousGameScene
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let identifier = segue.identifier {
             switch identifier {
             case "ShowHelp":
-                helpViewController = segue.destinationViewController as? HelpViewController
+                helpViewController = segue.destination as? HelpViewController
                 helpViewController!.delegate = self
             case "ShowWorld":
-                imagineViewController = segue.destinationViewController as? ImagineViewController
+                imagineViewController = segue.destination as? ImagineViewController
                 imagineViewController!.delegate = self
             default:
                 break
@@ -210,20 +210,20 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
         }
     }
     
-    override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         if let positionedScene = sceneView.scene as? PositionedSKScene {
             positionedScene.positionInFrame(size)
         }
         
         if size.width < size.height {
-            instructionPortraitBottomConstraint.active = true
-            imaginePortraitBottomConstraint.active = true
+            instructionPortraitBottomConstraint.isActive = true
+            imaginePortraitBottomConstraint.isActive = true
         } else {
-            instructionPortraitBottomConstraint.active = false
-            imaginePortraitBottomConstraint.active = false
+            instructionPortraitBottomConstraint.isActive = false
+            imaginePortraitBottomConstraint.isActive = false
         }
         
-        super.viewWillTransitionToSize(size, withTransitionCoordinator: coordinator)
+        super.viewWillTransition(to: size, with: coordinator)
     }
     
     // Implement GameSceneDelegate
@@ -231,37 +231,37 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
         return gcEnabled
     }
     
-    func playExperience(experience: Experience) {
-        if !imagineViewControllerContainer.hidden {
+    func playExperience(_ experience: Experience) {
+        if !imagineViewControllerContainer.isHidden {
             imagineViewController?.playExperience(experience)
         }
     }
     
     func showInstructionWindow() {
-        imagineViewControllerContainer.hidden = true
+        imagineViewControllerContainer.isHidden = true
         imagineViewController?.sceneView.scene = nil
         helpViewController?.displayLevel(level)
-        helpViewControllerContainer.hidden = false
+        helpViewControllerContainer.isHidden = false
     }
     
-    func isInterfaceLocked(interface: INTERFACE) -> Bool {
+    func isInterfaceLocked(_ interface: INTERFACE) -> Bool {
         return interfaceLocks[level][interface.rawValue]
     }
 
-    func showImagineWindow(gameModel: GameModel0) {
-        helpViewControllerContainer.hidden = true
-        if isInterfaceLocked(INTERFACE.LEVEL) {
+    func showImagineWindow(_ gameModel: GameModel0) {
+        helpViewControllerContainer.isHidden = true
+        if isInterfaceLocked(INTERFACE.level) {
             imagineViewController?.displayLevel(nil, okEnabled: true)
         } else {
-            imagineViewController?.displayLevel(gameModel, okEnabled: !isInterfaceLocked(INTERFACE.IMAGINE))
+            imagineViewController?.displayLevel(gameModel, okEnabled: !isInterfaceLocked(INTERFACE.imagine))
         }
-        imagineViewControllerContainer.hidden = false
+        imagineViewControllerContainer.isHidden = false
     }
     
-    func updateImagineWindow(gameModel: GameModel0) {
+    func updateImagineWindow(_ gameModel: GameModel0) {
         if imagineViewController != nil {
-            if !imagineViewControllerContainer.hidden && imagineViewController!.imagineModel == nil {
-                imagineViewController!.displayLevel(gameModel, okEnabled: !isInterfaceLocked(INTERFACE.IMAGINE))
+            if !imagineViewControllerContainer.isHidden && imagineViewController!.imagineModel == nil {
+                imagineViewController!.displayLevel(gameModel, okEnabled: !isInterfaceLocked(INTERFACE.imagine))
             }
         }
      }
@@ -270,27 +270,27 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
         if gcEnabled {
             let gcVC: GKGameCenterViewController = GKGameCenterViewController()
             gcVC.gameCenterDelegate = self
-            gcVC.viewState = GKGameCenterViewControllerState.Leaderboards
+            gcVC.viewState = GKGameCenterViewControllerState.leaderboards
             gcVC.leaderboardIdentifier = "Level\(level)" // GameCenter bug: it must be repeted in completion otherwise it is not working
-            self.presentViewController(gcVC, animated: true, completion: {gcVC.leaderboardIdentifier = "Levels";gcVC.leaderboardIdentifier = "Level\(self.level)"})
+            self.present(gcVC, animated: true, completion: {gcVC.leaderboardIdentifier = "Levels";gcVC.leaderboardIdentifier = "Level\(self.level)"})
         } else {
-            let alert = UIAlertController(title: "", message: gcLoginMessage, preferredStyle: UIAlertControllerStyle.Alert)
-            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: { (UIAlertAction) -> () in
-                if !self.isInterfaceLocked(INTERFACE.LEVEL) {
+            let alert = UIAlertController(title: "", message: gcLoginMessage, preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: { (UIAlertAction) -> () in
+                if !self.isInterfaceLocked(INTERFACE.level) {
                     if let scene = self.sceneView.scene as? GameSKScene {
                         scene.tutorNode.gameCenterOk(scene.robotNode, level17ParentNode: scene.topRightNode)
-                        if scene.robotNode.recommendation == RECOMMEND.LEADERBOARD {
-                            scene.robotNode.recommend(RECOMMEND.DONE)
+                        if scene.robotNode.recommendation == RECOMMEND.leaderboard {
+                            scene.robotNode.recommend(RECOMMEND.done)
                         }
                     }
                 }
             }))
-            self.presentViewController(alert, animated: true, completion: nil)
+            self.present(alert, animated: true, completion: nil)
         }
     }
     
     func showLevelWindow() {
-        helpViewControllerContainer.hidden = true
+        helpViewControllerContainer.isHidden = true
         closeImagineWindow()
         if let scene  = sceneView.scene as? GameSKScene {
             if validProducts.count == 0 {
@@ -299,7 +299,7 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
             let menuScene = MenuSKScene()
             menuScene.previousGameScene = scene
             menuScene.userDelegate = self
-            menuScene.scaleMode = SKSceneScaleMode.AspectFill
+            menuScene.scaleMode = SKSceneScaleMode.aspectFill
             menuScene.displayProducts(validProducts, isPaidTip: paidTip)
             sceneView.presentScene(menuScene, transition: scene.transitionUp)
         }
@@ -346,13 +346,14 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
         
     }
     */
-    func unlockLevel(moves: Int) {
+    func unlockLevel(_ moves: Int) {
         if gcEnabled {
             let sScore = GKScore(leaderboardIdentifier: "Level\(level)")
             sScore.value = Int64(moves)
             let sLevels = GKScore(leaderboardIdentifier: "Levels")
             sLevels.value = Int64(level)
-            GKScore.reportScores([sLevels, sScore], withCompletionHandler: { (error: NSError?) -> Void in
+            // Swift 3 changed NSError to Error
+            GKScore.report([sLevels, sScore], withCompletionHandler: { (error: Error?) -> Void in
                 if error != nil {
                     print(error!.localizedDescription)
                 } else {
@@ -361,9 +362,9 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
             })
         }
         
-        if isInterfaceLocked(INTERFACE.LEVEL) {
-            interfaceLocks[level][INTERFACE.LEVEL.rawValue] = false
-            userDefaults.setObject(interfaceLocks, forKey: unlockDefaultKey)
+        if isInterfaceLocked(INTERFACE.level) {
+            interfaceLocks[level][INTERFACE.level.rawValue] = false
+            userDefaults.set(interfaceLocks, forKey: unlockDefaultKey)
             //if !imagineViewControllerContainer.hidden {
             //    imagineViewController?.displayLevel(scene.gameModel)
             //}
@@ -375,80 +376,80 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
         return level
     }
     
-    func updateLevel(levelNumber: Int) {
+    func updateLevel(_ levelNumber: Int) {
         self.level = levelNumber
     }
     
-    func levelStatus(level: Int) -> Int {
+    func levelStatus(_ level: Int) -> Int {
         var levelStatus = 0 // forbidden
         if level == 0 { levelStatus = 1 } //  allowed
         if level > 0 {
-            if !interfaceLocks[level - 1][INTERFACE.LEVEL.rawValue]
+            if !interfaceLocks[level - 1][INTERFACE.level.rawValue]
                 {levelStatus = 1 }
         }
-        if !interfaceLocks[level][INTERFACE.LEVEL.rawValue]
+        if !interfaceLocks[level][INTERFACE.level.rawValue]
             { levelStatus = 2 } // unlocked
         return levelStatus
     }
 
     // Implement HelpViewControllerDelegate
     func hideHelpViewControllerContainer() {
-        helpViewControllerContainer.hidden = true
+        helpViewControllerContainer.isHidden = true
     }
     
     func understandInstruction() {
-        interfaceLocks[level][INTERFACE.INSTRUCTION.rawValue] = false
-        userDefaults.setObject(interfaceLocks, forKey: unlockDefaultKey)
+        interfaceLocks[level][INTERFACE.instruction.rawValue] = false
+        userDefaults.set(interfaceLocks, forKey: unlockDefaultKey)
         if let scene = sceneView.scene as? GameSKScene {
             scene.tutorNode.instructionOk(scene, level1parentNode: scene.robotNode)
             scene.robotNode.instructionButtonNode.disactivate()
             scene.robotNode.instructionButtonNode.unpulse()
-            if scene.robotNode.recommendation == RECOMMEND.INSTRUCTION {
-                scene.robotNode.recommend(RECOMMEND.INSTRUCTION_OK)
+            if scene.robotNode.recommendation == RECOMMEND.instruction {
+                scene.robotNode.recommend(RECOMMEND.instruction_OK)
             }
-            if !isInterfaceLocked(INTERFACE.LEVEL) && scene.robotNode.recommendation == RECOMMEND.INSTRUCTION_OK {
-                scene.robotNode.recommend(RECOMMEND.IMAGINE)
+            if !isInterfaceLocked(INTERFACE.level) && scene.robotNode.recommendation == RECOMMEND.instruction_OK {
+                scene.robotNode.recommend(RECOMMEND.imagine)
             }
         }
     }
     
     // Implement WorldViewControllerDelegate
     func closeImagineWindow() {
-        imagineViewControllerContainer.hidden = true
+        imagineViewControllerContainer.isHidden = true
         imagineViewController!.imagineModel = nil
         imagineViewController!.sceneView.scene = nil
     }
     
     func acknowledgeImagineWorld() {
-        if !isInterfaceLocked(INTERFACE.LEVEL) {
-            interfaceLocks[level][INTERFACE.IMAGINE.rawValue] = false
-            userDefaults.setObject(interfaceLocks, forKey: unlockDefaultKey)
+        if !isInterfaceLocked(INTERFACE.level) {
+            interfaceLocks[level][INTERFACE.imagine.rawValue] = false
+            userDefaults.set(interfaceLocks, forKey: unlockDefaultKey)
             if let scene = sceneView.scene as? GameSKScene {
                 scene.tutorNode.robotOk(scene.robotNode.gameCenterButtonNode)
                 scene.robotNode.imagineButtonNode.disactivate()
-                if scene.robotNode.recommendation == RECOMMEND.IMAGINE {
-                    scene.robotNode.recommend(RECOMMEND.LEADERBOARD)
+                if scene.robotNode.recommendation == RECOMMEND.imagine {
+                    scene.robotNode.recommend(RECOMMEND.leaderboard)
                 }
-                if scene.robotNode.recommendation == RECOMMEND.LEADERBOARD && gcEnabled {
+                if scene.robotNode.recommendation == RECOMMEND.leaderboard && gcEnabled {
                     scene.robotNode.gameCenterButtonNode.pulse()
                 }
             }
         }
     }
     
-    override func shouldAutorotate() -> Bool {
+    override var shouldAutorotate : Bool {
         return true
     }
     
-    override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
-        if UIDevice.currentDevice().userInterfaceIdiom == .Phone {
-            return .AllButUpsideDown
+    override var supportedInterfaceOrientations : UIInterfaceOrientationMask {
+        if UIDevice.current.userInterfaceIdiom == .phone {
+            return .allButUpsideDown
         } else {
-            return .All
+            return .all
         }
     }
     
-    override func prefersStatusBarHidden() -> Bool {
+    override var prefersStatusBarHidden : Bool {
         return true
     }
     
@@ -459,7 +460,7 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
                 // 1 Show login if player is not logged in
                 //self.presentViewController(ViewController!, animated: true, completion: nil)
                 self.gcEnabled = false
-            } else if (localPlayer.authenticated) {
+            } else if (localPlayer.isAuthenticated) {
                 // 2 Player is already euthenticated & logged in, load game center
                 self.gcEnabled = true                
                 // Get the default leaderboard ID
@@ -478,19 +479,19 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
         }
     }
     
-    func gameCenterViewControllerDidFinish(gameCenterViewController: GKGameCenterViewController) {
-        gameCenterViewController.dismissViewControllerAnimated(true, completion: nil)
+    func gameCenterViewControllerDidFinish(_ gameCenterViewController: GKGameCenterViewController) {
+        gameCenterViewController.dismiss(animated: true, completion: nil)
         //print(gameCenterViewController.leaderboardIdentifier)
         if let scene = sceneView.scene as? GameSKScene {
             scene.robotNode.gameCenterButtonNode.disactivate()
             scene.tutorNode.gameCenterOk(scene.robotNode, level17ParentNode: scene.topRightNode)
-            if isInterfaceLocked(INTERFACE.LEADERBOARD) && !isInterfaceLocked(INTERFACE.LEVEL) {
-                interfaceLocks[level][INTERFACE.LEADERBOARD.rawValue] = false
-                let defaults = NSUserDefaults.standardUserDefaults()
-                defaults.setObject(interfaceLocks, forKey: unlockDefaultKey)
+            if isInterfaceLocked(INTERFACE.leaderboard) && !isInterfaceLocked(INTERFACE.level) {
+                interfaceLocks[level][INTERFACE.leaderboard.rawValue] = false
+                let defaults = UserDefaults.standard
+                defaults.set(interfaceLocks, forKey: unlockDefaultKey)
             }
-            if scene.robotNode.recommendation == RECOMMEND.LEADERBOARD {
-                scene.robotNode.recommend(RECOMMEND.DONE)
+            if scene.robotNode.recommendation == RECOMMEND.leaderboard {
+                scene.robotNode.recommend(RECOMMEND.done)
             }
         }
     }
@@ -518,18 +519,18 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
     
     func toggleSound() -> Bool {
         soundDisabled = !soundDisabled
-        userDefaults.setBool(soundDisabled, forKey: soundKey)
+        userDefaults.set(soundDisabled, forKey: soundKey)
         if !soundDisabled && sounds.count < 13 {
             loadSounds()
         }
         return !soundDisabled
     }
     
-    func soundAction(soundIndex: Int) -> SKAction {
+    func soundAction(_ soundIndex: Int) -> SKAction {
         if soundIndex <= sounds.count {
             return sounds[soundIndex - 1]
         } else {
-            return SKAction.runBlock({})
+            return SKAction.run({})
         }
     }
     

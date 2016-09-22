@@ -16,28 +16,28 @@ class PositionedSKScene: SKScene {
     
     //let sceneHeight = CGFloat(667)
     let sceneHeight = CGFloat(1334)
-    let actionPress = SKAction.sequence([SKAction.scaleBy(0.909, duration: 0.1),SKAction.scaleBy(1.1, duration: 0.1)])
-    let transitionUp    = SKTransition.moveInWithDirection(SKTransitionDirection.Down, duration: 0.3)
-    let transitionDown  = SKTransition.revealWithDirection(SKTransitionDirection.Down, duration: 0.3)
-    let transitionLeft  = SKTransition.pushWithDirection(SKTransitionDirection.Left, duration: 0.5)
-    let transitionRight = SKTransition.pushWithDirection(SKTransitionDirection.Right, duration: 0.5)
-    let titleFont = UIFont.preferredFontForTextStyle(UIFontTextStyleTitle1)
-    let bodyFont = UIFont.preferredFontForTextStyle(UIFontTextStyleBody)
+    let actionPress = SKAction.sequence([SKAction.scale(by: 0.909, duration: 0.1),SKAction.scale(by: 1.1, duration: 0.1)])
+    let transitionUp    = SKTransition.moveIn(with: SKTransitionDirection.down, duration: 0.3)
+    let transitionDown  = SKTransition.reveal(with: SKTransitionDirection.down, duration: 0.3)
+    let transitionLeft  = SKTransition.push(with: SKTransitionDirection.left, duration: 0.5)
+    let transitionRight = SKTransition.push(with: SKTransitionDirection.right, duration: 0.5)
+    let titleFont = UIFont.preferredFont(forTextStyle: UIFontTextStyle.title1)
+    let bodyFont = UIFont.preferredFont(forTextStyle: UIFontTextStyle.body)
     
-    override func didMoveToView(view: SKView) {
-        super.didMoveToView(view)
+    override func didMove(to view: SKView) {
+        super.didMove(to: view)
         positionInFrame(view.frame.size)
     }
     
-    func positionInFrame(frameSize: CGSize) {
+    func positionInFrame(_ frameSize: CGSize) {
         self.size = CGSize(width: sceneHeight * frameSize.width / frameSize.height, height: sceneHeight)
     }
     
-    func tap(recognizer: UITapGestureRecognizer) {}
+    func tap(_ recognizer: UITapGestureRecognizer) {}
     
-    func longPress(recognizer: UILongPressGestureRecognizer) {}
+    func longPress(_ recognizer: UILongPressGestureRecognizer) {}
 
-    func pan(recognizer: UIPanGestureRecognizer) {}
+    func pan(_ recognizer: UIPanGestureRecognizer) {}
 }
 
 func + (left: CGPoint, right: CGVector) -> CGPoint {
@@ -46,7 +46,7 @@ func + (left: CGPoint, right: CGVector) -> CGPoint {
 func * (left: Int, right: CGVector) -> CGVector {
     return CGVector(dx: CGFloat(left) * right.dx, dy: CGFloat(left) * right.dy) }
 
-func += (inout left: CGPoint, right: CGVector) {left = left + right }
+func += (left: inout CGPoint, right: CGVector) {left = left + right }
 
 prefix func - (point: CGPoint) -> CGPoint {
     return CGPoint(x: -point.x, y: -point.y)

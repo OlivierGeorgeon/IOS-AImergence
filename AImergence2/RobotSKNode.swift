@@ -8,15 +8,15 @@
 
 import SpriteKit
 
-enum RECOMMEND: Int { case INSTRUCTION, INSTRUCTION_OK, IMAGINE, LEADERBOARD, DONE}
+enum RECOMMEND: Int { case instruction, instruction_OK, imagine, leaderboard, done}
 
 class RobotSKNode: SKNode
 {
     let imageNode = SKSpriteNode(imageNamed: "robot")
-    let instructionButtonNode = ButtonSKNode(.INSTRUCTION, activatedImageNamed: "instructions-color", disactivatedImageNamed: "instructions-black")
-    let imagineButtonNode = ButtonSKNode(.IMAGINE, activatedImageNamed: "imagine-color", disactivatedImageNamed: "imagine-black")
-    let gameCenterButtonNode = ButtonSKNode(.LEADERBOARD, activatedImageNamed: "gamecenter-color", disactivatedImageNamed: "gamecenter-black")
-    let saltoAction = SKAction.rotateByAngle(CGFloat(-2 * M_PI), duration: 0.4)
+    let instructionButtonNode = ButtonSKNode(.instruction, activatedImageNamed: "instructions-color", disactivatedImageNamed: "instructions-black")
+    let imagineButtonNode = ButtonSKNode(.imagine, activatedImageNamed: "imagine-color", disactivatedImageNamed: "imagine-black")
+    let gameCenterButtonNode = ButtonSKNode(.leaderboard, activatedImageNamed: "gamecenter-color", disactivatedImageNamed: "gamecenter-black")
+    let saltoAction = SKAction.rotate(byAngle: CGFloat(-2 * M_PI), duration: 0.4)
 
     var jumpAction = SKAction()
     var winAction = SKAction()
@@ -26,7 +26,7 @@ class RobotSKNode: SKNode
     var robotCryFrames = [SKTexture]()
     var robotJumpFrames = [SKTexture]()
     var expanded = false
-    var recommendation = RECOMMEND.DONE
+    var recommendation = RECOMMEND.done
     
     override init() {
         
@@ -46,12 +46,12 @@ class RobotSKNode: SKNode
         robotBlinkFrames = loadFrames("blink", imageNumber: 3, by: 1)
         robotCryFrames = loadFrames("cry", imageNumber: 6, by: 1)
         robotJumpFrames = loadFrames("jump", imageNumber: 6, by: 1)
-        let upAction = SKAction.moveBy(CGVector(dx: 0, dy: 100), duration: 0.25)
-        let downAction = SKAction.moveBy(CGVector(dx: 0, dy: -100), duration: 0.25)
-        upAction.timingMode = .EaseOut
-        downAction.timingMode = .EaseIn
+        let upAction = SKAction.move(by: CGVector(dx: 0, dy: 100), duration: 0.25)
+        let downAction = SKAction.move(by: CGVector(dx: 0, dy: -100), duration: 0.25)
+        upAction.timingMode = .easeOut
+        downAction.timingMode = .easeIn
         let jumpMoveAction = SKAction.sequence([upAction, downAction])
-        let jumpAnimAction =  SKAction.animateWithTextures(robotJumpFrames, timePerFrame: 0.05, resize: false, restore: false)
+        let jumpAnimAction =  SKAction.animate(with: robotJumpFrames, timePerFrame: 0.05, resize: false, restore: false)
         jumpAction = SKAction.group([jumpMoveAction, jumpAnimAction])
         winAction = SKAction.sequence([jumpAction, SKAction.group([jumpAction, saltoAction])])
     }
@@ -63,19 +63,19 @@ class RobotSKNode: SKNode
     func toggleButton() {
         if expanded {
             switch recommendation {
-            case .INSTRUCTION:
+            case .instruction:
                 instructionButtonNode.reduce()
                 imagineButtonNode.collapse()
                 gameCenterButtonNode.collapse()
-            case .IMAGINE:
+            case .imagine:
                 instructionButtonNode.collapse()
                 imagineButtonNode.reduce()
                 gameCenterButtonNode.collapse()
-            case .LEADERBOARD:
+            case .leaderboard:
                 instructionButtonNode.collapse()
                 imagineButtonNode.collapse()
                 gameCenterButtonNode.reduce()
-            case .INSTRUCTION_OK, .DONE:
+            case .instruction_OK, .done:
                 instructionButtonNode.collapse()
                 imagineButtonNode.collapse()
                 gameCenterButtonNode.collapse()
@@ -88,40 +88,40 @@ class RobotSKNode: SKNode
         expanded = !expanded
     }
     
-    func recommend(recommendation: RECOMMEND) {
+    func recommend(_ recommendation: RECOMMEND) {
         self.recommendation = recommendation
         switch recommendation {
-        case .INSTRUCTION:
+        case .instruction:
             instructionButtonNode.pulse()
             if !expanded {
                 instructionButtonNode.appear()
             }
-        case .INSTRUCTION_OK:
+        case .instruction_OK:
             instructionButtonNode.unpulse()
             if !expanded {
                 instructionButtonNode.disappear()
             }
-        case .IMAGINE:
+        case .imagine:
             if !imagineButtonNode.active {
-                self.recommendation = RECOMMEND.DONE
+                self.recommendation = RECOMMEND.done
                 break
             }
             imagineButtonNode.pulse()
             if !expanded {
                 imagineButtonNode.appear()
             }
-        case .LEADERBOARD:
+        case .leaderboard:
             imagineButtonNode.unpulse()
             //gameCenterButtonNode.pulse() done by GameViewController only if GameCenter is enabled
             if !gameCenterButtonNode.active {
-                self.recommendation = RECOMMEND.DONE
+                self.recommendation = RECOMMEND.done
                 break
             }
             if !expanded {
                 imagineButtonNode.disappear()
                 gameCenterButtonNode.appear()
             }
-        case .DONE:
+        case .done:
             gameCenterButtonNode.unpulse()
             if !expanded {
                 gameCenterButtonNode.disappear()
@@ -129,30 +129,30 @@ class RobotSKNode: SKNode
         }
     }
     
-    func animRobot(valence: Int) {
+    func animRobot(_ valence: Int) {
         switch valence {
         case 10:
-            imageNode.runAction(winAction)
+            imageNode.run(winAction)
         case 3, 4:
-            imageNode.runAction(jumpAction)
+            imageNode.run(jumpAction)
         case let x where x > 0 :
-            imageNode.runAction(SKAction.animateWithTextures(robotHappyFrames, timePerFrame: 0.05, resize: false, restore: false))
+            imageNode.run(SKAction.animate(with: robotHappyFrames, timePerFrame: 0.05, resize: false, restore: false))
         case -10:
-            imageNode.runAction(SKAction.animateWithTextures(robotCryFrames, timePerFrame: 0.05, resize: false, restore: false))
+            imageNode.run(SKAction.animate(with: robotCryFrames, timePerFrame: 0.05, resize: false, restore: false))
         case let x where x < 0:
-            imageNode.runAction(SKAction.animateWithTextures(robotSadFrames, timePerFrame: 0.05, resize: false, restore: false))
+            imageNode.run(SKAction.animate(with: robotSadFrames, timePerFrame: 0.05, resize: false, restore: false))
         default:
-            imageNode.runAction(SKAction.animateWithTextures(robotBlinkFrames, timePerFrame: 0.05, resize: false, restore: false))
+            imageNode.run(SKAction.animate(with: robotBlinkFrames, timePerFrame: 0.05, resize: false, restore: false))
         }
     }
     
-    func loadFrames(imageName: String, imageNumber: Int, by: Int) -> [SKTexture] {
+    func loadFrames(_ imageName: String, imageNumber: Int, by: Int) -> [SKTexture] {
         var frames = [SKTexture]()
-        for i in 0.stride(to: imageNumber, by: by) {
+        for i in stride(from: 0, to: imageNumber, by: by) {
             let textureName = imageName + "\(i)"
             frames.append(SKTexture(imageNamed: textureName))
         }
-        for i in (imageNumber - 1).stride(to: -1, by: -by) {
+        for i in stride(from: (imageNumber - 1), to: -1, by: -by) {
             let textureName = imageName + "\(i)"
             frames.append(SKTexture(imageNamed: textureName))
         }

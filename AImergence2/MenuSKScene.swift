@@ -8,13 +8,33 @@
 
 import SpriteKit
 import StoreKit
+fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l < r
+  case (nil, _?):
+    return true
+  default:
+    return false
+  }
+}
+
+fileprivate func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l > r
+  default:
+    return rhs < lhs
+  }
+}
+
 
 protocol MenuSceneDelegate: class
 {
     func currentLevel() -> Int
-    func updateLevel(level: Int)
-    func levelStatus(level: Int) -> Int
-    func leaveTip(product: SKProduct)
+    func updateLevel(_ level: Int)
+    func levelStatus(_ level: Int) -> Int
+    func leaveTip(_ product: SKProduct)
     func isSoundEnabled() -> Bool
     func toggleSound() -> Bool
 }
@@ -41,7 +61,7 @@ class MenuSKScene: PositionedSKScene {
     var buttonNodes = [SKNode]()
     var previousGameScene:GameSKScene?
 
-    override func didMoveToView(view: SKView)
+    override func didMove(to view: SKView)
     {
         /* Setup your scene here */
 
@@ -50,7 +70,7 @@ class MenuSKScene: PositionedSKScene {
         if userDelegate!.currentLevel() == 3 && userDelegate!.isSoundEnabled() {
             tutorNode.tip(14, parentNode: soundNode)
         }
-        backgroundColor = UIColor.whiteColor()
+        backgroundColor = UIColor.white
         backgroundNode.size = CGSize(width: 1334, height: 1334)
         backgroundNode.zPosition = -20
         backgroundNode.name = "background"
@@ -63,8 +83,8 @@ class MenuSKScene: PositionedSKScene {
         
         tipInviteNode.fontName = bodyFont.fontName
         tipInviteNode.fontSize = 56
-        tipInviteNode.fontColor = UIColor.darkGrayColor()
-        tipInviteNode.verticalAlignmentMode = .Center
+        tipInviteNode.fontColor = UIColor.darkGray
+        tipInviteNode.verticalAlignmentMode = .center
         originNode.addChild(tipInviteNode)
 
         originNode.addChild(tip0Node)
@@ -92,10 +112,10 @@ class MenuSKScene: PositionedSKScene {
             longTipInvit = shortTipInvit
         }
         */
-        super.didMoveToView(view)
+        super.didMove(to: view)
     }
     
-    func displayProducts(products: [SKProduct], isPaidTip: Bool) {
+    func displayProducts(_ products: [SKProduct], isPaidTip: Bool) {
         if products.count > 0 {
             shortTipInvit =  products[0].localizedDescription
             tip0Node.product(products[0])
@@ -123,7 +143,7 @@ class MenuSKScene: PositionedSKScene {
         }
     }
     
-    override func positionInFrame(frameSize: CGSize) {
+    override func positionInFrame(_ frameSize: CGSize) {
         super.positionInFrame(frameSize)
         if frameSize.height > frameSize.width {
             backgroundNode.position = CGPoint(x: 600, y: 600)
@@ -146,7 +166,7 @@ class MenuSKScene: PositionedSKScene {
         }
     }
     
-    func createButtons(frameSize: CGSize) -> [SKNode]
+    func createButtons(_ frameSize: CGSize) -> [SKNode]
     {
         var buttonNodes = [SKNode]()
         for i in 0...GameViewController.maxLevelNumber {
@@ -164,7 +184,7 @@ class MenuSKScene: PositionedSKScene {
             case 2:
                 backgroundNode = SKShapeNode(rect: CGRect(x: -50, y: -50, width: 100, height: 100))
             default:
-                backgroundNode = SKShapeNode(path: UIBezierPath(ovalInRect: CGRect(x: -50, y: -50, width: 100, height: 100)).CGPath)
+                backgroundNode = SKShapeNode(path: UIBezierPath(ovalIn: CGRect(x: -50, y: -50, width: 100, height: 100)).cgPath)
             }
             
             let buttonColor: UIColor
@@ -181,40 +201,40 @@ class MenuSKScene: PositionedSKScene {
         return buttonNodes
     }
     
-    func createLabelNode(text: String) -> SKLabelNode {
+    func createLabelNode(_ text: String) -> SKLabelNode {
         let labelNode = SKLabelNode(text: text)
         labelNode.fontName = titleFont.fontName
         labelNode.fontSize = titleFont.pointSize * 2
-        labelNode.fontColor = UIColor.whiteColor()
-        labelNode.verticalAlignmentMode = .Center
+        labelNode.fontColor = UIColor.white
+        labelNode.verticalAlignmentMode = .center
         return labelNode
     }
 
-    override func pan(recognizer: UIPanGestureRecognizer) {
-        let translation  = recognizer.translationInView(self.view!)
+    override func pan(_ recognizer: UIPanGestureRecognizer) {
+        let translation  = recognizer.translation(in: self.view!)
         switch recognizer.state {
-        case .Changed:
+        case .changed:
             originNode.position.y -= translation.y * sceneHeight / self.view!.frame.height
-        case .Ended:
-            if recognizer.velocityInView(self.view!).y > 200 {
+        case .ended:
+            if recognizer.velocity(in: self.view!).y > 200 {
                 self.view!.presentScene(previousGameScene!, transition: transitionDown)
             } else {
-                let moveToOrigin = SKAction.moveTo(CGPointZero, duration: 0.2)
-                moveToOrigin.timingMode = .EaseInEaseOut
-                originNode.runAction(moveToOrigin)
+                let moveToOrigin = SKAction.move(to: CGPoint.zero, duration: 0.2)
+                moveToOrigin.timingMode = .easeInEaseOut
+                originNode.run(moveToOrigin)
             }
         default:
             break
         }
-        recognizer.setTranslation(CGPoint(x: 0,y: 0), inView: self.view!)
+        recognizer.setTranslation(CGPoint(x: 0,y: 0), in: self.view!)
     }
 
-    override func tap(recognizer: UITapGestureRecognizer)
+    override func tap(_ recognizer: UITapGestureRecognizer)
     {
-        let positionInScene = self.convertPointFromView(recognizer.locationInView(self.view))
+        let positionInScene = self.convertPoint(fromView: recognizer.location(in: self.view))
         for levelNode in buttonNodes {
-            if levelNode.containsPoint(positionInScene){
-                levelNode.runAction(actionPress)
+            if levelNode.contains(positionInScene){
+                levelNode.run(actionPress)
                 if let levelNumber = levelNode.userData?["level"] as! Int? {
                     if userDelegate?.levelStatus(levelNumber) > 0 {
                         userDelegate?.updateLevel(levelNumber)
@@ -227,26 +247,26 @@ class MenuSKScene: PositionedSKScene {
                 }
             }
         }
-        if soundNode.containsPoint(positionInScene) {
-            soundNode.runAction(actionPress)
+        if soundNode.contains(positionInScene) {
+            soundNode.run(actionPress)
             soundNode.toggle(userDelegate!.toggleSound())
             tutorNode.tapSound(tipInviteNode)
         }
         
-        if tip0Node.containsPoint(positionInScene) {
-            tip0Node.runAction(actionPress)
+        if tip0Node.contains(positionInScene) {
+            tip0Node.run(actionPress)
             if tip0Node.product != nil {
                 userDelegate?.leaveTip(tip0Node.product!)
             }
         }
-        if tip1Node.containsPoint(positionInScene) {
-            tip1Node.runAction(actionPress)
+        if tip1Node.contains(positionInScene) {
+            tip1Node.run(actionPress)
             if tip1Node.product != nil {
                 userDelegate?.leaveTip(tip1Node.product!)
             }
         }
-        if tip2Node.containsPoint(positionInScene) {
-            tip2Node.runAction(actionPress)
+        if tip2Node.contains(positionInScene) {
+            tip2Node.run(actionPress)
             if tip2Node.product != nil {
                 userDelegate?.leaveTip(tip2Node.product!)
             }

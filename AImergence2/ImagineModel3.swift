@@ -11,12 +11,12 @@ import SceneKit
 class ImagineModel3: ImagineModel2
 {
     
-    override func playExperience(experience: Experience) {
+    override func playExperience(_ experience: Experience) {
         switch experience.hashValue {
         case 00:
             robotNode.feelLeft()
             if leftFlippableNode == nil  {
-                leftFlippableNode = createFlipTileNode(tileColor(experience), position: robotNode.positionCell(robotNode.robot.cellLeft())  + tileYOffset, direction: .SOUTH)
+                leftFlippableNode = createFlipTileNode(tileColor(experience), position: robotNode.positionCell(robotNode.robot.cellLeft())  + tileYOffset, direction: .south)
                 leftFlippableNode?.appear(0.2)
             } else {
                 leftFlippableNode?.colorize(tileColor(experience), delay: 0.2)
@@ -35,7 +35,7 @@ class ImagineModel3: ImagineModel2
         case 10:
             robotNode.feelRight()
             if rightFlippableNode == nil  {
-                rightFlippableNode = createFlipTileNode(tileColor(experience), position: robotNode.positionCell(robotNode.robot.cellRight())  + tileYOffset, direction: .SOUTH)
+                rightFlippableNode = createFlipTileNode(tileColor(experience), position: robotNode.positionCell(robotNode.robot.cellRight())  + tileYOffset, direction: .south)
                 rightFlippableNode?.appear(0.2)
             } else {
                 rightFlippableNode?.colorize(tileColor(experience), delay: 0.2)
@@ -65,8 +65,8 @@ class ImagineModel3: ImagineModel2
         }
     }
     
-    func explodeNode(node: SCNPhenomenonNode, delay: NSTimeInterval = 0) {
-        node.runAction(SCNAction.sequence([SCNAction.waitForDuration(delay), SCNAction.runBlock(node.explode), SCNAction.waitForDuration(2), SCNAction.removeFromParentNode()]))
+    func explodeNode(_ node: SCNPhenomenonNode, delay: TimeInterval = 0) {
+        node.runAction(SCNAction.sequence([SCNAction.wait(duration: delay), SCNAction.run(node.explode), SCNAction.wait(duration: 2), SCNAction.removeFromParentNode()]))
     }
 }
 

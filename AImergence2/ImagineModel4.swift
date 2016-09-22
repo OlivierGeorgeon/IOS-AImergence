@@ -12,22 +12,22 @@ class ImagineModel4: ImagineModel3
 {
     var bodyCell = 0
     
-    override func setup(scene: SCNScene) {
+    override func setup(_ scene: SCNScene) {
         lightsAndCameras(scene)
         robotNode = SCNRobotNode()
         worldNode.addChildNode(robotNode)
     }
     
-    override func lightsAndCameras(scene: SCNScene)
+    override func lightsAndCameras(_ scene: SCNScene)
     {
         let ambientLightNode = SCNNode()
         ambientLightNode.light = SCNLight()
-        ambientLightNode.light!.type = SCNLightTypeAmbient
+        ambientLightNode.light!.type = SCNLight.LightType.ambient
         ambientLightNode.light!.color = UIColor(white: 0.67, alpha: 1.0)
         scene.rootNode.addChildNode(ambientLightNode)
         let omniLightNode = SCNNode()
         omniLightNode.light = SCNLight()
-        omniLightNode.light!.type = SCNLightTypeOmni
+        omniLightNode.light!.type = SCNLight.LightType.omni
         omniLightNode.light!.color = UIColor(white: 0.75, alpha: 1.0)
         omniLightNode.position = SCNVector3Make(0, 50 * scale, 50 * scale)
         scene.rootNode.addChildNode(omniLightNode)
@@ -35,13 +35,13 @@ class ImagineModel4: ImagineModel3
         let cameraNode = SCNNode()
         cameraNode.camera = SCNCamera()
         cameraNode.position = SCNVector3(4 * scale, 1 * scale, 4 * scale)
-        cameraNode.runAction(SCNAction.rotateByX(0, y: 0.75, z: 0, duration: 0))
+        cameraNode.runAction(SCNAction.rotateBy(x: 0, y: 0.75, z: 0, duration: 0))
         scene.rootNode.addChildNode(cameraNode)
         
         scene.rootNode.addChildNode(worldNode)
     }
     
-    override func playExperience(experience: Experience) {
+    override func playExperience(_ experience: Experience) {
         if experience.hashValue == 11 {
             bodyCell = 1
         }
@@ -50,7 +50,7 @@ class ImagineModel4: ImagineModel3
             robotNode.bumpBack()
             spawnExperienceNode(experience, position: robotNode.positionCell(robotNode.robot.cellBack()) + tileYOffset, delay: 0.1)
             if leftFlippableNode == nil  {
-                leftFlippableNode = createFlipTileNode(tileColor(experience), position: robotNode.positionCell(robotNode.robot.cellBack())  + SCNVector3(-5, -5, 0), direction: .SOUTH)
+                leftFlippableNode = createFlipTileNode(tileColor(experience), position: robotNode.positionCell(robotNode.robot.cellBack())  + SCNVector3(-5, -5, 0), direction: .south)
                 leftFlippableNode?.appear(0.1)
             } else {
                 leftFlippableNode?.colorize(tileColor(experience), delay: 0.1)
@@ -58,7 +58,7 @@ class ImagineModel4: ImagineModel3
         case (00, 1):
             spawnExperienceNode(experience, position: robotNode.position)
             robotNode.moveBackward()
-            if rightFlippableNode?.direction == .SOUTH {
+            if rightFlippableNode?.direction == .south {
                 rightFlippableNode?.flip()
             }
             bodyCell = 0
@@ -74,7 +74,7 @@ class ImagineModel4: ImagineModel3
         case (10, 0):
             spawnExperienceNode(experience, position: robotNode.position)
             robotNode.moveForward()
-            if leftFlippableNode?.direction == .SOUTH {
+            if leftFlippableNode?.direction == .south {
                 leftFlippableNode?.flip(false)
             }
             bodyCell = 1
@@ -82,7 +82,7 @@ class ImagineModel4: ImagineModel3
             robotNode.bump()
             spawnExperienceNode(experience, position: robotNode.positionCell(robotNode.robot.cellFront()) + tileYOffset, delay: 0.1)
             if rightFlippableNode == nil  {
-                rightFlippableNode = createFlipTileNode(tileColor(experience), position: robotNode.positionCell(robotNode.robot.cellFront())  + SCNVector3(5, -5, 0), direction: .SOUTH)
+                rightFlippableNode = createFlipTileNode(tileColor(experience), position: robotNode.positionCell(robotNode.robot.cellFront())  + SCNVector3(5, -5, 0), direction: .south)
                 rightFlippableNode?.appear(0.1)
             } else {
                 rightFlippableNode?.colorize(tileColor(experience), delay: 0.1)

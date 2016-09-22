@@ -25,7 +25,7 @@ class SoundSKNode: SKNode {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func toggle(soundEnabled: Bool) {
+    func toggle(_ soundEnabled: Bool) {
         if soundEnabled {
             backgroundNode.texture = textureEnabled
         } else {

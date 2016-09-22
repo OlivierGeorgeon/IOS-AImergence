@@ -30,7 +30,8 @@ class TutorSKNode: SKNode {
                 NSLocalizedString("Tip13", comment: ""),
                 NSLocalizedString("Tip14", comment: "")]
     
-    let tipRects = [CGRect(x: -240, y: -60, width: 480, height: 120),
+    var tipRects = [CGRect]()
+/*    CGRect(x: -240, y: -60, width: 480, height: 120),
                     CGRect(x: -160, y: -60, width: 320, height: 120),
                     CGRect(x: -200, y: -60, width: 400, height: 120),
                     CGRect(x: -200, y: -60, width: 400, height: 120),
@@ -45,8 +46,9 @@ class TutorSKNode: SKNode {
                     CGRect(x: -220, y: -60, width: 440, height: 120),
                     CGRect(x: -220, y: -60, width: 440, height: 120),
                     CGRect(x: -220, y: -60, width: 440, height: 120)]
-    
-    let tipPositions = [CGPoint(x: -100, y: 460),
+  */
+    var tipPositions = [CGPoint]()
+    /*(x: -100, y: 460),
                         CGPoint(x: 280, y: -100),
                         CGPoint(x: -320, y: 0),
                         CGPoint(x: -320, y: 0),
@@ -61,7 +63,7 @@ class TutorSKNode: SKNode {
                         CGPoint(x: 0, y: 300),
                         CGPoint(x: -300, y: -300),
                         CGPoint(x: 300, y: -40)]
-    
+    */
     let tipzRotations = [CGFloat(-1.2), CGFloat(-0.3), CGFloat(0), CGFloat(0), CGFloat(0), CGFloat(0), CGFloat(0), CGFloat(-1), CGFloat(-1.2), CGFloat(-1), CGFloat(0.9), CGFloat(0.3), CGFloat(M_PI / 2), CGFloat(0.9), CGFloat(-0.1)]
     
     var backgroundNode = SKShapeNode()
@@ -73,35 +75,66 @@ class TutorSKNode: SKNode {
         
         super.init()
         self.zPosition = 8
+        tipRects.append(CGRect(x: -240, y: -60, width: 480, height: 120))
+        tipRects.append(CGRect(x: -160, y: -60, width: 320, height: 120))
+        tipRects.append(CGRect(x: -200, y: -60, width: 400, height: 120))
+        tipRects.append(CGRect(x: -200, y: -60, width: 400, height: 120))
+        tipRects.append(CGRect(x: -200, y: -60, width: 400, height: 120))
+        tipRects.append(CGRect(x: -200, y: -60, width: 400, height: 120))
+        tipRects.append(CGRect(x: -200, y: -60, width: 400, height: 120))
+        tipRects.append(CGRect(x: -220, y: -60, width: 440, height: 120))
+        tipRects.append(CGRect(x: -240, y: -60, width: 480, height: 120))
+        tipRects.append(CGRect(x: -220, y: -60, width: 440, height: 120))
+        tipRects.append(CGRect(x: -220, y: -60, width: 440, height: 120))
+        tipRects.append(CGRect(x: -220, y: -60, width: 440, height: 120))
+        tipRects.append(CGRect(x: -220, y: -60, width: 440, height: 120))
+        tipRects.append(CGRect(x: -220, y: -60, width: 440, height: 120))
+        tipRects.append(CGRect(x: -220, y: -60, width: 440, height: 120))
+
+        tipPositions.append(CGPoint(x: -100, y: 460))
+        tipPositions.append(CGPoint(x: 280, y: -100))
+        tipPositions.append(CGPoint(x: -320, y: 0))
+        tipPositions.append(CGPoint(x: -320, y: 0))
+        tipPositions.append(CGPoint(x: -320, y: 0))
+        tipPositions.append(CGPoint(x: -320, y: 0))
+        tipPositions.append(CGPoint(x: -280, y: 0))
+        tipPositions.append(CGPoint(x: -180, y: 600))
+        tipPositions.append(CGPoint(x: -140, y: 380))
+        tipPositions.append(CGPoint(x: -180, y: 600))
+        tipPositions.append(CGPoint(x: -300, y: -300))
+        tipPositions.append(CGPoint(x: 290, y: 96))
+        tipPositions.append(CGPoint(x: 0, y: 300))
+        tipPositions.append(CGPoint(x: -300, y: -300))
+        tipPositions.append(CGPoint(x: 300, y: -40))
     }
 
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    func tip(i: Int, parentNode: SKNode) {
+ 
+    func tip(_ i: Int, parentNode: SKNode) {
         step = i
         removeFromParent()
         removeAllChildren()
         position = tipPositions[i]
         zRotation = tipzRotations[i]
-        
+ 
         backgroundNode = SKShapeNode(path: shapeFuncs[i](tipRects[i]))
         //backgroundNode.lineWidth = 0
         backgroundNode.fillColor = UIColor(colorLiteralRed: 0.2, green: 0.7, blue: 0, alpha: 0.8)
         backgroundNode.strokeColor = UIColor(colorLiteralRed: 0.2, green: 0.7, blue: 0, alpha: 0.5)
         addChild(backgroundNode)
         
-        let texts = tips[i].componentsSeparatedByString("/")
+        let texts = tips[i].components(separatedBy: "/")
         let lines = texts.count - 1
         let lineInterval = CGFloat(17 * 3)
         for line in 0...lines {
             let labelNode = SKLabelNode(text: texts[line])
             //labelNode.fontName = bodyFont.fontName
-            labelNode.fontName = UIFont.preferredFontForTextStyle(UIFontTextStyleBody).fontName
+            labelNode.fontName = UIFont.preferredFont(forTextStyle: UIFontTextStyle.body).fontName
             labelNode.fontSize = 34 // bodyFont.pointSize * 2
-            labelNode.verticalAlignmentMode = .Center
-            labelNode.fontColor = UIColor.whiteColor()
+            labelNode.verticalAlignmentMode = .center
+            labelNode.fontColor = UIColor.white
             labelNode.zPosition = 1
             labelNode.position = CGPoint(x: 0, y: lineInterval * (CGFloat(lines) / 2 - CGFloat(line)))
             addChild(labelNode)
@@ -109,7 +142,7 @@ class TutorSKNode: SKNode {
         parentNode.addChild(self)
     }
     
-    func tapCommand(experimentNumber: Int, nextParentNode: SKNode ) {
+    func tapCommand(_ experimentNumber: Int, nextParentNode: SKNode ) {
         if level == 0 {
             if experimentNumber < commandTapped.count {
                 commandTapped[experimentNumber] = true
@@ -126,7 +159,7 @@ class TutorSKNode: SKNode {
         }
     }
     
-    func reachTen(nextParentNode: SKNode, level3ParentNode: SKNode) {
+    func reachTen(_ nextParentNode: SKNode, level3ParentNode: SKNode) {
         if level == 0 {
             if step == 1 || step == 0 {
                 tip(3, parentNode: nextParentNode)
@@ -139,7 +172,7 @@ class TutorSKNode: SKNode {
         }
     }
     
-    func instructionOk(nextParentNode: SKNode, level1parentNode: SKNode) {
+    func instructionOk(_ nextParentNode: SKNode, level1parentNode: SKNode) {
         if step == 2 {
             if level == 0 {
                 tip(0, parentNode: nextParentNode)
@@ -148,12 +181,12 @@ class TutorSKNode: SKNode {
             }
         }
     }
-    func robotOk(nextParentNode: SKNode) {
+    func robotOk(_ nextParentNode: SKNode) {
         if step == 3 {
             tip(4, parentNode: nextParentNode)
         }
     }
-    func gameCenterOk(nextParentNode: SKNode, level17ParentNode: SKNode) {
+    func gameCenterOk(_ nextParentNode: SKNode, level17ParentNode: SKNode) {
         if step == 4 {
             tip(6, parentNode: nextParentNode)
         }
@@ -162,14 +195,14 @@ class TutorSKNode: SKNode {
         }
     }
     
-    func tapRobot(nextParentNode: SKNode) {
+    func tapRobot(_ nextParentNode: SKNode) {
         if level == 1 && step == 5 {
             step = 100
             removeFromParent()
         }
     }
     
-    func tapEvent(nextParentNode: SKNode) {
+    func tapEvent(_ nextParentNode: SKNode) {
         if level == 2 && step == 7 {
             tip(11, parentNode: nextParentNode)
         }
@@ -203,36 +236,48 @@ class TutorSKNode: SKNode {
         }
     }
     
-    func tapSound(nextParentNode: SKNode) {
+    func tapSound(_ nextParentNode: SKNode) {
         if (level == 3 && step == 14) {
             tip(12, parentNode: nextParentNode)
         }
     }
 }
-func arrowLeft(rect: CGRect) -> CGPath {
+func arrowLeft(_ rect: CGRect) -> CGPath {
     let offset = CGFloat(40)
     let radius = CGFloat (20)
-    let path = CGPathCreateMutable()
-    CGPathMoveToPoint(path, nil, rect.maxX, rect.minY + radius)
-    CGPathAddArcToPoint(path, nil, rect.maxX, rect.maxY, rect.minX, rect.maxY, radius);
-    CGPathAddArcToPoint(path, nil, rect.minX, rect.maxY, rect.minX - offset, 0, radius);
-    CGPathAddArcToPoint(path, nil, rect.minX - offset, 0, rect.minX, rect.minY, radius);
-    CGPathAddArcToPoint(path, nil, rect.minX, rect.minY, rect.maxX, rect.minY, radius);
-    CGPathAddArcToPoint(path, nil, rect.maxX, rect.minY, rect.maxX, rect.maxY, radius);
-    CGPathCloseSubpath(path);
+    let path = CGMutablePath()
+    //CGPathMoveToPoint(path, nil, rect.maxX, rect.minY + radius)
+    path.move(to: CGPoint(x:rect.maxX, y: rect.minY + radius))
+    //CGPathAddArcToPoint(path, at, rect.maxX, rect.maxY, rect.minX, rect.maxY, radius);
+    path.addArc(tangent1End: CGPoint(x:rect.maxX, y: rect.maxY), tangent2End: CGPoint(x: rect.minX, y:rect.maxY), radius: radius)
+    //CGPathAddArcToPoint(path, at, rect.minX, rect.maxY, rect.minX - offset, 0, radius);
+    path.addArc(tangent1End: CGPoint(x:rect.minX, y: rect.maxY), tangent2End: CGPoint(x: rect.minX - offset, y:0), radius: radius)
+    //CGPathAddArcToPoint(path, at, rect.minX - offset, 0, rect.minX, rect.minY, radius);
+    path.addArc(tangent1End: CGPoint(x:rect.minX - offset, y: 0), tangent2End: CGPoint(x: rect.minX, y:rect.minY), radius: radius)
+    //CGPathAddArcToPoint(path, at, rect.minX, rect.minY, rect.maxX, rect.minY, radius);
+    path.addArc(tangent1End: CGPoint(x:rect.minX, y: rect.minY), tangent2End: CGPoint(x: rect.maxX, y:rect.minY), radius: radius)
+    //CGPathAddArcToPoint(path, at, rect.maxX, rect.minY, rect.maxX, rect.maxY, radius);
+    path.addArc(tangent1End: CGPoint(x:rect.maxX, y: rect.minY), tangent2End: CGPoint(x: rect.maxX, y:rect.maxY), radius: radius)
+    path.closeSubpath();
     return path
 }
 
-func arrowRight(rect: CGRect) -> CGPath {
+func arrowRight(_ rect: CGRect) -> CGPath {
     let offset = CGFloat(40)
     let radius = CGFloat (20)
-    let path = CGPathCreateMutable()
-    CGPathMoveToPoint(path, nil, rect.minX, rect.minY + radius)
-    CGPathAddArcToPoint(path, nil, rect.minX, rect.maxY, rect.maxX, rect.maxY, radius);
-    CGPathAddArcToPoint(path, nil, rect.maxX, rect.maxY, rect.maxX + offset, 0, radius);
-    CGPathAddArcToPoint(path, nil, rect.maxX + offset, 0, rect.maxX, rect.minY, radius);
-    CGPathAddArcToPoint(path, nil, rect.maxX, rect.minY, rect.minX, rect.minY, radius);
-    CGPathAddArcToPoint(path, nil, rect.minX, rect.minY, rect.minX, rect.maxY, radius);
-    CGPathCloseSubpath(path);
+    let path = CGMutablePath()
+    //CGPathMoveToPoint(path, nil, rect.minX, rect.minY + radius)
+    path.move(to: CGPoint(x:rect.minX, y: rect.minY + radius))
+    //CGPathAddArcToPoint(path, nil, rect.minX, rect.maxY, rect.maxX, rect.maxY, radius);
+    path.addArc(tangent1End: CGPoint(x:rect.minX, y: rect.maxY), tangent2End: CGPoint(x: rect.maxX, y:rect.maxY), radius: radius)
+    //CGPathAddArcToPoint(path, nil, rect.maxX, rect.maxY, rect.maxX + offset, 0, radius);
+    path.addArc(tangent1End: CGPoint(x:rect.maxX, y: rect.maxY), tangent2End: CGPoint(x: rect.maxX + offset, y:0), radius: radius)
+    //CGPathAddArcToPoint(path, nil, rect.maxX + offset, 0, rect.maxX, rect.minY, radius);
+    path.addArc(tangent1End: CGPoint(x:rect.maxX + offset, y: 0), tangent2End: CGPoint(x: rect.maxX, y:rect.minY), radius: radius)
+    //CGPathAddArcToPoint(path, nil, rect.maxX, rect.minY, rect.minX, rect.minY, radius);
+    path.addArc(tangent1End: CGPoint(x:rect.maxX, y: rect.minY), tangent2End: CGPoint(x: rect.minX, y:rect.minY), radius: radius)
+    //CGPathAddArcToPoint(path, at, rect.minX, rect.minY, rect.minX, rect.maxY, radius);
+    path.addArc(tangent1End: CGPoint(x:rect.minX, y: rect.minY), tangent2End: CGPoint(x: rect.minX, y:rect.maxY), radius: radius)
+    path.closeSubpath();
     return path
 }

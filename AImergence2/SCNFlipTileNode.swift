@@ -12,10 +12,10 @@ import SceneKit
 class SCNFlipTileNode: SCNPhenomenonNode {
  
     let tailNode = SCNNode()
-    let actionFlipClockwise = SCNAction.rotateByX(0, y: 0, z: -CGFloat(M_PI) , duration: 0.2)
-    let actionFlipCounterclockwise = SCNAction.rotateByX(0, y: 0, z: CGFloat(M_PI) , duration: 0.2)
+    let actionFlipClockwise = SCNAction.rotateBy(x: 0, y: 0, z: -CGFloat(M_PI) , duration: 0.2)
+    let actionFlipCounterclockwise = SCNAction.rotateBy(x: 0, y: 0, z: CGFloat(M_PI) , duration: 0.2)
 
-    var direction = Compass.NORTH
+    var direction = Compass.north
     var tailColor = UIColor(red: 150/256, green: 150/256, blue: 150/256, alpha: 1)
     
     override init() {
@@ -23,12 +23,12 @@ class SCNFlipTileNode: SCNPhenomenonNode {
         //self.hidden = true in super.init()
     }
     
-    convenience init(color: UIColor?, direction: Compass = .NORTH) {
+    convenience init(color: UIColor?, direction: Compass = .north) {
         self.init()
 
         let grayMaterial = SCNMaterial()
         grayMaterial.diffuse.contents = UIColor(red: 150/256, green: 150/256, blue: 150/256, alpha: 1)
-        grayMaterial.specular.contents = UIColor.whiteColor()
+        grayMaterial.specular.contents = UIColor.white
 
         let colorMaterial = SCNMaterial()
         if color == nil {
@@ -36,7 +36,7 @@ class SCNFlipTileNode: SCNPhenomenonNode {
         } else {
             colorMaterial.diffuse.contents = color!
         }
-        colorMaterial.specular.contents = UIColor.whiteColor()
+        colorMaterial.specular.contents = UIColor.white
 
         let headGeometry = SCNBox(width: 10, height: 2, length: 10, chamferRadius: 1)
         headNode.geometry = headGeometry
@@ -48,7 +48,7 @@ class SCNFlipTileNode: SCNPhenomenonNode {
         tailNode.pivot = SCNMatrix4MakeRotation(Float(M_PI/2), 1, 0, 0)
 
         self.direction = direction
-        if direction == .NORTH {
+        if direction == .north {
             headGeometry.materials = [colorMaterial]
             tailGeometry.materials = [grayMaterial]
             tailNode.position = SCNVector3(0, -0.55 , 0)
@@ -68,8 +68,8 @@ class SCNFlipTileNode: SCNPhenomenonNode {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func appearAndFlip(clockwise: Bool = true, delay: NSTimeInterval = 0) {
-        let actionWait = SCNAction.waitForDuration(delay)
+    func appearAndFlip(_ clockwise: Bool = true, delay: TimeInterval = 0) {
+        let actionWait = SCNAction.wait(duration: delay)
         switch clockwise {
         case true:
             runAction(SCNAction.sequence([actionWait, SCNAction.unhide(), actionFlipClockwise]))
@@ -79,18 +79,18 @@ class SCNFlipTileNode: SCNPhenomenonNode {
         swapDirection()
     }
     
-    func appearAndFlipAndColorize(color: UIColor, clockwise: Bool = true, delay: NSTimeInterval = 0) {
-        let actionWait = SCNAction.waitForDuration(delay)
+    func appearAndFlipAndColorize(_ color: UIColor, clockwise: Bool = true, delay: TimeInterval = 0) {
+        let actionWait = SCNAction.wait(duration: delay)
         let actionColorize: SCNAction
         switch direction {
-        case .NORTH:
+        case .north:
             tailColor = color
-            direction = .SOUTH
-            actionColorize = SCNAction.runBlock(colorizeTailBloc)
+            direction = .south
+            actionColorize = SCNAction.run(colorizeTailBloc)
         default:
             headColor = color
-            direction = .NORTH
-            actionColorize = SCNAction.runBlock(colorizeHeadBloc)
+            direction = .north
+            actionColorize = SCNAction.run(colorizeHeadBloc)
         }
         switch clockwise {
         case true:
@@ -100,32 +100,32 @@ class SCNFlipTileNode: SCNPhenomenonNode {
         }
     }
     
-    override func colorize(color: UIColor, delay: NSTimeInterval = 0.0) {
-        let actionWait = SCNAction.waitForDuration(delay)
+    override func colorize(_ color: UIColor, delay: TimeInterval = 0.0) {
+        let actionWait = SCNAction.wait(duration: delay)
         let actionColorize: SCNAction
         switch direction {
-        case .NORTH:
+        case .north:
             headColor = color
-            actionColorize = SCNAction.runBlock(colorizeHeadBloc)
+            actionColorize = SCNAction.run(colorizeHeadBloc)
         default:
             tailColor = color
-            actionColorize = SCNAction.runBlock(colorizeTailBloc)
+            actionColorize = SCNAction.run(colorizeTailBloc)
         }
         runAction(SCNAction.sequence([actionWait, actionColorize]))
     }
 
-    func colorizeAndFlip(color: UIColor, clockwise: Bool = true, delay: NSTimeInterval = 0.0) {
-        let actionWait = SCNAction.waitForDuration(delay)
+    func colorizeAndFlip(_ color: UIColor, clockwise: Bool = true, delay: TimeInterval = 0.0) {
+        let actionWait = SCNAction.wait(duration: delay)
         let actionColorize: SCNAction
         switch direction {
-        case .NORTH:
+        case .north:
             headColor = color
-            actionColorize = SCNAction.runBlock(colorizeHeadBloc)
-            direction = .SOUTH
+            actionColorize = SCNAction.run(colorizeHeadBloc)
+            direction = .south
         default:
             tailColor = color
-            actionColorize = SCNAction.runBlock(colorizeTailBloc)
-            direction = .NORTH
+            actionColorize = SCNAction.run(colorizeTailBloc)
+            direction = .north
         }
         switch clockwise {
         case true:
@@ -135,18 +135,18 @@ class SCNFlipTileNode: SCNPhenomenonNode {
         }
     }
     
-    func flipAndColorize(color: UIColor, clockwise: Bool = true, delay: NSTimeInterval = 0.0) {
-        let actionWait = SCNAction.waitForDuration(delay)
+    func flipAndColorize(_ color: UIColor, clockwise: Bool = true, delay: TimeInterval = 0.0) {
+        let actionWait = SCNAction.wait(duration: delay)
         let actionColorize: SCNAction
         switch direction {
-        case .NORTH:
+        case .north:
             tailColor = color
-            direction = .SOUTH
-            actionColorize = SCNAction.runBlock(colorizeTailBloc)
+            direction = .south
+            actionColorize = SCNAction.run(colorizeTailBloc)
         default:
             headColor = color
-            direction = .NORTH
-            actionColorize = SCNAction.runBlock(colorizeHeadBloc)
+            direction = .north
+            actionColorize = SCNAction.run(colorizeHeadBloc)
         }
         switch clockwise {
         case true:
@@ -156,14 +156,14 @@ class SCNFlipTileNode: SCNPhenomenonNode {
         }
     }
     
-    func colorizeTailBloc(node: SCNNode) {
+    func colorizeTailBloc(_ node: SCNNode) {
         if let flipTileNode  = node as? SCNFlipTileNode {
             flipTileNode.tailNode.geometry!.firstMaterial!.diffuse.contents = flipTileNode.tailColor
         }
     }
 
-    func flip(clockwise: Bool = true, delay: NSTimeInterval = 0) {
-        let actionWait = SCNAction.waitForDuration(delay)
+    func flip(_ clockwise: Bool = true, delay: TimeInterval = 0) {
+        let actionWait = SCNAction.wait(duration: delay)
         switch clockwise {
         case true:
             runAction(SCNAction.sequence([actionWait, actionFlipClockwise]))
@@ -176,7 +176,7 @@ class SCNFlipTileNode: SCNPhenomenonNode {
     override func color() -> UIColor {
         let topNode: SCNNode
         switch direction {
-        case .NORTH:
+        case .north:
             topNode = headNode
         default:
             topNode = tailNode
@@ -189,16 +189,16 @@ class SCNFlipTileNode: SCNPhenomenonNode {
     }
     
     override func hideChildren() {
-        headNode.hidden = true
-        tailNode.hidden = true
+        headNode.isHidden = true
+        tailNode.isHidden = true
     }
     
     func swapDirection() {
         switch direction {
-        case .NORTH:
-            direction = .SOUTH
+        case .north:
+            direction = .south
         default:
-            direction = .NORTH
+            direction = .north
         }
     }
 }

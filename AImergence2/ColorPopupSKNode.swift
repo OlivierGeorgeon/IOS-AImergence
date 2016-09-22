@@ -13,16 +13,16 @@ class ColorPopupSKNode: SKNode {
     let colorNodeRect = CGRect(x: -60, y:-60, width: 120, height: 120)
     let colorsNode = SKNode()
     let actionAppear: SKAction
-    let disappearScale = SKAction.scaleTo(0, duration: 0.1)
+    let disappearScale = SKAction.scale(to: 0, duration: 0.1)
     
     var colorNodes = [SKShapeNode]()
     var colorIndex = 0
 
     override init() {
-        let appearMove = SKAction.moveTo(CGPoint(x: -200, y: 600), duration: 0.1)
-        let appearScale = SKAction.scaleTo(1, duration: 0.1)
+        let appearMove = SKAction.move(to: CGPoint(x: -200, y: 600), duration: 0.1)
+        let appearScale = SKAction.scale(to: 1, duration: 0.1)
         actionAppear = SKAction.sequence([SKAction.unhide(), SKAction.group([appearMove, appearScale])])
-        actionAppear.timingMode = .EaseOut
+        actionAppear.timingMode = .easeOut
         
         super.init()
 
@@ -42,30 +42,30 @@ class ColorPopupSKNode: SKNode {
     }
     
     func appear() {
-        runAction(actionAppear)
+        run(actionAppear)
     }
     
-    func disappear(position: CGPoint) {
-        let disappearMove = SKAction.moveTo(position, duration: 0.1)
+    func disappear(_ position: CGPoint) {
+        let disappearMove = SKAction.move(to: position, duration: 0.1)
         let actionDisappear = SKAction.sequence([SKAction.group([disappearMove, disappearScale]), SKAction.hide()])
-        actionDisappear.timingMode = .EaseIn
-        runAction(actionDisappear)
+        actionDisappear.timingMode = .easeIn
+        run(actionDisappear)
     }
     
-    func createColorNodes(pathFunc: (CGRect) -> UIBezierPath, experienceColors: [UIColor], colorIndex: Int) {
+    func createColorNodes(_ pathFunc: (CGRect) -> UIBezierPath, experienceColors: [UIColor], colorIndex: Int) {
         self.colorIndex = colorIndex
         colorsNode.removeAllChildren()
         colorNodes = [SKShapeNode]()
         for i in 0..<5 {
-            let colorNode = SKShapeNode(path: pathFunc(colorNodeRect).CGPath)
+            let colorNode = SKShapeNode(path: pathFunc(colorNodeRect).cgPath)
             colorNode.fillColor = experienceColors[i]
-            colorNode.strokeColor = UIColor.grayColor()
+            colorNode.strokeColor = UIColor.gray
             if i == colorIndex {
                 colorNode.lineWidth = 12
             } else {
                 colorNode.lineWidth = 4
             }
-            colorNode.lineJoin = .Round
+            colorNode.lineJoin = .round
             colorNode.zPosition = 1
             colorNode.position = CGPoint(x:0, y: i * 160 - 320)
             colorsNode.addChild(colorNode)

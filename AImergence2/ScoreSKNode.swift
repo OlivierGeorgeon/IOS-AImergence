@@ -23,32 +23,34 @@ class ScoreSKNode: SKNode
     let textMoves = NSLocalizedString("moves", comment: "Number of moves displayed in the main window");
     
     override init() {
-        let pathToDraw:CGMutablePathRef = CGPathCreateMutable()
+        let pathToDraw:CGMutablePath = CGMutablePath()
         self.lineNode = SKShapeNode(path:pathToDraw)
 
         super.init()
         
         zPosition = -1
         
-        labelNode.fontName = UIFont.preferredFontForTextStyle(UIFontTextStyleTitle1).fontName
+        labelNode.fontName = UIFont.preferredFont(forTextStyle: UIFontTextStyle.title1).fontName
         labelNode.fontSize = 60 //titleFont.pointSize * 2
-        labelNode.verticalAlignmentMode = .Center
-        labelNode.fontColor = UIColor.darkGrayColor()
+        labelNode.verticalAlignmentMode = .center
+        labelNode.fontColor = UIColor.darkGray
         addChild(labelNode)
 
         self.position = CGPoint(x: -234, y: 1004)
         backgroundNode.zPosition = -1
         backgroundNode.lineWidth = 1
         backgroundNode.name = "scoreBackground"
-        backgroundNode.fillColor = UIColor.whiteColor()
+        backgroundNode.fillColor = UIColor.white
         addChild(backgroundNode)
         
-        CGPathMoveToPoint(pathToDraw, nil, 0, 0)
-        CGPathAddLineToPoint(pathToDraw, nil, 356, 0)
+        //CGPathMoveToPoint(pathToDraw, nil, 0, 0)
+        pathToDraw.move(to: CGPoint())
+        //CGPathAddLineToPoint(pathToDraw, nil, 356, 0)
+        pathToDraw.move(to: CGPoint(x: 356, y:0))
         self.lineNode.path = pathToDraw
-        self.lineNode.strokeColor = SKColor.whiteColor()
+        self.lineNode.strokeColor = SKColor.white
         self.lineNode.zPosition = -2
-        self.lineNode.hidden = true
+        self.lineNode.isHidden = true
         self.lineNode.lineWidth = 2
         addChild(self.lineNode)
         
@@ -58,15 +60,15 @@ class ScoreSKNode: SKNode
         
         moveNode.position = CGPoint(x: 300, y: 0)
         moveNode.zPosition = 10
-        moveLabelNode.fontName = UIFont.preferredFontForTextStyle(UIFontTextStyleBody).fontName
+        moveLabelNode.fontName = UIFont.preferredFont(forTextStyle: UIFontTextStyle.body).fontName
         moveLabelNode.fontSize = 34
-        moveLabelNode.verticalAlignmentMode = .Center
-        moveLabelNode.fontColor = UIColor.darkGrayColor()
+        moveLabelNode.verticalAlignmentMode = .center
+        moveLabelNode.fontColor = UIColor.darkGray
         moveNode.addChild(moveLabelNode)
         moveBackgroundNode.zPosition = -1
-        moveBackgroundNode.fillColor = UIColor.whiteColor()
+        moveBackgroundNode.fillColor = UIColor.white
         //moveBackgroundNode.lineWidth = 0
-        moveNode.hidden = true
+        moveNode.isHidden = true
         moveNode.addChild(moveBackgroundNode)
         addChild(moveNode)
     }
@@ -75,16 +77,16 @@ class ScoreSKNode: SKNode
         fatalError("init(coder:) has not been implemented")
     }
     
-    func updateScore(score: Int, clock: Int, winMoves: Int) {
+    func updateScore(_ score: Int, clock: Int, winMoves: Int) {
         labelNode.text = "\(score)"
         let scoreColor: UIColor
         if score >= 10 {
-            scoreColor = UIColor.greenColor()
+            scoreColor = UIColor.green
         } else {
             if winMoves > 0 {
                 scoreColor = UIColor(red: 0.7, green: 1, blue: 0.7, alpha: 1)
             } else {
-                scoreColor = UIColor.whiteColor()
+                scoreColor = UIColor.white
             }
         }
         backgroundNode.fillColor = scoreColor
@@ -102,7 +104,7 @@ class ScoreSKNode: SKNode
         }
     }
 
-    func createGauge(score: Int) {
+    func createGauge(_ score: Int) {
         var y = -140
         var height = 280
         if score < -10 {
@@ -120,7 +122,7 @@ class ScoreSKNode: SKNode
         if score > 0 {
             for i in 1...score {
                 let dotNode = SKShapeNode(rect: CGRect(x: -2, y: i * 12, width: 12, height: 8))
-                dotNode.fillColor = UIColor.greenColor()
+                dotNode.fillColor = UIColor.green
                 dotNode.lineWidth = 0
                 gaugeNode.addChild(dotNode)
             }
@@ -128,7 +130,7 @@ class ScoreSKNode: SKNode
         if score < 0 {
             for i in 1...(-score) {
                 let dotNode = SKShapeNode(rect: CGRect(x: -2, y: -i * 12, width: 12, height: 8))
-                dotNode.fillColor = UIColor.redColor()
+                dotNode.fillColor = UIColor.red
                 dotNode.lineWidth = 0
                 gaugeNode.addChild(dotNode)
             }

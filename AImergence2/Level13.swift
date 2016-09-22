@@ -26,7 +26,7 @@ class Level13 : Level12 {
         let experiment2 = Experiment(number: 2, shapeIndex: 3)
         let experiment3 = Experiment(number: 3, shapeIndex: 6)
         
-        let experiments = GKRandomSource.sharedRandom().arrayByShufflingObjectsInArray([experiment0, experiment1, experiment2, experiment3]) as! [Experiment]
+        let experiments = GKRandomSource.sharedRandom().arrayByShufflingObjects(in: [experiment0, experiment1, experiment2, experiment3]) as! [Experiment]
         
         let experience00 = Experience(experiment: experiment0, resultNumber: 0, valence:-4)
         let experience10 = Experience(experiment: experiment1, resultNumber: 0, valence:-10, colorIndex: 2)
@@ -41,7 +41,7 @@ class Level13 : Level12 {
         robot.cell = Cell(i: 2, j: 1)
     }
     
-    override func play(experiment: Experiment) -> (Experience, Int) {
+    override func play(_ experiment: Experiment) -> (Experience, Int) {
         
         var result = 0
         

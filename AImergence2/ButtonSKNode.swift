@@ -8,16 +8,16 @@
 
 import SpriteKit
 
-enum BUTTON: Int { case INSTRUCTION, IMAGINE, LEADERBOARD}
+enum BUTTON: Int { case instruction, imagine, leaderboard}
 
 class ButtonSKNode: SKNode
 {
     let button: BUTTON
     let actionAppear: SKAction
-    let actionAppearScale   = SKAction.scaleTo(0.9, duration: 0.3)
+    let actionAppearScale   = SKAction.scale(to: 0.9, duration: 0.3)
     let actionPulse: SKAction
     let actionDisappear: SKAction
-    let actionDisappearScale   = SKAction.scaleTo(0.0, duration: 0.3)
+    let actionDisappearScale   = SKAction.scale(to: 0.0, duration: 0.3)
     let actionExpand: SKAction
     let actionCollapse: SKAction
     let actionReduce: SKAction
@@ -38,40 +38,40 @@ class ButtonSKNode: SKNode
         self.backgroundNode = SKSpriteNode(texture: self.activatedTexture)
         
         let appearPath = UIBezierPath()
-        appearPath.addArcWithCenter(CGPoint(x: 0, y: 90), radius: 90, startAngle: -CGFloat(M_PI) / 2 , endAngle: CGFloat(M_PI) / 2, clockwise: true)
-        actionAppear = SKAction.followPath(appearPath.CGPath, asOffset: false, orientToPath: false, duration: 0.3)
-        actionAppear.timingMode = .EaseOut
-        actionAppearScale.timingMode = .EaseOut
+        appearPath.addArc(withCenter: CGPoint(x: 0, y: 90), radius: 90, startAngle: -CGFloat(M_PI) / 2 , endAngle: CGFloat(M_PI) / 2, clockwise: true)
+        actionAppear = SKAction.follow(appearPath.cgPath, asOffset: false, orientToPath: false, duration: 0.3)
+        actionAppear.timingMode = .easeOut
+        actionAppearScale.timingMode = .easeOut
 
-        let actionFirstPulseUp = SKAction.scaleTo(1.5, duration: 0.3)
-        actionFirstPulseUp.timingMode = .EaseInEaseOut
-        let actionPulseDown = SKAction.scaleTo(0.9, duration: 0.3)
-        actionPulseDown.timingMode = .EaseInEaseOut
-        let actionPulseUp = SKAction.scaleTo(1, duration: 0.3)
-        actionPulseUp.timingMode = .EaseInEaseOut
-        actionPulse = SKAction.sequence([actionFirstPulseUp, SKAction.repeatActionForever(SKAction.sequence([actionPulseDown, actionPulseUp]))])
+        let actionFirstPulseUp = SKAction.scale(to: 1.5, duration: 0.3)
+        actionFirstPulseUp.timingMode = .easeInEaseOut
+        let actionPulseDown = SKAction.scale(to: 0.9, duration: 0.3)
+        actionPulseDown.timingMode = .easeInEaseOut
+        let actionPulseUp = SKAction.scale(to: 1, duration: 0.3)
+        actionPulseUp.timingMode = .easeInEaseOut
+        actionPulse = SKAction.sequence([actionFirstPulseUp, SKAction.repeatForever(SKAction.sequence([actionPulseDown, actionPulseUp]))])
 
         let disappearPath = UIBezierPath()
-        disappearPath.addArcWithCenter(CGPoint(x: 0, y: 90), radius: 90, startAngle: CGFloat(M_PI) / 2 , endAngle: -CGFloat(M_PI) / 2, clockwise: true)
-        actionDisappear = SKAction.followPath(disappearPath.CGPath, asOffset: false, orientToPath: false, duration: 0.3)
-        actionDisappear.timingMode = .EaseIn
-        actionDisappearScale.timingMode = .EaseIn
+        disappearPath.addArc(withCenter: CGPoint(x: 0, y: 90), radius: 90, startAngle: CGFloat(M_PI) / 2 , endAngle: -CGFloat(M_PI) / 2, clockwise: true)
+        actionDisappear = SKAction.follow(disappearPath.cgPath, asOffset: false, orientToPath: false, duration: 0.3)
+        actionDisappear.timingMode = .easeIn
+        actionDisappearScale.timingMode = .easeIn
         
         switch button {
-        case .INSTRUCTION:
-            actionExpand = SKAction.moveTo(CGPoint(x: 0, y: 180 + 280), duration: 0.2)
-        case .IMAGINE:
-            actionExpand = SKAction.moveTo(CGPoint(x: 0, y: 180 + 140), duration: 0.2)
-        case .LEADERBOARD:
-            actionExpand = SKAction.moveTo(CGPoint(x: 0, y: 180), duration: 0.2)
+        case .instruction:
+            actionExpand = SKAction.move(to: CGPoint(x: 0, y: 180 + 280), duration: 0.2)
+        case .imagine:
+            actionExpand = SKAction.move(to: CGPoint(x: 0, y: 180 + 140), duration: 0.2)
+        case .leaderboard:
+            actionExpand = SKAction.move(to: CGPoint(x: 0, y: 180), duration: 0.2)
         }
-        actionExpand.timingMode = .EaseInEaseOut
+        actionExpand.timingMode = .easeInEaseOut
         
-        actionReduce = SKAction.moveTo(CGPoint(x: 0, y: 180), duration: 0.2)
-        actionReduce.timingMode = .EaseInEaseOut
+        actionReduce = SKAction.move(to: CGPoint(x: 0, y: 180), duration: 0.2)
+        actionReduce.timingMode = .easeInEaseOut
         
-        actionCollapse = SKAction.moveTo(CGPointZero, duration: 0.2)
-        actionCollapse.timingMode = .EaseIn
+        actionCollapse = SKAction.move(to: CGPoint.zero, duration: 0.2)
+        actionCollapse.timingMode = .easeIn
         
         super.init()
         
@@ -84,44 +84,44 @@ class ButtonSKNode: SKNode
     }
     
     func expand() {
-        removeActionForKey("expand")
-        runAction(actionExpand, withKey: "expand")
+        removeAction(forKey: "expand")
+        run(actionExpand, withKey: "expand")
         if !visible && !pulsing  { // avoids saccade when already expanded
-            backgroundNode.runAction(actionAppearScale)
+            backgroundNode.run(actionAppearScale)
         }
         visible = true
     }
     
     func collapse() {
-        removeActionForKey("expand")
-        removeActionForKey("appearing")
-        runAction(actionCollapse)
-        backgroundNode.runAction(actionDisappearScale)
+        removeAction(forKey: "expand")
+        removeAction(forKey: "appearing")
+        run(actionCollapse)
+        backgroundNode.run(actionDisappearScale)
         visible = false
     }
 
     func reduce() {
-        removeActionForKey("expand")
-        removeActionForKey("appearing")
-        runAction(actionReduce)
+        removeAction(forKey: "expand")
+        removeAction(forKey: "appearing")
+        run(actionReduce)
         visible = true
     }
     
     func appear() {
-        removeActionForKey("expand")
-        removeActionForKey("appearing")
-        runAction(actionAppear, withKey: "appearing")
+        removeAction(forKey: "expand")
+        removeAction(forKey: "appearing")
+        run(actionAppear, withKey: "appearing")
         if !visible && !pulsing {
-            backgroundNode.runAction(actionAppearScale)
+            backgroundNode.run(actionAppearScale)
         }
         visible = true
     }
     
     func disappear() {
-        removeActionForKey("expand")
-        removeActionForKey("appearing")
-        runAction(actionDisappear)
-        backgroundNode.runAction(actionDisappearScale)
+        removeAction(forKey: "expand")
+        removeAction(forKey: "appearing")
+        run(actionDisappear)
+        backgroundNode.run(actionDisappearScale)
         visible = false
     }
     
@@ -137,11 +137,11 @@ class ButtonSKNode: SKNode
     
     func pulse() {
         pulsing = true
-        backgroundNode.runAction(actionPulse, withKey: "pulsing")
+        backgroundNode.run(actionPulse, withKey: "pulsing")
     }
     
     func unpulse() {
         pulsing = false
-        backgroundNode.removeActionForKey("pulsing")
+        backgroundNode.removeAction(forKey: "pulsing")
     }
 }

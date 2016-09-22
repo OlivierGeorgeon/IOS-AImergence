@@ -37,7 +37,7 @@ class Level11 : Level0 {
         self.init(winScore: 10, historicalDepth: 10, experiments: experiments, experiences: experiences)
     }
     
-    override func play(experiment: Experiment) -> (Experience, Int) {
+    override func play(_ experiment: Experiment) -> (Experience, Int) {
         
         var result = 0
         

@@ -14,12 +14,12 @@ class ImagineModel2: ImagineModel1
     var leftFlippableNode: SCNFlipTileNode?
     var rightFlippableNode: SCNFlipTileNode?
     
-    override func playExperience(experience: Experience) {
+    override func playExperience(_ experience: Experience) {
         switch experience.hashValue {
         case 00:
             robotNode.feelLeft()
             if leftFlippableNode == nil  {
-                leftFlippableNode = createFlipTileNode(tileColor(experience), position: robotNode.positionCell(robotNode.robot.cellLeft())  + tileYOffset, direction: .SOUTH)
+                leftFlippableNode = createFlipTileNode(tileColor(experience), position: robotNode.positionCell(robotNode.robot.cellLeft())  + tileYOffset, direction: .south)
                 leftFlippableNode?.appear(0.2)
             } else {
                 leftFlippableNode?.colorize(tileColor(experience), delay: 0.2)
@@ -38,7 +38,7 @@ class ImagineModel2: ImagineModel1
         case 10:
             robotNode.feelRight()
             if rightFlippableNode == nil  {
-                rightFlippableNode = createFlipTileNode(tileColor(experience), position: robotNode.positionCell(robotNode.robot.cellRight())  + tileYOffset, direction: .SOUTH)
+                rightFlippableNode = createFlipTileNode(tileColor(experience), position: robotNode.positionCell(robotNode.robot.cellRight())  + tileYOffset, direction: .south)
                 rightFlippableNode?.appear(0.2)
             } else {
                 rightFlippableNode?.colorize(tileColor(experience), delay: 0.2)
@@ -59,7 +59,7 @@ class ImagineModel2: ImagineModel1
         }
     }
     
-    func createFlipTileNode(color: UIColor?, position: SCNVector3, direction:Compass = .NORTH) -> SCNFlipTileNode {
+    func createFlipTileNode(_ color: UIColor?, position: SCNVector3, direction:Compass = .north) -> SCNFlipTileNode {
         let node = SCNFlipTileNode(color: color, direction: direction)
         node.position = position
         worldNode.addChildNode(node)

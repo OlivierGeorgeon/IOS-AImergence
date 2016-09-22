@@ -10,21 +10,21 @@ import SceneKit
 
 class ImagineModel11: ImagineModel0
 {
-    override func setup(scene: SCNScene) {
+    override func setup(_ scene: SCNScene) {
         robotNode = SCNRobotNode()
         lightsAndCameras(scene)
         worldNode.addChildNode(robotNode)
     }
     
-    override func lightsAndCameras(scene: SCNScene) {
+    override func lightsAndCameras(_ scene: SCNScene) {
         let ambientLightNode = SCNNode()
         ambientLightNode.light = SCNLight()
-        ambientLightNode.light!.type = SCNLightTypeAmbient
+        ambientLightNode.light!.type = SCNLight.LightType.ambient
         ambientLightNode.light!.color = UIColor(white: 0.67, alpha: 1.0)
         scene.rootNode.addChildNode(ambientLightNode)
         let omniLightNode = SCNNode()
         omniLightNode.light = SCNLight()
-        omniLightNode.light!.type = SCNLightTypeOmni
+        omniLightNode.light!.type = SCNLight.LightType.omni
         omniLightNode.light!.color = UIColor(white: 0.75, alpha: 1.0)
         omniLightNode.position = SCNVector3Make(0, 50 * scale, 50 * scale)
         scene.rootNode.addChildNode(omniLightNode)
@@ -42,7 +42,7 @@ class ImagineModel11: ImagineModel0
         scene.rootNode.addChildNode(worldNode)
     }
 
-    override func playExperience(experience: Experience) {
+    override func playExperience(_ experience: Experience) {
         constraint.influenceFactor = 0.5
         switch experience.experiment.number {
         case 0:
@@ -56,7 +56,7 @@ class ImagineModel11: ImagineModel0
             default:
                 constraint.influenceFactor = 0
                 robotNode.bump()
-                if robotNode.knownCells.updateValue(Phenomenon.TILE, forKey: robotNode.robot.cellFront()) == nil {
+                if robotNode.knownCells.updateValue(Phenomenon.tile, forKey: robotNode.robot.cellFront()) == nil {
                     createTileNode(tileColor(experience), position: robotNode.positionForward() + tileYOffset, delay: 0.1)
                 }
                 spawnExperienceNode(experience, position: robotNode.position + robotNode.forwardVector() / 2, delay: 0.1)

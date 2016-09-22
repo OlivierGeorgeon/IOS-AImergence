@@ -17,7 +17,7 @@ class SCNPhenomenonNode: SCNNode {
     
     override init() {
         super.init()
-        self.hidden = true
+        self.isHidden = true
     }
     
     convenience init(color: UIColor) {
@@ -26,7 +26,7 @@ class SCNPhenomenonNode: SCNNode {
         let tileGeometry = SCNBox(width: 1.0 * 10, height: 0.2 * 10, length: 1.0 * 10, chamferRadius: 0.1 * 10)
         let material = SCNMaterial()
         material.diffuse.contents = color
-        material.specular.contents = UIColor.whiteColor()
+        material.specular.contents = UIColor.white
         tileGeometry.materials = [material]
 
         headNode.geometry = tileGeometry
@@ -37,20 +37,20 @@ class SCNPhenomenonNode: SCNNode {
         fatalError("init(coder:) has not been implemented")
     }
 
-    func appear(delay: NSTimeInterval = 0) {
-        runAction(SCNAction.sequence([SCNAction.waitForDuration(delay), SCNAction.unhide()]))
+    func appear(_ delay: TimeInterval = 0) {
+        runAction(SCNAction.sequence([SCNAction.wait(duration: delay), SCNAction.unhide()]))
     }
     
-    func colorizeHeadBloc(node: SCNNode) {
+    func colorizeHeadBloc(_ node: SCNNode) {
         if let phenomenonNode  = node as? SCNPhenomenonNode {
             phenomenonNode.headNode.geometry!.firstMaterial!.diffuse.contents = phenomenonNode.headColor
         }
     }
 
-    func colorize(color: UIColor, delay: NSTimeInterval = 0.0) {
+    func colorize(_ color: UIColor, delay: TimeInterval = 0.0) {
         headColor = color
-        let actionWait = SCNAction.waitForDuration(delay)
-        let actionColorize = SCNAction.runBlock(colorizeHeadBloc)
+        let actionWait = SCNAction.wait(duration: delay)
+        let actionColorize = SCNAction.run(colorizeHeadBloc)
         runAction(SCNAction.sequence([actionWait, actionColorize]))
     }
     
@@ -62,7 +62,7 @@ class SCNPhenomenonNode: SCNNode {
         }
     }
     
-    func explode(node: SCNNode) {
+    func explode(_ node: SCNNode) {
         if let phenomenonNode = node as? SCNPhenomenonNode {
             phenomenonNode.hideChildren()
             if let particles = SCNParticleSystem(named: "Confetti.scnp", inDirectory: nil) {
@@ -73,6 +73,6 @@ class SCNPhenomenonNode: SCNNode {
     }
     
     func hideChildren() {
-        headNode.hidden = true
+        headNode.isHidden = true
     }
 }

@@ -11,19 +11,19 @@ import StoreKit
 
 class TipSKNode: SKSpriteNode
 {
-    let titleFont = UIFont.preferredFontForTextStyle(UIFontTextStyleTitle1)
-    let bodyFont = UIFont.preferredFontForTextStyle(UIFontTextStyleBody)
+    let titleFont = UIFont.preferredFont(forTextStyle: UIFontTextStyle.title1)
+    let bodyFont = UIFont.preferredFont(forTextStyle: UIFontTextStyle.body)
     let priceNode = SKLabelNode()
     
     var product: SKProduct?
     
     init(size: CGSize) {
         let texture = SKTexture(imageNamed: "tip")
-        super.init(texture: texture, color: UIColor.clearColor(), size: size)
+        super.init(texture: texture, color: UIColor.clear, size: size)
 
         priceNode.fontName = bodyFont.fontName
-        priceNode.fontColor = UIColor.darkGrayColor()
-        priceNode.verticalAlignmentMode = .Center
+        priceNode.fontColor = UIColor.darkGray
+        priceNode.verticalAlignmentMode = .center
         priceNode.position.x = self.size.width * -0.05
         priceNode.zPosition = 1
         priceNode.fontSize = titleFont.pointSize * 2
@@ -44,7 +44,7 @@ class TipSKNode: SKSpriteNode
         fatalError("init(coder:) has not been implemented")
     }
     
-    func product(product: SKProduct) {
+    func product(_ product: SKProduct) {
         self.product = product
         priceNode.text = localizedPrice(product)
         while priceNode.frame.size.width >= self.size.width * 0.8 {
@@ -52,10 +52,10 @@ class TipSKNode: SKSpriteNode
         }
     }
     
-    func localizedPrice(product: SKProduct) -> String {
-        let formatter = NSNumberFormatter()
-        formatter.numberStyle = .CurrencyStyle
+    func localizedPrice(_ product: SKProduct) -> String {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .currency
         formatter.locale = product.priceLocale
-        return formatter.stringFromNumber(product.price)!
+        return formatter.string(from: product.price)!
     }
 }

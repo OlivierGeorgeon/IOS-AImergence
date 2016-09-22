@@ -10,8 +10,8 @@ import SceneKit
 
 class ImagineModel5: ImagineModel4
 {
-    let moveLeft = SCNAction.moveByX(-20, y: 0, z: 0, duration: 0.35)
-    let waitAndMoveLeft = SCNAction.sequence([SCNAction.waitForDuration(0.25), SCNAction.moveByX(-20, y: 0, z: 0, duration: 0.3)])
+    let moveLeft = SCNAction.moveBy(x: -20, y: 0, z: 0, duration: 0.35)
+    let waitAndMoveLeft = SCNAction.sequence([SCNAction.wait(duration: 0.25), SCNAction.moveBy(x: -20, y: 0, z: 0, duration: 0.3)])
     let positionNextBodyNode = SCNVector3(40, -5, 0)
     
     var nextBodyNodeDirection: Compass?
@@ -19,24 +19,24 @@ class ImagineModel5: ImagineModel4
     var currentTileNode: SCNFlipTileNode?
     var nextTileNode: SCNFlipTileNode!
 
-    override func setup(scene: SCNScene) {
+    override func setup(_ scene: SCNScene) {
         lightsAndCameras(scene)
         robotNode = SCNRobotNode()
         robotNode.position = SCNVector3(-1.5  * scale, 0, 0)
         worldNode.addChildNode(robotNode)
-        waitAndMoveLeft.timingMode = .EaseInEaseOut
-        moveLeft.timingMode = .EaseOut
+        waitAndMoveLeft.timingMode = .easeInEaseOut
+        moveLeft.timingMode = .easeOut
     }
     
-    override func lightsAndCameras(scene: SCNScene) {
+    override func lightsAndCameras(_ scene: SCNScene) {
         let ambientLightNode = SCNNode()
         ambientLightNode.light = SCNLight()
-        ambientLightNode.light!.type = SCNLightTypeAmbient
+        ambientLightNode.light!.type = SCNLight.LightType.ambient
         ambientLightNode.light!.color = UIColor(white: 0.67, alpha: 1.0)
         scene.rootNode.addChildNode(ambientLightNode)
         let omniLightNode = SCNNode()
         omniLightNode.light = SCNLight()
-        omniLightNode.light!.type = SCNLightTypeOmni
+        omniLightNode.light!.type = SCNLight.LightType.omni
         omniLightNode.light!.color = UIColor(white: 0.75, alpha: 1.0)
         omniLightNode.position = SCNVector3Make(0, 50 * scale, 50 * scale)
         scene.rootNode.addChildNode(omniLightNode)
@@ -49,15 +49,15 @@ class ImagineModel5: ImagineModel4
         scene.rootNode.addChildNode(worldNode)
     }
 
-    override func playExperience(experience: Experience) {
+    override func playExperience(_ experience: Experience) {
         switch experience.hashValue {
         case 00: // Touch
             robotNode.feelFront()
             if currentTileNode == nil {
                 if nextTileNode == nil {
-                    currentTileNode = createFlipTileNode(tileColor(experience), position: tileYOffset, direction: .SOUTH)
+                    currentTileNode = createFlipTileNode(tileColor(experience), position: tileYOffset, direction: .south)
                     currentTileNode?.appear(0.2)
-                    nextBodyNodeDirection = .NORTH
+                    nextBodyNodeDirection = .north
                 } else {
                     currentTileNode = nextTileNode
                     currentTileNode?.colorize(tileColor(experience), delay: 0.2)
@@ -75,7 +75,7 @@ class ImagineModel5: ImagineModel4
                 if nextTileNode == nil {
                     currentTileNode = createFlipTileNode(tileColor(experience), position: tileYOffset)
                     currentTileNode?.appear(0.2)
-                    nextBodyNodeDirection = .SOUTH
+                    nextBodyNodeDirection = .south
                 } else {
                     currentTileNode = nextTileNode
                     currentTileNode?.colorize(tileColor(experience), delay: 0.2)
@@ -91,9 +91,9 @@ class ImagineModel5: ImagineModel4
             robotNode.bump()
             if currentTileNode == nil {
                 if nextTileNode == nil {
-                    currentTileNode = createFlipTileNode(tileColor(experience), position: tileYOffset, direction: .SOUTH)
+                    currentTileNode = createFlipTileNode(tileColor(experience), position: tileYOffset, direction: .south)
                     currentTileNode?.appear()
-                    nextBodyNodeDirection = .NORTH
+                    nextBodyNodeDirection = .north
                 } else {
                     currentTileNode = nextTileNode
                     currentTileNode?.colorize(tileColor(experience))
@@ -115,7 +115,7 @@ class ImagineModel5: ImagineModel4
                 if nextTileNode == nil {
                     currentTileNode = createFlipTileNode(tileColor(experience), position: tileYOffset)
                     currentTileNode?.appear()
-                    nextBodyNodeDirection = .SOUTH
+                    nextBodyNodeDirection = .south
                 } else {
                     currentTileNode = nextTileNode
                     currentTileNode?.colorize(tileColor(experience))
@@ -137,7 +137,7 @@ class ImagineModel5: ImagineModel4
                 if nextTileNode == nil {
                     currentTileNode = createFlipTileNode(nil, position: tileYOffset)
                     currentTileNode?.appearAndFlipAndColorize(tileColor(experience), clockwise: false, delay: 0.2)
-                    nextBodyNodeDirection = .SOUTH
+                    nextBodyNodeDirection = .south
                 } else {
                     currentTileNode = nextTileNode
                     currentTileNode?.flipAndColorize(tileColor(experience), clockwise: false, delay: 0.2)
@@ -155,9 +155,9 @@ class ImagineModel5: ImagineModel4
             robotNode.jump()
             if currentTileNode == nil {
                 if nextTileNode == nil {
-                    currentTileNode = createFlipTileNode(nil, position: tileYOffset, direction: .SOUTH)
+                    currentTileNode = createFlipTileNode(nil, position: tileYOffset, direction: .south)
                     currentTileNode?.appearAndFlipAndColorize(tileColor(experience), clockwise: false, delay: 0.2)
-                    nextBodyNodeDirection = .NORTH
+                    nextBodyNodeDirection = .north
                 } else {
                     currentTileNode = nextTileNode
                     currentTileNode?.flipAndColorize(tileColor(experience), clockwise: false, delay: 0.2)
@@ -183,10 +183,10 @@ class ImagineModel5: ImagineModel4
             worldNode.addChildNode(nextTileNode)
             nextTileNode.appear()
             nextTileNode.runAction(moveLeft)
-            if nextBodyNodeDirection == .NORTH {
-                nextBodyNodeDirection = .SOUTH
+            if nextBodyNodeDirection == .north {
+                nextBodyNodeDirection = .south
             } else {
-                nextBodyNodeDirection = .NORTH
+                nextBodyNodeDirection = .north
             }
         }
     }    

@@ -20,7 +20,7 @@ class Level3 : Level0 {
         let experiment0 = Experiment(number: 0)
         let experiment1 = Experiment(number: 1)
         let experiment2 = Experiment(number: 2)
-        let experiments = GKRandomSource.sharedRandom().arrayByShufflingObjectsInArray([experiment0, experiment1, experiment2]) as! [Experiment]
+        let experiments = GKRandomSource.sharedRandom().arrayByShufflingObjects(in: [experiment0, experiment1, experiment2]) as! [Experiment]
         
         let experience00 = Experience(experiment: experiment0, resultNumber: 0, valence:-1)
         let experience01 = Experience(experiment: experiment0, resultNumber: 1, valence:1)
@@ -33,7 +33,7 @@ class Level3 : Level0 {
         self.init(winScore: 10, historicalDepth: 10, experiments: experiments, experiences: experiences)
     }
     
-    override func play(experiment: Experiment) -> (Experience, Int) {
+    override func play(_ experiment: Experiment) -> (Experience, Int) {
         
         var result:Int
         

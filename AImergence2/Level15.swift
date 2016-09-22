@@ -48,7 +48,7 @@ class Level15 : Level14 {
         robot.cell = Cell(i: 2, j: 1)
     }
     
-    override func play(experiment: Experiment) -> (Experience, Int) {
+    override func play(_ experiment: Experiment) -> (Experience, Int) {
         
         var result = 0
         

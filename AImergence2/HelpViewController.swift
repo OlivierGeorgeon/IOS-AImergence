@@ -18,8 +18,8 @@ class HelpViewController: UIViewController {
     
     @IBOutlet weak var labelView: UILabel!
     @IBOutlet weak var textView:  UITextView!
-    @IBAction func closeButton(sender: UIButton) { delegate?.hideHelpViewControllerContainer() }
-    @IBAction func UnderstoodButton(sender: UIButton) {
+    @IBAction func closeButton(_ sender: UIButton) { delegate?.hideHelpViewControllerContainer() }
+    @IBAction func UnderstoodButton(_ sender: UIButton) {
         delegate?.understandInstruction()
         delegate?.hideHelpViewControllerContainer()
     }
@@ -33,10 +33,10 @@ class HelpViewController: UIViewController {
     {
         var tempHelpBlobArray = [String]()
         //if let path = NSBundle.mainBundle().pathForResource("Help", ofType: "plist", inDirectory: nil, forLocalization: "fr") {
-        if let path = NSBundle.mainBundle().pathForResource("Help", ofType: "plist") {
+        if let path = Bundle.main.path(forResource: "Help", ofType: "plist") {
             let localizedDictionary = NSDictionary(contentsOfFile: path)
             if let helpLineArray = localizedDictionary?["Help"] as? [[String]] {
-                tempHelpBlobArray = helpLineArray.map({$0.reduce("", combine: {$0 + "\n\n" + $1 }).stringByTrimmingCharactersInSet(NSCharacterSet.newlineCharacterSet())})
+                tempHelpBlobArray = helpLineArray.map({$0.reduce("", {$0 + "\n\n" + $1 }).trimmingCharacters(in: CharacterSet.newlines)})
             } else {
                 print("The Help key of file Help.plist must only contain an array of arrays of strings.")
             }
@@ -50,24 +50,24 @@ class HelpViewController: UIViewController {
         displayLevel(0)
 }
     
-    func displayLevel(level: Int) {
+    func displayLevel(_ level: Int) {
         labelView.text = levelString + " \(level)"
         switch level {
         case 16:
-            textView.selectable = true
+            textView.isSelectable = true
         default:
-            textView.selectable = false
+            textView.isSelectable = false
         }
         textView.text = helpBlobArray[level]
-        textView.font = UIFont.preferredFontForTextStyle(UIFontTextStyleBody)
+        textView.font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.body)
         textView.scrollRangeToVisible(NSMakeRange(0, 0))
     }
     
-    override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
-        super.viewWillTransitionToSize(size, withTransitionCoordinator: coordinator)
-        coordinator.animateAlongsideTransition({ (UIViewControllerTransitionCoordinatorContext) -> Void in }, completion: { (UIViewControllerTransitionCoordinatorContext) -> Void in
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        coordinator.animate(alongsideTransition: { (UIViewControllerTransitionCoordinatorContext) -> Void in }, completion: { (UIViewControllerTransitionCoordinatorContext) -> Void in
             // Seems to fix a Swift bug that does not refresh the textview properly
-            self.textView.font = UIFont.preferredFontForTextStyle(UIFontTextStyleBody)
+            self.textView.font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.body)
             self.textView.scrollRangeToVisible(NSMakeRange(0, 0))
         })
     }
