@@ -11,8 +11,10 @@ import SceneKit
 
 protocol ImagineViewControllerDelegate: class
 {
-    func acknowledgeImagineWorld()
-    func closeImagineWindow()
+    //func acknowledgeImagineWorld()
+    //func closeImagineWindow()
+    func imagineClose()
+    func imagineOk()
 }
 
 class ImagineViewController: UIViewController {
@@ -20,12 +22,14 @@ class ImagineViewController: UIViewController {
     @IBOutlet weak var sceneView: SCNView!
     @IBOutlet weak var textView: UITextView!
     @IBAction func closeButton(_ sender: UIButton) {
-        delegate?.closeImagineWindow()
+        //delegate?.closeImagineWindow()
+        delegate?.imagineClose()
     }
     @IBOutlet weak var okButton: UIButton!
     @IBAction func understoodButton(_ sender: UIButton) {
-        delegate?.acknowledgeImagineWorld()
-        delegate?.closeImagineWindow()
+        //delegate?.acknowledgeImagineWorld()
+        //delegate?.closeImagineWindow()
+        delegate?.imagineOk()
     }
 
     @IBAction func elseButton(_ sender: UIButton)  {

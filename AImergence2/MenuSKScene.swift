@@ -68,7 +68,7 @@ class MenuSKScene: PositionedSKScene {
         addChild(originNode)
         tutorNode.level = userDelegate!.currentLevel()
         if userDelegate!.currentLevel() == 3 && userDelegate!.isSoundEnabled() {
-            tutorNode.tip(14, parentNode: soundNode)
+            tutorNode.tip(tutor: .sound, parentNode: soundNode)
         }
         backgroundColor = UIColor.white
         backgroundNode.size = CGSize(width: 1334, height: 1334)

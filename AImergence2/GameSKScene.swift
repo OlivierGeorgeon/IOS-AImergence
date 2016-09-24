@@ -104,11 +104,11 @@ class GameSKScene: PositionedSKScene {
         tutorNode.level = level.number
         switch self.level.number {
         case 0:
-            tutorNode.tip(2, parentNode: robotNode.instructionButtonNode)
+            tutorNode.tip(tutor: .instruction, parentNode: robotNode.instructionButtonNode)
         case 1:
-            tutorNode.tip(2, parentNode: robotNode.instructionButtonNode)
+            tutorNode.tip(tutor: .instruction, parentNode: robotNode.instructionButtonNode)
         case 3:
-            tutorNode.tip(8, parentNode: scene!)
+            tutorNode.tip(tutor: .shape, parentNode: scene!)
         default:
             break
         }

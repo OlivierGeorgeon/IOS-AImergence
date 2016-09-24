@@ -393,11 +393,14 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
     }
 
     // Implement HelpViewControllerDelegate
-    func hideHelpViewControllerContainer() {
+    func instructionClose() {
         helpViewControllerContainer.isHidden = true
+        if let scene = sceneView.scene as? GameSKScene {
+            scene.tutorNode.instructionClose(scene.robotNode.instructionButtonNode, level1parentNode: scene.robotNode)
+        }
     }
     
-    func understandInstruction() {
+    func instructionOk() {
         interfaceLocks[level][INTERFACE.instruction.rawValue] = false
         userDefaults.set(interfaceLocks, forKey: unlockDefaultKey)
         if let scene = sceneView.scene as? GameSKScene {
@@ -411,16 +414,28 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
                 scene.robotNode.recommend(RECOMMEND.imagine)
             }
         }
+        helpViewControllerContainer.isHidden = true
     }
     
     // Implement WorldViewControllerDelegate
+    func imagineClose() {
+        if !isInterfaceLocked(INTERFACE.level) {
+            //if interfaceLocks[level][INTERFACE.imagine.rawValue] {
+                if let scene = sceneView.scene as? GameSKScene {
+                    scene.tutorNode.exploreOk(scene.robotNode.imagineButtonNode)
+                }
+            //}
+        }
+        closeImagineWindow()
+    }
+    
     func closeImagineWindow() {
         imagineViewControllerContainer.isHidden = true
         imagineViewController!.imagineModel = nil
         imagineViewController!.sceneView.scene = nil
     }
     
-    func acknowledgeImagineWorld() {
+    func imagineOk() {
         if !isInterfaceLocked(INTERFACE.level) {
             interfaceLocks[level][INTERFACE.imagine.rawValue] = false
             userDefaults.set(interfaceLocks, forKey: unlockDefaultKey)
@@ -435,6 +450,7 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
                 }
             }
         }
+        closeImagineWindow()
     }
     
     override var shouldAutorotate : Bool {

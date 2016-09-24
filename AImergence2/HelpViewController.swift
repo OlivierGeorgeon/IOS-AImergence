@@ -10,18 +10,19 @@ import UIKit
 
 protocol HelpViewControllerDelegate: class
 {
-    func hideHelpViewControllerContainer()
-    func understandInstruction()
+    func instructionClose()
+    func instructionOk()
 }
 
 class HelpViewController: UIViewController {
     
     @IBOutlet weak var labelView: UILabel!
     @IBOutlet weak var textView:  UITextView!
-    @IBAction func closeButton(_ sender: UIButton) { delegate?.hideHelpViewControllerContainer() }
+    @IBAction func closeButton(_ sender: UIButton) {
+        delegate?.instructionClose()
+    }
     @IBAction func UnderstoodButton(_ sender: UIButton) {
-        delegate?.understandInstruction()
-        delegate?.hideHelpViewControllerContainer()
+        delegate?.instructionOk()
     }
     
     let helpBlobArray:[String]

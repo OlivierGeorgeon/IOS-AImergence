@@ -6,68 +6,15 @@
 //  Copyright © 2016 Olivier Georgeon. All rights reserved.
 //
 
-//import Foundation
+enum Tutor { case instruction, command, score, explore, rank, drag, menu, replay, sequence, shape, color, level, resume, support, sound, done, instructionOk, exploreOk}
+
 import SpriteKit
 
 class TutorSKNode: SKNode {
     
-    //let bodyFont = UIFont.preferredFontForTextStyle(UIFontTextStyleBody)
-    let shapeFuncs = [arrowRight, arrowLeft, arrowRight, arrowRight, arrowRight, arrowRight, arrowLeft, arrowRight, arrowRight, arrowRight, arrowRight, arrowLeft, arrowLeft, arrowRight, arrowLeft]
-
-    let tips = [NSLocalizedString("Tip0", comment: ""),
-                NSLocalizedString("Tip1", comment: ""),
-                NSLocalizedString("Tip2", comment: ""),
-                NSLocalizedString("Tip3", comment: ""),
-                NSLocalizedString("Tip4", comment: ""),
-                NSLocalizedString("Tip5", comment: ""),
-                NSLocalizedString("Tip6", comment: ""),
-                NSLocalizedString("Tip7", comment: ""),
-                NSLocalizedString("Tip8", comment: ""),
-                NSLocalizedString("Tip9", comment: ""),
-                NSLocalizedString("Tip10", comment: ""),
-                NSLocalizedString("Tip11", comment: ""),
-                NSLocalizedString("Tip12", comment: ""),
-                NSLocalizedString("Tip13", comment: ""),
-                NSLocalizedString("Tip14", comment: "")]
-    
-    var tipRects = [CGRect]()
-/*    CGRect(x: -240, y: -60, width: 480, height: 120),
-                    CGRect(x: -160, y: -60, width: 320, height: 120),
-                    CGRect(x: -200, y: -60, width: 400, height: 120),
-                    CGRect(x: -200, y: -60, width: 400, height: 120),
-                    CGRect(x: -200, y: -60, width: 400, height: 120),
-                    CGRect(x: -200, y: -60, width: 400, height: 120),
-                    CGRect(x: -200, y: -60, width: 400, height: 120),
-                    CGRect(x: -220, y: -60, width: 440, height: 120),
-                    CGRect(x: -240, y: -60, width: 480, height: 120),
-                    CGRect(x: -220, y: -60, width: 440, height: 120),
-                    CGRect(x: -220, y: -60, width: 440, height: 120),
-                    CGRect(x: -220, y: -60, width: 440, height: 120),
-                    CGRect(x: -220, y: -60, width: 440, height: 120),
-                    CGRect(x: -220, y: -60, width: 440, height: 120),
-                    CGRect(x: -220, y: -60, width: 440, height: 120)]
-  */
-    var tipPositions = [CGPoint]()
-    /*(x: -100, y: 460),
-                        CGPoint(x: 280, y: -100),
-                        CGPoint(x: -320, y: 0),
-                        CGPoint(x: -320, y: 0),
-                        CGPoint(x: -320, y: 0),
-                        CGPoint(x: -320, y: 0),
-                        CGPoint(x: -280, y: 0),
-                        CGPoint(x: -180, y: 600),
-                        CGPoint(x: -140, y: 380),
-                        CGPoint(x: -180, y: 600),
-                        CGPoint(x: -300, y: -300),
-                        CGPoint(x: 290, y: 96),
-                        CGPoint(x: 0, y: 300),
-                        CGPoint(x: -300, y: -300),
-                        CGPoint(x: 300, y: -40)]
-    */
-    let tipzRotations = [CGFloat(-1.2), CGFloat(-0.3), CGFloat(0), CGFloat(0), CGFloat(0), CGFloat(0), CGFloat(0), CGFloat(-1), CGFloat(-1.2), CGFloat(-1), CGFloat(0.9), CGFloat(0.3), CGFloat(M_PI / 2), CGFloat(0.9), CGFloat(-0.1)]
     
     var backgroundNode = SKShapeNode()
-    var step = 0
+    var step = Tutor.command
     var commandTapped = [false, false]
     var level = 0
     
@@ -75,62 +22,32 @@ class TutorSKNode: SKNode {
         
         super.init()
         self.zPosition = 8
-        tipRects.append(CGRect(x: -240, y: -60, width: 480, height: 120))
-        tipRects.append(CGRect(x: -160, y: -60, width: 320, height: 120))
-        tipRects.append(CGRect(x: -200, y: -60, width: 400, height: 120))
-        tipRects.append(CGRect(x: -200, y: -60, width: 400, height: 120))
-        tipRects.append(CGRect(x: -200, y: -60, width: 400, height: 120))
-        tipRects.append(CGRect(x: -200, y: -60, width: 400, height: 120))
-        tipRects.append(CGRect(x: -200, y: -60, width: 400, height: 120))
-        tipRects.append(CGRect(x: -220, y: -60, width: 440, height: 120))
-        tipRects.append(CGRect(x: -240, y: -60, width: 480, height: 120))
-        tipRects.append(CGRect(x: -220, y: -60, width: 440, height: 120))
-        tipRects.append(CGRect(x: -220, y: -60, width: 440, height: 120))
-        tipRects.append(CGRect(x: -220, y: -60, width: 440, height: 120))
-        tipRects.append(CGRect(x: -220, y: -60, width: 440, height: 120))
-        tipRects.append(CGRect(x: -220, y: -60, width: 440, height: 120))
-        tipRects.append(CGRect(x: -220, y: -60, width: 440, height: 120))
-
-        tipPositions.append(CGPoint(x: -100, y: 460))
-        tipPositions.append(CGPoint(x: 280, y: -100))
-        tipPositions.append(CGPoint(x: -320, y: 0))
-        tipPositions.append(CGPoint(x: -320, y: 0))
-        tipPositions.append(CGPoint(x: -320, y: 0))
-        tipPositions.append(CGPoint(x: -320, y: 0))
-        tipPositions.append(CGPoint(x: -280, y: 0))
-        tipPositions.append(CGPoint(x: -180, y: 600))
-        tipPositions.append(CGPoint(x: -140, y: 380))
-        tipPositions.append(CGPoint(x: -180, y: 600))
-        tipPositions.append(CGPoint(x: -300, y: -300))
-        tipPositions.append(CGPoint(x: 290, y: 96))
-        tipPositions.append(CGPoint(x: 0, y: 300))
-        tipPositions.append(CGPoint(x: -300, y: -300))
-        tipPositions.append(CGPoint(x: 300, y: -40))
     }
 
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
  
-    func tip(_ i: Int, parentNode: SKNode) {
-        step = i
+    func tip(tutor: Tutor, parentNode: SKNode) {
+        step = tutor
         removeFromParent()
         removeAllChildren()
-        position = tipPositions[i]
-        zRotation = tipzRotations[i]
+        
+        let tipMessage = message(tutor: tutor)
+        self.position = tipMessage.position
+        self.zRotation = tipMessage.zRotation
  
-        backgroundNode = SKShapeNode(path: shapeFuncs[i](tipRects[i]))
+        backgroundNode = SKShapeNode(path: tipMessage.shape)
         //backgroundNode.lineWidth = 0
         backgroundNode.fillColor = UIColor(colorLiteralRed: 0.2, green: 0.7, blue: 0, alpha: 0.8)
         backgroundNode.strokeColor = UIColor(colorLiteralRed: 0.2, green: 0.7, blue: 0, alpha: 0.5)
         addChild(backgroundNode)
         
-        let texts = tips[i].components(separatedBy: "/")
+        let texts = tipMessage.text.components(separatedBy: "/")
         let lines = texts.count - 1
         let lineInterval = CGFloat(17 * 3)
         for line in 0...lines {
             let labelNode = SKLabelNode(text: texts[line])
-            //labelNode.fontName = bodyFont.fontName
             labelNode.fontName = UIFont.preferredFont(forTextStyle: UIFontTextStyle.body).fontName
             labelNode.fontSize = 34 // bodyFont.pointSize * 2
             labelNode.verticalAlignmentMode = .center
@@ -147,99 +64,219 @@ class TutorSKNode: SKNode {
             if experimentNumber < commandTapped.count {
                 commandTapped[experimentNumber] = true
             }
-            if !commandTapped.contains(false) && step == 0 {
-                tip(1, parentNode: nextParentNode)
+            if !commandTapped.contains(false) && step == .command {
+                tip(tutor: .score, parentNode: nextParentNode)
             }
         }
-        if level == 2 && step == 0 {
-            tip(7, parentNode: nextParentNode.scene!)
+        if level == 2 && step == .command {
+            tip(tutor: .replay, parentNode: nextParentNode.scene!)
         }
-        if level == 3 && step == 9 {
-            tip(9, parentNode: nextParentNode.scene!)
+        if level == 3 && step == .color {
+            tip(tutor: .color, parentNode: nextParentNode.scene!)
         }
     }
     
     func reachTen(_ nextParentNode: SKNode, level3ParentNode: SKNode) {
         if level == 0 {
-            if step == 1 || step == 0 {
-                tip(3, parentNode: nextParentNode)
+            if step == .score || step == .command {
+                tip(tutor: .explore, parentNode: nextParentNode)
             }
         }
         if level == 3 {
-            if step == 10 {
-                tip(10, parentNode: level3ParentNode)
+            if step == .level {
+                tip(tutor: .level, parentNode: level3ParentNode)
             }
         }
     }
     
     func instructionOk(_ nextParentNode: SKNode, level1parentNode: SKNode) {
-        if step == 2 {
+        if step == .instruction || step == .instructionOk {
             if level == 0 {
-                tip(0, parentNode: nextParentNode)
+                tip(tutor: .command, parentNode: nextParentNode)
             } else {
-                tip(5, parentNode: level1parentNode)
+                tip(tutor: .menu, parentNode: level1parentNode)
             }
         }
     }
+    func instructionClose(_ nextParentNode: SKNode, level1parentNode: SKNode) {
+        if step == .instruction {
+            tip(tutor: .instructionOk, parentNode: nextParentNode)
+        }
+    }
     func robotOk(_ nextParentNode: SKNode) {
-        if step == 3 {
-            tip(4, parentNode: nextParentNode)
+        if step == .explore || step == .exploreOk {
+            tip(tutor: .rank, parentNode: nextParentNode)
+        }
+    }
+    func exploreOk(_ nextParentNode: SKNode) {
+        if step == .explore {
+            tip(tutor: .exploreOk, parentNode: nextParentNode)
         }
     }
     func gameCenterOk(_ nextParentNode: SKNode, level17ParentNode: SKNode) {
-        if step == 4 {
-            tip(6, parentNode: nextParentNode)
+        if step == .rank {
+            tip(tutor: .drag, parentNode: nextParentNode)
         }
         if level == 17 {
-            tip(13, parentNode: level17ParentNode)
+            tip(tutor: .support, parentNode: level17ParentNode)
         }
     }
     
     func tapRobot(_ nextParentNode: SKNode) {
-        if level == 1 && step == 5 {
-            step = 100
+        if level == 1 && step == .menu {
+            step = .done
             removeFromParent()
         }
     }
     
     func tapEvent(_ nextParentNode: SKNode) {
-        if level == 2 && step == 7 {
-            tip(11, parentNode: nextParentNode)
+        if level == 2 && step == .replay {
+            tip(tutor: .sequence, parentNode: nextParentNode)
         }
     }
     
     func tapNextExperience() {
-        if level == 2 && step == 11 {
-            step = 100
+        if level == 2 && step == .sequence {
+            step = .done
             removeFromParent()
         }
     }
     
     func longpressExperiment() {
-        if level == 3 && step == 8 {
-            step = 9
+        if level == 3 && step == .shape {
+            step = .color
             removeFromParent()
         }
     }
     
     func longpressEvent() {
-        if level == 3 && step == 9 {
-            step = 10
+        if level == 3 && step == .color {
+            step = .level
             removeFromParent()
         }
     }
     
     func arrive() {
-        if (level == 3 && step == 10) || (level == 17 && step == 13) {
-            step = 100
+        if (level == 3 && step == .level) || (level == 17 && step == .support) {
+            step = .done
             removeFromParent()
         }
     }
     
     func tapSound(_ nextParentNode: SKNode) {
-        if (level == 3 && step == 14) {
-            tip(12, parentNode: nextParentNode)
+        if (level == 3 && step == .sound) {
+            tip(tutor: .resume, parentNode: nextParentNode)
         }
+    }
+    
+    func message(tutor: Tutor) -> (text: String, shape: CGPath, position: CGPoint, zRotation: CGFloat) {
+        let text: String
+        let shape: CGPath
+        let position: CGPoint
+        let zRotation: CGFloat
+        switch tutor {
+        case .command:
+            // 0
+            text = NSLocalizedString("command", comment: "")
+            shape = arrowRight(CGRect(x: -240, y: -60, width: 480, height: 120))
+            position = CGPoint(x: -100, y: 460)
+            zRotation = CGFloat(-1.2)
+        case .score:
+            // 1
+            text = NSLocalizedString("score", comment: "")
+            shape = arrowLeft(CGRect(x: -160, y: -60, width: 320, height: 120))
+            position = CGPoint(x: 280, y: -100)
+            zRotation = CGFloat(-0.3)
+        case .instruction:
+            // 2
+            text = NSLocalizedString("instruction", comment: "")
+            shape = arrowRight(CGRect(x: -200, y: -60, width: 400, height: 120))
+            position = CGPoint(x: -320, y: 0)
+            zRotation = CGFloat(0)
+        case .instructionOk:
+            text = NSLocalizedString("instructionOk", comment: "")
+            shape = arrowRight(CGRect(x: -230, y: -60, width: 460, height: 120))
+            position = CGPoint(x: -350, y: 0)
+            zRotation = CGFloat(0)
+        case .explore:
+            // 3
+            text = NSLocalizedString("explore", comment: "")
+            shape = arrowRight(CGRect(x: -200, y: -60, width: 400, height: 120))
+            position = CGPoint(x: -320, y: 0)
+            zRotation = CGFloat(0)
+        case .exploreOk:
+            text = NSLocalizedString("exploreOk", comment: "")
+            shape = arrowRight(CGRect(x: -230, y: -90, width: 460, height: 180))
+            position = CGPoint(x: -350, y: 0)
+            zRotation = CGFloat(0)
+        case .rank:
+            // 4
+            text = NSLocalizedString("rank", comment: "")
+            shape = arrowRight(CGRect(x: -200, y: -60, width: 400, height: 120))
+            position = CGPoint(x: -320, y: 0)
+            zRotation = CGFloat(0)
+        case .menu:
+            // 5
+            text = NSLocalizedString("menu", comment: "")
+            shape = arrowRight(CGRect(x: -200, y: -60, width: 400, height: 120))
+            position = CGPoint(x: -320, y: 0)
+            zRotation = CGFloat(0)
+        case .drag:
+            // 6
+            text = NSLocalizedString("drag", comment: "")
+            shape = arrowLeft(CGRect(x: -200, y: -60, width: 400, height: 120))
+            position = CGPoint(x: -280, y: 0)
+            zRotation = CGFloat(0)
+        case .replay:
+            // 7
+            text = NSLocalizedString("replay", comment: "")
+            shape = arrowRight(CGRect(x: -220, y: -60, width: 440, height: 120))
+            position = CGPoint(x: -180, y: 600)
+            zRotation = CGFloat(-1)
+        case .shape:
+            // 8
+            text = NSLocalizedString("shape", comment: "")
+            shape = arrowRight(CGRect(x: -240, y: -60, width: 480, height: 120))
+            position = CGPoint(x: -140, y: 380)
+            zRotation = CGFloat(-1.2)
+        case .color:
+            // 9
+            text = NSLocalizedString("color", comment: "")
+            shape = arrowRight(CGRect(x: -220, y: -60, width: 440, height: 120))
+            position = CGPoint(x: -180, y: 600)
+            zRotation = CGFloat(-1)
+        case .level:
+            // 10
+            text = NSLocalizedString("level", comment: "")
+            shape = arrowRight(CGRect(x: -220, y: -60, width: 440, height: 120))
+            position = CGPoint(x: -300, y: -300)
+            zRotation = CGFloat(0.9)
+        case .sequence:
+            // 11
+            text = NSLocalizedString("sequence", comment: "")
+            shape = arrowLeft(CGRect(x: -220, y: -60, width: 440, height: 120))
+            position = CGPoint(x: 290, y: 96)
+            zRotation = CGFloat(0.3)
+        case .resume:
+            // 12
+            text = NSLocalizedString("resume", comment: "")
+            shape = arrowLeft(CGRect(x: -220, y: -60, width: 440, height: 120))
+            position = CGPoint(x: 0, y: 300)
+            zRotation = CGFloat(M_PI / 2)
+        case .support:
+            // 13
+            text = NSLocalizedString("support", comment: "")
+            shape = arrowRight(CGRect(x: -220, y: -60, width: 440, height: 120))
+            position = CGPoint(x: -300, y: -300)
+            zRotation = CGFloat(0.9)
+        case .sound, .done:
+            // 14
+            text = NSLocalizedString("sound", comment: "")
+            shape = arrowLeft(CGRect(x: -220, y: -60, width: 440, height: 120))
+            position = CGPoint(x: 300, y: -40)
+            zRotation = CGFloat(-0.1)
+        }
+        return (text, shape, position, zRotation)
     }
 }
 func arrowLeft(_ rect: CGRect) -> CGPath {
