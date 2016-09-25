@@ -59,9 +59,9 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
  
         paidTip = userDefaults.bool(forKey: paidTipKey)
         soundDisabled = userDefaults.bool(forKey: soundKey)
-        if !soundDisabled {
-            loadSounds()
-        }
+        //if !soundDisabled {
+        //    loadSounds()
+        //}
         
         let userInterfaceLocksWrapped = userDefaults.array(forKey: unlockDefaultKey)
         if let userInterfaceLocks = userInterfaceLocksWrapped as? [[Bool]] {
@@ -511,7 +511,7 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
             }
         }
     }
-    
+    /*
     func loadSounds() {
         let sound1 = SKAction.playSoundFileNamed("baby1.wav", waitForCompletion: false)
         let sound2 = SKAction.playSoundFileNamed("baby2.wav", waitForCompletion: false)
@@ -529,27 +529,27 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
         sounds = [sound1, sound2, sound3, sound4, sound5, sound6, sound7, sound8, sound9, sound10, sound11, sound12, sound13]
     }
     
-    func isSoundEnabled() -> Bool {
-        return !soundDisabled
-    }
-    
-    func toggleSound() -> Bool {
-        soundDisabled = !soundDisabled
-        userDefaults.set(soundDisabled, forKey: soundKey)
-        if !soundDisabled && sounds.count < 13 {
-            loadSounds()
-        }
-        return !soundDisabled
-    }
-    
     func soundAction(_ soundIndex: Int) -> SKAction {
         if soundIndex <= sounds.count {
             return sounds[soundIndex - 1]
         } else {
             return SKAction.run({})
         }
+    }*/
+    
+    func toggleSound() -> Bool {
+        soundDisabled = !soundDisabled
+        userDefaults.set(soundDisabled, forKey: soundKey)
+        //if !soundDisabled && sounds.count < 13 {
+        //    loadSounds()
+        //}
+        return !soundDisabled
     }
     
+    func isSoundEnabled() -> Bool {
+        return !soundDisabled
+    }
+ 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated

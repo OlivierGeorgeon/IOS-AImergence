@@ -53,14 +53,25 @@ class ImagineModel0
         let ambientLightNode = SCNNode()
         ambientLightNode.light = SCNLight()
         ambientLightNode.light!.type = SCNLight.LightType.ambient
+        //ambientLightNode.light!.color = UIColor(white: 0.67, alpha: 1.0)
         ambientLightNode.light!.color = UIColor(white: 0.67, alpha: 1.0)
         scene.rootNode.addChildNode(ambientLightNode)
+        
         let omniLightNode = SCNNode()
         omniLightNode.light = SCNLight()
         omniLightNode.light!.type = SCNLight.LightType.omni
+        //omniLightNode.light!.color = UIColor(white: 0.75, alpha: 1.0)
         omniLightNode.light!.color = UIColor(white: 0.75, alpha: 1.0)
-        omniLightNode.position = SCNVector3Make(0, 50 * scale, 50 * scale)
+        //omniLightNode.position = SCNVector3Make(0, 50 * scale, 50 * scale)
+        omniLightNode.position = SCNVector3Make(50, 50, 50)
         scene.rootNode.addChildNode(omniLightNode)
+        
+        let omniLightNode2 = SCNNode()
+        omniLightNode2.light = SCNLight()
+        omniLightNode2.light!.type = SCNLight.LightType.omni
+        omniLightNode2.light!.color = UIColor(white: 0.75, alpha: 1.0)
+        omniLightNode2.position = SCNVector3Make(50, 50, -50)
+        scene.rootNode.addChildNode(omniLightNode2)
         
         let cameraNode = SCNNode()
         cameraNode.camera = SCNCamera()

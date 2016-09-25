@@ -8,8 +8,8 @@
 
 "Level" = "Niveau";
 "Cancel" = "Retour";
-"You must reach the score of 10" = "Vous devez atteindre le score de 10 pour pouvoir accéder au mode exploratoire de ce niveau.";
-"Excellent 0" = "Bravo ! Vous avez gagné le niveau 0 ! Vous avez maintenant accès au mode exploratoire qui vous permet de voir ce que vous avez fait et découvrir de nouveaux comportements. En gardant cette fenêtre ouverte, appuyez au moins une fois sur chaque commande pour activer le bouton Ok. Quand vous avez fini d'explorer, appuyez sur Ok.";
+"You must reach the score of 10" = "Vous devez atteindre le score de 10 pour pouvoir accéder au mode imaginaire de ce niveau.";
+"Excellent 0" = "Bravo ! Vous avez gagné le niveau 0 ! Vous avez maintenant accès au mode imaginaire qui vous propose une interprétation  possible et vous permet de découvrir de nouveaux comportements. En gardant cette fenêtre ouverte, appuyez au moins une fois sur chaque commande pour activer le bouton Ok.";
 "Excellent 1" = "Parfait ! Vous avez gagné le niveau 1 ! Il y a deux comportements qui vous permettent de gagner ce niveau. Essayez différentes séquences de commandes pour voir si vous pouvez trouver ces deux comportements.";
 "Excellent 2" = "Excellent ! Vous avez terminé le niveau 2 ! Nous vous encourageons à utiliser la trace pour découvrir des nouveaux comportements. Essayez de rejouer une suite de commandes gagnante en appuyant sur les interactions dans la trace.";
 "Excellent 3" = "Remarquez que Little AI suggère la prochaine commande quand vous appuyez dans la trace. Essayez avec une trace qui contient des commandes différentes à chaque coup. La commande suggérée n'est pas toujours la bonne, mais la trace vous aide à retrouver quelles commandes produisent quelles interactions dans quelles situations.";
@@ -18,15 +18,15 @@
 "Excellent 6" = "Vérifiez que les couleurs des interactions correspondent à la géométrie de l'objet avec lequel Little AI interagit: vert pour les faces arrondies et rouge pour les faces plates. Les couleurs que vous avez choisies devraient refléter ces propriétés physiques du monde. Little AI exploite ce savoir pour vivre une vie heureuse !";
 "Excellent 7" = "Merveilleux! Quand vous rejouez des séquences d'interaction en appuyant dessus dans la trace, vous ré-exécutez un programme que vous avez précédemment appris. C'est comme ça qu'un robot autonome peut se programmer lui-même !";
 "Excellent 8" = "Dans ce niveau, vous pouvez voir que la commande non informative bascule l'objet sans vous informer du sens dans lequel il est. Laissez l'interaction produite par cette commande en blanc car elle ne transmet aucune information sur l'état physique du monde.";
-"Excellent 14" = "Pendant le jeu, vous pouvez interpréter arbitrairement les directions des commandes de rotation. Une fois sur deux, votre interprétation sera à l'inverse de ce que vous observerez dans le mode exploratoire mais ce n'est pas grave. Le monde réel, s'il existe, est peut-être entièrement inversé par rapport à ce que vous croyez !";
-"Excellent 16" = "Vous pouvez gagner le niveau 16 avant de comprendre la signification de chaque commande et interaction. La représentation spatiale offerte par le mode exploratoire vous aide à corriger les contradictions dans ce que vous croyiez avoir compris.";
+"Excellent 14" = "Pendant le jeu, vous pouvez interpréter arbitrairement les directions des commandes de rotation. Une fois sur deux, votre interprétation sera à l'inverse de ce que vous observerez dans le mode imaginaire mais ce n'est pas grave. Le monde réel, s'il existe, est peut-être entièrement inversé par rapport à ce que vous croyez !";
+"Excellent 16" = "Vous pouvez gagner le niveau 16 avant de comprendre la signification de chaque commande et interaction. La représentation spatiale offerte par le mode imaginare vous aide à corriger les contradictions dans ce que vous croyiez avoir compris.";
 "Drag the 3D scene to move the camera" = "Glissez la scène 3D pour changer l'angle de vue.";
 "Double tap to swap cameras." = "Appuyez deux fois sur la scène 3D pour passer d'un point de vue à un autre.";
 "Explore your environment" = "Explorez votre environnement avant de passer au niveau suivant.";
 "Tap an event to replay its command" = "Scrollez la fenêtre d'arrière plan pour revoir les interactions passées. Appuyez sur les interactions passées pour rejouer des séquences de commandes.";
 "Replay without bumping" = "Appuyez sur les interactions passées pour rejouer des séquences de commandes. Rejouez une séquence de commandes qui permet de se déplacer et tourner sans se cogner.";
 "You won!" = "Youpi ! Vous avez terminé Little AI ! Surveillez les mises à jour pour obtenir des niveaux encore plus intéressants dans les mois à venir ! (Développés bénévolement ou financés par vos dons.)";
-"Please login to Game Center" = "Pour voir le classement, authentifiez-vous dans l'application Game Center !";
+"Please login to Game Center" = "Pour voir le classement, créez votre compte Game Center dans les paramètres système";
 "Thank you!" = "Merci beaucoup pour votre soutien !";
 "0 moves" = "0 coups";
 "Won in" = "Gagné en";
@@ -35,7 +35,7 @@
 "command" = "Pressez les commandes/pour jouer";
 "score" = "Atteignez le/score de 10";
 "instruction" = "Appuyez pour/lire les instructions";
-"explore" = "Appuyez pour accéder/au mode exploratoire";
+"explore" = "Appuyez pour accéder/au mode imaginaire";
 "rank" = "Appuyez pour voir/ votre classement";
 "menu" = "Appuyez pour déployer/ou masquer le menu";
 "drag" = "Glissez le robot pour/changer de niveau";
@@ -48,5 +48,5 @@
 "support" = "Soutenez Little AI";
 "sound" = "Appuyez pour activer/ou désactiver les sons";
 "instructionOk" = "Pressez Ok dans la fenêtre/d'instructions pour acquiter";
-"exploreOk" = "Pressez les commandes/avec la fenêtre exploration/OUVERTE, puis Ok";
+"exploreOk" = "Pressez les commandes/avec la fenêtre imaginaire/OUVERTE, puis Ok";
 "Disposed from memory" = "Effacé de la mémoire";
