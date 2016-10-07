@@ -61,7 +61,7 @@ class ImagineModel0
         omniLightNode.light = SCNLight()
         omniLightNode.light!.type = SCNLight.LightType.omni
         //omniLightNode.light!.color = UIColor(white: 0.75, alpha: 1.0)
-        omniLightNode.light!.color = UIColor(white: 0.5, alpha: 1.0)
+        omniLightNode.light!.color = UIColor(white: 0.4, alpha: 1.0)
         omniLightNode.position = SCNVector3Make(0, 50 * scale, 50 * scale)
         //omniLightNode.position = SCNVector3Make(50, 50, 50)
         scene.rootNode.addChildNode(omniLightNode)
@@ -70,7 +70,7 @@ class ImagineModel0
         omniLightNode2.light = SCNLight()
         omniLightNode2.light!.type = SCNLight.LightType.omni
         //omniLightNode2.light!.color = UIColor(white: 0.75, alpha: 1.0)
-        omniLightNode2.light!.color = UIColor(white: 0.5, alpha: 1.0)
+        omniLightNode2.light!.color = UIColor(white: 0.4, alpha: 1.0)
         omniLightNode2.position = SCNVector3Make(50, 50, -50)
         scene.rootNode.addChildNode(omniLightNode2)
         
@@ -102,7 +102,7 @@ class ImagineModel0
         default:
             robotNode.bumpBack()
             if robotNode.knownCells.updateValue(Phenomenon.tile, forKey: robotNode.robot.cellBack()) == nil  {
-                createTileNode(tileColor(experience), position:robotNode.positionCell(robotNode.robot.cellBack()) + SCNVector3(-0.5 * scale, -0.5 * scale, 0), delay: 0.1)
+                createTileNode(tileColor(experience), position:robotNode.positionCell(robotNode.robot.cellBack()) + SCNVector3(-0.5 * scale, -0.5 * scale, 0), chamferRadius: 0, delay: 0.1)
             }
             spawnExperienceNode(experience, position: robotNode.positionCell(robotNode.robot.cellBack()) + tileYOffset, delay: 0.1)
         }
@@ -116,14 +116,12 @@ class ImagineModel0
         }
     }
     
-    func createTileNode(_ color: UIColor, position: SCNVector3, delay: TimeInterval) { //-> SCNPhenomenonNode {
-        let node = SCNPhenomenonNode(color: color)
+    func createTileNode(_ color: UIColor, position: SCNVector3, chamferRadius:CGFloat = 1, delay: TimeInterval) {
+        let node = SCNPhenomenonNode(color: color, chamferRadius: chamferRadius)
         node.position = position
         node.isHidden = true
         worldNode.addChildNode(node)
-        //node.runAction(SCNAction.sequence([SCNAction.waitForDuration(delay), SCNAction.unhide()]))
         node.appear(delay)
-        //return node
     }
     
     func spawnExperienceNode(_ experience: Experience, position: SCNVector3, delay:TimeInterval = 0.0) {

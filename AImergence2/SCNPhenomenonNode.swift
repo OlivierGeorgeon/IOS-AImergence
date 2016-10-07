@@ -20,10 +20,10 @@ class SCNPhenomenonNode: SCNNode {
         self.isHidden = true
     }
     
-    convenience init(color: UIColor) {
+    convenience init(color: UIColor, chamferRadius:CGFloat) {
         self.init()
 
-        let tileGeometry = SCNBox(width: 1.0 * 10, height: 0.2 * 10, length: 1.0 * 10, chamferRadius: 0.1 * 10)
+        let tileGeometry = SCNBox(width: 10, height: 2, length: 10, chamferRadius: chamferRadius)
         let material = SCNMaterial()
         material.diffuse.contents = color
         material.specular.contents = UIColor.white

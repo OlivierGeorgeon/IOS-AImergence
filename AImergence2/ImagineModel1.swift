@@ -33,7 +33,7 @@ class ImagineModel1: ImagineModel0
         omniLightNode.light!.type = SCNLight.LightType.omni
         //omniLightNode.light!.color = UIColor(white: 0.75, alpha: 1.0)
         //omniLightNode.light!.color = UIColor(white: 0.75, alpha: 1.0)
-        omniLightNode.light!.color = UIColor(white: 0.5, alpha: 1.0)
+        omniLightNode.light!.color = UIColor(white: 0.4, alpha: 1.0)
         //omniLightNode.position = SCNVector3Make(0, 50 * scale, 50 * scale)
         omniLightNode.position = SCNVector3Make(50, 50, 50)
         scene.rootNode.addChildNode(omniLightNode)
@@ -42,7 +42,7 @@ class ImagineModel1: ImagineModel0
         omniLightNode2.light = SCNLight()
         omniLightNode2.light!.type = SCNLight.LightType.omni
         //omniLightNode2.light!.color = UIColor(white: 0.75, alpha: 1.0)
-        omniLightNode2.light!.color = UIColor(white: 0.5, alpha: 1.0)
+        omniLightNode2.light!.color = UIColor(white: 0.4, alpha: 1.0)
         omniLightNode2.position = SCNVector3Make(50, 50, -50)
         scene.rootNode.addChildNode(omniLightNode2)
         
@@ -60,25 +60,25 @@ class ImagineModel1: ImagineModel0
         case 00: // Left
             robotNode.feelLeft()
             if robotNode.knownCells.updateValue(Phenomenon.tile, forKey: robotNode.robot.cellLeft()) == nil  {
-                createTileNode(tileColor(experience), position: robotNode.positionCell(robotNode.robot.cellLeft()) + tileYOffset, delay: 0.1)
+                createTileNode(tileColor(experience), position: robotNode.positionCell(robotNode.robot.cellLeft()) + tileYOffset, chamferRadius: 0, delay: 0.2)
             }
             spawnExperienceNode(experience, position: robotNode.positionCell(robotNode.robot.cellLeft()) + tileYOffset, delay: 0.2)
         case 01:
             robotNode.feelLeft()
             if robotNode.knownCells.updateValue(Phenomenon.tile, forKey: robotNode.robot.cellLeft()) == nil  {
-                createTileNode(tileColor(experience), position: robotNode.positionCell(robotNode.robot.cellLeft()) + tileYOffset, delay: 0.1)
+                createTileNode(tileColor(experience), position: robotNode.positionCell(robotNode.robot.cellLeft()) + tileYOffset, delay: 0.2)
             }
             spawnExperienceNode(experience, position: robotNode.positionCell(robotNode.robot.cellLeft()) + tileYOffset, delay: 0.2)
         case 10: // Right
             robotNode.feelRight()
             if robotNode.knownCells.updateValue(Phenomenon.tile, forKey: robotNode.robot.cellRight()) == nil  {
-                createTileNode(tileColor(experience), position: robotNode.positionCell(robotNode.robot.cellRight()) + tileYOffset, delay: 0.1)
+                createTileNode(tileColor(experience), position: robotNode.positionCell(robotNode.robot.cellRight()) + tileYOffset, chamferRadius: 0, delay: 0.2)
             }
             spawnExperienceNode(experience, position: robotNode.positionCell(robotNode.robot.cellRight()) + tileYOffset, delay: 0.2)
         case 11:
             robotNode.feelRight()
             if robotNode.knownCells.updateValue(Phenomenon.tile, forKey: robotNode.robot.cellRight()) == nil  {
-                createTileNode(tileColor(experience), position: robotNode.positionCell(robotNode.robot.cellRight()) + tileYOffset, delay: 0.1)
+                createTileNode(tileColor(experience), position: robotNode.positionCell(robotNode.robot.cellRight()) + tileYOffset, delay: 0.2)
             }
             spawnExperienceNode(experience, position: robotNode.positionCell(robotNode.robot.cellRight()) + tileYOffset, delay: 0.2)
         case 20, 21: // swap
