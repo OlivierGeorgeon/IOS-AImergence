@@ -61,15 +61,16 @@ class ImagineModel0
         omniLightNode.light = SCNLight()
         omniLightNode.light!.type = SCNLight.LightType.omni
         //omniLightNode.light!.color = UIColor(white: 0.75, alpha: 1.0)
-        omniLightNode.light!.color = UIColor(white: 0.75, alpha: 1.0)
-        //omniLightNode.position = SCNVector3Make(0, 50 * scale, 50 * scale)
-        omniLightNode.position = SCNVector3Make(50, 50, 50)
+        omniLightNode.light!.color = UIColor(white: 0.5, alpha: 1.0)
+        omniLightNode.position = SCNVector3Make(0, 50 * scale, 50 * scale)
+        //omniLightNode.position = SCNVector3Make(50, 50, 50)
         scene.rootNode.addChildNode(omniLightNode)
         
         let omniLightNode2 = SCNNode()
         omniLightNode2.light = SCNLight()
         omniLightNode2.light!.type = SCNLight.LightType.omni
-        omniLightNode2.light!.color = UIColor(white: 0.75, alpha: 1.0)
+        //omniLightNode2.light!.color = UIColor(white: 0.75, alpha: 1.0)
+        omniLightNode2.light!.color = UIColor(white: 0.5, alpha: 1.0)
         omniLightNode2.position = SCNVector3Make(50, 50, -50)
         scene.rootNode.addChildNode(omniLightNode2)
         
@@ -131,6 +132,9 @@ class ImagineModel0
         let experienceMaterial = SCNMaterial()
         experienceMaterial.diffuse.contents = tileColor(experience)
         experienceMaterial.specular.contents = UIColor.white
+        if #available(iOS 10.0, *) {
+            experienceMaterial.metalness.contents = 1
+        }
         geometry.materials = [experienceMaterial]
         let experienceNode = SCNNode(geometry: geometry)
         experienceNode.scale = SCNVector3(0.1, 0.1, 0.1)

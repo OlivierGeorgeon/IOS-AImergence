@@ -9,7 +9,7 @@
 "Level" = "Niveau";
 "Cancel" = "Retour";
 "You must reach the score of 10" = "Vous devez atteindre le score de 10 pour pouvoir accéder au mode imaginaire de ce niveau.";
-"Excellent 0" = "Bravo ! Vous avez gagné le niveau 0 ! Vous avez maintenant accès au mode imaginaire qui vous propose une interprétation  possible et vous permet de découvrir de nouveaux comportements. En gardant cette fenêtre ouverte, appuyez au moins une fois sur chaque commande pour activer le bouton Ok.";
+"Excellent 0" = "Bravo ! Vous avez gagné le niveau 0 ! Vous avez maintenant accès au mode imaginaire qui vous propose une interprétation possible de ce que vous avez fait. En gardant cette fenêtre ouverte, pressez au moins une fois chaque commande pour activer le bouton Ok, puis pressez Ok.";
 "Excellent 1" = "Parfait ! Vous avez gagné le niveau 1 ! Il y a deux comportements qui vous permettent de gagner ce niveau. Essayez différentes séquences de commandes pour voir si vous pouvez trouver ces deux comportements.";
 "Excellent 2" = "Excellent ! Vous avez terminé le niveau 2 ! Nous vous encourageons à utiliser la trace pour découvrir des nouveaux comportements. Essayez de rejouer une suite de commandes gagnante en appuyant sur les interactions dans la trace.";
 "Excellent 3" = "Remarquez que Little AI suggère la prochaine commande quand vous appuyez dans la trace. Essayez avec une trace qui contient des commandes différentes à chaque coup. La commande suggérée n'est pas toujours la bonne, mais la trace vous aide à retrouver quelles commandes produisent quelles interactions dans quelles situations.";

@@ -27,6 +27,9 @@ class SCNPhenomenonNode: SCNNode {
         let material = SCNMaterial()
         material.diffuse.contents = color
         material.specular.contents = UIColor.white
+        if #available(iOS 10.0, *) {
+            material.metalness.contents = 1
+        }
         tileGeometry.materials = [material]
 
         headNode.geometry = tileGeometry
