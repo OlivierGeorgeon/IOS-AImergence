@@ -8,9 +8,9 @@
 
 "Level" = "Level";
 "Cancel" = "Back";
-"You must reach the score of 10" = "You must reach the score of 10 to access the level's imaginary mode.";
-"Excellent 0" = "Excellent! You have completed Level 0! You now have access to this level's imaginary mode. It shows a possible interpretation of what you did and alows you to discover new patterns. With this display on, tap on each command at least once to enable the Ok button, and then tap Ok.";
-"Excellent 1" = "Now you have completed Level 1! There are two patterns of interaction that can solve this level. Try different command sequences to see if you can find these two patterns.";
+"You must reach the score of 10" = "You must reach the score of 10 to access the level's replay mode.";
+"Excellent 0" = "Excellent! You have completed Level 0! You now have access to this level's replay mode. It shows a possible interpretation of what you did and alows you to discover new patterns. Tap on each command at least once to enable the Ok button BEFORE closing this window.";
+"Excellent 1" = "Now you have completed Level 1! There are two patterns of interaction that can solve this level. Try different command sequences to see if you can find these two patterns before closing this window.";
 "Excellent 2" = "Excellent! You completed Level 2! To discover patterns of interaction while playing, we encourage you to use the trace. Try to replay a command by tapping in the trace to replicate a successful pattern.";
 "Excellent 3" = "Notice that little AI will suggest the next command when you tap an interaction in the trace. Try it in a trace in which the commands are different on each turn. The suggested command is not always appropriate, but the trace helps you identify what commands produce what interactions in what situations.";
 "Excellent 4" = "Congratulations! You completed Level 4! Tap a successful sequence of four interactions in the trace to see why unpleasant interactions were necessary for enjoyable payoffs.";
@@ -18,8 +18,8 @@
 "Excellent 6" = "Make sure that the color of the interactions matches the geometry of the tile with which Little AI is interacting: green for rounded sides and red for flat sides. The colors that you have chosen should reflect these physical properties of the world. Little AI exploits this knowledge to live a happy life!";
 "Excellent 7" = "Bravo! When you play again a sequence of interactions by tapping them in the trace, you are re-executing a program that you have previously learned. This is how an autonomous robot can program itself!";
 "Excellent 8" = "In this level, you can see that the non-informative command flips the tile without informing you on what side it is. Leave the interaction produced by this command in white because it does convey any information about the physical state of the world.";
-"Excellent 14" = "During the game, you can arbitrarily interpret the directions (left or right) of the rotate commands. This interpretation may be inverted from what you see in imaginary mode but that's ok. The real world, if it exists, is perhaps entirely inverted from the way you see it!";
-"Excellent 16" = "You can win level 16 before figuring out the exact meaning of each command and interaction. The spatial representation offered by the imaginary mode will help you correct the inconsistencies in your understanding.";
+"Excellent 14" = "During the game, you can arbitrarily interpret the directions (left or right) of the rotate commands. This interpretation may be inverted from what you see in replay mode but that's ok. The real world, if it exists, is perhaps entirely inverted from the way you see it!";
+"Excellent 16" = "You can win level 16 before figuring out the exact meaning of each command and interaction. The spatial representation offered by the replay mode will help you correct the inconsistencies in your understanding.";
 "Drag the 3D scene to move the camera" = "Drag the 3D scene to change the angle of view.";
 "Double tap to swap cameras." = "Double-tap on the 3D scene to swap viewpoints.";
 "Explore your environment" = "Explore your environment before moving on to the next level.";
@@ -35,18 +35,18 @@
 "command" = "Tap the commands/to start playing";
 "score" = "Reach the/score of 10";
 "instruction" = "Tap to read/the instructions";
-"explore" = "Tap to access/imaginary mode";
+"replay" = "Tap to open the/replay window";
 "rank" = "Tap to see/your ranking";
 "menu" = "Tap to see or/hide the menu";
 "drag" = "Drag the robot/to shift levels";
-"replay" = "Tap an interaction to/replay its command";
+"redo" = "Tap an interaction to/replay its command";
 "shape" = "Press and hold/to change shapes";
 "color" = "Press and hold/to change colors";
 "level" = "Tap to see/the level board";
-"sequence" = "Tap to replay/the next command";
+"sequence" = "Tap to replay the next/command in the trace";
 "resume" = "Drag to resume/the game";
 "support" = "Support Little AI";
 "sound" = "Tap to turn sound/on and off";
-"instructionOk" = "Tap Ok in the instruction/window to acknowledge";
-"exploreOk" = "Press the commands/while imaginary window/IS OPEN, and then Ok";
+"instructionAgain" = "Tap Ok in the instruction/window to acknowledge";
+"replayAgain" = "Press the commands/WHILE replay window/is open, and then Ok";
 "Disposed from memory" = "Removed from memory";

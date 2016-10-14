@@ -6,7 +6,7 @@
 //  Copyright © 2016 Olivier Georgeon. All rights reserved.
 //
 
-enum Tutor { case instruction, command, score, explore, rank, drag, menu, replay, sequence, shape, color, level, resume, support, sound, done, instructionOk, exploreOk}
+enum Tutor { case instruction, command, score, replay, rank, drag, menu, redo, sequence, shape, color, level, resume, support, sound, done, instructionAgain, replayAgain}
 
 import SpriteKit
 
@@ -69,7 +69,7 @@ class TutorSKNode: SKNode {
             }
         }
         if level == 2 && step == .command {
-            tip(tutor: .replay, parentNode: nextParentNode.scene!)
+            tip(tutor: .redo, parentNode: nextParentNode.scene!)
         }
         if level == 3 && step == .color {
             tip(tutor: .color, parentNode: nextParentNode.scene!)
@@ -79,7 +79,7 @@ class TutorSKNode: SKNode {
     func reachTen(_ nextParentNode: SKNode, level3ParentNode: SKNode) {
         if level == 0 {
             if step == .score || step == .command {
-                tip(tutor: .explore, parentNode: nextParentNode)
+                tip(tutor: .replay, parentNode: nextParentNode)
             }
         }
         if level == 3 {
@@ -89,28 +89,32 @@ class TutorSKNode: SKNode {
         }
     }
     
-    func instructionOk(_ nextParentNode: SKNode, level1parentNode: SKNode) {
-        if step == .instruction || step == .instructionOk {
+    func instructionClose(_ nextParentNode: SKNode, level1parentNode: SKNode) {
+        if step == .instruction {
+            tip(tutor: .instructionAgain, parentNode: nextParentNode)
+        }
+    }
+    func instructionOk(_ nextParentNode: SKNode, level1parentNode: SKNode, levelLocked: Bool, levelLockedNode: SKNode) {
+        if step == .instruction || step == .instructionAgain {
             if level == 0 {
-                tip(tutor: .command, parentNode: nextParentNode)
+                if levelLocked {
+                    tip(tutor: .command, parentNode: nextParentNode)
+                } else {
+                    tip(tutor: .replay, parentNode: levelLockedNode)
+                }
             } else {
                 tip(tutor: .menu, parentNode: level1parentNode)
             }
         }
     }
-    func instructionClose(_ nextParentNode: SKNode, level1parentNode: SKNode) {
-        if step == .instruction {
-            tip(tutor: .instructionOk, parentNode: nextParentNode)
+    func replayClose(_ nextParentNode: SKNode) {
+        if step == .replay || level == 1 {
+            tip(tutor: .replayAgain, parentNode: nextParentNode)
         }
     }
-    func robotOk(_ nextParentNode: SKNode) {
-        if step == .explore || step == .exploreOk {
+    func replayOk(_ nextParentNode: SKNode) {
+        if step == .replay || step == .replayAgain {
             tip(tutor: .rank, parentNode: nextParentNode)
-        }
-    }
-    func exploreOk(_ nextParentNode: SKNode) {
-        if step == .explore {
-            tip(tutor: .exploreOk, parentNode: nextParentNode)
         }
     }
     func gameCenterOk(_ nextParentNode: SKNode, level17ParentNode: SKNode) {
@@ -130,7 +134,7 @@ class TutorSKNode: SKNode {
     }
     
     func tapEvent(_ nextParentNode: SKNode) {
-        if level == 2 && step == .replay {
+        if level == 2 && step == .redo {
             tip(tutor: .sequence, parentNode: nextParentNode)
         }
     }
@@ -193,19 +197,19 @@ class TutorSKNode: SKNode {
             shape = arrowRight(CGRect(x: -200, y: -60, width: 400, height: 120))
             position = CGPoint(x: -320, y: 0)
             zRotation = CGFloat(0)
-        case .instructionOk:
-            text = NSLocalizedString("instructionOk", comment: "")
+        case .instructionAgain:
+            text = NSLocalizedString("instructionAgain", comment: "")
             shape = arrowRight(CGRect(x: -230, y: -60, width: 460, height: 120))
             position = CGPoint(x: -350, y: 0)
             zRotation = CGFloat(0)
-        case .explore:
+        case .replay:
             // 3
-            text = NSLocalizedString("explore", comment: "")
+            text = NSLocalizedString("replay", comment: "")
             shape = arrowRight(CGRect(x: -200, y: -60, width: 400, height: 120))
             position = CGPoint(x: -320, y: 0)
             zRotation = CGFloat(0)
-        case .exploreOk:
-            text = NSLocalizedString("exploreOk", comment: "")
+        case .replayAgain:
+            text = NSLocalizedString("replayAgain", comment: "")
             shape = arrowRight(CGRect(x: -230, y: -90, width: 460, height: 180))
             position = CGPoint(x: -350, y: 0)
             zRotation = CGFloat(0)
@@ -227,9 +231,9 @@ class TutorSKNode: SKNode {
             shape = arrowLeft(CGRect(x: -200, y: -60, width: 400, height: 120))
             position = CGPoint(x: -280, y: 0)
             zRotation = CGFloat(0)
-        case .replay:
+        case .redo:
             // 7
-            text = NSLocalizedString("replay", comment: "")
+            text = NSLocalizedString("redo", comment: "")
             shape = arrowRight(CGRect(x: -220, y: -60, width: 440, height: 120))
             position = CGPoint(x: -180, y: 600)
             zRotation = CGFloat(-1)
@@ -283,17 +287,11 @@ func arrowLeft(_ rect: CGRect) -> CGPath {
     let offset = CGFloat(40)
     let radius = CGFloat (20)
     let path = CGMutablePath()
-    //CGPathMoveToPoint(path, nil, rect.maxX, rect.minY + radius)
     path.move(to: CGPoint(x:rect.maxX, y: rect.minY + radius))
-    //CGPathAddArcToPoint(path, at, rect.maxX, rect.maxY, rect.minX, rect.maxY, radius);
     path.addArc(tangent1End: CGPoint(x:rect.maxX, y: rect.maxY), tangent2End: CGPoint(x: rect.minX, y:rect.maxY), radius: radius)
-    //CGPathAddArcToPoint(path, at, rect.minX, rect.maxY, rect.minX - offset, 0, radius);
     path.addArc(tangent1End: CGPoint(x:rect.minX, y: rect.maxY), tangent2End: CGPoint(x: rect.minX - offset, y:0), radius: radius)
-    //CGPathAddArcToPoint(path, at, rect.minX - offset, 0, rect.minX, rect.minY, radius);
     path.addArc(tangent1End: CGPoint(x:rect.minX - offset, y: 0), tangent2End: CGPoint(x: rect.minX, y:rect.minY), radius: radius)
-    //CGPathAddArcToPoint(path, at, rect.minX, rect.minY, rect.maxX, rect.minY, radius);
     path.addArc(tangent1End: CGPoint(x:rect.minX, y: rect.minY), tangent2End: CGPoint(x: rect.maxX, y:rect.minY), radius: radius)
-    //CGPathAddArcToPoint(path, at, rect.maxX, rect.minY, rect.maxX, rect.maxY, radius);
     path.addArc(tangent1End: CGPoint(x:rect.maxX, y: rect.minY), tangent2End: CGPoint(x: rect.maxX, y:rect.maxY), radius: radius)
     path.closeSubpath();
     return path
@@ -303,17 +301,11 @@ func arrowRight(_ rect: CGRect) -> CGPath {
     let offset = CGFloat(40)
     let radius = CGFloat (20)
     let path = CGMutablePath()
-    //CGPathMoveToPoint(path, nil, rect.minX, rect.minY + radius)
     path.move(to: CGPoint(x:rect.minX, y: rect.minY + radius))
-    //CGPathAddArcToPoint(path, nil, rect.minX, rect.maxY, rect.maxX, rect.maxY, radius);
     path.addArc(tangent1End: CGPoint(x:rect.minX, y: rect.maxY), tangent2End: CGPoint(x: rect.maxX, y:rect.maxY), radius: radius)
-    //CGPathAddArcToPoint(path, nil, rect.maxX, rect.maxY, rect.maxX + offset, 0, radius);
     path.addArc(tangent1End: CGPoint(x:rect.maxX, y: rect.maxY), tangent2End: CGPoint(x: rect.maxX + offset, y:0), radius: radius)
-    //CGPathAddArcToPoint(path, nil, rect.maxX + offset, 0, rect.maxX, rect.minY, radius);
     path.addArc(tangent1End: CGPoint(x:rect.maxX + offset, y: 0), tangent2End: CGPoint(x: rect.maxX, y:rect.minY), radius: radius)
-    //CGPathAddArcToPoint(path, nil, rect.maxX, rect.minY, rect.minX, rect.minY, radius);
     path.addArc(tangent1End: CGPoint(x:rect.maxX, y: rect.minY), tangent2End: CGPoint(x: rect.minX, y:rect.minY), radius: radius)
-    //CGPathAddArcToPoint(path, at, rect.minX, rect.minY, rect.minX, rect.maxY, radius);
     path.addArc(tangent1End: CGPoint(x:rect.minX, y: rect.minY), tangent2End: CGPoint(x: rect.minX, y:rect.maxY), radius: radius)
     path.closeSubpath();
     return path

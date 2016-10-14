@@ -23,7 +23,9 @@ class ScoreSKNode: SKNode
     let textMoves = NSLocalizedString("moves", comment: "Number of moves displayed in the main window");
     
     override init() {
-        let pathToDraw:CGMutablePath = CGMutablePath()
+        let pathToDraw = CGMutablePath()
+        pathToDraw.move(to: CGPoint())
+        pathToDraw.addLine(to: CGPoint(x: 356, y:0))
         self.lineNode = SKShapeNode(path:pathToDraw)
 
         super.init()
@@ -43,14 +45,8 @@ class ScoreSKNode: SKNode
         backgroundNode.fillColor = UIColor.white
         addChild(backgroundNode)
         
-        //CGPathMoveToPoint(pathToDraw, nil, 0, 0)
-        pathToDraw.move(to: CGPoint())
-        //CGPathAddLineToPoint(pathToDraw, nil, 356, 0)
-        pathToDraw.move(to: CGPoint(x: 356, y:0))
-        self.lineNode.path = pathToDraw
-        self.lineNode.strokeColor = SKColor.white
+        self.lineNode.strokeColor = UIColor.white
         self.lineNode.zPosition = -2
-        self.lineNode.isHidden = true
         self.lineNode.lineWidth = 2
         addChild(self.lineNode)
         

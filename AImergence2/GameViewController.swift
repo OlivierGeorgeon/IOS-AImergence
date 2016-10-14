@@ -404,7 +404,7 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
         interfaceLocks[level][INTERFACE.instruction.rawValue] = false
         userDefaults.set(interfaceLocks, forKey: unlockDefaultKey)
         if let scene = sceneView.scene as? GameSKScene {
-            scene.tutorNode.instructionOk(scene, level1parentNode: scene.robotNode)
+            scene.tutorNode.instructionOk(scene, level1parentNode: scene.robotNode, levelLocked: interfaceLocks[level][INTERFACE.level.rawValue], levelLockedNode: scene.robotNode.imagineButtonNode)
             scene.robotNode.instructionButtonNode.disactivate()
             scene.robotNode.instructionButtonNode.unpulse()
             if scene.robotNode.recommendation == RECOMMEND.instruction {
@@ -422,7 +422,7 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
         if !isInterfaceLocked(INTERFACE.level) {
             //if interfaceLocks[level][INTERFACE.imagine.rawValue] {
                 if let scene = sceneView.scene as? GameSKScene {
-                    scene.tutorNode.exploreOk(scene.robotNode.imagineButtonNode)
+                    scene.tutorNode.replayClose(scene.robotNode.imagineButtonNode)
                 }
             //}
         }
@@ -440,7 +440,7 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
             interfaceLocks[level][INTERFACE.imagine.rawValue] = false
             userDefaults.set(interfaceLocks, forKey: unlockDefaultKey)
             if let scene = sceneView.scene as? GameSKScene {
-                scene.tutorNode.robotOk(scene.robotNode.gameCenterButtonNode)
+                scene.tutorNode.replayOk(scene.robotNode.gameCenterButtonNode)
                 scene.robotNode.imagineButtonNode.disactivate()
                 if scene.robotNode.recommendation == RECOMMEND.imagine {
                     scene.robotNode.recommend(RECOMMEND.leaderboard)
