@@ -35,7 +35,7 @@
 "command" = "Pressez les commandes/pour jouer";
 "score" = "Atteignez le/score de 10";
 "instruction" = "Appuyez pour/lire les instructions";
-"explore" = "Appuyez pour ouvrir/la fenêtre \"replay\"";
+"replay" = "Appuyez pour ouvrir/la fenêtre \"replay\"";
 "rank" = "Appuyez pour voir/ votre classement";
 "menu" = "Appuyez pour déployer/ou masquer le menu";
 "drag" = "Glissez le robot pour/changer de niveau";
@@ -48,5 +48,5 @@
 "support" = "Soutenez Little AI";
 "sound" = "Appuyez pour activer/ou désactiver les sons";
 "instructionAgain" = "Pressez Ok dans la fenêtre/d'instructions pour acquiter";
-"exploreAgain" = "Pressez chaque commande/avec la fenêtre replay/OUVERTE, puis Ok";
+"replayAgain" = "Pressez chaque commande/avec la fenêtre replay/OUVERTE, puis Ok";
 "Disposed from memory" = "Effacé de la mé moire";
