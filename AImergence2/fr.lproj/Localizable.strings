@@ -10,7 +10,7 @@
 "Cancel" = "Retour";
 "You must reach the score of 10" = "Vous devez atteindre le score de 10 pour pouvoir accéder au mode \"replay\" de ce niveau.";
 "Excellent 0" = "Bravo ! Vous avez gagné le niveau 0 ! Vous avez maintenant accès au mode \"replay\" qui vous propose une interprétation possible de ce que vous avez fait. Pressez au moins une fois chaque commande pour activer le bouton Ok AVANT de fermer cette fenêtre.";
-"Excellent 1" = "Parfait ! Vous avez gagné le niveau 1 ! Il y a deux comportements qui vous permettent de gagner ce niveau. Essayez différentes séquences de commandes pour voir si vous pouvez trouver ces deux comportements avant de fermer cette fenêtre.";
+"Excellent 1" = "Parfait ! Vous avez gagné le niveau 1 ! Il y a deux comportements qui vous permettent de gagner ce niveau. Avant de fermer cette fenêtre, essayez différentes séquences de commandes pour voir si vous pouvez trouver ces deux comportements.";
 "Excellent 2" = "Excellent ! Vous avez terminé le niveau 2 ! Nous vous encourageons à utiliser la trace pour découvrir des nouveaux comportements. Essayez de rejouer une suite de commandes gagnante en appuyant sur les interactions dans la trace.";
 "Excellent 3" = "Remarquez que Little AI suggère la prochaine commande quand vous appuyez dans la trace. Essayez avec une trace qui contient des commandes différentes à chaque coup. La commande suggérée n'est pas toujours la bonne, mais la trace vous aide à retrouver quelles commandes produisent quelles interactions dans quelles situations.";
 "Excellent 4" = "Félicitations ! Vous avez gagné le niveau 4 ! Appuyez successivement sur quatre interactions consécutives formant une séquence gagnante dans la trace pour voir pourquoi les interactions désagréables sont nécessaires pour obtenir des interactions agréables.";
@@ -48,5 +48,5 @@
 "support" = "Soutenez Little AI";
 "sound" = "Appuyez pour activer/ou désactiver les sons";
 "instructionAgain" = "Pressez Ok dans la fenêtre/d'instructions pour acquiter";
-"exploreAgain" = "Pressez les commandes/avec la fenêtre replay/OUVERTE, puis Ok";
-"Disposed from memory" = "Effacé de la mémoire";
+"exploreAgain" = "Pressez chaque commande/avec la fenêtre replay/OUVERTE, puis Ok";
+"Disposed from memory" = "Effacé de la mé moire";
