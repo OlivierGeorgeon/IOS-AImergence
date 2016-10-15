@@ -37,6 +37,8 @@ protocol MenuSceneDelegate: class
     func leaveTip(_ product: SKProduct)
     func isSoundEnabled() -> Bool
     func toggleSound() -> Bool
+    func isUserHasDraggedLevel() -> Bool
+    func userDragLevel()
 }
 
 class MenuSKScene: PositionedSKScene {
@@ -67,9 +69,12 @@ class MenuSKScene: PositionedSKScene {
 
         addChild(originNode)
         tutorNode.level = userDelegate!.currentLevel()
-        if userDelegate!.currentLevel() == 3 && userDelegate!.isSoundEnabled() {
-            tutorNode.tip(tutor: .sound, parentNode: soundNode)
+        if !userDelegate!.isUserHasDraggedLevel() {
+            tutorNode.dragToResume(tipInviteNode)
         }
+        //if userDelegate!.currentLevel() == 3 && userDelegate!.isSoundEnabled() {
+        //    tutorNode.tip(tutor: .sound, parentNode: soundNode)
+        //}
         backgroundColor = UIColor.white
         backgroundNode.size = CGSize(width: 1334, height: 1334)
         backgroundNode.zPosition = -20
@@ -218,6 +223,7 @@ class MenuSKScene: PositionedSKScene {
         case .ended:
             if recognizer.velocity(in: self.view!).y > 200 {
                 self.view!.presentScene(previousGameScene!, transition: transitionDown)
+                userDelegate!.userDragLevel()
             } else {
                 let moveToOrigin = SKAction.move(to: CGPoint.zero, duration: 0.2)
                 moveToOrigin.timingMode = .easeInEaseOut
@@ -250,7 +256,6 @@ class MenuSKScene: PositionedSKScene {
         if soundNode.contains(positionInScene) {
             soundNode.run(actionPress)
             soundNode.toggle(userDelegate!.toggleSound())
-            tutorNode.tapSound(tipInviteNode)
         }
         
         if tip0Node.contains(positionInScene) {

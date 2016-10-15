@@ -11,7 +11,7 @@
 "You must reach the score of 10" = "You must reach the score of 10 to access the level's replay mode.";
 "Excellent 0" = "Excellent! You have completed Level 0! You now have access to this level's replay mode. It shows a possible interpretation of what you did and alows you to discover new patterns. Tap on each command at least once to enable the Ok button BEFORE closing this window.";
 "Excellent 1" = "Now you have completed Level 1! There are two patterns of interaction that can solve this level. Before closing this window, try different command sequences to see if you can find these two patterns.";
-"Excellent 2" = "Excellent! You completed Level 2! To discover patterns of interaction while playing, we encourage you to use the trace. Try to replay a command by tapping in the trace to replicate a successful pattern.";
+"Excellent 2" = "Excellent! You completed Level 2! Scroll the trace behind this window to see what you did, and replay a sequence by tapping successive interactions in the trace while this window is open.";
 "Excellent 3" = "Notice that little AI will suggest the next command when you tap an interaction in the trace. Try it in a trace in which the commands are different on each turn. The suggested command is not always appropriate, but the trace helps you identify what commands produce what interactions in what situations.";
 "Excellent 4" = "Congratulations! You completed Level 4! Tap a successful sequence of four interactions in the trace to see why unpleasant interactions were necessary for enjoyable payoffs.";
 "Excellent 5" = "Here you can see more clearly that the observational command (by default the square) allows Little AI to observe the tile without changing it, as opposed to the other two commands.";

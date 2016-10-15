@@ -82,11 +82,11 @@ class TutorSKNode: SKNode {
                 tip(tutor: .replay, parentNode: nextParentNode)
             }
         }
-        if level == 3 {
-            if step == .level {
-                tip(tutor: .level, parentNode: level3ParentNode)
-            }
-        }
+        //if level == 3 {
+        //    if step == .level {
+        //        tip(tutor: .level, parentNode: level3ParentNode)
+        //    }
+        //}
     }
     
     func instructionClose(_ nextParentNode: SKNode, level1parentNode: SKNode) {
@@ -167,10 +167,10 @@ class TutorSKNode: SKNode {
         }
     }
     
-    func tapSound(_ nextParentNode: SKNode) {
-        if (level == 3 && step == .sound) {
+    func dragToResume(_ nextParentNode: SKNode) {
+        //if (level == 3 && step == .sound) {
             tip(tutor: .resume, parentNode: nextParentNode)
-        }
+        //}
     }
     
     func message(tutor: Tutor) -> (text: String, shape: CGPath, position: CGPoint, zRotation: CGFloat) {

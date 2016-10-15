@@ -27,6 +27,7 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
     let unlockDefaultKey = "unlockDefaultKey"
     let paidTipKey = "paidTipKey"
     let soundKey = "soundKey"
+    let userHasDraggedLevelKey = "userHadDraggedLevelKey"
     let userDefaults = UserDefaults.standard
     let gcLoginMessage = NSLocalizedString("Please login to Game Center", comment: "Alert message that shows when the user tries to access the leaderboard without being logged in.")
     
@@ -37,6 +38,7 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
     var imagineViewController: ImagineViewController?
     var interfaceLocks = [[Bool]](repeating: [true, true, true, true], count: GameViewController.maxLevelNumber + 1)
     var paidTip = false
+    var userHasDraggedLevel = false
     var validProducts = [SKProduct]()
     var match: GKMatch?
     var soundDisabled = false
@@ -62,6 +64,7 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
         if !soundDisabled {
             loadSounds()
         }
+        userHasDraggedLevel = userDefaults.bool(forKey: userHasDraggedLevelKey)
         
         let userInterfaceLocksWrapped = userDefaults.array(forKey: unlockDefaultKey)
         if let userInterfaceLocks = userInterfaceLocksWrapped as? [[Bool]] {
@@ -100,6 +103,14 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
         requestProducts()
     }
     
+    func isUserHasDraggedLevel() -> Bool {
+        return userHasDraggedLevel
+    }
+    func userDragLevel() {
+        userHasDraggedLevel = true
+        userDefaults.set(userHasDraggedLevel, forKey: userHasDraggedLevelKey)
+    }
+
     func leaveTip(_ product: SKProduct) {
         buyProduct(product);
     }
@@ -503,8 +514,8 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
             scene.tutorNode.gameCenterOk(scene.robotNode, level17ParentNode: scene.topRightNode)
             if isInterfaceLocked(INTERFACE.leaderboard) && !isInterfaceLocked(INTERFACE.level) {
                 interfaceLocks[level][INTERFACE.leaderboard.rawValue] = false
-                let defaults = UserDefaults.standard
-                defaults.set(interfaceLocks, forKey: unlockDefaultKey)
+                //let defaults = UserDefaults.standard
+                userDefaults.set(interfaceLocks, forKey: unlockDefaultKey)
             }
             if scene.robotNode.recommendation == RECOMMEND.leaderboard {
                 scene.robotNode.recommend(RECOMMEND.done)
