@@ -534,58 +534,28 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
         }
     }
     
-    /*
-    func loadSounds() {
-        let sound1 = SKAction.playSoundFileNamed("baby1.wav", waitForCompletion: false)
-        let sound2 = SKAction.playSoundFileNamed("baby2.wav", waitForCompletion: false)
-        let sound3 = SKAction.playSoundFileNamed("baby3.wav", waitForCompletion: false)
-        let sound4 = SKAction.playSoundFileNamed("baby4.wav", waitForCompletion: false)
-        let sound5 = SKAction.playSoundFileNamed("baby5.wav", waitForCompletion: false)
-        let sound6 = SKAction.playSoundFileNamed("baby6.wav", waitForCompletion: false)
-        let sound7 = SKAction.playSoundFileNamed("baby7.wav", waitForCompletion: false)
-        let sound8 = SKAction.playSoundFileNamed("baby8.wav", waitForCompletion: false)
-        let sound9 = SKAction.playSoundFileNamed("baby9.wav", waitForCompletion: false)
-        let sound10 = SKAction.playSoundFileNamed("baby10.wav", waitForCompletion: false)
-        let sound11 = SKAction.playSoundFileNamed("baby11.wav", waitForCompletion: false)
-        let sound12 = SKAction.playSoundFileNamed("baby12.wav", waitForCompletion: false)
-        let sound13 = SKAction.playSoundFileNamed("baby13.wav", waitForCompletion: false)
-        sounds = [sound1, sound2, sound3, sound4, sound5, sound6, sound7, sound8, sound9, sound10, sound11, sound12, sound13]
-    } */
-    
     func playSound(soundIndex: Int) {
-        do {
-            let nextAudioPlayer: AVAudioPlayer
-            nextAudioPlayer = try AVAudioPlayer(contentsOf: soundURLs[soundIndex - 1])
-            nextAudioPlayer.prepareToPlay()
-            if audioPlayer1 == nil || !audioPlayer1!.isPlaying {
-                audioPlayer1 = nextAudioPlayer
+        if !soundDisabled {
+            do {
+                let nextAudioPlayer: AVAudioPlayer
+                nextAudioPlayer = try AVAudioPlayer(contentsOf: soundURLs[soundIndex - 1])
+                nextAudioPlayer.prepareToPlay()
+                if audioPlayer1 == nil || !audioPlayer1!.isPlaying {
+                    audioPlayer1 = nextAudioPlayer
+                }
+                else if audioPlayer2 == nil || !audioPlayer2!.isPlaying {
+                    audioPlayer2 = nextAudioPlayer
+                }
+                nextAudioPlayer.play()
+            } catch {
+                print("Error playing sound \(soundIndex)")
             }
-            else if audioPlayer2 == nil || !audioPlayer2!.isPlaying {
-                audioPlayer2 = nextAudioPlayer
-            }
-            nextAudioPlayer.play()
-        } catch {
-            print("Error playing sound \(soundIndex)")
         }
     }
-    
-    /*func soundAction(_ soundIndex: Int) -> SKAction {
-        if soundIndex <= sounds.count {
-            sounds[soundIndex - 1].prepareToPlay()
-            sounds[soundIndex - 1].play()
-            //return sounds[soundIndex - 1]
-        }
-        //else {
-            return SKAction.run({})
-        //}
-    }*/
     
     func toggleSound() -> Bool {
         soundDisabled = !soundDisabled
         userDefaults.set(soundDisabled, forKey: soundKey)
-        /*if !soundDisabled && sounds.count < 13 {
-            loadSounds()
-        }*/
         return !soundDisabled
     }
     
