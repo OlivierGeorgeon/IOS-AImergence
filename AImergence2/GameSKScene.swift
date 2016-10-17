@@ -22,7 +22,8 @@ protocol GameSceneDelegate: class
     func showLevelWindow()
     func isGameCenterEnabled() -> Bool
     func isSoundEnabled() -> Bool
-    func soundAction(_ soundIndex: Int) -> SKAction
+    //func soundAction(_ soundIndex: Int) -> SKAction
+    func playSound(soundIndex: Int)
 }
 
 class GameSKScene: PositionedSKScene {
@@ -440,15 +441,16 @@ class GameSKScene: PositionedSKScene {
         
         if gameSceneDelegate.isSoundEnabled() {
             let soundIndex = gameModel.sounds[experience.experimentNumber][experience.resultNumber]
-            if soundIndex <= 13 {
+            //if soundIndex <= 13 {
+                gameSceneDelegate.playSound(soundIndex: soundIndex)
                 //let start = DispatchTime.now()
                 // Time times faster is sound is preloaded
                 //run(SKAction.playSoundFileNamed("baby\(soundIndex).wav", waitForCompletion: false))
-                run(gameSceneDelegate.soundAction(soundIndex))
+                //run(gameSceneDelegate.soundAction(soundIndex))
                 //let end = DispatchTime.now()
                 //let nanoTime = end.uptimeNanoseconds - start.uptimeNanoseconds
                 //print("Time to init sound: \(nanoTime)")
-            }
+            //}
         }
         
         self.score = score

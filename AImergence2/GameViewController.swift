@@ -42,7 +42,10 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
     var validProducts = [SKProduct]()
     var match: GKMatch?
     var soundDisabled = false
-    var sounds = [SKAction]()
+    //var sounds = [SKAction]()
+    var soundURLs = [URL]()
+    var audioPlayer1: AVAudioPlayer?
+    var audioPlayer2: AVAudioPlayer?
     
     var level = 0 {
         didSet {
@@ -61,10 +64,18 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
  
         paidTip = userDefaults.bool(forKey: paidTipKey)
         soundDisabled = userDefaults.bool(forKey: soundKey)
-        if !soundDisabled {
-            loadSounds()
-        }
         userHasDraggedLevel = userDefaults.bool(forKey: userHasDraggedLevelKey)
+        for i in 1...13 {
+            let url = URL(fileURLWithPath: Bundle.main.path(forResource: "baby\(i)", ofType:"wav")!)
+            soundURLs.append(url)
+        }
+        do {
+            // Prevents the app from crashing when moving to background when another app is playing
+            try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryAmbient)
+            try AVAudioSession.sharedInstance().setActive(true)
+        } catch {
+            print("Error shared audio session")
+        }
         
         let userInterfaceLocksWrapped = userDefaults.array(forKey: unlockDefaultKey)
         if let userInterfaceLocks = userInterfaceLocksWrapped as? [[Bool]] {
@@ -523,6 +534,7 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
         }
     }
     
+    /*
     func loadSounds() {
         let sound1 = SKAction.playSoundFileNamed("baby1.wav", waitForCompletion: false)
         let sound2 = SKAction.playSoundFileNamed("baby2.wav", waitForCompletion: false)
@@ -538,22 +550,42 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
         let sound12 = SKAction.playSoundFileNamed("baby12.wav", waitForCompletion: false)
         let sound13 = SKAction.playSoundFileNamed("baby13.wav", waitForCompletion: false)
         sounds = [sound1, sound2, sound3, sound4, sound5, sound6, sound7, sound8, sound9, sound10, sound11, sound12, sound13]
-    }
+    } */
     
-    func soundAction(_ soundIndex: Int) -> SKAction {
-        if soundIndex <= sounds.count {
-            return sounds[soundIndex - 1]
-        } else {
-            return SKAction.run({})
+    func playSound(soundIndex: Int) {
+        do {
+            let nextAudioPlayer: AVAudioPlayer
+            nextAudioPlayer = try AVAudioPlayer(contentsOf: soundURLs[soundIndex - 1])
+            nextAudioPlayer.prepareToPlay()
+            if audioPlayer1 == nil || !audioPlayer1!.isPlaying {
+                audioPlayer1 = nextAudioPlayer
+            }
+            else if audioPlayer2 == nil || !audioPlayer2!.isPlaying {
+                audioPlayer2 = nextAudioPlayer
+            }
+            nextAudioPlayer.play()
+        } catch {
+            print("Error playing sound \(soundIndex)")
         }
     }
+    
+    /*func soundAction(_ soundIndex: Int) -> SKAction {
+        if soundIndex <= sounds.count {
+            sounds[soundIndex - 1].prepareToPlay()
+            sounds[soundIndex - 1].play()
+            //return sounds[soundIndex - 1]
+        }
+        //else {
+            return SKAction.run({})
+        //}
+    }*/
     
     func toggleSound() -> Bool {
         soundDisabled = !soundDisabled
         userDefaults.set(soundDisabled, forKey: soundKey)
-        if !soundDisabled && sounds.count < 13 {
+        /*if !soundDisabled && sounds.count < 13 {
             loadSounds()
-        }
+        }*/
         return !soundDisabled
     }
     

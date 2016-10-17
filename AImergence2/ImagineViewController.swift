@@ -131,6 +131,7 @@ class ImagineViewController: UIViewController {
         sceneView.isJitteringEnabled = true
         sceneView.showsStatistics = false
         sceneView.autoenablesDefaultLighting = false
+        // sceneView.audioEngine.stop()
         imagineModel.setup(sceneView.scene!)
     }
     
