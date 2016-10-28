@@ -8,7 +8,7 @@
 
 import SpriteKit
 
-class GameModel15: GameModel13
+class GameModel18: GameModel15
 {
     
     required convenience init()
