@@ -85,7 +85,6 @@ class ImagineModel5: ImagineModel4
                 currentTileNode?.colorize(tileColor(experience), delay: 0.2)
             }
             createNextTileNode()
-            //createOrRetrieveBodyNode(tileColor(experience), position: tileYOffset, delay: 0.2)
             spawnExperienceNode(experience, position: SCNVector3( -5, -5, 0.0), delay: 0.2)
         case 10:  // eat
             robotNode.bump()
@@ -103,7 +102,6 @@ class ImagineModel5: ImagineModel4
                 currentTileNode?.colorize(tileColor(experience))
             }
             createNextTileNode()
-            //createOrRetrieveBodyNode(tileColor(experience), position: tileYOffset, direction: .SOUTH)
             spawnExperienceNode(experience, position: SCNVector3( -5, -5, 0.0), delay: 0.1)
             explodeNode(currentTileNode!, delay: 0.1)
             currentTileNode = nil
@@ -125,7 +123,6 @@ class ImagineModel5: ImagineModel4
                 currentTileNode?.colorize(tileColor(experience))
             }
             createNextTileNode()
-            //createOrRetrieveBodyNode(tileColor(experience), position: tileYOffset)
             spawnExperienceNode(experience, position: SCNVector3( -5, -5, 0.0), delay: 0.1)
             explodeNode(currentTileNode!, delay: 0.1)
             currentTileNode = nil
@@ -147,9 +144,6 @@ class ImagineModel5: ImagineModel4
                 currentTileNode?.flipAndColorize(tileColor(experience), clockwise: false, delay: 0.2)
             }
             createNextTileNode()
-            //createOrRetrieveBodyNode(nil, position: tileYOffset, delay: 0.2)
-            //bodyNode?.flip(false, delay: 0.2)
-            //bodyNode?.colorize(tileColor(experience), delay: 0.2)
             spawnExperienceNode(experience, position: tileYOffset, delay: 0.3)
         case 21:
             robotNode.jump()
@@ -167,9 +161,6 @@ class ImagineModel5: ImagineModel4
                 currentTileNode?.flipAndColorize(tileColor(experience), clockwise: false, delay: 0.2)
             }
             createNextTileNode()
-            //createOrRetrieveBodyNode(nil, position: tileYOffset, direction: .SOUTH, delay: 0.2)
-            //bodyNode?.flip(false, delay: 0.2)
-            //bodyNode?.colorize(tileColor(experience), delay: 0.2)
             spawnExperienceNode(experience, position: tileYOffset, delay: 0.3)
         default:
             break

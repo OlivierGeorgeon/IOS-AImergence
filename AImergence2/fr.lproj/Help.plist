@@ -92,6 +92,13 @@
 			<string>Si Little AI vous a amusé ou instruit, ou les deux, songez à faire un petit don s&apos;il vous plaît.</string>
 			<string>Vos dons nous aideront à développer d&apos;autres niveaux. Ils contribueront aussi à faire progresser la recherche libre en intelligence artificielle développementale.</string>
 		</array>
+		<array>
+			<string>Little AI peut maintenant retourner les tuiles à sa droite et à sa gauche.</string>
+			<string>Il peut effectuer une interaction très agréable dans une configuration bien particulière de son environnement.</string>
+		</array>
+		<array>
+			<string>Le niveau 19 est identique au niveau 18.</string>
+		</array>
 	</array>
 </dict>
 </plist>

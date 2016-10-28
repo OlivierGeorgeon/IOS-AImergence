@@ -92,6 +92,13 @@
 			<string>If you found Little AI enjoyable or instructive, or both, please consider making a small donation.</string>
 			<string>Your donations will support the creation of new levels. It will also promote independent and open-source research in developmental artificial intelligence.</string>
 		</array>
+		<array>
+			<string>Now Little AI can flip the tiles on its left and on its right.</string>
+			<string>It can experience a delightful interaction in a specific configuration of the environment.</string>
+		</array>
+		<array>
+			<string>Level 19 is identical to Level 18.</string>
+		</array>
 	</array>
 </dict>
 </plist>

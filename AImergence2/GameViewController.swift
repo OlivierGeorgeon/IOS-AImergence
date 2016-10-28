@@ -22,7 +22,7 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
     @IBOutlet weak var levelButton: UIButton!
     @IBAction func levelButton(_ sender: UIButton) { showLevelWindow() }
     
-    static let maxLevelNumber = 17
+    static let maxLevelNumber = 19
     
     let unlockDefaultKey = "unlockDefaultKey"
     let paidTipKey = "paidTipKey"
