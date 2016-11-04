@@ -27,12 +27,13 @@ class Level19 : Level18 {
         let experience10 = Experience(experiment: experiment1, resultNumber: 0, valence: 0)
         let experience11 = Experience(experiment: experiment1, resultNumber: 1, valence: 0)
         let experience20 = Experience(experiment: experiment2, resultNumber: 0, valence: 0)
-        let experience21 = Experience(experiment: experiment2, resultNumber: 1, valence: 10)
+        let experience21 = Experience(experiment: experiment2, resultNumber: 1, valence: 0)
+        let experience22 = Experience(experiment: experiment2, resultNumber: 2, valence: 10)
         let experience30 = Experience(experiment: experiment3, resultNumber: 0, valence: 0)
         let experience31 = Experience(experiment: experiment3, resultNumber: 1, valence: 0)
         let experience40 = Experience(experiment: experiment4, resultNumber: 0, valence: 0)
         let experience41 = Experience(experiment: experiment4, resultNumber: 1, valence: 0)
-        let experiences = [[experience00, experience01], [experience10, experience11], [experience20, experience21], [experience30, experience31], [experience40, experience41]]
+        let experiences = [[experience00, experience01], [experience10, experience11], [experience20, experience21, experience22], [experience30, experience31], [experience40, experience41]]
         
         self.init(winScore: 10, historicalDepth: 10, experiments: experiments, experiences: experiences)
         

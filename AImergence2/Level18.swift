@@ -30,13 +30,14 @@ class Level18 : Level5 {
         let experience01 = Experience(experiment: experiment0, resultNumber: 1, valence: 0, colorIndex: 1)
         let experience10 = Experience(experiment: experiment1, resultNumber: 0, valence: 0, colorIndex: 2)
         let experience11 = Experience(experiment: experiment1, resultNumber: 1, valence: 0, colorIndex: 1)
-        let experience20 = Experience(experiment: experiment2, resultNumber: 0, valence: 0, colorIndex: 4)
-        let experience21 = Experience(experiment: experiment2, resultNumber: 1, valence: 10, colorIndex: 1)
+        let experience20 = Experience(experiment: experiment2, resultNumber: 0, valence: 0, colorIndex: 2)
+        let experience21 = Experience(experiment: experiment2, resultNumber: 1, valence: 0, colorIndex: 4)
+        let experience22 = Experience(experiment: experiment2, resultNumber: 2, valence: 10, colorIndex: 1)
         let experience30 = Experience(experiment: experiment3, resultNumber: 0, valence: 0, colorIndex: 2)
         let experience31 = Experience(experiment: experiment3, resultNumber: 1, valence: 0, colorIndex: 1)
         let experience40 = Experience(experiment: experiment4, resultNumber: 0, valence: 0, colorIndex: 2)
         let experience41 = Experience(experiment: experiment4, resultNumber: 1, valence: 0, colorIndex: 1)
-        let experiences = [[experience00, experience01], [experience10, experience11], [experience20, experience21], [experience30, experience31], [experience40, experience41]]
+        let experiences = [[experience00, experience01], [experience10, experience11], [experience20, experience21, experience22], [experience30, experience31], [experience40, experience41]]
         
         self.init(winScore: 10, historicalDepth: 10, experiments: experiments, experiences: experiences)
         
@@ -53,7 +54,8 @@ class Level18 : Level5 {
             phenomenonLeft = !phenomenonLeft
             if phenomenonLeft { result = 1 }
         case 2: // feel both
-            if phenomenonLeft && phenomenonRight { result = 1 }
+            if phenomenonLeft != phenomenonRight { result = 1 }
+            if phenomenonLeft && phenomenonRight { result = 2 }
         case 3: // feel right
             if phenomenonRight { result = 1 }
         case 4: // swap right

@@ -95,9 +95,13 @@
 		<array>
 			<string>Little AI peut maintenant retourner les tuiles à sa droite et à sa gauche.</string>
 			<string>Il peut effectuer une interaction très agréable dans une configuration bien particulière de son environnement.</string>
+			<string>Notez qu&apos;une des commandes peut retourner trois types d&apos;interactions différents.</string>
 		</array>
 		<array>
 			<string>Le niveau 19 est identique au niveau 18.</string>
+		</array>
+		<array>
+			<string>Little AI commence à manipuler un objet plus complexe en deux parties. </string>
 		</array>
 	</array>
 </dict>

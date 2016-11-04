@@ -128,7 +128,7 @@ class GameView: SKView, UIGestureRecognizerDelegate {
                     return inRobotNode
                 }
             } else {
-                return verticalPan
+                return true //verticalPan
             }
         case longPressGestureRecognizer:
             return inExperimentNode || inTraceNode

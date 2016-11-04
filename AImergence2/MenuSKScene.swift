@@ -45,12 +45,15 @@ class MenuSKScene: PositionedSKScene {
     
     let backgroundNode = SKSpriteNode(imageNamed: "niveaux.png") 
     let originNode = SKNode()
+    let levelGroupNode = SKNode()
     let tipInviteNode = SKLabelNode()
     let tutorNode = TutorSKNode()
     let soundNode = SoundSKNode()
     let level0Position = CGPoint(x: 120, y: 1100)
-    let levelXOffset = CGVector( dx: 120, dy: 0)
-    let levelYOffset = CGVector( dx:  0, dy: -160)
+    let levelXOffset =  120
+    let levelYOffset = -160
+    let levelGroupXOffset = 650
+    let levelGroupYOffset = 4 * 160
     let thankYou = NSLocalizedString("Thank you!", comment: "In the level window when the user has paid a tip.")
     let tip0Node = TipSKNode(size: CGSize(width: 140, height: 140))
     let tip1Node = TipSKNode(size: CGSize(width: 160, height: 160))
@@ -62,19 +65,20 @@ class MenuSKScene: PositionedSKScene {
     var longTipInvit = NSLocalizedString("Connect", comment: "In the level window when there is no network connection.")
     var buttonNodes = [SKNode]()
     var previousGameScene:GameSKScene?
+    var levelGroupIndex = 0
 
     override func didMove(to view: SKView)
     {
         /* Setup your scene here */
 
         addChild(originNode)
+        originNode.addChild(levelGroupNode)
+        levelGroupNode.position = level0Position
+        levelGroupNode.position.x += CGFloat(levelGroupXOffset * levelGroupIndex)
         tutorNode.level = userDelegate!.currentLevel()
         if !userDelegate!.isUserHasDraggedLevel() {
             tutorNode.dragToResume(tipInviteNode)
         }
-        //if userDelegate!.currentLevel() == 3 && userDelegate!.isSoundEnabled() {
-        //    tutorNode.tip(tutor: .sound, parentNode: soundNode)
-        //}
         backgroundColor = UIColor.white
         backgroundNode.size = CGSize(width: 1334, height: 1334)
         backgroundNode.zPosition = -20
@@ -96,27 +100,6 @@ class MenuSKScene: PositionedSKScene {
         originNode.addChild(tip1Node)
         originNode.addChild(tip2Node)
 
-        //let products = userDelegate!.getProducts()
-        //displayProducts(products, isPaidTip: userDelegate!.isPaidTip())
-        
-        /*
-        if products.count > 0 {
-            shortTipInvit =  products[0].localizedDescription
-            tip0Node.product(products[0])
-            if products.count > 1 {
-                longTipInvit =  products[1].localizedDescription
-                tip1Node.product(products[1])
-                if products.count > 2 {
-                    tip2Node.product(products[2])
-                }
-            }
-        }
-
-        if userDelegate!.isPaidTip() {
-            shortTipInvit = thankYou
-            longTipInvit = shortTipInvit
-        }
-        */
         super.didMove(to: view)
     }
     
@@ -178,9 +161,11 @@ class MenuSKScene: PositionedSKScene {
             let levelNode = createLabelNode("\(i)")
             levelNode.fontName = "Noteworthy-Bold"
             levelNode.userData = ["level": i]
-            levelNode.position = level0Position + (i % 5) * levelXOffset + (i / 5) * levelYOffset
+            //levelNode.position = level0Position + (i % 5) * levelXOffset + (i / 5) * levelYOffset
+            levelNode.position = CGPoint(x: (i % 5) * levelXOffset + (i / 20) * levelGroupXOffset,
+                                         y: (i / 5) * levelYOffset + (i / 20) * levelGroupYOffset)
             buttonNodes.append(levelNode)
-            originNode.addChild(levelNode)
+            levelGroupNode.addChild(levelNode)
             
             var backgroundNode = SKShapeNode()
             switch userDelegate!.levelStatus(i) {
@@ -200,7 +185,6 @@ class MenuSKScene: PositionedSKScene {
             }
             backgroundNode.fillColor = buttonColor
             backgroundNode.strokeColor = buttonColor
-            //backgroundNode.lineWidth = 0
             levelNode.addChild(backgroundNode)
         }
         return buttonNodes
@@ -217,17 +201,41 @@ class MenuSKScene: PositionedSKScene {
 
     override func pan(_ recognizer: UIPanGestureRecognizer) {
         let translation  = recognizer.translation(in: self.view!)
+        let velocity = recognizer.velocity(in: self.view!)
+        let verticalPan = abs(velocity.x) < abs(velocity.y)
         switch recognizer.state {
         case .changed:
-            originNode.position.y -= translation.y * sceneHeight / self.view!.frame.height
-        case .ended:
-            if recognizer.velocity(in: self.view!).y > 200 {
-                self.view!.presentScene(previousGameScene!, transition: transitionDown)
-                userDelegate!.userDragLevel()
+            if verticalPan {
+                originNode.position.y -= translation.y * sceneHeight / self.view!.frame.height
             } else {
-                let moveToOrigin = SKAction.move(to: CGPoint.zero, duration: 0.2)
-                moveToOrigin.timingMode = .easeInEaseOut
-                originNode.run(moveToOrigin)
+                levelGroupNode.position.x += translation.x * self.size.width / self.view!.frame.width
+            }
+        case .ended:
+            if verticalPan {
+                if velocity.y > 200 {
+                    self.view!.presentScene(previousGameScene!, transition: transitionDown)
+                    userDelegate!.userDragLevel()
+                } else {
+                    let moveToOrigin = SKAction.move(to: CGPoint.zero, duration: 0.2)
+                    moveToOrigin.timingMode = .easeInEaseOut
+                    originNode.run(moveToOrigin)
+                }
+            } else {
+                if velocity.x > 0 {
+                    if levelGroupIndex > 0
+                    {
+                        levelGroupIndex -= 1
+                    }
+                } else {
+                    if levelGroupIndex < GameViewController.maxLevelNumber / 20
+                    {
+                        levelGroupIndex += 1
+                    }
+                }
+                let closestX = level0Position.x - CGFloat(levelGroupXOffset * levelGroupIndex)
+                let moveToClosest = SKAction.move(to: CGPoint(x: closestX, y: level0Position.y), duration: 0.2)
+                moveToClosest.timingMode = .easeOut
+                levelGroupNode.run(moveToClosest)
             }
         default:
             break
@@ -238,8 +246,9 @@ class MenuSKScene: PositionedSKScene {
     override func tap(_ recognizer: UITapGestureRecognizer)
     {
         let positionInScene = self.convertPoint(fromView: recognizer.location(in: self.view))
+        let positionInLevels = self.convert(positionInScene, to: levelGroupNode)
         for levelNode in buttonNodes {
-            if levelNode.contains(positionInScene){
+            if levelNode.contains(positionInLevels){
                 levelNode.run(actionPress)
                 if let levelNumber = levelNode.userData?["level"] as! Int? {
                     if userDelegate?.levelStatus(levelNumber) > 0 {

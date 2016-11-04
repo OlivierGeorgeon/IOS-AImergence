@@ -22,7 +22,7 @@ class GameModel18: GameModel15
         let experimentPaths = [{UIBezierPath(ovalIn: $0)}, halfCircleLeft, triangle, halfCircleRight, triangleUp, trapezoidLeft, {UIBezierPath(rect: $0)}, trapezoidRight]
         let experienceColors = [UIColor.white, UIColor(red: 0, green: 0.9, blue: 0, alpha: 1), UIColor.red, UIColor.blue, UIColor.orange]
         //let sounds = [[11, 8], [13, 8], [7, 2], [6 ,1], [10 ,3], [9, 4]]
-        let sounds = [[11, 4], [4, 9], [2, 7], [1, 6], [3 , 10]]
+        let sounds = [[11, 4], [4, 9], [5, 2, 7], [1, 6], [3 , 10]]
         
         self.init(experimentRect: experimentRect, experimentPositions: experimentPositions, experienceRect: experienceRect, initialScale: initialScale, obsolescence: obsolescence, actionScale: actionScale, experimentPaths: experimentPaths, experienceColors: experienceColors, sounds: sounds)
     }
