@@ -66,6 +66,7 @@ class MenuSKScene: PositionedSKScene {
     var buttonNodes = [SKNode]()
     var previousGameScene:GameSKScene?
     var levelGroupIndex = 0
+    var verticalPan = true
 
     override func didMove(to view: SKView)
     {
@@ -73,8 +74,10 @@ class MenuSKScene: PositionedSKScene {
 
         addChild(originNode)
         originNode.addChild(levelGroupNode)
+        
+        levelGroupIndex = userDelegate!.currentLevel() / 20
         levelGroupNode.position = level0Position
-        levelGroupNode.position.x += CGFloat(levelGroupXOffset * levelGroupIndex)
+        //levelGroupNode.position.x -= CGFloat(levelGroupXOffset * levelGroupIndex)
         tutorNode.level = userDelegate!.currentLevel()
         if !userDelegate!.isUserHasDraggedLevel() {
             tutorNode.dragToResume(tipInviteNode)
@@ -202,8 +205,9 @@ class MenuSKScene: PositionedSKScene {
     override func pan(_ recognizer: UIPanGestureRecognizer) {
         let translation  = recognizer.translation(in: self.view!)
         let velocity = recognizer.velocity(in: self.view!)
-        let verticalPan = abs(velocity.x) < abs(velocity.y)
         switch recognizer.state {
+        case .began:
+            verticalPan = abs(velocity.x) < abs(velocity.y)
         case .changed:
             if verticalPan {
                 originNode.position.y -= translation.y * sceneHeight / self.view!.frame.height
