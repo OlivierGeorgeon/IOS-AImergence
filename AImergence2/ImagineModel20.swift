@@ -36,18 +36,30 @@ class ImagineModel20: ImagineModel9
             spawnExperienceNode(experience, position: SCNVector3( -5, -5, 0), delay: 0.1)
             currentTileNode = nil
             rotateCarrousel()
-        case 20, 21: // swap
+        case 20: // swap
             robotNode.jump()
             if currentTileNode == nil {
                 if slotNodes[carrouselIndex].childNodes.count > 0 {
                     currentTileNode = slotNodes[carrouselIndex].childNodes[0] as? SCNFlipTileNode
+                } else {
+                    createOrRetrieveBodyNode(nil, direction: .north, delay: 0.2)
                 }
             }
-            spawnExperienceNode(experience, position: tileYOffset, delay: 0.3)
+            spawnExperienceNode(experience, position: tileYOffset, delay: 0.2)
+            currentTileNode?.flipAndColorize(tileColor(experience), delay: 0.2)
+        case 21: // swap
+            robotNode.jump()
+            if currentTileNode == nil {
+                if slotNodes[carrouselIndex].childNodes.count > 0 {
+                    currentTileNode = slotNodes[carrouselIndex].childNodes[0] as? SCNFlipTileNode
+                } else {
+                    createOrRetrieveBodyNode(nil, direction: .south, delay: 0.2)
+                }
+            }
+            spawnExperienceNode(experience, position: tileYOffset, delay: 0.2)
             currentTileNode?.flipAndColorize(tileColor(experience), delay: 0.2)
         default:
             break
         }
     }
-    
 }
