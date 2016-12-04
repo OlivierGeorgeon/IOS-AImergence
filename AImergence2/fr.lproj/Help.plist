@@ -103,6 +103,11 @@
 		<array>
 			<string>Little AI commence à manipuler un objet plus complexe en deux parties. </string>
 		</array>
+		<array>
+			<string>Au niveau 21, votre bébé robot interagit avec un autre bébé robot piloté par un autre jouer.</string>
+			<string>Pressez le bout &quot;connection&quot; pour trouver un parternaire de jeu (vous devez être identifé dans Game Center). </string>
+			<string>C&apos;est un jeu collaboratif. Les interactions ont les mêmes valeurs pour vous deux. Vous gagnez tous les deux au même momment.</string>
+		</array>
 	</array>
 </dict>
 </plist>

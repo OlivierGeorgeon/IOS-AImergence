@@ -18,6 +18,12 @@
 		0914EA681D09BAD100E78D5F /* GameModel15.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0914EA671D09BAD100E78D5F /* GameModel15.swift */; };
 		0914EA6A1D0AA7DE00E78D5F /* ImagineModel15.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0914EA691D0AA7DE00E78D5F /* ImagineModel15.swift */; };
 		0914EA6C1D0AAD6300E78D5F /* Level16.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0914EA6B1D0AAD6300E78D5F /* Level16.swift */; };
+		0919DF141DDC9DA100653775 /* Messages.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0919DF131DDC9DA100653775 /* Messages.framework */; };
+		0919DF171DDC9DA100653775 /* MessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0919DF161DDC9DA100653775 /* MessagesViewController.swift */; };
+		0919DF1A1DDC9DA100653775 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0919DF181DDC9DA100653775 /* MainInterface.storyboard */; };
+		0919DF1C1DDC9DA100653775 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0919DF1B1DDC9DA100653775 /* Assets.xcassets */; };
+		0919DF201DDC9DA100653775 /* iMessage.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 0919DF111DDC9DA100653775 /* iMessage.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		0919DF261DDCB9C100653775 /* Stickers.xcstickers in Resources */ = {isa = PBXBuildFile; fileRef = 0919DF251DDCB9C100653775 /* Stickers.xcstickers */; };
 		09246FC61D3145F80049CFA2 /* TipSKNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09246FC51D3145F80049CFA2 /* TipSKNode.swift */; };
 		093000DA1C4FB39000425BB1 /* ExperimentSKNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093000D91C4FB39000425BB1 /* ExperimentSKNode.swift */; };
 		093000DE1C4FC77700425BB1 /* ExperienceSKNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093000DD1C4FC77700425BB1 /* ExperienceSKNode.swift */; };
@@ -89,6 +95,7 @@
 		099452831C62007000F0ABFF /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 099452851C62007000F0ABFF /* InfoPlist.strings */; };
 		099452881C62007000F0ABFF /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0994528A1C62007000F0ABFF /* InfoPlist.strings */; };
 		099452981C620CF600F0ABFF /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0994529A1C620CF600F0ABFF /* Localizable.strings */; };
+		09A168521DF1C73400619A3A /* Level21.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A168511DF1C73400619A3A /* Level21.swift */; };
 		09AC4CBA1C7DD63700C149EC /* GameModel0.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09AC4CB91C7DD63700C149EC /* GameModel0.swift */; };
 		09AC4CBC1C7DDBFC00C149EC /* GameModel1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09AC4CBB1C7DDBFC00C149EC /* GameModel1.swift */; };
 		09AC4D131C821BC000C149EC /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09AC4D121C821BC000C149EC /* GameView.swift */; };
@@ -116,6 +123,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		0919DF1E1DDC9DA100653775 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0936812F1C417377008C6B5D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0919DF101DDC9DA100653775;
+			remoteInfo = iMessage;
+		};
 		093681501C417378008C6B5D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 0936812F1C417377008C6B5D /* Project object */;
@@ -132,6 +146,20 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		0919DF241DDC9DA100653775 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				0919DF201DDC9DA100653775 /* iMessage.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		090AD9E91C7A5EEE00F2FE8C /* ImagineModel6.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagineModel6.swift; sourceTree = "<group>"; };
 		090AD9EB1C7A5F2400F2FE8C /* ImagineModel7.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagineModel7.swift; sourceTree = "<group>"; };
@@ -144,6 +172,13 @@
 		0914EA671D09BAD100E78D5F /* GameModel15.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameModel15.swift; sourceTree = "<group>"; };
 		0914EA691D0AA7DE00E78D5F /* ImagineModel15.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagineModel15.swift; sourceTree = "<group>"; };
 		0914EA6B1D0AAD6300E78D5F /* Level16.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Level16.swift; sourceTree = "<group>"; };
+		0919DF111DDC9DA100653775 /* iMessage.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = iMessage.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		0919DF131DDC9DA100653775 /* Messages.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Messages.framework; path = System/Library/Frameworks/Messages.framework; sourceTree = SDKROOT; };
+		0919DF161DDC9DA100653775 /* MessagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesViewController.swift; sourceTree = "<group>"; };
+		0919DF191DDC9DA100653775 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
+		0919DF1B1DDC9DA100653775 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		0919DF1D1DDC9DA100653775 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0919DF251DDCB9C100653775 /* Stickers.xcstickers */ = {isa = PBXFileReference; lastKnownFileType = folder.stickers; path = Stickers.xcstickers; sourceTree = "<group>"; };
 		09246FC51D3145F80049CFA2 /* TipSKNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TipSKNode.swift; sourceTree = "<group>"; };
 		092B00371CBFF47A00A6FF3C /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		093000D91C4FB39000425BB1 /* ExperimentSKNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExperimentSKNode.swift; sourceTree = "<group>"; };
@@ -224,6 +259,7 @@
 		099452891C62007000F0ABFF /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		099452991C620CF600F0ABFF /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		099452A11C620DD300F0ABFF /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
+		09A168511DF1C73400619A3A /* Level21.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Level21.swift; sourceTree = "<group>"; };
 		09AC4CB91C7DD63700C149EC /* GameModel0.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameModel0.swift; sourceTree = "<group>"; };
 		09AC4CBB1C7DDBFC00C149EC /* GameModel1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameModel1.swift; sourceTree = "<group>"; };
 		09AC4CBF1C7DF3BC00C149EC /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Main.strings; sourceTree = "<group>"; };
@@ -252,6 +288,14 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		0919DF0E1DDC9DA100653775 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0919DF141DDC9DA100653775 /* Messages.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		093681341C417378008C6B5D /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -287,6 +331,26 @@
 			name = Particles;
 			sourceTree = "<group>";
 		};
+		0919DF121DDC9DA100653775 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0919DF131DDC9DA100653775 /* Messages.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		0919DF151DDC9DA100653775 /* iMessage */ = {
+			isa = PBXGroup;
+			children = (
+				0919DF161DDC9DA100653775 /* MessagesViewController.swift */,
+				0919DF181DDC9DA100653775 /* MainInterface.storyboard */,
+				0919DF1B1DDC9DA100653775 /* Assets.xcassets */,
+				0919DF1D1DDC9DA100653775 /* Info.plist */,
+				0919DF251DDCB9C100653775 /* Stickers.xcstickers */,
+			);
+			path = iMessage;
+			sourceTree = "<group>";
+		};
 		0936812E1C417377008C6B5D = {
 			isa = PBXGroup;
 			children = (
@@ -295,6 +359,8 @@
 				093681391C417378008C6B5D /* AImergence2 */,
 				093681521C417378008C6B5D /* AImergence2Tests */,
 				0936815D1C417378008C6B5D /* AImergence2UITests */,
+				0919DF151DDC9DA100653775 /* iMessage */,
+				0919DF121DDC9DA100653775 /* Frameworks */,
 				093681381C417378008C6B5D /* Products */,
 			);
 			sourceTree = "<group>";
@@ -305,6 +371,7 @@
 				093681371C417378008C6B5D /* Little AI.app */,
 				0936814F1C417378008C6B5D /* Little AITests.xctest */,
 				0936815A1C417378008C6B5D /* Little AIUITests.xctest */,
+				0919DF111DDC9DA100653775 /* iMessage.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -376,6 +443,7 @@
 				0945F8FB1DC3712F00D41A6F /* Level18.swift */,
 				0945F9011DC3974E00D41A6F /* Level19.swift */,
 				0945F8F71DC3397100D41A6F /* Level20.swift */,
+				09A168511DF1C73400619A3A /* Level21.swift */,
 			);
 			name = Levels;
 			sourceTree = "<group>";
@@ -503,6 +571,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		0919DF101DDC9DA100653775 /* iMessage */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0919DF231DDC9DA100653775 /* Build configuration list for PBXNativeTarget "iMessage" */;
+			buildPhases = (
+				0919DF0D1DDC9DA100653775 /* Sources */,
+				0919DF0E1DDC9DA100653775 /* Frameworks */,
+				0919DF0F1DDC9DA100653775 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = iMessage;
+			productName = iMessage;
+			productReference = 0919DF111DDC9DA100653775 /* iMessage.appex */;
+			productType = "com.apple.product-type.app-extension.messages";
+		};
 		093681361C417378008C6B5D /* Little AI */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 093681631C417378008C6B5D /* Build configuration list for PBXNativeTarget "Little AI" */;
@@ -510,10 +595,12 @@
 				093681331C417378008C6B5D /* Sources */,
 				093681341C417378008C6B5D /* Frameworks */,
 				093681351C417378008C6B5D /* Resources */,
+				0919DF241DDC9DA100653775 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				0919DF1F1DDC9DA100653775 /* PBXTargetDependency */,
 			);
 			name = "Little AI";
 			productName = AImergence2;
@@ -562,10 +649,15 @@
 		0936812F1C417377008C6B5D /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0730;
+				LastSwiftUpdateCheck = 0810;
 				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = "Olivier Georgeon";
 				TargetAttributes = {
+					0919DF101DDC9DA100653775 = {
+						CreatedOnToolsVersion = 8.1;
+						DevelopmentTeam = 7E3U988CXW;
+						ProvisioningStyle = Automatic;
+					};
 					093681361C417378008C6B5D = {
 						CreatedOnToolsVersion = 7.2;
 						DevelopmentTeam = 7E3U988CXW;
@@ -608,11 +700,22 @@
 				093681361C417378008C6B5D /* Little AI */,
 				0936814E1C417378008C6B5D /* Little AITests */,
 				093681591C417378008C6B5D /* Little AIUITests */,
+				0919DF101DDC9DA100653775 /* iMessage */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		0919DF0F1DDC9DA100653775 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0919DF1C1DDC9DA100653775 /* Assets.xcassets in Resources */,
+				0919DF1A1DDC9DA100653775 /* MainInterface.storyboard in Resources */,
+				0919DF261DDCB9C100653775 /* Stickers.xcstickers in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		093681351C417378008C6B5D /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -660,6 +763,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		0919DF0D1DDC9DA100653775 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0919DF171DDC9DA100653775 /* MessagesViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		093681331C417378008C6B5D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -667,6 +778,7 @@
 				0945F9001DC37ACA00D41A6F /* ImagineModel18.swift in Sources */,
 				09F145131D02226300D0BDC7 /* Level14.swift in Sources */,
 				0947C3D71D67571000212A0B /* SCNPhenomenonNode.swift in Sources */,
+				09A168521DF1C73400619A3A /* Level21.swift in Sources */,
 				093681771C4549CB008C6B5D /* Level5.swift in Sources */,
 				09AC4D151C8491DA00C149EC /* Level1.swift in Sources */,
 				090AD9F01C7A618500F2FE8C /* Level8.swift in Sources */,
@@ -765,6 +877,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		0919DF1F1DDC9DA100653775 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0919DF101DDC9DA100653775 /* iMessage */;
+			targetProxy = 0919DF1E1DDC9DA100653775 /* PBXContainerItemProxy */;
+		};
 		093681511C417378008C6B5D /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 093681361C417378008C6B5D /* Little AI */;
@@ -778,6 +895,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		0919DF181DDC9DA100653775 /* MainInterface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0919DF191DDC9DA100653775 /* Base */,
+			);
+			name = MainInterface.storyboard;
+			sourceTree = "<group>";
+		};
 		093681421C417378008C6B5D /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -833,6 +958,46 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		0919DF211DDC9DA100653775 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "iMessage App Icon";
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = 7E3U988CXW;
+				INFOPLIST_FILE = iMessage/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.oliviergeorgeon.little-ai.iMessage";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		0919DF221DDC9DA100653775 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "iMessage App Icon";
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				DEVELOPMENT_TEAM = 7E3U988CXW;
+				INFOPLIST_FILE = iMessage/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.oliviergeorgeon.little-ai.iMessage";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
 		093681611C417378008C6B5D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -928,6 +1093,7 @@
 		093681641C417378008C6B5D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = AImergence2/Info.plist;
@@ -943,6 +1109,7 @@
 		093681651C417378008C6B5D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = AImergence2/Info.plist;
@@ -1012,6 +1179,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		0919DF231DDC9DA100653775 /* Build configuration list for PBXNativeTarget "iMessage" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0919DF211DDC9DA100653775 /* Debug */,
+				0919DF221DDC9DA100653775 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		093681321C417377008C6B5D /* Build configuration list for PBXProject "Little AI" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

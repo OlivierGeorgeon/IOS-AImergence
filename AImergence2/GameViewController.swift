@@ -14,7 +14,7 @@ import AVFoundation
 
 enum INTERFACE: Int { case instruction, imagine, leaderboard, level}
 
-class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate, HelpViewControllerDelegate, ImagineViewControllerDelegate, GKGameCenterControllerDelegate, SKProductsRequestDelegate, SKPaymentTransactionObserver, GameViewDelegate //, GKMatchmakerViewControllerDelegate,  GKMatchDelegate
+class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate, HelpViewControllerDelegate, ImagineViewControllerDelegate, GKGameCenterControllerDelegate, SKProductsRequestDelegate, SKPaymentTransactionObserver, GameViewDelegate, GKMatchmakerViewControllerDelegate, GKMatchDelegate
 {
     @IBOutlet weak var sceneView: GameView!
     @IBOutlet weak var helpViewControllerContainer: UIView!
@@ -22,7 +22,7 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
     @IBOutlet weak var levelButton: UIButton!
     @IBAction func levelButton(_ sender: UIButton) { showLevelWindow() }
     
-    static let maxLevelNumber = 20
+    static let maxLevelNumber = 21
     
     let unlockDefaultKey = "unlockDefaultKey"
     let paidTipKey = "paidTipKey"
@@ -151,11 +151,7 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
         }
         print("Recieved \(validProducts.count) products from Apple.")
     }
-    /*
-    func getProducts() -> [SKProduct] {
-        return validProducts
-    }
-    */
+
     func request(_ request: SKRequest, didFailWithError error: Error) {
         print("Error fetching product information")
     }
@@ -190,11 +186,7 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
             }
         }
     }
-/*
-    func isPaidTip() -> Bool {
-        return paidTip
-    }
-  */
+
     func nextLevelScene() -> GameSKScene? {
         var nextGameScene:GameSKScene? = nil
         if !interfaceLocks[level][INTERFACE.level.rawValue] && level < GameViewController.maxLevelNumber {
@@ -329,45 +321,65 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
             sceneView.presentScene(menuScene.previousGameScene!, transition: menuScene.transitionDown)
         }
     }
-    /*
-    func presentMatchMakingViewController(mmvc: GKMatchmakerViewController) {
+    
+    func presentMatchMakingViewController() {
+        print("match making ......")
+        let matchRequest = GKMatchRequest()
+        matchRequest.minPlayers = 2
+        matchRequest.maxPlayers = 2
+        matchRequest.defaultNumberOfPlayers = 2
+        
+        let mmvc: GKMatchmakerViewController = GKMatchmakerViewController(matchRequest: matchRequest)!
         mmvc.matchmakerDelegate = self
-        self.presentViewController(mmvc, animated: true, completion: nil)
+        self.present(mmvc, animated: true, completion: nil)
     }
 
-    optional func matchmakerViewController(_ viewController: GKMatchmakerViewController,
-                                             didFindMatch match: GKMatch) {
-        viewController.dismissViewControllerAnimated(true, completion: nil)
+    func matchmakerViewController(_ viewController: GKMatchmakerViewController, didFind match: GKMatch) {
+        viewController.dismiss(animated: true, completion: nil)
+        print("Match: " + match.description)
         match.delegate = self
         self.match = match
     }
     
-    func matchmakerViewControllerWasCancelled(viewController: GKMatchmakerViewController) {
-        viewController.dismissViewControllerAnimated(true, completion: nil)
+    func matchmakerViewControllerWasCancelled(_ viewController: GKMatchmakerViewController) {
+        print("Match cancelled")
+        viewController.dismiss(animated: true, completion: nil)
     }
     
-    func matchmakerViewController(viewController: GKMatchmakerViewController,
-                                    didFailWithError error: NSError) {
-        viewController.dismissViewControllerAnimated(true, completion: nil)
+    func matchmakerViewController(_ viewController: GKMatchmakerViewController,  didFailWithError error: Error) {
+        print("Match failed")
+        viewController.dismiss(animated: true, completion: nil)
     }
     
-    optional func match(_ match: GKMatch, didReceiveData data: NSData, fromRemotePlayer player: GKPlayer) {
-        if self.match != match  {
-            return
+    func match(_ match: GKMatch, didReceive data: Data, fromRemotePlayer player: GKPlayer) {
+        if self.match == match  {
+            if data.count > 0 {
+                if let scene = self.sceneView.scene as? GameSKScene {
+                    scene.remoteExperiment(number: Int(data[0]))
+                }
+            }
         }
-        let p = data.bytes
-
-        // Handle a position message.
     }
     
-    optional func match(_ match: GKMatch, player player: GKPlayer, didChangeConnectionState state: GKPlayerConnectionState) {
-        
+    func sendData(number experiment: Int) {
+        if self.match != nil {
+            let data = Data(bytes: [UInt8(experiment)])
+            do {
+                try self.match?.sendData(toAllPlayers: data, with: GKMatchSendDataMode.reliable)
+            } catch {
+                print("Error sendind data")
+            }
+        }
     }
     
-    optional func match(_ match: GKMatch, shouldReinviteDisconnectedPlayer player: GKPlayer) -> Bool {
-        
+    func match(_ match: GKMatch, player: GKPlayer, didChange state: GKPlayerConnectionState) {
+        print("Player state change: \(state.rawValue)")
     }
-    */
+    
+    func match(_ match: GKMatch, shouldReinviteDisconnectedPlayer player: GKPlayer) -> Bool {
+        return true
+    }
+    
     func unlockLevel(_ moves: Int) {
         if gcEnabled {
             let sScore = GKScore(leaderboardIdentifier: "Level\(level)")

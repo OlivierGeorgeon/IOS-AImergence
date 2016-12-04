@@ -14,7 +14,6 @@ protocol GameViewDelegate: class
 {
     func nextLevelScene() -> GameSKScene? 
     func previousLevelScene() -> GameSKScene?
-    //func presentMatchMakingViewController(mmvc: GKMatchmakerViewController)
 }
 
 class GameView: SKView, UIGestureRecognizerDelegate {

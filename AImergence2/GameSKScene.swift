@@ -22,6 +22,8 @@ protocol GameSceneDelegate: class
     func showLevelWindow()
     func isGameCenterEnabled() -> Bool
     func playSound(soundIndex: Int)
+    func presentMatchMakingViewController()
+    func sendData(number: Int)
 }
 
 class GameSKScene: PositionedSKScene {
@@ -39,6 +41,7 @@ class GameSKScene: PositionedSKScene {
     let traceNode = TraceSKNode()
     let tutorNode = TutorSKNode()
     let topRightNode = SKNode()
+    let matchNode = MatchSKNode()
     
     weak var gameSceneDelegate: GameSceneDelegate!
     
@@ -51,7 +54,9 @@ class GameSKScene: PositionedSKScene {
     var winMoves = 0
     var score = 0
     var robotOrigin = CGFloat(0.0)
-    
+
+    var localExpermimentNode: ExperimentSKNode?
+
     init(levelNumber: Int)
     {
         //let bundleName = NSBundle.mainBundle().infoDictionary!["CFBundleName"] as! String
@@ -126,10 +131,13 @@ class GameSKScene: PositionedSKScene {
         
         robotNode.position = CGPoint(x: 240, y: 360)
         cameraRelativeOriginNode.addChild(robotNode)
-        //backgroundNode.size.height = 2376
         backgroundNode.zPosition = -20
         backgroundNode.name = "background"
         cameraNode.addChild(backgroundNode)
+        
+        if level.isMultiPlayer {
+            self.addChild(matchNode)
+        }
     }
     
     override func update(_ currentTime: TimeInterval) {
@@ -264,11 +272,21 @@ class GameSKScene: PositionedSKScene {
         var handlingTap = false
         
         cameraNode.removeAction(forKey: "scroll")
-
+        
         for experimentNode in experimentNodes.values {
             if experimentNode.contains(positionInScene){
                 playExperience = true
-                _ = play(experimentNode)
+                experimentNode.run(actionPress)                
+                if level.isMultiPlayer {
+                    gameSceneDelegate.sendData(number: experimentNode.experiment.number)
+                    if level.remoteExperimentNumber == nil {
+                        localExpermimentNode = experimentNode
+                    } else {
+                        _ = play(experimentNode)
+                    }
+                } else {
+                    _ = play(experimentNode)
+                }
                 nextExperimentNode?.removeFromParent()
                 nextExperimentNode = nil
                 handlingTap = true
@@ -320,6 +338,12 @@ class GameSKScene: PositionedSKScene {
         } else {
             scoreNode.moveNode.isHidden = true
         }
+
+        if matchNode.contains(positionInScene) {
+            matchNode.run(actionPress)
+            gameSceneDelegate.presentMatchMakingViewController()
+        }
+        
         if handlingTap {
             (view as! GameView).doubleTapGesture.isEnabled = false
             (view as! GameView).doubleTapGesture.isEnabled = true
@@ -423,12 +447,19 @@ class GameSKScene: PositionedSKScene {
         actionScrollToOrigin.timingMode = .easeInEaseOut
         cameraNode.run(actionScrollToOrigin)
     }
+    
+    func remoteExperiment(number: Int) {
+        level.remoteExperimentNumber = number
+        print("Received: \(number)")
+        if localExpermimentNode != nil {
+            _ = play(localExpermimentNode!)
+        }
+    }
 
     func play(_ experimentNode: ExperimentSKNode) -> Experience {
         
         clock += 1
-        
-        experimentNode.run(actionPress)
+        localExpermimentNode = nil
         
         let experiment = experimentNode.experiment
         let(experience, score) = level.play(experiment)

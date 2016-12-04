@@ -12,13 +12,14 @@ import GameKit
 
 class MatchSKNode: SKNode
 {
-    let backgroundNode = SKShapeNode(rect: CGRect(x: -100, y: -100, width: 200, height: 200), cornerRadius: 10)
+    let backgroundNode = SKShapeNode(rect: CGRect(x: -75, y: -75, width: 150, height: 150), cornerRadius: 10)
     
     override init() {
         
         super.init()
         
-        position = CGPoint(x: -100, y: 200)
+        position = CGPoint(x: -220, y: 360)
+        backgroundNode.fillColor = UIColor.white
         addChild(backgroundNode)
     }
     
@@ -26,14 +27,4 @@ class MatchSKNode: SKNode
         fatalError("init(coder:) has not been implemented")
     }
 
-    func showMatchMaker() {
-        print("match making ......")
-        let matchRequest = GKMatchRequest()
-        matchRequest.minPlayers = 2
-        matchRequest.maxPlayers = 2
-        matchRequest.defaultNumberOfPlayers = 2
-        
-        //let mmvc: GKMatchmakerViewController = GKMatchmakerViewController(matchRequest: matchRequest)!
-        //(self.scene!.view! as? GameView)?.delegate?.presentMatchMakingViewController(mmvc)
-    }
 }

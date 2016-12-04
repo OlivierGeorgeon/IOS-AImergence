@@ -20,6 +20,8 @@ class Level0 {
     var number:Int { return 0 }
     var valenceTrace:[Int]
     var gameModelString: String { return "GameModel0" }
+    var isMultiPlayer: Bool { return false }
+    var remoteExperimentNumber: Int?
 
     init(winScore: Int, historicalDepth: Int, experiments:[Experiment], experiences:[[Experience]]) {
         self.winScore = winScore
@@ -64,4 +66,5 @@ class Level0 {
         valenceTrace.append(experience.valence)
         return valenceTrace.reduce(0, +)
     }
+    
 }
