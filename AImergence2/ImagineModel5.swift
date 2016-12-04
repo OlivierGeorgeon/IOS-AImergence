@@ -49,7 +49,7 @@ class ImagineModel5: ImagineModel4
         scene.rootNode.addChildNode(worldNode)
     }
 
-    override func playExperience(_ experience: Experience) {
+    override func imagine(experience: Experience) {
         switch experience.hashValue {
         case 00: // Touch
             robotNode.feelFront()

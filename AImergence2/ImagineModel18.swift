@@ -25,7 +25,7 @@ class ImagineModel18: ImagineModel2
         worldNode.addChildNode(rightHolderNode)
         
     }
-    override func playExperience(_ experience: Experience) {
+    override func imagine(experience: Experience) {
         switch experience.hashValue {
         case 00: // feel left red
             robotNode.feelFrontLeft()

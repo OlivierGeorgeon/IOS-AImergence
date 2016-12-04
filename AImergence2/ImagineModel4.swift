@@ -41,7 +41,7 @@ class ImagineModel4: ImagineModel3
         scene.rootNode.addChildNode(worldNode)
     }
     
-    override func playExperience(_ experience: Experience) {
+    override func imagine(experience: Experience) {
         if experience.hashValue == 11 {
             bodyCell = 1
         }

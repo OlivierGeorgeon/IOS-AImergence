@@ -11,7 +11,7 @@ import SceneKit
 class ImagineModel13: ImagineModel12
 {
     
-    override func playExperience(_ experience: Experience) {
+    override func imagine(experience: Experience) {
         constraint.influenceFactor = 0.5
         switch experience.experiment.number {
         case 0:

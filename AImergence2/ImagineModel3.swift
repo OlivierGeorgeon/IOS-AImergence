@@ -11,7 +11,7 @@ import SceneKit
 class ImagineModel3: ImagineModel2
 {
     
-    override func playExperience(_ experience: Experience) {
+    override func imagine(experience: Experience) {
         switch experience.hashValue {
         case 00:
             robotNode.feelLeft()

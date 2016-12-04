@@ -135,14 +135,26 @@ class ImagineViewController: UIViewController {
         imagineModel.setup(sceneView.scene!)
     }
     
-    func playExperience(_ experience: Experience) {
+    func imagine(experience: Experience) {
         if sceneView.scene != nil {
-            imagineModel?.playExperience(experience)
+            imagineModel?.imagine(experience: experience)
             experimentTried[experience.experimentNumber] = true
             okButton.isEnabled = !experimentTried.contains(false)
         }
     }
 
+    func imagine(experiment: Experiment) {
+        if sceneView.scene != nil {
+            imagineModel?.imagine(experiment: experiment)
+        }
+    }
+    
+    func imagine(remoteExperimentNumber: Int) {
+        if sceneView.scene != nil {
+            imagineModel?.imagine(remoteExperimentNumber: remoteExperimentNumber)
+        }
+    }
+    
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
         coordinator.animate(alongsideTransition: { (UIViewControllerTransitionCoordinatorContext) -> Void in }, completion: { (UIViewControllerTransitionCoordinatorContext) -> Void in

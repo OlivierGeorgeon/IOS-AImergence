@@ -245,9 +245,21 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
         return gcEnabled
     }
     
-    func playExperience(_ experience: Experience) {
+    func imagine(experience: Experience) {
         if !imagineViewControllerContainer.isHidden {
-            imagineViewController?.playExperience(experience)
+            imagineViewController?.imagine(experience: experience)
+        }
+    }
+    
+    func imagine(experiment: Experiment) {
+        if !imagineViewControllerContainer.isHidden {
+            imagineViewController?.imagine(experiment: experiment)
+        }
+    }
+    
+    func imagine(remoteExperimentNumber: Int) {
+        if !imagineViewControllerContainer.isHidden {
+            imagineViewController?.imagine(remoteExperimentNumber: remoteExperimentNumber)
         }
     }
     

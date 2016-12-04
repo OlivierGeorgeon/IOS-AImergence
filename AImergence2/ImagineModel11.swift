@@ -53,7 +53,7 @@ class ImagineModel11: ImagineModel0
         scene.rootNode.addChildNode(worldNode)
     }
 
-    override func playExperience(_ experience: Experience) {
+    override func imagine(experience: Experience) {
         constraint.influenceFactor = 0.5
         switch experience.experiment.number {
         case 0:

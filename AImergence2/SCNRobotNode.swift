@@ -84,6 +84,12 @@ class SCNRobotNode: SCNNode {
         robot.turnRight()
     }
     
+    func appearBack() {
+        self.runAction(SCNAction.sequence([SCNAction.rotateBy(x: 0.0, y: CGFloat(M_PI), z: 0.0, duration: 0), SCNAction.unhide()]))
+        robot.turnRight()
+        robot.turnRight()
+    }
+    
     func turnLeft(){
         self.runAction(actionTurnLeft)
         robot.turnLeft()

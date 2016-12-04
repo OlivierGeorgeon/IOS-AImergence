@@ -90,7 +90,7 @@ class ImagineModel0
         //cameraNode.constraints = [constraint]
     }
 
-    func playExperience(_ experience: Experience) {
+    func imagine(experience: Experience) {
         switch experience.experiment.number {
         case 1:
             robotNode.bump()
@@ -141,5 +141,11 @@ class ImagineModel0
         worldNode.addChildNode(experienceNode)
         let actionWait = SCNAction.wait(duration: delay)
         experienceNode.runAction(SCNAction.sequence([actionWait, SCNAction.unhide(), actionLiftExperience, SCNAction.removeFromParentNode()]))
+    }
+    
+    func imagine(experiment: Experiment) {
+    }
+    
+    func imagine(remoteExperimentNumber: Int) {
     }
 }

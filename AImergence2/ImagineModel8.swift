@@ -10,7 +10,7 @@ import SceneKit
 
 class ImagineModel8: ImagineModel5
 {
-    override func playExperience(_ experience: Experience) {
+    override func imagine(experience: Experience) {
         switch experience.hashValue {
         case 00: // Touch
             robotNode.feelFront()

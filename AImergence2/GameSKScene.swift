@@ -12,7 +12,9 @@ import AVFoundation
 
 protocol GameSceneDelegate: class
 {
-    func playExperience(_ experience: Experience)
+    func imagine(experience: Experience)
+    func imagine(experiment: Experiment)
+    func imagine(remoteExperimentNumber: Int)
     func unlockLevel(_ score: Int)
     func isInterfaceLocked(_ interface: INTERFACE) -> Bool
     func showInstructionWindow()
@@ -35,6 +37,7 @@ class GameSKScene: PositionedSKScene {
     let cameraNode = SKCameraNode()
     let cameraRelativeOriginNode = SKNode()
     let actionDisappear = SKAction.scale(to: 0, duration: 0.2)
+    let actionPulse: SKAction
     let scoreNode = ScoreSKNode()
     let shapePopupNode: ShapePopupSKNode
     let colorPopupNode = ColorPopupSKNode()
@@ -77,6 +80,12 @@ class GameSKScene: PositionedSKScene {
         gameModel.level = level
         self.shapePopupNode = ShapePopupSKNode(gameModel: gameModel)
         
+        let actionPulseDown = SKAction.scale(to: 0.9, duration: 0.3)
+        actionPulseDown.timingMode = .easeInEaseOut
+        let actionPulseUp = SKAction.scale(to: 1, duration: 0.3)
+        actionPulseUp.timingMode = .easeInEaseOut
+        actionPulse = SKAction.repeatForever(SKAction.sequence([actionPulseDown, actionPulseUp]))
+
         super.init(size:CGSize(width: 0 , height: 0))
         
         self.camera = cameraNode
@@ -91,6 +100,11 @@ class GameSKScene: PositionedSKScene {
         self.gameModel = GameModel0()
         self.shapePopupNode = ShapePopupSKNode(gameModel: gameModel)
 
+        let actionPulseDown = SKAction.scale(to: 0.9, duration: 0.3)
+        actionPulseDown.timingMode = .easeInEaseOut
+        let actionPulseUp = SKAction.scale(to: 1, duration: 0.3)
+        actionPulseUp.timingMode = .easeInEaseOut
+        actionPulse = SKAction.repeatForever(SKAction.sequence([actionPulseDown, actionPulseUp]))
         super.init(coder: aDecoder)
         layoutScene()
     }
@@ -276,15 +290,21 @@ class GameSKScene: PositionedSKScene {
         for experimentNode in experimentNodes.values {
             if experimentNode.contains(positionInScene){
                 playExperience = true
-                experimentNode.run(actionPress)                
                 if level.isMultiPlayer {
                     gameSceneDelegate.sendData(number: experimentNode.experiment.number)
+                    gameSceneDelegate.imagine(experiment: experimentNode.experiment)
                     if level.remoteExperimentNumber == nil {
+                        if localExpermimentNode != nil {
+                            localExpermimentNode?.removeAction(forKey: "pulse")
+                        }
                         localExpermimentNode = experimentNode
+                        experimentNode.run(actionPulse, withKey: "pulse")
                     } else {
+                        experimentNode.run(actionPress)
                         _ = play(experimentNode)
                     }
                 } else {
+                    experimentNode.run(actionPress)
                     _ = play(experimentNode)
                 }
                 nextExperimentNode?.removeFromParent()
@@ -451,7 +471,9 @@ class GameSKScene: PositionedSKScene {
     func remoteExperiment(number: Int) {
         level.remoteExperimentNumber = number
         print("Received: \(number)")
+        gameSceneDelegate.imagine(remoteExperimentNumber: number)
         if localExpermimentNode != nil {
+            localExpermimentNode?.removeAction(forKey: "pulse")
             _ = play(localExpermimentNode!)
         }
     }
@@ -491,7 +513,7 @@ class GameSKScene: PositionedSKScene {
 
         scoreNode.updateScore(score, clock: clock, winMoves: winMoves)
         
-        gameSceneDelegate.playExperience(experience)
+        gameSceneDelegate.imagine(experience: experience)
         
         tutorNode.tapCommand(experience.experimentNumber, nextParentNode: scoreNode)
         

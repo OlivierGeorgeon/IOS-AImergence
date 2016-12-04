@@ -14,7 +14,7 @@ class ImagineModel2: ImagineModel1
     var leftFlippableNode: SCNFlipTileNode?
     var rightFlippableNode: SCNFlipTileNode?
     
-    override func playExperience(_ experience: Experience) {
+    override func imagine(experience: Experience) {
         switch experience.hashValue {
         case 00:
             robotNode.feelLeft()
