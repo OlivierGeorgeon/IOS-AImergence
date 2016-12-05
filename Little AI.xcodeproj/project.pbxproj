@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		09094A521DF49A51005384E0 /* Level22.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09094A511DF49A51005384E0 /* Level22.swift */; };
 		090AD9EA1C7A5EEE00F2FE8C /* ImagineModel6.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090AD9E91C7A5EEE00F2FE8C /* ImagineModel6.swift */; };
 		090AD9EC1C7A5F2400F2FE8C /* ImagineModel7.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090AD9EB1C7A5F2400F2FE8C /* ImagineModel7.swift */; };
 		090AD9F01C7A618500F2FE8C /* Level8.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090AD9EF1C7A618500F2FE8C /* Level8.swift */; };
@@ -22,7 +23,6 @@
 		0919DF171DDC9DA100653775 /* MessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0919DF161DDC9DA100653775 /* MessagesViewController.swift */; };
 		0919DF1A1DDC9DA100653775 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0919DF181DDC9DA100653775 /* MainInterface.storyboard */; };
 		0919DF1C1DDC9DA100653775 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0919DF1B1DDC9DA100653775 /* Assets.xcassets */; };
-		0919DF201DDC9DA100653775 /* iMessage.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 0919DF111DDC9DA100653775 /* iMessage.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		0919DF261DDCB9C100653775 /* Stickers.xcstickers in Resources */ = {isa = PBXBuildFile; fileRef = 0919DF251DDCB9C100653775 /* Stickers.xcstickers */; };
 		09246FC61D3145F80049CFA2 /* TipSKNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09246FC51D3145F80049CFA2 /* TipSKNode.swift */; };
 		093000DA1C4FB39000425BB1 /* ExperimentSKNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093000D91C4FB39000425BB1 /* ExperimentSKNode.swift */; };
@@ -71,6 +71,9 @@
 		0945F9021DC3974E00D41A6F /* Level19.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0945F9011DC3974E00D41A6F /* Level19.swift */; };
 		0945F9041DC3988200D41A6F /* ImagineModel19.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0945F9031DC3988200D41A6F /* ImagineModel19.swift */; };
 		0947C3D71D67571000212A0B /* SCNPhenomenonNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0947C3D61D67571000212A0B /* SCNPhenomenonNode.swift */; };
+		0955A67E1DF59C380091D219 /* GKMessageImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 0955A67D1DF59C380091D219 /* GKMessageImage.png */; };
+		0955A6801DF5B3270091D219 /* ImagineModel22.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0955A67F1DF5B3270091D219 /* ImagineModel22.swift */; };
+		0955A6821DF5B71F0091D219 /* MultiplayerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0955A6811DF5B71F0091D219 /* MultiplayerExtension.swift */; };
 		0955F6F81CF2E65400473C03 /* GameModel11.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0955F6F71CF2E65400473C03 /* GameModel11.swift */; };
 		0955F6FA1CF349BD00473C03 /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 0955F6F91CF349BD00473C03 /* art.scnassets */; };
 		095856711D0AC50B002BD7D7 /* Confetti.scnp in Resources */ = {isa = PBXBuildFile; fileRef = 0958566F1D0AC50B002BD7D7 /* Confetti.scnp */; };
@@ -124,13 +127,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		0919DF1E1DDC9DA100653775 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 0936812F1C417377008C6B5D /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 0919DF101DDC9DA100653775;
-			remoteInfo = iMessage;
-		};
 		093681501C417378008C6B5D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 0936812F1C417377008C6B5D /* Project object */;
@@ -147,21 +143,8 @@
 		};
 /* End PBXContainerItemProxy section */
 
-/* Begin PBXCopyFilesBuildPhase section */
-		0919DF241DDC9DA100653775 /* Embed App Extensions */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 13;
-			files = (
-				0919DF201DDC9DA100653775 /* iMessage.appex in Embed App Extensions */,
-			);
-			name = "Embed App Extensions";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
-
 /* Begin PBXFileReference section */
+		09094A511DF49A51005384E0 /* Level22.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Level22.swift; sourceTree = "<group>"; };
 		090AD9E91C7A5EEE00F2FE8C /* ImagineModel6.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagineModel6.swift; sourceTree = "<group>"; };
 		090AD9EB1C7A5F2400F2FE8C /* ImagineModel7.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagineModel7.swift; sourceTree = "<group>"; };
 		090AD9EF1C7A618500F2FE8C /* Level8.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Level8.swift; sourceTree = "<group>"; };
@@ -234,6 +217,9 @@
 		0945F9011DC3974E00D41A6F /* Level19.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Level19.swift; sourceTree = "<group>"; };
 		0945F9031DC3988200D41A6F /* ImagineModel19.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagineModel19.swift; sourceTree = "<group>"; };
 		0947C3D61D67571000212A0B /* SCNPhenomenonNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCNPhenomenonNode.swift; sourceTree = "<group>"; };
+		0955A67D1DF59C380091D219 /* GKMessageImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GKMessageImage.png; sourceTree = "<group>"; };
+		0955A67F1DF5B3270091D219 /* ImagineModel22.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagineModel22.swift; sourceTree = "<group>"; };
+		0955A6811DF5B71F0091D219 /* MultiplayerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultiplayerExtension.swift; sourceTree = "<group>"; };
 		0955F6F71CF2E65400473C03 /* GameModel11.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameModel11.swift; sourceTree = "<group>"; };
 		0955F6F91CF349BD00473C03 /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
 		0958566F1D0AC50B002BD7D7 /* Confetti.scnp */ = {isa = PBXFileReference; lastKnownFileType = file.scp; path = Confetti.scnp; sourceTree = "<group>"; };
@@ -383,8 +369,10 @@
 			children = (
 				093681421C417378008C6B5D /* Main.storyboard */,
 				093681401C417378008C6B5D /* GameViewController.swift */,
+				0955A6811DF5B71F0091D219 /* MultiplayerExtension.swift */,
 				09AC4D121C821BC000C149EC /* GameView.swift */,
 				0936813A1C417378008C6B5D /* AppDelegate.swift */,
+				0955A67D1DF59C380091D219 /* GKMessageImage.png */,
 				0961EBB61C63D16900A4E55C /* Levels */,
 				0961EBB71C63D19E00A4E55C /* Game */,
 				09ED65801C6D0EF5004A8CA7 /* Help */,
@@ -446,6 +434,7 @@
 				0945F9011DC3974E00D41A6F /* Level19.swift */,
 				0945F8F71DC3397100D41A6F /* Level20.swift */,
 				09A168511DF1C73400619A3A /* Level21.swift */,
+				09094A511DF49A51005384E0 /* Level22.swift */,
 			);
 			name = Levels;
 			sourceTree = "<group>";
@@ -509,6 +498,7 @@
 				0945F9031DC3988200D41A6F /* ImagineModel19.swift */,
 				0945F8F91DC352A100D41A6F /* ImagineModel20.swift */,
 				09893FC51DF4712B0077037F /* ImagineModel21.swift */,
+				0955A67F1DF5B3270091D219 /* ImagineModel22.swift */,
 			);
 			name = ImagineModels;
 			sourceTree = "<group>";
@@ -598,12 +588,10 @@
 				093681331C417378008C6B5D /* Sources */,
 				093681341C417378008C6B5D /* Frameworks */,
 				093681351C417378008C6B5D /* Resources */,
-				0919DF241DDC9DA100653775 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				0919DF1F1DDC9DA100653775 /* PBXTargetDependency */,
 			);
 			name = "Little AI";
 			productName = AImergence2;
@@ -742,6 +730,7 @@
 				093681461C417378008C6B5D /* Assets.xcassets in Resources */,
 				0939E9AB1D51ED2D0043A166 /* baby7.wav in Resources */,
 				095856711D0AC50B002BD7D7 /* Confetti.scnp in Resources */,
+				0955A67E1DF59C380091D219 /* GKMessageImage.png in Resources */,
 				0939E9A81D51ED2D0043A166 /* baby4.wav in Resources */,
 				093681441C417378008C6B5D /* Main.storyboard in Resources */,
 			);
@@ -778,6 +767,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				09094A521DF49A51005384E0 /* Level22.swift in Sources */,
 				0945F9001DC37ACA00D41A6F /* ImagineModel18.swift in Sources */,
 				09893FC61DF4712B0077037F /* ImagineModel21.swift in Sources */,
 				09F145131D02226300D0BDC7 /* Level14.swift in Sources */,
@@ -792,6 +782,7 @@
 				0945F8FE1DC373CB00D41A6F /* GameModel18.swift in Sources */,
 				093C3F681C6F8482000BC6FB /* ImagineModel3.swift in Sources */,
 				093681731C4523B1008C6B5D /* Level0.swift in Sources */,
+				0955A6801DF5B3270091D219 /* ImagineModel22.swift in Sources */,
 				093000E01C4FD3B700425BB1 /* ReshapableSKNode.swift in Sources */,
 				09F6D6ED1D45E76E00B38671 /* ShapePopupSKNode.swift in Sources */,
 				0914EA6A1D0AA7DE00E78D5F /* ImagineModel15.swift in Sources */,
@@ -858,6 +849,7 @@
 				0961EBB91C63EE2200A4E55C /* Level3.swift in Sources */,
 				09D426461D0AE30200B34CDF /* ImagineModel17.swift in Sources */,
 				09C3A10D1D477D02007D602C /* TutorSKNode.swift in Sources */,
+				0955A6821DF5B71F0091D219 /* MultiplayerExtension.swift in Sources */,
 				0955F6F81CF2E65400473C03 /* GameModel11.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -881,11 +873,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		0919DF1F1DDC9DA100653775 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 0919DF101DDC9DA100653775 /* iMessage */;
-			targetProxy = 0919DF1E1DDC9DA100653775 /* PBXContainerItemProxy */;
-		};
 		093681511C417378008C6B5D /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 093681361C417378008C6B5D /* Little AI */;
@@ -1097,7 +1084,6 @@
 		093681641C417378008C6B5D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = AImergence2/Info.plist;
@@ -1113,7 +1099,6 @@
 		093681651C417378008C6B5D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = AImergence2/Info.plist;

@@ -9,11 +9,13 @@
 import Foundation
 import GameplayKit
 
-class Level21 : Level5 {
+class Level22 : Level21 {
     
-    override var number:Int { return 21 }
+    override var number:Int { return 22 }
     override var gameModelString: String { return "GameModel0" }
-    override var isMultiPlayer: Bool { return true }
+
+    var previousExperiment: Experiment?
+    var previousRemoteExperimentNumber: Int?
 
     convenience required init() {
         let experiment0 = Experiment(number: 0)
@@ -28,14 +30,15 @@ class Level21 : Level5 {
         let experiences = [[experience00, experience01], [experience10, experience11]]
         
         self.init(winScore: 10, historicalDepth: 10, experiments: experiments, experiences: experiences)
-        
     }
     
     override func play(_ experiment: Experiment) -> (Experience, Int) {
         var result = 0
-        if experiment.number == remoteExperimentNumber {
+        if previousExperiment != experiment && previousRemoteExperimentNumber != remoteExperimentNumber {
             result = 1
         }
+        previousExperiment = experiment
+        previousRemoteExperimentNumber = remoteExperimentNumber
         remoteExperimentNumber = nil
         let experience = experiences[experiment.number][result]
         return (experience, score(experience))

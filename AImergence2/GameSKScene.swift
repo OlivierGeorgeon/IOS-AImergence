@@ -9,6 +9,7 @@
 import SpriteKit
 import AudioToolbox
 import AVFoundation
+import GameKit
 
 protocol GameSceneDelegate: class
 {
@@ -26,6 +27,7 @@ protocol GameSceneDelegate: class
     func playSound(soundIndex: Int)
     func presentMatchMakingViewController()
     func sendData(number: Int)
+    func currentMatch() -> GKMatch?
 }
 
 class GameSKScene: PositionedSKScene {
@@ -127,6 +129,8 @@ class GameSKScene: PositionedSKScene {
             tutorNode.tip(tutor: .instruction, parentNode: robotNode.instructionButtonNode)
         case 3:
             tutorNode.tip(tutor: .shape, parentNode: scene!)
+        //case 21:
+        //    tutorNode.tip(tutor: .match, parentNode: matchNode)
         default:
             break
         }
@@ -149,9 +153,6 @@ class GameSKScene: PositionedSKScene {
         backgroundNode.name = "background"
         cameraNode.addChild(backgroundNode)
         
-        if level.isMultiPlayer {
-            self.addChild(matchNode)
-        }
     }
     
     override func update(_ currentTime: TimeInterval) {
@@ -168,6 +169,16 @@ class GameSKScene: PositionedSKScene {
         super.didMove(to: view)
 
         // The delegate is ready in didMoveToView
+        if level.isMultiPlayer {
+            self.addChild(matchNode)
+            if gameSceneDelegate.currentMatch() == nil {
+                if self.level.number == 21 {
+                    tutorNode.tip(tutor: .match, parentNode: matchNode)
+                }
+            } else {
+                matchNode.update(status: .connected)
+            }
+        }
         if robotNode.recommendation == RECOMMEND.done {
             if gameSceneDelegate.isInterfaceLocked(INTERFACE.instruction) {
                 robotNode.recommend(RECOMMEND.instruction)
@@ -359,7 +370,8 @@ class GameSKScene: PositionedSKScene {
             scoreNode.moveNode.isHidden = true
         }
 
-        if matchNode.contains(positionInScene) {
+        let positionInMatch = matchNode.convert(positionInScene, from: self)
+        if matchNode.backgroundNode.contains(positionInMatch) {
             matchNode.run(actionPress)
             gameSceneDelegate.presentMatchMakingViewController()
         }

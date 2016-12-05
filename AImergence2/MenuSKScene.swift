@@ -28,12 +28,14 @@ fileprivate func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
   }
 }
 
+enum LevelStatus { case won, accessible, inaccessible}
+
 
 protocol MenuSceneDelegate: class
 {
     func currentLevel() -> Int
     func updateLevel(_ level: Int)
-    func levelStatus(_ level: Int) -> Int
+    func levelStatus(_ level: Int) -> LevelStatus
     func leaveTip(_ product: SKProduct)
     func isSoundEnabled() -> Bool
     func toggleSound() -> Bool
@@ -77,7 +79,6 @@ class MenuSKScene: PositionedSKScene {
         
         levelGroupIndex = userDelegate!.currentLevel() / 20
         levelGroupNode.position = level0Position
-        //levelGroupNode.position.x -= CGFloat(levelGroupXOffset * levelGroupIndex)
         tutorNode.level = userDelegate!.currentLevel()
         if !userDelegate!.isUserHasDraggedLevel() {
             tutorNode.dragToResume(tipInviteNode)
@@ -104,6 +105,10 @@ class MenuSKScene: PositionedSKScene {
         originNode.addChild(tip2Node)
 
         super.didMove(to: view)
+        
+        if self.size.width < CGFloat(levelGroupXOffset) * 2 {
+            levelGroupNode.position.x -= CGFloat(levelGroupXOffset * levelGroupIndex)
+        }
     }
     
     func displayProducts(_ products: [SKProduct], isPaidTip: Bool) {
@@ -172,11 +177,11 @@ class MenuSKScene: PositionedSKScene {
             
             var backgroundNode = SKShapeNode()
             switch userDelegate!.levelStatus(i) {
-            case 1:
+            case .accessible:
                 backgroundNode = SKShapeNode(rect: CGRect(x: -50, y: -50, width: 100, height: 100), cornerRadius: 30)
-            case 2:
+            case .won:
                 backgroundNode = SKShapeNode(rect: CGRect(x: -50, y: -50, width: 100, height: 100))
-            default:
+            case .inaccessible:
                 backgroundNode = SKShapeNode(path: UIBezierPath(ovalIn: CGRect(x: -50, y: -50, width: 100, height: 100)).cgPath)
             }
             
@@ -255,7 +260,7 @@ class MenuSKScene: PositionedSKScene {
             if levelNode.contains(positionInLevels){
                 levelNode.run(actionPress)
                 if let levelNumber = levelNode.userData?["level"] as! Int? {
-                    if userDelegate?.levelStatus(levelNumber) > 0 {
+                    if userDelegate?.levelStatus(levelNumber) != .inaccessible {
                         userDelegate?.updateLevel(levelNumber)
                         let gameScene = GameSKScene(levelNumber: levelNumber)
                         gameScene.gameSceneDelegate = previousGameScene?.gameSceneDelegate

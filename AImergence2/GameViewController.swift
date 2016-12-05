@@ -14,7 +14,7 @@ import AVFoundation
 
 enum INTERFACE: Int { case instruction, imagine, leaderboard, level}
 
-class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate, HelpViewControllerDelegate, ImagineViewControllerDelegate, GKGameCenterControllerDelegate, SKProductsRequestDelegate, SKPaymentTransactionObserver, GameViewDelegate, GKMatchmakerViewControllerDelegate, GKMatchDelegate
+class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate, HelpViewControllerDelegate, ImagineViewControllerDelegate, GKGameCenterControllerDelegate, SKProductsRequestDelegate, SKPaymentTransactionObserver, GameViewDelegate//, GKMatchmakerViewControllerDelegate, GKMatchDelegate
 {
     @IBOutlet weak var sceneView: GameView!
     @IBOutlet weak var helpViewControllerContainer: UIView!
@@ -22,7 +22,7 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
     @IBOutlet weak var levelButton: UIButton!
     @IBAction func levelButton(_ sender: UIButton) { showLevelWindow() }
     
-    static let maxLevelNumber = 21
+    static let maxLevelNumber = 22
     
     let unlockDefaultKey = "unlockDefaultKey"
     let paidTipKey = "paidTipKey"
@@ -93,6 +93,7 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
                 interfaceLocks = [[Bool]](repeating: [true, true, true, true], count: GameViewController.maxLevelNumber + 1)
             }
         }
+        
         let gameScene = GameSKScene(levelNumber: 0)
         gameScene.gameSceneDelegate = self
         gameScene.scaleMode = SKSceneScaleMode.aspectFill
@@ -189,7 +190,8 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
 
     func nextLevelScene() -> GameSKScene? {
         var nextGameScene:GameSKScene? = nil
-        if !interfaceLocks[level][INTERFACE.level.rawValue] && level < GameViewController.maxLevelNumber {
+        //if !interfaceLocks[level][INTERFACE.level.rawValue] && level < GameViewController.maxLevelNumber {
+        if levelStatus(level + 1) != .inaccessible {
             level += 1
             nextGameScene = GameSKScene(levelNumber: level)
             nextGameScene!.gameSceneDelegate = self
@@ -200,7 +202,8 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
     
     func previousLevelScene() -> GameSKScene? {
         var previousGameScene:GameSKScene? = nil
-        if level > 0 {
+        if levelStatus(level - 1) != .inaccessible {
+            //if !interfaceLocks[level - 1][INTERFACE.level.rawValue] {
             level -= 1
             previousGameScene = GameSKScene(levelNumber: level)
             previousGameScene!.gameSceneDelegate = self
@@ -333,7 +336,6 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
             sceneView.presentScene(menuScene.previousGameScene!, transition: menuScene.transitionDown)
         }
     }
-    
     func presentMatchMakingViewController() {
         print("match making ......")
         let matchRequest = GKMatchRequest()
@@ -345,22 +347,36 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
         mmvc.matchmakerDelegate = self
         self.present(mmvc, animated: true, completion: nil)
     }
+    
+    func currentMatch() -> GKMatch? {
+        return self.match
+    }
 
+    /*
     func matchmakerViewController(_ viewController: GKMatchmakerViewController, didFind match: GKMatch) {
         viewController.dismiss(animated: true, completion: nil)
         print("Match: " + match.description)
         match.delegate = self
         self.match = match
+        if let scene = self.sceneView.scene as? GameSKScene {
+            scene.tutorNode.matched()
+        }
     }
     
     func matchmakerViewControllerWasCancelled(_ viewController: GKMatchmakerViewController) {
         print("Match cancelled")
         viewController.dismiss(animated: true, completion: nil)
+        if let scene = self.sceneView.scene as? GameSKScene {
+            scene.tutorNode.matched()
+        }
     }
     
     func matchmakerViewController(_ viewController: GKMatchmakerViewController,  didFailWithError error: Error) {
         print("Match failed")
         viewController.dismiss(animated: true, completion: nil)
+        if let scene = self.sceneView.scene as? GameSKScene {
+            scene.tutorNode.matched()
+        }
     }
     
     func match(_ match: GKMatch, didReceive data: Data, fromRemotePlayer player: GKPlayer) {
@@ -372,7 +388,16 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
             }
         }
     }
-    
+
+     func match(_ match: GKMatch, player: GKPlayer, didChange state: GKPlayerConnectionState) {
+     print("Player state change: \(state.rawValue)")
+     }
+     
+     func match(_ match: GKMatch, shouldReinviteDisconnectedPlayer player: GKPlayer) -> Bool {
+     return true
+     }
+     
+    */
     func sendData(number experiment: Int) {
         if self.match != nil {
             let data = Data(bytes: [UInt8(experiment)])
@@ -382,14 +407,6 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
                 print("Error sendind data")
             }
         }
-    }
-    
-    func match(_ match: GKMatch, player: GKPlayer, didChange state: GKPlayerConnectionState) {
-        print("Player state change: \(state.rawValue)")
-    }
-    
-    func match(_ match: GKMatch, shouldReinviteDisconnectedPlayer player: GKPlayer) -> Bool {
-        return true
     }
     
     func unlockLevel(_ moves: Int) {
@@ -426,15 +443,20 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
         self.level = levelNumber
     }
     
-    func levelStatus(_ level: Int) -> Int {
-        var levelStatus = 0 // forbidden
-        if level == 0 { levelStatus = 1 } //  allowed
-        if level > 0 {
-            if !interfaceLocks[level - 1][INTERFACE.level.rawValue]
-                {levelStatus = 1 }
+    func levelStatus(_ level: Int) -> LevelStatus {
+        var levelStatus = LevelStatus.inaccessible
+        if level >= 0 && level <= GameViewController.maxLevelNumber {
+            if level == 0 || level == 21 {
+                levelStatus = .accessible
+            } else {
+                if !interfaceLocks[level - 1][INTERFACE.level.rawValue] {
+                    levelStatus = .accessible
+                }
+            }
+            if !interfaceLocks[level][INTERFACE.level.rawValue] {
+                levelStatus = .won
+            }
         }
-        if !interfaceLocks[level][INTERFACE.level.rawValue]
-            { levelStatus = 2 } // unlocked
         return levelStatus
     }
 

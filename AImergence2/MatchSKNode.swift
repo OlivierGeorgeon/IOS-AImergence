@@ -10,9 +10,13 @@ import Foundation
 import SpriteKit
 import GameKit
 
+enum MatchStatus { case disconnected, connected }
+
 class MatchSKNode: SKNode
 {
     let backgroundNode = SKShapeNode(rect: CGRect(x: -75, y: -75, width: 150, height: 150), cornerRadius: 10)
+    
+    var matchStatus = MatchStatus.disconnected
     
     override init() {
         
@@ -26,5 +30,14 @@ class MatchSKNode: SKNode
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
+    
+    func update(status: MatchStatus) {
+        self.matchStatus = status
+        switch status {
+        case .connected:
+            backgroundNode.fillColor = UIColor.green
+        default:
+            backgroundNode.fillColor = UIColor.white
+        }
+    }
 }

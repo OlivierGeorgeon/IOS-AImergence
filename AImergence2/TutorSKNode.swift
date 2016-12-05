@@ -6,7 +6,7 @@
 //  Copyright © 2016 Olivier Georgeon. All rights reserved.
 //
 
-enum Tutor { case instruction, command, score, replay, rank, drag, menu, redo, sequence, shape, color, level, resume, support, sound, done, instructionAgain, replayAgain}
+enum Tutor { case instruction, command, score, replay, rank, drag, menu, redo, sequence, shape, color, level, resume, support, sound, done, instructionAgain, replayAgain, match}
 
 import SpriteKit
 
@@ -167,6 +167,13 @@ class TutorSKNode: SKNode {
         }
     }
     
+    func matched() {
+        if level == 21 {
+            step = .done
+            removeFromParent()
+        }
+    }
+    
     func dragToResume(_ nextParentNode: SKNode) {
         //if (level == 3 && step == .sound) {
             tip(tutor: .resume, parentNode: nextParentNode)
@@ -279,6 +286,11 @@ class TutorSKNode: SKNode {
             shape = arrowLeft(CGRect(x: -220, y: -60, width: 440, height: 120))
             position = CGPoint(x: 300, y: -40)
             zRotation = CGFloat(-0.1)
+        case .match:
+            text = NSLocalizedString("match", comment: "")
+            shape = arrowLeft(CGRect(x: -200, y: -60, width: 400, height: 120))
+            position = CGPoint(x: 300, y: -100)
+            zRotation = CGFloat(-0.3)
         }
         return (text, shape, position, zRotation)
     }
