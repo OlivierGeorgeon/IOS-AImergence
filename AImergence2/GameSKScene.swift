@@ -177,6 +177,8 @@ class GameSKScene: PositionedSKScene {
                 }
             } else {
                 matchNode.update(status: .connected)
+                matchNode.update(displayName: gameSceneDelegate.currentMatch()?.players[0].displayName)
+                matchNode.update(text: NSLocalizedString("Ready", comment: ""))
             }
         }
         if robotNode.recommendation == RECOMMEND.done {
@@ -326,11 +328,32 @@ class GameSKScene: PositionedSKScene {
         
         if nextExperimentNode != nil {
             if CGRect(x: nextExperimentNode!.position.x - 60, y: nextExperimentNode!.position.y - 60, width: 120, height: 120).contains(positionInScene) {
-                let experience = play(experimentNodes[nextExperimentNode!.experiment.number]!)
-                playExperience = true
-                animNextExperiment(experience, nextClock: nextExperimentClock + 1)
+                nextExperimentNode!.run(actionPress)
                 handlingTap = true
-                tutorNode.tapNextExperience()
+                if level.isMultiPlayer {
+                    gameSceneDelegate.sendData(number: nextExperimentNode!.experiment.number)
+                    gameSceneDelegate.imagine(experiment: nextExperimentNode!.experiment)
+                    let experimentNode = experimentNodes[nextExperimentNode!.experiment.number]!
+                    if level.remoteExperimentNumber == nil {
+                        if localExpermimentNode != nil {
+                            localExpermimentNode?.removeAction(forKey: "pulse")
+                        }
+                        localExpermimentNode = experimentNode
+                        experimentNode.run(actionPulse, withKey: "pulse")
+                        animNextExperiment1(nextExperimentNode!.experiment, clock: nextExperimentClock)
+                    } else {
+                        experimentNode.run(actionPress)
+                        animNextExperiment1(nextExperimentNode!.experiment, clock: nextExperimentClock )
+                        let experience = play(experimentNode)
+                        animNextExperiment2(experience)
+                    }
+                } else {
+                    let experience = play(experimentNodes[nextExperimentNode!.experiment.number]!)
+                    animNextExperiment1(nextExperimentNode!.experiment, clock: nextExperimentClock)
+                    playExperience = true
+                    animNextExperiment2(experience)
+                    tutorNode.tapNextExperience()
+                }
             }
         }
         
@@ -338,10 +361,30 @@ class GameSKScene: PositionedSKScene {
             for (clock, eventNode) in traceNode.eventNodes {
                 if eventNode.contains(positionInTrace) {
                     eventNode.runPressAction()
-                    let experience = play(experimentNodes[eventNode.experienceNode.experience.experiment.number]!)
-                    animNextExperiment(experience, nextClock: clock + 1)
                     handlingTap = true
-                    tutorNode.tapEvent(nextExperimentNode!)
+                    let experimentNode = experimentNodes[eventNode.experienceNode.experience.experiment.number]!
+                    if level.isMultiPlayer {
+                        gameSceneDelegate.sendData(number: eventNode.experienceNode.experience.experiment.number)
+                        gameSceneDelegate.imagine(experiment: eventNode.experienceNode.experience.experiment)
+                        if level.remoteExperimentNumber == nil {
+                            if localExpermimentNode != nil {
+                                localExpermimentNode?.removeAction(forKey: "pulse")
+                            }
+                            localExpermimentNode = experimentNode
+                            experimentNode.run(actionPulse, withKey: "pulse")
+                            animNextExperiment1(experimentNode.experiment, clock: clock)
+                        } else {
+                            experimentNode.run(actionPress)
+                            animNextExperiment1(experimentNode.experiment, clock: clock)
+                            let experience = play(experimentNode)
+                            animNextExperiment2(experience)
+                        }
+                    } else {
+                        animNextExperiment1(experimentNode.experiment, clock: clock)
+                        let experience = play(experimentNode)
+                        animNextExperiment2(experience)
+                        tutorNode.tapEvent(nextExperimentNode!)
+                    }
                 }
             }
         }
@@ -371,9 +414,10 @@ class GameSKScene: PositionedSKScene {
         }
 
         let positionInMatch = matchNode.convert(positionInScene, from: self)
-        if matchNode.backgroundNode.contains(positionInMatch) {
+        if level.isMultiPlayer && matchNode.backgroundNode.contains(positionInMatch) && !handlingTap {
             matchNode.run(actionPress)
             gameSceneDelegate.presentMatchMakingViewController()
+            handlingTap = true
         }
         
         if handlingTap {
@@ -382,35 +426,38 @@ class GameSKScene: PositionedSKScene {
         }
     }
     
-    func animNextExperiment(_ experience: Experience, nextClock: Int) {
+    func animNextExperiment1(_ experiment: Experiment, clock: Int) {
         
-        if nextExperimentNode != nil && nextExperimentClock != nextClock - 1 {
+        if nextExperimentNode != nil && nextExperimentClock != clock {
             nextExperimentNode!.removeFromParent()
             nextExperimentNode = nil
         }
         if nextExperimentNode == nil {
             let rect = CGRect(x: -60, y: -60, width: 120, height: 120)
-            nextExperimentNode = ExperimentSKNode(rect: rect, experiment: experience.experiment, gameModel: gameModel)
+            nextExperimentNode = ExperimentSKNode(rect: rect, experiment: experiment, gameModel: gameModel)
             nextExperimentNode!.zPosition = 2
             addChild(nextExperimentNode!)
         }
-        nextExperimentNode!.position = CGPoint(x: -200, y: 80 + CGFloat(self.clock - nextClock + 1) * 100)
-        nextExperimentNode!.fillColor = gameModel.experienceColors[experience.colorIndex]
-        nextExperimentNode!.strokeColor = gameModel.experienceColors[experience.colorIndex]
-        nextExperimentNode!.run(SKAction.sequence([actionDisappear, SKAction.removeFromParent()]))
-        
-        nextExperimentClock = nextClock
-
-        let rect = CGRect(x: -60, y: -60, width: 120, height: 120)
-        let nextExperiment = traceNode.eventNodes[nextClock]!.experienceNode.experience.experiment
-        nextExperimentNode = ExperimentSKNode(rect: rect, experiment: nextExperiment, gameModel: gameModel)
-        nextExperimentNode!.position = CGPoint(x: -200, y: 80 + CGFloat(self.clock - nextClock + 1) * 100)
-        nextExperimentNode!.isHidden = true
-        nextExperimentNode!.zPosition = 2
-        addChild(nextExperimentNode!)
-        nextExperimentNode?.run(SKAction.sequence([SKAction.scale(to: 0, duration: 0.2), SKAction.unhide(), SKAction.scale(to: 1, duration: 0.1)]))
+        nextExperimentNode!.position = CGPoint(x: -200, y: 180 + CGFloat(self.clock - clock) * 100)
+        nextExperimentClock = clock + 1
     }
     
+    func animNextExperiment2(_ experience: Experience) {
+        if nextExperimentNode != nil {
+            nextExperimentNode!.fillColor = gameModel.experienceColors[experience.colorIndex]
+            nextExperimentNode!.strokeColor = gameModel.experienceColors[experience.colorIndex]
+            nextExperimentNode!.run(SKAction.sequence([actionDisappear, SKAction.removeFromParent()]))
+        
+            let rect = CGRect(x: -60, y: -60, width: 120, height: 120)
+            let nextExperiment = traceNode.eventNodes[nextExperimentClock]!.experienceNode.experience.experiment
+            nextExperimentNode = ExperimentSKNode(rect: rect, experiment: nextExperiment, gameModel: gameModel)
+            nextExperimentNode!.position = CGPoint(x: -200, y: 180 + CGFloat(self.clock - nextExperimentClock ) * 100)
+            nextExperimentNode!.isHidden = true
+            nextExperimentNode!.zPosition = 2
+            addChild(nextExperimentNode!)
+            nextExperimentNode!.run(SKAction.sequence([actionDisappear, SKAction.unhide(), SKAction.scale(to: 1, duration: 0.1)]))
+        }
+    }
     
     override func longPress(_ recognizer: UILongPressGestureRecognizer)
     {
@@ -481,12 +528,14 @@ class GameSKScene: PositionedSKScene {
     }
     
     func remoteExperiment(number: Int) {
+        matchNode.run(actionPress)
         level.remoteExperimentNumber = number
-        print("Received: \(number)")
         gameSceneDelegate.imagine(remoteExperimentNumber: number)
         if localExpermimentNode != nil {
             localExpermimentNode?.removeAction(forKey: "pulse")
-            _ = play(localExpermimentNode!)
+            //_ = play(localExpermimentNode!)
+            let experience = play(localExpermimentNode!)
+            animNextExperiment2(experience)
         }
     }
 

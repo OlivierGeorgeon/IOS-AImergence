@@ -18,8 +18,8 @@ class Level22 : Level21 {
     var previousRemoteExperimentNumber: Int?
 
     convenience required init() {
-        let experiment0 = Experiment(number: 0)
-        let experiment1 = Experiment(number: 1)
+        let experiment0 = Experiment(number: 0, shapeIndex: 0)
+        let experiment1 = Experiment(number: 1, shapeIndex: 1)
         
         let experiments = GKRandomSource.sharedRandom().arrayByShufflingObjects(in: [experiment0, experiment1]) as! [Experiment]
         

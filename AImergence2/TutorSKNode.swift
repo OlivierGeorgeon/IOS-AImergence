@@ -289,8 +289,8 @@ class TutorSKNode: SKNode {
         case .match:
             text = NSLocalizedString("match", comment: "")
             shape = arrowLeft(CGRect(x: -200, y: -60, width: 400, height: 120))
-            position = CGPoint(x: 300, y: -100)
-            zRotation = CGFloat(-0.3)
+            position = CGPoint(x: 250, y: 250)
+            zRotation = CGFloat(M_PI / 4)
         }
         return (text, shape, position, zRotation)
     }

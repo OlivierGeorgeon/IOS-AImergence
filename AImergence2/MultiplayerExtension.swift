@@ -9,16 +9,19 @@
 import Foundation
 import GameKit
 
-extension GameViewController: GKMatchmakerViewControllerDelegate, GKMatchDelegate
+extension GameViewController: GKMatchmakerViewControllerDelegate, GKMatchDelegate, GKLocalPlayerListener
 {
     func matchmakerViewController(_ viewController: GKMatchmakerViewController, didFind match: GKMatch) {
         viewController.dismiss(animated: true, completion: nil)
-        print("Match: " + match.description)
         match.delegate = self
         self.match = match
         if let scene = self.sceneView.scene as? GameSKScene {
             scene.tutorNode.matched()
             scene.matchNode.update(status: .connected)
+            if match.players.count > 0 {
+                scene.matchNode.update(displayName: match.players[0].displayName!)
+                scene.matchNode.update(text: NSLocalizedString("Ready", comment: ""))
+            }
         }
     }
     
@@ -42,9 +45,11 @@ extension GameViewController: GKMatchmakerViewControllerDelegate, GKMatchDelegat
     
     func match(_ match: GKMatch, didReceive data: Data, fromRemotePlayer player: GKPlayer) {
         if self.match == match  {
-            if data.count > 0 {
+            if data.count > 1 {
                 if let scene = self.sceneView.scene as? GameSKScene {
                     scene.remoteExperiment(number: Int(data[0]))
+                    let text = NSLocalizedString("Level", comment: "") + " \(Int(data[1]))"
+                    scene.matchNode.update(text: text)
                 }
             }
         }
@@ -54,17 +59,30 @@ extension GameViewController: GKMatchmakerViewControllerDelegate, GKMatchDelegat
         if state == .stateConnected {
             if let scene = self.sceneView.scene as? GameSKScene {
                 scene.matchNode.update(status: .connected)
+                scene.matchNode.update(displayName: player.displayName)
+                scene.matchNode.update(text: NSLocalizedString("Ready", comment: ""))
             }
         } else {
             if let scene = self.sceneView.scene as? GameSKScene {
                 scene.matchNode.update(status: .disconnected)
+                scene.matchNode.update(displayName: "")
+                scene.matchNode.update(text: "")
                 self.match = nil
             }
         }
+        
         print("Player state change: \(state.rawValue)")
     }
     
     func match(_ match: GKMatch, shouldReinviteDisconnectedPlayer player: GKPlayer) -> Bool {
         return true
+    }
+    
+    // This is called on the invitee's device after she receives an invitation from the inviter
+    func player(_ player: GKPlayer, didAccept invite: GKInvite) {
+        print("did accept invite player: \(player.displayName) invite_sender: \(invite.sender.displayName)")
+        
+        let mmvc: GKMatchmakerViewController = GKMatchmakerViewController(invite: invite)!
+        self.present(mmvc, animated: true, completion: nil)
     }
 }

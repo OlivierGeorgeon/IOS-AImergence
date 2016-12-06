@@ -400,7 +400,7 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
     */
     func sendData(number experiment: Int) {
         if self.match != nil {
-            let data = Data(bytes: [UInt8(experiment)])
+            let data = Data(bytes: [UInt8(experiment), UInt8(level)])
             do {
                 try self.match?.sendData(toAllPlayers: data, with: GKMatchSendDataMode.reliable)
             } catch {
@@ -539,14 +539,18 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
     
     func authenticateLocalPlayer() {
         let localPlayer: GKLocalPlayer = GKLocalPlayer.localPlayer()
-        localPlayer.authenticateHandler = {(ViewController, error) -> Void in
+        localPlayer.authenticateHandler =
+        {
+            (ViewController, error) -> Void in
             if((ViewController) != nil) {
                 // 1 Show login if player is not logged in
                 //self.presentViewController(ViewController!, animated: true, completion: nil)
                 self.gcEnabled = false
             } else if (localPlayer.isAuthenticated) {
                 // 2 Player is already euthenticated & logged in, load game center
-                self.gcEnabled = true                
+                self.gcEnabled = true
+                GKLocalPlayer.localPlayer().unregisterAllListeners()
+                GKLocalPlayer.localPlayer().register(self)
                 // Get the default leaderboard ID
                 /*localPlayer.loadDefaultLeaderboardIdentifierWithCompletionHandler({ (leaderboardIdentifer: String?, error: NSError?) -> Void in
                     if error != nil {
