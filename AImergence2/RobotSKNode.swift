@@ -88,13 +88,13 @@ class RobotSKNode: SKNode
         expanded = !expanded
     }
     
-    func recommend(_ recommendation: RECOMMEND) {
+    func recommend(_ recommendation: RECOMMEND, instentaneous: Bool = false) {
         self.recommendation = recommendation
         switch recommendation {
         case .instruction:
             instructionButtonNode.pulse()
             if !expanded {
-                instructionButtonNode.appear()
+                instructionButtonNode.appear(instentaneous: instentaneous)
             }
         case .instruction_OK:
             instructionButtonNode.unpulse()
@@ -108,7 +108,7 @@ class RobotSKNode: SKNode
             }
             imagineButtonNode.pulse()
             if !expanded {
-                imagineButtonNode.appear()
+                imagineButtonNode.appear(instentaneous: instentaneous)
             }
         case .leaderboard:
             imagineButtonNode.unpulse()
@@ -119,7 +119,7 @@ class RobotSKNode: SKNode
             }
             if !expanded {
                 imagineButtonNode.disappear()
-                gameCenterButtonNode.appear()
+                gameCenterButtonNode.appear(instentaneous: instentaneous)
             }
         case .done:
             gameCenterButtonNode.unpulse()

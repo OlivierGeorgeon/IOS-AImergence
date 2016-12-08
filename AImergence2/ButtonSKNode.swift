@@ -107,12 +107,16 @@ class ButtonSKNode: SKNode
         visible = true
     }
     
-    func appear() {
+    func appear(instentaneous: Bool = false) {
         removeAction(forKey: "expand")
         removeAction(forKey: "appearing")
-        run(actionAppear, withKey: "appearing")
+        if instentaneous {
+            position = CGPoint(x: 0, y: 180)
+        } else {
+            run(actionAppear, withKey: "appearing")
+        }
         if !visible && !pulsing {
-            backgroundNode.run(actionAppearScale)
+            backgroundNode.position = CGPoint(x: 0, y: 180)
         }
         visible = true
     }

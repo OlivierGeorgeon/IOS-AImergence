@@ -343,7 +343,7 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
         matchRequest.minPlayers = 2
         matchRequest.maxPlayers = 2
         matchRequest.defaultNumberOfPlayers = 2
-        // matchRequest.inviteMessage = "Play Level \(level) with me?" Not working
+        matchRequest.playerGroup = level
         
         let mmvc: GKMatchmakerViewController = GKMatchmakerViewController(matchRequest: matchRequest)!
         mmvc.matchmakerDelegate = self

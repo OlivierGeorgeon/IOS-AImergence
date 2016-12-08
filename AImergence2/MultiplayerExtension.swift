@@ -92,6 +92,12 @@ extension GameViewController: GKMatchmakerViewControllerDelegate, GKMatchDelegat
     // This is called on the invitee's device after she receives an invitation from the inviter
     func player(_ player: GKPlayer, didAccept invite: GKInvite) {
         print("did accept invite player: \(player.displayName) invite_sender: \(invite.sender.displayName)")
+        let level = invite.playerGroup
+        if level >= 21 && level <= 22 {
+            let gameScene = GameSKScene(levelNumber: level)
+            gameScene.gameSceneDelegate = self
+            self.sceneView.presentScene(gameScene)
+        }
         
         let mmvc: GKMatchmakerViewController = GKMatchmakerViewController(invite: invite)!
         mmvc.matchmakerDelegate = self
