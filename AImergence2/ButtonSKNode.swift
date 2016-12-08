@@ -116,7 +116,7 @@ class ButtonSKNode: SKNode
             run(actionAppear, withKey: "appearing")
         }
         if !visible && !pulsing {
-            backgroundNode.position = CGPoint(x: 0, y: 180)
+            backgroundNode.run(actionAppearScale)
         }
         visible = true
     }
