@@ -14,10 +14,12 @@ enum MatchStatus { case disconnected, connected }
 
 class MatchSKNode: SKNode
 {
-    let backgroundNode = SKShapeNode(rect: CGRect(x: -75, y: -75, width: 150, height: 150), cornerRadius: 20)
+    //let backgroundNode = SKShapeNode(rect: CGRect(x: -75, y: -75, width: 150, height: 150), cornerRadius: 20)
+    let backgroundNode: SKSpriteNode // (imageNamed: "connect")
+    let textureDisconnected = SKTexture(imageNamed: "connect")
+    let textureConnected = SKTexture(imageNamed: "connect_blank")
     let labelNode = SKLabelNode(text: "")
     let levelNode = SKLabelNode(text: "")
-    //let colorDisconnected = UIColor.white //UIColor(red: 203/255, green: 204/255, blue: 206/255, alpha: 1)
     let colorDisconnected = UIColor(red: 110/255, green: 120/255, blue: 140/255, alpha: 1)
     let colorConnected = UIColor(red: 110/255, green: 120/255, blue: 140/255, alpha: 1)
     
@@ -25,11 +27,12 @@ class MatchSKNode: SKNode
     
     override init() {
         
+        backgroundNode = SKSpriteNode(texture: textureDisconnected)
+        
         super.init()
         
         position = CGPoint(x: -220, y: 345)
-        backgroundNode.fillColor = colorDisconnected
-        backgroundNode.strokeColor = colorDisconnected
+        
         backgroundNode.zPosition = -1
         addChild(backgroundNode)
 
@@ -54,13 +57,12 @@ class MatchSKNode: SKNode
     
     func update(status: MatchStatus) {
         self.matchStatus = status
+        
         switch status {
         case .connected:
-            backgroundNode.fillColor = colorConnected
-            backgroundNode.strokeColor = colorConnected
+            backgroundNode.texture = textureConnected
         default:
-            backgroundNode.fillColor = colorDisconnected
-            backgroundNode.strokeColor = colorDisconnected
+            backgroundNode.texture = textureDisconnected
         }
     }
     

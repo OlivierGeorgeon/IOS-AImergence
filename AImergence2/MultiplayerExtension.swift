@@ -10,27 +10,35 @@ import Foundation
 import GameKit
 
 extension GameViewController: GKMatchmakerViewControllerDelegate, GKMatchDelegate, GKLocalPlayerListener
-{
+{    
     func matchmakerViewController(_ viewController: GKMatchmakerViewController, didFind match: GKMatch) {
+        print("Did find match")
+        if match.players.count > 0 {
+            remotePlayerDisplayName = match.players[0].displayName!
+        }
         viewController.dismiss(animated: true, completion: nil)
         match.delegate = self
         self.match = match
         if let scene = self.sceneView.scene as? GameSKScene {
+            scene.level.remoteExperimentNumber = nil
+            // remove previous experiments to avoid asynchronicity
+            if scene.localExpermimentNode != nil {
+                scene.localExpermimentNode?.removeAction(forKey: "pulse")
+                scene.localExpermimentNode = nil
+            }
             scene.tutorNode.matched()
             scene.matchNode.update(status: .connected)
-            if match.players.count > 0 {
-                scene.matchNode.update(displayName: match.players[0].displayName!)
-                scene.matchNode.update(text: NSLocalizedString("Ready", comment: ""))
-            }
+            scene.matchNode.update(displayName: remotePlayerDisplayName)
+            scene.matchNode.update(text: NSLocalizedString("Ready", comment: ""))
         }
     }
     
     func matchmakerViewControllerWasCancelled(_ viewController: GKMatchmakerViewController) {
         print("Match cancelled")
         viewController.dismiss(animated: true, completion: nil)
-        if let scene = self.sceneView.scene as? GameSKScene {
-            scene.tutorNode.matched()
-        }
+        //if let scene = self.sceneView.scene as? GameSKScene {
+        //    scene.tutorNode.matched()
+        //}
     }
     
     func matchmakerViewController(_ viewController: GKMatchmakerViewController,  didFailWithError error: Error) {
@@ -39,15 +47,18 @@ extension GameViewController: GKMatchmakerViewControllerDelegate, GKMatchDelegat
         if let scene = self.sceneView.scene as? GameSKScene {
             scene.tutorNode.matched()
             scene.matchNode.update(status: .disconnected)
-            self.match = nil
+            remotePlayerDisplayName = nil
+            //self.match = nil
         }
     }
     
     func match(_ match: GKMatch, didReceive data: Data, fromRemotePlayer player: GKPlayer) {
+        print("receive data:")
         if self.match == match  {
             if data.count > 1 {
                 if let scene = self.sceneView.scene as? GameSKScene {
                     scene.remoteExperiment(number: Int(data[0]))
+                    print(Int(data[0]))
                     let text = NSLocalizedString("Level", comment: "") + " \(Int(data[1]))"
                     scene.matchNode.update(text: text)
                 }
@@ -67,15 +78,15 @@ extension GameViewController: GKMatchmakerViewControllerDelegate, GKMatchDelegat
                 scene.matchNode.update(status: .disconnected)
                 scene.matchNode.update(displayName: "")
                 scene.matchNode.update(text: "")
-                self.match = nil
+                remotePlayerDisplayName = nil
+                // self.match = nil test to see if it causes crash
             }
         }
-        
         print("Player state change: \(state.rawValue)")
     }
     
     func match(_ match: GKMatch, shouldReinviteDisconnectedPlayer player: GKPlayer) -> Bool {
-        return true
+        return false
     }
     
     // This is called on the invitee's device after she receives an invitation from the inviter
@@ -83,6 +94,7 @@ extension GameViewController: GKMatchmakerViewControllerDelegate, GKMatchDelegat
         print("did accept invite player: \(player.displayName) invite_sender: \(invite.sender.displayName)")
         
         let mmvc: GKMatchmakerViewController = GKMatchmakerViewController(invite: invite)!
+        mmvc.matchmakerDelegate = self
         self.present(mmvc, animated: true, completion: nil)
     }
 }

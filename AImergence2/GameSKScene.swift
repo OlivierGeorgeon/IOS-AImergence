@@ -27,7 +27,7 @@ protocol GameSceneDelegate: class
     func playSound(soundIndex: Int)
     func presentMatchMakingViewController()
     func sendData(number: Int)
-    func currentMatch() -> GKMatch?
+    func remotePlayerName() -> String?
 }
 
 class GameSKScene: PositionedSKScene {
@@ -171,13 +171,13 @@ class GameSKScene: PositionedSKScene {
         // The delegate is ready in didMoveToView
         if level.isMultiPlayer {
             self.addChild(matchNode)
-            if gameSceneDelegate.currentMatch() == nil {
+            if gameSceneDelegate.remotePlayerName() == nil {
                 if self.level.number == 21 {
                     tutorNode.tip(tutor: .match, parentNode: matchNode)
                 }
             } else {
                 matchNode.update(status: .connected)
-                matchNode.update(displayName: gameSceneDelegate.currentMatch()?.players[0].displayName)
+                matchNode.update(displayName:gameSceneDelegate.remotePlayerName()!)
                 matchNode.update(text: NSLocalizedString("Ready", comment: ""))
             }
         }
@@ -304,21 +304,27 @@ class GameSKScene: PositionedSKScene {
             if experimentNode.contains(positionInScene){
                 playExperience = true
                 if level.isMultiPlayer {
-                    gameSceneDelegate.sendData(number: experimentNode.experiment.number)
-                    gameSceneDelegate.imagine(experiment: experimentNode.experiment)
                     if level.remoteExperimentNumber == nil {
                         if localExpermimentNode != nil {
-                            localExpermimentNode?.removeAction(forKey: "pulse")
+                            // Not allowed to change because it may cause discrepency between the two players
+                            //localExpermimentNode?.removeAction(forKey: "pulse")
+                        } else {
+                            localExpermimentNode = experimentNode
+                            experimentNode.run(actionPulse, withKey: "pulse")
+                            gameSceneDelegate.sendData(number: experimentNode.experiment.number)
+                            gameSceneDelegate.imagine(experiment: experimentNode.experiment)
                         }
-                        localExpermimentNode = experimentNode
-                        experimentNode.run(actionPulse, withKey: "pulse")
                     } else {
                         experimentNode.run(actionPress)
                         _ = play(experimentNode)
+                        gameSceneDelegate.sendData(number: experimentNode.experiment.number)
+                        gameSceneDelegate.imagine(experiment: experimentNode.experiment)
                     }
                 } else {
                     experimentNode.run(actionPress)
                     _ = play(experimentNode)
+                    gameSceneDelegate.sendData(number: experimentNode.experiment.number)
+                    gameSceneDelegate.imagine(experiment: experimentNode.experiment)
                 }
                 nextExperimentNode?.removeFromParent()
                 nextExperimentNode = nil
@@ -329,6 +335,7 @@ class GameSKScene: PositionedSKScene {
         if nextExperimentNode != nil {
             if CGRect(x: nextExperimentNode!.position.x - 60, y: nextExperimentNode!.position.y - 60, width: 120, height: 120).contains(positionInScene) {
                 nextExperimentNode!.run(actionPress)
+                playExperience = true
                 handlingTap = true
                 if level.isMultiPlayer {
                     gameSceneDelegate.sendData(number: nextExperimentNode!.experiment.number)
@@ -336,11 +343,12 @@ class GameSKScene: PositionedSKScene {
                     let experimentNode = experimentNodes[nextExperimentNode!.experiment.number]!
                     if level.remoteExperimentNumber == nil {
                         if localExpermimentNode != nil {
-                            localExpermimentNode?.removeAction(forKey: "pulse")
+                            // localExpermimentNode?.removeAction(forKey: "pulse")
+                        } else {
+                            localExpermimentNode = experimentNode
+                            experimentNode.run(actionPulse, withKey: "pulse")
+                            animNextExperiment1(nextExperimentNode!.experiment, clock: nextExperimentClock)
                         }
-                        localExpermimentNode = experimentNode
-                        experimentNode.run(actionPulse, withKey: "pulse")
-                        animNextExperiment1(nextExperimentNode!.experiment, clock: nextExperimentClock)
                     } else {
                         experimentNode.run(actionPress)
                         animNextExperiment1(nextExperimentNode!.experiment, clock: nextExperimentClock )
@@ -348,9 +356,8 @@ class GameSKScene: PositionedSKScene {
                         animNextExperiment2(experience)
                     }
                 } else {
-                    let experience = play(experimentNodes[nextExperimentNode!.experiment.number]!)
                     animNextExperiment1(nextExperimentNode!.experiment, clock: nextExperimentClock)
-                    playExperience = true
+                    let experience = play(experimentNodes[nextExperimentNode!.experiment.number]!)
                     animNextExperiment2(experience)
                     tutorNode.tapNextExperience()
                 }
@@ -368,11 +375,12 @@ class GameSKScene: PositionedSKScene {
                         gameSceneDelegate.imagine(experiment: eventNode.experienceNode.experience.experiment)
                         if level.remoteExperimentNumber == nil {
                             if localExpermimentNode != nil {
-                                localExpermimentNode?.removeAction(forKey: "pulse")
+                                // localExpermimentNode?.removeAction(forKey: "pulse")
+                            } else {
+                                localExpermimentNode = experimentNode
+                                experimentNode.run(actionPulse, withKey: "pulse")
+                                animNextExperiment1(experimentNode.experiment, clock: clock)
                             }
-                            localExpermimentNode = experimentNode
-                            experimentNode.run(actionPulse, withKey: "pulse")
-                            animNextExperiment1(experimentNode.experiment, clock: clock)
                         } else {
                             experimentNode.run(actionPress)
                             animNextExperiment1(experimentNode.experiment, clock: clock)

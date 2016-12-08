@@ -41,6 +41,7 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
     var userHasDraggedLevel = false
     var validProducts = [SKProduct]()
     var match: GKMatch?
+    var remotePlayerDisplayName: String?
     var soundDisabled = false
     //var sounds = [SKAction]()
     var soundURLs = [URL]()
@@ -337,68 +338,24 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
         }
     }
     func presentMatchMakingViewController() {
-        print("match making ......")
+        print("Present match making view controller")
         let matchRequest = GKMatchRequest()
         matchRequest.minPlayers = 2
         matchRequest.maxPlayers = 2
         matchRequest.defaultNumberOfPlayers = 2
+        // matchRequest.inviteMessage = "Play Level \(level) with me?" Not working
         
         let mmvc: GKMatchmakerViewController = GKMatchmakerViewController(matchRequest: matchRequest)!
         mmvc.matchmakerDelegate = self
         self.present(mmvc, animated: true, completion: nil)
     }
     
-    func currentMatch() -> GKMatch? {
-        return self.match
+    func remotePlayerName() -> String? {
+        return self.remotePlayerDisplayName
     }
 
-    /*
-    func matchmakerViewController(_ viewController: GKMatchmakerViewController, didFind match: GKMatch) {
-        viewController.dismiss(animated: true, completion: nil)
-        print("Match: " + match.description)
-        match.delegate = self
-        self.match = match
-        if let scene = self.sceneView.scene as? GameSKScene {
-            scene.tutorNode.matched()
-        }
-    }
-    
-    func matchmakerViewControllerWasCancelled(_ viewController: GKMatchmakerViewController) {
-        print("Match cancelled")
-        viewController.dismiss(animated: true, completion: nil)
-        if let scene = self.sceneView.scene as? GameSKScene {
-            scene.tutorNode.matched()
-        }
-    }
-    
-    func matchmakerViewController(_ viewController: GKMatchmakerViewController,  didFailWithError error: Error) {
-        print("Match failed")
-        viewController.dismiss(animated: true, completion: nil)
-        if let scene = self.sceneView.scene as? GameSKScene {
-            scene.tutorNode.matched()
-        }
-    }
-    
-    func match(_ match: GKMatch, didReceive data: Data, fromRemotePlayer player: GKPlayer) {
-        if self.match == match  {
-            if data.count > 0 {
-                if let scene = self.sceneView.scene as? GameSKScene {
-                    scene.remoteExperiment(number: Int(data[0]))
-                }
-            }
-        }
-    }
-
-     func match(_ match: GKMatch, player: GKPlayer, didChange state: GKPlayerConnectionState) {
-     print("Player state change: \(state.rawValue)")
-     }
-     
-     func match(_ match: GKMatch, shouldReinviteDisconnectedPlayer player: GKPlayer) -> Bool {
-     return true
-     }
-     
-    */
     func sendData(number experiment: Int) {
+        print("Send data: \(experiment)")
         if self.match != nil {
             let data = Data(bytes: [UInt8(experiment), UInt8(level)])
             do {
