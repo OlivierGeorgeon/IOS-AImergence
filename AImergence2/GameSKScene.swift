@@ -319,15 +319,15 @@ class GameSKScene: PositionedSKScene {
                             gameSceneDelegate.imagine(experiment: experimentNode.experiment)
                         }
                     } else {
+                        gameSceneDelegate.imagine(experiment: experimentNode.experiment)
+                        gameSceneDelegate.sendData(number: experimentNode.experiment.number)
                         experimentNode.run(actionPress)
                         _ = play(experimentNode)
-                        gameSceneDelegate.sendData(number: experimentNode.experiment.number)
-                        gameSceneDelegate.imagine(experiment: experimentNode.experiment)
                     }
                 } else {
                     experimentNode.run(actionPress)
                     _ = play(experimentNode)
-                    gameSceneDelegate.imagine(experiment: experimentNode.experiment)
+                    //gameSceneDelegate.imagine(experiment: experimentNode.experiment)
                 }
                 nextExperimentNode?.removeFromParent()
                 nextExperimentNode = nil

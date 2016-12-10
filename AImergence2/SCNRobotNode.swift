@@ -22,6 +22,7 @@ class SCNRobotNode: SCNNode {
     let actionTurnLeft = SCNAction.rotateBy(x: 0.0, y: CGFloat(M_PI) / 2, z: 0.0, duration: 0.2)
     let actionTurnRight = SCNAction.rotateBy(x: 0.0, y: -CGFloat(M_PI) / 2, z: 0.0, duration: 0.2)
     let actionTurnOver = SCNAction.rotateBy(x: 0, y: -CGFloat(M_PI) , z: 0, duration: 0.3)
+    let actionTurnOver2 = SCNAction.rotateBy(x: 0, y: CGFloat(M_PI) , z: 0, duration: 0.3)
     let turn45Left = SCNAction.rotateBy(x: 0.0, y: CGFloat(M_PI) / 4, z: 0.0, duration: 0.2)
     let turn45Right = SCNAction.rotateBy(x: 0.0, y: -CGFloat(M_PI) / 4, z: 0.0, duration: 0.2)
     let turn45Left1 = SCNAction.rotateBy(x: 0.0, y: CGFloat(M_PI) / 4, z: 0.0, duration: 0.1)
@@ -82,6 +83,11 @@ class SCNRobotNode: SCNNode {
     func appearRight() {
         self.runAction(SCNAction.sequence([SCNAction.rotateBy(x: 0.0, y: -CGFloat(M_PI) / 2, z: 0.0, duration: 0), SCNAction.unhide()]))
         robot.turnRight()
+    }
+    
+    func appearLeft() {
+        self.runAction(SCNAction.sequence([SCNAction.rotateBy(x: 0.0, y: CGFloat(M_PI) / 2, z: 0.0, duration: 0), SCNAction.unhide()]))
+        robot.turnLeft()
     }
     
     func appearBack() {
@@ -160,6 +166,11 @@ class SCNRobotNode: SCNNode {
         robot.turnRight()
     }
 
+    func turnOver2() {
+        self.runAction(actionTurnOver)
+        robot.turnLeft()
+        robot.turnLeft()
+    }
     func jump() {
         self.runAction(SCNAction.sequence([actionUp, actionDown]))
     }

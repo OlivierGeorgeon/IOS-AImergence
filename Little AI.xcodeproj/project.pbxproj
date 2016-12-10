@@ -412,29 +412,9 @@
 				0936816E1C42708E008C6B5D /* Experiment.swift */,
 				0936816C1C42707B008C6B5D /* Experience.swift */,
 				0964BB101CEF37D000A4B40D /* Robot.swift */,
-				093681721C4523B1008C6B5D /* Level0.swift */,
-				09AC4D141C8491DA00C149EC /* Level1.swift */,
-				093681701C4270A5008C6B5D /* Level2.swift */,
-				0961EBB81C63EE2200A4E55C /* Level3.swift */,
-				093681741C45455F008C6B5D /* Level4.swift */,
-				093681761C4549CB008C6B5D /* Level5.swift */,
-				0961EBBA1C64961F00A4E55C /* Level6.swift */,
-				09ED657C1C6C87D2004A8CA7 /* Level7.swift */,
-				090AD9EF1C7A618500F2FE8C /* Level8.swift */,
-				096F5CB81C56D7240041EA5F /* Level9.swift */,
-				09AC4D181C86E0D600C149EC /* Level10.swift */,
-				0964BB0E1CEEFA9B00A4B40D /* Level11.swift */,
-				0964BB161CEF94D900A4B40D /* Level12.swift */,
-				09AF84161D01A3D900C1E310 /* Level13.swift */,
-				09F145121D02226300D0BDC7 /* Level14.swift */,
-				0914EA651D09B82A00E78D5F /* Level15.swift */,
-				0914EA6B1D0AAD6300E78D5F /* Level16.swift */,
-				09D426431D0AE29D00B34CDF /* Level17.swift */,
-				0945F8FB1DC3712F00D41A6F /* Level18.swift */,
-				0945F9011DC3974E00D41A6F /* Level19.swift */,
-				0945F8F71DC3397100D41A6F /* Level20.swift */,
-				09A168511DF1C73400619A3A /* Level21.swift */,
-				09094A511DF49A51005384E0 /* Level22.swift */,
+				09D66FCA1DFC32BB00812106 /* Group0 */,
+				09D66FCB1DFC32DC00812106 /* Group1 */,
+				09D66FCC1DFC32F500812106 /* Group2 */,
 			);
 			name = Levels;
 			sourceTree = "<group>";
@@ -473,7 +453,7 @@
 			name = Nodes;
 			sourceTree = "<group>";
 		};
-		09D426471D0AFB1E00B34CDF /* ImagineModels */ = {
+		09D426471D0AFB1E00B34CDF /* Group0 */ = {
 			isa = PBXGroup;
 			children = (
 				09ED65841C6D1400004A8CA7 /* ImagineModel0.swift */,
@@ -494,13 +474,8 @@
 				0914EA691D0AA7DE00E78D5F /* ImagineModel15.swift */,
 				09D426411D0AD44000B34CDF /* ImagineModel16.swift */,
 				09D426451D0AE30200B34CDF /* ImagineModel17.swift */,
-				0945F8FF1DC37ACA00D41A6F /* ImagineModel18.swift */,
-				0945F9031DC3988200D41A6F /* ImagineModel19.swift */,
-				0945F8F91DC352A100D41A6F /* ImagineModel20.swift */,
-				09893FC51DF4712B0077037F /* ImagineModel21.swift */,
-				0955A67F1DF5B3270091D219 /* ImagineModel22.swift */,
 			);
-			name = ImagineModels;
+			name = Group0;
 			sourceTree = "<group>";
 		};
 		09D426481D0AFB4300B34CDF /* GameModels */ = {
@@ -516,6 +491,79 @@
 				0945F8FD1DC373CB00D41A6F /* GameModel18.swift */,
 			);
 			name = GameModels;
+			sourceTree = "<group>";
+		};
+		09D66FCA1DFC32BB00812106 /* Group0 */ = {
+			isa = PBXGroup;
+			children = (
+				093681721C4523B1008C6B5D /* Level0.swift */,
+				09AC4D141C8491DA00C149EC /* Level1.swift */,
+				093681701C4270A5008C6B5D /* Level2.swift */,
+				0961EBB81C63EE2200A4E55C /* Level3.swift */,
+				093681741C45455F008C6B5D /* Level4.swift */,
+				093681761C4549CB008C6B5D /* Level5.swift */,
+				0961EBBA1C64961F00A4E55C /* Level6.swift */,
+				09ED657C1C6C87D2004A8CA7 /* Level7.swift */,
+				090AD9EF1C7A618500F2FE8C /* Level8.swift */,
+				096F5CB81C56D7240041EA5F /* Level9.swift */,
+				09AC4D181C86E0D600C149EC /* Level10.swift */,
+				0964BB0E1CEEFA9B00A4B40D /* Level11.swift */,
+				0964BB161CEF94D900A4B40D /* Level12.swift */,
+				09AF84161D01A3D900C1E310 /* Level13.swift */,
+				09F145121D02226300D0BDC7 /* Level14.swift */,
+				0914EA651D09B82A00E78D5F /* Level15.swift */,
+				0914EA6B1D0AAD6300E78D5F /* Level16.swift */,
+				09D426431D0AE29D00B34CDF /* Level17.swift */,
+			);
+			name = Group0;
+			sourceTree = "<group>";
+		};
+		09D66FCB1DFC32DC00812106 /* Group1 */ = {
+			isa = PBXGroup;
+			children = (
+				09A168511DF1C73400619A3A /* Level21.swift */,
+				09094A511DF49A51005384E0 /* Level22.swift */,
+			);
+			name = Group1;
+			sourceTree = "<group>";
+		};
+		09D66FCC1DFC32F500812106 /* Group2 */ = {
+			isa = PBXGroup;
+			children = (
+				0945F8FB1DC3712F00D41A6F /* Level18.swift */,
+				0945F9011DC3974E00D41A6F /* Level19.swift */,
+				0945F8F71DC3397100D41A6F /* Level20.swift */,
+			);
+			name = Group2;
+			sourceTree = "<group>";
+		};
+		09D66FCD1DFC335B00812106 /* Nodes */ = {
+			isa = PBXGroup;
+			children = (
+				0964BB121CEF488300A4B40D /* SCNRobotNode.swift */,
+				0947C3D61D67571000212A0B /* SCNPhenomenonNode.swift */,
+				0984BC031D6881D8001D70ED /* SCNFlipTileNode.swift */,
+			);
+			name = Nodes;
+			sourceTree = "<group>";
+		};
+		09D66FCE1DFC337100812106 /* Group1 */ = {
+			isa = PBXGroup;
+			children = (
+				09893FC51DF4712B0077037F /* ImagineModel21.swift */,
+				0955A67F1DF5B3270091D219 /* ImagineModel22.swift */,
+			);
+			name = Group1;
+			sourceTree = "<group>";
+		};
+		09D66FCF1DFC337A00812106 /* Group2 */ = {
+			isa = PBXGroup;
+			children = (
+				0945F8FF1DC37ACA00D41A6F /* ImagineModel18.swift */,
+				0945F9031DC3988200D41A6F /* ImagineModel19.swift */,
+				0945F8F91DC352A100D41A6F /* ImagineModel20.swift */,
+			);
+			name = Group2;
 			sourceTree = "<group>";
 		};
 		09E533631D50CC9B00D4ED69 /* Sounds */ = {
@@ -551,12 +599,12 @@
 		09ED65811C6D0F27004A8CA7 /* Imagine */ = {
 			isa = PBXGroup;
 			children = (
-				09D426471D0AFB1E00B34CDF /* ImagineModels */,
-				0914EA6D1D0AC03B00E78D5F /* Particles */,
 				09ED657E1C6D0EE6004A8CA7 /* ImagineViewController.swift */,
-				0964BB121CEF488300A4B40D /* SCNRobotNode.swift */,
-				0947C3D61D67571000212A0B /* SCNPhenomenonNode.swift */,
-				0984BC031D6881D8001D70ED /* SCNFlipTileNode.swift */,
+				09D426471D0AFB1E00B34CDF /* Group0 */,
+				09D66FCE1DFC337100812106 /* Group1 */,
+				09D66FCF1DFC337A00812106 /* Group2 */,
+				09D66FCD1DFC335B00812106 /* Nodes */,
+				0914EA6D1D0AC03B00E78D5F /* Particles */,
 			);
 			name = Imagine;
 			sourceTree = "<group>";
