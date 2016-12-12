@@ -10,7 +10,7 @@ import Foundation
 import GameplayKit
 
 
-class Level0 {
+class Level000 {
     
     let winScore:Int
     let historicalDepth:Int

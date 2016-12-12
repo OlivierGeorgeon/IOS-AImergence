@@ -9,7 +9,7 @@
 import Foundation
 import GameplayKit
 
-class Level8: Level5 {
+class Level008: Level005 {
     
     override var number:Int { return 8 }
 

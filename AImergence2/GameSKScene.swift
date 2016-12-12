@@ -33,7 +33,7 @@ protocol GameSceneDelegate: class
 class GameSKScene: PositionedSKScene {
     
     let gameModel:GameModel0
-    let level:Level0
+    let level:Level000
     let backgroundNode = SKSpriteNode(imageNamed: "fond.png")
     let robotNode = RobotSKNode()
     let cameraNode = SKCameraNode()
@@ -66,11 +66,12 @@ class GameSKScene: PositionedSKScene {
     init(levelNumber: Int)
     {
         //let bundleName = NSBundle.mainBundle().infoDictionary!["CFBundleName"] as! String
-        let aClass:AnyClass? =  NSClassFromString("Little_AI.Level\(levelNumber)")
-        if let levelType = aClass as? Level0.Type {
+        //let aClass:AnyClass? =  NSClassFromString("Little_AI.Level\(levelNumber)")
+        let aClass:AnyClass? =  NSClassFromString(String(format: "Little_AI.Level%03d", arguments: [levelNumber]))
+        if let levelType = aClass as? Level000.Type {
             level = levelType.init()
         } else {
-            level = Level0()
+            level = Level000()
         }
         let gameModelString = level.gameModelString
         let aClass2:AnyClass? =  NSClassFromString("Little_AI." + gameModelString)
@@ -100,7 +101,7 @@ class GameSKScene: PositionedSKScene {
 
     required init?(coder aDecoder: NSCoder)
     {
-        self.level = Level0()
+        self.level = Level000()
         self.gameModel = GameModel0()
         self.shapePopupNode = ShapePopupSKNode(gameModel: gameModel)
 

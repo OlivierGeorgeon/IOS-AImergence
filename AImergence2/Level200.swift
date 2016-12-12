@@ -9,7 +9,7 @@
 import Foundation
 import GameplayKit
 
-class Level18 : Level5 {
+class Level200 : Level005 {
     
     override var number:Int { return 18 }
     override var gameModelString: String { return "GameModel18" }

@@ -14,7 +14,7 @@ import AVFoundation
 
 enum INTERFACE: Int { case instruction, imagine, leaderboard, level}
 
-class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate, HelpViewControllerDelegate, ImagineViewControllerDelegate, GKGameCenterControllerDelegate, SKProductsRequestDelegate, SKPaymentTransactionObserver, GameViewDelegate//, GKMatchmakerViewControllerDelegate, GKMatchDelegate
+class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate, HelpViewControllerDelegate, ImagineViewControllerDelegate, GKGameCenterControllerDelegate, SKProductsRequestDelegate, SKPaymentTransactionObserver, GameViewDelegate
 {
     @IBOutlet weak var sceneView: GameView!
     @IBOutlet weak var helpViewControllerContainer: UIView!
@@ -23,6 +23,8 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
     @IBAction func levelButton(_ sender: UIButton) { showLevelWindow() }
     
     static let maxLevelNumber = 22
+    static let maxGroupNumber = 2
+    static let maxLevelNumberPerGroup = [17, 1, 2]
     
     let unlockDefaultKey = "unlockDefaultKey"
     let paidTipKey = "paidTipKey"
@@ -36,14 +38,15 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
     var gcEnabled = Bool() // Stores if the user has Game Center enabled
     var helpViewController:  HelpViewController?
     var imagineViewController: ImagineViewController?
-    var interfaceLocks = [[Bool]](repeating: [true, true, true, true], count: GameViewController.maxLevelNumber + 1)
+    //var interfaceLocks = [[Bool]](repeating: [true, true, true, true], count: GameViewController.maxLevelNumber + 1)
+    //var interfaceLocks = [[Bool]](repeating: [Bool](repeating: true, count: 4), count: GameViewController.maxLevelNumber + 1)
+    var interfaceLocks = [[[Bool]]](repeating: [[Bool]](repeating: [Bool](repeating: true, count: 4), count: 20), count: 3)
     var paidTip = false
     var userHasDraggedLevel = false
     var validProducts = [SKProduct]()
     var match: GKMatch?
     var remotePlayerDisplayName: String?
     var soundDisabled = false
-    //var sounds = [SKAction]()
     var soundURLs = [URL]()
     var audioPlayer1: AVAudioPlayer?
     var audioPlayer2: AVAudioPlayer?
@@ -80,18 +83,20 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
         
         let userInterfaceLocksWrapped = userDefaults.array(forKey: unlockDefaultKey)
         if let userInterfaceLocks = userInterfaceLocksWrapped as? [[Bool]] {
-            for i in 0...(userInterfaceLocks.count - 1) {
-                if interfaceLocks[i].count == userInterfaceLocks[i].count {
-                    interfaceLocks[i] = userInterfaceLocks[i]
+            for i in 0...(min(userInterfaceLocks.count - 1, 19)) {
+                if interfaceLocks[0][i].count == userInterfaceLocks[i].count {
+                    interfaceLocks[0][i] = userInterfaceLocks[i]
                 }
             }
         }
         if CommandLine.arguments.count > 1 {
             if CommandLine.arguments[1] == "unlocked" {
-                interfaceLocks = [[Bool]](repeating: [false, false, false, false], count: GameViewController.maxLevelNumber + 1)
+                //interfaceLocks = [[Bool]](repeating: [false, false, false, false], count: GameViewController.maxLevelNumber + 1)
+                interfaceLocks = [[[Bool]]](repeating: [[Bool]](repeating: [Bool](repeating: false, count: 4), count: 20), count: 3)
             }
             if CommandLine.arguments[1] == "locked" {
-                interfaceLocks = [[Bool]](repeating: [true, true, true, true], count: GameViewController.maxLevelNumber + 1)
+                //interfaceLocks = [[Bool]](repeating: [true, true, true, true], count: GameViewController.maxLevelNumber + 1)
+                interfaceLocks = [[[Bool]]](repeating: [[Bool]](repeating: [Bool](repeating: true, count: 4), count: 20), count: 3)
             }
         }
         
@@ -191,9 +196,20 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
 
     func nextLevelScene() -> GameSKScene? {
         var nextGameScene:GameSKScene? = nil
-        //if !interfaceLocks[level][INTERFACE.level.rawValue] && level < GameViewController.maxLevelNumber {
-        if levelStatus(level + 1) != .inaccessible {
-            level += 1
+        let group = level / 100
+        let levelInGroup = level % 100
+        var nextLevel = level + 1
+        if levelInGroup >= GameViewController.maxLevelNumberPerGroup[group] {
+            if group == GameViewController.maxGroupNumber {
+                nextLevel = level
+            } else {
+                nextLevel = (group + 1) * 100
+            }
+        }
+        //if levelStatus(level + 1) != .inaccessible {
+        if nextLevel != level && levelStatus(nextLevel) != .inaccessible {
+            //level += 1
+            level = nextLevel
             nextGameScene = GameSKScene(levelNumber: level)
             nextGameScene!.gameSceneDelegate = self
             closeImagineWindow()
@@ -203,9 +219,18 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
     
     func previousLevelScene() -> GameSKScene? {
         var previousGameScene:GameSKScene? = nil
-        if levelStatus(level - 1) != .inaccessible {
-            //if !interfaceLocks[level - 1][INTERFACE.level.rawValue] {
-            level -= 1
+        let group = level / 100
+        let levelInGroup = level % 100
+        var previousLevel = level - 1
+        if levelInGroup == 0 {
+            if group == 0 {
+                previousLevel = 0
+            } else {
+                previousLevel = (group - 1) * 100 + GameViewController.maxLevelNumberPerGroup[group - 1]
+            }
+        }
+        if previousLevel != level && levelStatus(previousLevel) != .inaccessible {
+            level = previousLevel // -= 1
             previousGameScene = GameSKScene(levelNumber: level)
             previousGameScene!.gameSceneDelegate = self
             closeImagineWindow()
@@ -275,7 +300,7 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
     }
     
     func isInterfaceLocked(_ interface: INTERFACE) -> Bool {
-        return interfaceLocks[level][interface.rawValue]
+        return interfaceLocks[level / 100][level % 100][interface.rawValue]
     }
 
     func showImagineWindow(_ gameModel: GameModel0) {
@@ -385,7 +410,7 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
         }
         
         if isInterfaceLocked(INTERFACE.level) {
-            interfaceLocks[level][INTERFACE.level.rawValue] = false
+            interfaceLocks[level / 100][level % 100][INTERFACE.level.rawValue] = false
             userDefaults.set(interfaceLocks, forKey: unlockDefaultKey)
             //if !imagineViewControllerContainer.hidden {
             //    imagineViewController?.displayLevel(scene.gameModel)
@@ -403,20 +428,24 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
     }
     
     func levelStatus(_ level: Int) -> LevelStatus {
-        var levelStatus = LevelStatus.inaccessible
-        if level >= 0 && level <= GameViewController.maxLevelNumber {
-            if level == 0 || level == 21 {
-                levelStatus = .accessible
+        let group = level / 100
+        let levelInGroup = level % 100
+        if group < 0 || group > GameViewController.maxGroupNumber {
+            return .inaccessible
+        }
+        if !interfaceLocks[group][levelInGroup][INTERFACE.level.rawValue] {
+            return .won
+        }
+        if levelInGroup >= 0 && levelInGroup <= GameViewController.maxLevelNumberPerGroup[group] {
+            if levelInGroup == 0 {
+                return .accessible
             } else {
-                if !interfaceLocks[level - 1][INTERFACE.level.rawValue] {
-                    levelStatus = .accessible
+                if !interfaceLocks[group][levelInGroup - 1][INTERFACE.level.rawValue] {
+                    return .accessible
                 }
             }
-            if !interfaceLocks[level][INTERFACE.level.rawValue] {
-                levelStatus = .won
-            }
         }
-        return levelStatus
+        return .inaccessible
     }
 
     // Implement HelpViewControllerDelegate
@@ -428,10 +457,10 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
     }
     
     func instructionOk() {
-        interfaceLocks[level][INTERFACE.instruction.rawValue] = false
+        interfaceLocks[level / 100][level % 100][INTERFACE.instruction.rawValue] = false
         userDefaults.set(interfaceLocks, forKey: unlockDefaultKey)
         if let scene = sceneView.scene as? GameSKScene {
-            scene.tutorNode.instructionOk(scene, level1parentNode: scene.robotNode, levelLocked: interfaceLocks[level][INTERFACE.level.rawValue], levelLockedNode: scene.robotNode.imagineButtonNode)
+            scene.tutorNode.instructionOk(scene, level1parentNode: scene.robotNode, levelLocked: interfaceLocks[level / 100][level % 100][INTERFACE.level.rawValue], levelLockedNode: scene.robotNode.imagineButtonNode)
             scene.robotNode.instructionButtonNode.disactivate()
             scene.robotNode.instructionButtonNode.unpulse()
             if scene.robotNode.recommendation == RECOMMEND.instruction {
@@ -447,11 +476,9 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
     // Implement WorldViewControllerDelegate
     func imagineClose() {
         if !isInterfaceLocked(INTERFACE.level) {
-            //if interfaceLocks[level][INTERFACE.imagine.rawValue] {
-                if let scene = sceneView.scene as? GameSKScene {
-                    scene.tutorNode.replayClose(scene.robotNode.imagineButtonNode)
-                }
-            //}
+            if let scene = sceneView.scene as? GameSKScene {
+                scene.tutorNode.replayClose(scene.robotNode.imagineButtonNode)
+            }
         }
         closeImagineWindow()
     }
@@ -464,7 +491,7 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
     
     func imagineOk() {
         if !isInterfaceLocked(INTERFACE.level) {
-            interfaceLocks[level][INTERFACE.imagine.rawValue] = false
+            interfaceLocks[level / 100][level % 100][INTERFACE.imagine.rawValue] = false
             userDefaults.set(interfaceLocks, forKey: unlockDefaultKey)
             if let scene = sceneView.scene as? GameSKScene {
                 scene.tutorNode.replayOk(scene.robotNode.gameCenterButtonNode)
@@ -533,7 +560,7 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
             scene.robotNode.gameCenterButtonNode.disactivate()
             scene.tutorNode.gameCenterOk(scene.robotNode, level17ParentNode: scene.topRightNode)
             if isInterfaceLocked(INTERFACE.leaderboard) && !isInterfaceLocked(INTERFACE.level) {
-                interfaceLocks[level][INTERFACE.leaderboard.rawValue] = false
+                interfaceLocks[level / 100][level % 100][INTERFACE.leaderboard.rawValue] = false
                 //let defaults = UserDefaults.standard
                 userDefaults.set(interfaceLocks, forKey: unlockDefaultKey)
             }

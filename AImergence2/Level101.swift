@@ -9,22 +9,23 @@
 import Foundation
 import GameplayKit
 
-class Level2 : Level0 {
+class Level101 : Level100 {
     
-    override var number:Int { return 2 }
+    override var number:Int { return 22 }
     override var gameModelString: String { return "GameModel0" }
-    
-    var previousExperiment:Experiment?
-    
+
+    var previousExperiment: Experiment?
+    var previousRemoteExperimentNumber: Int?
+
     convenience required init() {
         let experiment0 = Experiment(number: 0, shapeIndex: 0)
         let experiment1 = Experiment(number: 1, shapeIndex: 1)
         
-        let experiments = [experiment1, experiment0]
+        let experiments = GKRandomSource.sharedRandom().arrayByShufflingObjects(in: [experiment0, experiment1]) as! [Experiment]
         
-        let experience00 = Experience(experiment: experiment0, resultNumber: 0, valence:-1, colorIndex: 2)
+        let experience00 = Experience(experiment: experiment0, resultNumber: 0, valence: 0, colorIndex: 2)
         let experience01 = Experience(experiment: experiment0, resultNumber: 1, valence: 1, colorIndex: 1)
-        let experience10 = Experience(experiment: experiment1, resultNumber: 0, valence:-1, colorIndex: 2)
+        let experience10 = Experience(experiment: experiment1, resultNumber: 0, valence: 0, colorIndex: 2)
         let experience11 = Experience(experiment: experiment1, resultNumber: 1, valence: 1, colorIndex: 1)
         let experiences = [[experience00, experience01], [experience10, experience11]]
         
@@ -32,19 +33,14 @@ class Level2 : Level0 {
     }
     
     override func play(_ experiment: Experiment) -> (Experience, Int) {
-        
-        var result:Int
-        
-        if previousExperiment == experiment {
-            result = 0
-        } else {
+        var result = 0
+        if previousExperiment != experiment && previousRemoteExperimentNumber != remoteExperimentNumber {
             result = 1
         }
-        
         previousExperiment = experiment
-        
+        previousRemoteExperimentNumber = remoteExperimentNumber
+        remoteExperimentNumber = nil
         let experience = experiences[experiment.number][result]
-        
         return (experience, score(experience))
     }
 }

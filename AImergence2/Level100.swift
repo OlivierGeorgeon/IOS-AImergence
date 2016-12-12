@@ -9,17 +9,15 @@
 import Foundation
 import GameplayKit
 
-class Level22 : Level21 {
+class Level100 : Level005 {
     
-    override var number:Int { return 22 }
+    override var number:Int { return 21 }
     override var gameModelString: String { return "GameModel0" }
-
-    var previousExperiment: Experiment?
-    var previousRemoteExperimentNumber: Int?
+    override var isMultiPlayer: Bool { return true }
 
     convenience required init() {
-        let experiment0 = Experiment(number: 0, shapeIndex: 0)
-        let experiment1 = Experiment(number: 1, shapeIndex: 1)
+        let experiment0 = Experiment(number: 0)
+        let experiment1 = Experiment(number: 1)
         
         let experiments = GKRandomSource.sharedRandom().arrayByShufflingObjects(in: [experiment0, experiment1]) as! [Experiment]
         
@@ -30,15 +28,14 @@ class Level22 : Level21 {
         let experiences = [[experience00, experience01], [experience10, experience11]]
         
         self.init(winScore: 10, historicalDepth: 10, experiments: experiments, experiences: experiences)
+        
     }
     
     override func play(_ experiment: Experiment) -> (Experience, Int) {
         var result = 0
-        if previousExperiment != experiment && previousRemoteExperimentNumber != remoteExperimentNumber {
+        if experiment.number == remoteExperimentNumber {
             result = 1
         }
-        previousExperiment = experiment
-        previousRemoteExperimentNumber = remoteExperimentNumber
         remoteExperimentNumber = nil
         let experience = experiences[experiment.number][result]
         return (experience, score(experience))

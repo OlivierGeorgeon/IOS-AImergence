@@ -88,29 +88,9 @@
 			<string>Si vous souhaitez en apprendre davantage sur la recherche en intelligence artificielle développementale et sur nous, songez à visiter http://little-ai.com.</string>
 		</array>
 		<array>
-			<string>Vous avez atteint le dernier niveau ! Félicitations ! Il est similaire au niveau 16.</string>
+			<string>Vous avez atteint le dernier niveau du groupe 0! Félicitations ! Il est similaire au niveau 16.</string>
 			<string>Si Little AI vous a amusé ou instruit, ou les deux, songez à faire un petit don s&apos;il vous plaît.</string>
 			<string>Vos dons nous aideront à développer d&apos;autres niveaux. Ils contribueront aussi à faire progresser la recherche libre en intelligence artificielle développementale.</string>
-		</array>
-		<array>
-			<string>Little AI peut maintenant retourner les tuiles à sa droite et à sa gauche.</string>
-			<string>Il peut effectuer une interaction très agréable dans une configuration bien particulière de son environnement.</string>
-			<string>Notez qu&apos;une des commandes peut retourner trois types d&apos;interactions différents.</string>
-		</array>
-		<array>
-			<string>Le niveau 19 est identique au niveau 18.</string>
-		</array>
-		<array>
-			<string>Little AI commence à manipuler un objet plus complexe en deux parties. </string>
-		</array>
-		<array>
-			<string>Au niveau 21, votre bébé robot interagit avec un autre bébé robot piloté par un autre joueur.</string>
-			<string>Pressez le bouton &quot;joueur&quot; pour trouver un parternaire de jeu. Vous devez être identifé dans Game Center.</string>
-			<string>Pressez tous les deux une commande pour produire une interaction. C&apos;est un jeu collaboratif. Vous gagnez tous les deux au même moment.</string>
-		</array>
-		<array>
-			<string>Dansez avec votre partenaire Little AI.</string>
-			<string>Assurez vous que vous jouez tous les deux le même niveau.</string>
 		</array>
 	</array>
 </dict>

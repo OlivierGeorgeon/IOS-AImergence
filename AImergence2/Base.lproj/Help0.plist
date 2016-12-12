@@ -88,28 +88,9 @@
 			<string>If you wish to learn more about research in developmental artificial intelligence and about us, consider visiting http://little-ai.com.</string>
 		</array>
 		<array>
-			<string>You reached the last level ! Congratulations! It is similar to Level 16.</string>
+			<string>You reached the last level of group 0! Congratulations! It is similar to Level 16.</string>
 			<string>If you found Little AI enjoyable or instructive, or both, please consider making a small donation.</string>
 			<string>Your donations will support the creation of new levels. It will also promote independent and open-source research in developmental artificial intelligence.</string>
-		</array>
-		<array>
-			<string>Now Little AI can flip the tiles on its left and on its right.</string>
-			<string>It can experience a delightful interaction in a specific configuration of the environment.</string>
-		</array>
-		<array>
-			<string>Level 19 is identical to Level 18.</string>
-		</array>
-		<array>
-			<string>Little AI begins to manipulate a more complex object made of two different parts. </string>
-		</array>
-		<array>
-			<string>On Level 21, your baby robot is interacting with another baby robot controled by another player.</string>
-			<string>Tap the &quot;player&quot; button to find a play partner (you must be logged in to Game Center).</string>
-			<string>Both of you must tap a command to produce an interation. This is a collaborative game. You both win at the same time.</string>
-		</array>
-		<array>
-			<string>Danse with your Little AI partner.</string>
-			<string>Make sure that the both of you are playing the same level.</string>
 		</array>
 	</array>
 </dict>

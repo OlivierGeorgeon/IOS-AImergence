@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Level4: Level2 {
+class Level004: Level002 {
     
     override var number:Int { return 4 }
     override var gameModelString: String { return "GameModel4" }

@@ -25,7 +25,7 @@ class HelpViewController: UIViewController {
         delegate?.instructionOk()
     }
     
-    let helpBlobArray:[String]
+    var helpBlobArray = [[String]]()
     let levelString = NSLocalizedString("Level", comment: "the game level displayed in the header of the help window")
     
     weak var delegate: HelpViewControllerDelegate?
@@ -33,16 +33,17 @@ class HelpViewController: UIViewController {
     required init(coder aDecoder: NSCoder)
     {
         var tempHelpBlobArray = [String]()
-        //if let path = NSBundle.mainBundle().pathForResource("Help", ofType: "plist", inDirectory: nil, forLocalization: "fr") {
-        if let path = Bundle.main.path(forResource: "Help", ofType: "plist") {
-            let localizedDictionary = NSDictionary(contentsOfFile: path)
-            if let helpLineArray = localizedDictionary?["Help"] as? [[String]] {
-                tempHelpBlobArray = helpLineArray.map({$0.reduce("", {$0 + "\n\n" + $1 }).trimmingCharacters(in: CharacterSet.newlines)})
-            } else {
-                print("The Help key of file Help.plist must only contain an array of arrays of strings.")
+        for g in 0...GameViewController.maxGroupNumber {
+            if let path = Bundle.main.path(forResource: "Help\(g)", ofType: "plist") {
+                let localizedDictionary = NSDictionary(contentsOfFile: path)
+                if let helpLineArray = localizedDictionary?["Help"] as? [[String]] {
+                    tempHelpBlobArray = helpLineArray.map({$0.reduce("", {$0 + "\n\n" + $1 }).trimmingCharacters(in: CharacterSet.newlines)})
+                } else {
+                    print("The Help key of file Help.plist must only contain an array of arrays of strings.")
+                }
             }
+            helpBlobArray.append(tempHelpBlobArray)
         }
-        helpBlobArray = tempHelpBlobArray
         super.init(coder: aDecoder)!
     }
     
@@ -59,7 +60,7 @@ class HelpViewController: UIViewController {
         default:
             textView.isSelectable = false
         }
-        textView.text = helpBlobArray[level]
+        textView.text = helpBlobArray[level / 100][level % 100]
         textView.font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.body)
         textView.scrollRangeToVisible(NSMakeRange(0, 0))
     }

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Help</key>
+	<array>
+		<array>
+			<string>On Level 100, your baby robot is interacting with another baby robot controlled by another player.</string>
+			<string>Tap the &quot;player&quot; button to find a play partner (you must be logged in to Game Center).</string>
+			<string>Both of you must tap a command to produce an interation. This is a collaborative game. You both win at the same time.</string>
+		</array>
+		<array>
+			<string>Dance with your Little AI partner.</string>
+			<string>Make sure that the both of you are playing the same level.</string>
+		</array>
+	</array>
+</dict>
+</plist>

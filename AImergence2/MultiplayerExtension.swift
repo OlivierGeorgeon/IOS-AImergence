@@ -67,19 +67,21 @@ extension GameViewController: GKMatchmakerViewControllerDelegate, GKMatchDelegat
     }
     
     func match(_ match: GKMatch, player: GKPlayer, didChange state: GKPlayerConnectionState) {
-        if state == .stateConnected {
-            if let scene = self.sceneView.scene as? GameSKScene {
-                scene.matchNode.update(status: .connected)
-                scene.matchNode.update(displayName: player.displayName)
-                scene.matchNode.update(text: NSLocalizedString("Ready", comment: ""))
-            }
-        } else {
-            if let scene = self.sceneView.scene as? GameSKScene {
-                scene.matchNode.update(status: .disconnected)
-                scene.matchNode.update(displayName: "")
-                scene.matchNode.update(text: "")
-                remotePlayerDisplayName = nil
-                // self.match = nil test to see if it causes crash
+        if match == self.match {
+            if state == .stateConnected {
+                if let scene = self.sceneView.scene as? GameSKScene {
+                    scene.matchNode.update(status: .connected)
+                    scene.matchNode.update(displayName: player.displayName)
+                    scene.matchNode.update(text: NSLocalizedString("Ready", comment: ""))
+                    remotePlayerDisplayName = player.displayName
+                }
+            } else {
+                if let scene = self.sceneView.scene as? GameSKScene {
+                    scene.matchNode.update(status: .disconnected)
+                    scene.matchNode.update(displayName: "")
+                    scene.matchNode.update(text: "")
+                    remotePlayerDisplayName = nil
+                }
             }
         }
         print("Player state change: \(state.rawValue)")

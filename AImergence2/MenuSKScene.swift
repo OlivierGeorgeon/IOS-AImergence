@@ -77,7 +77,8 @@ class MenuSKScene: PositionedSKScene {
         addChild(originNode)
         originNode.addChild(levelGroupNode)
         
-        levelGroupIndex = userDelegate!.currentLevel() / 20
+        //levelGroupIndex = userDelegate!.currentLevel() / 20
+        levelGroupIndex = userDelegate!.currentLevel() / 100
         levelGroupNode.position = level0Position
         tutorNode.level = userDelegate!.currentLevel()
         if !userDelegate!.isUserHasDraggedLevel() {
@@ -165,35 +166,41 @@ class MenuSKScene: PositionedSKScene {
     func createButtons(_ frameSize: CGSize) -> [SKNode]
     {
         var buttonNodes = [SKNode]()
-        for i in 0...GameViewController.maxLevelNumber {
-            let levelNode = createLabelNode("\(i)")
-            levelNode.fontName = "Noteworthy-Bold"
-            levelNode.userData = ["level": i]
-            //levelNode.position = level0Position + (i % 5) * levelXOffset + (i / 5) * levelYOffset
-            levelNode.position = CGPoint(x: (i % 5) * levelXOffset + (i / 20) * levelGroupXOffset,
-                                         y: (i / 5) * levelYOffset + (i / 20) * levelGroupYOffset)
-            buttonNodes.append(levelNode)
-            levelGroupNode.addChild(levelNode)
+        for g in 0...GameViewController.maxGroupNumber {
+            for i in 0...GameViewController.maxLevelNumberPerGroup[g] {
+            //for i in 0...GameViewController.maxLevelNumber {
+                let levelNode = createLabelNode("\(i)")
+                levelNode.fontName = "Noteworthy-Bold"
+                levelNode.userData = ["level": g * 100 + i]
+                //levelNode.userData = ["level": i]
+                //levelNode.position = level0Position + (i % 5) * levelXOffset + (i / 5) * levelYOffset
+                //levelNode.position = CGPoint(x: (i % 5) * levelXOffset + (i / 20) * levelGroupXOffset,
+                //                         y: (i / 5) * levelYOffset + (i / 20) * levelGroupYOffset)
+                levelNode.position = CGPoint(x: (i % 5) * levelXOffset + (g) * levelGroupXOffset,
+                                             y: (i / 5) * levelYOffset)// + (g) * levelGroupYOffset)
+                buttonNodes.append(levelNode)
+                levelGroupNode.addChild(levelNode)
             
-            var backgroundNode = SKShapeNode()
-            switch userDelegate!.levelStatus(i) {
-            case .accessible:
-                backgroundNode = SKShapeNode(rect: CGRect(x: -50, y: -50, width: 100, height: 100), cornerRadius: 30)
-            case .won:
-                backgroundNode = SKShapeNode(rect: CGRect(x: -50, y: -50, width: 100, height: 100))
-            case .inaccessible:
-                backgroundNode = SKShapeNode(path: UIBezierPath(ovalIn: CGRect(x: -50, y: -50, width: 100, height: 100)).cgPath)
-            }
+                var backgroundNode = SKShapeNode()
+                switch userDelegate!.levelStatus(g * 100 + i) {
+                case .accessible:
+                    backgroundNode = SKShapeNode(rect: CGRect(x: -50, y: -50, width: 100, height: 100), cornerRadius: 30)
+                case .won:
+                    backgroundNode = SKShapeNode(rect: CGRect(x: -50, y: -50, width: 100, height: 100))
+                case .inaccessible:
+                    backgroundNode = SKShapeNode(path: UIBezierPath(ovalIn: CGRect(x: -50, y: -50, width: 100, height: 100)).cgPath)
+                }
             
-            let buttonColor: UIColor
-            if i == userDelegate?.currentLevel() {
-                buttonColor = UIColor(red: 114 / 256, green: 114 / 256, blue: 171 / 256, alpha: 1)
-            } else  {
-                buttonColor = UIColor(red: 150 / 256, green: 100 / 256, blue: 150 / 256, alpha: 1)
+                let buttonColor: UIColor
+                if (i == userDelegate!.currentLevel() % 100) && (g == userDelegate!.currentLevel() / 100) {
+                    buttonColor = UIColor(red: 114 / 256, green: 114 / 256, blue: 171 / 256, alpha: 1)
+                } else  {
+                    buttonColor = UIColor(red: 150 / 256, green: 100 / 256, blue: 150 / 256, alpha: 1)
+                }
+                backgroundNode.fillColor = buttonColor
+                backgroundNode.strokeColor = buttonColor
+                levelNode.addChild(backgroundNode)
             }
-            backgroundNode.fillColor = buttonColor
-            backgroundNode.strokeColor = buttonColor
-            levelNode.addChild(backgroundNode)
         }
         return buttonNodes
     }
@@ -236,7 +243,7 @@ class MenuSKScene: PositionedSKScene {
                         levelGroupIndex -= 1
                     }
                 } else {
-                    if levelGroupIndex < GameViewController.maxLevelNumber / 20
+                    if levelGroupIndex < GameViewController.maxGroupNumber
                     {
                         levelGroupIndex += 1
                     }

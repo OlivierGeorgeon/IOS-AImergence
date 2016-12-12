@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Help</key>
+	<array>
+		<array>
+			<string>Little AI peut maintenant retourner les tuiles à sa droite et à sa gauche.</string>
+			<string>Il peut effectuer une interaction très agréable dans une configuration bien particulière de son environnement.</string>
+			<string>Notez qu&apos;une des commandes peut retourner trois types d&apos;interactions différents.</string>
+		</array>
+		<array>
+			<string>Little AI commence à manipuler un objet plus complexe en deux parties. </string>
+			<string>Ce groupe de niveaux illustre le problème d&apos;apprendre la persistance d&apos;objets à partir d&apos;expériences d&apos;interaction initialement non interprétées.</string>
+		</array>
+		<array>
+			<string>Le niveau 201 est identique au niveau 200.</string>
+			<string>Nous n&apos;avons pas d&apos;algorithmes capables de jouer aux niveaux 200 à 202. Si vous souhaitez contribuer à la recherche en IA développementale, vous pouvez vous attaquer à ce problème.</string>
+			<string>Vous pouvez aussi inventer d&apos;autres niveaux qui illustrent le problème d&apos;apprendre l&apos;existence d&apos;objets plus complexes à partir d&apos;expériences d&apos;interaction.</string>
+		</array>
+	</array>
+</dict>
+</plist>

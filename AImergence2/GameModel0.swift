@@ -31,7 +31,7 @@ class GameModel0
     var shapeOffset: CGVector { return CGVector(dx: 200, dy: 0)}
     var shapePopupPosition: CGPoint { return CGPoint(x: 0, y: 300)}
 
-    var level: Level0!
+    var level: Level000!
     
     init(experimentRect: CGRect, experimentPositions: [CGPoint], experienceRect: CGRect, initialScale: CGFloat, obsolescence: Int, actionScale: SKAction, experimentPaths: [(CGRect) -> UIBezierPath], experienceColors: [UIColor],sounds: [[Int]]) {
         self.experimentRect = experimentRect
