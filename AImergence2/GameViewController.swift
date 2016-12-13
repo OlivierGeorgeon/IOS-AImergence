@@ -30,6 +30,7 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
     let paidTipKey = "paidTipKey"
     let soundKey = "soundKey"
     let userHasDraggedLevelKey = "userHadDraggedLevelKey"
+    let userHasDraggedGroupKey = "userHadDraggedGroupKey"
     let userDefaults = UserDefaults.standard
     let gcLoginMessage = NSLocalizedString("Please login to Game Center", comment: "Alert message that shows when the user tries to access the leaderboard without being logged in.")
     
@@ -38,11 +39,10 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
     var gcEnabled = Bool() // Stores if the user has Game Center enabled
     var helpViewController:  HelpViewController?
     var imagineViewController: ImagineViewController?
-    //var interfaceLocks = [[Bool]](repeating: [true, true, true, true], count: GameViewController.maxLevelNumber + 1)
-    //var interfaceLocks = [[Bool]](repeating: [Bool](repeating: true, count: 4), count: GameViewController.maxLevelNumber + 1)
     var interfaceLocks = [[[Bool]]](repeating: [[Bool]](repeating: [Bool](repeating: true, count: 4), count: 20), count: 3)
     var paidTip = false
     var userHasDraggedLevel = false
+    var userHasDraggedGroup = false
     var validProducts = [SKProduct]()
     var match: GKMatch?
     var remotePlayerDisplayName: String?
@@ -53,7 +53,12 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
     
     var level = 0 {
         didSet {
-            levelButton.setTitle(NSLocalizedString("Level", comment: "") + " \(level)", for: UIControlState())
+            if level < 100 {
+                levelButton.setTitle(NSLocalizedString("Level", comment: "") + " \(level)", for: UIControlState())
+            } else {
+                let groupLevel = String(format:" %01d.%02d", arguments: [level / 100, level % 100])
+                levelButton.setTitle(NSLocalizedString("Level", comment: "") + groupLevel, for: UIControlState())
+            }
             if !helpViewControllerContainer.isHidden {
                 helpViewController?.displayLevel(level)
             }
@@ -69,6 +74,7 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
         paidTip = userDefaults.bool(forKey: paidTipKey)
         soundDisabled = userDefaults.bool(forKey: soundKey)
         userHasDraggedLevel = userDefaults.bool(forKey: userHasDraggedLevelKey)
+        userHasDraggedGroup = userDefaults.bool(forKey: userHasDraggedGroupKey)
         for i in 1...13 {
             let url = URL(fileURLWithPath: Bundle.main.path(forResource: "baby\(i)", ofType:"wav")!)
             soundURLs.append(url)
@@ -124,9 +130,16 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
     func isUserHasDraggedLevel() -> Bool {
         return userHasDraggedLevel
     }
+    func isUserHasDraggedGroup() -> Bool {
+        return userHasDraggedGroup
+    }
     func userDragLevel() {
         userHasDraggedLevel = true
         userDefaults.set(userHasDraggedLevel, forKey: userHasDraggedLevelKey)
+    }
+    func userDragGroup() {
+        userHasDraggedGroup = true
+        userDefaults.set(userHasDraggedGroup, forKey: userHasDraggedGroupKey)
     }
 
     func leaveTip(_ product: SKProduct) {

@@ -41,6 +41,8 @@ protocol MenuSceneDelegate: class
     func toggleSound() -> Bool
     func isUserHasDraggedLevel() -> Bool
     func userDragLevel()
+    func isUserHasDraggedGroup() -> Bool
+    func userDragGroup()
 }
 
 class MenuSKScene: PositionedSKScene {
@@ -83,6 +85,8 @@ class MenuSKScene: PositionedSKScene {
         tutorNode.level = userDelegate!.currentLevel()
         if !userDelegate!.isUserHasDraggedLevel() {
             tutorNode.dragToResume(tipInviteNode)
+        } else if !userDelegate!.isUserHasDraggedGroup() {
+            tutorNode.dragGroup(levelGroupNode)
         }
         backgroundColor = UIColor.white
         backgroundNode.size = CGSize(width: 1334, height: 1334)
@@ -240,11 +244,15 @@ class MenuSKScene: PositionedSKScene {
                 if velocity.x > 0 {
                     if levelGroupIndex > 0
                     {
+                        userDelegate!.userDragGroup()
+                        tutorNode.isHidden = true
                         levelGroupIndex -= 1
                     }
                 } else {
                     if levelGroupIndex < GameViewController.maxGroupNumber
                     {
+                        userDelegate!.userDragGroup()
+                        tutorNode.isHidden = true
                         levelGroupIndex += 1
                     }
                 }

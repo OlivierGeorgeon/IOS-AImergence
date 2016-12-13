@@ -6,7 +6,7 @@
 //  Copyright © 2016 Olivier Georgeon. All rights reserved.
 //
 
-enum Tutor { case instruction, command, score, replay, rank, drag, menu, redo, sequence, shape, color, level, resume, support, sound, done, instructionAgain, replayAgain, match}
+enum Tutor { case instruction, command, score, replay, rank, drag, menu, redo, sequence, shape, color, level, resume, support, sound, done, instructionAgain, replayAgain, match, group}
 
 import SpriteKit
 
@@ -175,11 +175,13 @@ class TutorSKNode: SKNode {
     }
     
     func dragToResume(_ nextParentNode: SKNode) {
-        //if (level == 3 && step == .sound) {
-            tip(tutor: .resume, parentNode: nextParentNode)
-        //}
+        tip(tutor: .resume, parentNode: nextParentNode)
     }
     
+    func dragGroup(_ nextParentNode: SKNode) {
+        tip(tutor: .group, parentNode: nextParentNode)
+    }
+
     func message(tutor: Tutor) -> (text: String, shape: CGPath, position: CGPoint, zRotation: CGFloat) {
         let text: String
         let shape: CGPath
@@ -291,6 +293,11 @@ class TutorSKNode: SKNode {
             shape = arrowLeft(CGRect(x: -200, y: -60, width: 400, height: 120))
             position = CGPoint(x: 250, y: 250)
             zRotation = CGFloat(M_PI / 4)
+        case .group:
+            text = NSLocalizedString("group", comment: "")
+            shape = arrowLeft(CGRect(x: -200, y: -60, width: 400, height: 120))
+            position = CGPoint(x: 400, y: -550)
+            zRotation = CGFloat(0)
         }
         return (text, shape, position, zRotation)
     }
