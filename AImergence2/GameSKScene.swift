@@ -132,8 +132,6 @@ class GameSKScene: PositionedSKScene {
             tutorNode.tip(tutor: .instruction, parentNode: robotNode.instructionButtonNode)
         case 3:
             tutorNode.tip(tutor: .shape, parentNode: scene!)
-        //case 21:
-        //    tutorNode.tip(tutor: .match, parentNode: matchNode)
         default:
             break
         }
@@ -177,7 +175,7 @@ class GameSKScene: PositionedSKScene {
         if level.isMultiPlayer {
             matchNode.isHidden = false
             if gameSceneDelegate.remotePlayerName() == nil {
-                if self.level.number == 21 {
+                if self.level.number == 100 {
                     tutorNode.tip(tutor: .match, parentNode: matchNode)
                 }
             } else {
@@ -309,6 +307,7 @@ class GameSKScene: PositionedSKScene {
             if experimentNode.contains(positionInScene){
                 playExperience = true
                 if level.isMultiPlayer {
+                    tutorNode.tapCommand(experimentNode.experiment.number, nextParentNode: scoreNode)
                     if level.remoteExperimentNumber == nil {
                         if localExpermimentNode != nil {
                             // Not allowed to change because it may cause discrepency between the two players

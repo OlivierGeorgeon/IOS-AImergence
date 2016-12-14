@@ -26,7 +26,7 @@ extension GameViewController: GKMatchmakerViewControllerDelegate, GKMatchDelegat
                 scene.localExpermimentNode?.removeAction(forKey: "pulse")
                 scene.localExpermimentNode = nil
             }
-            scene.tutorNode.matched()
+            scene.tutorNode.matched(nextParentNode: scene)
             scene.matchNode.update(status: .connected)
             scene.matchNode.update(displayName: remotePlayerDisplayName)
             scene.matchNode.update(text: NSLocalizedString("Ready", comment: ""))
@@ -45,7 +45,7 @@ extension GameViewController: GKMatchmakerViewControllerDelegate, GKMatchDelegat
         print("Match failed")
         viewController.dismiss(animated: true, completion: nil)
         if let scene = self.sceneView.scene as? GameSKScene {
-            scene.tutorNode.matched()
+            scene.tutorNode.matched(nextParentNode: scene)
             scene.matchNode.update(status: .disconnected)
             remotePlayerDisplayName = nil
             //self.match = nil

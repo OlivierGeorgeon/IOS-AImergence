@@ -8,7 +8,7 @@
 
 import SceneKit
 
-class ImagineModel11: ImagineModel0
+class ImagineModel011: ImagineModel000
 {
     override func setup(_ scene: SCNScene) {
         robotNode = SCNRobotNode()

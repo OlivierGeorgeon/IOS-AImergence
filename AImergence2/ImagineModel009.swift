@@ -8,7 +8,7 @@
 
 import SceneKit
 
-class ImagineModel9: ImagineModel5
+class ImagineModel009: ImagineModel005
 {
     let carrouselNode = SCNNode()
 

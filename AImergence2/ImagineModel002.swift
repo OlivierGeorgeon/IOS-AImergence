@@ -8,7 +8,7 @@
 
 import SceneKit
 
-class ImagineModel2: ImagineModel1
+class ImagineModel002: ImagineModel001
 {
     
     var leftFlippableNode: SCNFlipTileNode?

@@ -8,7 +8,7 @@
 
 import SceneKit
 
-class ImagineModel22: ImagineModel21
+class ImagineModel101: ImagineModel100
 {
     let actionTurnover = SCNAction.rotateBy(x: 0.0, y: CGFloat(M_PI), z: 0.0, duration: 0.5)
     let actionTurnoverClockwise = SCNAction.rotateBy(x: 0.0, y: -CGFloat(M_PI), z: 0.0, duration: 0.5)

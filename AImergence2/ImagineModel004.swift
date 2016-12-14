@@ -8,7 +8,7 @@
 
 import SceneKit
 
-class ImagineModel4: ImagineModel3
+class ImagineModel004: ImagineModel003
 {
     var bodyCell = 0
     

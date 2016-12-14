@@ -8,7 +8,7 @@
 
 import SceneKit
 
-class ImagineModel0
+class ImagineModel000
 {    
     let gameModel: GameModel0
     let actionLiftExperience = SCNAction.moveBy( x: 0.0, y: 5.0 * 10, z: 0.0, duration: 3.0)

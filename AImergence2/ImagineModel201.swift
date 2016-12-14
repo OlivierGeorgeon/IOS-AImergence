@@ -8,7 +8,7 @@
 
 import SceneKit
 
-class ImagineModel17: ImagineModel16
+class ImagineModel201: ImagineModel200
 {
 
 }

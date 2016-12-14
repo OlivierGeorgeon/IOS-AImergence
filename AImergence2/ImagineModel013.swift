@@ -8,7 +8,7 @@
 
 import SceneKit
 
-class ImagineModel13: ImagineModel12
+class ImagineModel013: ImagineModel012
 {
     
     override func imagine(experience: Experience) {

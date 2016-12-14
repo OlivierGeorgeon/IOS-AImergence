@@ -11,8 +11,6 @@ import SceneKit
 
 protocol ImagineViewControllerDelegate: class
 {
-    //func acknowledgeImagineWorld()
-    //func closeImagineWindow()
     func imagineClose()
     func imagineOk()
 }
@@ -22,13 +20,10 @@ class ImagineViewController: UIViewController {
     @IBOutlet weak var sceneView: SCNView!
     @IBOutlet weak var textView: UITextView!
     @IBAction func closeButton(_ sender: UIButton) {
-        //delegate?.closeImagineWindow()
         delegate?.imagineClose()
     }
     @IBOutlet weak var okButton: UIButton!
     @IBAction func understoodButton(_ sender: UIButton) {
-        //delegate?.acknowledgeImagineWorld()
-        //delegate?.closeImagineWindow()
         delegate?.imagineOk()
     }
 
@@ -38,7 +33,7 @@ class ImagineViewController: UIViewController {
     
     weak var delegate: ImagineViewControllerDelegate?
 
-    var imagineModel: ImagineModel0!
+    var imagineModel: ImagineModel000!
     var experimentTried = [false]
     
     override func viewDidLoad() {
@@ -104,11 +99,11 @@ class ImagineViewController: UIViewController {
                 textViewHidden = true
             }
 
-            let aClass:AnyClass? =  NSClassFromString("Little_AI.ImagineModel\(levelNumber)")
-            if let imagineModelType = aClass as? ImagineModel0.Type
+            let aClass:AnyClass? = NSClassFromString(String(format: "Little_AI.ImagineModel%03d", arguments: [levelNumber]))
+            if let imagineModelType = aClass as? ImagineModel000.Type
                 { imagineModel = imagineModelType.init(gameModel: gameModel!) }
             else
-                { imagineModel = ImagineModel0(gameModel: gameModel!) }
+                { imagineModel = ImagineModel000(gameModel: gameModel!) }
             
             if okEnabled {
                 okButton.isEnabled = true

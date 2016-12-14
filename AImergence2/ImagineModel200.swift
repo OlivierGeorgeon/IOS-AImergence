@@ -8,7 +8,7 @@
 
 import SceneKit
 
-class ImagineModel18: ImagineModel2
+class ImagineModel200: ImagineModel002
 {
     let leftHolderNode = SCNNode()
     let rightHolderNode = SCNNode()

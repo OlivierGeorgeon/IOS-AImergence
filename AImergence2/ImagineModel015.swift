@@ -8,7 +8,7 @@
 
 import SceneKit
 
-class ImagineModel15: ImagineModel14
+class ImagineModel015: ImagineModel014
 {
     override func imagine(experience: Experience) {
         constraint.influenceFactor = 0.5

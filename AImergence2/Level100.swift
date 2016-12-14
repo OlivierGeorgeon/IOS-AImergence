@@ -11,7 +11,7 @@ import GameplayKit
 
 class Level100 : Level005 {
     
-    override var number:Int { return 21 }
+    override var number:Int { return 100 }
     override var gameModelString: String { return "GameModel0" }
     override var isMultiPlayer: Bool { return true }
 

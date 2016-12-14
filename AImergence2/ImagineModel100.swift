@@ -8,7 +8,7 @@
 
 import SceneKit
 
-class ImagineModel21: ImagineModel0
+class ImagineModel100: ImagineModel000
 {
     
     let localCenterNode = SCNNode()

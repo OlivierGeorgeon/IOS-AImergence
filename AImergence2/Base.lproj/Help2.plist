@@ -5,17 +5,19 @@
 	<key>Help</key>
 	<array>
 		<array>
-			<string>Now Little AI can flip the tiles on its left and on its right.</string>
+			<string>In Level 2.00, Little AI can flip the tiles on its left and on its right.</string>
 			<string>It can experience a delightful interaction in a specific configuration of the environment.</string>
+			<string>Notice that one of the commands now can yield three different types of interactions.</string>
 		</array>
 		<array>
 			<string>Level 2.01 is identical to Level 2.00.</string>
-			<string>This group of levels illustrates the problem of learning the persistence of complex objects in the world from initially uninterpreted experiences. </string>
+			<string>This series of levels illustrates the problem of learning the persistence of objects in the world. </string>
+			<string>It involves using rudimentary spatial memory that may lay the ground for more complex spatial intelligence.</string>
 		</array>
 		<array>
 			<string>Little AI begins to manipulate a more complex object made of two different parts. </string>
-			<string>We currently don&apos;t have algorithms that can play levels 200 to 202. If you wish to contribute to research in developmental AI, you may address this problem.</string>
-			<string>You may also invent more levels that exemplify the problem of learning the existence of more complex object from experience of interaction.</string>
+			<string>We currently don&apos;t have algorithms that can play levels 2.00 to 2.02. If you wish to contribute to research in developmental AI, you may address this problem.</string>
+			<string>You may also invent more levels that exemplify the problem of learning to interact with more complex objects.</string>
 		</array>
 	</array>
 </dict>

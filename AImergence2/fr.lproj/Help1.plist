@@ -5,13 +5,14 @@
 	<key>Help</key>
 	<array>
 		<array>
-			<string>Au niveau 100, votre bébé robot interagit avec un autre bébé robot piloté par un autre joueur.</string>
+			<string>Dans cette série de niveaux, votre bébé robot interagit avec un autre bébé robot piloté par un autre joueur.</string>
 			<string>Pressez le bouton &quot;joueur&quot; pour trouver un parternaire de jeu. Vous devez être identifé dans Game Center.</string>
 			<string>Pressez tous les deux une commande pour produire une interaction. C&apos;est un jeu collaboratif. Vous gagnez tous les deux au même moment.</string>
 		</array>
 		<array>
 			<string>Dansez avec votre partenaire Little AI.</string>
 			<string>Assurez vous que vous jouez tous les deux le même niveau.</string>
+			<string>Davantage de niveaux multi-joueurs seront disponibles dans les prochains mois pour illustrer la recherche sur la collaboration homme/robot.</string>
 		</array>
 	</array>
 </dict>

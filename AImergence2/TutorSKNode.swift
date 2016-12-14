@@ -74,6 +74,10 @@ class TutorSKNode: SKNode {
         if level == 3 && step == .color {
             tip(tutor: .color, parentNode: nextParentNode.scene!)
         }
+        if level == 100 {
+            step = .done
+            removeFromParent()
+        }
     }
     
     func reachTen(_ nextParentNode: SKNode, level3ParentNode: SKNode) {
@@ -167,10 +171,11 @@ class TutorSKNode: SKNode {
         }
     }
     
-    func matched() {
-        if level == 21 {
+    func matched(nextParentNode: SKNode) {
+        if level == 100 {
             step = .done
             removeFromParent()
+            tip(tutor: .command, parentNode: nextParentNode)
         }
     }
     
