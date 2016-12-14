@@ -94,7 +94,10 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
                     interfaceLocks[0][i] = userInterfaceLocks[i]
                 }
             }
+        } else if userInterfaceLocksWrapped is [[[Bool]]] {
+            interfaceLocks = userInterfaceLocksWrapped as! [[[Bool]]]
         }
+        
         if CommandLine.arguments.count > 1 {
             if CommandLine.arguments[1] == "unlocked" {
                 //interfaceLocks = [[Bool]](repeating: [false, false, false, false], count: GameViewController.maxLevelNumber + 1)
