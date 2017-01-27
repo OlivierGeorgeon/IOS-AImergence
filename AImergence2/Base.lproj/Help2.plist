@@ -16,7 +16,7 @@
 		</array>
 		<array>
 			<string>Little AI begins to manipulate a more complex object made of two different parts. </string>
-			<string>We currently don&apos;t have algorithms that can play levels 2.00 to 2.02. If you wish to contribute to research in developmental AI, you may address this problem.</string>
+			<string>We currently don&apos;t have algorithms that can play levels 2.00 to 2.02 automatically. If you wish to contribute to research in developmental AI, you may address this problem.</string>
 			<string>You may also invent more levels that exemplify the problem of learning to interact with more complex objects.</string>
 		</array>
 	</array>

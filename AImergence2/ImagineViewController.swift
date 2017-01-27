@@ -93,8 +93,8 @@ class ImagineViewController: UIViewController {
                 textView.text = NSLocalizedString("Excellent 16", comment: "Message in the Imagine window on Levels 16.");
             case 17:
                 textView.text = NSLocalizedString("You won!", comment: "Message in the Imagine window on Levels 17 (last).");
-            case 21:
-                textView.text = NSLocalizedString("Excellent 21", comment: "");
+            case 100:
+                textView.text = NSLocalizedString("Excellent 100", comment: "");
             default:
                 textViewHidden = true
             }

@@ -17,10 +17,10 @@
 "Excellent 5" = "Here you can see more clearly that the observational command (by default the square) allows Little AI to observe the tile without changing it, as opposed to the other two commands.";
 "Excellent 6" = "Make sure that the color of the interactions matches the geometry of the tile with which Little AI is interacting: green for rounded sides and red for flat sides. The colors that you have chosen should reflect these physical properties of the world. Little AI exploits this knowledge to live a happy life!";
 "Excellent 7" = "Bravo! When you play again a sequence of interactions by tapping them in the trace, you are re-executing a program that you have previously learned. This is how an autonomous robot can program itself!";
-"Excellent 8" = "In this level, you can see that the non-informative command flips the tile without informing you on what side it is. Leave the interaction produced by this command in white because it does convey any information about the physical state of the world.";
+"Excellent 8" = "In this level, you can see that the non-informative command flips the tile without informing you on what side it is. Leave the interaction produced by this command in white because it does not convey any information about the physical state of the world.";
 "Excellent 14" = "During the game, you can arbitrarily interpret the directions (left or right) of the rotate commands. This interpretation may be inverted from what you see in replay mode but that's ok. The real world, if it exists, is perhaps entirely inverted from the way you see it!";
 "Excellent 16" = "You can win level 16 before figuring out the exact meaning of each command and interaction. The spatial representation offered by the replay mode will help you correct the inconsistencies in your understanding.";
-"Excellent 21" = "You both must press each command before closing this window to enable the Ok button.";
+"Excellent 100" = "You both must press each command before closing this window to enable the Ok button.";
 "Drag the 3D scene to move the camera" = "Drag the 3D scene to change the angle of view.";
 "Double tap to swap cameras." = "Double-tap on the 3D scene to swap viewpoints.";
 "Explore your environment" = "Explore your environment before moving on to the next level.";

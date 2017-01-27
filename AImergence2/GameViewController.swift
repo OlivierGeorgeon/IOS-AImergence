@@ -22,7 +22,7 @@ class GameViewController: UIViewController, GameSceneDelegate, MenuSceneDelegate
     @IBOutlet weak var levelButton: UIButton!
     @IBAction func levelButton(_ sender: UIButton) { showLevelWindow() }
     
-    static let maxLevelNumber = 22
+    //static let maxLevelNumber = 22
     static let maxGroupNumber = 2
     static let maxLevelNumberPerGroup = [17, 1, 2]
     
