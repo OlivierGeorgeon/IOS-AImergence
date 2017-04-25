@@ -5,14 +5,14 @@
     <key>Help</key>
     <array>
       <array>
-        <string>In this series of levels, your baby robot is interacting with another baby robot controlled by another player.</string>
-        <string>Tap the "player" button to find a play partner (requires loggin in Game Center and iCoud).</string>
-        <string>Both of you must tap a command to produce an interation. This is a collaborative game. You both win at the same time.</string>
+        <string>Dans cette série de niveaux, votre bébé robot interagit avec un autre bébé robot piloté par un autre joueur.</string>
+        <string>Pressez le bouton "joueur" pour trouver un parternaire de jeu. Vous devez être identifé dans Game Center et iCloud.</string>
+        <string>Pressez tous les deux une commande pour produire une interaction. C'est un jeu collaboratif. Vous gagnez tous les deux au même moment.</string>
       </array>
       <array>
-        <string>Dance with your Little AI partner.</string>
-        <string>Make sure that the both of you are playing the same level.</string>
-        <string>More multi-player levels will be released in the coming months to illustrate research on human/robot collaboration.</string>
+        <string>Dansez avec votre partenaire Little AI.</string>
+        <string>Assurez vous que vous jouez tous les deux le même niveau.</string>
+        <string>Davantage de niveaux multi-joueurs seront disponibles dans les prochains mois pour illustrer la recherche sur la collaboration homme/robot.</string>
       </array>
     </array>
   </dict>
