@@ -10,8 +10,8 @@ import SceneKit
 
 class ImagineModel101: ImagineModel100
 {
-    let actionTurnover = SCNAction.rotateBy(x: 0.0, y: CGFloat(M_PI), z: 0.0, duration: 0.5)
-    let actionTurnoverClockwise = SCNAction.rotateBy(x: 0.0, y: -CGFloat(M_PI), z: 0.0, duration: 0.5)
+    let actionTurnover = SCNAction.rotateBy(x: 0.0, y: CGFloat(Double.pi), z: 0.0, duration: 0.5)
+    let actionTurnoverClockwise = SCNAction.rotateBy(x: 0.0, y: -CGFloat(Double.pi), z: 0.0, duration: 0.5)
     var actionWaitAndTurnover = SCNAction()
     var actionWaitAndTurnoverClockwise = SCNAction()
     

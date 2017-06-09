@@ -16,7 +16,7 @@ class RobotSKNode: SKNode
     let instructionButtonNode = ButtonSKNode(.instruction, activatedImageNamed: "instructions-color", disactivatedImageNamed: "instructions-black")
     let imagineButtonNode = ButtonSKNode(.imagine, activatedImageNamed: "imagine-color", disactivatedImageNamed: "imagine-black")
     let gameCenterButtonNode = ButtonSKNode(.leaderboard, activatedImageNamed: "gamecenter-color", disactivatedImageNamed: "gamecenter-black")
-    let saltoAction = SKAction.rotate(byAngle: CGFloat(-2 * M_PI), duration: 0.4)
+    let saltoAction = SKAction.rotate(byAngle: CGFloat(-2 * Double.pi), duration: 0.4)
 
     var jumpAction = SKAction()
     var winAction = SKAction()

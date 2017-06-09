@@ -10,7 +10,7 @@ import SceneKit
 
 class ImagineModel202: ImagineModel009
 {
-    override var actionRotateCarrousel: SCNAction { return SCNAction.rotateBy(x: 0.0, y: CGFloat(-M_PI), z: 0, duration: 0.5) }
+    override var actionRotateCarrousel: SCNAction { return SCNAction.rotateBy(x: 0.0, y: CGFloat(-Double.pi), z: 0, duration: 0.5) }
     override var carrouselDiameter: CGFloat { return 5 }
     override var nbSlotsInCarroussel: Int { return 2 }
     

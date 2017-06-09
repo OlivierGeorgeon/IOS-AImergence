@@ -13,20 +13,20 @@ enum Phenomenon: Int { case none, tile}
 
 class SCNRobotNode: SCNNode {
     
-    let bendFront = SCNAction.rotateBy( x: CGFloat(M_PI) / 2, y: 0, z: 0, duration: 0.2)
-    let bendBack  = SCNAction.rotateBy(x: -CGFloat(M_PI) / 2, y: 0, z: 0, duration: 0.2)
-    let bendLeft  = SCNAction.rotateBy(x: 0, y: 0, z:  CGFloat(M_PI) / 2, duration: 0.2)
-    let bendRight = SCNAction.rotateBy(x: 0, y: 0, z: -CGFloat(M_PI) / 2, duration: 0.2)
+    let bendFront = SCNAction.rotateBy( x: CGFloat(Double.pi) / 2, y: 0, z: 0, duration: 0.2)
+    let bendBack  = SCNAction.rotateBy(x: -CGFloat(Double.pi) / 2, y: 0, z: 0, duration: 0.2)
+    let bendLeft  = SCNAction.rotateBy(x: 0, y: 0, z:  CGFloat(Double.pi) / 2, duration: 0.2)
+    let bendRight = SCNAction.rotateBy(x: 0, y: 0, z: -CGFloat(Double.pi) / 2, duration: 0.2)
     let actionUp = SCNAction.move(by: SCNVector3(0, 7, 0), duration: 0.1)
     let actionDown = SCNAction.move(by: SCNVector3(0, -7, 0), duration: 0.1)
-    let actionTurnLeft = SCNAction.rotateBy(x: 0.0, y: CGFloat(M_PI) / 2, z: 0.0, duration: 0.2)
-    let actionTurnRight = SCNAction.rotateBy(x: 0.0, y: -CGFloat(M_PI) / 2, z: 0.0, duration: 0.2)
-    let actionTurnOver = SCNAction.rotateBy(x: 0, y: -CGFloat(M_PI) , z: 0, duration: 0.3)
-    let actionTurnOver2 = SCNAction.rotateBy(x: 0, y: CGFloat(M_PI) , z: 0, duration: 0.3)
-    let turn45Left = SCNAction.rotateBy(x: 0.0, y: CGFloat(M_PI) / 4, z: 0.0, duration: 0.2)
-    let turn45Right = SCNAction.rotateBy(x: 0.0, y: -CGFloat(M_PI) / 4, z: 0.0, duration: 0.2)
-    let turn45Left1 = SCNAction.rotateBy(x: 0.0, y: CGFloat(M_PI) / 4, z: 0.0, duration: 0.1)
-    let turn45Right1 = SCNAction.rotateBy(x: 0.0, y: -CGFloat(M_PI) / 4, z: 0.0, duration: 0.1)
+    let actionTurnLeft = SCNAction.rotateBy(x: 0.0, y: CGFloat(Double.pi) / 2, z: 0.0, duration: 0.2)
+    let actionTurnRight = SCNAction.rotateBy(x: 0.0, y: -CGFloat(Double.pi) / 2, z: 0.0, duration: 0.2)
+    let actionTurnOver = SCNAction.rotateBy(x: 0, y: -CGFloat(Double.pi) , z: 0, duration: 0.3)
+    let actionTurnOver2 = SCNAction.rotateBy(x: 0, y: CGFloat(Double.pi) , z: 0, duration: 0.3)
+    let turn45Left = SCNAction.rotateBy(x: 0.0, y: CGFloat(Double.pi) / 4, z: 0.0, duration: 0.2)
+    let turn45Right = SCNAction.rotateBy(x: 0.0, y: -CGFloat(Double.pi) / 4, z: 0.0, duration: 0.2)
+    let turn45Left1 = SCNAction.rotateBy(x: 0.0, y: CGFloat(Double.pi) / 4, z: 0.0, duration: 0.1)
+    let turn45Right1 = SCNAction.rotateBy(x: 0.0, y: -CGFloat(Double.pi) / 4, z: 0.0, duration: 0.1)
     
     let robot = Robot(i: 0, j: 0, direction: Compass.east)
     var knownCells = [Cell: Phenomenon]()
@@ -55,7 +55,7 @@ class SCNRobotNode: SCNNode {
         bodyNode.name = "body"
         addChildNode(bodyNode)
         
-        pivot = SCNMatrix4MakeRotation(Float(-M_PI/2), 0, 1, 0)
+        pivot = SCNMatrix4MakeRotation(Float(-Double.pi/2), 0, 1, 0)
         scale = SCNVector3(3 , 3, 3)
         
         bendFront.timingMode = .easeInEaseOut
@@ -72,7 +72,7 @@ class SCNRobotNode: SCNNode {
 
         bodyCamera.camera = SCNCamera()
         bodyCamera.position = SCNVector3Make(0.0, 15, -15)
-        bodyCamera.runAction(SCNAction.rotateBy(x: -0.7, y: CGFloat(M_PI), z: 0, duration: 0))
+        bodyCamera.runAction(SCNAction.rotateBy(x: -0.7, y: CGFloat(Double.pi), z: 0, duration: 0))
         addChildNode(bodyCamera)
     }
     
@@ -81,17 +81,17 @@ class SCNRobotNode: SCNNode {
     }
         
     func appearRight() {
-        self.runAction(SCNAction.sequence([SCNAction.rotateBy(x: 0.0, y: -CGFloat(M_PI) / 2, z: 0.0, duration: 0), SCNAction.unhide()]))
+        self.runAction(SCNAction.sequence([SCNAction.rotateBy(x: 0.0, y: -CGFloat(Double.pi) / 2, z: 0.0, duration: 0), SCNAction.unhide()]))
         robot.turnRight()
     }
     
     func appearLeft() {
-        self.runAction(SCNAction.sequence([SCNAction.rotateBy(x: 0.0, y: CGFloat(M_PI) / 2, z: 0.0, duration: 0), SCNAction.unhide()]))
+        self.runAction(SCNAction.sequence([SCNAction.rotateBy(x: 0.0, y: CGFloat(Double.pi) / 2, z: 0.0, duration: 0), SCNAction.unhide()]))
         robot.turnLeft()
     }
     
     func appearBack() {
-        self.runAction(SCNAction.sequence([SCNAction.rotateBy(x: 0.0, y: CGFloat(M_PI), z: 0.0, duration: 0), SCNAction.unhide()]))
+        self.runAction(SCNAction.sequence([SCNAction.rotateBy(x: 0.0, y: CGFloat(Double.pi), z: 0.0, duration: 0), SCNAction.unhide()]))
         robot.turnRight()
         robot.turnRight()
     }

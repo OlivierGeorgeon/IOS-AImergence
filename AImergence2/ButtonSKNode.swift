@@ -38,7 +38,7 @@ class ButtonSKNode: SKNode
         self.backgroundNode = SKSpriteNode(texture: self.activatedTexture)
         
         let appearPath = UIBezierPath()
-        appearPath.addArc(withCenter: CGPoint(x: 0, y: 90), radius: 90, startAngle: -CGFloat(M_PI) / 2 , endAngle: CGFloat(M_PI) / 2, clockwise: true)
+        appearPath.addArc(withCenter: CGPoint(x: 0, y: 90), radius: 90, startAngle: -CGFloat(Double.pi) / 2 , endAngle: CGFloat(Double.pi) / 2, clockwise: true)
         actionAppear = SKAction.follow(appearPath.cgPath, asOffset: false, orientToPath: false, duration: 0.3)
         actionAppear.timingMode = .easeOut
         actionAppearScale.timingMode = .easeOut
@@ -52,7 +52,7 @@ class ButtonSKNode: SKNode
         actionPulse = SKAction.sequence([actionFirstPulseUp, SKAction.repeatForever(SKAction.sequence([actionPulseDown, actionPulseUp]))])
 
         let disappearPath = UIBezierPath()
-        disappearPath.addArc(withCenter: CGPoint(x: 0, y: 90), radius: 90, startAngle: CGFloat(M_PI) / 2 , endAngle: -CGFloat(M_PI) / 2, clockwise: true)
+        disappearPath.addArc(withCenter: CGPoint(x: 0, y: 90), radius: 90, startAngle: CGFloat(Double.pi) / 2 , endAngle: -CGFloat(Double.pi) / 2, clockwise: true)
         actionDisappear = SKAction.follow(disappearPath.cgPath, asOffset: false, orientToPath: false, duration: 0.3)
         actionDisappear.timingMode = .easeIn
         actionDisappearScale.timingMode = .easeIn

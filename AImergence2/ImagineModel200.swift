@@ -18,10 +18,10 @@ class ImagineModel200: ImagineModel002
         //leftHolderNode.position = SCNVector3(8, -5, 8)
         //leftHolderNode.rotation = SCNVector4(0, 1, 0, CGFloat(-M_PI) / 4)
         leftHolderNode.position = SCNVector3(5, -5, 10)
-        leftHolderNode.rotation = SCNVector4(0, 1, 0, CGFloat(-M_PI) / 2)
+        leftHolderNode.rotation = SCNVector4(0, 1, 0, CGFloat(-Double.pi) / 2)
         worldNode.addChildNode(leftHolderNode)
         rightHolderNode.position = SCNVector3(-5, -5, 10)
-        rightHolderNode.rotation = SCNVector4(0, 1, 0, CGFloat(M_PI) / 2)
+        rightHolderNode.rotation = SCNVector4(0, 1, 0, CGFloat(Double.pi) / 2)
         worldNode.addChildNode(rightHolderNode)
         
     }

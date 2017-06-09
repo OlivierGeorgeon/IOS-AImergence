@@ -280,7 +280,7 @@ class TutorSKNode: SKNode {
             text = NSLocalizedString("resume", comment: "")
             shape = arrowLeft(CGRect(x: -220, y: -60, width: 440, height: 120))
             position = CGPoint(x: 0, y: 300)
-            zRotation = CGFloat(M_PI / 2)
+            zRotation = CGFloat(Double.pi / 2)
         case .support:
             // 13
             text = NSLocalizedString("support", comment: "")
@@ -297,7 +297,7 @@ class TutorSKNode: SKNode {
             text = NSLocalizedString("match", comment: "")
             shape = arrowLeft(CGRect(x: -200, y: -60, width: 400, height: 120))
             position = CGPoint(x: 250, y: 250)
-            zRotation = CGFloat(M_PI / 4)
+            zRotation = CGFloat(Double.pi / 4)
         case .group:
             text = NSLocalizedString("group", comment: "")
             shape = arrowLeft(CGRect(x: -200, y: -60, width: 400, height: 120))

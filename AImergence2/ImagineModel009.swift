@@ -12,7 +12,7 @@ class ImagineModel009: ImagineModel005
 {
     let carrouselNode = SCNNode()
 
-    var actionRotateCarrousel: SCNAction { return SCNAction.rotateBy(x: 0.0, y: CGFloat(-M_PI) / 5, z: 0, duration: 0.5) }
+    var actionRotateCarrousel: SCNAction { return SCNAction.rotateBy(x: 0.0, y: CGFloat(-Double.pi) / 5, z: 0, duration: 0.5) }
     var carrouselDiameter: CGFloat { return 22}
     var nbSlotsInCarroussel: Int { return 10}
     
@@ -26,7 +26,7 @@ class ImagineModel009: ImagineModel005
         actionRotateCarrousel.timingMode = .easeInEaseOut
         for i in 0..<nbSlotsInCarroussel {
             let slotNode = SCNNode()
-            let angle = CGFloat(i) * 2 * CGFloat(M_PI) / CGFloat(nbSlotsInCarroussel) - CGFloat(M_PI)
+            let angle = CGFloat(i) * 2 * CGFloat(Double.pi) / CGFloat(nbSlotsInCarroussel) - CGFloat(Double.pi)
             slotNode.position = SCNVector3(carrouselDiameter * cos(angle), 0, -carrouselDiameter * sin(angle))
             slotNode.rotation = SCNVector4(0, 1, 0, angle)
             carrouselNode.addChildNode(slotNode)

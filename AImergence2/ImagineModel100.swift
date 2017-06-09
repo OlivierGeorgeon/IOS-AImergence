@@ -14,8 +14,8 @@ class ImagineModel100: ImagineModel000
     let localCenterNode = SCNNode()
     let remoteCenterNode = SCNNode()
     let remoteRobotNode = SCNRobotNode()
-    let actionRotateFront = SCNAction.rotateBy(x: 0.0, y: CGFloat(M_PI) / 2, z: 0.0, duration: 1)
-    let actionRotateBack = SCNAction.rotateBy(x: 0.0, y: -CGFloat(M_PI) / 2, z: 0.0, duration: 1)
+    let actionRotateFront = SCNAction.rotateBy(x: 0.0, y: CGFloat(Double.pi) / 2, z: 0.0, duration: 1)
+    let actionRotateBack = SCNAction.rotateBy(x: 0.0, y: -CGFloat(Double.pi) / 2, z: 0.0, duration: 1)
     
     var localFront = false
     var remoteFront = false

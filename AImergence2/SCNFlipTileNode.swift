@@ -12,8 +12,8 @@ import SceneKit
 class SCNFlipTileNode: SCNPhenomenonNode {
  
     let tailNode = SCNNode()
-    let actionFlipClockwise = SCNAction.rotateBy(x: 0, y: 0, z: -CGFloat(M_PI) , duration: 0.2)
-    let actionFlipCounterclockwise = SCNAction.rotateBy(x: 0, y: 0, z: CGFloat(M_PI) , duration: 0.2)
+    let actionFlipClockwise = SCNAction.rotateBy(x: 0, y: 0, z: -CGFloat(Double.pi) , duration: 0.2)
+    let actionFlipCounterclockwise = SCNAction.rotateBy(x: 0, y: 0, z: CGFloat(Double.pi) , duration: 0.2)
 
     var direction = Compass.north
     var tailColor = UIColor(red: 150/256, green: 150/256, blue: 150/256, alpha: 1)
@@ -45,7 +45,7 @@ class SCNFlipTileNode: SCNPhenomenonNode {
         let tailGeometry = SCNShape(path: path, extrusionDepth: CGFloat(10))
         tailNode.geometry = tailGeometry
         tailNode.scale = SCNVector3(0.1, 0.1, 0.1)
-        tailNode.pivot = SCNMatrix4MakeRotation(Float(M_PI/2), 1, 0, 0)
+        tailNode.pivot = SCNMatrix4MakeRotation(Float(Double.pi/2), 1, 0, 0)
 
         self.direction = direction
         if direction == .north {
