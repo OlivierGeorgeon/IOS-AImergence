@@ -3,10 +3,9 @@ Little AI is a pedagogical game aimed at presenting the founding concepts of con
 # Useful links
 * Little AI website: http://little-ai.com/
 * The web version: https://github.com/pierreelliott/LittleAI-Web
+* Survey about your experience playing Litte AI: https://clarolineconnect.univ-lyon1.fr/survey/survey/145/answer/form
 # Designing levels
 To implement the new level n of Group g, create the following files (example with g=3 and nn=00):
 * Level300.swift: the code of the level.
-* Help3.plist: the instructions fo the level.
+* Help3.plist: the instructions for the levels of Group 3.
 * ImagineModel300.swift: The 3D simulation to show in the Replay Window.
-# Send feedback
-Send feedback about your experience playing Litte AI at https://clarolineconnect.univ-lyon1.fr/survey/survey/145/answer/form
