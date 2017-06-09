@@ -3,7 +3,7 @@
 //  AImergence
 //
 //  Created by Olivier Georgeon on 03/01/16.
-//  Copyright (c) 2016 Olivier Georgeon. All rights reserved.
+//  CC0 No rights reserved.
 //
 
 func ==(lhs: Experiment, rhs: Experiment) -> Bool {
