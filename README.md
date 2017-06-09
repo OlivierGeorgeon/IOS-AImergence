@@ -9,3 +9,4 @@ To implement the new level n of Group g, create the following files (example wit
 * Level300.swift: the code of the level.
 * Help3.plist: the instructions for the levels of Group 3.
 * ImagineModel300.swift: The 3D simulation to show in the Replay Window.
+Please contact us for more information.
