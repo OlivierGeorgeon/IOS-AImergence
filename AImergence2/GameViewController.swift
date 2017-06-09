@@ -3,7 +3,7 @@
 //  AImergence2
 //
 //  Created by Olivier Georgeon on 09/01/16.
-//  CC0 No rights reserved.
+//  CC0 No rights reserved. 
 //
 
 import UIKit
