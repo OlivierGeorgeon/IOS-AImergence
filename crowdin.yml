@@ -1,0 +1,5 @@
+files:
+  - source: AImergence2/Base.lproj/Help?.plist
+    translation: AImergence2/%two_letters_code%.lproj/%original_file_name%
+  - source: AImergence2/Base.lproj/Localizable.strings
+    translation: AImergence2/%two_letters_code%.lproj/%original_file_name%
