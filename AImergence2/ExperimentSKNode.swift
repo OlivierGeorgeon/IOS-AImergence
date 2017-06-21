@@ -1,9 +1,11 @@
 //
 //  ExperimentNode.swift
-//  AImergence2
+//  Little AI
 //
 //  Created by Olivier Georgeon on 20/01/16.
 //  CC0 No rights reserved.
+//
+//  A node that display command (Experiment).
 //
 
 import SpriteKit

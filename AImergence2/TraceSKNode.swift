@@ -5,6 +5,7 @@
 //  Created by Olivier Georgeon on 25/07/16.
 //  CC0 No rights reserved.
 //
+//  The node that contains all the EventNodes of the trace. 
 
 import SpriteKit
 

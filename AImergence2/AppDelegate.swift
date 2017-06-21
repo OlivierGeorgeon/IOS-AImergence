@@ -1,6 +1,6 @@
 //
 //  AppDelegate.swift
-//  AImergence2
+//  Little AI
 //
 //  Created by Olivier Georgeon on 09/01/16.
 //  CC0 No rights reserved.

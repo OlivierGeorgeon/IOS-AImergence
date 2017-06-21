@@ -5,6 +5,7 @@
 //  Created by Olivier Georgeon on 03/08/16.
 //  CC0 No rights reserved.
 //
+//  The enable/disable sound button
 
 import SpriteKit
 

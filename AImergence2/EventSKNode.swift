@@ -5,6 +5,8 @@
 //  Created by Olivier Georgeon on 19/07/16.
 //  CC0 No rights reserved.
 //
+//  Encompasses the ExperienceNode (that displays the interaction) and the valance attached to it.
+//
 
 import SpriteKit
 

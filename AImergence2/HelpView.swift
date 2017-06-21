@@ -1,10 +1,11 @@
 //
 //  HelpView.swift
-//  AImergence
+//  Little AI
 //
 //  Created by Olivier Georgeon on 01/02/16.
 //  CC0 No rights reserved.
 //
+//  The user events of the Instruction (help) window
 
 import UIKit
 

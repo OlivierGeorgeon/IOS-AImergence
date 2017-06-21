@@ -5,6 +5,8 @@
 //  Created by Olivier Georgeon on 05/12/2016.
 //  CC0 No rights reserved.
 //
+//  The code that controls the multiplayer user interface
+//
 
 import Foundation
 import GameKit
@@ -94,7 +96,7 @@ extension GameViewController: GKMatchmakerViewControllerDelegate, GKMatchDelegat
     
     // This is called on the invitee's device after she receives an invitation from the inviter
     func player(_ player: GKPlayer, didAccept invite: GKInvite) {
-        print("did accept invite player: \(player.displayName) invite_sender: \(invite.sender.displayName)")
+        print("did accept invite player: \(String(describing: player.displayName)) invite_sender: \(String(describing: invite.sender.displayName))")
         //if invite.playerGroup <= GameViewController.maxLevelNumber {
             level = invite.playerGroup
             let gameScene = GameSKScene(levelNumber: level)

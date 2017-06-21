@@ -5,6 +5,8 @@
 //  Created by Olivier Georgeon on 20/05/16.
 //  CC0 No rights reserved.
 //
+//  Implements the displacements of the robot  
+//
 
 import Foundation
 

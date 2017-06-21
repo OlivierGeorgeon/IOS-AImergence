@@ -5,6 +5,7 @@
 //  Created by Olivier Georgeon on 26/07/16.
 //  CC0 No rights reserved.
 //
+//  The node that represent the remote player
 
 import Foundation
 import SpriteKit

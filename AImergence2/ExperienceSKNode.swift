@@ -1,9 +1,11 @@
 //
 //  ExperienceNode.swift
-//  AImergence2
+//  Little AI
 //
 //  Created by Olivier Georgeon on 20/01/16.
 //  CC0 No rights reserved.
+//
+//  A node that displays an interaction (Experience)
 //
 
 import SpriteKit

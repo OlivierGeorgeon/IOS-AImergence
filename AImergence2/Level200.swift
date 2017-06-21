@@ -1,9 +1,12 @@
 //
 //  Level0.swift
-//  AImergence
+//  Little AI
 //
 //  Created by Olivier Georgeon on 31/12/15.
 //  CC0 No rights reserved.
+//
+//  This is where Level200 is implemented
+//  Other levels of Group 2 inherit from this class
 //
 
 import Foundation

@@ -5,6 +5,8 @@
 //  Created by Olivier Georgeon on 19/08/16.
 //  CC0 No rights reserved.
 //
+//  A tile in the replay window
+//
 
 import Foundation
 import SceneKit

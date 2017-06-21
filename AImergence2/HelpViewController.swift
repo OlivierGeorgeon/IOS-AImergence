@@ -1,10 +1,11 @@
 //
 //  HelpViewControler.swift
-//  AImergence2
+//  Little AI
 //
 //  Created by Olivier Georgeon on 23/01/16.
 //  CC0 No rights reserved.
 //
+//  The user interface of the Instruction (help) window
 
 import UIKit
 

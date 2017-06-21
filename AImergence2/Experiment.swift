@@ -1,9 +1,11 @@
 //
 //  Experiment.swift
-//  AImergence
+//  Little AI
 //
 //  Created by Olivier Georgeon on 03/01/16.
 //  CC0 No rights reserved.
+//
+//  An experiment is a command pressed by the player
 //
 
 func ==(lhs: Experiment, rhs: Experiment) -> Bool {

@@ -5,6 +5,7 @@
 //  Created by Olivier Georgeon on 25/07/16.
 //  CC0 No rights reserved.
 //
+//  The popup window to select the color of interactions
 
 import SpriteKit
 

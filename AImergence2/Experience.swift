@@ -1,9 +1,11 @@
 //
 //  Experience.swift
-//  AImergence
+//  Little AI
 //
 //  Created by Olivier Georgeon on 03/01/16.
 //  CC0 No rights reserved.
+//
+//  An Experience is an interaction, i.e., a tuble <experiment, result>
 //
 
 func ==(lhs: Experience, rhs: Experience) -> Bool {

@@ -5,6 +5,8 @@
 //  Created by Olivier Georgeon on 09/07/16.
 //  CC0 No rights reserved.
 //
+//  The node that displays the tip helps (green arrows)
+//
 
 import SpriteKit
 import StoreKit

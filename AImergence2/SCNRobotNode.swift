@@ -5,6 +5,7 @@
 //  Created by Olivier Georgeon on 20/05/16.
 //  CC0 No rights reserved.
 //
+//  The 3D robot node in the Replay window
 
 import Foundation
 import SceneKit

@@ -5,6 +5,8 @@
 //  Created by Olivier Georgeon on 20/08/16.
 //  CC0 No rights reserved.
 //
+//  A flippable tile in the Replay window
+//
 
 import Foundation
 import SceneKit

@@ -1,9 +1,11 @@
 //
 //  ShapableNode.swift
-//  AImergence2
+//  Little AI
 //
 //  Created by Olivier Georgeon on 20/01/16.
 //  CC0 No rights reserved.
+//
+//  The parent class of Notes that can be reshaped (exeriment nodes and interaction nodes)
 //
 
 import SpriteKit

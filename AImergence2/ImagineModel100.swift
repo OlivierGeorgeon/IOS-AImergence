@@ -1,9 +1,11 @@
 //
 //  WorldScene1.swift
-//  AImergence
+//  Little AI
 //
 //  Created by Olivier Georgeon on 11/02/16.
 //  CC0 No rights reserved.
+//
+//  Controls the 3D model shown in the Replay window of Level200
 //
 
 import SceneKit

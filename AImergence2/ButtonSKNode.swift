@@ -5,6 +5,8 @@
 //  Created by Olivier Georgeon on 08/06/16.
 //  CC0 No rights reserved.
 //
+//  A button in the user interface 
+//
 
 import SpriteKit
 

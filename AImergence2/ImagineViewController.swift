@@ -1,9 +1,11 @@
 //
 //  WorldViewController.swift
-//  AImergence
+//  Little AI
 //
 //  Created by Olivier Georgeon on 11/02/16.
 //  CC0 No rights reserved.
+//
+//  The user interface of the Replay window (imagine window)
 //
 
 import UIKit

@@ -1,9 +1,11 @@
 //
 //  PositionedSKScene.swift
-//  AImergence
+//  Little AI
 //
 //  Created by Olivier Georgeon on 16/02/16.
 //  CC0 No rights reserved.
+//
+//  The parent scene from which the Game Scene and the Menu Scene inherit. 
 //
 
 import Foundation

@@ -1,9 +1,11 @@
 //
 //  SceneStruct.swift
-//  AImergence2
+//  Little AI
 //
 //  Created by Olivier Georgeon on 13/01/16.
 //  CC0 No rights reserved.
+//
+//  Defines the layout of the game scene
 //
 
 import SpriteKit

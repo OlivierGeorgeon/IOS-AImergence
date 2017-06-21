@@ -5,6 +5,8 @@
 //  Created by Olivier Georgeon on 21/07/16.
 //  CC0 No rights reserved.
 //
+//  The 2D robot in the game scene.
+//
 
 import SpriteKit
 

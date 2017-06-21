@@ -5,6 +5,7 @@
 //  Created by Olivier Georgeon on 26/07/16.
 //  CC0 No rights reserved.
 //
+//  The parent node that contains the tip help (green arrows)
 
 enum Tutor { case instruction, command, score, replay, rank, drag, menu, redo, sequence, shape, color, level, resume, support, sound, done, instructionAgain, replayAgain, match, group}
 
