@@ -5,7 +5,7 @@
     <key>Help</key>
     <array>
       <array>
-        <string>Welcome to Little AI!</string>
+        <string>Добро пожаловать в Little AI!</string>
         <string>With the buttons at the bottom of the screen, you are controlling a baby robot called Little AI. The goal is to reach the score of 10 within 10 turns.</string>
         <string>As you play, you generate colored circles and squares called "interactions". Your score is the sum of the points of the last ten interactions. Yes, only the last ten!</string>
         <string>You will better understand the meaning of interactions when you see the replay mode after having reached the score of 10.</string>
