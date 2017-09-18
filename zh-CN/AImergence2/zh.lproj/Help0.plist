@@ -23,15 +23,15 @@
       <array>
         <string>按压或者保持一个命令来改变他的形状。按压或者保持一个交互在一个迹里面来改变他的颜色。</string>
         <string>改变命令的形状和交互的颜色来识别他们。形状和颜色只是用来描述的，他们不会改变或者影响机器人。</string>
-        <string>You can also recognize interactions by the cries your baby robot makes. In this game, your ears can also help you!</string>
+        <string>您也可以通过你的小机器人发出的哭声来识别交互。在这个游戏里面，你的耳朵同样也可以帮助你很多。</string>
       </array>
       <array>
-        <string>In Level 4, Little AI cannot always avoid unpleasant interactions.</string>
-        <string>Generate a pattern of interaction that contains as few unpleasant interactions as possible. </string>
-        <string>Use different shapes for the commands. Display the enjoyable interactions in green and the unpleasant interactions in red. Don't think too much, your brain will see the pattern before you know it!</string>
+        <string>在第4级别中，Little AI 不会总是避开不开心的交互。</string>
+        <string>产生出一个交互的模式，这个模式里面包含了尽量少的不开心的交互。</string>
+        <string>为命令使用不同的形状。用绿色显示了开心的交互，用红色显示了不开心的交互。不要想太多，您的大脑将会在你知晓之前看到模式！</string>
       </array>
       <array>
-        <string>Experiment with each command alone several times in a row. In the trace, you will see that one command always yields the same interaction within a given situation (same shape and same color).</string>
+        <string>每一条命令的实验会联系的执行多次。在一个迹中，您将会看到一个命令总是在给定的情形中产生相同的交互（比如相同的形状和相同的颜色）。</string>
         <string>This command allows you to observe the world without changing it. We call it an "observational command", and its resulting interactions "observational interactions".</string>
         <string>Use the color of observational interactions to avoid performing a strongly unpleasant interaction on the next turn.</string>
       </array>
