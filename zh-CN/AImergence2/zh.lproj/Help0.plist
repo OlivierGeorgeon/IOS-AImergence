@@ -41,13 +41,13 @@
         <string>以绿色展示出的交互式欢快的。或者在下一轮中先兆的给出欢快的交互，红色的是在下一轮中强烈的不快或者是其先兆的相互交互</string>
       </array>
       <array>
-        <string>In Level 7, the commands have the same effects as in Levels 5 and 6, but the values of interactions are different.</string>
-        <string>Tap the interactions in the trace to replay enjoyable patterns of interaction in the context when it is possible.</string>
-        <string>When you replay a pattern, skip the observational commands to maximize your score.</string>
+        <string>在第7级别当中，命令有着和第5、6级别中相同的作用，但是交互的值是不同的。</string>
+        <string>在可能的情况下，在敲击在迹中的交互来重播高兴的交互模式</string>
+        <string>在您重播一个模式的时候，跳过观测命令来最大化您的得分。</string>
       </array>
       <array>
-        <string>On Level 8, the commands have the same effects as in Levels 5 to 7.</string>
-        <string>Now, however, one of the commands always yields the same interaction. This is a "non-informative command".</string>
+        <string>在第8级别中，命令有着和第5、7相同的作用。</string>
+        <string>现在，其中的一条命令总是产生相同的交互。这是一个“无意义的命令”。</string>
         <string>Although non-informative commands always yield the same interaction, do not mistake them for observational commands.</string>
       </array>
       <array>
