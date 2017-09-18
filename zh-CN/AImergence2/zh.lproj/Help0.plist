@@ -6,8 +6,8 @@
     <array>
       <array>
         <string>欢迎您来到 Little AI</string>
-        <string>您可以使用屏幕下方的按钮，就可以控制一个称之为“Little AI”的小宝宝。我们的目标是在10个循环之类，获得10分的目标</string>
-        <string>As you play, you generate colored circles and squares called "interactions". Your score is the sum of the points of the last ten interactions. Yes, only the last ten!</string>
+        <string>您可以使用屏幕下方的按钮控制一个叫“Little AI”的可爱机器人。过关的条件是在10个回合之内夺得10分。</string>
+        <string>在您玩的过程当中，您可以看到生成的称之为“交互”的彩色圆圈和方框。您的得分是最近的10次交互结果的总和。对的，只是最近的10次交互！</string>
         <string>You will better understand the meaning of interactions when you see the replay mode after having reached the score of 10.</string>
       </array>
       <array>
