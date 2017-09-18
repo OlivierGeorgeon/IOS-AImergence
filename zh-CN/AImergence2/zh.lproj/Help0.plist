@@ -12,8 +12,8 @@
       </array>
       <array>
         <string>交互是一系列的命令及其相应的反馈信息。这些命令会通过他们的形状的不同而区别开来，反馈的信息通过他们的颜色区别开来。交互流称之为“迹”。</string>
-        <string>To better understand the game, it is preferable to generally follow the order: 1- read the instructions, 2- win the level, 3- explore the "replay" mode.</string>
-        <string>Drag the 2D robot to the right or to the left to shift to the previous or to the next level.</string>
+        <string>为了更好的了解这个游戏，比较推荐按照以下的顺序来进行，1、首先阅读使用说明。2，过关。3、分析重现模式。</string>
+        <string>拖动二维的机器人到左边或者右边来改变之前或者之后的级别</string>
       </array>
       <array>
         <string>Little AI finds the interactions more or less enjoyable or unpleasant. The points associated with interactions indicate the intensity of these feelings.</string>
