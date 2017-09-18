@@ -32,13 +32,13 @@
       </array>
       <array>
         <string>每一条命令的实验会联系的执行多次。在一个迹中，您将会看到一个命令总是在给定的情形中产生相同的交互（比如相同的形状和相同的颜色）。</string>
-        <string>This command allows you to observe the world without changing it. We call it an "observational command", and its resulting interactions "observational interactions".</string>
-        <string>Use the color of observational interactions to avoid performing a strongly unpleasant interaction on the next turn.</string>
+        <string>这个命令允许在不改变他的情况下观察他。我们称之为“观测命令”，以及他的交互结果“观测交互”。</string>
+        <string>使用观测交互的颜色来避开在下一个循环中表现出的强烈的不高兴交互</string>
       </array>
       <array>
-        <string>In Level 6, the commands have the same effects as in Level 5, but they have been rearranged in a random order, and are all initially represented by circles.</string>
-        <string>It is left to you to attribute shapes to commands and colors to interactions.</string>
-        <string>Display in green the interactions that are enjoyable or premonitory of an enjoyable interaction in the next turn, and in red those that are strongly unpleasant or premonitory of a strongly unpleasant interaction in the next turn.</string>
+        <string>在第6级别中，命令有着与第5级别相同的影响和作用，但是他们被按照随机的顺序重新排列，并且都最初的用圆圈来表现出来。</string>
+        <string>剩下的留给你去将 形状归属于命令，将颜色归属于交互。</string>
+        <string>以绿色展示出的交互式欢快的。或者在下一轮中先兆的给出欢快的交互，红色的是在下一轮中强烈的不快或者是其先兆的相互交互</string>
       </array>
       <array>
         <string>In Level 7, the commands have the same effects as in Levels 5 and 6, but the values of interactions are different.</string>
