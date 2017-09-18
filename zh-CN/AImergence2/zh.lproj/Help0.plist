@@ -16,13 +16,13 @@
         <string>拖动二维的机器人到左边或者右边来改变之前或者之后的级别</string>
       </array>
       <array>
-        <string>Little AI finds the interactions more or less enjoyable or unpleasant. The points associated with interactions indicate the intensity of these feelings.</string>
-        <string>Generate a pattern of enjoyable interactions.</string>
-        <string>Tap an interaction in the trace to replay a previous command. The same command replayed upon the same object yields the same interaction. To replay an entire pattern of interactions, tap the "next command" several times (white shape that appears on the left when you tap an interaction).</string>
+        <string>Little AI发现了交互或多或少的喜悦或者不开心。与这些交互相关联点表明了这些感受的强度。</string>
+        <string>产生了喜悦的交互的模式</string>
+        <string>在一条迹上敲击交互来重播之前的命令。相同的命令发生在相同的物体上产生相同的交互。为了重播全部的交互的模式，可以通过敲击“下一个命令”数次（在敲击一个交互的时候白色的形状在左边产生）</string>
       </array>
       <array>
-        <string>Press and hold a command to change its shape. Press and hold an interaction in the trace to change its color.</string>
-        <string>Change the shapes of the commands and the colors of interactions to recognize them. Shapes and colors are purely descriptive. They do not change the robot.</string>
+        <string>按压或者保持一个命令来改变他的形状。按压或者保持一个交互在一个迹里面来改变他的颜色。</string>
+        <string>改变命令的形状和交互的颜色来识别他们。形状和颜色只是用来描述的，他们不会改变或者影响机器人。</string>
         <string>You can also recognize interactions by the cries your baby robot makes. In this game, your ears can also help you!</string>
       </array>
       <array>
