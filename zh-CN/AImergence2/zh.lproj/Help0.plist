@@ -8,7 +8,7 @@
         <string>欢迎您来到 Little AI</string>
         <string>您可以使用屏幕下方的按钮控制一个叫“Little AI”的可爱机器人。过关的条件是在10个回合之内夺得10分。</string>
         <string>在您玩的过程当中，您可以看到生成的称之为“交互”的彩色圆圈和方框。您的得分是最近的10次交互结果的总和。对的，只是最近的10次交互！</string>
-        <string>You will better understand the meaning of interactions when you see the replay mode after having reached the score of 10.</string>
+        <string>在您获得10分之后，您会看到重播模式，您将会更好的理解交互的含义。</string>
       </array>
       <array>
         <string>An interaction is the association of a command with feedback information. Commands are differentiated by their shapes and feedback information by their colors. The stream of interactions is called the "trace".</string>
