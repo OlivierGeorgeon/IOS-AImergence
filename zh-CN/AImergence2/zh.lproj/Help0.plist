@@ -64,17 +64,17 @@
       </array>
       <array>
         <string>而这个盒子甚至会更小一些。</string>
-        <string>Scroll to review the last 100 interactions. Double-tap on an empty area to scroll back to origin.</string>
-        <string>Press the score to see your number of turns.</string>
+        <string>通过拖动滚轮，可以回看最近的100次交互，在空白的地方双击，可以回到游戏开始的地方。</string>
+        <string>按下得分，可以看到您玩的轮数。</string>
       </array>
       <array>
-        <string>Level 13 offers the same commands as Levels 11 and 12 plus an observational command.</string>
-        <string>Now Little AI really hates bumping, and quite dislikes turning. Fortunately, the box is getting bigger!</string>
-        <string>Use the observational command to avoid bumping into the edges.</string>
+        <string>第13级别提供了与11级别和12级别相同的命令。另外加上了一个观测命令。</string>
+        <string>现在Little AI真的讨厌碰撞，同时也相当讨厌转动。幸运的是，盒子变得原来越大了。</string>
+        <string>使用观测命令来避开与盒子边缘的碰撞。</string>
       </array>
       <array>
-        <string>Level 14's world is the same as Level 13's.</string>
-        <string>As a player, you are in an analogous situation as a newborn baby that ignores the signification of its gestures and of its senses, or of a robot that ignores the signification of its actuators and sensors.</string>
+        <string>第14级别的环境与第13级别很相似。</string>
+        <string>作为一个游戏者（在一个游戏中），您可以如同新生的宝宝一样，在一个类似情形中，忽略了手势和感官的意义，或者如同一个机器人忽略了制动器与传感器的意义。</string>
         <string>You must learn to know yourself and your environment to live a happy life!</string>
       </array>
       <array>
