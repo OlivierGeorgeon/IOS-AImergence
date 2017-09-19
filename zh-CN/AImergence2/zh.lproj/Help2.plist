@@ -5,7 +5,7 @@
     <key>Help</key>
     <array>
       <array>
-        <string>In Level 2.00, Little AI can flip the tiles on its left and on its right.</string>
+        <string>在第2.00级别中，Little AI可以敲击他左边和右边的小片。</string>
         <string>It can experience a delightful interaction in a specific configuration of the environment.</string>
         <string>Notice that one of the commands now can yield three different types of interactions.</string>
       </array>
