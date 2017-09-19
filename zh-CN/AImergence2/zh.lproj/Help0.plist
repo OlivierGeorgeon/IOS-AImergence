@@ -75,12 +75,12 @@
       <array>
         <string>第14级别的环境与第13级别很相似。</string>
         <string>作为一个游戏者（在一个游戏中），您可以如同新生的宝宝一样，在一个类似情形中，忽略了手势和感官的意义，或者如同一个机器人忽略了制动器与传感器的意义。</string>
-        <string>You must learn to know yourself and your environment to live a happy life!</string>
+        <string>为了能够拥有愉悦的生活，您必须学会了解您自己和您的环境。</string>
       </array>
       <array>
-        <string>Little AI now has two additional observational commands that it can use to observe the edges of the box on its right and on its left.</string>
-        <string>Use these additional possibilities of observation to avoid turning towards the edges of the box.</string>
-        <string>The box is getting even bigger.</string>
+        <string>Little AIAI现在拥有两个附加的观测命令，使用这些命令，可以在盒子的左视角和右视角来观察其边缘。</string>
+        <string>使用这些附加的观察内容，可以避开机器人转向盒子的边缘部分。</string>
+        <string>盒子变得越来越大了。</string>
       </array>
       <array>
         <string>You are in the same world as in Level 15 with the same commands initially uninterpreted.</string>
