@@ -48,22 +48,22 @@
       <array>
         <string>在第8级别中，命令有着和第5、7相同的作用。</string>
         <string>现在，其中的一条命令总是产生相同的交互。这是一个“无意义的命令”。</string>
-        <string>Although non-informative commands always yield the same interaction, do not mistake them for observational commands.</string>
+        <string>尽管无意义的命令总是产生相同的交互，但是不要错误的将其作为观测命令。</string>
       </array>
       <array>
-        <string>The commands have similar effects as in the previous levels, but they also transform the environment on the long term.</string>
-        <string>Little AI must transform its environment until it can enact an enjoyable interaction on every turn.</string>
+        <string>命令与之前的级别有相同的效果，但是从长远来看，他们也会改变环境。</string>
+        <string>Little AI 必须改变他的环境，知道他可以在每一轮交互中愉快的执行交互。</string>
       </array>
       <array>
-        <string>Level 10's world is the same as Level 9's.</string>
-        <string>Let's see if you can tell the observational command and the non-informative command apart.</string>
+        <string>第10级别的情况也第9级别很像。</string>
+        <string>让我们看看你是否可以分开（区分）观测命令和无意义命令。</string>
       </array>
       <array>
-        <string>In Level 11, Little AI can move forward and turn in a little box.</string>
-        <string>It loves moving forward but hates bumping into the edges of the box.</string>
+        <string>在第11界别中，Little AI可以向前移动，也可以转向一个小盒子。</string>
+        <string>他（Little AI）喜欢向前移动，但是他讨厌以盒子的边缘碰撞。</string>
       </array>
       <array>
-        <string>The box is even smaller.</string>
+        <string>而这个盒子甚至会更小一些。</string>
         <string>Scroll to review the last 100 interactions. Double-tap on an empty area to scroll back to origin.</string>
         <string>Press the score to see your number of turns.</string>
       </array>
