@@ -6,18 +6,18 @@
     <array>
       <array>
         <string>在第2.00级别中，Little AI可以敲击他左边和右边的小片。</string>
-        <string>It can experience a delightful interaction in a specific configuration of the environment.</string>
-        <string>Notice that one of the commands now can yield three different types of interactions.</string>
+        <string>他能够在特定的环境配置下，体验愉快的交互。</string>
+        <string>请注意，现在的命令之一可以产生三种不同类型的交互。</string>
       </array>
       <array>
-        <string>Level 2.01 is identical to Level 2.00.</string>
-        <string>This series of levels illustrates the problem of learning the persistence of objects in the world. </string>
-        <string>It involves using rudimentary spatial memory that may lay the ground for more complex spatial intelligence.</string>
+        <string>第2.01级别与第2.00级别是相同的。</string>
+        <string>这一系列的级别说明了在学习持久对象中存在的问题。 </string>
+        <string>他涉及到基础的空间存储，可以为更复杂的空间智能奠定基础。</string>
       </array>
       <array>
-        <string>Little AI begins to manipulate a more complex object made of two different parts. </string>
-        <string>We currently don't have algorithms that can play levels 2.00 to 2.02 automatically. If you wish to contribute to research in developmental AI, you may address this problem.</string>
-        <string>You may also invent more levels that exemplify the problem of learning to interact with more complex objects.</string>
+        <string>Little AI开始操作一个更复杂的由两个不同的部分组成的物体。</string>
+        <string>我们目前没有算法可以自动的玩第2.00级别到2.02级别的游戏。如果您想要在启发式人工智能领域有所贡献，您或许可以解决这个问题。</string>
+        <string>您或许可以创造更多的级别，来展示（或者解决）学会与更多复杂物体交互的学习中存在的问题。</string>
       </array>
     </array>
   </dict>
