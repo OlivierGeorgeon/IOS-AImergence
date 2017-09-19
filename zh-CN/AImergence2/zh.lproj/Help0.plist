@@ -83,12 +83,14 @@
         <string>盒子变得越来越大了。</string>
       </array>
       <array>
-        <string>You are in the same world as in Level 15 with the same commands initially uninterpreted.</string>
-        <string>Little AI is a free open-source research and pedagogical project driven by enthusiast volunteers in collaboration with academia.</string>
-        <string>If you wish to learn more about research in developmental artificial intelligence and about us, consider visiting http://little-ai.com.</string>
+        <string>您处在和第15级别相同的环境中，拥有相同无解释的初始化的命令。</string>
+        <string>Little AI是一个开源的研究和教学项目，是由学术界与爱好这门共同合作驱动的。
+
+</string>
+        <string>如果您想要学到更多的有关启发式人工智能的研究内容，以及更多的有关我们的信息，请考虑访问网站：http://little-ai.com</string>
       </array>
       <array>
-        <string>You reached the last level of series #0! Congratulations! It is similar to Level 16.</string>
+        <string>您已经达到了#0 的最后一个级别！ 祝贺您！他类似于第16级别。</string>
         <string>If you found Little AI enjoyable or instructive, or both, please consider making a small donation.</string>
         <string>Your donations will support the creation of new levels. It will also promote independent and open-source research in developmental artificial intelligence.</string>
       </array>
