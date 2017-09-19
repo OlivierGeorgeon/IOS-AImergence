@@ -15,10 +15,10 @@
 "Excellent 3" = "请注意Little AI会在您历史记录中选择一个交互的时候，建议您下一个命令。您可以在每一轮中命令不同的历史记录中尝试一下。给出的建议命令不总是适当的，但是历史记录会帮帮助您确定那一条命令在什么情况下产生什么样的交互。";
 "Excellent 4" = "恭喜您！您已经完成了4级！在历史记录中点击4个交互的成功的队列，来观察为什么不快的交互对愉快的结果是必须的。";
 "Excellent 5" = "这里您可以更加清晰的看到观测命令允许Little AI来观察小片而不改变它，这不同于其他的两个命令。";
-"Excellent 6" = "Make sure that the color of the interactions matches the geometry of the tile with which Little AI is interacting: green for rounded sides and red for flat sides. The colors that you have chosen should reflect these physical properties of the world. Little AI exploits this knowledge to live a happy life!";
-"Excellent 7" = "Bravo! When you play again a sequence of interactions by tapping them in the trace, you are re-executing a program that you have previously learned. This is how an autonomous robot can program itself!";
-"Excellent 8" = "In this level, you can see that the non-informative command flips the tile without informing you on what side it is. Leave the interaction produced by this command in white because it does not convey any information about the physical state of the world.";
-"Excellent 14" = "During the game, you can arbitrarily interpret the directions (left or right) of the rotate commands. This interpretation may be inverted from what you see in replay mode but that's ok. The real world, if it exists, is perhaps entirely inverted from the way you see it!";
+"Excellent 6" = "请确保交互的颜色与Little AI交互的小片的几何形状相对应。绿色对应圆边，红色对应直边。您所选择的颜色应该能够反映现实世界的物理属性。Little AI 利用他的知识过上幸福的生活！";
+"Excellent 7" = "好极了！您在历史记录中通过敲击他们重新玩一次交互的顺序，您重新执行了一次您之前已经学到的程序。这就是一个自动的机器人如何进行自我编程。";
+"Excellent 8" = "在这个级别当中，您可以看到无意义的命令在您没有通知他通知哪一边的时候敲击小片。留下了白色的这个命令产生的交互，因为他没有传达任何的有关现实世界的信息。";
+"Excellent 14" = "在游戏过程中，您可以随意的改变命令旋转的方向。这个改变或许能够转变您再重播模式中看到的内容，但是这是OK的。现实世界，如果存在的话，或许会和您看到的方式会截然不同的。";
 "Excellent 16" = "You can win level 16 before figuring out the exact meaning of each command and interaction. The spatial representation offered by the replay mode will help you correct the inconsistencies in your understanding.";
 "Excellent 100" = "You both must press each command before closing this window to enable the Ok button.";
 "Drag the 3D scene to move the camera" = "Drag the 3D scene to change the angle of view.";
