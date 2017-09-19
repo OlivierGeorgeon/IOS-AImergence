@@ -49,8 +49,8 @@
 "support" = "支持Little AI";
 "sound" = "点击打开或者关闭声音";
 "instructionAgain" = "在说明中点击OK窗口查看说明";
-"replayAgain" = "Press each command/WHILE replay window/is open, and then Ok";
-"match" = "Tap to find/a play partner";
-"group" = "Drag to access/more levels";
-"Disposed from memory" = "Removed from memory";
-"Ready" = "Ready";
+"replayAgain" = "点击每一个命令在重播窗口打开的时候，然后按下OK";
+"match" = "点击找到一位伙伴";
+"group" = "拖动进入更多级别";
+"Disposed from memory" = "从存储中删除";
+"Ready" = "就绪";
