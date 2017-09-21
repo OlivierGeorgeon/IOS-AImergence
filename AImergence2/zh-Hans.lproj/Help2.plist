@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+  <dict>
+    <key>Help</key>
+    <array>
+      <array>
+        <string>在第2.00级别中，Little AI可以敲击他左边和右边的小片。</string>
+        <string>他能够在特定的环境配置下，体验愉快的交互。</string>
+        <string>请注意，现在的命令之一可以产生三种不同类型的交互。</string>
+      </array>
+      <array>
+        <string>第2.01级别与第2.00级别是相同的。</string>
+        <string>这一系列的级别说明了在学习持久对象中存在的问题。 </string>
+        <string>他涉及到基础的空间存储，可以为更复杂的空间智能奠定基础。</string>
+      </array>
+      <array>
+        <string>Little AI开始操作一个更复杂的由两个不同的部分组成的物体。</string>
+        <string>我们目前没有算法可以自动的玩第2.00级别到2.02级别的游戏。如果您想要在启发式人工智能领域有所贡献，您或许可以解决这个问题。</string>
+        <string>您或许可以创造更多的级别，来展示（或者解决）学会与更多复杂物体交互的学习中存在的问题。</string>
+      </array>
+    </array>
+  </dict>
+</plist>
