@@ -6,8 +6,8 @@
     <array>
       <array>
         <string>Добро пожаловать в Little AI!</string>
-        <string>При помощи кнопок, расположенных в нижней части экрана, Вы можете управлять роботов по имени Little AI. Ваша цель - набрать 10 очков за 10 поворотов.</string>
-        <string>As you play, you generate colored circles and squares called "interactions". Your score is the sum of the points of the last ten interactions. Yes, only the last ten!</string>
+        <string>При помощи кнопок, расположенных в нижней части экрана, Вы можете управлять маленьким роботом по имени Little AI. Ваша цель - набрать 10 очков за 10 переворотов.</string>
+        <string>В процессе игры, Вы выбираете цветные круги или квадраты, называемые "взаимодействием". Ваши баллы складываются из последний десяти взаимодействий. Да да, именно из последних десяти!</string>
         <string>You will better understand the meaning of interactions when you see the replay mode after having reached the score of 10.</string>
       </array>
       <array>
