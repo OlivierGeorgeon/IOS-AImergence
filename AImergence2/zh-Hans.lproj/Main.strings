@@ -1,15 +1,15 @@
 
 /* Class = "UIButton"; normalTitle = "Level 0"; ObjectID = "7U6-td-9dq"; */
-"7U6-td-9dq.normalTitle" = "Level 0";
+"7U6-td-9dq.normalTitle" = "级别 0";
 
 /* Class = "UIButton"; normalTitle = "Instructions"; ObjectID = "BJ8-tY-cJW"; */
 "BJ8-tY-cJW.normalTitle" = "Instructions";
 
 /* Class = "UIButton"; normalTitle = "Ok"; ObjectID = "IWI-lU-vxl"; */
-"IWI-lU-vxl.normalTitle" = "Ok";
+"IWI-lU-vxl.normalTitle" = "好的";
 
 /* Class = "UILabel"; text = " Level 0"; ObjectID = "LU5-OA-XkX"; */
-"LU5-OA-XkX.text" = " Level 0";
+"LU5-OA-XkX.text" = " 级别 0";
 
 /* Class = "UIButton"; normalTitle = "Camera"; ObjectID = "ceU-MJ-Rek"; */
 "ceU-MJ-Rek.normalTitle" = "Camera";
@@ -24,4 +24,4 @@
 "waE-OD-fCN.text" = "Help";
 
 /* Class = "UIButton"; normalTitle = "Ok"; ObjectID = "xY4-R3-8Ig"; */
-"xY4-R3-8Ig.normalTitle" = "Ok";
+"xY4-R3-8Ig.normalTitle" = "好的";

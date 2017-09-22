@@ -276,6 +276,7 @@
 		09D426411D0AD44000B34CDF /* ImagineModel016.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagineModel016.swift; sourceTree = "<group>"; };
 		09D426431D0AE29D00B34CDF /* Level017.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Level017.swift; sourceTree = "<group>"; };
 		09D426451D0AE30200B34CDF /* ImagineModel017.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagineModel017.swift; sourceTree = "<group>"; };
+		09DDB3BD1F752AD5000F9491 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		09ED657C1C6C87D2004A8CA7 /* Level007.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Level007.swift; sourceTree = "<group>"; };
 		09ED657E1C6D0EE6004A8CA7 /* ImagineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagineViewController.swift; sourceTree = "<group>"; };
 		09ED65841C6D1400004A8CA7 /* ImagineModel000.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagineModel000.swift; sourceTree = "<group>"; };
@@ -973,6 +974,7 @@
 			children = (
 				093681481C417378008C6B5D /* Base */,
 				092B00371CBFF47A00A6FF3C /* fr */,
+				09DDB3BD1F752AD5000F9491 /* zh-Hans */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
