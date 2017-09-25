@@ -44,12 +44,12 @@
 "shape" = "按下保持和改变形状。";
 "color" = "按下保持和改变颜色";
 "level" = "点击查看级别";
-"sequence" = "点击重播在历史记录中的下一个命令";
+"sequence" = "点击重播在历史记录中/的下一个命令";
 "resume" = "拖动恢复游戏";
 "support" = "支持Little AI";
 "sound" = "点击打开或者关闭声音";
-"instructionAgain" = "在说明中点击OK窗口查看说明";
-"replayAgain" = "点击每一个命令在重播窗口打开的时候，然后按下OK";
+"instructionAgain" = "在说明中点击 好的 查看说明";
+"replayAgain" = "在重播窗口打开的时候点击/每一个命令，然后按下 好的";
 "match" = "点击找到一位伙伴";
 "group" = "拖动进入更多级别";
 "Disposed from memory" = "从存储中删除";
