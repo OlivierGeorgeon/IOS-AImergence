@@ -56,19 +56,19 @@ class GameView: SKView, UIGestureRecognizerDelegate {
         addGestureRecognizer(doubleTapGesture)
     }
     
-    func pan(_ gesture: UIPanGestureRecognizer) {
+    @objc func pan(_ gesture: UIPanGestureRecognizer) {
         if let scene = scene as? PositionedSKScene {
             scene.pan(gesture)
         }
     }
     
-    func tap(_ gesture:UITapGestureRecognizer) {
+    @objc func tap(_ gesture:UITapGestureRecognizer) {
         if let scene = scene as? PositionedSKScene {
             scene.tap(gesture)
         }
     }
     
-    func longPress(_ gesture:UILongPressGestureRecognizer) {
+    @objc func longPress(_ gesture:UILongPressGestureRecognizer) {
         if let scene = scene as? PositionedSKScene {
             scene.longPress(gesture)
         }
@@ -86,7 +86,7 @@ class GameView: SKView, UIGestureRecognizerDelegate {
         }
     }
     
-    func doubleTap(_ gesture:UITapGestureRecognizer) {
+    @objc func doubleTap(_ gesture:UITapGestureRecognizer) {
         if let scene = scene as? GameSKScene {
             scene.doubleTap(gesture)
         }

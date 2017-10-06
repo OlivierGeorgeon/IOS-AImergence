@@ -36,8 +36,8 @@ class HelpView: UIView {
     }
 
     func pan(_ gesture: UIPanGestureRecognizer) {}
-    func tap(_ gesture:UITapGestureRecognizer) {}
-    func longPress(_ gesture:UILongPressGestureRecognizer) {}
+    @objc func tap(_ gesture:UITapGestureRecognizer) {}
+    @objc func longPress(_ gesture:UILongPressGestureRecognizer) {}
     
     override func draw(_ rect: CGRect) {
         UIColor.white.set()

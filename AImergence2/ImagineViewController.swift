@@ -121,8 +121,8 @@ class ImagineViewController: UIViewController {
         textView.scrollRangeToVisible(NSMakeRange(0, 0))
     }
     
-    func tap(_ gesture:UITapGestureRecognizer) {}
-    func longPress(_ gesture:UILongPressGestureRecognizer) {}
+    @objc func tap(_ gesture:UITapGestureRecognizer) {}
+    @objc func longPress(_ gesture:UILongPressGestureRecognizer) {}
 
     func sceneViewSetup() {
         sceneView.scene = SCNScene()

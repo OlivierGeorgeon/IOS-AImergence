@@ -617,7 +617,7 @@ class GameSKScene: PositionedSKScene {
         }
     }
     
-    func revolveShapes() {
+    @objc func revolveShapes() {
         shapePopupNode.revolve()
         reshapeNodes(shapePopupNode.shapeIndex)
     }
@@ -635,7 +635,7 @@ class GameSKScene: PositionedSKScene {
         }
     }
 
-    func revolveColors() {
+    @objc func revolveColors() {
         colorPopupNode.revolve()
         refillNodes(colorPopupNode.colorIndex)
     }
