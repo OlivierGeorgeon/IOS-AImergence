@@ -7,7 +7,8 @@
 //
 
 import XCTest
-@testable import AImergence2
+@testable import Little_AI
+//AImergence2
 
 class AImergence2Tests: XCTestCase {
     
