@@ -36,7 +36,7 @@
         <string>Use the color of observational interactions to avoid performing a strongly unpleasant interaction on the next turn.</string>
       </array>
       <array>
-        <string>In Level 6, the commands have the same effects as in Level 5, but they have been rearranged in a random order, and are all initially represented by circles.</string>
+        <string>На уровне 6 команды имеют такой же эффект, как и на уровне 5, но они отсортированы в случайном порядке и все первоначально представлены кругами.</string>
         <string>Это остается вам атрибутом формы для команд и цветом для взаимодействия. </string>
         <string>Display in green the interactions that are enjoyable or premonitory of an enjoyable interaction in the next turn, and in red those that are strongly unpleasant or premonitory of a strongly unpleasant interaction in the next turn.</string>
       </array>
