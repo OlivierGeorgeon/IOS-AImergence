@@ -5,14 +5,14 @@
     <key>Help</key>
     <array>
       <array>
-        <string>In Level 2.00, Little AI can flip the tiles on its left and on its right.</string>
-        <string>It can experience a delightful interaction in a specific configuration of the environment.</string>
-        <string>Notice that one of the commands now can yield three different types of interactions.</string>
+        <string>На уровне 2.00, Little Al может поворачивать плитки влево и вправо.</string>
+        <string>Это может стать восхитительным опытом взаимодействия в особых условиях конфигурации.</string>
+        <string>Обратите внимание, что одна команда теперь может выполнять три разных взаимодействия.</string>
       </array>
       <array>
-        <string>Level 2.01 is identical to Level 2.00.</string>
-        <string>This series of levels illustrates the problem of learning the persistence of objects in the world. </string>
-        <string>It involves using rudimentary spatial memory that may lay the ground for more complex spatial intelligence.</string>
+        <string>Уровень 2.01 идентичен уровню 2.00</string>
+        <string>Эта серия игр иллюстрирует проблему изучения постоянства объектов в мире.</string>
+        <string>Она включает в себя использование примитивной пространственной памяти, которая может заложить основу для более сложных пространственных задач. </string>
       </array>
       <array>
         <string>Little AI begins to manipulate a more complex object made of two different parts. </string>
