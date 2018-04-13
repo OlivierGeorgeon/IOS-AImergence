@@ -15,9 +15,9 @@
         <string>Она включает в себя использование примитивной пространственной памяти, которая может заложить основу для более сложных пространственных задач. </string>
       </array>
       <array>
-        <string>Little AI begins to manipulate a more complex object made of two different parts. </string>
-        <string>We currently don't have algorithms that can play levels 2.00 to 2.02 automatically. If you wish to contribute to research in developmental AI, you may address this problem.</string>
-        <string>You may also invent more levels that exemplify the problem of learning to interact with more complex objects.</string>
+        <string>Little Al начинает управлять более сложными объектами, состоящими из двух разных частей.</string>
+        <string>В настоящее время у нас нет алгоритмов, которые могут использоваться с уровня 2.00 до уровня 2.02 автоматически. Если вы хотите содействовать исследованиям в области развития Al и можете решить эту проблему, свяжитесь с нами.</string>
+        <string>Вы также можете придумать больше уровней, которые будут иллюстрировать проблемы взаимодействия с более сложными объектами. </string>
       </array>
     </array>
   </dict>
