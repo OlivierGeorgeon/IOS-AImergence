@@ -78,19 +78,19 @@
         <string>Вы должны научиться знать себя и свою среду, чтобы жить счастливой жизнью!</string>
       </array>
       <array>
-        <string>Little AI now has two additional observational commands that it can use to observe the edges of the box on its right and on its left.</string>
-        <string>Use these additional possibilities of observation to avoid turning towards the edges of the box.</string>
-        <string>The box is getting even bigger.</string>
+        <string>Little AI теперь имеет две дополнительные команды наблюдения, которые он может использовать, чтобы наблюдать за краями прямоугольника справа и слева.</string>
+        <string>Используйте эти дополнительные возможности наблюдения, чтобы не поворачиваться к краям коробки.</string>
+        <string>Коробка становится еще больше.</string>
       </array>
       <array>
-        <string>You are in the same world as in Level 15 with the same commands initially uninterpreted.</string>
-        <string>Little AI is a free open-source research and pedagogical project driven by enthusiast volunteers in collaboration with academia.</string>
-        <string>If you wish to learn more about research in developmental artificial intelligence and about us, consider visiting http://little-ai.com.</string>
+        <string>Вы находитесь в том же мире, что и на Уровне 15, с теми же командами, которые изначально были неинтерпретированы.</string>
+        <string>Little AI это бесплатный научно-исследовательский и педагогический проект с открытым исходным кодом, созданный волонтерами-энтузиастами в сотрудничестве с научными кругами.</string>
+        <string>Если вы хотите узнать больше об исследованиях в области искусственного интеллекта и о нас, подумайте о посещении http://little-ai.com.</string>
       </array>
       <array>
-        <string>You reached the last level of series #0! Congratulations! It is similar to Level 16.</string>
-        <string>If you found Little AI enjoyable or instructive, or both, please consider making a small donation.</string>
-        <string>Your donations will support the creation of new levels. It will also promote independent and open-source research in developmental artificial intelligence.</string>
+        <string>Вы достигли последнего уровня серии # 0! Поздравляем! Это похоже на уровень 16.</string>
+        <string>Если вы нашли Little AI приятным или поучительным, или и то, и другое, подумайте о том, чтобы сделать небольшое пожертвование.</string>
+        <string>Ваши пожертвования будут поддерживать создание новых уровней. Оно также будет способствовать независимым исследованиям с открытым исходным кодом в области искусственного интеллекта в области развития.</string>
       </array>
     </array>
   </dict>
