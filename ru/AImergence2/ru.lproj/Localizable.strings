@@ -20,9 +20,9 @@
 "Excellent 8" = "На этом уровне вы можете видеть, что неинформативная команда переворачивает плитку, не сообщая вам, с какой она стороны. Оставьте взаимодействие, созданное этой командой, белым, потому что оно не передает никакой информации о физическом состоянии мира.";
 "Excellent 14" = "Во время игры вы можете произвольно интерпретировать направления (слева или справа) команд вращения. Эта интерпретация может быть инвертирована из того, что вы видите в режиме воспроизведения, но это нормально. Реальный мир, если он существует, может полностью отличаться от того, каким вы его видите.";
 "Excellent 16" = "Вы можете выиграть 16-й уровень, прежде чем выяснить точное значение каждой команды и взаимодействия. Пространственное представление, предлагаемое режимом воспроизведения, поможет вам исправить несоответствия в вашем понимании.";
-"Excellent 100" = "You both must press each command before closing this window to enable the Ok button.";
-"Drag the 3D scene to move the camera" = "Drag the 3D scene to change the angle of view.";
-"Double tap to swap cameras." = "Double-tap on the 3D scene to swap viewpoints.";
+"Excellent 100" = "Вы должны нажать каждую команду перед закрытием этого окна, чтобы включить кнопку «Ок».";
+"Drag the 3D scene to move the camera" = "Перетащите 3D вид, чтобы изменить угол обзора. ";
+"Double tap to swap cameras." = "Дважды нажмите на 3D-вид для замены точек обзора.";
 "Explore your environment" = "Explore your environment before moving on to the next level.";
 "Tap an event to replay its command" = "Scroll the background window to review the past interactions. Tap the interactions to replay series of commands.";
 "Replay without bumping" = "Tap the interactions to replay series of commands. Replay a series of commands that allows moving and turning without bumping.";
