@@ -23,9 +23,9 @@
 "Excellent 100" = "Вы должны нажать каждую команду перед закрытием этого окна, чтобы включить кнопку «Ок».";
 "Drag the 3D scene to move the camera" = "Перетащите 3D вид, чтобы изменить угол обзора. ";
 "Double tap to swap cameras." = "Дважды нажмите на 3D-вид для замены точек обзора.";
-"Explore your environment" = "Explore your environment before moving on to the next level.";
-"Tap an event to replay its command" = "Scroll the background window to review the past interactions. Tap the interactions to replay series of commands.";
-"Replay without bumping" = "Tap the interactions to replay series of commands. Replay a series of commands that allows moving and turning without bumping.";
+"Explore your environment" = "Исследуйте среду, прежде чем перейти на следующий уровень.";
+"Tap an event to replay its command" = "Прокрутите фоновое окно, чтобы просмотреть последние взаимодействия. Коснитесь взаимодействий, чтобы воспроизвести ряд команд.";
+"Replay without bumping" = "Коснитесь взаимодействий, чтобы воспроизвести ряд команд. Повторите ряд команд, которые позволяют перемещаться и поворачиваться без столкновений. ";
 "You won!" = "Yahoo! You have completed Little AI! Watch for updates to get even more exciting levels in the coming months! (Voluntarily developed or founded by your donations.)";
 "Please login to Game Center" = "To view the leaderboard, create a Game Center account in system settings";
 "Thank you!" = "Thank you very much for your support!";
