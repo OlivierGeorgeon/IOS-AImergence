@@ -64,18 +64,18 @@
       </array>
       <array>
         <string>The box is even smaller.</string>
-        <string>Scroll to review the last 100 interactions. Double-tap on an empty area to scroll back to origin.</string>
-        <string>Press the score to see your number of turns.</string>
+        <string>Прокрутите, чтобы просмотреть последние 100 взаимодействий. Дважды нажмите на пустой области, чтобы прокрутить назад до начала.</string>
+        <string>Нажмите счет, чтобы увидеть количество поворотов.</string>
       </array>
       <array>
-        <string>Level 13 offers the same commands as Levels 11 and 12 plus an observational command.</string>
-        <string>Now Little AI really hates bumping, and quite dislikes turning. Fortunately, the box is getting bigger!</string>
-        <string>Use the observational command to avoid bumping into the edges.</string>
+        <string>Уровень 13 предлагает те же команды, что и уровни 11 и 12, плюс команду наблюдения.</string>
+        <string>Теперь Little AI действительно ненавидит натыкаться, и довольно не любит поворачиваться. К счастью, коробка становится все больше!</string>
+        <string>Используйте команду наблюдения, чтобы избежать столкновения с краями.</string>
       </array>
       <array>
-        <string>Level 14's world is the same as Level 13's.</string>
-        <string>As a player, you are in an analogous situation as a newborn baby that ignores the signification of its gestures and of its senses, or of a robot that ignores the signification of its actuators and sensors.</string>
-        <string>You must learn to know yourself and your environment to live a happy life!</string>
+        <string>Мир уровня 14 такой же, как и в уровене 13.</string>
+        <string>Как игрок, вы находитесь в аналогичной ситуации, как новорожденный ребенок, который игнорирует значение своих жестов и чувств, или робота, который игнорирует значение своих приводов и датчиков.</string>
+        <string>Вы должны научиться знать себя и свою среду, чтобы жить счастливой жизнью!</string>
       </array>
       <array>
         <string>Little AI now has two additional observational commands that it can use to observe the edges of the box on its right and on its left.</string>
