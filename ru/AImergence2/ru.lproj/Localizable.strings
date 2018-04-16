@@ -49,8 +49,8 @@
 "support" = "Поддержать Little AI";
 "sound" = "Нажмите, что бы включить/выключить звук";
 "instructionAgain" = "Нажмите «Ок» в окне инструкции, чтобы подтвердить";
-"replayAgain" = "Press each command/WHILE replay window/is open, and then Ok";
-"match" = "Tap to find/a play partner";
-"group" = "Drag to access/more levels";
-"Disposed from memory" = "Removed from memory";
-"Ready" = "Ready";
+"replayAgain" = "Нажмите каждую команду пока открыто окно воспроизведения, а затем Ок";
+"match" = "Нажмите, чтобы найти партнера";
+"group" = "Перетащите для доступа к большему количеству уровней";
+"Disposed from memory" = "Удалено из памяти";
+"Ready" = "Готово";
