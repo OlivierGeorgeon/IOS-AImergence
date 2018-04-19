@@ -41,29 +41,29 @@
         <string>Покажите в зеленых взаимодействиях приятное или предчувствуют приятное взаимодействие в следующем повороте, а в красном - те, которые сильно неприятны или предчувствуют сильное неприятное взаимодействие в следующем повороте.</string>
       </array>
       <array>
-        <string>In Level 7, the commands have the same effects as in Levels 5 and 6, but the values of interactions are different.</string>
-        <string>Tap the interactions in the trace to replay enjoyable patterns of interaction in the context when it is possible.</string>
-        <string>When you replay a pattern, skip the observational commands to maximize your score.</string>
+        <string>На уровне 7 команды имеют те же эффекты, что и в уровнях 5 и 6, но значения взаимодействий различны.</string>
+        <string>Коснитесь взаимодействий в трассировке, чтобы воспроизвести приятные образцы взаимодействия, когда это возможно.</string>
+        <string>Когда вы воспроизводите шаблон, пропустите команды наблюдения, чтобы максимизировать свой балл.</string>
       </array>
       <array>
-        <string>On Level 8, the commands have the same effects as in Levels 5 to 7.</string>
-        <string>Now, however, one of the commands always yields the same interaction. This is a "non-informative command".</string>
-        <string>Although non-informative commands always yield the same interaction, do not mistake them for observational commands.</string>
+        <string>На уровне 8 команды имеют те же эффекты, что и в уровнях 5-7.</string>
+        <string>Однако теперь одна из команд всегда дает одно и то же взаимодействие.  Это «неинформативная команда».</string>
+        <string>Хотя неинформативные команды всегда дают одно и то же взаимодействие, не допускайте их для наблюдательных команд.</string>
       </array>
       <array>
-        <string>The commands have similar effects as in the previous levels, but they also transform the environment on the long term.</string>
-        <string>Little AI must transform its environment until it can enact an enjoyable interaction on every turn.</string>
+        <string>Команды имеют аналогичные эффекты, как на предыдущих уровнях, но они также трансформируют среду в долгосрочной перспективе.</string>
+        <string>Little AI должен трансформировать свою среду, пока она не сможет обеспечить приятное взаимодействие на каждом шагу.</string>
       </array>
       <array>
-        <string>Level 10's world is the same as Level 9's.</string>
-        <string>Let's see if you can tell the observational command and the non-informative command apart.</string>
+        <string>Мир уровня 10 такой же, как и на уровень 9.</string>
+        <string>Давайте посмотрим, можете ли вы отличить команду наблюдения и неинформативную команду.</string>
       </array>
       <array>
-        <string>In Level 11, Little AI can move forward and turn in a little box.</string>
-        <string>It loves moving forward but hates bumping into the edges of the box.</string>
+        <string>На Уровне 11 Little AI может двигаться вперед и поворачиваться в маленькой коробке.</string>
+        <string>Он любит двигаться вперед, но ненавидит натыкаться на края коробки.</string>
       </array>
       <array>
-        <string>The box is even smaller.</string>
+        <string>Коробка еще меньше.</string>
         <string>Прокрутите, чтобы просмотреть последние 100 взаимодействий. Дважды нажмите на пустой области, чтобы прокрутить назад до начала.</string>
         <string>Нажмите счет, чтобы увидеть количество поворотов.</string>
       </array>
