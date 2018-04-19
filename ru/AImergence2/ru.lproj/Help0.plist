@@ -21,24 +21,24 @@
         <string>Коснитесь взаимодействия в трассировке, чтобы воспроизвести предыдущую команду. Одна и та же команда, воспроизводимая на одном и том же объекте, дает одно и то же взаимодействие. Чтобы воспроизвести весь шаблон взаимодействия, несколько раз нажмите «следующая команда» (белая фигура, которая появляется слева при нажатии на взаимодействие).</string>
       </array>
       <array>
-        <string>Press and hold a command to change its shape. Press and hold an interaction in the trace to change its color.</string>
-        <string>Change the shapes of the commands and the colors of interactions to recognize them. Shapes and colors are purely descriptive. They do not change the robot.</string>
-        <string>You can also recognize interactions by the cries your baby robot makes. In this game, your ears can also help you!</string>
+        <string>Нажмите и удерживайте команду, чтобы изменить ее форму. Нажмите и удерживайте взаимодействие в трассе, чтобы изменить его цвет.</string>
+        <string>Измените формы команд и цвета взаимодействий, чтобы распознать их. Формы и цвета являются чисто описательными. Они не меняют робота.</string>
+        <string>Вы также можете узнать о взаимодействиях по крикам вашего ребенка робота. В этой игре ваши уши также могут помочь вам!</string>
       </array>
       <array>
-        <string>In Level 4, Little AI cannot always avoid unpleasant interactions.</string>
-        <string>Generate a pattern of interaction that contains as few unpleasant interactions as possible. </string>
-        <string>Use different shapes for the commands. Display the enjoyable interactions in green and the unpleasant interactions in red. Don't think too much, your brain will see the pattern before you know it!</string>
+        <string>На уровне 4 Little AI не всегда может избежать неприятных взаимодействий.</string>
+        <string>Создайте образец взаимодействия, который содержит как можно меньше неприятных взаимодействий. </string>
+        <string>Для команд используйте разные формы. Покажите приятные взаимодействия в зеленом цвете и неприятные взаимодействия в красном цвете. Не думайте слишком много, ваш мозг увидит образец, прежде чем вы это узнаете!</string>
       </array>
       <array>
-        <string>Experiment with each command alone several times in a row. In the trace, you will see that one command always yields the same interaction within a given situation (same shape and same color).</string>
-        <string>This command allows you to observe the world without changing it. We call it an "observational command", and its resulting interactions "observational interactions".</string>
-        <string>Use the color of observational interactions to avoid performing a strongly unpleasant interaction on the next turn.</string>
+        <string>Поэкспериментируйте с каждой командой несколько раз подряд. Вы увидите, что одна команда всегда дает одно и то же взаимодействие в данной ситуации (одинаковая форма и один и тот же цвет).</string>
+        <string>Эта команда позволяет вам наблюдать за миром, не меняя его. Мы называем это «наблюдательной командой» и ее результатом взаимодействия «наблюдательные взаимодействия».</string>
+        <string>Используйте цвет наблюдательных взаимодействий, чтобы избежать сильного неприятного взаимодействия в следующем ходу.</string>
       </array>
       <array>
         <string>На уровне 6 команды имеют такой же эффект, как и на уровне 5, но они отсортированы в случайном порядке и все первоначально представлены кругами.</string>
         <string>Это остается вам атрибутом формы для команд и цветом для взаимодействия. </string>
-        <string>Display in green the interactions that are enjoyable or premonitory of an enjoyable interaction in the next turn, and in red those that are strongly unpleasant or premonitory of a strongly unpleasant interaction in the next turn.</string>
+        <string>Покажите в зеленых взаимодействиях приятное или предчувствуют приятное взаимодействие в следующем повороте, а в красном - те, которые сильно неприятны или предчувствуют сильное неприятное взаимодействие в следующем повороте.</string>
       </array>
       <array>
         <string>In Level 7, the commands have the same effects as in Levels 5 and 6, but the values of interactions are different.</string>
