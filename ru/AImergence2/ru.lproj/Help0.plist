@@ -18,7 +18,7 @@
       <array>
         <string>Little AI ощущает взаимодействия как более или менее приятные или неприятные. Точки, связанные с взаимодействиями указывают на выраженность этих чувств.</string>
         <string>Вы можете создать шаблон приятных взаимодействий.</string>
-        <string>Tap an interaction in the trace to replay a previous command. The same command replayed upon the same object yields the same interaction. To replay an entire pattern of interactions, tap the "next command" several times (white shape that appears on the left when you tap an interaction).</string>
+        <string>Коснитесь взаимодействия в трассировке, чтобы воспроизвести предыдущую команду. Одна и та же команда, воспроизводимая на одном и том же объекте, дает одно и то же взаимодействие. Чтобы воспроизвести весь шаблон взаимодействия, несколько раз нажмите «следующая команда» (белая фигура, которая появляется слева при нажатии на взаимодействие).</string>
       </array>
       <array>
         <string>Press and hold a command to change its shape. Press and hold an interaction in the trace to change its color.</string>
