@@ -70,7 +70,8 @@ class MatchSKNode: SKNode
     func update(displayName: String?) {
         var initials = ""
         if displayName != nil {
-            if displayName!.characters.count > 0 {
+            if displayName!.count > 0 {
+            // if displayName!.characters.count > 0 { OG update swift 4
                 initials = String(displayName![displayName!.startIndex])
                 let displayNameArray = displayName!.components(separatedBy: " ")
                 if displayNameArray.count > 1 {

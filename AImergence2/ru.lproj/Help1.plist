@@ -1,19 +1,19 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
-<dict>
-	<key>Help</key>
-	<array>
-		<array>
-			<string>In this series of levels, your baby robot is interacting with another baby robot controlled by another player.</string>
-			<string>Tap the &quot;player&quot; button to find a play partner (requires loggin in Game Center and iCoud).</string>
-			<string>Both of you must tap a command to produce an interation. This is a collaborative game. You both win at the same time.</string>
-		</array>
-		<array>
-			<string>Dance with your Little AI partner.</string>
-			<string>Make sure that the both of you are playing the same level.</string>
-			<string>More multi-player levels will be released in the coming months to illustrate research on human/robot collaboration.</string>
-		</array>
-	</array>
-</dict>
+  <dict>
+    <key>Help</key>
+    <array>
+      <array>
+        <string>В этой серии уровней ваш ребенок-робот взаимодействует с другим ребенком-роботом, которым управляет другой игрок.</string>
+        <string>Нажмите кнопку "игрок", чтобы найти партнера для игры (требуется войти в Game Centre и iCloud)</string>
+        <string>Обоим из вас необходимо нажимать на команды, чтобы взаимодействовать. Это командная игра. Вы оба выигрываете в одно и то же время.</string>
+      </array>
+      <array>
+        <string>Танцуйте с вашим Little Al партнером.</string>
+        <string>Убедитесь, что оба из вас играют на одном и том же уровне.</string>
+        <string>Больше многопользовательских уровней выпустят в ближайшие месяцы, чтобы проиллюстрировать исследования по взаимодействию человека/робота.</string>
+      </array>
+    </array>
+  </dict>
 </plist>

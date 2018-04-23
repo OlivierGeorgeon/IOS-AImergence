@@ -1,24 +1,24 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
-<dict>
-	<key>Help</key>
-	<array>
-		<array>
-			<string>In Level 2.00, Little AI can flip the tiles on its left and on its right.</string>
-			<string>It can experience a delightful interaction in a specific configuration of the environment.</string>
-			<string>Notice that one of the commands now can yield three different types of interactions.</string>
-		</array>
-		<array>
-			<string>Level 2.01 is identical to Level 2.00.</string>
-			<string>This series of levels illustrates the problem of learning the persistence of objects in the world. </string>
-			<string>It involves using rudimentary spatial memory that may lay the ground for more complex spatial intelligence.</string>
-		</array>
-		<array>
-			<string>Little AI begins to manipulate a more complex object made of two different parts. </string>
-			<string>We currently don&apos;t have algorithms that can play levels 2.00 to 2.02 automatically. If you wish to contribute to research in developmental AI, you may address this problem.</string>
-			<string>You may also invent more levels that exemplify the problem of learning to interact with more complex objects.</string>
-		</array>
-	</array>
-</dict>
+  <dict>
+    <key>Help</key>
+    <array>
+      <array>
+        <string>На уровне 2.00, Little Al может поворачивать плитки влево и вправо.</string>
+        <string>Это может стать восхитительным опытом взаимодействия в особых условиях конфигурации.</string>
+        <string>Обратите внимание, что одна команда теперь может выполнять три разных взаимодействия.</string>
+      </array>
+      <array>
+        <string>Уровень 2.01 идентичен уровню 2.00</string>
+        <string>Эта серия игр иллюстрирует проблему изучения постоянства объектов в мире.</string>
+        <string>Она включает в себя использование примитивной пространственной памяти, которая может заложить основу для более сложных пространственных задач. </string>
+      </array>
+      <array>
+        <string>Little Al начинает управлять более сложными объектами, состоящими из двух разных частей.</string>
+        <string>В настоящее время у нас нет алгоритмов, которые могут использоваться с уровня 2.00 до уровня 2.02 автоматически. Если вы хотите содействовать исследованиям в области развития Al и можете решить эту проблему, свяжитесь с нами.</string>
+        <string>Вы также можете придумать больше уровней, которые будут иллюстрировать проблемы взаимодействия с более сложными объектами. </string>
+      </array>
+    </array>
+  </dict>
 </plist>
