@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Help</key>
+	<array>
+		<array>
+			<string>Welcome to Little AI!</string>
+			<string>With the buttons at the bottom of the screen, you are controlling a baby robot called Little AI. The goal is to reach the score of 10 within 10 turns.</string>
+			<string>As you play, you generate colored circles and squares called &quot;interactions&quot;. Your score is the sum of the points of the last ten interactions. Yes, only the last ten!</string>
+			<string>You will better understand the meaning of interactions when you see the replay mode after having reached the score of 10.</string>
+		</array>
+		<array>
+			<string>An interaction is the association of a command with feedback information. Commands are differentiated by their shapes and feedback information by their colors. The stream of interactions is called the &quot;trace&quot;.</string>
+			<string>To better understand the game, it is preferable to generally follow the order: 1- read the instructions, 2- win the level, 3- explore the &quot;replay&quot; mode.</string>
+			<string>Drag the 2D robot to the right or to the left to shift to the previous or to the next level.</string>
+		</array>
+		<array>
+			<string>Little AI finds the interactions more or less enjoyable or unpleasant. The points associated with interactions indicate the intensity of these feelings.</string>
+			<string>Generate a pattern of enjoyable interactions.</string>
+			<string>Tap an interaction in the trace to replay a previous command. The same command replayed upon the same object yields the same interaction. To replay an entire pattern of interactions, tap the &quot;next command&quot; several times (white shape that appears on the left when you tap an interaction).</string>
+		</array>
+		<array>
+			<string>Press and hold a command to change its shape. Press and hold an interaction in the trace to change its color.</string>
+			<string>Change the shapes of the commands and the colors of interactions to recognize them. Shapes and colors are purely descriptive. They do not change the robot.</string>
+			<string>You can also recognize interactions by the cries your baby robot makes. In this game, your ears can also help you!</string>
+		</array>
+		<array>
+			<string>In Level 4, Little AI cannot always avoid unpleasant interactions.</string>
+			<string>Generate a pattern of interaction that contains as few unpleasant interactions as possible. </string>
+			<string>Use different shapes for the commands. Display the enjoyable interactions in green and the unpleasant interactions in red. Don&apos;t think too much, your brain will see the pattern before you know it!</string>
+		</array>
+		<array>
+			<string>Experiment with each command alone several times in a row. In the trace, you will see that one command always yields the same interaction within a given situation (same shape and same color).</string>
+			<string>This command allows you to observe the world without changing it. We call it an &quot;observational command&quot;, and its resulting interactions &quot;observational interactions&quot;.</string>
+			<string>Use the color of observational interactions to avoid performing a strongly unpleasant interaction on the next turn.</string>
+		</array>
+		<array>
+			<string>In Level 6, the commands have the same effects as in Level 5, but they have been rearranged in a random order, and are all initially represented by circles.</string>
+			<string>It is left to you to attribute shapes to commands and colors to interactions.</string>
+			<string>Display in green the interactions that are enjoyable or premonitory of an enjoyable interaction in the next turn, and in red those that are strongly unpleasant or premonitory of a strongly unpleasant interaction in the next turn.</string>
+		</array>
+		<array>
+			<string>In Level 7, the commands have the same effects as in Levels 5 and 6, but the values of interactions are different.</string>
+			<string>Tap the interactions in the trace to replay enjoyable patterns of interaction in the context when it is possible.</string>
+			<string>When you replay a pattern, skip the observational commands to maximize your score.</string>
+		</array>
+		<array>
+			<string>On Level 8, the commands have the same effects as in Levels 5 to 7.</string>
+			<string>Now, however, one of the commands always yields the same interaction. This is a &quot;non-informative command&quot;.</string>
+			<string>Although non-informative commands always yield the same interaction, do not mistake them for observational commands.</string>
+		</array>
+		<array>
+			<string>The commands have similar effects as in the previous levels, but they also transform the environment on the long term.</string>
+			<string>Little AI must transform its environment until it can enact an enjoyable interaction on every turn.</string>
+		</array>
+		<array>
+			<string>Level 10&apos;s world is the same as Level 9&apos;s.</string>
+			<string>Let&apos;s see if you can tell the observational command and the non-informative command apart.</string>
+		</array>
+		<array>
+			<string>In Level 11, Little AI can move forward and turn in a little box.</string>
+			<string>It loves moving forward but hates bumping into the edges of the box.</string>
+		</array>
+		<array>
+			<string>The box is even smaller.</string>
+			<string>Scroll to review the last 100 interactions. Double-tap on an empty area to scroll back to origin.</string>
+			<string>Press the score to see your number of turns.</string>
+		</array>
+		<array>
+			<string>Level 13 offers the same commands as Levels 11 and 12 plus an observational command.</string>
+			<string>Now Little AI really hates bumping, and quite dislikes turning. Fortunately, the box is getting bigger!</string>
+			<string>Use the observational command to avoid bumping into the edges.</string>
+		</array>
+		<array>
+			<string>Level 14&apos;s world is the same as Level 13&apos;s.</string>
+			<string>As a player, you are in an analogous situation as a newborn baby that ignores the signification of its gestures and of its senses, or of a robot that ignores the signification of its actuators and sensors.</string>
+			<string>You must learn to know yourself and your environment to live a happy life!</string>
+		</array>
+		<array>
+			<string>Little AI now has two additional observational commands that it can use to observe the edges of the box on its right and on its left.</string>
+			<string>Use these additional possibilities of observation to avoid turning towards the edges of the box.</string>
+			<string>The box is getting even bigger.</string>
+		</array>
+		<array>
+			<string>You are in the same world as in Level 15 with the same commands initially uninterpreted.</string>
+			<string>Little AI is a free open-source research and pedagogical project driven by enthusiast volunteers in collaboration with academia.</string>
+			<string>If you wish to learn more about research in developmental artificial intelligence and about us, consider visiting http://little-ai.com.</string>
+		</array>
+		<array>
+			<string>You reached the last level of series #0! Congratulations! It is similar to Level 16.</string>
+			<string>If you found Little AI enjoyable or instructive, or both, please consider making a small donation.</string>
+			<string>Your donations will support the creation of new levels. It will also promote independent and open-source research in developmental artificial intelligence.</string>
+		</array>
+	</array>
+</dict>
+</plist>

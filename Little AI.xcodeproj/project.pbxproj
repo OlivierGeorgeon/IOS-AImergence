@@ -245,6 +245,13 @@
 		096BD2971D40A27B00C08BEC /* RobotSKNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RobotSKNode.swift; sourceTree = "<group>"; };
 		096F5CB41C53F1C90041EA5F /* HelpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpViewController.swift; sourceTree = "<group>"; };
 		096F5CB81C56D7240041EA5F /* Level009.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Level009.swift; sourceTree = "<group>"; };
+		097B6514208E6E53009F87CD /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Main.strings; sourceTree = "<group>"; };
+		097B6515208E6E53009F87CD /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		097B6516208E6E53009F87CD /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/MainInterface.strings; sourceTree = "<group>"; };
+		097B6517208E6E53009F87CD /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = ru; path = ru.lproj/Help0.plist; sourceTree = "<group>"; };
+		097B6518208E6E53009F87CD /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = ru; path = ru.lproj/Help1.plist; sourceTree = "<group>"; };
+		097B6519208E6E53009F87CD /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = ru; path = ru.lproj/Help2.plist; sourceTree = "<group>"; };
+		097B651A208E6E54009F87CD /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		097D70141D3F6AF7005D4C3A /* ScoreSKNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScoreSKNode.swift; sourceTree = "<group>"; };
 		098203EF1D088818009303C5 /* ButtonSKNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonSKNode.swift; sourceTree = "<group>"; };
 		0984BC031D6881D8001D70ED /* SCNFlipTileNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCNFlipTileNode.swift; sourceTree = "<group>"; };
@@ -745,6 +752,7 @@
 				Base,
 				fr,
 				"zh-Hans",
+				ru,
 			);
 			mainGroup = 0936812E1C417377008C6B5D;
 			productRefGroup = 093681381C417378008C6B5D /* Products */;
@@ -955,6 +963,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				0919DF191DDC9DA100653775 /* Base */,
+				097B6516208E6E53009F87CD /* ru */,
 			);
 			name = MainInterface.storyboard;
 			sourceTree = "<group>";
@@ -965,6 +974,7 @@
 				093681431C417378008C6B5D /* Base */,
 				09AC4CBF1C7DF3BC00C149EC /* fr */,
 				093544A51F739401002932AE /* zh-Hans */,
+				097B6514208E6E53009F87CD /* ru */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -975,6 +985,7 @@
 				093681481C417378008C6B5D /* Base */,
 				092B00371CBFF47A00A6FF3C /* fr */,
 				09DDB3BD1F752AD5000F9491 /* zh-Hans */,
+				097B6515208E6E53009F87CD /* ru */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -985,6 +996,7 @@
 				0961EBC11C66658B00A4E55C /* fr */,
 				0961EBC31C66658E00A4E55C /* Base */,
 				093544A61F739401002932AE /* zh-Hans */,
+				097B6517208E6E53009F87CD /* ru */,
 			);
 			name = Help0.plist;
 			sourceTree = "<group>";
@@ -1011,6 +1023,7 @@
 				099452991C620CF600F0ABFF /* fr */,
 				099452A11C620DD300F0ABFF /* Base */,
 				093544A91F739401002932AE /* zh-Hans */,
+				097B651A208E6E54009F87CD /* ru */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -1021,6 +1034,7 @@
 				09C7BA951DFEDB75003528BF /* Base */,
 				09C7BA971DFEDBAE003528BF /* fr */,
 				093544A71F739401002932AE /* zh-Hans */,
+				097B6518208E6E53009F87CD /* ru */,
 			);
 			name = Help1.plist;
 			sourceTree = "<group>";
@@ -1031,6 +1045,7 @@
 				09C7BA9B1DFEDD09003528BF /* Base */,
 				09C7BA9D1DFEDD0C003528BF /* fr */,
 				093544A81F739401002932AE /* zh-Hans */,
+				097B6519208E6E53009F87CD /* ru */,
 			);
 			name = Help2.plist;
 			sourceTree = "<group>";
