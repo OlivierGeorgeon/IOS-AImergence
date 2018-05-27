@@ -15,7 +15,7 @@
 "ceU-MJ-Rek.normalTitle" = "Camera";
 
 /* Class = "UITextView"; text = "You must reach the sore of 10 to be able to see an imaginary representation of the world in this window."; ObjectID = "dPD-EN-VYk"; */
-"dPD-EN-VYk.text" = "You must reach the sore of 10 to be able to see an imaginary representation of the world in this window.";
+"dPD-EN-VYk.text" = "您必须达到10分才能进入该级别的重播模式！";
 
 /* Class = "UIButton"; normalTitle = "Imagine"; ObjectID = "jqj-ax-hzY"; */
 "jqj-ax-hzY.normalTitle" = "Imagine";

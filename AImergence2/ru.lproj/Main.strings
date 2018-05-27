@@ -1,6 +1,6 @@
 
 /* Class = "UIButton"; normalTitle = "Level 0"; ObjectID = "7U6-td-9dq"; */
-"7U6-td-9dq.normalTitle" = "Level 0";
+"7U6-td-9dq.normalTitle" = "Уровень 0";
 
 /* Class = "UIButton"; normalTitle = "Instructions"; ObjectID = "BJ8-tY-cJW"; */
 "BJ8-tY-cJW.normalTitle" = "Instructions";
@@ -9,13 +9,13 @@
 "IWI-lU-vxl.normalTitle" = "Ok";
 
 /* Class = "UILabel"; text = " Level 0"; ObjectID = "LU5-OA-XkX"; */
-"LU5-OA-XkX.text" = " Level 0";
+"LU5-OA-XkX.text" = " Уровень 0";
 
 /* Class = "UIButton"; normalTitle = "Camera"; ObjectID = "ceU-MJ-Rek"; */
 "ceU-MJ-Rek.normalTitle" = "Camera";
 
 /* Class = "UITextView"; text = "You must reach the sore of 10 to be able to see an imaginary representation of the world in this window."; ObjectID = "dPD-EN-VYk"; */
-"dPD-EN-VYk.text" = "You must reach the sore of 10 to be able to see an imaginary representation of the world in this window.";
+"dPD-EN-VYk.text" = "Вы должны набрать 10 очков для доступа к режиму воспроизведения уровня.";
 
 /* Class = "UIButton"; normalTitle = "Imagine"; ObjectID = "jqj-ax-hzY"; */
 "jqj-ax-hzY.normalTitle" = "Imagine";
