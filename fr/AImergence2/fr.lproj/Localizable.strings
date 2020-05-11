@@ -1,0 +1,56 @@
+/* 
+  Localizable.strings
+  AImergence
+
+  Created by Olivier Georgeon on 03/02/16.
+  Copyright © 2016 Olivier Georgeon. All rights reserved.
+*/
+
+"Level" = "Niveau";
+"Cancel" = "Retour";
+"You must reach the score of 10" = "Vous devez atteindre le score de 10 pour pouvoir accéder au mode \"replay\" de ce niveau.";
+"Excellent 0" = "Bravo ! Vous avez gagné le niveau 0 ! Vous avez maintenant accès au mode \"replay\" qui vous propose une interprétation possible de ce que vous avez fait. Pressez au moins une fois chaque commande pour activer le bouton Ok AVANT de fermer cette fenêtre.";
+"Excellent 1" = "Parfait ! Vous avez gagné le niveau 1 ! Il y a deux comportements qui vous permettent de gagner ce niveau. Avant de fermer cette fenêtre, essayez différentes séquences de commandes pour voir si vous pouvez trouver ces deux comportements.";
+"Excellent 2" = "Excellent ! Vous avez terminé le niveau 2 ! Scroller la trace derrière cette fenêtre, et rejouez une séquence en pressant des interactions successives dans la trace tout en gardant cette fenêtre ouverte.";
+"Excellent 3" = "Remarquez que Little AI suggère la prochaine commande quand vous appuyez dans la trace. Essayez avec une trace qui contient des commandes différentes à chaque coup. La commande suggérée n'est pas toujours la bonne, mais la trace vous aide à retrouver quelles commandes produisent quelles interactions dans quelles situations.";
+"Excellent 4" = "Félicitations ! Vous avez gagné le niveau 4 ! Appuyez successivement sur quatre interactions consécutives formant une séquence gagnante dans la trace pour voir pourquoi les interactions désagréables sont nécessaires pour obtenir des interactions agréables.";
+"Excellent 5" = "Maintenant, vous pouvez voir plus clairement que la commande observationnelle (par défaut le carré) permet à Little AI d'observer un objet sans le transformer, contrairement aux deux autres commandes.";
+"Excellent 6" = "Vérifiez que les couleurs des interactions correspondent à la géométrie de l'objet avec lequel Little AI interagit: vert pour les faces arrondies et rouge pour les faces plates. Les couleurs que vous avez choisies devraient refléter ces propriétés physiques du monde. Little AI exploite ce savoir pour vivre une vie heureuse !";
+"Excellent 7" = "Merveilleux! Quand vous rejouez des séquences d'interaction en appuyant dessus dans la trace, vous ré-exécutez un programme que vous avez précédemment appris. C'est comme ça qu'un robot autonome peut se programmer lui-même !";
+"Excellent 8" = "Dans ce niveau, vous pouvez voir que la commande non informative bascule l'objet sans vous informer du sens dans lequel il est. Laissez l'interaction produite par cette commande en blanc car elle ne transmet aucune information sur l'état physique du monde.";
+"Excellent 14" = "Pendant le jeu, vous pouvez interpréter arbitrairement les directions des commandes de rotation. Une fois sur deux, votre interprétation sera à l'inverse de ce que vous observerez dans le mode replay mais ce n'est pas grave. Le monde réel, s'il existe, est peut-être entièrement inversé par rapport à ce que vous croyez !";
+"Excellent 16" = "Vous pouvez gagner le niveau 16 avant de comprendre la signification de chaque interaction. La représentation spatiale offerte par le mode replay vous aide à corriger les contradictions dans votre interprétation des interactions.";
+"Excellent 100" = "Pressez tous les deux chaque commande avant de fermer cette fenêtre pour activer le bouton Ok.";
+"Drag the 3D scene to move the camera" = "Glissez la scène 3D pour changer l'angle de vue.";
+"Double tap to swap cameras." = "Appuyez deux fois sur la scène 3D pour passer d'un point de vue à un autre.";
+"Explore your environment" = "Explorez votre environnement avant de passer au niveau suivant.";
+"Tap an event to replay its command" = "Scrollez la fenêtre d'arrière plan pour revoir les interactions passées. Appuyez sur les interactions passées pour rejouer des séquences de commandes.";
+"Replay without bumping" = "Appuyez sur les interactions passées pour rejouer des séquences de commandes. Rejouez une séquence de commandes qui permet de se déplacer et tourner sans se cogner.";
+"You won!" = "Youpi ! Vous avez terminé Little AI ! Surveillez les mises à jour pour obtenir des niveaux encore plus intéressants dans les mois à venir ! (Développés bénévolement ou financés par vos dons.)";
+"Please login to Game Center" = "Pour voir le classement, créez votre compte Game Center dans les paramètres système";
+"Thank you!" = "Merci beaucoup pour votre soutien !";
+"0 moves" = "0 coups";
+"Won in" = "Gagné en";
+"moves" = "coups ";
+"Connect" = "";
+"command" = "Pressez les commandes/pour jouer";
+"score" = "Atteignez le/score de 10";
+"instruction" = "Appuyez pour/lire les instructions";
+"replay" = "Appuyez pour ouvrir/la fenêtre \"replay\"";
+"rank" = "Appuyez pour voir/ votre classement";
+"menu" = "Appuyez pour déployer/ou masquer le menu";
+"drag" = "Glissez le robot pour/changer de niveau";
+"redo" = "Pressez une interaction/pour rejouer sa commande";
+"shape" = "Maintenez pressé/pour changer les formes";
+"color" = "Maintenez pressé/pour changer les couleurs";
+"level" = "Appuyez pour voir le/tableau des niveaux";
+"sequence" = "Appuyez plusieurs fois/pour rejouer une série";
+"resume" = "Glissez pour/reprendre le jeu";
+"support" = "Soutenez Little AI";
+"sound" = "Appuyez pour activer/ou désactiver les sons";
+"instructionAgain" = "Pressez Ok dans la fenêtre/d'instructions pour acquiter";
+"replayAgain" = "Pressez chaque commande/avec la fenêtre replay/OUVERTE, puis Ok";
+"match" = "Pressez pour trouver/un partenaire de jeu";
+"group" = "Gissez pour accéder/à d'autres niveaux";
+"Disposed from memory" = "Effacé de la mémoire";
+"Ready" = "Prêt";

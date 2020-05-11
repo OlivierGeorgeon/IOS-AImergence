@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+  <dict>
+    <key>Help</key>
+    <array>
+      <array>
+        <string>欢迎您来到 Little AI</string>
+        <string>您可以控制屏幕下方的按钮这个可爱的机器人：“Little AI”，您过关的条件是在10轮之内夺得10分！</string>
+        <string>在您玩的过程中，可以看到“交互”产生的彩色圆圈或者方框，您的得分是最近10次交互结果之和。没错！只是最近10次的交互！</string>
+        <string>在您获得10分之后，您会看到重播模式，您将会更好的理解交互的含义。</string>
+      </array>
+      <array>
+        <string>一次交互是一系列的命令及其反馈信息的综合，由于这些交互的形状及其反馈的不同，这些命令也是不同的。交互的流我们称之为“迹”。</string>
+        <string>为了更好的了解游戏，我们推荐您按照以下的顺序来玩：1、阅读使用说明；2，赢的每一级别的游戏；3、探索重播模式。</string>
+        <string>向左或者向右拖动屏幕上的机器人，跳转到之前或之后的级别中</string>
+      </array>
+      <array>
+        <string>Little AI发现了交互或多或少的喜悦或者不开心，与这些交互相关联点表明了这些感受的强度。</string>
+        <string>产生了喜悦的交互的模式</string>
+        <string>在一条迹上敲击交互来重播之前的命令。相同的命令发生在相同的物体上产生相同的交互。为了重播全部的交互的模式，可以通过敲击“下一个命令”数次（在敲击一个交互的时候白色的形状在左边产生）</string>
+      </array>
+      <array>
+        <string>按压或者保持一个命令来改变他的形状。按压或者保持一个交互在一个迹里面来改变他的颜色。</string>
+        <string>改变命令的形状和交互的颜色来识别他们。形状和颜色只是用来描述的，他们不会改变或者影响机器人。</string>
+        <string>您也可以通过你的小机器人发出的声音来识别交互。在这个游戏里面，你的耳朵同样也可以帮助你很多！</string>
+      </array>
+      <array>
+        <string>在第4级别中，Little AI 不会总是避开不开心的交互。</string>
+        <string>产生出一个交互的模式，这个模式里面包含了尽量少的不开心的交互。</string>
+        <string>为命令使用不同的形状。用绿色显示了开心的交互，用红色显示了不开心的交互。不要想太多，您的大脑将会在你知晓之前看到模式！</string>
+      </array>
+      <array>
+        <string>每一条命令的实验会联系的执行多次。在一个迹中，您将会看到一个命令总是在给定的情形中产生相同的交互（比如相同的形状和相同的颜色）。</string>
+        <string>这个命令允许在不改变他的情况下观察他。我们称之为“观测命令”，以及他的交互结果“观测交互”。</string>
+        <string>使用观测交互的颜色来避开在下一个循环中表现出的强烈的不高兴交互</string>
+      </array>
+      <array>
+        <string>在第6级别中，命令有着与第5级别相同的影响和作用，但是他们被按照随机的顺序重新排列，并且都最初的用圆圈来表现出来。</string>
+        <string>剩下的留给你去将 形状归属于命令，将颜色归属于交互。</string>
+        <string>以绿色展示出的交互式欢快的。或者在下一轮中先兆的给出欢快的交互，红色的是在下一轮中强烈的不快或者是其先兆的相互交互</string>
+      </array>
+      <array>
+        <string>在第7级别当中，命令有着和第5、6级别中相同的作用，但是交互的值是不同的。</string>
+        <string>在可能的情况下，点击迹中的交互来重播高兴的交互模式</string>
+        <string>在您重播一个模式的时候，跳过观测命令来最大化您的得分。</string>
+      </array>
+      <array>
+        <string>在第8级别中，命令有着和第5、7相同的作用。</string>
+        <string>现在，其中的一条命令总是产生相同的交互。这是一个“无意义的命令”。</string>
+        <string>尽管无意义的命令总是产生相同的交互，但是不要错误的将其作为观测命令。</string>
+      </array>
+      <array>
+        <string>命令与之前的级别有相同的效果，但是从长远来看，他们也会改变环境。</string>
+        <string>Little AI 必须改变他的环境，知道他可以在每一轮交互中愉快的执行交互。</string>
+      </array>
+      <array>
+        <string>第10级别的情况也第9级别很像。</string>
+        <string>让我们看看你是否可以分开（区分）观测命令和无意义命令。</string>
+      </array>
+      <array>
+        <string>在第11界别中，Little AI可以向前移动，也可以转向一个小盒子。</string>
+        <string>他（Little AI）喜欢向前移动，但是他讨厌以盒子的边缘碰撞。</string>
+      </array>
+      <array>
+        <string>而这个盒子甚至会更小一些。</string>
+        <string>通过拖动滚轮，可以回看最近的100次交互，在空白的地方双击，可以回到游戏开始的地方。</string>
+        <string>按下得分，可以看到您玩的轮数。</string>
+      </array>
+      <array>
+        <string>第13级别提供了与11级别和12级别相同的命令。另外加上了一个观测命令。</string>
+        <string>现在Little AI真的讨厌碰撞，同时也相当讨厌转动。幸运的是，盒子变得原来越大了。</string>
+        <string>使用观测命令来避开与盒子边缘的碰撞。</string>
+      </array>
+      <array>
+        <string>第14级别的环境与第13级别很相似。</string>
+        <string>作为一个游戏者（在一个游戏中），您可以如同新生的宝宝一样，在一个类似情形中，忽略了手势和感官的意义，或者如同一个机器人忽略了制动器与传感器的意义。</string>
+        <string>为了能够拥有愉悦的生活，您必须学会了解您自己和您的环境。</string>
+      </array>
+      <array>
+        <string>Little AI现在拥有两个附加的观测命令，使用这些命令，可以在盒子的左视角和右视角来观察其边缘。</string>
+        <string>使用这些附加的观察内容，可以避开机器人转向盒子的边缘部分。</string>
+        <string>盒子变得越来越大了。</string>
+      </array>
+      <array>
+        <string>您处在和第15级别相同的环境中，拥有相同无解释的初始化的命令。</string>
+        <string>Little AI是一个开源的研究和教学项目，是由学术界与爱好这门共同合作驱动的。</string>
+        <string>如果您想要学到更多的有关启发式人工智能的研究内容，以及更多的有关我们的信息，请访问网站：http://little-ai.com</string>
+      </array>
+      <array>
+        <string>您已经达到了#0 的最后一个级别！ 祝贺您！它类似于第16级别。</string>
+        <string>如果您发现Little AI很有趣，或者有教育意义，或者两者兼有，请您考虑给与我们小小的捐赠。</string>
+        <string>您的捐赠将会用在开发新的界别上。这同样也会促进在启发式人工智能领域的独立和开源的研究进程。</string>
+      </array>
+    </array>
+  </dict>
+</plist>

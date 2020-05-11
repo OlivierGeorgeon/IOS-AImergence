@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+  <dict>
+    <key>Help</key>
+    <array>
+      <array>
+        <string>在这一系列的级别中，您的小机器人会与另外的小机器人进行交互，该小机器人是被另外一个玩家控制的。</string>
+        <string>点击“开始游戏”按钮，您可以发现另外的一个伙伴（该伙伴需要登录Game Center和iCloud）</string>
+        <string>两位玩家都必须点击命令进而产生一个交互。这同样是一个合作的游戏。两位玩家可以同时获胜。</string>
+      </array>
+      <array>
+        <string>来和您的Little AI共舞吧！</string>
+        <string>请您确保您和您的玩家在同一级别游戏！</string>
+        <string>更多的多玩家级别游戏将会在未来的几个月中发布出来，将会展示人机合作领域的研究成果。</string>
+      </array>
+    </array>
+  </dict>
+</plist>
